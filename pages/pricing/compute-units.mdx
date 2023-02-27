@@ -1,0 +1,70 @@
+# Compute units
+
+A compute unit is a measurement of the computational resources required to fulfill a particular request for data via JSON RPC protocol. DRPC uses CUs to calculate the cost of a request, and also to track the workload of each data provider.
+
+## Methods costs in CU
+
+Here is an actual method list with its CU pricing. This table is correct for all blockchains and networks that DRPC support.
+If you call method that is not a part of this table, default cost is 100 CU.
+
+Method that require archive node have 4x multiplier.
+
+| Method                                  | CU   |
+| --------------------------------------- | ---- |
+| net_version                             | 0    |
+| eth_chainId                             | 0    |
+| eth_syncing                             | 0    |
+| web3_clientVersion                      | 0    |
+| eth_protocolVersion                     | 0    |
+| net_peerCount                           | 0    |
+| net_listening                           | 0    |
+| eth_coinbase                            | 0    |
+| eth_mining                              | 0    |
+| eth_hashrate                            | 0    |
+| eth_accounts                            | 0    |
+| eth_uninstallFilter                     | 10   |
+| eth_blockNumber                         | 10   |
+| eth_subscribe                           | 10   |
+| eth_unsubscribe                         | 10   |
+| eth_feeHistory                          | 10   |
+| eth_maxPriorityFeePerGas                | 10   |
+| eth_createAccessList                    | 10   |
+| eth_getTransactionReceipt               | 15   |
+| eth_getUncleByBlockHashAndIndex         | 15   |
+| eth_getUncleByBlockNumberAndIndex       | 15   |
+| eth_getTransactionByBlockHashAndIndex   | 15   |
+| eth_getTransactionByBlockNumberAndIndex | 15   |
+| eth_getUncleCountByBlockHash            | 15   |
+| eth_getUncleCountByBlockNumber          | 15   |
+| eth_getBlockByNumber                    | 16   |
+| eth_getStorageAt                        | 17   |
+| eth_getTransactionByHash                | 17   |
+| eth_gasPrice                            | 19   |
+| eth_getBalance                          | 19   |
+| eth_getCode                             | 19   |
+| eth_getFilterChanges                    | 20   |
+| eth_newBlockFilter                      | 20   |
+| eth_newFilter                           | 20   |
+| eth_newPendingTransactionFilter         | 20   |
+| eth_getBlockTransactionCountByHash      | 20   |
+| eth_getBlockTransactionCountByNumber    | 20   |
+| eth_getBlockByHash                      | 21   |
+| eth_getTransactionCount                 | 26   |
+| eth_call                                | 26   |
+| trace_get                               | 17   |
+| trace_block                             | 17   |
+| trace_transaction                       | 26   |
+| eth_getFilterLogs                       | 75   |
+| eth_getLogs                             | 75   |
+| trace_call                              | 75   |
+| trace_callMany                          | 75   |
+| trace_rawTransaction                    | 75   |
+| trace_filter                            | 75   |
+| eth_estimateGas                         | 87   |
+| eth_sendRawTransaction                  | 250  |
+| eth_sendPrivateTransaction              | 250  |
+| eth_cancelPrivateTransaction            | 250  |
+| debug_traceTransaction                  | 309  |
+| eth_getBlockReceipts                    | 500  |
+| trace_replayTransaction                 | 2983 |
+| trace_replayBlockTransactions           | 2983 |
