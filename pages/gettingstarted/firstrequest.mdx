@@ -1,1 +1,93 @@
+import { Tab, Tabs } from "nextra-theme-docs";
+
 # First request to DRPC
+
+First, get your endpoint. If you any questions on how to do it, [look here](./createaccount).
+
+### Authentication
+
+Each enpdoint already contains you authentication key as a URL parameter `dkey`.
+
+However, passing secrets as a GET parameter is not really recommended, unless you have no other way.
+Our recommendation is use special HTTP header `Drpc-Key`.
+
+For example:
+
+<Tabs items={['curl', 'HTTP']}>
+<Tab>
+
+```bash
+curl -X POST -H 'Content-Type: application/json' -H 'Drpc-Key: YOUR-API-KEY' \
+-d '{"method": "eth_getTransactionReceipt","params": ["0xd54debfd8aafac846bcf76e01626d4b40d7310b085ded3cc22b5a79e5a20f4ac"],"id": "1","jsonrpc": "2.0"}' \
+'YOUR-ENDPOINT-WITHOUT-KEY'
+```
+
+</Tab>
+
+<Tab>
+
+```http
+POST YOUR-ENDPOINT-WITHOUT-KEY
+content-type: application/json
+Drpc-Key: YOUR-API-KEY
+
+{
+"method": "eth_getTransactionReceipt",
+"params": ["0xd54debfd8aafac846bcf76e01626d4b40d7310b085ded3cc22b5a79e5a20f4ac"],
+"id": "1",
+"jsonrpc": "2.0"
+}
+```
+
+</Tab>
+
+</Tabs>
+
+Where YOUR-ENDPOINT-WITHOUT-KEY is your endpoint without the dkey parameter, and YOUR-API-KEY is your API key.
+The API key is a part of your endpoint by default. Also, you can find it on the settings page of the key you need.
+
+### Making requests
+
+DRPC conforms to standard JSON RPC protocol, that most of the blockchains use today.
+So, you can use any standard library for you preferred language to make request, for example:
+
+```js
+var Web3 = require("web3");
+var provider = "YOUR-ENDPOINT";
+var web3Provider = new Web3.providers.HttpProvider(provider);
+var web3 = new Web3(web3Provider);
+web3.eth.getBlockNumber().then((result) => {
+  console.log("Latest Ethereum Block is ", result);
+});
+```
+
+## DRPC SDK
+
+However, there is also DRPC SDK, which supports DRPC protocol, it's an alternative protocol
+for calling blockchain methods which allows us to do additional things like response verification,
+provider response signatures client check, etc.
+
+Currently, there is only JS version of this library.
+
+1. To install run:
+
+`npm install @drpcorg/drpc-sdk`
+
+2. You can use typescript to customize your endpoint without UI.
+   We also support providers for ethere.js and web3.js, for example:
+
+```ts
+import { DrpcProvider } from "drpc-sdk/dist/esm/providers/ethers";
+// for cjs
+// import { DrpcProvider } from 'drpc-sdk/dist/cjs/providers/ethers';
+
+async function getBlock(tag) {
+  let provider = new DrpcProvider({
+    dkey: "YOUR-API-KEY",
+    provider_ids: ["public"],
+  });
+  let block = await provider.getBlock(tag);
+}
+```
+
+3. You can check the complete docs for our SDK here: [https://p2p-org.github.io/drpc-client/](https://p2p-org.github.io/drpc-client/)

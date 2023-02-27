@@ -1,4 +1,5 @@
 {
-  "createaccount": "Create endpoint",
+  "createaccount": "Create DRPC key",
+  "custom-endpoints": "Custom endpoints",
   "firstrequest": "First request"
 }
