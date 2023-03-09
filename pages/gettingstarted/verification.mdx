@@ -1,0 +1,38 @@
+import { Tab, Tabs } from "nextra-theme-docs";
+
+# Verification
+
+As described previously, [DRPC-SDK](https://github.com/p2p-org/drpc-client) allows you to do things like response verification and provider response signatures client check.
+
+On this page we will look at the **response verification** process in more detail.
+
+## Verification process
+
+[DRPC-SDK](https://github.com/p2p-org/drpc-client) client has a params called `quorum_from` and `quorum_of`.
+
+- `quorum_from` is the total amount of responses that you want to receive from the providers.
+- `quorum_of` is the amount of **equal responses** that you want to receive from the providers to consider the response as valid.
+
+Since we want `quorum_of` to be more that half of total responses, [DRPC-SDK](https://github.com/p2p-org/drpc-client) will throw an error if `quorum_of` is less than `quorum_from / 2`.
+
+Valid config of quorum params:
+
+```js copy
+// Totally fine
+const drpc = new HTTPApi({
+  ...otherParams,
+  quorum_from: 3,
+  quorum_of: 2,
+});
+```
+
+Invalid config of quorum params:
+
+```js
+// Will throw an error
+const drpc = new HTTPApi({
+  ...otherParams,
+  quorum_from: 4,
+  quorum_of: 2,
+});
+```
