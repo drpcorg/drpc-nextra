@@ -13,7 +13,14 @@ On this page we will look at the **response verification** process in more detai
 - `quorum_from` is the total amount of responses that you want to receive from the providers.
 - `quorum_of` is the amount of **equal responses** that you want to receive from the providers to consider the response as valid.
 
-<Callout>
+<Callout type="info">
+  If you only pass one param (`quorum_of` or `quorum_from`), the other one will
+  be automatically **set to the same value**. On the other hand, if you pass
+  **NO quorum_of and NO quorum_from**, the default value for both of them is
+  `1`.
+</Callout>
+
+<Callout type="warning">
   Since we want `quorum_of` to be more that half of total responses,
   [DRPC-SDK](https://github.com/p2p-org/drpc-client) will throw an error if
   `quorum_of` is less than `quorum_from / 2`.
@@ -40,13 +47,6 @@ const drpc = new HTTPApi({
   quorum_of: 2,
 });
 ```
-
-<Callout type="info">
-  If you only pass one param (`quorum_of` or `quorum_from`), the other one will
-  be automatically **set to the same value**. On the other hand, if you pass
-  **NO quorum_of and NO quorum_from**, the default value for both of them is
-  `1`.
-</Callout>
 
 <Callout type="warning">
   Please also note that `quorum_from`, the total amount of responses for the API
