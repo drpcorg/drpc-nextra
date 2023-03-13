@@ -1,5 +1,6 @@
 {
   "createaccount": "Create DRPC key",
   "firstrequest": "First request",
-  "verification": "Verification"
+  "verification": "Verification",
+  "sidecar": "DRPC Sidecar"
 }
