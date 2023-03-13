@@ -6,7 +6,13 @@ As described previously, [DRPC-SDK](https://github.com/p2p-org/drpc-client) allo
 
 On this page we will look at the **response verification** process in more detail.
 
-## API instance config
+## Custom Endpoint UI
+
+When creating Custom Endpoint in DRPC Dashboard you can set the `quorum_of` and `quorum_from` params.
+
+![DRPC quorum config examples](./verification-ui.png)
+
+## Configuring DRPC-SDK client
 
 [DRPC-SDK](https://github.com/p2p-org/drpc-client) client has a params called `quorum_from` and `quorum_of`.
 
@@ -57,6 +63,10 @@ const drpc = new HTTPApi({
 ![DRPC quorum config examples with provider_ids](./quorum-config-providers-amount-examples.png)
 
 ![DRPC quorum config examples](./quorum-config-examples.png)
+
+## Verification url
+
+TODO
 
 ## Consensus scheme
 
