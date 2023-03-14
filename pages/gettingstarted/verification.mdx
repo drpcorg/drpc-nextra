@@ -7,8 +7,6 @@ If you decide to enable verification, then DRPC consensus protocol will perform 
 1. Verify that responses are equal by comparing the result data.
 2. Check the signature of the response by comparing it with the public key of the provider.
 
-![DRPC verifies response by achieving consensus](./consensus-example-ok.png)
-
 ## Custom Endpoint UI
 
 On the DRPC Dashboard you can create Custom Endpoints. These endpoints will be your own API endpoints that you can use to call your providers.
@@ -41,14 +39,17 @@ There are several options for this URL:
 
 ## DRPC-Sidecar
 
-[DRPC-Sidecar](https://github.com/p2p-org/drpc-sidecar) is the package and server that makes DRPC look like simple JSON RPC provider
+[DRPC-Sidecar](https://github.com/p2p-org/drpc-sidecar) is the package and server that makes DRPC look like simple JSON RPC provider.
 
 It accepts URL params and passes them to DRPC-SDK client. Then it returns the response from DRPC-SDK client.
 
-DRPC sidecar looks and works like any other JSON RPC provider.
-Its responsibility to provide compatibility with software that doesn't support DRPC natively, however want to use all the good stuff.
+It's responsibility to provide compatibility with software that doesn't support DRPC natively, however want to use all the good stuff.
 
 Configurable settings are described in [DRPC SDK documentation](https://p2p-org.github.io/drpc-client/modules.html#ProviderSettings)
+
+### Visual scheme of how verification consensus works
+
+![DRPC verifies response by achieving consensus](./consensus-example-ok.png)
 
 ## Configuring DRPC-SDK client
 
