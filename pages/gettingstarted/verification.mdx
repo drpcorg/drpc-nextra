@@ -7,6 +7,8 @@ If you decide to enable verification, then DRPC consensus protocol will perform 
 1. Verify that responses are equal by comparing the result data.
 2. Check the signature of the response by comparing it with the public key of the provider.
 
+![DRPC verifies response by achieving consensus](./consensus-example-ok.png)
+
 ## Custom Endpoint UI
 
 On the DRPC Dashboard you can create Custom Endpoints. These endpoints will be your own API endpoints that you can use to call your providers.
@@ -66,9 +68,3 @@ Configurable settings are described in [DRPC SDK documentation](https://p2p-org.
 ![DRPC quorum config examples with provider_ids](./quorum-config-providers-amount-examples.png)
 
 ![DRPC quorum config examples](./quorum-config-examples.png)
-
-## Consensus scheme
-
-In the example below, we have 3 providers and 2 equal responses to achieve consensus.
-
-![DRPC verifies response by achieving consensus](./consensus-example-ok.png)
