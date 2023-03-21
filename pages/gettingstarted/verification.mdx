@@ -1,4 +1,9 @@
 import { Tab, Tabs, Callout } from "nextra-theme-docs";
+import Image from "next/image";
+import consensus from "./consensus-example-ok.png";
+import dashboard from "./dashboard-endpoint-verification.png";
+import quorumconfig from "./quorum-config-providers-amount-examples.png";
+import quorumconfigexample from "./quorum-config-examples.png";
 
 # Verification
 
@@ -22,7 +27,11 @@ For verification DRPC will perform several steps:
   from the providers to consider the response as valid is called `quorum_of`.
 </Callout>
 
-![DRPC verifies response by achieving consensus](./consensus-example-ok.png)
+<Image
+  src={consensus}
+  alt="DRPC verifies response by achieving consensus"
+  sizes="55vw"
+/>
 
 The example above shows that DRPC has received 3 responses from the providers, and 2 of them are equal (considering signature checking and result data checking).
 
@@ -63,7 +72,11 @@ Below we will explore how can you set up verification when creating **Custom End
   / 2`).
 </Callout>
 
-![DRPC custom endpoint verification view](./dashboard-endpoint-verification.png)
+<Image
+  src={dashboard}
+  alt="DRPC custom endpoint verification view"
+  sizes="55vw"
+/>
 
 `Verification URL` is the URL that you can use to verify the response from the provider. It's necessary for verification to work.
 
@@ -82,11 +95,20 @@ There are several options:
   `1`.
 </Callout>
 
-![DRPC quorum config examples with provider_ids](./quorum-config-providers-amount-examples.png)
+<Image
+  src={quorumconfig}
+  alt="DRPC quorum config examples with provider_ids"
+  sizes="55vw"
+/>
 
 <Callout type="warning">
   As said previously, `quorum_from`, the total amount of responses for the API
   call should be `less or equal to` the total amount of providers passed to API
   config. Otherwise, API calls will fail.
 </Callout>
-![DRPC quorum config examples](./quorum-config-examples.png)
+
+<Image
+  src={quorumconfigexample}
+  alt="DRPC quorum config examples"
+  sizes="55vw"
+/>

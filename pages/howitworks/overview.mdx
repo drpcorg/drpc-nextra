@@ -1,3 +1,7 @@
+import Image from "next/image";
+import drpc from "./drpc-diagram.png";
+import sampling from "./provider-sampling.png";
+
 # DRPC Overview
 
 DRPC serves as a gateway for Web3 developers and users to access a distributed network of independent third-party partners and public nodes.
@@ -18,7 +22,7 @@ When a user submits a request through DRPC, it is received by the Dproxy. Dproxy
 
 Once the data provider is selected, Dproxy sends the request to the main Dshackle instance, which serves as a central hub for routing requests and aggregating data from the various data providers. Main Dshackle then forwards the request to the selected data provider's own instance of Dshackle, which executes the request and returns the result to the main Dshackle.
 
-![DRPC request execution diagram](./drpc-diagram.png)
+<Image src={drpc} alt="DRPC request execution diagram" sizes="55vw" />
 
 ## Why Dshackle?
 
@@ -40,6 +44,6 @@ Dproxy is the central gateway proxy for DRPC, responsible for receiving user req
 
 For each provider, Dproxy maintains a rating that is recalculated every second, taking these factors into account. When selecting a provider, Dproxy samples them randomly, with the provider's rating acting as its weight in the distribution. This helps to ensure a smooth load distribution between providers.
 
-![Provider sampling](./provider-sampling.png)
+<Image src={sampling} alt="Provider sampling" sizes="55vw" />
 
 In addition to routing requests, dproxy also handles several aspects of the DRPC platform's business logic, including user authorization, deduction of CUs from user balance, and the aggregation of statistics about user requests. Dproxy also provides several additional features, such as verification, specifying custom provider lists for requests, and other functionality to enhance the user experience.
