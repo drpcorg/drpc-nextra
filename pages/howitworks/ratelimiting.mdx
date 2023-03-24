@@ -1,0 +1,13 @@
+# Rate limiting
+
+We only have rate limiting for requests to public nodes (they are always free of charge).
+Because we charge users on per request basis, you can make as much paid requests as you want while you have enough CUs on your deposit.
+
+For requests to free nodes we have following rules
+
+1. There is a limit of 156000 CUs per minute per IP. This is approximately 100 eth_call requests per second
+2. Some methods cost 0 CU (like eth_chainId), but when rate limiting the minimum cost of every call is 10 CU, thus free methods could't be abused
+
+We also have public nodes that do not require registration, which have the same rate limiting logic
+
+1. https://eth.drpc.org
