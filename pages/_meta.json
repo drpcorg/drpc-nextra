@@ -3,5 +3,6 @@
   "howitworks": "How it works",
   "gettingstarted": "Getting started",
   "pricing": "Pricing",
-  "specs": "Implementation docs"
+  "specs": "Implementation docs",
+  "statistics-api": "User statistics API"
 }
