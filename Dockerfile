@@ -18,7 +18,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 ENV NEXT_TELEMETRY_DISABLED 1
-RUN yarn global add pnpm
+RUN yarn global add pnpm@7.27.1
 RUN pnpm run build
 
 FROM base AS runner
