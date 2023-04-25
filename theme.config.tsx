@@ -14,6 +14,11 @@ const config: DocsThemeConfig = {
   footer: {
     component: <></>,
   },
+  useNextSeoProps() {
+    return {
+      titleTemplate: "DRPC – %s",
+    };
+  },
 };
 
 export default config;
