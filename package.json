@@ -25,6 +25,8 @@
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "rehype-katex": "^6.0.3",
+    "remark-math": "^5.1.1",
     "sharp": "^0.31.3"
   },
   "devDependencies": {
