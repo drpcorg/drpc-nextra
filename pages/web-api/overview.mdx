@@ -1,0 +1,58 @@
+# Overview
+
+In the DRPC Dashboard you can see the statistics of the user on the [`Stats`](https://drpc.org/dashboard/statistics) page. There are charts and tables with the information about the user's activity.
+There's also a possibility to get the same information via the API.
+
+To get started you need to generate API token in the DRPC Dashboard. You can do it in the [`Settings` -> `API`](https://drpc.org/dashboard/settings/api) page.
+It's also possible to regenerate the token if you need to.
+
+You can get statistics data both by JSON and Prometheus metrics.
+For both ways you need to specify `Authorization` header with the `Bearer` token like so:
+`Authorization: Bearer YOUR_TOKEN_GOES_HERE`
+
+Also both endpoints have rate limit for **10 requests per 1 minute**.
+
+## JSON
+
+The JSON data is available at the `https://drpc.org/api/metrics/json` endpoint.
+For JSON endpoint you must specify `range` query parameter to get the data for the specified time range.
+
+Valid values are `hour`, `day`, `week`, `month`. So if you want to configure range it will look like `https://drpc.org/api/metrics/json?range=day`.
+
+JSON response has the following format:
+
+```ts copy
+type MetricsResponseJSON = {
+  balance: number;
+  data: GroupedDataItem[];
+};
+
+type GroupedDataItem = {
+  client_key: string;
+  request_count: number;
+  cu: number;
+  network: string;
+  connection: string;
+  provider_id: string;
+  method: string;
+};
+```
+
+## Prometheus metrics
+
+The Prometheus metrics are available at the `https://drpc.org/api/metrics/prom` endpoint.
+For Prometheus metrics time range is last day.
+
+Prometheus metrics are available in the following format:
+
+```text copy
+# HELP drpc_client_balance Balance of DRPC client
+# TYPE drpc_client_balance gauge
+...
+# HELP drpc_client_requests_count Count of DRPC client requests
+# TYPE drpc_client_requests_count counter
+...
+# HELP drpc_client_cu_count Count of DRPC client compute units spent
+# TYPE drpc_client_cu_count counter
+...
+```
