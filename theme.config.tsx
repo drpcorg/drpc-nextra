@@ -8,7 +8,7 @@ const config: DocsThemeConfig = {
     link: "https://github.com/p2p-org/drpc-nextra",
   },
   chat: {
-    link: "https://discord.gg/drpc",
+    link: "https://drpc.org/discord",
   },
   docsRepositoryBase: "https://github.com/p2p-org/drpc-nextra/blob/main",
   footer: {
