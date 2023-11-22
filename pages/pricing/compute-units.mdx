@@ -9,6 +9,8 @@ If you call a method that is not a part of this table, the default cost is 100 C
 
 Methods that require archive nodes have the same price as full nodes.
 
+## Ethereum like
+
 | Method                                     |         CU          |
 |--------------------------------------------|---------------------|
 | eth_accounts                               |          0          |
@@ -73,3 +75,181 @@ Methods that require archive nodes have the same price as full nodes.
 | trace_replayTransaction#vmTrace            |        300          |
 | trace_callMany                             |         90          |
 | eth_sendRawTransaction                     |         90          |
+
+## Bitcoin 
+
+| Method                 |  CU  |
+|------------------------|------|
+| getblockhash           | 30   |
+| getrawtransaction      | 30   |
+| gettransaction         | 30   |
+| getblocknumber         | 30   |
+| getblockcount          | 30   |
+| getnetworkinfo         | 0    |
+| getbestblockhash       | 30   |
+| getblock               | 30   |
+| gettxout               | 30   |
+| listunspent            | 30   |
+| sendrawtransaction     | 100  |
+| getreceivedbyaddress   | 30   |
+| getmemorypool          | 100  |
+| getconnectioncount     | 0    |
+
+## Solana 
+
+| Method                                  | Cost  |
+|-----------------------------------------|-------|
+| getLeaderSchedule                       | 5     |
+| requestAirdrop                          | 5     |
+| getVoteAccounts                         | 5     |
+| getBlockCommitment                      | 5     |
+| getBlocksWithLimit                      | 5     |
+| getHealth                               | 5     |
+| getIdentity                             | 5     |
+| getLatestBlockhash                      | 7     |
+| getSlot                                 | 7     |
+| getInflationRate                        | 8     |
+| getMaxRetransmitSlot                    | 8     |
+| getRecentPerformanceSamples             | 8     |
+| getEpochInfo                            | 9     |
+| getTokenAccountBalance                  | 9     |
+| getBlockTime                            | 9     |
+| getHighestSnapshotSlot                  | 9     |
+| sendTransaction                         | 10    |
+| getEpochSchedule                        | 10    |
+| getStakeActivation                      | 10    |
+| getMaxShredInsertSlot                   | 10    |
+| getVersion                              | 10    |
+| isBlockhashValid                        | 10    |
+| getAccountInfo                          | 10    |
+| getFeeForMessage                        | 10    |
+| getFees                                 | 10    |
+| getConfirmedBlocks                      | 10    |
+| getTokenLargestAccounts                 | 10    |
+| getTokenOwnersByDelegate                | 10    |
+| getInflationGovernor                    | 10    |
+| getSlotLeader                           | 11    |
+| getMultipleAccounts                     | 11    |
+| minimumLedgerSlot                       | 11    |
+| getBlockHeight                          | 11    |
+| simulateTransaction                     | 11    |
+| getFeeCalculatorForBlockhash            | 11    |
+| getSignatureStatuses                    | 11    |
+| getRecentBlockhash                      | 12    |
+| getBlocks                               | 12    |
+| getTokenAccountsByOwner                 | 12    |
+| getMinimumBalanceForRentExemption       | 12    |
+| getBalance                              | 12    |
+| getGenesisHash                          | 13    |
+| getBlockProduction                      | 13    |
+| getTokenSupply                          | 14    |
+| getTransactionCount                     | 16    |
+| getSlotLeaders                          | 16    |
+| getClusterNodes                         | 23    |
+| getSignaturesForAddress                 | 28    |
+| getFirstAvailableBlock                  | 33    |
+| getConfirmedSignaturesForAddress2       | 35    |
+| getConfirmedTransaction                 | 38    |
+| getTransaction                          | 59    |
+| getBlock                                | 66    |
+| getProgramAccounts                      | 117   |
+| getConfirmedBlock                       | 151   |
+| getInflationReward                      | 341   |
+| getSupply                               | 822   |
+| getLargestAccounts                      | 3000  |
+
+## Starknet 
+
+| Method                                      | Cost  |
+|---------------------------------------------|-------|
+| starknet_getBlockWithTxHashes               | 16    |
+| starknet_getBlockWithTxs                    | 16    |
+| starknet_getStateUpdate                     | 21    |
+| starknet_getStorageAt                       | 17    |
+| starknet_getTransactionByHash               | 17    |
+| starknet_getTransactionByBlockIdAndIndex    | 15    |
+| starknet_getTransactionReceipt              | 15    |
+| starknet_getClass                           | 19    |
+| starknet_getClassHashAt                     | 19    |
+| starknet_getClassAt                         | 19    |
+| starknet_getBlockTransactionCount           | 20    |
+| starknet_call                               | 26    |
+| starknet_blockNumber                        | 10    |
+| starknet_blockHashAndNumber                 | 10    |
+| starknet_chainId                            | 10    |
+| starknet_pendingTransactions                | 50    |
+| starknet_syncing                            | 10    |
+| starknet_getNonce                           | 26    |
+| starknet_getEvents                          | 75    |
+| starknet_estimateFee                        | 87    |
+| starknet_addInvokeTransaction               | 250   |
+| starknet_addDeclareTransaction              | 250   |
+| starknet_addDeployAccountTransaction        | 250   |
+| starknet_estimateMessageFee                 | 87    |
+
+## Varanet
+
+| Method                              | Cost |
+|-------------------------------------|------|
+| author_pendingExtrinsics            | 50   |
+| author_removeExtrinsic              | 50   |
+| chain_getBlock                      | 50   |
+| chain_getBlockHash                  | 50   |
+| chain_getFinalisedHead              | 50   |
+| chain_getFinalizedHead              | 50   |
+| chain_getHead                       | 50   |
+| chain_getHeader                     | 50   |
+| chain_getRuntimeVersion             | 50   |
+| childstate_getKeys                  | 50   |
+| childstate_getKeysPaged             | 50   |
+| childstate_getKeysPagedAt           | 50   |
+| childstate_getStorage               | 50   |
+| childstate_getStorageEntries        | 50   |
+| childstate_getStorageHash           | 50   |
+| childstate_getStorageSize           | 50   |
+| gear_calculateHandleGas             | 50   |
+| gear_calculateInitCreateGas         | 50   |
+| gear_calculateInitUploadGas         | 50   |
+| gear_calculateReplyGas              | 50   |
+| gear_readMetahash                   | 50   |
+| gear_readState                      | 50   |
+| gear_readStateBatch                 | 50   |
+| gear_readStateUsingWasm             | 50   |
+| gear_readStateUsingWasmBatch        | 50   |
+| grandpa_proveFinality               | 50   |
+| grandpa_roundState                  | 50   |
+| payment_queryFeeDetails             | 50   |
+| payment_queryInfo                   | 50   |
+| state_call                          | 50   |
+| state_callAt                        | 50   |
+| state_getChildReadProof             | 50   |
+| state_getKeys                       | 50   |
+| state_getKeysPaged                  | 50   |
+| state_getKeysPagedAt                | 50   |
+| state_getMetadata                   | 50   |
+| state_getPairs                      | 50   |
+| state_getReadProof                  | 50   |
+| state_getRuntimeVersion             | 50   |
+| state_getStorage                    | 50   |
+| state_getStorageAt                  | 50   |
+| state_getStorageHash                | 50   |
+| state_getStorageHashAt              | 50   |
+| state_getStorageSize                | 50   |
+| state_getStorageSizeAt              | 50   |
+| state_queryStorage                  | 50   |
+| state_queryStorageAt                | 50   |
+| state_traceBlock                    | 50   |
+| state_trieMigrationStatus           | 50   |
+| system_chain                        | 50   |
+| author_submitExtrinsic              | 100  |
+| subscribe_newHead                   | 50   |
+| unsubscribe_newHead                 | 50   |
+| chain_subscribeAllHeads             | 50   |
+| chain_unsubscribeAllHeads           | 50   |
+| chain_subscribeFinalizedHeads       | 50   |
+| chain_unsubscribeFinalizedHeads     | 50   |
+| chain_subscribeNewHeads             | 50   |
+| chain_unsubscribeNewHeads           | 50   |
+| chain_subscribeRuntimeVersion       | 50   |
+| chain_unsubscribeRuntimeVersion     | 50   |
+
