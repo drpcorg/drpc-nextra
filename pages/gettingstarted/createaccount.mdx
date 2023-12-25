@@ -1,13 +1,34 @@
+import { Callout } from "nextra-theme-docs";
+import { IconAlertOctagonFilled } from "@tabler/icons-react";
 import Demo from "../../components/demo/demo.tsx";
-import Image from "next/image";
 
 # Create DRPC key
 
 ### 1. Log into or create your account
 
 Go to [drpc.org/login](https://drpc.org/login).
-You can login via your crypto wallet (we support Metamask and Wallet Connect).
-Or you can login via email and password.
+You can login via
+
+1. Your crypto wallet (we support [MetaMask](https://metamask.io/) and [WalletConnect Modal](https://docs.walletconnect.com/web3modal/about) with a lot of wallets supported there!).
+2. Credentials, via email and password.
+3. Sign in with Google account.
+
+##### Important
+
+<Callout type="warning">
+  If you somehow managed to **attempt authentication using Google** account while
+  **you were already logged in** (though we try to prevent this from happening) as
+  user `J. Doe` &mdash; your Google account **will be linked** to the user `J. Doe`.
+
+If that has happened to you and you want to unlink your Google account from the user &mdash; get in touch with us on our [Discord](https://drpc.org/discord) in `#support` channel.
+
+</Callout>
+
+<Callout type="info">
+  When you authenticate using Google account and you already have an account
+  with the same email address &mdash; you will be logged into that account
+  instead of creating a new one.
+</Callout>
 
 ![DRPC login screen](./login.png)
 
@@ -20,26 +41,21 @@ and optimize your application's performance.
 
 <Demo src="https://demo.arcade.software/GNuAdoqi5Z4QnsZcDukQ?embed" />
 
-### 3. Create custom endpoint or use the default one
+### 3. Use your endpoints
 
-Endpoints are not like keys. Each key can have any number of endpoints.
+Each DRPC key has its own set of endpoints for different networks that you can use to make requests to DRPC.
 
-**In fact, endpoints are basically URLs consisting of**
+**Endpoints are URLs consisting of**
 
-- Base DRPC URL address
-- Set key parameter
-- Other URL parameters that define different settings/features for you requests to DRPC
+- Base DRPC URL address with protocol
+- Network
+- Your DRPC key value
 
-By default there is always one endpoint with default DRPC settings. You can select network and protocol for it.
-This endpoint should be enough for most projects.
+You can select available network and protocol for each endpoint.
 
 ![DRPC default endpoint](./defaultendpoint.png)
 
-However, if you need something special you can create custom endpoint.
-Custom enpdoint allows you to specify different settings like:
-
-- Select the list of specific providers if you want only them to serve your requests
-- Enable fallback in case those specific providers fail, we will reroute request to available providers
-- Enable DRPC verification, etc
-
-<Demo src="https://demo.arcade.software/yryuplArhsjGzAJ1ep6a?embed" />
+<Callout type="info">
+  Not all the networks are shown on the picture above. Check the list of
+  available networks on your key endpoints page.
+</Callout>
