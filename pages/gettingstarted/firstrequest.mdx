@@ -2,64 +2,83 @@ import { Tab, Tabs } from "nextra-theme-docs";
 
 # First request to DRPC
 
-First, get your endpoint. If you any questions on how to do it, [look here](./createaccount).
+First, [get your endpoint](./createaccount.mdx).
 
 ### Authentication
 
-Each enpdoint already contains you authentication key as a URL parameter `dkey`.
+Each endpoint on UI by default contains your authentication key as a URL parameter `dkey` and network as `network`.
 
-However, passing secrets as a GET parameter is not really recommended, unless you have no other way.
-Our recommendation is use special HTTP header `Drpc-Key`.
+For example, `ethereum` network of DRPC will look like this:
+`https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY`.
 
-For example:
+Another recommended way for authentication is to use special HTTP header `Drpc-Key`.
 
-<Tabs items={['curl', 'HTTP']}>
+The following are examples of how to make a requests:
+
+<Tabs items={['curl', 'curl + header', 'HTTP', 'HTTP + header']}>
 <Tab>
-
 ```bash copy
-curl -X POST -H 'Content-Type: application/json' -H 'Drpc-Key: YOUR-API-KEY' \
--d '{"method": "eth_getTransactionReceipt","params": ["0xd54debfd8aafac846bcf76e01626d4b40d7310b085ded3cc22b5a79e5a20f4ac"],"id": "1","jsonrpc": "2.0"}' \
-'YOUR-ENDPOINT-WITHOUT-KEY'
+curl -X POST -H 'Content-Type: application/json' \
+-d '{"method": "eth_blockNumber","params": [],"id": "1","jsonrpc": "2.0"}' \
+'https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY'
 ```
-
+</Tab>
+<Tab>
+```bash copy
+curl -X POST -H 'Content-Type: application/json' -H 'Drpc-Key: YOUR-DRPC-KEY' \
+-d '{"method": "eth_blockNumber","params": [],"id": "1","jsonrpc": "2.0"}' \
+'https://lb.drpc.org/ogrpc?network=ethereum'
+```
 </Tab>
 
 <Tab>
-
 ```http copy
-POST YOUR-ENDPOINT-WITHOUT-KEY
+POST https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY
 content-type: application/json
-Drpc-Key: YOUR-API-KEY
 
-{
-"method": "eth_getTransactionReceipt",
-"params": ["0xd54debfd8aafac846bcf76e01626d4b40d7310b085ded3cc22b5a79e5a20f4ac"],
-"id": "1",
-"jsonrpc": "2.0"
-}
-```
+{"method": "eth_blockNumber","params": [], "id": "1", "jsonrpc": "2.0"}
+
+````
+</Tab>
+<Tab>
+```http copy
+POST https://lb.drpc.org/ogrpc?network=ethereum
+content-type: application/json
+Drpc-Key: YOUR-DRPC-KEY
+
+{"method": "eth_blockNumber","params": [], "id": "1", "jsonrpc": "2.0"}
+
+````
 
 </Tab>
 
 </Tabs>
 
-Where YOUR-ENDPOINT-WITHOUT-KEY is your endpoint without the dkey parameter, and YOUR-API-KEY is your API key.
-The API key is a part of your endpoint by default. Also, you can find it on the settings page of the key you need.
+DRPC key value is the part of your endpoint by default. Also, you can find it on the `Key -> Settings` page:
+![Example of the key value on Settings page](./key-settings.png)
 
-### Making requests
+### Making requests from code
 
 DRPC conforms to standard JSON RPC protocol, that most of the blockchains use today.
 So, you can use any standard library for you preferred language to make request, for example:
 
+<Tabs items={['JavaScript']}>
+<Tab>
+
 ```js copy
-var Web3 = require("web3");
-var provider = "YOUR-ENDPOINT";
-var web3Provider = new Web3.providers.HttpProvider(provider);
-var web3 = new Web3(web3Provider);
+let Web3 = require("web3");
+let provider = "https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY";
+let web3Provider = new Web3.providers.HttpProvider(provider);
+let web3 = new Web3(web3Provider);
+
+// Get the latest block number
 web3.eth.getBlockNumber().then((result) => {
   console.log("Latest Ethereum Block is ", result);
 });
 ```
+
+</Tab>
+</Tabs>
 
 ## DRPC SDK
 

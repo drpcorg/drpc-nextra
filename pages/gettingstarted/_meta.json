@@ -1,5 +1,6 @@
 {
   "createaccount": "Create DRPC key",
   "firstrequest": "First request",
+  "jwt": "Requests authentication with JWT",
   "verification": "Verification"
 }
