@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap",
     "start": "next start"
   },
   "repository": {
@@ -20,6 +21,7 @@
   "dependencies": {
     "@types/react": "^18.0.28",
     "next": "^13.2.1",
+    "next-sitemap": "^4.2.3",
     "next-themes": "^0.2.1",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
