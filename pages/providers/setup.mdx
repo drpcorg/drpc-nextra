@@ -1,0 +1,279 @@
+# Dshackle setup instructions
+
+## Provider name
+
+Your provider name is a unique identifier for your nodes in dRPC. The convention is to name it using `your-company-name` + `any-suffix`.
+
+## Install Dshackle
+
+Dshackle is a proxy used by dRPC as an entry point for your provider. It allows you to aggregate multiple nodes behind one provider and custom route JSON-RPC requests to specific nodes if they have specific needs (e.g., trace calls).
+
+The easiest way to install Dshackle is to use the [docker image](https://hub.docker.com/r/drpcorg/dshackle).
+
+An alternative way is to build it from source using this [repository](https://github.com/p2p-org/dshackle).
+
+## Docker-compose example
+
+Create `docker-compose.yaml` file with the following content:
+
+```yaml
+version: "3"
+services:
+  dshackle:
+    container_name: dshackle
+    image: drpcorg/dshackle:latest
+    volumes:
+      - "./dshackle.yaml:/etc/dshackle/dshackle.yaml"
+      - "/path_to_ssl_certs:/path_to_ssl_certs"
+      - "/path_to_keys:/path_to_keys"
+    ports:
+      - "12448:12448"
+```
+
+You can start it by `docker compose up -d` command.
+
+## Minimal provider config
+
+This configuration defines the simplest possible provider with two nodes that will serve the requests. You can add any number of nodes.
+
+Note: We expect you to set up your Dshackle with TLS support.
+
+```yaml
+version: v1
+port: 12448
+host: 0.0.0.0
+
+tls:
+  enabled: true
+  server:
+    certificate: "/path_to_ssl_certs/127.0.0.1.crt"
+    key: "/path_to_ssl_certs/127.0.0.1.p8.key"
+
+auth:
+  enabled: true
+  publicKeyOwner: drpc
+  server:
+    keys:
+      provider-private-key: /path_to_keys/private-my-test-key.p8.key
+      external-public-key: /path_to_keys/public-drpc.pem
+
+cluster:
+  upstreams:
+    - id: ethnode1
+      chain: ethereum
+      method-groups:
+        enabled:
+          - trace
+          - filter #only if you are running nethermind or erigon node
+      connection:
+        ethereum-pos:
+          execution:
+            rpc:
+              url: "http://example2.com:8545"
+            ws:
+              url: "ws://example2.com:8545"
+    - id: ethnode2
+      chain: ethereum
+      labels:
+        archive: true
+      method-groups:
+        enabled:
+          - trace
+      connection:
+        ethereum-pos:
+          execution:
+            rpc:
+              url: "http://example1.com:8545"
+            ws:
+              frameSize: 20Mb
+              msgSize: 50Mb
+              url: "ws://example1.com:8545"
+```
+
+## Archive nodes
+
+If you have archive nodes, you must mark them with the `archive` label, as shown in the example:
+
+```yaml
+id: ethnode2
+chain: ethereum
+labels:
+  archive: true
+connection:
+  ethereum-pos:
+    execution:
+      rpc:
+        url: "http://example1.com:8545"
+      ws:
+        frameSize: 20Mb
+        msgSize: 50Mb
+        url: "ws://example1.com:8545"
+```
+
+## Filter nodes
+
+There are a group of methods that allow you to create custom filters:
+
+```
+eth_newFilter
+eth_newBlockFilter
+eth_newPendingTransactionFilter
+eth_getFilterChanges
+eth_getFilterLogs
+eth_uninstallFilter
+```
+
+They are quite tricky to support because they require something like "sticky sessions" for nodes, which is implemented in dRPC. However, not all execution clients implement all of these methods. Currently, we have tested and confirmed that everything works well with the following:
+
+1. Nethermind
+2. Erigon
+3. Geth works, but it is very slow for `eth_getFilterLogs`; therefore, we do not recommend using it for those requests.
+
+So, if you’re confident that all the methods mentioned above are working correctly for your node, additionally mark it in the configuration:
+
+```yaml
+id: ethnode2
+chain: ethereum
+method-groups:
+  enabled:
+    - filter 
+connection:
+  ethereum-pos:
+    execution:
+      rpc:
+        url: "http://example1.com:8545"
+      ws:
+        frameSize: 20Mb
+        msgSize: 50Mb
+        url: "ws://example1.com:8545"
+```
+
+This way, dRPC will know that it can route filter requests to your operator, and Dshackle will handle the routing of those requests to your marked nodes.
+
+## Arbitrum and Optimism redirects
+
+As a client, if you try to ask Arbitrum node something like `eth_call` with a block tag before Nitro upgrade, your Arbitrum Nitro node won’t be able to perform this request on its own, and there is a [redirect feature](https://docs.arbitrum.io/node-running/faq#is-there-any-way-to-retrieve-prenitro-archive-data-from-a-nitro-node) that will redirect this request to an Arbitrum classic node.
+
+Basically, the [same happened](https://docs.optimism.io/builders/node-operators/overview#legacy-geth) with Optimism Bedrock upgrade.
+
+On our side, we want to distinguish providers who can serve requests from historical nodes, so there are two separate labels:
+
+```
+has_pre_bedrock_redirect: true // optimism 
+has_pre_nitro_redirect: true // arbitrum
+```
+
+If you have Arbitrum/Optimism nodes which setup to handle historical requests, don’t forget to add a corresponding label to this node; otherwise, dRPC won’t route those requests to your provider.
+
+## Full configuration reference
+
+You can find detailed documentation on all possible configuration options [here](https://github.com/p2p-org/dshackle/blob/master/docs/reference-configuration.adoc).
+
+## Reload config
+
+You can change all configurations under `cluster` in your `dshackle.yaml` and then reload it in order to pick them up without dshackle restart.
+
+You can do it via sending a `kill` command with `HUP` signal to your container, for example `docker kill --signal SIGHUP ${containerId}`. And then you will see the reloading logs.
+
+**Attention**: your volume in docker with `dshackle.yaml` must not be with `ro` modifier otherwise reload config doesn't work.
+
+## Dshackle CLI
+
+If you have set everything up and want to check if Dshackle can be reached from outside and is correctly configured, you can use dshackle-cli. Just follow the [instructions](https://github.com/p2p-org/dshackle/blob/master/dshackle-cli/README.md).
+
+## Mutual Authorization
+
+Previously we used TLS for mutual authorization as well - you provided us your CA and got ours. This ensured that we were us and you were you. However, the process of manual generating certificates could be tricky and cause some further issues if something is configured incorrectly. That's why we've decided to revise our mutual authorization part.
+
+Our new authorization algorithm is based on private/public key pairs and JWT tokens. We have our private key and your public key, and you have your own private key and our public key. Using these keys, we generate JWT tokens on both sides, verify them, and if they are valid, authorization has been passed.
+
+Currently we support only RSA keys. You can use the following tiny script to generate such pair, specifying the first argument (key suffix) `rsa-key-generator.sh`:
+
+```bash
+#!/bin/sh
+if [ -z "$1" ]
+  then
+    echo "Please, specify key suffix"
+    exit 1
+fi
+
+echo "Generating RSA key pair"
+
+openssl genrsa -out private-$1.pem 2048
+openssl rsa -in private-$1.pem -pubout -out public-$1.pem
+openssl pkcs8 -topk8 -inform PEM -outform PEM -in private-$1.pem -out private-$1.p8.key -nocrypt
+rm private-$1.pem
+
+echo "Key pair is generated"
+```
+
+For example, we want to generate our pair with `my-test-key` suffix, so we execute `./rsa-key-generator.sh my-test-key`. After that we will get a pair of our keys, private `private-my-test-key.p8.key` and public `public-my-test-key.pem`. Share your **public key** (and only **public**) with us.
+
+Now it's necessary to configure dshackle to work with the new auth process. For that you must add the following configuration to your `dshackle.yaml`:
+
+```yaml
+auth:
+  enabled: true
+  publicKeyOwner: drpc
+  server:
+    keys:
+      provider-private-key: /path_to_keys/private-my-test-key.p8.key
+      external-public-key: /path_to_keys/public-drpc.pem
+```
+
+`external-public-key` is our key `public-drpc.pem`:
+
+```
+-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmi3CFtWG5a2NNXazozqX
+ie8BckDC7BeH+0bF/GfU/HwhR+4q89s4RhnT+mGGo9egty9rRPESF91pKsy8Co8g
+dBJ+jKxToCTXVN2L4BxnF6dr8FT55qrYFojobQcWrQNI4sl/X0OLscAHJegL9sH3
+QNBMv0MiFk8NmXTCjFNKvTXinBlQ99VEVVVjert6KB6TRVjrEnyyPNBFMaQg2Cjz
+j212Gnc/d32s5O9/9ABvdQjPYLQSM5YvNN4BsAyo2ij2fjDAnt6dYAMnTUs9deA5
+4m8ME6+x5tqvAkK4aOM4AtgBrPuoezM1/euGE7hwJeL1z/RFNIkyZJcG7Mk9xI7/
+0wIDAQAB
+-----END PUBLIC KEY-----
+```
+
+Don't forget to add an additional volume (if it's necessary) with `path_to_keys` path.
+
+**Attention**: using this authorization doesn't mean that you can just remove your TLS part from config doing nothing. Your connection must be secure in any case. But with this you can use your own certificates (e.g. let's encrypt) or remove tls config and use TLS termination inside your network.
+
+For example, you can add the following configuration for TLS with your own certificate and key
+
+```yaml
+tls:
+  enabled: true
+  server:
+    certificate: /path_to_ssl_certs/your_cert_name.crt
+    key: /path_to_ssl_certs/your_key_name.p8.key
+```
+
+## Creating dRPC account
+
+Providers can use dRPC for free, as long as they use it to query their own infrastructure. The benefits include:
+
+1. A single interface for all your endpoints and keys
+2. Detailed statistics
+3. Automatic fallback mechanism
+
+Also, we need to associate your account with the specific provider in our dRPC config. For now, this has to be done manually.
+
+### Register on drpc.org
+
+1. Go to https://drpc.org
+2. Select your preferred authorization method (MetaMask, email, etc)
+3. Go to `Settings` -> `Team`
+4. Copy `Team ID` and send it to us
+
+## Heap dumps
+
+Now it's possible to collect heap dumps from dshackle during `OutOfMemoryError`. It could be very important for us for further troubleshooting and improve our service, send them to us as soon as possible. It's automated but it's necessary to do one thing - add another volume in your docker config - `/path_to_dumps:/etc/dshackle/dumps`.
+
+If everything is ok you will see nothing, otherwise there will be the logs `Heap dump creation is turned off` or  `$path does not exist`. Then heap dumps will be created in the folder you specify in your docker config if OutOfMemoryError is thrown. And if so there will be the log `There are some heap dumps, please send them to dshackle developers` during the next dshackle start. This message is printed periodically just to remind about your heap dumps.
+
+Max number of heap dumps in the folder is 3. Dshackle monitors it and automatically clears extra dumps if necessary.
+
+## Additional info
+
+Since **1.10.0** version ([for more info](https://blog.ethereum.org/2021/03/03/geth-v1-10-0)) geth abandoned of indexing all transactions by default (they take transactions from **2,350,000** last blocks). Because of that tx methods like `eth_getTransactionByHash` and `eth_getTransactionReceipt` return null for old blocks. If you wish to disable transaction unindexing altogether, you can run Geth with --txlookuplimit=0. Please take this into account if you have geth nodes.
