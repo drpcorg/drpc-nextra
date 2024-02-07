@@ -4,5 +4,6 @@
   "gettingstarted": "Getting started",
   "pricing": "Pricing",
   "specs": "Implementation docs",
-  "web-api": "API"
+  "web-api": "API",
+  "providers": "Providers"
 }
