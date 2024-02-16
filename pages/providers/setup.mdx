@@ -1,3 +1,6 @@
+import Image from "next/image";
+import proxy from "./reverse-proxy.png";
+
 # Dshackle setup instructions
 
 ## Provider name
@@ -23,7 +26,7 @@ services:
     container_name: dshackle
     image: drpcorg/dshackle:latest
     volumes:
-      - "./dshackle.yaml:/etc/dshackle/dshackle.yaml"
+      - "/path_to_config/dshackle.yaml:/etc/dshackle/dshackle.yaml"
       - "/path_to_ssl_certs:/path_to_ssl_certs"
       - "/path_to_keys:/path_to_keys"
     ports:
@@ -36,7 +39,7 @@ You can start it by `docker compose up -d` command.
 
 This configuration defines the simplest possible provider with two nodes that will serve the requests. You can add any number of nodes.
 
-Note: We expect you to set up your Dshackle with TLS support.
+Note: We expect you to set up your Dshackle with TLS enabled and valid SSL certificate.
 
 ```yaml
 version: v1
@@ -46,15 +49,15 @@ host: 0.0.0.0
 tls:
   enabled: true
   server:
-    certificate: "/path_to_ssl_certs/127.0.0.1.crt"
-    key: "/path_to_ssl_certs/127.0.0.1.p8.key"
+    certificate: /path_to_ssl_certs/your_ssl_cert.crt
+    key: /path_to_ssl_certs/your_ssl_key.p8.key
 
 auth:
   enabled: true
   publicKeyOwner: drpc
   server:
     keys:
-      provider-private-key: /path_to_keys/private-my-test-key.p8.key
+      provider-private-key: /path_to_keys/private-provider-name.p8.key
       external-public-key: /path_to_keys/public-drpc.pem
 
 cluster:
@@ -183,11 +186,13 @@ If you have set everything up and want to check if Dshackle can be reached from 
 
 ## Mutual Authorization
 
-Previously we used TLS for mutual authorization as well - you provided us your CA and got ours. This ensured that we were us and you were you. However, the process of manual generating certificates could be tricky and cause some further issues if something is configured incorrectly. That's why we've decided to revise our mutual authorization part.
+Previously, we also used TLS for mutual authorization - you provided us with your CA, and we provided ours. This ensured that we were who we said we were, and you were who you said you were. However, the process of manually generating certificates could be tricky and might cause further issues if something were configured incorrectly. That’s why we’ve decided to revise our mutual authorization approach.
 
-Our new authorization algorithm is based on private/public key pairs and JWT tokens. We have our private key and your public key, and you have your own private key and our public key. Using these keys, we generate JWT tokens on both sides, verify them, and if they are valid, authorization has been passed.
+Our new authorization algorithm is based on private/public key pairs and JWT tokens. We hold our private key and your public key, while you possess your own private key and our public key. Using these keys, we generate JWT tokens on both sides, verify their validity, and if they are confirmed to be valid, authorization is successfully achieved.
 
-Currently we support only RSA keys. You can use the following tiny script to generate such pair, specifying the first argument (key suffix) `rsa-key-generator.sh`:
+Currently, we support only RSA keys. You can use the following script to generate such a pair, specifying the key suffix as the first argument. 
+
+`rsa-key-generator.sh`:
 
 ```bash
 #!/bin/sh
@@ -207,7 +212,7 @@ rm private-$1.pem
 echo "Key pair is generated"
 ```
 
-For example, we want to generate our pair with `my-test-key` suffix, so we execute `./rsa-key-generator.sh my-test-key`. After that we will get a pair of our keys, private `private-my-test-key.p8.key` and public `public-my-test-key.pem`. Share your **public key** (and only **public**) with us.
+For example, if you want to generate your pair with the `provider-name` suffix, you would execute `./rsa-key-generator.sh provider-name`. After that, you will receive a pair of keys: a private key named `private-provider-name.p8.key` and a public key named `public-provider-name.pem`. Please share your **public key** with us.
 
 Now it's necessary to configure dshackle to work with the new auth process. For that you must add the following configuration to your `dshackle.yaml`:
 
@@ -217,11 +222,11 @@ auth:
   publicKeyOwner: drpc
   server:
     keys:
-      provider-private-key: /path_to_keys/private-my-test-key.p8.key
+      provider-private-key: /path_to_keys/private-provider-name.p8.key
       external-public-key: /path_to_keys/public-drpc.pem
 ```
 
-`external-public-key` is our key `public-drpc.pem`:
+`external-public-key` is the dRPC public key `public-drpc.pem`:
 
 ```
 -----BEGIN PUBLIC KEY-----
@@ -237,16 +242,57 @@ j212Gnc/d32s5O9/9ABvdQjPYLQSM5YvNN4BsAyo2ij2fjDAnt6dYAMnTUs9deA5
 
 Don't forget to add an additional volume (if it's necessary) with `path_to_keys` path.
 
-**Attention**: using this authorization doesn't mean that you can just remove your TLS part from config doing nothing. Your connection must be secure in any case. But with this you can use your own certificates (e.g. let's encrypt) or remove tls config and use TLS termination inside your network.
+**Attention**: Using this form of authorization does not imply that you can remove the TLS section from your configuration without taking further action. Your connection must remain secure. You can use your own SSL certificates (e.g., Let's Encrypt), or you can remove the TLS configuration and utilize TLS termination on your reverse proxy.
 
-For example, you can add the following configuration for TLS with your own certificate and key
+For example, you can add the following configuration for TLS with your own SSL certificate and key
 
 ```yaml
 tls:
   enabled: true
   server:
-    certificate: /path_to_ssl_certs/your_cert_name.crt
-    key: /path_to_ssl_certs/your_key_name.p8.key
+    certificate: /path_to_ssl_certs/your_ssl_cert.crt
+    key: /path_to_ssl_certs/your_ssl_key.p8.key
+```
+
+### Dshackle behind a reverse proxy
+
+<Image src={proxy} alt="Reverse proxy" sizes="55vw" />
+
+Dshackle can work behind a reverse proxy. You need to terminate SSL on your reverse proxy and run Dshackle with TLS disabled.
+
+Example of a `docker-compose` configuration with Traefik that proxies port `12448` to `12448` on Dshackle:
+
+```yaml
+version: '3'
+services:
+  traefik:
+    image: traefik:latest
+    ports:
+      - "443:443"
+      - "12448:12448"
+    command:
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.websecure.address=:443"
+      - "--entryPoints.grpc.address=:12448"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=$MAIL"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    volumes:
+      - "./traefik/letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+  dshackle:
+    image: drpcorg/dshackle:latest
+    volumes:
+      - "/path_to_config/dshackle.yaml:/etc/dshackle/dshackle.yaml"
+      - "/path_to_keys:/path_to_keys"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.drpc.loadbalancer.server.scheme=h2c"
+      - "traefik.http.services.drpc.loadbalancer.server.port=12448"
+      - "traefik.http.routers.drpc.entrypoints=grpc"
+      - "traefik.http.routers.drpc.tls.certresolver=myresolver"
+      - "traefik.http.routers.drpc.rule=Host(`$DOMAIN`)"
 ```
 
 ## Creating dRPC account
