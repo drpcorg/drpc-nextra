@@ -1,6 +1,7 @@
 import React from "react";
 import { DocsThemeConfig } from "nextra-theme-docs";
 import Logo from "./components/Logo/logo";
+import { useRouter } from "next/router";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -15,8 +16,11 @@ const config: DocsThemeConfig = {
     component: <></>,
   },
   useNextSeoProps() {
+    const { asPath } = useRouter();
     return {
-      titleTemplate: "DRPC – %s",
+      titleTemplate: "Documentation for dRPC | Docs for dRPC Platform",
+      description: "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗",
+      ...(asPath === '/' ? {canonical: "https://docs.drpc.org/"} : {} )
     };
   },
 };
