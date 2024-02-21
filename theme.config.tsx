@@ -12,6 +12,14 @@ const config: DocsThemeConfig = {
     link: "https://drpc.org/discord",
   },
   docsRepositoryBase: "https://github.com/p2p-org/drpc-nextra/blob/main",
+  head: (
+    <>
+      <meta
+        name="viewport"
+        content="minimum-scale=1, initial-scale=1, maximum-scale=1, width=device-width"
+      />
+    </>
+  ),
   footer: {
     component: <></>,
   },
