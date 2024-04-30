@@ -180,10 +180,6 @@ You can do it via sending a `kill` command with `HUP` signal to your container, 
 
 **Attention**: your volume in docker with `dshackle.yaml` must not be with `ro` modifier otherwise reload config doesn't work.
 
-## Dshackle CLI
-
-If you have set everything up and want to check if Dshackle can be reached from outside and is correctly configured, you can use dshackle-cli. Just follow the [instructions](https://github.com/p2p-org/dshackle/blob/master/dshackle-cli/README.md).
-
 ## Mutual Authorization
 
 Previously, we also used TLS for mutual authorization - you provided us with your CA, and we provided ours. This ensured that we were who we said we were, and you were who you said you were. However, the process of manually generating certificates could be tricky and might cause further issues if something were configured incorrectly. That’s why we’ve decided to revise our mutual authorization approach.
