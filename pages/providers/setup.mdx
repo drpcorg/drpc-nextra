@@ -41,6 +41,8 @@ This configuration defines the simplest possible provider with two nodes that wi
 
 Note: We expect you to set up your Dshackle with TLS enabled and valid SSL certificate.
 
+***ATTENTION***: Connect your nodes to dshackle **ONLY** directly without any load balancers between them. Otherwise, there will be errors and problems with the state of your nodes. Dshackle is balancer itself.
+
 ```yaml
 version: v1
 port: 12448
