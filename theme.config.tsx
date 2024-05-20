@@ -31,6 +31,16 @@ const config: DocsThemeConfig = {
       ...(asPath === '/' ? {canonical: "https://docs.drpc.org/"} : {} )
     };
   },
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+  },
+  nextThemes: {
+    defaultTheme: "dark",
+    forcedTheme: "dark",
+  },
+  themeSwitch: {
+    component: () => null,
+  },
 };
 
 export default config;
