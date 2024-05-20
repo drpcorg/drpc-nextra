@@ -5,5 +5,10 @@
   "pricing": "Pricing",
   "specs": "Implementation docs",
   "web-api": "API",
-  "providers": "Providers"
+  "providers": "Providers",
+  "-- Methods Documentation": {
+    "type": "separator",
+    "title": "Methods Documentation"
+  },
+  "ethereum-api": "Ethereum API Endpoint"
 }
