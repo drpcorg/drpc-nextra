@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
     "react-syntax-highlighter": "^15.5.0",
     "rehype-katex": "^6.0.3",
     "remark-math": "^5.1.1",
-    "sharp": "^0.31.3"
+    "sharp": "^0.31.3",
+    "husky": "^8.0.0"
   },
   "devDependencies": {
     "@types/node": "18.11.10",
