@@ -1,5 +1,6 @@
 import cx from "clsx";
 import classes from "./Text.module.css";
+import React from "react";
 
 type Props = {
   children: React.ReactNode;
