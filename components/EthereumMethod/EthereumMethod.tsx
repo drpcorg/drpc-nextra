@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { Grid, Group } from "@mantine/core";
 import { CodeSnippetObject, TParamType } from "./types";
-import { RequestParam, RequestParams } from "./params/RequestParams";
+import { RequestParamProp, RequestParams } from "./params/RequestParams";
 import { ResponseParam, ResponseParams } from "./params/ResponseParams";
 import React from "react";
 import { Text } from "../Text";
@@ -26,7 +26,7 @@ type Props = {
 
   // Complex types
   codeSnippets: CodeSnippetObject[];
-  requestParams: RequestParam[];
+  requestParams: RequestParamProp;
   requestParamsType: TParamType;
 
   responseParams: ResponseParam[];
@@ -54,11 +54,11 @@ export default function EthereumMethod({
   );
 
   const snippetCode = React.useMemo(() => {
-    return codeSnippets.find((s) => s.language === snippet)?.code || null;
+    return codeSnippets.find((s) => s.language === snippet)?.code() || null;
   }, [codeSnippets, snippet]);
 
   const snippetLanguage = React.useMemo(() => {
-    return codeSnippets.find((s) => s.code === snippet)?.language || null;
+    return codeSnippets.find((s) => s.language === snippet)?.language || null;
   }, [codeSnippets, snippet]);
 
   return (

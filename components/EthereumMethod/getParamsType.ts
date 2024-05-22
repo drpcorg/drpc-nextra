@@ -7,6 +7,8 @@ export function getParamsType(requestParams: TParamType) {
       return "array of objects";
     case "array_of_strings":
       return "array of strings";
+    case "none":
+      return "This method does not accept any parameters.";
     default:
       return requestParams;
   }

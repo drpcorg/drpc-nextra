@@ -5,7 +5,7 @@ import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import { Text } from "../../Text";
 
-export type RequestParam = {
+type RequestParam = {
   type: TParamType;
   paramName: string;
   paramDescription?: string;
@@ -16,9 +16,11 @@ export type RequestParam = {
   }[];
 };
 
+export type RequestParamProp = RequestParam[] | null;
+
 type Props = {
   requestParamsType: TParamType;
-  requestParams: RequestParam[];
+  requestParams: RequestParamProp;
 };
 
 export function RequestParams({ requestParams, requestParamsType }: Props) {
@@ -66,10 +68,12 @@ export function RequestParams({ requestParams, requestParamsType }: Props) {
             </Text>
           </section>
 
-          <RequestParamsList
-            requestParams={requestParams}
-            requestParamsType={requestParamsType}
-          />
+          {requestParams && requestParams.length > 0 ? (
+            <RequestParamsList
+              requestParams={requestParams}
+              requestParamsType={requestParamsType}
+            />
+          ) : null}
         </section>
       </Grid.Col>
     </Grid>

@@ -1,5 +1,4 @@
 import { Group } from "@mantine/core";
-import { RequestParam } from "./RequestParams";
 import classes from "./ResponseParamsList.module.css";
 import { ResponseParam } from "./ResponseParams";
 import cx from "clsx";

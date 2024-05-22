@@ -23,6 +23,8 @@ export function CodeSnippet({ snippet, language }: Props) {
       case "js":
       case "node":
         return "javascript";
+      case "shell":
+        return "curl";
       default:
         return language;
     }

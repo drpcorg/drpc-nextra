@@ -1,13 +1,13 @@
 import { Group } from "@mantine/core";
 import { Fira_Mono } from "next/font/google";
-import { RequestParam } from "./RequestParams";
+import { RequestParamProp } from "./RequestParams";
 import classes from "./RequestParamsList.module.css";
 import { Text } from "../../Text";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 
 type Props = {
-  requestParams: RequestParam[];
+  requestParams: RequestParamProp;
   requestParamsType: TParamType;
 };
 
@@ -23,7 +23,7 @@ export function RequestParamsList({ requestParams, requestParamsType }: Props) {
       </div>
 
       {/* Iterate through and render each param */}
-      {requestParams.map((param) => (
+      {requestParams?.map((param) => (
         <div key={param.paramName} className={classes.line}>
           <Group gap={10} align="center">
             <Text color="white" size="sm" fontWeight="medium">

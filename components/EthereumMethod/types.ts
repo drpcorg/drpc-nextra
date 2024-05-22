@@ -6,9 +6,10 @@ export type TParamType =
   | "array"
   | "object"
   | "array_of_objects"
-  | "array_of_strings";
+  | "array_of_strings"
+  | "none";
 
 export type CodeSnippetObject = {
   language: "js" | "shell" | "node" | "go" | "python" | "rust";
-  code: string;
+  code: () => string;
 };
