@@ -10,5 +10,10 @@
     "type": "separator",
     "title": "Methods Documentation"
   },
-  "ethereum-api": "Ethereum API Endpoint"
+  "ethereum-api": {
+    "title": "Ethereum API Endpoint",
+    "theme": {
+      "toc": false
+    }
+  }
 }

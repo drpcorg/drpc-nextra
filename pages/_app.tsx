@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 
 import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
+import "./global.css";
 
 const theme = createTheme({});
 
