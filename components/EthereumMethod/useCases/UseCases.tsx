@@ -14,7 +14,12 @@ export function UseCases({ list }: { list: string[] }) {
       className={classes.useCases}
     >
       <Grid.Col span={"content"}>
-        <Image src={ImgUseCases} alt="Use cases" width={20} height={26} />
+        <Image
+          src={ImgUseCases}
+          alt="Use cases"
+          width={16}
+          className={classes.icon}
+        />
       </Grid.Col>
 
       <Grid.Col span={"auto"}>

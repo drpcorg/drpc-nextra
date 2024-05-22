@@ -13,3 +13,8 @@
 .li {
   margin-bottom: 4px;
 }
+
+.icon {
+  position: relative;
+  top: 3px;
+}

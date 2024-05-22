@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ImgConstraints from "../../icons/Constraints.png";
+import ImgConstraints from "../../icons/IconConstraints.png";
 import { Grid, Group } from "@mantine/core";
 import classes from "./Constraints.module.css";
 import { Text } from "../../Text";
@@ -14,7 +14,12 @@ export function Constraints({ list }: { list: string[] }) {
       className={classes.constraints}
     >
       <Grid.Col span={"content"}>
-        <Image src={ImgConstraints} alt="Constraints" width={20} height={26} />
+        <Image
+          src={ImgConstraints}
+          alt="Constraints"
+          width={16}
+          className={classes.icon}
+        />
       </Grid.Col>
 
       <Grid.Col span={"auto"}>
