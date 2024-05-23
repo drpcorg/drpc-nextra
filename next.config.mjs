@@ -12,6 +12,7 @@ const withNextra = nextra({
 });
 
 const nextConfig = withNextra({
+  basePath: "/docs",
   output: "standalone",
 });
 
