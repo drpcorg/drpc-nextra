@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://docs.drpc.org
-
-# Sitemaps
-Sitemap: https://docs.drpc.org/sitemap.xml
