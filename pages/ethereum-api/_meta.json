@@ -2,5 +2,6 @@
   "eth_getLogs": "eth_getLogs",
   "eth_chainId": "eth_chainId",
   "eth_getBlockByNumber": "eth_getBlockByNumber",
-  "eth_getBalance": "eth_getBalance"
+  "eth_getBalance": "eth_getBalance",
+  "eth_accounts": "eth_accounts"
 }
