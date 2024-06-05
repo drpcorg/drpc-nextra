@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Grid, Group } from "@mantine/core";
-import classes from "./CodeSnippetSelectors.module.css";
+import classes from "./RequestSnippetSelectors.module.css";
 import cx from "clsx";
 import { CodeSnippetObject } from "../types";
 import { getLanguageName } from "../getLanguageName";
@@ -13,7 +12,11 @@ type Props = {
   setSnippet: React.Dispatch<React.SetStateAction<string>>;
 };
 
-export function CodeSnippetSelectors({ snippets, snippet, setSnippet }: Props) {
+export function RequestSnippetSelectors({
+  snippets,
+  snippet,
+  setSnippet,
+}: Props) {
   return (
     <Grid>
       <Grid.Col span={12}>

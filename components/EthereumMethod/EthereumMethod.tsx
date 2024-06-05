@@ -8,8 +8,8 @@ import { Text } from "../Text";
 import { UseCases } from "./useCases/UseCases";
 import { Constraints } from "./constraints/Constraints";
 import { GetStarted } from "./getStarted/GetStarted";
-import { CodeSnippetSelectors } from "./snippets/CodeSnippetSelectors";
-import { CodeSnippet } from "./snippets/CodeSnippet";
+import { RequestSnippetSelectors } from "./snippets/RequestSnippetSelectors";
+import { RequestSnippet } from "./snippets/RequestSnippet";
 import { RequestResponseJSON } from "./params/RequestResponseJSON";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -104,7 +104,7 @@ export default function EthereumMethod({
       </Grid.Col>
 
       <Grid.Col span={12}>
-        <CodeSnippetSelectors
+        <RequestSnippetSelectors
           snippets={codeSnippets || []}
           snippet={snippet}
           setSnippet={setSnippet}
@@ -112,7 +112,7 @@ export default function EthereumMethod({
       </Grid.Col>
 
       <Grid.Col span={12}>
-        <CodeSnippet snippet={snippetCode} language={snippetLanguage} />
+        <RequestSnippet snippet={snippetCode} language={snippetLanguage} />
       </Grid.Col>
 
       <Grid.Col span={12}>
@@ -120,7 +120,6 @@ export default function EthereumMethod({
       </Grid.Col>
 
       <Grid.Col span={12}>
-        {/* Request params block */}
         <RequestParams
           requestParams={requestParams}
           requestParamsType={requestParamsType}

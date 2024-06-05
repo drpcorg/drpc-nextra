@@ -3,7 +3,6 @@ import highlightStyle from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-o
 import React from "react";
 import Image from "next/image";
 import IconCopy from "components/icons/IconCopy.svg";
-import { IconChevronDown } from "@tabler/icons-react";
 import classes from "./RequestResponseJSON.module.css";
 import { Group } from "@mantine/core";
 import { Text } from "../../Text";
@@ -32,7 +31,6 @@ export function RequestResponseJSON({ json }: Props) {
           <Text size="xs" color="grayLike" uppercase fontWeight="bold">
             200
           </Text>
-          <IconChevronDown size={16} />
         </Group>
       </header>
 

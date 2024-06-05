@@ -5,7 +5,6 @@ import cx from "clsx";
 import { TParamType } from "../types";
 import { Text } from "../../Text";
 import { IconCircleGreen } from "../../icons/IconCircleGreen";
-import { IconChevronDown } from "@tabler/icons-react";
 
 export type ResponseParam = {
   type: TParamType;
@@ -56,9 +55,6 @@ export function ResponseParams({
                     {responseParamsDescription}
                   </Text>
                 ) : null}
-              </Grid.Col>
-              <Grid.Col span={"content"}>
-                <IconChevronDown size={18} />
               </Grid.Col>
             </Grid>
           </div>

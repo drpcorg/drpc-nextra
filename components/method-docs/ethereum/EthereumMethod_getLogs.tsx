@@ -28,25 +28,13 @@ export function EthereumMethod_getLogs() {
   );
 }
 
-const USE_CASES = [
-  "monitoring smart contract events",
-  "tracking token transfers",
-  "analyzing blockchain data",
-];
-
-const CONSTRAINTS = [
-  "A maximuim of 5,000 parameters in a single request",
-  "A maximum of 10,000 results can be returned by a single query",
-  "Query duration must not exceed 10 seconds",
-];
-
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \
-    --url ${DRPC_ENDPOINT_URL} \
-    --header 'accept: application/json' \
-    --header 'content-type: application/json' \
+    code: () => `curl --request POST \\
+    --url ${DRPC_ENDPOINT_URL} \\
+    --header 'accept: application/json' \\
+    --header 'content-type: application/json' \\
     --data '
 {
  "id": 1,
@@ -66,7 +54,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
      ]
    }
  ]
-}`,
+}'`,
   },
   {
     language: "js",
@@ -278,6 +266,28 @@ async fn main() -> Result<(), reqwest::Error> {
   },
 ];
 
+const RESPONSE_JSON = `{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": [
+    {
+      "address": "0xb59f67a8bff5d8cd03f6ac17265c550ed8f33907",
+      "blockHash": "0x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb",
+      "blockNumber": "0x429d3b",
+      "data": "0x000000000000000000000000000000000000000000000000000000012a05f200",
+      "logIndex": "0x56",
+      "removed": false,
+      "topics": [
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
+        "0x00000000000000000000000000b46c2526e227482e2ebb8f4c69e4674d262e75",
+        "0x00000000000000000000000054a2d42a40f51259dedd1978f6c118a0f0eff078"
+      ],
+      "transactionHash": "0xab059a62e22e230fe0f56d8555340a29b2e9532360368f810595453f6fdd213b",
+      "transactionIndex": "0xac"
+    }
+  ]
+}`;
+
 const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockHash",
@@ -330,28 +340,6 @@ const REQUEST_PARAMS: RequestParamProp = [
       "Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
   },
 ];
-
-const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "result": [
-    {
-      "address": "0xb59f67a8bff5d8cd03f6ac17265c550ed8f33907",
-      "blockHash": "0x8243343df08b9751f5ca0c5f8c9c0460d8a9b6351066fae0acbd4d3e776de8bb",
-      "blockNumber": "0x429d3b",
-      "data": "0x000000000000000000000000000000000000000000000000000000012a05f200",
-      "logIndex": "0x56",
-      "removed": false,
-      "topics": [
-        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-        "0x00000000000000000000000000b46c2526e227482e2ebb8f4c69e4674d262e75",
-        "0x00000000000000000000000054a2d42a40f51259dedd1978f6c118a0f0eff078"
-      ],
-      "transactionHash": "0xab059a62e22e230fe0f56d8555340a29b2e9532360368f810595453f6fdd213b",
-      "transactionIndex": "0xac"
-    }
-  ]
-}`;
 
 const RESPONSE_PARAMS: ResponseParam[] = [
   {
@@ -424,4 +412,16 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       },
     ],
   },
+];
+
+const USE_CASES = [
+  "monitoring smart contract events",
+  "tracking token transfers",
+  "analyzing blockchain data",
+];
+
+const CONSTRAINTS = [
+  "A maximuim of 5,000 parameters in a single request",
+  "A maximum of 10,000 results can be returned by a single query",
+  "Query duration must not exceed 10 seconds",
 ];

@@ -28,25 +28,13 @@ export function EthereumMethod_getBlockByNumber() {
   );
 }
 
-const USE_CASES = [
-  "Transaction History Verification: Retrieve a specific block to verify the transactions included and their execution status.",
-  "Blockchain Synchronization: Ensure a node is synchronized with the blockchain by comparing block details with a reference node.",
-  "Smart Contract Event Tracking: Monitor events emitted by smart contracts within a specific block to trigger off-chain processes.",
-];
-
-const CONSTRAINTS = [
-  "Network Latency: Response time can be affected by network latency, leading to delays in retrieving block information.",
-  "Data Consistency: In a highly decentralized network, there may be slight discrepancies in block data between nodes until finality is reached.",
-  "Resource Intensive: Frequent and repeated block retrieval requests can strain network resources and impact node performance.",
-];
-
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \
-    --url ${DRPC_ENDPOINT_URL} \
-    --header 'accept: application/json' \
-    --header 'content-type: application/json' \
+    code: () => `curl --request POST \\
+    --url ${DRPC_ENDPOINT_URL} \\
+    --header 'accept: application/json' \\
+    --header 'content-type: application/json' \\
     --data '
 {
  "id": 1,
@@ -219,6 +207,33 @@ async fn main() -> Result<(), reqwest::Error> {
   },
 ];
 
+const RESPONSE_JSON = `{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "number": "0x1b4",
+    "difficulty": "0x4ea3f27bc",
+    "extraData": "0x476574682f4c5649562f76312e302e302f6c696e75782f676f312e342e32",
+    "gasLimit": "0x1388",
+    "gasUsed": "0x0",
+    "hash": "0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "miner": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
+    "mixHash": "0x4fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
+    "nonce": "0x689056015818adbe",
+    "parentHash": "0xe99e022112df268087ea7eafaf4790497fd21dbeeb6bd7a1721df161a6657a54",
+    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "size": "0x220",
+    "stateRoot": "0xddc8b0234c2e0cad087c8b389aa7ef01f7d79b2570bccb77ce48648aa61c904d",
+    "timestamp": "0x55ba467c",
+    "totalDifficulty": "0x78ed983323d",
+    "transactions": [],
+    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
+    "uncles": []
+  }
+}`;
+
 const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
@@ -260,33 +275,6 @@ const REQUEST_PARAMS: RequestParamProp = [
       "The method returns the full transaction objects when this value is true otherwise, it returns only the hashes of the transactions",
   },
 ];
-
-const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "number": "0x1b4",
-    "difficulty": "0x4ea3f27bc",
-    "extraData": "0x476574682f4c5649562f76312e302e302f6c696e75782f676f312e342e32",
-    "gasLimit": "0x1388",
-    "gasUsed": "0x0",
-    "hash": "0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
-    "mixHash": "0x4fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
-    "nonce": "0x689056015818adbe",
-    "parentHash": "0xe99e022112df268087ea7eafaf4790497fd21dbeeb6bd7a1721df161a6657a54",
-    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
-    "size": "0x220",
-    "stateRoot": "0xddc8b0234c2e0cad087c8b389aa7ef01f7d79b2570bccb77ce48648aa61c904d",
-    "timestamp": "0x55ba467c",
-    "totalDifficulty": "0x78ed983323d",
-    "transactions": [],
-    "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-    "uncles": []
-  }
-}`;
 
 const RESPONSE_PARAMS: ResponseParam[] = [
   {
@@ -424,4 +412,16 @@ const RESPONSE_PARAMS: ResponseParam[] = [
     paramDescription: "An array of uncle hashes",
     type: "array",
   },
+];
+
+const USE_CASES = [
+  "Transaction History Verification: Retrieve a specific block to verify the transactions included and their execution status.",
+  "Blockchain Synchronization: Ensure a node is synchronized with the blockchain by comparing block details with a reference node.",
+  "Smart Contract Event Tracking: Monitor events emitted by smart contracts within a specific block to trigger off-chain processes.",
+];
+
+const CONSTRAINTS = [
+  "Network Latency: Response time can be affected by network latency, leading to delays in retrieving block information.",
+  "Data Consistency: In a highly decentralized network, there may be slight discrepancies in block data between nodes until finality is reached.",
+  "Resource Intensive: Frequent and repeated block retrieval requests can strain network resources and impact node performance.",
 ];

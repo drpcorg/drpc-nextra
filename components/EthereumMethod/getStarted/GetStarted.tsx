@@ -21,12 +21,13 @@ export function GetStarted() {
       <div className={classes.infoBlock}>
         <Group mb={10}>
           <Text color="white" size="lg" fontWeight="semibold">
-            Need an API key to get started?
+            Unlock Access to 50+ chains
           </Text>
         </Group>
         <Group>
           <Text color="white" size="sm">
-            Integrate our dRPC API into your application now
+            Boost your app's speed and reliability with dRPC - get your access
+            API key
           </Text>
         </Group>
       </div>

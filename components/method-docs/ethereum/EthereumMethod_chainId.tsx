@@ -28,25 +28,13 @@ export function EthereumMethod_chainId() {
   );
 }
 
-const USE_CASES = [
-  "To identify the specific Ethereum network (mainnet, Ropsten, Rinkeby, Kovan, Goerli, or a custom private network) to which a node is connected.",
-  "To ensure that transactions are not replayed across different networks.",
-  "To load or apply network-specific configurations and settings in decentralized applications (dApps) or tools.",
-];
-
-const CONSTRAINTS = [
-  "A maximuim of 5,000 parameters in a single request",
-  "A maximum of 10,000 results can be returned by a single query",
-  "Query duration must not exceed 10 seconds",
-];
-
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \
-    --url ${DRPC_ENDPOINT_URL} \
-    --header 'accept: application/json' \
-    --header 'content-type: application/json' \
+    code: () => `curl --request POST \\
+    --url ${DRPC_ENDPOINT_URL} \\
+    --header 'accept: application/json' \\
+    --header 'content-type: application/json' \\
     --data '
 {
  "id": 1,
@@ -201,13 +189,13 @@ async fn main() -> Result<(), reqwest::Error> {
   },
 ];
 
-const REQUEST_PARAMS: RequestParamProp = null;
-
 const RESPONSE_JSON = `{
   "jsonrpc": "2.0",
   "id": 1,
   "result": "0x1"
 }`;
+
+const REQUEST_PARAMS: RequestParamProp = null;
 
 const RESPONSE_PARAMS: ResponseParam[] = [
   {
@@ -223,4 +211,16 @@ const RESPONSE_PARAMS: ResponseParam[] = [
     type: "string",
     paramDescription: "HEX string representing the current chain/network ID.",
   },
+];
+
+const USE_CASES = [
+  "To identify the specific Ethereum network (mainnet, Ropsten, Rinkeby, Kovan, Goerli, or a custom private network) to which a node is connected.",
+  "To ensure that transactions are not replayed across different networks.",
+  "To load or apply network-specific configurations and settings in decentralized applications (dApps) or tools.",
+];
+
+const CONSTRAINTS = [
+  "A maximuim of 5,000 parameters in a single request",
+  "A maximum of 10,000 results can be returned by a single query",
+  "Query duration must not exceed 10 seconds",
 ];

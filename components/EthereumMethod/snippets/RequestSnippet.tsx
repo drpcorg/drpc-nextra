@@ -1,21 +1,24 @@
-import SyntaxHighlighter from "react-syntax-highlighter";
-import highlightStyle from "react-syntax-highlighter/dist/cjs/styles/hljs/atom-one-dark";
-import classes from "./CodeSnippet.module.css";
+import { Prism, SyntaxHighlighterProps } from "react-syntax-highlighter";
+import highlightStyle from "react-syntax-highlighter/dist/cjs/styles/prism/coldark-dark";
+import classes from "./RequestSnippet.module.css";
 import React from "react";
 import Image from "next/image";
 import IconCopy from "components/icons/IconCopy.svg";
-import { IconChevronDown } from "@tabler/icons-react";
 import { Group } from "@mantine/core";
 import { CodeSnippetObject } from "../types";
 import { Text } from "../../Text";
 import { useCopyString } from "../../hooks/useCopyString";
+
+// https://github.com/react-syntax-highlighter/react-syntax-highlighter/issues/539
+const SyntaxHighlighter =
+  Prism as typeof React.Component<SyntaxHighlighterProps>;
 
 type Props = {
   snippet: string;
   language: CodeSnippetObject["language"];
 };
 
-export function CodeSnippet({ snippet, language }: Props) {
+export function RequestSnippet({ snippet, language }: Props) {
   let { copy } = useCopyString({ value: snippet });
 
   let lang = React.useMemo(() => {
@@ -24,7 +27,7 @@ export function CodeSnippet({ snippet, language }: Props) {
       case "node":
         return "javascript";
       case "shell":
-        return "curl";
+        return "bash";
       default:
         return language;
     }
@@ -42,7 +45,6 @@ export function CodeSnippet({ snippet, language }: Props) {
           <Text size="xs" color="grayLike" uppercase asBlock>
             Examples
           </Text>
-          <IconChevronDown size={16} />
         </div>
       </header>
 
