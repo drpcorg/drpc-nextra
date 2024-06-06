@@ -2,7 +2,7 @@
 
 ## How to create a new page for RPC Methods Documentation
 
-- 1. Go to [Alchemy References](https://docs.alchemy.com/reference/ethereum-api-endpoints) and click on the method you want to document to go to the page (further mentioned as **Alchemy Reference Page**).
+- 1. Go to [References](https://docs.alchemy.com/reference/ethereum-api-endpoints) and click on the method you want to document to go to the page (further mentioned as **Reference Page**).
 - 2. Copy the method name and create a new file in `pages/ethereum-api` with the name `methodName.mdx`.
 - 3. Create a new component in `components/method-docs/ethereum` with the name `EthereumMethod_methodName.tsx`.
 - 4.  Let's use `EthereumMethod_getBlockByNumber.tsx` as reference file for the new file creation.
@@ -12,7 +12,7 @@
 
 ## How to fill the content of code snippets in the new page
 
-- 1. Go to **Alchemy Reference Page**, copy **cURL** request example as shown in the image below.
+- 1. Go to **Reference Page**, copy **cURL** request example as shown in the image below.
      ![cURL request example](./public/images/curl-request-example.png)
 - 2. Go to [ChatGPT](https://chatgpt.com/) conversation and paste the cURL request example in the chat with the following prompt:
 
@@ -20,7 +20,7 @@
 Hi! I need the analogs for the following HTTP request code in JS, Python, Go and Rust.
 Use fetch for JS and Node.js
 The following code is:
--- here goes cURL request code from Alchemy Reference Page--
+-- here goes cURL request code from Reference Page--
 ```
 
 - 3. After that, ChatGPT should provide you with the code snippets in JS, Python, Go and Rust.
@@ -30,14 +30,14 @@ The following code is:
 
      - 2. **Important**: Replace URL value in string with interpolated `${DRPC_ENDPOINT_URL}` in each string literal snippet. You can see how it's done in existing pages.
 
-- 4. To get `Response` body from the **Alchemy Reference Page**
+- 4. To get `Response` body from the **Reference Page**
      click on **"Try"** button as shown on the image below and paste it in the `Response` section of the new page.
 
 ![cURL request example](./public/images/curl-request-example-try.png)
 
 ## How to fill Request Params and Response Params
 
-- 1. Now, I personally find it more convenient to fill the Request Params and Response Params by looking at the **Quicknode Reference Page** for the same `methodName` that you currently copy/fill from **Alchemy Reference Page**.
+- 1. Now, I personally find it more convenient to fill the Request Params and Response Params by looking at the **Quicknode Reference Page** for the same `methodName` that you currently copy/fill from **Reference Page**.
 
 For example, [eth_getBlockByNumber page](https://www.quicknode.com/docs/ethereum/eth_getBlockByNumber).
 

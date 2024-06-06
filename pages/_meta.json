@@ -15,5 +15,11 @@
     "theme": {
       "breadcrumb": false
     }
+  },
+  "drpc-account": {
+    "title": "My Account",
+    "type": "page",
+    "href": "https://drpc.org/login",
+    "newWindow": true
   }
 }

@@ -10,9 +10,7 @@ export function EthereumMethod_accounts() {
       method="eth_accounts"
       network="ethereum"
       cu={20}
-      description={
-        "Returns a list of addresses owned by client. Since Alchemy does not store keys, this will always return empty."
-      }
+      description={"Returns a list of addresses owned by client."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}

@@ -10,15 +10,20 @@ export function EthereumMethod_feeHistory() {
       method="eth_feeHistory"
       network="ethereum"
       cu={15}
-      description={"Returns the balance of the account of a given address."}
+      description={
+        "Returns a list of addresses owned by client. Since Alchemy does not store keys, this will always return empty."
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="object"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
+      responseParamsDescription={
+        "Returns array of log objects, or an empty array if nothing has changed since last poll."
+      }
     />
   );
 }
@@ -40,8 +45,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     4,
     4
   ]
-}
-'`,
+}`,
   },
   {
     language: "js",
@@ -124,7 +128,7 @@ req.on('error', error => {
 });
 
 req.write(data);
-req.end(); 
+req.end();
 `,
   },
   {
@@ -223,6 +227,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     Ok(())
 }
+}
+    
 `,
   },
 ];
@@ -280,27 +286,18 @@ const RESPONSE_JSON = `{
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-  {
-    paramName: "id",
+    {
+    paramName: " Block count or range",
     type: "integer",
   },
-  {
-    paramName: "jsonrpc",
+   {
+    paramName: "Block number",
     type: "string",
   },
   {
-    paramName: "Block count or range",
-    type: "integer",
-  },
-    {
-    paramName: "Block number (in hex) or block tag",
-    type: "string",
-  },
-    {
     paramName: "Reward percentiles to sample from each block",
     type: "array_of_integers",
-    paramDescription:
-      "optional",
+    paramDescription: "optional",
   },
 ];
 
@@ -315,60 +312,43 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   },
   {
     paramName: "result",
-    type: "array_of_objects",
-    paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
+    type: "array_of_strings",
+    paramDescription: "An array of addresses owned by the client.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "oldestBlock",
         type: "int64",
-        paramDescription:
-          "Lowest number block of the returned range.",
+        paramDescription: "An array of block base fees per gas."
       },
-      {
-        paramName: "baseFeePerGas",
-        type: "array_of_strings",
-        paramDescription:
-          "An array of block base fees per gas. This includes the next block after the newest of the returned range, because this value can be derived from the newest block. Zeroes are returned for pre-EIP-1559 blocks.",
-      },
-      {
+    {
         paramName: "gasUsedRatio",
         type: "array_of_numbers",
-        paramDescription:
-          "An array representing the ratios of block gas used. These ratios are calculated by dividing gasUsed by gasLimit.",
+        paramDescription: "An array representing the ratios of block gas used. "
       },
-      {
+    {
         paramName: "reward",
         type: "array_of_arrays_of_strings",
-        paramDescription: "A two-dimensional array showing the effective priority fees per gas at the specified block percentiles.",
+        paramDescription: "A two-dimensional array showing the effective priority fees per gas at the specified block percentiles. "
       },
-      {
+    {
         paramName: "baseFeePerBlobGas",
         type: "array_of_strings",
-        paramDescription:
-          "An array of base fees per blob gas for blocks.",
+        paramDescription: "An array of base fees per blob gas for blocks. "
       },
-      {
-        paramName: "data",
-        type: "string",
-        paramDescription:
-          "Contains one or more 32 Bytes non-indexed arguments of the log.",
-      },
-      {
-        paramName: "blobGasUsedRatio\n",
+    {
+        paramName: "blobGasUsedRatio",
         type: "array_of_numbers",
-        paramDescription:
-          "An array showing the ratios of blob gas used in blocks. T",
+        paramDescription: "An array showing the ratios of blob gas used in blocks."
       },
-    ],
+    ]
   },
 ];
 
 const USE_CASES = [
   "Retrieve gas price history.",
-  "Estimate future gas prices.",
-  "Analyze transaction fee trends.",
+  "DApp Authentication: Verify user's Ethereum addresses.",
+  "Account Selection UI: Populate account dropdown menus.",
 ];
 
 const CONSTRAINTS = [

@@ -26,7 +26,7 @@ export function RequestSnippetSelectors({
       </Grid.Col>
 
       <Grid.Col span={12}>
-        <Group>
+        <Group justify="space-between">
           {snippets.map((snippetObj, index) => (
             <button
               key={index}

@@ -5,7 +5,6 @@
   align-items: center;
   gap: 10px;
   flex: 1 0 120px;
-  max-width: 160px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: #181818;
