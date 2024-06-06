@@ -62,10 +62,11 @@ export default function EthereumMethod({
   }, [codeSnippets, snippet]);
 
   return (
-    <Grid className={inter.className} gutter={20}>
-      <Grid.Col span={12}>
+    // Note: <main> already has pt 1rem, so we add 14px to match 30px from the design
+    <Grid className={inter.className} gutter={20} pt={14}>
+      <Grid.Col span={12} pt={0}>
         <Group justify="start" mb={10}>
-          <Text fontWeight="semibold">
+          <Text fontWeight="semibold" size={"lg"}>
             {method} - <Text capitalize>{network}</Text>{" "}
             <Text opacity={0.5}>[Value: {cu}CU]</Text>
           </Text>
