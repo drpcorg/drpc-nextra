@@ -254,13 +254,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Wallet Balance Checking: Retrieve current ETH balance.",
-  "Account Monitoring: Track balance changes over time.",
-  "Smart Contract Auditing: Verify contract account funds.",
+  "Wallet Balance Checking: Retrieve current ETH balance",
+  "Account Monitoring: Track balance changes over time",
+  "Smart Contract Auditing: Verify contract account funds",
 ];
 
 const CONSTRAINTS = [
-  "Network Congestion: Slower response times.",
-  "Data Staleness: Potentially outdated balance.",
-  "Resource Intensive: High-frequency requests limited.",
+  "Network Congestion: Slower response times",
+  "Data Staleness: Potentially outdated balance",
+  "Resource Intensive: High-frequency requests limited",
 ];

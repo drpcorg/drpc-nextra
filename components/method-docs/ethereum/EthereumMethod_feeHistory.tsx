@@ -22,7 +22,7 @@ export function EthereumMethod_feeHistory() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns array of log objects, or an empty array if nothing has changed since last poll."
+        ""
       }
     />
   );
@@ -49,44 +49,29 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   },
   {
     language: "js",
-    code: () => `const https = require('https');
+    code: () => `const url = ${DRPC_ENDPOINT_URL};
 
-const data = JSON.stringify({
+const data = {
+  jsonrpc: '2.0',
   id: 1,
-  jsonrpc: "2.0",
-  method: "eth_feeHistory",
-  params: [4, 4, 4]
-});
-
-const options = {
-  hostname: '${DRPC_ENDPOINT_URL}',
-  path: '/v2/docs-demo',
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Content-Length': data.length
-  }
+  method: 'eth_feeHistory',
+  params: [
+    '0x5', // Replace with your block count
+    'latest',
+    []
+  ]
 };
 
-const req = https.request(options, res => {
-  let responseBody = '';
-  
-  res.on('data', chunk => {
-    responseBody += chunk;
-  });
-
-  res.on('end', () => {
-    console.log(JSON.parse(responseBody));
-  });
-});
-
-req.on('error', error => {
-  console.error(error);
-});
-
-req.write(data);
-req.end();
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(res => console.log(res))
+  .catch(error => console.error('Error:', error));
 `,
   },
   {
@@ -346,13 +331,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve gas price history.",
-  "DApp Authentication: Verify user's Ethereum addresses.",
-  "Account Selection UI: Populate account dropdown menus.",
+  "Retrieve gas price history",
+  "DApp Authentication: Verify user's Ethereum addresses",
+  "Account Selection UI: Populate account dropdown menus",
 ];
 
 const CONSTRAINTS = [
-  "Network-specific method.",
-  "Requires JSON-RPC protocol.",
-  "Limited to recent blocks.",
+  "Network-specific method",
+  "Requires JSON-RPC protocol",
+  "Limited to recent blocks",
 ];

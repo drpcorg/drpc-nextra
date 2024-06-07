@@ -14,6 +14,8 @@ type RequestParam = {
     description: string;
     isDefault?: boolean;
   }[];
+  childrenParams?: RequestParam[];
+  childrenParamsType?: TParamType;
 };
 
 export type RequestParamProp = RequestParam[] | null;

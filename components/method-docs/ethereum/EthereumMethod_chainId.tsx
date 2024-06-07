@@ -214,9 +214,9 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "To identify the specific Ethereum network (mainnet, Ropsten, Rinkeby, Kovan, Goerli, or a custom private network) to which a node is connected.",
-  "To ensure that transactions are not replayed across different networks.",
-  "To load or apply network-specific configurations and settings in decentralized applications (dApps) or tools.",
+  "To identify the Ethereum network to which a node is connected",
+  "To ensure that transactions are not replayed across networks",
+  "To load or apply network-specific configurations or tools",
 ];
 
 const CONSTRAINTS = [

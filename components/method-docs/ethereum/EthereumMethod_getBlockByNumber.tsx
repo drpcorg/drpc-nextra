@@ -415,13 +415,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Transaction History Verification: Retrieve a specific block to verify the transactions included and their execution status.",
-  "Blockchain Synchronization: Ensure a node is synchronized with the blockchain by comparing block details with a reference node.",
-  "Smart Contract Event Tracking: Monitor events emitted by smart contracts within a specific block to trigger off-chain processes.",
+  "Verify transactions in a specific block",
+  "Compare block details for node sync",
+  "Monitor contract events for off-chain triggers",
 ];
 
 const CONSTRAINTS = [
-  "Network Latency: Response time can be affected by network latency, leading to delays in retrieving block information.",
-  "Data Consistency: In a highly decentralized network, there may be slight discrepancies in block data between nodes until finality is reached.",
-  "Resource Intensive: Frequent and repeated block retrieval requests can strain network resources and impact node performance.",
+  "Response delays due to network latency",
+  "Slight data discrepancies until finality",
+  "Strain on resources with frequent requests",
 ];

@@ -415,9 +415,9 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "monitoring smart contract events",
-  "tracking token transfers",
-  "analyzing blockchain data",
+  "Monitoring smart contract events",
+  "Tracking token transfers",
+  "Analyzing blockchain data",
 ];
 
 const CONSTRAINTS = [

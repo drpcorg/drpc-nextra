@@ -5,10 +5,12 @@ import classes from "./RequestParamsList.module.css";
 import { Text } from "../../Text";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
+import cx from "clsx";
 
 type Props = {
   requestParams: RequestParamProp;
   requestParamsType: TParamType;
+  isChild?: boolean;
 };
 
 const fira = Fira_Mono({ subsets: ["latin"], weight: ["400"] });
@@ -69,6 +71,17 @@ export function RequestParamsList({ requestParams, requestParamsType }: Props) {
               </ul>
             </section>
           ) : null}
+
+        {/* If param has children params, render them */}
+          {param.childrenParams ? (
+            <div className={cx(classes.line, classes.children)}>
+              <RequestParamsList
+                requestParams={param.childrenParams}
+                requestParamsType={requestParamsType}
+                isChild
+              />
+            </div>
+            ) : null}
         </div>
       ))}
     </section>
