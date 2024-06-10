@@ -10,5 +10,10 @@
   "eth_getBlockTransactionCountByHash": "eth_getBlockTransactionCountByHash",
   "eth_getBlockTransactionCountByNumber": "eth_getBlockTransactionCountByNumber",
   "eth_getCode": "eth_getCode",
-  "eth_getProof": "eth_getProof"
+  "eth_getProof": "eth_getProof",
+  "eth_getStorageAt": "eth_getStorageAt",
+  "eth_getTransactionByBlockHashAndIndex": "eth_getTransactionByBlockHashAndIndex",
+  "eth_getTransactionByHash": "eth_getTransactionByHash",
+  "eth_getTransactionCount": "eth_getTransactionCount",
+  "eth_getTransactionReceipt": "eth_getTransactionReceipt"
 }
