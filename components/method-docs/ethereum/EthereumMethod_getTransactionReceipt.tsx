@@ -310,85 +310,82 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         type: "array_of_objects",
         paramDescription:
             "Array of log objects, which this transaction generated.",
-      },
-      {
-        paramName: "logs",
-        type: "array_of_objects",
-        paramDescription:
-            "Array of log objects, which this transaction generated.",
-      },
-      {
-        paramName: "blockHash",
-        type: "string",
-        paramDescription:
-          "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
-      },
-      {
-        paramName: "blockNumber",
-        type: "string",
-        paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
-      },
-      {
-        paramName: "transactionIndex",
-        type: "string",
-        paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
-      },
-      {
-        paramName: "address",
-        type: "string",
-        paramDescription: "20 Bytes - address from which this log originated.",
-      },
-      {
-        paramName: "logIndex",
-        type: "string",
-        paramDescription:
-          "Integer of the log index position in the block. null when its pending log.",
-      },
-      {
-        paramName: "data",
-        type: "string",
-        paramDescription:
-          "Contains one or more 32 Bytes non-indexed arguments of the log.",
-      },
-      {
-        paramName: "removed",
-        type: "boolean",
-        paramDescription:
-          "true when the log was removed, due to a chain reorganization. false if its a valid log.",
-      },
-      {
-        paramName: "topics",
-        type: "array_of_strings",
-        paramDescription:
-          "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
-      },
-      {
-        paramName: "transactionHash",
-        type: "string",
-        paramDescription:
-          "Hash of the transactions this log was created from. null when its pending log.",
-      },
-      {
-        paramName: "logsBloom",
-        type: "string",
-        paramDescription:
-          "256 Bytes - Bloom filter for light clients to quickly retrieve related logs.",
-      },
-      {
-        paramName: "status",
-        type: "integer",
-        paramDescription:
-          "Either 1 (success) or 0 (failure)",
-      },
-      {
-        paramName: "effectiveGasPrice",
-        type: "string",
-      },
-      {
-        paramName: "type",
-        type: "string",
+        childrenParamsType: "object",
+        childrenParams: [
+          {
+            paramName: "blockHash",
+            type: "string",
+            paramDescription:
+                "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
+          },
+          {
+            paramName: "blockNumber",
+            type: "string",
+            paramDescription:
+                "The block number where this log was in. null when its pending. null when its pending log.",
+          },
+          {
+            paramName: "transactionIndex",
+            type: "string",
+            paramDescription:
+                "Integer of the transactions index position log was created from. null when its pending log.",
+          },
+          {
+            paramName: "address",
+            type: "string",
+            paramDescription: "20 Bytes - address from which this log originated.",
+          },
+          {
+            paramName: "logIndex",
+            type: "string",
+            paramDescription:
+                "Integer of the log index position in the block. null when its pending log.",
+          },
+          {
+            paramName: "data",
+            type: "string",
+            paramDescription:
+                "Contains one or more 32 Bytes non-indexed arguments of the log.",
+          },
+          {
+            paramName: "removed",
+            type: "boolean",
+            paramDescription:
+                "true when the log was removed, due to a chain reorganization. false if its a valid log.",
+          },
+          {
+            paramName: "topics",
+            type: "array_of_strings",
+            paramDescription:
+                "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
+          },
+          {
+            paramName: "transactionHash",
+            type: "string",
+            paramDescription:
+                "Hash of the transactions this log was created from. null when its pending log.",
+          },
+          {
+            paramName: "logsBloom",
+            type: "string",
+            paramDescription:
+                "256 Bytes - Bloom filter for light clients to quickly retrieve related logs.",
+          },
+          {
+            paramName: "status",
+            type: "integer",
+            paramDescription:
+                "Either 1 (success) or 0 (failure)",
+          },
+          {
+            paramName: "effectiveGasPrice",
+            type: "string",
+          },
+          {
+            paramName: "type",
+            type: "string",
+          },
+        ],
       },
     ],
   },

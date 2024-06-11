@@ -237,13 +237,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "User Wallet Management: Retrieve available user accounts",
-  "DApp Authentication: Verify user's Ethereum addresses",
-  "Account Selection UI: Populate account dropdown menus",
+  "Retrieve a list of managed Ethereum accounts",
+  "Verify available accounts on the connected node",
+  "Populate account dropdown menus",
 ];
 
 const CONSTRAINTS = [
-  "Local Node Required: Needs local Ethereum node",
-  "Account Privacy: Risk of exposing addresses",
-  "Node Synchronization: Dependent on node state",
+  "Requires node with account management capability",
+  "Risk of exposing addresses",
+  "Depends on node's current account configuration",
 ];

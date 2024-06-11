@@ -15,5 +15,10 @@
   "eth_getTransactionByBlockHashAndIndex": "eth_getTransactionByBlockHashAndIndex",
   "eth_getTransactionByHash": "eth_getTransactionByHash",
   "eth_getTransactionCount": "eth_getTransactionCount",
-  "eth_getTransactionReceipt": "eth_getTransactionReceipt"
+  "eth_getTransactionReceipt": "eth_getTransactionReceipt",
+  "eth_getUncleByBlockHashAndIndex": "eth_getUncleByBlockHashAndIndex",
+  "eth_getUncleByBlockNumberAndIndex": "eth_getUncleByBlockNumberAndIndex",
+  "eth_getUncleCountByBlockHash": "eth_getUncleCountByBlockHash",
+  "eth_getUncleCountByBlockNumber": "eth_getUncleCountByBlockNumber",
+  "eth_maxPriorityFeePerGas": "eth_maxPriorityFeePerGas"
 }

@@ -11,7 +11,7 @@ export function EthereumMethod_feeHistory() {
       network="ethereum"
       cu={15}
       description={
-        "Returns a list of addresses owned by client. Since Alchemy does not store keys, this will always return empty."
+        "Returns a list of addresses owned by client."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

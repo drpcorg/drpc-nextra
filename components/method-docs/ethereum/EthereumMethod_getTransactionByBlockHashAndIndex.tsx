@@ -223,10 +223,15 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockNumber",
-    type: "array_of_strings",
-    paramDescription: 'Hash od a block and integer of the transaction index position (in hex)'
-    },
+    paramName: "blockHash",
+    type: "string",
+    paramDescription: 'The block hash'
+  },
+  {
+    paramName: "index",
+    type: "string",
+    paramDescription: 'An integer of the transaction index position encoded as a hexadecimal'
+  },
 ];
 
 const RESPONSE_PARAMS: ResponseParam[] = [
