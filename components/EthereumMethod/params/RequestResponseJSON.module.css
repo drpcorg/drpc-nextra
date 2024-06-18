@@ -18,6 +18,11 @@
 .codeHighlight {
   background-color: #181818;
   padding: 12px;
+  max-height: 420px;
+  overflow: auto;
+  overflow-y: scroll;
+  width: 100%;
+  max-width: 100%;
 }
 .footer {
   flex: 1 0 100%;
