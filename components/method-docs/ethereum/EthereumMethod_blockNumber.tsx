@@ -4,15 +4,13 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_gasPrice() {
+export function EthereumMethod_blockNumber() {
   return (
     <EthereumMethod
-      method="eth_gasPrice"
+      method="eth_blockNumber"
       network="ethereum"
-      cu={15}
-      description={
-        "Returns the current price per gas in wei."
-      }
+      cu={10}
+      description={"Returns the number of the most recent block."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +20,7 @@ export function EthereumMethod_gasPrice() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns integer of the current price per gas in wei."
+        "Returns array of log objects, or an empty array if nothing has changed since last poll."
       }
     />
   );
@@ -39,7 +37,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 {
   "id": 1,
   "jsonrpc": "2.0",
-  "method": "eth_gasPrice"
+  "method": "eth_blockNumber"
 }
 '`,
   },
@@ -48,10 +46,10 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     code: () => `const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  method: "eth_gasPrice",
+  jsonrpc: "2.0",
+  method: "eth_blockNumber",
   params: [],
-  id: 1,
-  jsonrpc: "2.0"
+  id: 1
 };
 
 fetch(url, {
@@ -64,7 +62,6 @@ fetch(url, {
   .then(response => response.json())
   .then(res => console.log(res))
   .catch(error => console.error('Error:', error));
-
 `,
   },
   {
@@ -74,10 +71,10 @@ fetch(url, {
 const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  method: "eth_gasPrice",
+  jsonrpc: "2.0",
+  method: "eth_blockNumber",
   params: [],
-  id: 1,
-  jsonrpc: "2.0"
+  id: 1
 };
 
 fetch(url, {
@@ -89,7 +86,7 @@ fetch(url, {
 })
   .then(response => response.json())
   .then(res => console.log(res))
-  .catch(error => console.error('Error:', error));
+  .catch(error => console.error('Error:', error)); 
 `,
   },
   {
@@ -107,10 +104,10 @@ func main() {
 	url := "${DRPC_ENDPOINT_URL}"
 
 	data := map[string]interface{}{
-		"method":  "eth_gasPrice",
+		"jsonrpc": "2.0",
+		"method":  "eth_blockNumber",
 		"params":  []interface{}{},
 		"id":      1,
-		"jsonrpc": "2.0",
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -141,10 +138,10 @@ import json
 url = '${DRPC_ENDPOINT_URL}'
 
 data = {
-    "method": "eth_gasPrice",
+    "jsonrpc": "2.0",
+    "method": "eth_blockNumber",
     "params": [],
-    "id": 1,
-    "jsonrpc": "2.0"
+    "id": 1
 }
 
 response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
@@ -163,10 +160,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let url = "${DRPC_ENDPOINT_URL}";
 
     let data = json!({
-        "method": "eth_gasPrice",
+        "jsonrpc": "2.0",
+        "method": "eth_blockNumber",
         "params": [],
-        "id": 1,
-        "jsonrpc": "2.0"
+        "id": 1
     });
 
     let client = Client::new();
@@ -186,56 +183,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ];
 
 const RESPONSE_JSON = `{
-  {
   "jsonrpc": "2.0",
   "id": 1,
-  "result": {
-    "oldestBlock": "0x130b1e6",
-    "reward": [
-      [
-        "0x5041e1e",
-        "0xdd221b80"
-      ],
-      [
-        "0x5041e1e",
-        "0xb8346df0"
-      ],
-      [
-        "0x55d4a80",
-        "0xb2d05e00"
-      ],
-      [
-        "0x4dd9818",
-        "0x3b9aca00"
-      ]
-    ],
-    "baseFeePerGas": [
-      "0x52d80a82c",
-      "0x50f43f659",
-      "0x50012de8d",
-      "0x4e30357d6",
-      "0x57efff9e7"
-    ],
-    "gasUsedRatio": [
-      0.40875283333333334,
-      0.45308523333333334,
-      0.4091907,
-      0.9987537
-    ],
-    "baseFeePerBlobGas": [
-      "0x1",
-      "0x1",
-      "0x1",
-      "0x1",
-      "0x1"
-    ],
-    "blobGasUsedRatio": [
-      0.5,
-      1,
-      0.6666666666666666,
-      1
-    ]
-  }
+  "result": "0xfd2fdb"
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = null;
@@ -251,18 +201,19 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   },
   {
     paramName: "result",
-    type: "string"
+    type: "array_of_strings",
+    paramDescription: "An array of addresses owned by the client",
   },
 ];
 
 const USE_CASES = [
-  "Get the current gas price for transactions",
-  "Calculate the cost of transactions with current gas prices",
-  "Monitor network gas trends",
+  "Get the latest block number for syncing",
+  "Verify blockchain progress up to the current block",
+  "Check latest block number for monitoring purposes",
 ];
 
 const CONSTRAINTS = [
-  "Requires internet access",
-  "Requires an accessible node to get data",
-  "Depends on the latest network gas price data",
+  "Node must be synchronized with the network",
+  "Requires access to a reliable Ethereum node",
+  "Network latency may affect response time",
 ];

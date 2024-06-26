@@ -31,7 +31,7 @@ export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
   --data '{"method":"eth_getTransactionByBlockNumberAndIndex","params":["0xc5043f", "0x0"],"id":1,"jsonrpc":"2.0"}'

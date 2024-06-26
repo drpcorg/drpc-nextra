@@ -29,7 +29,7 @@ export function EthereumMethod_syncing() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
   --data '{"jsonrpc":"2.0","method":"eth_syncing","params":[],"id":67}'
@@ -147,33 +147,6 @@ print(res)
   {
     language: "rust",
     code: () => `use reqwest::Client;
-use serde_json::json;
-use tokio;
-
-#[tokio::main]
-async fn main() -> Result<(), reqwest::Error> {
-    let url = "${DRPC_ENDPOINT_URL}";
-    let client = Client::new();
-
-    let data = json!({
-        "id": 1,
-        "jsonrpc": "2.0",
-        "method": "eth_accounts"
-    });
-
-    let response = client.post(url)
-        .header("Accept", "application/json")
-        .header("Content-Type", "application/json")
-        .json(&data)
-        .send()
-        .await?;
-
-    let response_json: serde_json::Value = response.json().await?;
-    println!("{:#?}", response_json);
-
-    Ok(())
-}
-    use reqwest::Client;
 use serde_json::json;
 
 #[tokio::main]

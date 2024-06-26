@@ -31,10 +31,10 @@ export function EthereumMethod_getFilterLogs() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \
-     --url ${DRPC_ENDPOINT_URL} \
-     --header 'accept: application/json' \
-     --header 'content-type: application/json' \
+    code: () => `curl --request POST \\
+     --url ${DRPC_ENDPOINT_URL} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
      --data '
 {
   "id": 1,

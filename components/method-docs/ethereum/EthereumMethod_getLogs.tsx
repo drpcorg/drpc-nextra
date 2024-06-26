@@ -9,7 +9,7 @@ export function EthereumMethod_getLogs() {
     <EthereumMethod
       method="eth_getLogs"
       network="ethereum"
-      cu={20}
+      cu={60}
       description={
         "Returns an array of all logs matching a given filter object"
       }
@@ -415,9 +415,9 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Monitoring smart contract events",
-  "Tracking token transfers",
-  "Analyzing blockchain data",
+  "Retrieve event logs from specific smart contract addresses",
+  "Monitor emitted events within a defined block range",
+  "Filter logs by topics for transaction analysis",
 ];
 
 const CONSTRAINTS = [

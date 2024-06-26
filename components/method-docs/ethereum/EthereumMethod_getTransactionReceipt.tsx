@@ -31,7 +31,7 @@ export function EthereumMethod_getTransactionReceipt() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
   --data '{"method":"eth_getTransactionReceipt","params":["0x85d995eba9763907fdf35cd2034144dd9d53ce32cbec21349d4b12823c6860c5"],"id":1,"jsonrpc":"2.0"}'

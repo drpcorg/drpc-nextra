@@ -31,25 +31,20 @@ export function EthereumMethod_getTransactionByBlockHashAndIndex() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
-  --data '{"method":"eth_getStorageAt","params":["0xE592427A0AEce92De3Edee1F18E0157C05861564", "0x0", "latest"],"id":1,"jsonrpc":"2.0"}'
-`,
+  --data '{"method":"eth_getTransactionByBlockHashAndIndex","params":["0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b","0x0"],"id":1,"jsonrpc":"2.0"}'`,
   },
   {
     language: "js",
     code: () => `const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  method: "eth_getStorageAt",
-  params: [
-    "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-    "0x0",
-    "latest"
-  ],
-  id: 1,
-  jsonrpc: "2.0"
+  jsonrpc: "2.0",
+  method: "eth_getTransactionByBlockHashAndIndex",
+  params: ["0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b", "0x0"],
+  id: 1
 };
 
 fetch(url, {
@@ -71,14 +66,10 @@ fetch(url, {
 const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  method: "eth_getStorageAt",
-  params: [
-    "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-    "0x0",
-    "latest"
-  ],
-  id: 1,
-  jsonrpc: "2.0"
+  jsonrpc: "2.0",
+  method: "eth_getTransactionByBlockHashAndIndex",
+  params: ["0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b", "0x0"],
+  id: 1
 };
 
 fetch(url, {
@@ -108,10 +99,10 @@ func main() {
 	url := "${DRPC_ENDPOINT_URL}"
 
 	data := map[string]interface{}{
-		"method":  "eth_getStorageAt",
-		"params":  []interface{}{"0xE592427A0AEce92De3Edee1F18E0157C05861564", "0x0", "latest"},
-		"id":      1,
 		"jsonrpc": "2.0",
+		"method":  "eth_getTransactionByBlockHashAndIndex",
+		"params":  []interface{}{"0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b", "0x0"},
+		"id":      1,
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -142,14 +133,10 @@ import json
 url = '${DRPC_ENDPOINT_URL}'
 
 data = {
-    "method": "eth_getStorageAt",
-    "params": [
-        "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-        "0x0",
-        "latest"
-    ],
-    "id": 1,
-    "jsonrpc": "2.0"
+    "jsonrpc": "2.0",
+    "method": "eth_getTransactionByBlockHashAndIndex",
+    "params": ["0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b", "0x0"],
+    "id": 1
 }
 
 response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
@@ -168,14 +155,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let url = "${DRPC_ENDPOINT_URL}";
 
     let data = json!({
-        "method": "eth_getStorageAt",
-        "params": [
-            "0xE592427A0AEce92De3Edee1F18E0157C05861564",
-            "0x0",
-            "latest"
-        ],
-        "id": 1,
-        "jsonrpc": "2.0"
+        "jsonrpc": "2.0",
+        "method": "eth_getTransactionByBlockHashAndIndex",
+        "params": ["0x829df9bb801fc0494abf2f443423a49ffa32964554db71b098d332d87b70a48b", "0x0"],
+        "id": 1
     });
 
     let client = Client::new();
@@ -190,6 +173,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
+
 `,
   },
 ];

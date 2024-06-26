@@ -210,5 +210,5 @@ const USE_CASES = [
 const CONSTRAINTS = [
   "Requires node to be actively mining",
   "Accurate hashrate data depends on node's current state",
-  "Continuous connection needed for real-time hashrate monitoring",
+  "Continuous connection needed for real-time monitoring",
 ];

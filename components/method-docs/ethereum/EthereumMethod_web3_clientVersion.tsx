@@ -31,7 +31,7 @@ export function EthereumMethod_web3_clientVersion() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
   --data '{"jsonrpc":"2.0","method":"web3_clientVersion","params":[],"id":1}'

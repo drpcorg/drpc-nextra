@@ -31,11 +31,17 @@ export function EthereumMethod_net_listening() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl ${DRPC_ENDPOINT_URL} \\
-  -X POST \\
-  -H "Content-Type: application/json" \\
-  --data '{"jsonrpc":"2.0","method":"eth_sendRawTransaction","params":["Signed Transaction"],"id":1}'
-`,
+    code: () => `curl --request POST \
+     --url ${DRPC_ENDPOINT_URL} \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "net_listening"
+}
+'`,
   },
   {
     language: "js",
@@ -43,8 +49,8 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 
 const data = {
   jsonrpc: "2.0",
-  method: "eth_sendRawTransaction",
-  params: ["Signed Transaction"],
+  method: "net_listening",
+  params: [],
   id: 1
 };
 
@@ -68,8 +74,8 @@ const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "eth_sendRawTransaction",
-  params: ["Signed Transaction"],
+  method: "net_listening",
+  params: [],
   id: 1
 };
 
@@ -101,8 +107,8 @@ func main() {
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  "eth_sendRawTransaction",
-		"params":  []interface{}{"Signed Transaction"},
+		"method":  "net_listening",
+		"params":  []interface{}{},
 		"id":      1,
 	}
 
@@ -135,8 +141,8 @@ url = '${DRPC_ENDPOINT_URL}'
 
 data = {
     "jsonrpc": "2.0",
-    "method": "eth_sendRawTransaction",
-    "params": ["Signed Transaction"],
+    "method": "net_listening",
+    "params": [],
     "id": 1
 }
 
@@ -157,8 +163,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data = json!({
         "jsonrpc": "2.0",
-        "method": "eth_sendRawTransaction",
-        "params": ["Signed Transaction"],
+        "method": "net_listening",
+        "params": [],
         "id": 1
     });
 

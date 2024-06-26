@@ -4,14 +4,14 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_get() {
+export function EthereumMethod_trace_replayBlockTransactionsvmTrace() {
   return (
     <EthereumMethod
-      method="trace_get"
+      method="trace_replayBlockTransactions#vmTrace"
       network="ethereum"
-      cu={20}
+      cu={300}
       description={
-        "Returns trace at given position."
+        "Replays all transactions in a block returning the requested traces for each transaction."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -22,7 +22,7 @@ export function EthereumMethod_trace_get() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the trace object."
+        "Array of block traces."
       }
     />
   );
@@ -34,7 +34,8 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     code: () => `curl ${DRPC_ENDPOINT_URL} \\
 -X POST \\
 -H "Content-Type: application/json" \\
--d '{"method":"trace_get","params":["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]],"id":1,"jsonrpc":"2.0"}'
+-d '{"method":"trace_replayBlockTransactions","params":["0x2ed119",["trace"]],"id":1,"jsonrpc":"2.0"}'
+
 `,
   },
   {
@@ -43,8 +44,8 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_replayBlockTransactions",
+  params: ["0x5BAD55FB00000000000000000000000000000000000000000000000000000000", ["vmTrace"]],
   id: 1
 };
 
@@ -68,8 +69,8 @@ const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_replayBlockTransactions",
+  params: ["0x5BAD55FB00000000000000000000000000000000000000000000000000000000", ["vmTrace"]],
   id: 1
 };
 
@@ -101,8 +102,8 @@ func main() {
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  "trace_get",
-		"params":  []interface{}{"0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", []interface{}{"0x0"}},
+		"method":  "trace_replayBlockTransactions",
+		"params":  []interface{}{"0x5BAD55FB00000000000000000000000000000000000000000000000000000000", []string{"vmTrace"}},
 		"id":      1,
 	}
 
@@ -135,8 +136,8 @@ url = '${DRPC_ENDPOINT_URL}'
 
 data = {
     "jsonrpc": "2.0",
-    "method": "trace_get",
-    "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+    "method": "trace_replayBlockTransactions",
+    "params": ["0x5BAD55FB00000000000000000000000000000000000000000000000000000000", ["vmTrace"]],
     "id": 1
 }
 
@@ -157,8 +158,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data = json!({
         "jsonrpc": "2.0",
-        "method": "trace_get",
-        "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+        "method": "trace_replayBlockTransactions",
+        "params": ["0x5BAD55FB00000000000000000000000000000000000000000000000000000000", ["vmTrace"]],
         "id": 1
     });
 
@@ -179,43 +180,95 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ];
 
 const RESPONSE_JSON = `{
-  "id": 1,
   "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x1c39ba39e4735cb65978d4db400ddd70a72dc750",
-      "gas": "0x13e99",
-      "input": "0x16c72721",
-      "to": "0x2bd2326c993dfaef84f696526064ff22eba5b362",
-      "value": "0x0"
-    },
-    "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
-    "blockNumber": 3068185,
-    "result": {
-      "gasUsed": "0x183",
-      "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
-    "transactionPosition": 2,
-    "type": "call"
-  }
-}`;
+  "id": 1,
+  "result": [
+    {
+      "output": "0x",
+      "stateDiff": null,
+      "trace": [
+        {
+          "action": {
+            "callType": "call",
+            "from": "0x5cb2045c43d14a5f5e5f1ea60c5b02e0a93032cf",
+            "gas": "0x76c0",
+            "input": "0x",
+            "to": "0x1E0447b19BB6EcFdAe1e4AE1694b0C3659614e4e",
+            "value": "0x186a0"
+          },
+          "blockHash": "0x5bad55fbd7e0f20eac95f45f55f997216de10aaf176314c236b0c3c93c5d1f17",
+          "blockNumber": 1234567,
+          "result": {
+            "gasUsed": "0x5208",
+            "output": "0x"
+          },
+          "subtraces": 0,
+          "traceAddress": [],
+          "transactionHash": "0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",
+          "transactionPosition": 0,
+          "type": "call"
+        }
+        // Additional trace objects can be included here
+      ],
+      "vmTrace": {
+        "code": "0x...",
+        "ops": [
+          {
+            "cost": 3,
+            "ex": {
+              "mem": null,
+              "push": ["0x60"],
+              "store": null,
+              "used": 3
+            },
+            "pc": 0,
+            "sub": null
+          }
+        ]
+      }
+    }
+  ]
+}
+`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockHash",
+    paramName: "toBlock",
     type: "string",
-    paramDescription: 'The transaction hash.',
+    paramDescription: "The block number or block hash to search up to",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "the blockchain's most recent block",
+      },
+      {
+        value: "safe",
+        description: "a block validated by the beacon chain",
+      },
+      {
+        value: "finalized",
+        description: "a block confirmed by over two-thirds of validators",
+      },
+      {
+        value: "earliest",
+        description: "the first or genesis block",
+      },
+      {
+        value: "pending",
+        description: "transactions broadcasted but not yet included in a block",
+      },
+    ],
   },
   {
-    paramName: "index",
-    type: "array",
-    paramDescription: 'Index position of traces to get, in hex'
+    paramName: "traceType",
+    type: "string",
+    paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".'
+  },
+  {
+    paramName: "vmTrace",
+    type: "string",
+    paramDescription: 'To get a full trace of the virtual machine\'s state during the execution of the given of given transaction, including for any subcalls.'
   },
 ];
 
@@ -336,18 +389,91 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         paramDescription:
           "The type of trace.",
       },
+      {
+        paramName: "vmTrace",
+        type: "string",
+        paramDescription:
+          "The virtual machine trace.",
+        childrenParamsType: "object",
+        childrenParams: [
+            {
+              paramName: "code",
+              type: "string",
+              paramDescription:
+                "The EVM code executed.",
+            },
+            {
+              paramName: "ops",
+              type: "array",
+              paramDescription: "An array of operation objects representing the steps executed by the EVM.",
+              childrenParamsType: "object",
+              childrenParams: [
+                  {
+                    paramName: "cost",
+                    type: "number",
+                    paramDescription:
+                      "The gas cost of the operation.",
+                  },
+                  {
+                    paramName: "ex",
+                    type: "object",
+                    childrenParamsType: "object",
+                    childrenParams: [
+                        {
+                          paramName: "mem",
+                          type: "object",
+                          paramDescription:
+                            "The memory state.",
+                        },
+                        {
+                          paramName: "push",
+                          type: "array",
+                          paramDescription:
+                            "The items pushed onto the stack.",
+                        },
+                        {
+                          paramName: "store",
+                          type: "object",
+                          paramDescription:
+                            "The storage state.",
+                        },
+                        {
+                          paramName: "used",
+                          type: "number",
+                          paramDescription:
+                            "The gas used up to this point.",
+                        },
+                    ],
+                  },
+                  {
+                    paramName: "pc",
+                    type: "number",
+                    paramDescription:
+                      "The program counter.",
+                  },
+                  {
+                    paramName: "sub",
+                    type: "object",
+                    paramDescription:
+                      "Sub-trace if the operation calls another contract.",
+                  },
+              ],
+            },
+
+        ],
+      },
     ],
   },
 ];
 
 const USE_CASES = [
-  "Analyze internal transactions for a specific transaction",
-  "Trace smart contract execution paths and outcomes",
-  "Debug complex transaction behavior within Ethereum blockchain",
+  "Analyze EVM execution for a block of transactions",
+  "Debug contract interactions within an entire block",
+  "Inspect gas usage and execution paths in block",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and trace index",
-  "Node must support the trace_get method",
-  "Trace data accuracy depends on node synchronization",
+  "High computational resources for detailed VM tracing",
+  "Requires access to a fully synchronized node",
+  "Large response size for blocks with many transactions",
 ];

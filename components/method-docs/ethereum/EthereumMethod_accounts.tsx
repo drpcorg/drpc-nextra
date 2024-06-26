@@ -9,7 +9,7 @@ export function EthereumMethod_accounts() {
     <EthereumMethod
       method="eth_accounts"
       network="ethereum"
-      cu={20}
+      cu={0}
       description={"Returns a list of addresses owned by client."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -20,7 +20,7 @@ export function EthereumMethod_accounts() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns array of log objects, or an empty array if nothing has changed since last poll."
+        ""
       }
     />
   );

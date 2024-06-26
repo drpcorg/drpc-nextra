@@ -29,9 +29,9 @@ export function EthereumMethod_mining() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl ${DRPC_ENDPOINT_URL} \
-  -X POST \
-  -H "Content-Type: application/json" \
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
+  -X POST \\
+  -H "Content-Type: application/json" \\
   --data '{"jsonrpc":"2.0","method":"eth_mining","params":[],"id":67}'
 `,
   },

@@ -4,14 +4,14 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_get() {
+export function EthereumMethod_trace_filter() {
   return (
     <EthereumMethod
-      method="trace_get"
+      method="trace_filter"
       network="ethereum"
-      cu={20}
+      cu={75}
       description={
-        "Returns trace at given position."
+        "Returns traces matching given filter."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -22,7 +22,7 @@ export function EthereumMethod_trace_get() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the trace object."
+        "The block traces, which have the following fields (please note that all return types are hexadecimal representations of their data type unless otherwise stated):"
       }
     />
   );
@@ -32,10 +32,9 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `curl ${DRPC_ENDPOINT_URL} \\
--X POST \\
--H "Content-Type: application/json" \\
--d '{"method":"trace_get","params":["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]],"id":1,"jsonrpc":"2.0"}'
-`,
+  -X POST \\
+  -H "Content-Type: application/json" \\
+  --data '{"method":"trace_filter","params":[{"fromBlock":"0xccb943","toBlock":"0xccb943","fromAddress":["0xEdC763b3e418cD14767b3Be02b667619a6374076"]}],"id":1,"jsonrpc":"2.0"}'`,
   },
   {
     language: "js",
@@ -43,8 +42,12 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_filter",
+  params: [{
+    fromBlock: "0xccb943",
+    toBlock: "0xccb943",
+    fromAddress: ["0xEdC763b3e418cD14767b3Be02b667619a6374076"]
+  }],
   id: 1
 };
 
@@ -68,8 +71,12 @@ const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_filter",
+  params: [{
+    fromBlock: "0xccb943",
+    toBlock: "0xccb943",
+    fromAddress: ["0xEdC763b3e418cD14767b3Be02b667619a6374076"]
+  }],
   id: 1
 };
 
@@ -101,9 +108,15 @@ func main() {
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  "trace_get",
-		"params":  []interface{}{"0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", []interface{}{"0x0"}},
-		"id":      1,
+		"method":  "trace_filter",
+		"params": []interface{}{
+			map[string]interface{}{
+				"fromBlock":   "0xccb943",
+				"toBlock":     "0xccb943",
+				"fromAddress": []string{"0xEdC763b3e418cD14767b3Be02b667619a6374076"},
+			},
+		},
+		"id": 1,
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -135,8 +148,12 @@ url = '${DRPC_ENDPOINT_URL}'
 
 data = {
     "jsonrpc": "2.0",
-    "method": "trace_get",
-    "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+    "method": "trace_filter",
+    "params": [{
+        "fromBlock": "0xccb943",
+        "toBlock": "0xccb943",
+        "fromAddress": ["0xEdC763b3e418cD14767b3Be02b667619a6374076"]
+    }],
     "id": 1
 }
 
@@ -157,8 +174,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data = json!({
         "jsonrpc": "2.0",
-        "method": "trace_get",
-        "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+        "method": "trace_filter",
+        "params": [{
+            "fromBlock": "0xccb943",
+            "toBlock": "0xccb943",
+            "fromAddress": ["0xEdC763b3e418cD14767b3Be02b667619a6374076"]
+        }],
         "id": 1
     });
 
@@ -179,43 +200,63 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ];
 
 const RESPONSE_JSON = `{
-  "id": 1,
   "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x1c39ba39e4735cb65978d4db400ddd70a72dc750",
-      "gas": "0x13e99",
-      "input": "0x16c72721",
-      "to": "0x2bd2326c993dfaef84f696526064ff22eba5b362",
-      "value": "0x0"
-    },
-    "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
-    "blockNumber": 3068185,
-    "result": {
-      "gasUsed": "0x183",
-      "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
-    "transactionPosition": 2,
-    "type": "call"
-  }
+  "id": 1,
+  "result": [
+    {
+      "action": {
+        "callType": "call",
+        "from": "0xEdC763b3e418cD14767b3Be02b667619a6374076",
+        "gas": "0x15f90",
+        "input": "0x",
+        "to": "0x8d12a197cb00d4747a1fe03395095ce2a5cc6819",
+        "value": "0x0"
+      },
+      "blockHash": "0x5c0b4b4d3a64311a802cd51e0dd0f656b5d4016a2cf2f3d780e8b1cfe1b6ac2e",
+      "blockNumber": 13498499,
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
+      "transactionPosition": 1,
+      "type": "call"
+    }
+  ]
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockHash",
+    paramName: "fromBlock",
     type: "string",
-    paramDescription: 'The transaction hash.',
+    paramDescription: 'The Quantity or Tag from this block',
   },
   {
-    paramName: "index",
-    type: "array",
-    paramDescription: 'Index position of traces to get, in hex'
+    paramName: "toBlock",
+    type: "string",
+    paramDescription: 'The Quantity or Tag to this block'
+  },
+  {
+    paramName: "fromAddress",
+    type: "string",
+    paramDescription: 'An array addresses of the senders'
+  },
+  {
+    paramName: "toAddress",
+    type: "string",
+    paramDescription: 'An array addresses of the receivers'
+  },
+  {
+    paramName: "after",
+    type: "string",
+    paramDescription: 'The offset trace number'
+  },
+  {
+    paramName: "count",
+    type: "string",
+    paramDescription: 'The Quantity or Tag to this block'
   },
 ];
 
@@ -341,13 +382,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Analyze internal transactions for a specific transaction",
-  "Trace smart contract execution paths and outcomes",
-  "Debug complex transaction behavior within Ethereum blockchain",
+  "Filter traces for transactions from specific addresses",
+  "Analyze smart contract interactions in a block range",
+  "Debug specific account activities within block intervals",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and trace index",
-  "Node must support the trace_get method",
-  "Trace data accuracy depends on node synchronization",
+  "Requires valid block range and address parameters",
+  "Node must support the trace_filter method",
+  "Accurate results depend on node's data completeness",
 ];

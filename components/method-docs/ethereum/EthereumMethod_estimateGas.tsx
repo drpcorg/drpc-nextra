@@ -325,7 +325,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
     paramName: "result",
     type: "string",
     paramDescription:
-        "Array of log objects, or an empty array if nothing has changed since last poll.",
+        "Returns the amount of gas used.",
   },
 ];
 

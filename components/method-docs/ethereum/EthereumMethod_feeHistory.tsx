@@ -17,10 +17,10 @@ export function EthereumMethod_feeHistory() {
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="none"
+      requestParamsType="array"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="object"
+      responseParamsType="array"
       responseParamsDescription={
         ""
       }
@@ -272,15 +272,15 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = [
     {
-    paramName: " Block count or range",
+    paramName: "blockCount",
     type: "integer",
   },
    {
-    paramName: "Block number",
+    paramName: "newestBlock",
     type: "string",
   },
   {
-    paramName: "Reward percentiles to sample from each block",
+    paramName: "rewardPercentiles",
     type: "array_of_integers",
     paramDescription: "optional",
   },
@@ -337,7 +337,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Network-specific method",
-  "Requires JSON-RPC protocol",
-  "Limited to recent blocks",
+  "Requires access to historical block data",
+  "High computational load for large data ranges",
+  "Accuracy depends on node synchronization state",
 ];

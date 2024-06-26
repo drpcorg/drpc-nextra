@@ -4,14 +4,14 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockByNumber() {
+export function EthereumMethod_getBlockByNumberfull() {
   return (
     <EthereumMethod
-      method="getBlockByNumber"
+      method="getBlockByNumberfull"
       network="ethereum"
-      cu={24}
+      cu={60}
       description={
-        "Returns information of the block matching the given block number."
+        "Returns an array of all logs matching a given filter object"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -22,7 +22,7 @@ export function EthereumMethod_getBlockByNumber() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A block object, or null when no block was found. The block object contains the following fields:"
+        "Returns array of log objects, or an empty array if nothing has changed since last poll."
       }
     />
   );
@@ -32,18 +32,18 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `curl --request POST \\
-    --url ${DRPC_ENDPOINT_URL} \\
-    --header 'accept: application/json' \\
-    --header 'content-type: application/json' \\
-    --data '
+     --url ${DRPC_ENDPOINT_URL} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
+     --data '
 {
- "id": 1,
- "jsonrpc": "2.0",
- "method": "eth_getBlockByNumber",
- "params": [
-   "finalized",
-   "finalized"
- ]
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_getBlockByNumber",
+  "params": [
+    true,
+    true
+  ]
 }
 '`,
   },
@@ -59,7 +59,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['finalized', 'finalized']
+    params: ['true', 'true']
 };
 
 fetch(url, {
@@ -84,7 +84,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['finalized', 'finalized']
+    params: ['true', 'true']
 };
 
 fetch(url, {
@@ -119,7 +119,7 @@ func main() {
         "id":      1,
         "jsonrpc": "2.0",
         "method":  "eth_getBlockByNumber",
-        "params":  []interface{}{"finalized", "finalized"},
+        "params":  []interface{}{"true", "true"},
     }
 
     jsonData, err := json.Marshal(data)
@@ -166,7 +166,7 @@ data = {
     "id": 1,
     "jsonrpc": "2.0",
     "method": "eth_getBlockByNumber",
-    "params": ["finalized", "finalized"]
+    "params": ["true", "true"]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -188,7 +188,7 @@ async fn main() -> Result<(), reqwest::Error> {
         "id": 1,
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
-        "params": ["finalized", "finalized"]
+        "params": ["true", "true"]
     });
 
     let response = client.post(url)
@@ -209,30 +209,48 @@ async fn main() -> Result<(), reqwest::Error> {
 
 const RESPONSE_JSON = `{
   "jsonrpc": "2.0",
-  "id": 0,
+  "id": 1,
   "result": {
-    "number": "0x1b4",
     "difficulty": "0x4ea3f27bc",
-    "extraData": "0x476574682f4c5649562f76312e302e302f6c696e75782f676f312e342e32",
-    "gasLimit": "0x1388",
-    "gasUsed": "0x0",
-    "hash": "0xdc0818cf78f21a8e70579cb46a43643f78291264dda342ae31049421c82d21ae",
-    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-    "miner": "0xbb7b8287f3f0a933474a79eae42cbca977791171",
-    "mixHash": "0x4fffe9ae21f1c9e15207b1f472d5bbdd68c9595d461666602f2be20daf5e7843",
-    "nonce": "0x689056015818adbe",
-    "parentHash": "0xe99e022112df268087ea7eafaf4790497fd21dbeeb6bd7a1721df161a6657a54",
-    "receiptsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
-    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347",
+    "extraData": "0x65746865726d696e652d6575312d32",
+    "gasLimit": "0x47e7c4",
+    "gasUsed": "0x6384",
+    "hash": "0x5bad55fbd7e0f20eac95f45f55f997216de10aaf176314c236b0c3c93c5d1f17",
+    "logsBloom": "0x0",
+    "miner": "0x52bc44d5378309ee2abf1539bf71de1b7d7be3b5",
+    "mixHash": "0x75b1f48901cf1d37ad43c2b29eafeb1f3ae5cf5c5d55b1b3be6b2be4a25d6ec6",
+    "nonce": "0x539bd4979b50162d",
+    "number": "0x1b4",
+    "parentHash": "0x8e3d7ea52a14b9d773c37d67e2a4b8e6a12573c3d60a1cd1a58455d3008d1c9d",
+    "receiptsRoot": "0xbcdfc35b86bedf72e283106f1f9a03c8d99a6de2b1cba6b01ff3e78e924e05c8",
+    "sha3Uncles": "0x1dcc4de8dec75d7aab85b567b6ccd41ad0d4e8eeb004cfe8dec7d1f3469a7f5f",
     "size": "0x220",
-    "stateRoot": "0xddc8b0234c2e0cad087c8b389aa7ef01f7d79b2570bccb77ce48648aa61c904d",
+    "stateRoot": "0x7d00dcd0e0d14e6f7d9dc57116d0e5f76b0abdc716a1d7e6b4df87eae7795b7a",
     "timestamp": "0x55ba467c",
     "totalDifficulty": "0x78ed983323d",
-    "transactions": [],
+    "transactions": [
+      {
+        "blockHash": "0x5bad55fbd7e0f20eac95f45f55f997216de10aaf176314c236b0c3c93c5d1f17",
+        "blockNumber": "0x1b4",
+        "from": "0x5cb2045c43d14a5f5e5f1ea60c5b02e0a93032cf",
+        "gas": "0x7d3c",
+        "gasPrice": "0xba43b7400",
+        "hash": "0x1a85165ac88f73b7a290104f614cf08d8b4f3e193f41f209c3716d9c237139f5",
+        "input": "0x",
+        "nonce": "0x15",
+        "to": "0x3535353535353535353535353535353535353535",
+        "transactionIndex": "0x0",
+        "value": "0x1bc16d674ec80000",
+        "v": "0x1c",
+        "r": "0x5e1d3a76fbf824220e68236e2d51cb98f349a5a6e4f43e3f471f5d0421d4aee2",
+        "s": "0x5e1d3a76fbf824220e68236e2d51cb98f349a5a6e4f43e3f471f5d0421d4aee2"
+      }
+    ],
     "transactionsRoot": "0x56e81f171bcc55a6ff8345e692c0f86e5b48e01b996cadc001622fb5e363b421",
     "uncles": []
   }
-}`;
+}
+`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
@@ -399,6 +417,92 @@ const RESPONSE_PARAMS: ResponseParam[] = [
     paramDescription:
       "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
     type: "array",
+    childrenParamsType: "object",
+    childrenParams: [
+      {
+        paramName: "blockHash",
+        type: "string",
+        paramDescription:
+          "The number of the block where the given transaction was included.",
+      },
+      {
+        paramName: "blockNumber",
+        type: "string",
+        paramDescription:
+          "The block number where this log was in. null when its pending. null when its pending log.",
+      },
+      {
+        paramName: "transactionIndex",
+        type: "string",
+        paramDescription:
+          "Integer of the transactions index position log was created from. null when its pending log.",
+      },
+      {
+        paramName: "nonce",
+        type: "string",
+        paramDescription: "The number of transactions made by the sender prior to this one.",
+      },
+      {
+        paramName: "hash",
+        type: "string",
+        paramDescription:
+          "32 Bytes - hash of the transaction.",
+      },
+      {
+        paramName: "from",
+        type: "string",
+        paramDescription:
+          "20 Bytes - address of the sender.",
+      },
+      {
+        paramName: "gas",
+        type: "string",
+        paramDescription:
+          "Gas provided by the sender.",
+      },
+      {
+        paramName: "gasPrice",
+        type: "string",
+        paramDescription:
+          "Gas price provided by the sender in Wei.",
+      },
+      {
+        paramName: "input",
+        type: "string",
+        paramDescription:
+          "The data send along with the transaction.",
+      },
+      {
+        paramName: "r",
+        type: "string",
+        paramDescription:
+          "ECDSA signature r.",
+      },
+      {
+        paramName: "s",
+        type: "string",
+        paramDescription:
+          "ECDSA signature r.",
+      },
+      {
+        paramName: "to",
+        type: "string",
+        paramDescription:
+          "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+      },
+      {
+        paramName: "v",
+        type: "string",
+        paramDescription:
+          "ECDSA recovery id.",
+      },
+      {
+        paramName: "value",
+        type: "string",
+        paramDescription:
+          "Value transferred in Wei.",
+      },
+    ],
   },
 
   {
@@ -415,13 +519,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Verify transactions in a specific block",
-  "Compare block details for node sync",
-  "Monitor contract events for off-chain triggers",
+  "Retrieve full block details for forensic analysis",
+  "Get all transactions within a specific block",
+  "Monitor blockchain activity for a specific block",
 ];
 
 const CONSTRAINTS = [
-  "Response delays due to network latency",
-  "Slight data discrepancies until finality",
-  "Strain on resources with frequent requests",
+  "Requires accurate block number or tag",
+  "Full transaction data increases response size",
+  "Node must be fully synchronized with network",
 ];

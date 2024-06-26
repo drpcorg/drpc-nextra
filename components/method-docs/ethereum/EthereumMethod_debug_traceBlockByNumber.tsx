@@ -4,14 +4,14 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_get() {
+export function EthereumMethod_debug_traceBlockByNumber() {
   return (
     <EthereumMethod
-      method="trace_get"
+      method="debug_traceBlockByNumber"
       network="ethereum"
-      cu={20}
+      cu={90}
       description={
-        "Returns trace at given position."
+        "Replays the block that is already present in the database."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -22,7 +22,7 @@ export function EthereumMethod_trace_get() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the trace object."
+        "Array of block traces."
       }
     />
   );
@@ -34,7 +34,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     code: () => `curl ${DRPC_ENDPOINT_URL} \\
 -X POST \\
 -H "Content-Type: application/json" \\
--d '{"method":"trace_get","params":["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]],"id":1,"jsonrpc":"2.0"}'
+--data '{"method":"debug_traceBlockByNumber","params":["0xccde12", {"tracer": "callTracer"}],"id":1,"jsonrpc":"2.0"}'
 `,
   },
   {
@@ -43,8 +43,8 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "debug_traceBlockByNumber",
+  params: ["0xccde12", { "tracer": "callTracer" }],
   id: 1
 };
 
@@ -68,8 +68,8 @@ const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "debug_traceBlockByNumber",
+  params: ["0xccde12", { "tracer": "callTracer" }],
   id: 1
 };
 
@@ -101,8 +101,8 @@ func main() {
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  "trace_get",
-		"params":  []interface{}{"0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", []interface{}{"0x0"}},
+		"method":  "debug_traceBlockByNumber",
+		"params":  []interface{}{"0xccde12", map[string]interface{}{"tracer": "callTracer"}},
 		"id":      1,
 	}
 
@@ -135,8 +135,8 @@ url = '${DRPC_ENDPOINT_URL}'
 
 data = {
     "jsonrpc": "2.0",
-    "method": "trace_get",
-    "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+    "method": "debug_traceBlockByNumber",
+    "params": ["0xccde12", { "tracer": "callTracer" }],
     "id": 1
 }
 
@@ -157,8 +157,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data = json!({
         "jsonrpc": "2.0",
-        "method": "trace_get",
-        "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+        "method": "debug_traceBlockByNumber",
+        "params": ["0xccde12", { "tracer": "callTracer" }],
         "id": 1
     });
 
@@ -179,43 +179,50 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ];
 
 const RESPONSE_JSON = `{
-  "id": 1,
   "jsonrpc": "2.0",
+  "id": 1,
   "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x1c39ba39e4735cb65978d4db400ddd70a72dc750",
-      "gas": "0x13e99",
-      "input": "0x16c72721",
-      "to": "0x2bd2326c993dfaef84f696526064ff22eba5b362",
-      "value": "0x0"
-    },
-    "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
-    "blockNumber": 3068185,
-    "result": {
-      "gasUsed": "0x183",
-      "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
-    },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
-    "transactionPosition": 2,
-    "type": "call"
+    "type": "CALL",
+    "from": "0x0000000000000000000000000000000000000000",
+    "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+    "value": "0x0",
+    "gas": "0x7fffffffffffadf7",
+    "gasUsed": "0x0",
+    "input": "0x",
+    "output": "0x"
   }
-}`;
+}
+`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockHash",
+    paramName: "blockNumber",
     type: "string",
-    paramDescription: 'The transaction hash.',
+    paramDescription: 'This describes the block number to fetch the transaction by.',
   },
   {
-    paramName: "index",
-    type: "array",
-    paramDescription: 'Index position of traces to get, in hex'
+    paramName: "tracer",
+    type: "object",
+    paramDescription: 'Currently supports callTracer and prestateTracer',
+    childrenParamsType: "object",
+    childrenParams: [
+        {
+          paramName: "tracer",
+          type: "string",
+          paramDescription: 'Default: callTracer.'
+        },
+        {
+          paramName: "tracerConfig",
+          type: "object",
+          childrenParamsType: "boolean",
+          childrenParams: [
+              {
+                paramName: "onlyTopCall",
+                type: "boolean",
+              },
+          ],
+        },
+   ],
   },
 ];
 
@@ -230,124 +237,119 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   },
   {
     paramName: "result",
-    type: "object",
+    type: "array_of_objects",
+    paramDescription: "Is different for callTracer and prestateTracer",
     childrenParamsType: "object",
     childrenParams: [
       {
-        paramName: "action",
+        paramName: "callTracer",
         type: "object",
         childrenParamsType: "object",
         childrenParams: [
             {
-              paramName: "callType",
-              type: "string",
-              paramDescription:
-                "The type of call.",
-            },
-            {
               paramName: "from",
               type: "string",
               paramDescription:
-                "The address of the sender.",
+                  "The address of the sender.",
             },
             {
               paramName: "to",
               type: "string",
               paramDescription:
-                "The address of the receiver.",
+                  "The address of the receiver.",
             },
             {
               paramName: "value",
               type: "string",
               paramDescription:
-                "The value transferred in wei.",
+                  "The value transferred in wei.",
             },
             {
               paramName: "gas",
               type: "string",
               paramDescription:
-                "The gas provided for the call.",
+                  "The gas provided for the call.",
             },
             {
               paramName: "input",
               type: "string",
               paramDescription:
-                "The data sent along with the call.",
+                  "The data sent along with the call.",
             },
-        ]
-      },
+
+            {
+              paramName: "gasUsed",
+              type: "string",
+              paramDescription:
+                  "The amount of gas used by the trace.",
+            },
+            {
+              paramName: "output",
+              type: "string",
+              paramDescription:
+                  "The output of the call.",
+            },
+            {
+              paramName: "error",
+              type: "string",
+              paramDescription:
+                  "Error, if any",
+            },
+            {
+              paramName: "revertReason",
+              type: "string",
+              paramDescription:
+                  "solidity revert reason, if any",
+            },
+            {
+              paramName: "calls",
+              type: "array",
+              paramDescription:
+                  "list of sub-calls",
+              },
+            ],
+          },
       {
-        paramName: "blockHash",
-        type: "string",
-        paramDescription:
-          "The hash of the block where the trace occurred.",
-      },
-      {
-        paramName: "blockNumber",
-        type: "string",
-        paramDescription:
-          "The number of the block where the trace occurred.",
-      },
-      {
-        paramName: "result",
-        type: "string",
+        paramName: "prestateTracer",
+        type: "object",
         childrenParamsType: "object",
         childrenParams: [
            {
-            paramName: "gasUsed",
-            type: "string",
-            paramDescription:
-              "The amount of gas used by the trace.",
-          },
-          {
-            paramName: "output",
-            type: "string",
-            paramDescription:
-              "The output of the call.",
-          },
+              paramName: "balance",
+              type: "string",
+              paramDescription:
+                  "Balance in wei",
+            },
+            {
+              paramName: "nonce",
+              type: "uint64",
+            },
+            {
+              paramName: "code",
+              type: "string",
+              paramDescription:
+                  "Hex-encoded bytecode",
+              },
+            {
+              paramName: "storage",
+              type: "map[string]string",
+              paramDescription:
+                  "Storage slots of the contract",
+              },
         ]
+      }
+        ],
       },
-      {
-        paramName: "subtraces",
-        type: "integer",
-        paramDescription: "The number of subtraces created by this trace.",
-      },
-      {
-        paramName: "traceAddress",
-        type: "array_of_strings",
-        paramDescription:
-          "The trace address indicating the position of this trace in the call stack.",
-      },
-      {
-        paramName: "transactionHash",
-        type: "string",
-        paramDescription:
-          "The hash of the transaction to which this trace belongs.",
-      },
-      {
-        paramName: "transactionPosition",
-        type: "string",
-        paramDescription:
-          "The position of the transaction in the block.",
-      },
-      {
-        paramName: "type",
-        type: "string",
-        paramDescription:
-          "The type of trace.",
-      },
-    ],
-  },
 ];
 
 const USE_CASES = [
-  "Analyze internal transactions for a specific transaction",
-  "Trace smart contract execution paths and outcomes",
-  "Debug complex transaction behavior within Ethereum blockchain",
+  "Analyze block's internal transactions for debugging purposes",
+  "Trace smart contract interactions within a specific block",
+  "Investigate gas usage for all transactions in block",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and trace index",
-  "Node must support the trace_get method",
-  "Trace data accuracy depends on node synchronization",
+  "Requires valid block number as input parameter",
+  "Node must support the debug_traceBlockByNumber method",
+  "High computational cost for tracing complex blocks",
 ];

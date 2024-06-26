@@ -9,7 +9,7 @@ export function EthereumMethod_getBalance() {
     <EthereumMethod
       method="eth_getBalance"
       network="ethereum"
-      cu={20}
+      cu={11}
       description={"Returns the balance of the account of a given address."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -26,10 +26,10 @@ export function EthereumMethod_getBalance() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \
-    --url ${DRPC_ENDPOINT_URL} \
-    --header 'accept: application/json' \
-    --header 'content-type: application/json' \
+    code: () => `curl --request POST \\
+    --url ${DRPC_ENDPOINT_URL} \\
+    --header 'accept: application/json' \\
+    --header 'content-type: application/json' \\
     --data '
 {
  "id": 1,
@@ -231,8 +231,30 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized (safe and finalized tags are only supported on Ethereum, Gnosis, Arbitrum, Arbitrum Nova and Avalanche C-chain), see the default block parameter description in the official Ethereum documentation",
+    paramDescription: "The block number or block hash to search up to",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "the blockchain's most recent block",
+      },
+      {
+        value: "safe",
+        description: "a block validated by the beacon chain",
+      },
+      {
+        value: "finalized",
+        description: "a block confirmed by over two-thirds of validators",
+      },
+      {
+        value: "earliest",
+        description: "the first or genesis block",
+      },
+      {
+        value: "pending",
+        description: "transactions broadcasted but not yet included in a block",
+      },
+    ],
   },
 ];
 
@@ -254,13 +276,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Wallet Balance Checking: Retrieve current ETH balance",
-  "Account Monitoring: Track balance changes over time",
-  "Smart Contract Auditing: Verify contract account funds",
+  "Check account balance before sending a transaction",
+  "Verify wallet balance for automated payments processing",
+  "Monitor account balance changes for security alerts",
 ];
 
 const CONSTRAINTS = [
-  "Network Congestion: Slower response times",
-  "Data Staleness: Potentially outdated balance",
-  "Resource Intensive: High-frequency requests limited",
+  "Requires a valid Ethereum account address",
+  "Node must be synchronized with the latest state",
+  "Network latency may delay balance retrieval",
 ];

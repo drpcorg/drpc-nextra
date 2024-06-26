@@ -31,7 +31,7 @@ export function EthereumMethod_getTransactionByHash() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl https://docs-demo.quiknode.pro/ \\
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
   -X POST \\
   -H "Content-Type: application/json" \\
   --data '{"method":"eth_getTransactionByHash","params":["0xb1fac2cb5074a4eda8296faebe3b5a3c10b48947dd9a738b2fdf859be0e1fbaf"],"id":1,"jsonrpc":"2.0"}'
@@ -221,8 +221,6 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   {
     paramName: "result",
     type: "object",
-    paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -313,13 +311,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve transaction details using transaction hash.",
-  "Verify transaction status and details by hash.",
-  "Audit transaction data for specific hash.",
+  "Retrieve transaction details using transaction hash",
+  "Verify transaction status and details by hash",
+  "Audit transaction data for specific hash",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash input.",
-  "Node must be synchronized with blockchain.",
-  "Depends on latest blockchain data availability.",
+  "Requires valid transaction hash input",
+  "Node must be synchronized with blockchain",
+  "Depends on latest blockchain data availability",
 ];

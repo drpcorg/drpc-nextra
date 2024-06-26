@@ -32,7 +32,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `curl --request POST \\
-     --url https://eth-mainnet.g.alchemy.com/v2/docs-demo \\
+     --url ${DRPC_ENDPOINT_URL} \\
      --header 'accept: application/json' \\
      --header 'content-type: application/json' \\
      --data '

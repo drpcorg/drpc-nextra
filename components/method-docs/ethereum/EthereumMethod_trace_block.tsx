@@ -4,25 +4,25 @@ import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
 import { CodeSnippetObject } from "../../EthereumMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_get() {
+export function EthereumMethod_trace_block() {
   return (
     <EthereumMethod
-      method="trace_get"
+      method="trace_block"
       network="ethereum"
-      cu={20}
+      cu={90}
       description={
-        "Returns trace at given position."
+        "Returns traces created at given block."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array"
+      requestParamsType="array_of_strings"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the trace object."
+        "Returns the array of Block traces"
       }
     />
   );
@@ -31,11 +31,20 @@ export function EthereumMethod_trace_get() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl ${DRPC_ENDPOINT_URL} \\
--X POST \\
--H "Content-Type: application/json" \\
--d '{"method":"trace_get","params":["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",["0x0"]],"id":1,"jsonrpc":"2.0"}'
-`,
+    code: () => `curl --request POST \\
+     --url ${DRPC_ENDPOINT_URL} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "trace_block",
+  "params": [
+    "latest"
+  ]
+}
+'`,
   },
   {
     language: "js",
@@ -43,21 +52,23 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_block",
+  params: ["latest"],
   id: 1
 };
 
 fetch(url, {
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
+    'accept': 'application/json',
+    'content-type': 'application/json'
   },
   body: JSON.stringify(data)
 })
   .then(response => response.json())
   .then(res => console.log(res))
   .catch(error => console.error('Error:', error));
+
 `,
   },
   {
@@ -68,15 +79,16 @@ const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_get",
-  params: ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+  method: "trace_block",
+  params: ["latest"],
   id: 1
 };
 
 fetch(url, {
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
+    'accept': 'application/json',
+    'content-type': 'application/json'
   },
   body: JSON.stringify(data)
 })
@@ -101,8 +113,8 @@ func main() {
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
-		"method":  "trace_get",
-		"params":  []interface{}{"0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", []interface{}{"0x0"}},
+		"method":  "trace_block",
+		"params":  []interface{}{"latest"},
 		"id":      1,
 	}
 
@@ -135,12 +147,12 @@ url = '${DRPC_ENDPOINT_URL}'
 
 data = {
     "jsonrpc": "2.0",
-    "method": "trace_get",
-    "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+    "method": "trace_block",
+    "params": ["latest"],
     "id": 1
 }
 
-response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
+response = requests.post(url, headers={'accept': 'application/json', 'content-type': 'application/json'}, data=json.dumps(data))
 res = response.json()
 
 print(res)
@@ -157,8 +169,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let data = json!({
         "jsonrpc": "2.0",
-        "method": "trace_get",
-        "params": ["0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3", ["0x0"]],
+        "method": "trace_block",
+        "params": ["latest"],
         "id": 1
     });
 
@@ -179,43 +191,77 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 ];
 
 const RESPONSE_JSON = `{
-  "id": 1,
   "jsonrpc": "2.0",
-  "result": {
-    "action": {
-      "callType": "call",
-      "from": "0x1c39ba39e4735cb65978d4db400ddd70a72dc750",
-      "gas": "0x13e99",
-      "input": "0x16c72721",
-      "to": "0x2bd2326c993dfaef84f696526064ff22eba5b362",
-      "value": "0x0"
+  "result": [
+    {
+      "action": {
+        "callType": "call",
+        "from": "0xaa7b131dc60b80d3cf5e59b5a21a666aa039c951",
+        "gas": "0x0",
+        "input": "0x",
+        "to": "0xd40aba8166a212d6892125f079c33e6f5ca19814",
+        "value": "0x4768d7effc3fbe"
+      },
+      "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
+      "blockNumber": 3068185,
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x07da28d752aba3b9dd7060005e554719c6205c8a3aea358599fc9b245c52f1f6",
+      "transactionPosition": 0,
+      "type": "call"
     },
-    "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
-    "blockNumber": 3068185,
-    "result": {
-      "gasUsed": "0x183",
-      "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
+    {
+      "action": {
+        "callType": "call",
+        "from": "0x4f11ba23bb526c0486d83c6a8f18f632f3fc172a",
+        "gas": "0x0",
+        "input": "0x",
+        "to": "0x7ed1e469fcb3ee19c0366d829e291451be638e59",
+        "value": "0x446cde325fbfbe"
+      },
+      "blockHash": "0x7eb25504e4c202cf3d62fd585d3e238f592c780cca82dacb2ed3cb5b38883add",
+      "blockNumber": 3068185,
+      "result": {
+        "gasUsed": "0x0",
+        "output": "0x"
+      },
+      "subtraces": 0,
+      "traceAddress": [],
+      "transactionHash": "0x056f11efb5da4ff7cf8523cfcef08393e5dd2ff3ab3223e4324426d285d7ae92",
+      "transactionPosition": 1,
+      "type": "call"
     },
-    "subtraces": 0,
-    "traceAddress": [
-      0
-    ],
-    "transactionHash": "0x17104ac9d3312d8c136b7f44d4b8b47852618065ebfa534bd2d3b5ef218ca1f3",
-    "transactionPosition": 2,
-    "type": "call"
-  }
+    {
+      "...": null
+    }
+  ],
+  "id": 0
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockHash",
-    type: "string",
-    paramDescription: 'The transaction hash.',
-  },
-  {
-    paramName: "index",
-    type: "array",
-    paramDescription: 'Index position of traces to get, in hex'
+    paramName: "blockNumber",
+    type: "array_of_strings",
+    paramDescription: "The block number or block hash to search up to",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "the blockchain's most recent block",
+      },
+      {
+        value: "earliest",
+        description: "the first or genesis block",
+      },
+      {
+        value: "pending",
+        description: "transactions broadcasted but not yet included in a block",
+      },
+    ],
   },
 ];
 
@@ -341,13 +387,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Analyze internal transactions for a specific transaction",
-  "Trace smart contract execution paths and outcomes",
-  "Debug complex transaction behavior within Ethereum blockchain",
+  "Analyze internal transactions for the latest block",
+  "Trace smart contract executions in the newest block",
+  "Investigate transaction behavior within the most recent block",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and trace index",
-  "Node must support the trace_get method",
-  "Trace data accuracy depends on node synchronization",
+  "Requires access to the latest block data",
+  "Node must support the trace_block method",
+  "AHigh computational cost for tracing recent blocks",
 ];

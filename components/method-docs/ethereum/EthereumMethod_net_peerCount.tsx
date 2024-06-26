@@ -179,7 +179,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 const RESPONSE_JSON = `{
   "jsonrpc": "2.0",
   "id": 67,
-  "result": "0x8"  // Example hex value representing 8 peers
+  "result": "0x8"  
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = null;

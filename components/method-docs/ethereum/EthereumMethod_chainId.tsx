@@ -9,7 +9,7 @@ export function EthereumMethod_chainId() {
     <EthereumMethod
       method="eth_chainId"
       network="ethereum"
-      cu={20}
+      cu={0}
       description={
         "Returns the current network/chain ID, used to sign replay-protected transaction introduced in EIP-155."
       }
@@ -22,7 +22,7 @@ export function EthereumMethod_chainId() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns array of log objects, or an empty array if nothing has changed since last poll."
+        "Returns integer of the current chain ID."
       }
     />
   );
@@ -214,13 +214,13 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "To identify the Ethereum network to which a node is connected",
-  "To ensure that transactions are not replayed across networks",
-  "To load or apply network-specific configurations or tools",
+  "Verify chain ID before signing new transactions",
+  "Ensure transactions are compatible with the head block",
+  "Identify the Ethereum chain for network-specific operations",
 ];
 
 const CONSTRAINTS = [
-  "A maximuim of 5,000 parameters in a single request",
-  "A maximum of 10,000 results can be returned by a single query",
-  "Query duration must not exceed 10 seconds",
+  "Chain ID must correspond to current head block",
+  "Client must handle missing chain ID with errors",
+  "Prefer eth_chainId over net_version for reliability",
 ];
