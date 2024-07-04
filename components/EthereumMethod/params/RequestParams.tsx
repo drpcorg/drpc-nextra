@@ -29,7 +29,13 @@ export function RequestParams({ requestParams, requestParamsType }: Props) {
   return (
     <Grid gutter={10}>
       <Grid.Col span={12}>
-        <Text uppercase color={"grayLike"} size="xs" fontWeight="medium">
+        <Text
+          uppercase
+          color={"grayLike"}
+          size="xs"
+          fontWeight="medium"
+          component="h2"
+        >
           Request params
         </Text>
       </Grid.Col>

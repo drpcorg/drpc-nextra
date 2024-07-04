@@ -1,0 +1,10 @@
+.invisible {
+  font-size: "36px";
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

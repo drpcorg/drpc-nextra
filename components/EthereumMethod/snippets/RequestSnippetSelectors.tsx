@@ -20,7 +20,13 @@ export function RequestSnippetSelectors({
   return (
     <Grid>
       <Grid.Col span={12}>
-        <Text uppercase size={"xs"} fontWeight="medium" color={"grayLike"}>
+        <Text
+          uppercase
+          size={"xs"}
+          fontWeight="medium"
+          color={"grayLike"}
+          component="h2"
+        >
           Language
         </Text>
       </Grid.Col>
@@ -40,7 +46,7 @@ export function RequestSnippetSelectors({
                 <IconLanguage language={snippetObj.language} />
               </span>
 
-              <Text size={"xs"} fontWeight="medium">
+              <Text size={"xs"} fontWeight="medium" component="h3">
                 {getLanguageName(snippetObj.language)}
               </Text>
             </button>

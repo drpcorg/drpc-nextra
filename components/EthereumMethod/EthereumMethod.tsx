@@ -11,6 +11,7 @@ import { GetStarted } from "./getStarted/GetStarted";
 import { RequestSnippetSelectors } from "./snippets/RequestSnippetSelectors";
 import { RequestSnippet } from "./snippets/RequestSnippet";
 import { RequestResponseJSON } from "./params/RequestResponseJSON";
+import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -62,78 +63,87 @@ export default function EthereumMethod({
   }, [codeSnippets, snippet]);
 
   return (
-    // Note: <main> already has pt 1rem, so we add 14px to match 30px from the design
-    <Grid className={inter.className} gutter={20} pt={14}>
-      <Grid.Col span={12} pt={0}>
-        <Group justify="start" mb={10}>
-          <Text fontWeight="semibold" size={"lg"}>
-            {method} - <Text capitalize>{network}</Text>{" "}
-            <Text opacity={0.5}>[Value: {cu}CU]</Text>
-          </Text>
-        </Group>
+    <>
+      <Head>
+        <title>{method} RPC Method | Ethereum</title>
+        <meta
+          name="description"
+          content={`Explore ${method} RPC Method use cases, constraints, and examples to get started.`}
+        ></meta>
+      </Head>
+      {/* Note: <main> already has pt 1rem, so we add 14px to match 30px from the design */}
+      <Grid className={inter.className} gutter={20} pt={14}>
+        <Grid.Col span={12} pt={0}>
+          <Group justify="start" mb={10}>
+            <Text fontWeight="semibold" size={"lg"}>
+              {method} - <Text capitalize>{network}</Text>{" "}
+              <Text opacity={0.5}>[Value: {cu}CU]</Text>
+            </Text>
+          </Group>
 
-        <Group justify="start">
-          <Text size="sm" color="gray">
-            {description}
-          </Text>
-        </Group>
-      </Grid.Col>
+          <Group justify="start">
+            <Text size="sm" color="gray">
+              {description}
+            </Text>
+          </Group>
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <Grid>
-          <Grid.Col
-            span={{
-              base: 12,
-              md: 6,
-            }}
-          >
-            <UseCases list={useCases} />
-          </Grid.Col>
-          <Grid.Col
-            span={{
-              base: 12,
-              md: 6,
-            }}
-          >
-            <Constraints list={constraints} />
-          </Grid.Col>
-        </Grid>
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <Grid>
+            <Grid.Col
+              span={{
+                base: 12,
+                md: 6,
+              }}
+            >
+              <UseCases list={useCases} />
+            </Grid.Col>
+            <Grid.Col
+              span={{
+                base: 12,
+                md: 6,
+              }}
+            >
+              <Constraints list={constraints} />
+            </Grid.Col>
+          </Grid>
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <GetStarted />
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <GetStarted />
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <RequestSnippetSelectors
-          snippets={codeSnippets || []}
-          snippet={snippet}
-          setSnippet={setSnippet}
-        />
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <RequestSnippetSelectors
+            snippets={codeSnippets || []}
+            snippet={snippet}
+            setSnippet={setSnippet}
+          />
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <RequestSnippet snippet={snippetCode} language={snippetLanguage} />
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <RequestSnippet snippet={snippetCode} language={snippetLanguage} />
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <RequestResponseJSON json={responseJSON} />
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <RequestResponseJSON json={responseJSON} />
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <RequestParams
-          requestParams={requestParams}
-          requestParamsType={requestParamsType}
-        />
-      </Grid.Col>
+        <Grid.Col span={12}>
+          <RequestParams
+            requestParams={requestParams}
+            requestParamsType={requestParamsType}
+          />
+        </Grid.Col>
 
-      <Grid.Col span={12}>
-        <ResponseParams
-          responseParams={responseParams}
-          responseParamsType={responseParamsType}
-          responseParamsDescription={responseParamsDescription}
-        />
-      </Grid.Col>
-    </Grid>
+        <Grid.Col span={12}>
+          <ResponseParams
+            responseParams={responseParams}
+            responseParamsType={responseParamsType}
+            responseParamsDescription={responseParamsDescription}
+          />
+        </Grid.Col>
+      </Grid>
+    </>
   );
 }

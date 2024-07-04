@@ -11,7 +11,7 @@ export function EthereumMethod_createAccessList() {
       network="ethereum"
       cu={30}
       description={
-        ". Returns list of addresses and storage keys that are read and written by the transaction (except the sender account and precompiles), plus the estimated gas consumed when the access list is added."
+        "Returns list of addresses and storage keys that are read and written by the transaction (except the sender account and precompiles), plus the estimated gas consumed when the access list is added."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -21,9 +21,7 @@ export function EthereumMethod_createAccessList() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
+      responseParamsDescription={""}
     />
   );
 }
@@ -224,13 +222,14 @@ const RESPONSE_PARAMS: ResponseParam[] = [
     paramName: "result",
     type: "object",
     paramDescription:
-        "A block object, or null when no block was found. The block object contains the following fields:",
+      "A block object, or null when no block was found. The block object contains the following fields:",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "accessList",
         type: "array_of_objects",
-        paramDescription: "List of objects containing addresses and storage keys",
+        paramDescription:
+          "List of objects containing addresses and storage keys",
         childrenParamsType: "object",
         childrenParams: [
           {
@@ -249,7 +248,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         paramName: "gasUsed",
         type: "string",
         paramDescription:
-            "Estimated gas consumed when the access list is added. ",
+          "Estimated gas consumed when the access list is added. ",
       },
     ],
   },

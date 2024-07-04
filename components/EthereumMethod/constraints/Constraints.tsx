@@ -24,7 +24,13 @@ export function Constraints({ list }: { list: string[] }) {
 
       <Grid.Col span={"auto"}>
         <Group mb={10}>
-          <Text size="md" fontWeight="semibold" color={"white"} spacing="big">
+          <Text
+            size="md"
+            fontWeight="semibold"
+            color={"white"}
+            spacing="big"
+            component="h2"
+          >
             Constraints
           </Text>
         </Group>

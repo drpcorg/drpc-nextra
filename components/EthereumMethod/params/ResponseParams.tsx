@@ -33,7 +33,13 @@ export function ResponseParams({
   return (
     <Grid gutter={10}>
       <Grid.Col span={12}>
-        <Text uppercase color={"grayLike"} size="xs" fontWeight="medium">
+        <Text
+          uppercase
+          color={"grayLike"}
+          size="xs"
+          fontWeight="medium"
+          component="h2"
+        >
           Response
         </Text>
       </Grid.Col>
@@ -59,7 +65,13 @@ export function ResponseParams({
             </Grid>
           </div>
           <div className={cx(classes.line, classes.noBorder)}>
-            <Text color="grayLike" size="xs" fontWeight="medium" uppercase>
+            <Text
+              color="grayLike"
+              size="xs"
+              fontWeight="medium"
+              uppercase
+              component="h2"
+            >
               Response params
             </Text>
           </div>

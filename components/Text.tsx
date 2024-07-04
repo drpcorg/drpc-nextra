@@ -14,6 +14,7 @@ type Props = {
   uppercase?: boolean;
   spacing?: "big" | "small" | "none";
   italic?: boolean;
+  component?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span";
 };
 
 export function Text({
@@ -28,9 +29,10 @@ export function Text({
   uppercase,
   spacing,
   italic,
+  component: Component = "span",
 }: Props) {
   return (
-    <span
+    <Component
       className={cx(classes.text, className, {
         [classes.block]: asBlock,
         // Color
@@ -62,6 +64,6 @@ export function Text({
       }}
     >
       {children}
-    </span>
+    </Component>
   );
 }
