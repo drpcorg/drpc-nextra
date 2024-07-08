@@ -354,7 +354,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
 ];
 
 const USE_CASES = [
-  "Validate the execution paths of smart contracts within a given transaction.",
+  "Validate the execution paths of smart contracts",
   "Analyze the detailed gas usage of a transaction",
   "Investigate the root causes of transaction",
 ];
@@ -362,5 +362,5 @@ const USE_CASES = [
 const CONSTRAINTS = [
   "Invalid or corrupted transaction data will result in errors",
   "Not all nodes may have tracing capabilities enabled",
-  "The types of traces must be specified correctly in the request.",
+  "The types of traces must be specified correctly in the request",
 ];

@@ -332,10 +332,10 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Starting from Geth 1.9.13, eth_call checks the sender's " +
-  "balance to ensure sufficient gas for execution if either:" +
-  "The gas_price parameter is populated" +
-  "The contract function modifies the blockchain state.",
+  "Starting from Geth 1.9.13, eth_call checks the sender's " + ' ' +
+  "balance to ensure sufficient gas for execution if either:" + ' ' +
+  "The gas_price parameter is populated," + ' ' +
+  "the contract function modifies the blockchain state.",
   "In these cases, the from address must have enough gas as if" +
   "executing a write transaction, even though eth_call itself doesn't consume gas.",
 ];

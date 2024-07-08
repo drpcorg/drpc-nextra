@@ -11,7 +11,7 @@ export function EthereumMethod_feeHistory() {
       network="ethereum"
       cu={15}
       description={
-        "Returns a list of addresses owned by client."
+        "Returns a collection of historical gas information."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

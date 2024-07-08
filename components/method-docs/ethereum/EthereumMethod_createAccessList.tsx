@@ -29,63 +29,109 @@ export function EthereumMethod_createAccessList() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl ${DRPC_ENDPOINT_URL} \\
--X POST \\
--H "Content-Type: application/json" \\
---data '{
-	"method":"eth_getBlockByHash",
-	"params":["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3",false],
-	"id":1,
-	"jsonrpc":"2.0"
-}'
+    code: () => `curl --request POST \\
+     --url ${DRPC_ENDPOINT_URL} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
+     --data '
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_createAccessList",
+  "params": [
+    {
+      "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+      "gas": "0x0",
+      "gasPrice": "0x9184e72a000",
+      "value": "0x0",
+      "data": "0x"
+    }
+  ]
+}
 '`,
   },
   {
     language: "js",
-    code: () => `const url = '${DRPC_ENDPOINT_URL}';
+    code: () => `const fetch = require('node-fetch');
 
-const data = {
-  jsonrpc: "2.0",
-  method: "eth_getBlockByHash",
-  params: ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", false],
-  id: 1
+const url = '${DRPC_ENDPOINT_URL}';
+const headers = {
+  'accept': 'application/json',
+  'content-type': 'application/json'
 };
+
+const body = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_createAccessList",
+  "params": [
+    {
+      "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+      "gas": "0x0",
+      "gasPrice": "0x9184e72a000",
+      "value": "0x0",
+      "data": "0x"
+    }
+  ]
+});
 
 fetch(url, {
   method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
+  headers: headers,
+  body: body
 })
   .then(response => response.json())
-  .then(res => console.log(res))
+  .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
 `,
   },
   {
     language: "node",
-    code: () => `const fetch = require('node-fetch');
+    code: () => `const https = require('https');
 
-const url = '${DRPC_ENDPOINT_URL}';
-
-const data = {
-  jsonrpc: "2.0",
-  method: "eth_getBlockByHash",
-  params: ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", false],
-  id: 1
-};
-
-fetch(url, {
+const options = {
+  hostname: '${DRPC_ENDPOINT_URL}',
+  path: '/v2/docs-demo',
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(res => console.log(res))
-  .catch(error => console.error('Error:', error));
+    'accept': 'application/json',
+    'content-type': 'application/json'
+  }
+};
+
+const req = https.request(options, res => {
+  let data = '';
+
+  res.on('data', chunk => {
+    data += chunk;
+  });
+
+  res.on('end', () => {
+    console.log(JSON.parse(data));
+  });
+});
+
+req.on('error', error => {
+  console.error('Error:', error);
+});
+
+const body = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "eth_createAccessList",
+  "params": [
+    {
+      "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+      "gas": "0x0",
+      "gasPrice": "0x9184e72a000",
+      "value": "0x0",
+      "data": "0x"
+    }
+  ]
+});
+
+req.write(body);
+req.end();
 `,
   },
   {
@@ -101,26 +147,29 @@ import (
 
 func main() {
 	url := "${DRPC_ENDPOINT_URL}"
-
-	data := map[string]interface{}{
+	requestBody, err := json.Marshal(map[string]interface{}{
+		"id":     1,
 		"jsonrpc": "2.0",
-		"method":  "eth_getBlockByHash",
+		"method":  "eth_createAccessList",
 		"params": []interface{}{
-			"0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3",
-			false,
+			map[string]interface{}{
+				"to":       "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+				"gas":      "0x0",
+				"gasPrice": "0x9184e72a000",
+				"value":    "0x0",
+				"data":     "0x",
+			},
 		},
-		"id": 1,
-	}
+	})
 
-	jsonData, err := json.Marshal(data)
 	if err != nil {
-		fmt.Println("Error marshaling JSON:", err)
+		fmt.Println("Error:", err)
 		return
 	}
 
-	resp, err := http.Post(url, "application/json", bytes.NewBuffer(jsonData))
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(requestBody))
 	if err != nil {
-		fmt.Println("Error making request:", err)
+		fmt.Println("Error:", err)
 		return
 	}
 	defer resp.Body.Close()
@@ -138,45 +187,65 @@ func main() {
 import json
 
 url = '${DRPC_ENDPOINT_URL}'
-
-data = {
-    "jsonrpc": "2.0",
-    "method": "eth_getBlockByHash",
-    "params": ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", false],
-    "id": 1
+headers = {
+    'accept': 'application/json',
+    'content-type': 'application/json'
 }
 
-response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
-res = response.json()
+data = {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_createAccessList",
+    "params": [
+        {
+            "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+            "gas": "0x0",
+            "gasPrice": "0x9184e72a000",
+            "value": "0x0",
+            "data": "0x"
+        }
+    ]
+}
 
-print(res)
+response = requests.post(url, headers=headers, data=json.dumps(data))
+print(response.json())
 `,
   },
   {
     language: "rust",
-    code: () => `use reqwest::Client;
+    code: () => `use reqwest::header::{ACCEPT, CONTENT_TYPE};
 use serde_json::json;
+use tokio;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = reqwest::Client::new();
     let url = "${DRPC_ENDPOINT_URL}";
 
-    let data = json!({
+    let request_body = json!({
+        "id": 1,
         "jsonrpc": "2.0",
-        "method": "eth_getBlockByHash",
-        "params": ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", false],
-        "id": 1
+        "method": "eth_createAccessList",
+        "params": [
+            {
+                "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
+                "gas": "0x0",
+                "gasPrice": "0x9184e72a000",
+                "value": "0x0",
+                "data": "0x"
+            }
+        ]
     });
 
-    let client = Client::new();
-    let res = client.post(url)
-        .json(&data)
+    let response = client.post(url)
+        .header(ACCEPT, "application/json")
+        .header(CONTENT_TYPE, "application/json")
+        .json(&request_body)
         .send()
-        .await?
-        .json::<serde_json::Value>()
         .await?;
 
-    println!("{:#?}", res);
+    let response_text = response.text().await?;
+    println!("{}", response_text);
 
     Ok(())
 }

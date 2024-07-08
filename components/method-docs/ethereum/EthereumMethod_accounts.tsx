@@ -148,34 +148,20 @@ func main() {
   {
     language: "python",
     code: () => `import requests
+import json
 
-headers = {
-  'accept': 'application/json',
-  'content-type': 'application/json'
-}
+url = '${DRPC_ENDPOINT_URL}'
 
 data = {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "eth_getLogs",
-  "params": [
-    {
-      "address": [
-        "0xb59f67a8bff5d8cd03f6ac17265c550ed8f33907"
-      ],
-      "fromBlock": "0x429d3b",
-      "toBlock": "latest",
-      "topics": [
-        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef",
-        "0x00000000000000000000000000b46c2526e227482e2ebb8f4c69e4674d262e75",
-        "0x00000000000000000000000054a2d42a40f51259dedd1978f6c118a0f0eff078"
-      ]
-    }
-  ]
+    "jsonrpc": "2.0",
+    "method": "eth_accounts",
+    "id": 1
 }
 
-response = requests.post("${DRPC_ENDPOINT_URL}", headers=headers, json=data)
-print(response.json())
+response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
+res = response.json()
+
+print(res)
 `,
   },
   {

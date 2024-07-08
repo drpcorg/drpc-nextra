@@ -31,10 +31,9 @@ export function EthereumMethod_subscribe() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `// initiate websocket stream first
+    code: () => `
 wscat -c wss://eth.drpc.org.org
 
-// no param specification - return all mined txs  
 {"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_minedTransactions"]}'`,
   },
   {

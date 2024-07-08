@@ -11,7 +11,7 @@ export function EthereumMethod_trace_callMany() {
       network="ethereum"
       cu={90}
       description={
-        "Performs multiple call traces on top of the same block. i.e. transaction n will be executed on top of a pending block with all n-1 transactions applied (traced) first."
+        "Performs multiple call traces on top of the same block."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

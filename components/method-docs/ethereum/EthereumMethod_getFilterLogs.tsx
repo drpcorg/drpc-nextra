@@ -11,7 +11,7 @@ export function EthereumMethod_getFilterLogs() {
       network="ethereum"
       cu={60}
       description={
-        "Returns an array of all logs matching filter with given id. Can compute the same results with an eth_getLogs call."
+        "Returns an array of all logs matching filter with given id, can compute the same results with an eth_getLogs call."
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

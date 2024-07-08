@@ -32,7 +32,6 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `wscat -c wss://eth.drpc.org \\ 
-# wait for connection 
 {"id":1,"jsonrpc":"2.0","method":"eth_unsubscribe","params":["0xe9549ac54eeec07f"]}
 `,
   },
