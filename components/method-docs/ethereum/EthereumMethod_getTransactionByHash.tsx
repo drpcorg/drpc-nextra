@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getTransactionByHash() {
@@ -204,12 +206,11 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription:
-      "The hash of a transaction.",
+    paramDescription: "The hash of a transaction.",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -244,49 +245,43 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription: "The number of transactions made by the sender prior to this one.",
+        paramDescription:
+          "The number of transactions made by the sender prior to this one.",
       },
       {
         paramName: "hash",
         type: "string",
-        paramDescription:
-          "32 Bytes - hash of the transaction.",
+        paramDescription: "32 Bytes - hash of the transaction.",
       },
       {
         paramName: "from",
         type: "string",
-        paramDescription:
-          "20 Bytes - address of the sender.",
+        paramDescription: "20 Bytes - address of the sender.",
       },
       {
         paramName: "gas",
         type: "string",
-        paramDescription:
-          "Gas provided by the sender.",
+        paramDescription: "Gas provided by the sender.",
       },
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription:
-          "Gas price provided by the sender in Wei.",
+        paramDescription: "Gas price provided by the sender in Wei.",
       },
       {
         paramName: "input",
         type: "string",
-        paramDescription:
-          "The data send along with the transaction.",
+        paramDescription: "The data send along with the transaction.",
       },
       {
         paramName: "r",
         type: "string",
-        paramDescription:
-          "ECDSA signature r.",
+        paramDescription: "ECDSA signature r.",
       },
       {
         paramName: "s",
         type: "string",
-        paramDescription:
-          "ECDSA signature r.",
+        paramDescription: "ECDSA signature r.",
       },
       {
         paramName: "to",
@@ -297,14 +292,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "v",
         type: "string",
-        paramDescription:
-          "ECDSA recovery id.",
+        paramDescription: "ECDSA recovery id.",
       },
       {
         paramName: "value",
         type: "string",
-        paramDescription:
-          "Value transferred in Wei.",
+        paramDescription: "Value transferred in Wei.",
       },
     ],
   },

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_feeHistory() {
@@ -10,9 +12,7 @@ export function EthereumMethod_feeHistory() {
       method="eth_feeHistory"
       network="ethereum"
       cu={15}
-      description={
-        "Returns a collection of historical gas information."
-      }
+      description={"Returns a collection of historical gas information."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,9 +21,7 @@ export function EthereumMethod_feeHistory() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="array"
-      responseParamsDescription={
-        ""
-      }
+      responseParamsDescription={""}
     />
   );
 }
@@ -271,11 +269,11 @@ const RESPONSE_JSON = `{
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-    {
+  {
     paramName: "blockCount",
     type: "integer",
   },
-   {
+  {
     paramName: "newestBlock",
     type: "string",
   },
@@ -286,7 +284,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -304,29 +302,32 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "oldestBlock",
         type: "int64",
-        paramDescription: "An array of block base fees per gas."
+        paramDescription: "An array of block base fees per gas.",
       },
-    {
+      {
         paramName: "gasUsedRatio",
         type: "array_of_numbers",
-        paramDescription: "An array representing the ratios of block gas used. "
+        paramDescription:
+          "An array representing the ratios of block gas used. ",
       },
-    {
+      {
         paramName: "reward",
         type: "array_of_arrays_of_strings",
-        paramDescription: "A two-dimensional array showing the effective priority fees per gas at the specified block percentiles. "
+        paramDescription:
+          "A two-dimensional array showing the effective priority fees per gas at the specified block percentiles. ",
       },
-    {
+      {
         paramName: "baseFeePerBlobGas",
         type: "array_of_strings",
-        paramDescription: "An array of base fees per blob gas for blocks. "
+        paramDescription: "An array of base fees per blob gas for blocks. ",
       },
-    {
+      {
         paramName: "blobGasUsedRatio",
         type: "array_of_numbers",
-        paramDescription: "An array showing the ratios of blob gas used in blocks."
+        paramDescription:
+          "An array showing the ratios of blob gas used in blocks.",
       },
-    ]
+    ],
   },
 ];
 

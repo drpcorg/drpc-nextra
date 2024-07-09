@@ -1,6 +1,6 @@
 import { Group } from "@mantine/core";
 import { Fira_Mono } from "next/font/google";
-import { RequestParamProp } from "./RequestParams";
+import { RequestParamProp } from "./types";
 import classes from "./RequestParamsList.module.css";
 import { Text } from "../../Text";
 import { TParamType } from "../types";
@@ -72,7 +72,7 @@ export function RequestParamsList({ requestParams, requestParamsType }: Props) {
             </section>
           ) : null}
 
-        {/* If param has children params, render them */}
+          {/* If param has children params, render them */}
           {param.childrenParams ? (
             <div className={cx(classes.line, classes.children)}>
               <RequestParamsList
@@ -81,7 +81,7 @@ export function RequestParamsList({ requestParams, requestParamsType }: Props) {
                 isChild
               />
             </div>
-            ) : null}
+          ) : null}
         </div>
       ))}
     </section>

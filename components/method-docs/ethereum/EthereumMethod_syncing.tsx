@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_syncing() {
@@ -10,7 +12,9 @@ export function EthereumMethod_syncing() {
       method="eth_syncing"
       network="ethereum"
       cu={0}
-      description={"Returns an object with the sync status of the node if the node is out-of-sync and is syncing."}
+      description={
+        "Returns an object with the sync status of the node if the node is out-of-sync and is syncing."
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -19,9 +23,7 @@ export function EthereumMethod_syncing() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
+      responseParamsDescription={""}
     />
   );
 }
@@ -189,7 +191,7 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = null;
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -201,25 +203,28 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "The result is false if JSON Object is not syncing otherwise it's true:",
+    paramDescription:
+      "The result is false if JSON Object is not syncing otherwise it's true:",
     childrenParamsType: "object",
     childrenParams: [
-        {
-          paramName: "startingBlock ",
-          type: "string",
-          paramDescription: "The block at which the import started encoded as hexadecimal",
-        },
-        {
-          paramName: "currentBlock ",
-          type: "string",
-          paramDescription: "The current block, same as eth_blockNumber encoded as hexadecimal",
-        },
-        {
-          paramName: "startingBlock ",
-          type: "string",
-          paramDescription: "The estimated highest block encoded as hexadecimal",
-        },
-    ]
+      {
+        paramName: "startingBlock ",
+        type: "string",
+        paramDescription:
+          "The block at which the import started encoded as hexadecimal",
+      },
+      {
+        paramName: "currentBlock ",
+        type: "string",
+        paramDescription:
+          "The current block, same as eth_blockNumber encoded as hexadecimal",
+      },
+      {
+        paramName: "startingBlock ",
+        type: "string",
+        paramDescription: "The estimated highest block encoded as hexadecimal",
+      },
+    ],
   },
 ];
 

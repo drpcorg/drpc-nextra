@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getUncleCountByBlockNumber() {
@@ -188,15 +190,17 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: 'The integer of a block number encoded in hexadecimal format starting with 0x',
+    paramDescription:
+      "The integer of a block number encoded in hexadecimal format starting with 0x",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "uncles",
     type: "string",
-    paramDescription: "The integer value of the number of uncles in the block encoded as hexadecimal."
+    paramDescription:
+      "The integer value of the number of uncles in the block encoded as hexadecimal.",
   },
 ];
 

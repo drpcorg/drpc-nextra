@@ -1,8 +1,9 @@
-
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getStorageAt() {
@@ -22,9 +23,7 @@ export function EthereumMethod_getStorageAt() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns the value at this storage position."
-      }
+      responseParamsDescription={"Returns the value at this storage position."}
     />
   );
 }
@@ -205,19 +204,18 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription:
-      "The address to check for storage.",
+    paramDescription: "The address to check for storage.",
   },
   {
     paramName: "position",
     type: "string",
-    paramDescription:
-      "The integer of the position in storage.",
+    paramDescription: "The integer of the position in storage.",
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "Either the hex value of a block number OR a block hash OR One of the following block tags.",
+    paramDescription:
+      "Either the hex value of a block number OR a block hash OR One of the following block tags.",
     paramEnum: [
       {
         value: "latest",
@@ -244,7 +242,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getUncleByBlockHashAndIndex() {
@@ -391,16 +393,16 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockHash",
     type: "string",
-    paramDescription: 'The block hash.',
+    paramDescription: "The block hash.",
   },
   {
     paramName: "index",
     type: "string",
-    paramDescription: ' The uncle\'\'s index position (in hex).'
+    paramDescription: " The uncle''s index position (in hex).",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -437,8 +439,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "number",
         type: "string",
-        paramDescription:
-          "The block number, null when its pending block.",
+        paramDescription: "The block number, null when its pending block.",
       },
       {
         paramName: "parentHash",
@@ -448,8 +449,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "sha3Uncles",
         type: "string",
-        paramDescription:
-          "32 Bytes - SHA3 of the uncles data in the block.",
+        paramDescription: "32 Bytes - SHA3 of the uncles data in the block.",
       },
       {
         paramName: "logsBloom",
@@ -484,8 +484,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "difficulty",
         type: "string",
-        paramDescription:
-          "Integer of the difficulty for this block.",
+        paramDescription: "Integer of the difficulty for this block.",
       },
       {
         paramName: "totalDifficulty",
@@ -496,26 +495,22 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "extraData",
         type: "string",
-        paramDescription:
-          "The \"extra data\" field of this block.",
+        paramDescription: 'The "extra data" field of this block.',
       },
       {
         paramName: "size",
         type: "string",
-        paramDescription:
-          "Integer the size of this block in bytes.",
+        paramDescription: "Integer the size of this block in bytes.",
       },
       {
         paramName: "gasLimit",
         type: "string",
-        paramDescription:
-          "The maximum gas allowed in this block.",
+        paramDescription: "The maximum gas allowed in this block.",
       },
       {
         paramName: "timestamp",
         type: "string",
-        paramDescription:
-          "The unix timestamp for when the block was collated.",
+        paramDescription: "The unix timestamp for when the block was collated.",
       },
       {
         paramName: "transactions",
@@ -526,8 +521,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "uncles",
         type: "string",
-        paramDescription:
-          "Array of uncle hashes.",
+        paramDescription: "Array of uncle hashes.",
       },
     ],
   },

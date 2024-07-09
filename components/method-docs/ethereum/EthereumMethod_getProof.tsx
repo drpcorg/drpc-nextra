@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getProof() {
@@ -21,9 +23,7 @@ export function EthereumMethod_getProof() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns an account object"
-      }
+      responseParamsDescription={"Returns an account object"}
     />
   );
 }
@@ -227,16 +227,18 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "storageKeys",
     type: "array_of_strings",
-    paramDescription: "An array of storage-keys that should be proofed and included",
+    paramDescription:
+      "An array of storage-keys that should be proofed and included",
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number as a string in hexadecimal format or tags.",
+    paramDescription:
+      "The block number as a string in hexadecimal format or tags.",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -266,14 +268,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "balance",
         type: "string",
-        paramDescription:
-          "The current balance of the account in wei.",
+        paramDescription: "The current balance of the account in wei.",
       },
       {
         paramName: "codeHash",
         type: "string",
-        paramDescription:
-          "A 32 byte hash of the code of the account.",
+        paramDescription: "A 32 byte hash of the code of the account.",
       },
       {
         paramName: "nonce",
@@ -284,8 +284,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "storageHash",
         type: "string",
-        paramDescription:
-          "A 32 byte SHA3 of the storageRoot.",
+        paramDescription: "A 32 byte SHA3 of the storageRoot.",
       },
       {
         paramName: "storageProof",

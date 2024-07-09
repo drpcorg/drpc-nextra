@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_trace_filter() {
@@ -10,9 +12,7 @@ export function EthereumMethod_trace_filter() {
       method="trace_filter"
       network="ethereum"
       cu={75}
-      description={
-        "Returns traces matching given filter."
-      }
+      description={"Returns traces matching given filter."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -231,36 +231,36 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "fromBlock",
     type: "string",
-    paramDescription: 'The Quantity or Tag from this block',
+    paramDescription: "The Quantity or Tag from this block",
   },
   {
     paramName: "toBlock",
     type: "string",
-    paramDescription: 'The Quantity or Tag to this block'
+    paramDescription: "The Quantity or Tag to this block",
   },
   {
     paramName: "fromAddress",
     type: "string",
-    paramDescription: 'An array addresses of the senders'
+    paramDescription: "An array addresses of the senders",
   },
   {
     paramName: "toAddress",
     type: "string",
-    paramDescription: 'An array addresses of the receivers'
+    paramDescription: "An array addresses of the receivers",
   },
   {
     paramName: "after",
     type: "string",
-    paramDescription: 'The offset trace number'
+    paramDescription: "The offset trace number",
   },
   {
     paramName: "count",
     type: "string",
-    paramDescription: 'The Quantity or Tag to this block'
+    paramDescription: "The Quantity or Tag to this block",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -279,74 +279,64 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         type: "object",
         childrenParamsType: "object",
         childrenParams: [
-            {
-              paramName: "callType",
-              type: "string",
-              paramDescription:
-                "The type of call.",
-            },
-            {
-              paramName: "from",
-              type: "string",
-              paramDescription:
-                "The address of the sender.",
-            },
-            {
-              paramName: "to",
-              type: "string",
-              paramDescription:
-                "The address of the receiver.",
-            },
-            {
-              paramName: "value",
-              type: "string",
-              paramDescription:
-                "The value transferred in wei.",
-            },
-            {
-              paramName: "gas",
-              type: "string",
-              paramDescription:
-                "The gas provided for the call.",
-            },
-            {
-              paramName: "input",
-              type: "string",
-              paramDescription:
-                "The data sent along with the call.",
-            },
-        ]
+          {
+            paramName: "callType",
+            type: "string",
+            paramDescription: "The type of call.",
+          },
+          {
+            paramName: "from",
+            type: "string",
+            paramDescription: "The address of the sender.",
+          },
+          {
+            paramName: "to",
+            type: "string",
+            paramDescription: "The address of the receiver.",
+          },
+          {
+            paramName: "value",
+            type: "string",
+            paramDescription: "The value transferred in wei.",
+          },
+          {
+            paramName: "gas",
+            type: "string",
+            paramDescription: "The gas provided for the call.",
+          },
+          {
+            paramName: "input",
+            type: "string",
+            paramDescription: "The data sent along with the call.",
+          },
+        ],
       },
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "The hash of the block where the trace occurred.",
+        paramDescription: "The hash of the block where the trace occurred.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "The number of the block where the trace occurred.",
+        paramDescription: "The number of the block where the trace occurred.",
       },
       {
         paramName: "result",
         type: "string",
         childrenParamsType: "object",
         childrenParams: [
-           {
+          {
             paramName: "gasUsed",
             type: "string",
-            paramDescription:
-              "The amount of gas used by the trace.",
+            paramDescription: "The amount of gas used by the trace.",
           },
           {
             paramName: "output",
             type: "string",
-            paramDescription:
-              "The output of the call.",
+            paramDescription: "The output of the call.",
           },
-        ]
+        ],
       },
       {
         paramName: "subtraces",
@@ -368,14 +358,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "transactionPosition",
         type: "string",
-        paramDescription:
-          "The position of the transaction in the block.",
+        paramDescription: "The position of the transaction in the block.",
       },
       {
         paramName: "type",
         type: "string",
-        paramDescription:
-          "The type of trace.",
+        paramDescription: "The type of trace.",
       },
     ],
   },

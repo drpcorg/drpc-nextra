@@ -1,6 +1,6 @@
 # How to create new page for RPC Methods Documentation.
 
-## How to create a new page for RPC Methods Documentation
+## How to create a new page for Ethereum RPC Methods Documentation
 
 - 1. Go to [References](https://docs.alchemy.com/reference/ethereum-api-endpoints) and click on the method you want to document to go to the page (further mentioned as **Reference Page**).
 - 2. Copy the method name and create a new file in `pages/ethereum-api` with the name `methodName.mdx`.
@@ -64,3 +64,9 @@ Hi! I need 3 use cases and 3 constraints, 3-6 words for each, for the following 
 ```
 
 #### **Note:** This guide is for Ethereum API methods documentation. You still can use this guide for other API methods documentation by changing the method name.
+
+## How to create a new page for Solana RPC Methods Documentation
+
+The main process for Solana is the same as for Ethereum, but with some differences.
+
+For Solana, you can use the [ALchemy Solana RPC API Reference](https://docs.alchemy.com/reference/solana-api-endpoints) to get the method name and the cURL request example.

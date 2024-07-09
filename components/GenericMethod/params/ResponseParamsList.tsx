@@ -1,13 +1,13 @@
 import { Group } from "@mantine/core";
 import classes from "./ResponseParamsList.module.css";
-import { ResponseParam } from "./ResponseParams";
 import cx from "clsx";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import { Text } from "../../Text";
+import { ReqResParam } from "./types";
 
 type Props = {
-  responseParams: ResponseParam[];
+  responseParams: ReqResParam[] | null;
   responseParamsType: TParamType;
   isChild?: boolean;
 };

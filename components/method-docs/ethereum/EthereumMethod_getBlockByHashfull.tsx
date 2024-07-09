@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getBlockByHashfull() {
@@ -10,9 +12,7 @@ export function EthereumMethod_getBlockByHashfull() {
       method="eth_getBlockByHashfull"
       network="ethereum"
       cu={60}
-      description={
-        "Returns information about a block by block hash."
-      }
+      description={"Returns information about a block by block hash."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -238,8 +238,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription:
-      "The hash (32 bytes) of the block.",
+    paramDescription: "The hash (32 bytes) of the block.",
   },
   {
     paramName: "transaction_detail_flag",
@@ -249,7 +248,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -291,14 +290,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "parentHash",
         type: "string",
-        paramDescription:
-          "32 Bytes - hash of the parent block.",
+        paramDescription: "32 Bytes - hash of the parent block.",
       },
       {
         paramName: "sha3Uncles",
         type: "string",
-        paramDescription:
-          "32 Bytes - SHA3 of the uncles data in the block.",
+        paramDescription: "32 Bytes - SHA3 of the uncles data in the block.",
       },
       {
         paramName: "logsBloom",
@@ -333,8 +330,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "difficulty",
         type: "string",
-        paramDescription:
-          "Integer of the difficulty for this block.",
+        paramDescription: "Integer of the difficulty for this block.",
       },
       {
         paramName: "totalDifficulty",
@@ -345,20 +341,17 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "extraData",
         type: "string",
-        paramDescription:
-          "The \"extra data\" field of this block.",
+        paramDescription: 'The "extra data" field of this block.',
       },
       {
         paramName: "size",
         type: "string",
-        paramDescription:
-          "Integer the size of this block in bytes.",
+        paramDescription: "Integer the size of this block in bytes.",
       },
       {
         paramName: "gasLimit",
         type: "string",
-        paramDescription:
-          "The maximum gas allowed in this block.",
+        paramDescription: "The maximum gas allowed in this block.",
       },
       {
         paramName: "gasUsed",
@@ -369,106 +362,96 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "timestamp",
         type: "string",
-        paramDescription:
-          "The unix timestamp for when the block was collated.",
+        paramDescription: "The unix timestamp for when the block was collated.",
       },
       {
-      paramName: "transactions",
-      paramDescription:
-        "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
-      type: "array",
-      childrenParamsType: "object",
-      childrenParams: [
-        {
-          paramName: "blockHash",
-          type: "string",
-          paramDescription:
-            "The number of the block where the given transaction was included.",
-        },
-        {
-          paramName: "blockNumber",
-          type: "string",
-          paramDescription:
-            "The block number where this log was in. null when its pending. null when its pending log.",
-        },
-        {
-          paramName: "transactionIndex",
-          type: "string",
-          paramDescription:
-            "Integer of the transactions index position log was created from. null when its pending log.",
-        },
-        {
-          paramName: "nonce",
-          type: "string",
-          paramDescription: "The number of transactions made by the sender prior to this one.",
-        },
-        {
-          paramName: "hash",
-          type: "string",
-          paramDescription:
-            "32 Bytes - hash of the transaction.",
-        },
-        {
-          paramName: "from",
-          type: "string",
-          paramDescription:
-            "20 Bytes - address of the sender.",
-        },
-        {
-          paramName: "gas",
-          type: "string",
-          paramDescription:
-            "Gas provided by the sender.",
-        },
-        {
-          paramName: "gasPrice",
-          type: "string",
-          paramDescription:
-            "Gas price provided by the sender in Wei.",
-        },
-        {
-          paramName: "input",
-          type: "string",
-          paramDescription:
-            "The data send along with the transaction.",
-        },
-        {
-          paramName: "r",
-          type: "string",
-          paramDescription:
-            "ECDSA signature r.",
-        },
-        {
-          paramName: "s",
-          type: "string",
-          paramDescription:
-            "ECDSA signature r.",
-        },
-        {
-          paramName: "to",
-          type: "string",
-          paramDescription:
-            "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
-        },
-        {
-          paramName: "v",
-          type: "string",
-          paramDescription:
-            "ECDSA recovery id.",
-        },
-        {
-          paramName: "value",
-          type: "string",
-          paramDescription:
-            "Value transferred in Wei.",
-        },
-     ],
+        paramName: "transactions",
+        paramDescription:
+          "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
+        type: "array",
+        childrenParamsType: "object",
+        childrenParams: [
+          {
+            paramName: "blockHash",
+            type: "string",
+            paramDescription:
+              "The number of the block where the given transaction was included.",
+          },
+          {
+            paramName: "blockNumber",
+            type: "string",
+            paramDescription:
+              "The block number where this log was in. null when its pending. null when its pending log.",
+          },
+          {
+            paramName: "transactionIndex",
+            type: "string",
+            paramDescription:
+              "Integer of the transactions index position log was created from. null when its pending log.",
+          },
+          {
+            paramName: "nonce",
+            type: "string",
+            paramDescription:
+              "The number of transactions made by the sender prior to this one.",
+          },
+          {
+            paramName: "hash",
+            type: "string",
+            paramDescription: "32 Bytes - hash of the transaction.",
+          },
+          {
+            paramName: "from",
+            type: "string",
+            paramDescription: "20 Bytes - address of the sender.",
+          },
+          {
+            paramName: "gas",
+            type: "string",
+            paramDescription: "Gas provided by the sender.",
+          },
+          {
+            paramName: "gasPrice",
+            type: "string",
+            paramDescription: "Gas price provided by the sender in Wei.",
+          },
+          {
+            paramName: "input",
+            type: "string",
+            paramDescription: "The data send along with the transaction.",
+          },
+          {
+            paramName: "r",
+            type: "string",
+            paramDescription: "ECDSA signature r.",
+          },
+          {
+            paramName: "s",
+            type: "string",
+            paramDescription: "ECDSA signature r.",
+          },
+          {
+            paramName: "to",
+            type: "string",
+            paramDescription:
+              "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+          },
+          {
+            paramName: "v",
+            type: "string",
+            paramDescription: "ECDSA recovery id.",
+          },
+          {
+            paramName: "value",
+            type: "string",
+            paramDescription: "Value transferred in Wei.",
+          },
+        ],
       },
       {
         paramName: "uncles",
         type: "array_of_strings",
-        paramDescription:
-          "Array of uncle hashes.",
+        paramDescription: "Array of uncle hashes.",
       },
     ],
   },

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_estimateGas() {
@@ -21,9 +23,7 @@ export function EthereumMethod_estimateGas() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns the amount of gas used."
-      }
+      responseParamsDescription={"Returns the amount of gas used."}
     />
   );
 }
@@ -247,24 +247,24 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "from",
         type: "string",
-        paramDescription:
-          "The address from which the transaction is sent.",
+        paramDescription: "The address from which the transaction is sent.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "The address to which the transaction is addressed.",
+        paramDescription: "The address to which the transaction is addressed.",
       },
       {
         paramName: "gas",
         type: "integer",
-        paramDescription: "The integer of gas provided for the transaction execution",
+        paramDescription:
+          "The integer of gas provided for the transaction execution",
       },
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription: "The integer of gasPrice used for each paid gas (hexadecimal)",
+        paramDescription:
+          "The integer of gasPrice used for each paid gas (hexadecimal)",
       },
       {
         paramName: "value",
@@ -283,7 +283,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "object",
     type: "object",
-    paramDescription: "The state override set with address-to-state mapping where each address maps to an object containing",
+    paramDescription:
+      "The state override set with address-to-state mapping where each address maps to an object containing",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -306,13 +307,14 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "stateDiff",
         type: "string",
-        paramDescription: "Fake key-value mapping to override all slots in the account storage",
+        paramDescription:
+          "Fake key-value mapping to override all slots in the account storage",
       },
     ],
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -324,8 +326,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription:
-        "Returns the amount of gas used.",
+    paramDescription: "Returns the amount of gas used.",
   },
 ];
 
@@ -336,7 +337,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  'Requires valid Ethereum addresses',
-  'Estimates vary with network conditions',
-  'Calculation depends on the node\'s processing speed',
+  "Requires valid Ethereum addresses",
+  "Estimates vary with network conditions",
+  "Calculation depends on the node's processing speed",
 ];

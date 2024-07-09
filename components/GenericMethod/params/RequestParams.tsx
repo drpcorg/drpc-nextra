@@ -4,25 +4,11 @@ import { RequestParamsList } from "./RequestParamsList";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import { Text } from "../../Text";
-
-type RequestParam = {
-  type: TParamType;
-  paramName: string;
-  paramDescription?: string;
-  paramEnum?: {
-    value: string;
-    description: string;
-    isDefault?: boolean;
-  }[];
-  childrenParams?: RequestParam[];
-  childrenParamsType?: TParamType;
-};
-
-export type RequestParamProp = RequestParam[] | null;
+import { ReqResParam } from "./types";
 
 type Props = {
   requestParamsType: TParamType;
-  requestParams: RequestParamProp;
+  requestParams: ReqResParam[] | null;
 };
 
 export function RequestParams({ requestParams, requestParamsType }: Props) {

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_trace_replayTransactionsvmTrace() {
@@ -21,9 +23,7 @@ export function EthereumMethod_trace_replayTransactionsvmTrace() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returning the traces."
-      }
+      responseParamsDescription={"Returning the traces."}
     />
   );
 }
@@ -259,11 +259,11 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".'
+    paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".',
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -282,74 +282,64 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         type: "object",
         childrenParamsType: "object",
         childrenParams: [
-            {
-              paramName: "callType",
-              type: "string",
-              paramDescription:
-                "The type of call.",
-            },
-            {
-              paramName: "from",
-              type: "string",
-              paramDescription:
-                "The address of the sender.",
-            },
-            {
-              paramName: "to",
-              type: "string",
-              paramDescription:
-                "The address of the receiver.",
-            },
-            {
-              paramName: "value",
-              type: "string",
-              paramDescription:
-                "The value transferred in wei.",
-            },
-            {
-              paramName: "gas",
-              type: "string",
-              paramDescription:
-                "The gas provided for the call.",
-            },
-            {
-              paramName: "input",
-              type: "string",
-              paramDescription:
-                "The data sent along with the call.",
-            },
-        ]
+          {
+            paramName: "callType",
+            type: "string",
+            paramDescription: "The type of call.",
+          },
+          {
+            paramName: "from",
+            type: "string",
+            paramDescription: "The address of the sender.",
+          },
+          {
+            paramName: "to",
+            type: "string",
+            paramDescription: "The address of the receiver.",
+          },
+          {
+            paramName: "value",
+            type: "string",
+            paramDescription: "The value transferred in wei.",
+          },
+          {
+            paramName: "gas",
+            type: "string",
+            paramDescription: "The gas provided for the call.",
+          },
+          {
+            paramName: "input",
+            type: "string",
+            paramDescription: "The data sent along with the call.",
+          },
+        ],
       },
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "The hash of the block where the trace occurred.",
+        paramDescription: "The hash of the block where the trace occurred.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "The number of the block where the trace occurred.",
+        paramDescription: "The number of the block where the trace occurred.",
       },
       {
         paramName: "result",
         type: "string",
         childrenParamsType: "object",
         childrenParams: [
-           {
+          {
             paramName: "gasUsed",
             type: "string",
-            paramDescription:
-              "The amount of gas used by the trace.",
+            paramDescription: "The amount of gas used by the trace.",
           },
           {
             paramName: "output",
             type: "string",
-            paramDescription:
-              "The output of the call.",
+            paramDescription: "The output of the call.",
           },
-        ]
+        ],
       },
       {
         paramName: "subtraces",
@@ -371,39 +361,35 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "transactionPosition",
         type: "string",
-        paramDescription:
-          "The position of the transaction in the block.",
+        paramDescription: "The position of the transaction in the block.",
       },
       {
         paramName: "type",
         type: "string",
-        paramDescription:
-          "The type of trace.",
+        paramDescription: "The type of trace.",
       },
       {
         paramName: "vmTrace",
         type: "string",
-        paramDescription:
-          "The virtual machine trace.",
+        paramDescription: "The virtual machine trace.",
         childrenParamsType: "object",
         childrenParams: [
-            {
-              paramName: "code",
-              type: "string",
-              paramDescription:
-                "The EVM code executed.",
-            },
+          {
+            paramName: "code",
+            type: "string",
+            paramDescription: "The EVM code executed.",
+          },
           {
             paramName: "ops",
             type: "array",
-            paramDescription: "An array of operation objects representing the steps executed by the EVM.",
+            paramDescription:
+              "An array of operation objects representing the steps executed by the EVM.",
             childrenParamsType: "object",
             childrenParams: [
               {
                 paramName: "cost",
                 type: "number",
-                paramDescription:
-                    "The gas cost of the operation.",
+                paramDescription: "The gas cost of the operation.",
               },
               {
                 paramName: "ex",
@@ -413,46 +399,41 @@ const RESPONSE_PARAMS: ResponseParam[] = [
                   {
                     paramName: "mem",
                     type: "object",
-                    paramDescription:
-                        "The memory state.",
+                    paramDescription: "The memory state.",
                   },
                   {
                     paramName: "push",
                     type: "array",
-                    paramDescription:
-                        "The items pushed onto the stack.",
+                    paramDescription: "The items pushed onto the stack.",
                   },
                   {
                     paramName: "store",
                     type: "object",
-                    paramDescription:
-                        "The storage state.",
+                    paramDescription: "The storage state.",
                   },
                   {
                     paramName: "used",
                     type: "number",
-                    paramDescription:
-                        "The gas used up to this point.",
+                    paramDescription: "The gas used up to this point.",
                   },
                 ],
               },
               {
                 paramName: "pc",
                 type: "number",
-                paramDescription:
-                    "The program counter.",
+                paramDescription: "The program counter.",
               },
               {
                 paramName: "sub",
                 type: "object",
                 paramDescription:
-                    "Sub-trace if the operation calls another contract.",
+                  "Sub-trace if the operation calls another contract.",
               },
             ],
           },
+        ],
+      },
     ],
-  },
-  ],
   },
 ];
 

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_net_version() {
@@ -10,9 +12,7 @@ export function EthereumMethod_net_version() {
       method="net_version"
       network="ethereum"
       cu={0}
-      description={
-        "Returns the current network id."
-      }
+      description={"Returns the current network id."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,9 +21,7 @@ export function EthereumMethod_net_version() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns the current network id."
-      }
+      responseParamsDescription={"Returns the current network id."}
     />
   );
 }
@@ -186,7 +184,7 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = null;
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",

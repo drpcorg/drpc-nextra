@@ -5,22 +5,10 @@ import cx from "clsx";
 import { TParamType } from "../types";
 import { Text } from "../../Text";
 import { IconCircleGreen } from "../../icons/IconCircleGreen";
-
-export type ResponseParam = {
-  type: TParamType;
-  paramName: string;
-  paramDescription?: string;
-  paramEnum?: {
-    value: string;
-    description: string;
-    isDefault?: boolean;
-  }[];
-  childrenParams?: ResponseParam[];
-  childrenParamsType?: TParamType;
-};
+import { ReqResParam } from "./types";
 
 type Props = {
-  responseParams: ResponseParam[];
+  responseParams: ReqResParam[] | null;
   responseParamsType: TParamType;
   responseParamsDescription?: string;
 };

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
@@ -188,7 +190,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "array_of_strings",
-    paramDescription: "The block number as a string in hexadecimal format or tags:",
+    paramDescription:
+      "The block number as a string in hexadecimal format or tags:",
     paramEnum: [
       {
         value: "latest",
@@ -209,7 +212,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block.",
+        description:
+          "transactions broadcasted but not yet included in a block.",
       },
     ],
   },
@@ -221,7 +225,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -258,73 +262,64 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription: "The number of transactions made by the sender prior to this one.",
+        paramDescription:
+          "The number of transactions made by the sender prior to this one.",
       },
       {
         paramName: "hash",
         type: "string",
-        paramDescription:
-          "32 Bytes - hash of the transaction.",
+        paramDescription: "32 Bytes - hash of the transaction.",
       },
       {
         paramName: "from",
         type: "string",
-        paramDescription:
-          "20 Bytes - address of the sender.",
+        paramDescription: "20 Bytes - address of the sender.",
       },
       {
         paramName: "gas",
         type: "string",
-        paramDescription:
-          "Gas provided by the sender.",
+        paramDescription: "Gas provided by the sender.",
       },
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription:
-          "Gas price provided by the sender in Wei.",
+        paramDescription: "Gas price provided by the sender in Wei.",
       },
       {
         paramName: "maxFeePerGas",
         type: "string",
-        paramDescription:
-          "The maximum fee per gas set in the transaction.",
+        paramDescription: "The maximum fee per gas set in the transaction.",
       },
       {
         paramName: "maxPriorityFeePerGas",
         type: "string",
         paramDescription:
-            "The maximum priority gas fee set in the transaction.",
+          "The maximum priority gas fee set in the transaction.",
       },
       {
         paramName: "input",
         type: "string",
-        paramDescription:
-          "The data send along with the transaction.",
+        paramDescription: "The data send along with the transaction.",
       },
       {
         paramName: "chainID",
         type: "string",
-        paramDescription:
-          "The chain id of the transaction, if any.",
+        paramDescription: "The chain id of the transaction, if any.",
       },
       {
         paramName: "v",
         type: "string",
-        paramDescription:
-          "ECDSA recovery id.",
+        paramDescription: "ECDSA recovery id.",
       },
       {
         paramName: "r",
         type: "string",
-        paramDescription:
-          "ECDSA signature r.",
+        paramDescription: "ECDSA signature r.",
       },
       {
         paramName: "s",
         type: "string",
-        paramDescription:
-          "ECDSA signature r.",
+        paramDescription: "ECDSA signature r.",
       },
       {
         paramName: "to",
@@ -335,14 +330,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "value",
         type: "string",
-        paramDescription:
-          "Value transferred in Wei.",
+        paramDescription: "Value transferred in Wei.",
       },
       {
         paramName: "type",
         type: "string",
-        paramDescription:
-          "The transaction type.",
+        paramDescription: "The transaction type.",
       },
     ],
   },

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getBlockReceipts() {
@@ -21,9 +23,7 @@ export function EthereumMethod_getBlockReceipts() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
+      responseParamsDescription={""}
     />
   );
 }
@@ -573,11 +573,11 @@ const RESPONSE_JSON = `{
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number in hexadecimal format or the block hash or the block tags:",
+    paramDescription:
+      "The block number in hexadecimal format or the block hash or the block tags:",
     paramEnum: [
       {
         value: "latest",
@@ -604,7 +604,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -633,8 +633,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "transactionIndex",
         type: "string",
-        paramDescription:
-          "The index of the transaction within the block.",
+        paramDescription: "The index of the transaction within the block.",
       },
       {
         paramName: "transactionHash",
@@ -644,8 +643,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "from",
         type: "string",
-        paramDescription:
-          "I20 Bytes - address of the sender.",
+        paramDescription: "I20 Bytes - address of the sender.",
       },
       {
         paramName: "to",
@@ -675,73 +673,73 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         paramName: "logs",
         type: "array_of_objects",
         paramDescription:
-            "Array of log objects, which this transaction generated.",
+          "Array of log objects, which this transaction generated.",
         childrenParamsType: "object",
         childrenParams: [
           {
             paramName: "blockHash",
             type: "string",
             paramDescription:
-                "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
+              "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
           },
           {
             paramName: "blockNumber",
             type: "string",
             paramDescription:
-                "The block number where this log was in. null when its pending. null when its pending log.",
+              "The block number where this log was in. null when its pending. null when its pending log.",
           },
           {
             paramName: "transactionIndex",
             type: "string",
             paramDescription:
-                "Integer of the transactions index position log was created from. null when its pending log.",
+              "Integer of the transactions index position log was created from. null when its pending log.",
           },
           {
             paramName: "address",
             type: "string",
-            paramDescription: "20 Bytes - address from which this log originated.",
+            paramDescription:
+              "20 Bytes - address from which this log originated.",
           },
           {
             paramName: "logIndex",
             type: "string",
             paramDescription:
-                "Integer of the log index position in the block. null when its pending log.",
+              "Integer of the log index position in the block. null when its pending log.",
           },
           {
             paramName: "data",
             type: "string",
             paramDescription:
-                "Contains one or more 32 Bytes non-indexed arguments of the log.",
+              "Contains one or more 32 Bytes non-indexed arguments of the log.",
           },
           {
             paramName: "removed",
             type: "boolean",
             paramDescription:
-                "true when the log was removed, due to a chain reorganization. false if its a valid log.",
+              "true when the log was removed, due to a chain reorganization. false if its a valid log.",
           },
           {
             paramName: "topics",
             type: "array_of_strings",
             paramDescription:
-                "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
+              "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
           },
           {
             paramName: "transactionHash",
             type: "string",
             paramDescription:
-                "Hash of the transactions this log was created from. null when its pending log.",
+              "Hash of the transactions this log was created from. null when its pending log.",
           },
           {
             paramName: "logsBloom",
             type: "string",
             paramDescription:
-                "256 Bytes - Bloom filter for light clients to quickly retrieve related logs.",
+              "256 Bytes - Bloom filter for light clients to quickly retrieve related logs.",
           },
           {
             paramName: "status",
             type: "integer",
-            paramDescription:
-                "Either 1 (success) or 0 (failure)",
+            paramDescription: "Either 1 (success) or 0 (failure)",
           },
           {
             paramName: "effectiveGasPrice",

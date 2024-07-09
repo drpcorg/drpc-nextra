@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_trace_callMany() {
@@ -332,37 +334,40 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "gas",
         type: "integer",
-        paramDescription: "The integer of gas provided for the transaction execution.",
+        paramDescription:
+          "The integer of gas provided for the transaction execution.",
       },
       {
         paramName: "gasPrice",
         type: "integer",
-        paramDescription: "The integer of gasPrice used for each paid gas encoded as hexadecimal.",
+        paramDescription:
+          "The integer of gasPrice used for each paid gas encoded as hexadecimal.",
       },
       {
         paramName: "value",
         type: "integer",
-        paramDescription: "The integer of value sent with this transaction encoded as hexadecimal.",
+        paramDescription:
+          "The integer of value sent with this transaction encoded as hexadecimal.",
       },
       {
         paramName: "data",
         type: "string",
-        paramDescription: "The hash of the method signature and encoded parameters.",
+        paramDescription:
+          "The hash of the method signature and encoded parameters.",
       },
-    ]
+    ],
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "The hex value of a block number, hash or tags:",
+    paramDescription: "The hex value of a block number, hash or tags:",
     paramEnum: [
-        {
-          value: "latest",
-          isDefault: true,
-          description: "the blockchain's most recent block",
-        },
-        {
+      {
+        value: "latest",
+        isDefault: true,
+        description: "the blockchain's most recent block",
+      },
+      {
         value: "earliest",
         description: "the first or genesis block",
       },
@@ -375,16 +380,17 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "vmTrace",
     type: "string",
-    paramDescription: "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
+    paramDescription:
+      "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
   },
   {
-      paramName: "traceType",
-      type: "string",
-      paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".'
+    paramName: "traceType",
+    type: "string",
+    paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".',
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -403,74 +409,64 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         type: "object",
         childrenParamsType: "object",
         childrenParams: [
-            {
-              paramName: "callType",
-              type: "string",
-              paramDescription:
-                "The type of call.",
-            },
-            {
-              paramName: "from",
-              type: "string",
-              paramDescription:
-                "The address of the sender.",
-            },
-            {
-              paramName: "to",
-              type: "string",
-              paramDescription:
-                "The address of the receiver.",
-            },
-            {
-              paramName: "value",
-              type: "string",
-              paramDescription:
-                "The value transferred in wei.",
-            },
-            {
-              paramName: "gas",
-              type: "string",
-              paramDescription:
-                "The gas provided for the call.",
-            },
-            {
-              paramName: "input",
-              type: "string",
-              paramDescription:
-                "The data sent along with the call.",
-            },
-        ]
+          {
+            paramName: "callType",
+            type: "string",
+            paramDescription: "The type of call.",
+          },
+          {
+            paramName: "from",
+            type: "string",
+            paramDescription: "The address of the sender.",
+          },
+          {
+            paramName: "to",
+            type: "string",
+            paramDescription: "The address of the receiver.",
+          },
+          {
+            paramName: "value",
+            type: "string",
+            paramDescription: "The value transferred in wei.",
+          },
+          {
+            paramName: "gas",
+            type: "string",
+            paramDescription: "The gas provided for the call.",
+          },
+          {
+            paramName: "input",
+            type: "string",
+            paramDescription: "The data sent along with the call.",
+          },
+        ],
       },
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "The hash of the block where the trace occurred.",
+        paramDescription: "The hash of the block where the trace occurred.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "The number of the block where the trace occurred.",
+        paramDescription: "The number of the block where the trace occurred.",
       },
       {
         paramName: "result",
         type: "string",
         childrenParamsType: "object",
         childrenParams: [
-           {
+          {
             paramName: "gasUsed",
             type: "string",
-            paramDescription:
-              "The amount of gas used by the trace.",
+            paramDescription: "The amount of gas used by the trace.",
           },
           {
             paramName: "output",
             type: "string",
-            paramDescription:
-              "The output of the call.",
+            paramDescription: "The output of the call.",
           },
-        ]
+        ],
       },
       {
         paramName: "subtraces",
@@ -492,19 +488,18 @@ const RESPONSE_PARAMS: ResponseParam[] = [
       {
         paramName: "transactionPosition",
         type: "string",
-        paramDescription:
-          "The position of the transaction in the block.",
+        paramDescription: "The position of the transaction in the block.",
       },
       {
         paramName: "type",
         type: "string",
-        paramDescription:
-          "The type of trace.",
+        paramDescription: "The type of trace.",
       },
       {
         paramName: "vmTrace",
         type: "string",
-        paramDescription: "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
+        paramDescription:
+          "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
       },
     ],
   },

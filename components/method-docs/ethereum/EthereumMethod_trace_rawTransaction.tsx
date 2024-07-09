@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_trace_rawTransaction() {
@@ -211,29 +213,31 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "data",
     type: "string",
-    paramDescription: 'The raw transaction data/string (RAW_TRANSACTION_DATA)',
+    paramDescription: "The raw transaction data/string (RAW_TRANSACTION_DATA)",
   },
   {
     paramName: "array",
     type: "array",
-    paramDescription: 'The type of trace, which can be one of the following:',
+    paramDescription: "The type of trace, which can be one of the following:",
     childrenParamsType: "object",
     childrenParams: [
-        {
-          paramName: "vmTrace",
-          type: "string",
-          paramDescription: 'To get a full trace of the virtual machine\'s state during the execution of the given of given transaction, including for any subcalls.'
-        },
-        {
-          paramName: "traceType",
-          type: "string",
-          paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".'
-        },
+      {
+        paramName: "vmTrace",
+        type: "string",
+        paramDescription:
+          "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls.",
+      },
+      {
+        paramName: "traceType",
+        type: "string",
+        paramDescription:
+          'Type of trace, one or more of: "trace", "stateDiff".',
+      },
     ],
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -251,56 +255,51 @@ const RESPONSE_PARAMS: ResponseParam[] = [
         paramName: "output",
         type: "string",
         paramDescription:
-            "The data which is returned as an output encoded in hexadecimal format.",
+          "The data which is returned as an output encoded in hexadecimal format.",
       },
       {
         paramName: "stateDiff",
         type: "string",
         paramDescription:
-            "It returns the information on altered Ethereum state due to execution of the given transaction.",
+          "It returns the information on altered Ethereum state due to execution of the given transaction.",
       },
       {
         paramName: "trace",
         type: "object",
-        paramDescription: "It is used to retrieve the basic trace of the given information",
+        paramDescription:
+          "It is used to retrieve the basic trace of the given information",
         childrenParamsType: "object",
         childrenParams: [
           {
             paramName: "action",
             type: "string",
-            paramDescription:
-                "The action to be performed on the receiver id.",
+            paramDescription: "The action to be performed on the receiver id.",
             childrenParamsType: "object",
             childrenParams: [
               {
                 paramName: "from",
                 type: "string",
-                paramDescription:
-                    "The address of the sender.",
+                paramDescription: "The address of the sender.",
               },
               {
                 paramName: "to",
                 type: "string",
-                paramDescription:
-                    "The address of the receiver.",
+                paramDescription: "The address of the receiver.",
               },
               {
                 paramName: "value",
                 type: "string",
-                paramDescription:
-                    "The value transferred in wei.",
+                paramDescription: "The value transferred in wei.",
               },
               {
                 paramName: "gas",
                 type: "string",
-                paramDescription:
-                    "The gas provided for the call.",
+                paramDescription: "The gas provided for the call.",
               },
               {
                 paramName: "input",
                 type: "string",
-                paramDescription:
-                    "The data sent along with the call.",
+                paramDescription: "The data sent along with the call.",
               },
             ],
           },
@@ -312,14 +311,12 @@ const RESPONSE_PARAMS: ResponseParam[] = [
               {
                 paramName: "gasUsed",
                 type: "string",
-                paramDescription:
-                    "The amount of gas used by the trace.",
+                paramDescription: "The amount of gas used by the trace.",
               },
               {
                 paramName: "output",
                 type: "string",
-                paramDescription:
-                    "The output of the call.",
+                paramDescription: "The output of the call.",
               },
             ],
           },
@@ -327,25 +324,24 @@ const RESPONSE_PARAMS: ResponseParam[] = [
             paramName: "subtraces",
             type: "string",
             paramDescription:
-                "The traces of contract calls made by the transaction.",
+              "The traces of contract calls made by the transaction.",
           },
           {
             paramName: "traceAddress",
             type: "string",
             paramDescription:
-                "The list of addresses where the call was executed, the address of the parents, and the order of the current sub call",
+              "The list of addresses where the call was executed, the address of the parents, and the order of the current sub call",
           },
           {
             paramName: "type",
             type: "string",
-            paramDescription:
-                "The type of trace.",
+            paramDescription: "The type of trace.",
           },
           {
             paramName: "vmTrace",
             type: "string",
             paramDescription:
-                "It is used to get a full trace of the virtual machine's state during the execution of the given transaction, including for any sub-calls.",
+              "It is used to get a full trace of the virtual machine's state during the execution of the given transaction, including for any sub-calls.",
           },
         ],
       },

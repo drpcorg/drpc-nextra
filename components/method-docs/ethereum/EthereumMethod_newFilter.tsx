@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_newFilter() {
@@ -21,9 +23,7 @@ export function EthereumMethod_newFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns a filter id."
-      }
+      responseParamsDescription={"Returns a filter id."}
     />
   );
 }
@@ -235,7 +235,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "fromBlock",
     type: "string",
-    paramDescription: "String - Either the hex value of a block number OR block tags:",
+    paramDescription:
+      "String - Either the hex value of a block number OR block tags:",
     paramEnum: [
       {
         value: "latest",
@@ -296,7 +297,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",

@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getTransactionCount() {
@@ -10,9 +12,7 @@ export function EthereumMethod_getTransactionCount() {
       method="eth_getTransactionCount"
       network="ethereum"
       cu={11}
-      description={
-        "Returns the number of transactions sent from an address."
-      }
+      description={"Returns the number of transactions sent from an address."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -201,8 +201,9 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription: "The address from which the transaction count to be checked",
-    },
+    paramDescription:
+      "The address from which the transaction count to be checked",
+  },
   {
     paramName: "blockNumber",
     type: "string",
@@ -226,7 +227,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -238,7 +239,7 @@ const RESPONSE_PARAMS: ResponseParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-  }
+  },
 ];
 
 const USE_CASES = [

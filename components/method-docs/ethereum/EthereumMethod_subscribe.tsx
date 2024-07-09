@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_subscribe() {
@@ -21,9 +23,7 @@ export function EthereumMethod_subscribe() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns the hex encoded subscription ID. "
-      }
+      responseParamsDescription={"Returns the hex encoded subscription ID. "}
     />
   );
 }
@@ -192,40 +192,42 @@ const REQUEST_PARAMS: RequestParamProp = [
       "The type of event you want to subscribe. This method supports the following subscription types:",
     childrenParamsType: "object",
     childrenParams: [
-        {
-          paramName: "newHeads",
-          type: "string",
-          paramDescription:
-            "It fires a notification each time a new header is appended to the chain, including chain reorganizations.",
-        },
-        {
-          paramName: "logs",
-          type: "string",
-          paramDescription:
-            "It returns logs that are included in new imported blocks and match the given filter criteria.",
-        },
-        {
-          paramName: "newPendingTransactions",
-          type: "string",
-          paramDescription:
-            "It returns the hash for all transactions that are added to the pending state and are signed with a key that is available in the node.",
-        },
-    ]
+      {
+        paramName: "newHeads",
+        type: "string",
+        paramDescription:
+          "It fires a notification each time a new header is appended to the chain, including chain reorganizations.",
+      },
+      {
+        paramName: "logs",
+        type: "string",
+        paramDescription:
+          "It returns logs that are included in new imported blocks and match the given filter criteria.",
+      },
+      {
+        paramName: "newPendingTransactions",
+        type: "string",
+        paramDescription:
+          "It returns the hash for all transactions that are added to the pending state and are signed with a key that is available in the node.",
+      },
+    ],
   },
 
   {
     paramName: "flag",
     type: "boolean",
-    paramDescription: "If true, method will return the full transaction data, otherwise only the transaction hash",
+    paramDescription:
+      "If true, method will return the full transaction data, otherwise only the transaction hash",
   },
   {
     paramName: "data",
     type: "object",
-    paramDescription: "The arguments such as an address, multiple addresses, and topics.",
+    paramDescription:
+      "The arguments such as an address, multiple addresses, and topics.",
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",

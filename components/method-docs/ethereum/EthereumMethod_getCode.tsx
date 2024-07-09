@@ -1,7 +1,9 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
-import { RequestParamProp } from "../../EthereumMethod/params/RequestParams";
-import { ResponseParam } from "../../EthereumMethod/params/ResponseParams";
-import { CodeSnippetObject } from "../../EthereumMethod/types";
+import {
+  ReqResParam,
+  RequestParamProp,
+} from "../../GenericMethod/params/types";
+import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function EthereumMethod_getCode() {
@@ -10,9 +12,7 @@ export function EthereumMethod_getCode() {
       method="eth_getCode"
       network="ethereum"
       cu={24}
-      description={
-        "Returns code at a given address."
-      }
+      description={"Returns code at a given address."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,9 +21,7 @@ export function EthereumMethod_getCode() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns the code from the given address."
-      }
+      responseParamsDescription={"Returns the code from the given address."}
     />
   );
 }
@@ -192,7 +190,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "Either the hex value of a block number OR a block hash OR One of the following block tags:",
+    paramDescription:
+      "Either the hex value of a block number OR a block hash OR One of the following block tags:",
     paramEnum: [
       {
         value: "latest",
@@ -211,7 +210,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
 ];
 
-const RESPONSE_PARAMS: ResponseParam[] = [
+const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "id",
     type: "integer",
@@ -234,6 +233,6 @@ const USE_CASES = [
 
 const CONSTRAINTS = [
   "Requires precise contract address",
-  "Limited to \"latest\" block state",
+  'Limited to "latest" block state',
   "Dependent on network node availability",
 ];
