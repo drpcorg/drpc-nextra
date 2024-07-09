@@ -1,4 +1,4 @@
-import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -8,7 +8,7 @@ import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlockHeight() {
   return (
-    <EthereumMethod
+    <SolanaMethod
       method="getBlockHeight"
       network="solana"
       cu={0}
