@@ -1,7 +1,9 @@
-import React from "react";
-import { DocsThemeConfig } from "nextra-theme-docs";
+import React, { PropsWithChildren } from "react";
 import Logo from "./components/Logo/logo";
 import { useRouter } from "next/router";
+import { H1 } from "./components/mdx/H1";
+import { DocsThemeConfig } from "nextra-theme-docs";
+import { H2 } from "./components/mdx/H2";
 
 const config: DocsThemeConfig = {
   logo: <Logo />,
@@ -23,13 +25,28 @@ const config: DocsThemeConfig = {
   footer: {
     component: <></>,
   },
+  components: {
+    h1: H1,
+    h2: H2,
+  },
   useNextSeoProps() {
     const { asPath } = useRouter();
     return {
       titleTemplate: "Documentation for dRPC | Docs for dRPC Platform",
-      description: "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗",
-      ...(asPath === '/' ? {canonical: "https://docs.drpc.org/"} : {} )
+      description:
+        "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗",
+      ...(asPath === "/" ? { canonical: "https://docs.drpc.org/" } : {}),
     };
+  },
+  sidebar: {
+    defaultMenuCollapseLevel: 1,
+  },
+  nextThemes: {
+    defaultTheme: "dark",
+    forcedTheme: "dark",
+  },
+  themeSwitch: {
+    component: () => null,
   },
 };
 
