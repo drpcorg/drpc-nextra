@@ -16,13 +16,6 @@
       "breadcrumb": false
     }
   },
-  "solana-api": {
-    "title": "Solana API",
-    "theme": {
-      "breadcrumb": false
-    },
-    "display": "hidden"
-  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",
