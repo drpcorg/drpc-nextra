@@ -293,6 +293,15 @@ services:
       - "traefik.http.routers.drpc.rule=Host(`$DOMAIN`)"
 ```
 
+Example of a Nginx configuration:
+
+```nginx
+location / {
+    set $host_grpc_pass "grpc://<dshackle-server-address>:<dshackle-server-port>";
+    grpc_pass $host_grpc_pass;
+}
+```
+
 ## Creating dRPC account
 
 Providers can use dRPC for free, as long as they use it to query their own infrastructure. The benefits include:
