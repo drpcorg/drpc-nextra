@@ -13,7 +13,7 @@ export function EthereumMethod_sendRawTransaction() {
       network="ethereum"
       cu={90}
       description={
-        "Creates a new message call transaction or a contract creation for signed transactions."
+        "Submits a pre-signed transaction for broadcast to the Ethereum network"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_sendRawTransaction() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns 32 Bytes - the transaction hash, or the zero hash if the transaction is not yet available."
+        "The hash of the transaction, represented as a hexadecimal string. "
       }
     />
   );
@@ -191,7 +191,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "data",
     type: "string",
     paramDescription:
-      "The signed transaction (typically signed with a library, using your private key)",
+      "The raw signed transaction data, encoded as a hexadecimal string. This includes all transaction details and the signature.",
   },
 ];
 

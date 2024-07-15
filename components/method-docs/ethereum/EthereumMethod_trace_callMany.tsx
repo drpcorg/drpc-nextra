@@ -13,7 +13,7 @@ export function EthereumMethod_trace_callMany() {
       network="ethereum"
       cu={90}
       description={
-        "Performs multiple call traces on top of the same block."
+        "Executes multiple message calls sequentially without creating transactions on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_trace_callMany() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "The block traces, which have the following fields."
+        "An array of trace results, each containing detailed execution traces of the corresponding call"
       }
     />
   );
@@ -322,58 +322,68 @@ const REQUEST_PARAMS: RequestParamProp = [
     childrenParamsType: "object",
     childrenParams: [
       {
+        paramName: "blockHash",
+        type: "string",
+        paramDescription:
+          "Hash of the block containing the transaction.",
+      },
+      {
+        paramName: "blockNumber",
+        type: "string",
+        paramDescription:
+          "Block number containing the transaction.",
+      },
+      {
+        paramName: "transactionIndex",
+        type: "string",
+        paramDescription:
+          "Position of the transaction in the block (null if pending)",
+      },
+      {
         paramName: "from",
         type: "string",
-        paramDescription: "The address from which the transaction is sent.",
+        paramDescription: "Transaction hash.",
+      },
+      {
+        paramName: "gas",
+        type: "string",
+        paramDescription: "Gas provided by the sender.",
+      },
+      {
+        paramName: "gasPrice",
+        type: "string",
+        paramDescription: "Gas price provided by the sender in wei.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription: "The address to which the transaction is addressed.",
-      },
-      {
-        paramName: "gas",
-        type: "integer",
         paramDescription:
-          "The integer of gas provided for the transaction execution.",
-      },
-      {
-        paramName: "gasPrice",
-        type: "integer",
-        paramDescription:
-          "The integer of gasPrice used for each paid gas encoded as hexadecimal.",
+          "Receiver's address (null if contract creation).",
       },
       {
         paramName: "value",
-        type: "integer",
-        paramDescription:
-          "The integer of value sent with this transaction encoded as hexadecimal.",
-      },
-      {
-        paramName: "data",
         type: "string",
-        paramDescription:
-          "The hash of the method signature and encoded parameters.",
+        paramDescription: "Value transferred in Wei.",
       },
     ],
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The hex value of a block number, hash or tags:",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -386,7 +396,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: 'Type of trace, one or more of: "trace", "stateDiff".',
+    paramDescription: 'Specifies the trace options, such as "vmTrace", "trace", and "stateDiff".',
   },
 ];
 
@@ -408,6 +418,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "action",
         type: "object",
         childrenParamsType: "object",
+        paramDescription: "Contains details about the trace action.",
         childrenParams: [
           {
             paramName: "callType",
@@ -417,12 +428,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "from",
             type: "string",
-            paramDescription: "The address of the sender.",
+            paramDescription: "The sender's address.",
           },
           {
             paramName: "to",
             type: "string",
-            paramDescription: "The address of the receiver.",
+            paramDescription: "The receiver's address.",
           },
           {
             paramName: "value",
@@ -437,7 +448,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "input",
             type: "string",
-            paramDescription: "The data sent along with the call.",
+            paramDescription: "The data sent with the call.",
           },
         ],
       },
@@ -459,36 +470,36 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "gasUsed",
             type: "string",
-            paramDescription: "The amount of gas used by the trace.",
+            paramDescription: "Gas used by the trace.",
           },
           {
             paramName: "output",
             type: "string",
-            paramDescription: "The output of the call.",
+            paramDescription: "Call output.",
           },
         ],
       },
       {
         paramName: "subtraces",
         type: "integer",
-        paramDescription: "The number of subtraces created by this trace.",
+        paramDescription: "Number of subtraces created by this trace..",
       },
       {
         paramName: "traceAddress",
         type: "array_of_strings",
         paramDescription:
-          "The trace address indicating the position of this trace in the call stack.",
+          "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
         paramDescription:
-          "The hash of the transaction to which this trace belongs.",
+          "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",
         type: "string",
-        paramDescription: "The position of the transaction in the block.",
+        paramDescription: "Transaction's position in the block.",
       },
       {
         paramName: "type",

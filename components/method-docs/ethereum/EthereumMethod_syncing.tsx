@@ -13,7 +13,7 @@ export function EthereumMethod_syncing() {
       network="ethereum"
       cu={0}
       description={
-        "Returns an object with the sync status of the node if the node is out-of-sync and is syncing."
+        "Checks the synchronization status of an Ethereum node"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_syncing() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"Returns an object with synchronization details if the node is syncing, or false if the node is fully synced."}
     />
   );
 }
@@ -203,26 +203,24 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription:
-      "The result is false if JSON Object is not syncing otherwise it's true:",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "startingBlock ",
         type: "string",
         paramDescription:
-          "The block at which the import started encoded as hexadecimal",
+          "The block number where the import process started, encoded in hexadecimal.",
       },
       {
         paramName: "currentBlock ",
         type: "string",
         paramDescription:
-          "The current block, same as eth_blockNumber encoded as hexadecimal",
+          "TThe current block number, the same as eth_blockNumber, encoded in hexadecimal.",
       },
       {
-        paramName: "startingBlock ",
+        paramName: "highestBlock ",
         type: "string",
-        paramDescription: "The estimated highest block encoded as hexadecimal",
+        paramDescription: "The estimated highest block number, encoded in hexadecimal.",
       },
     ],
   },

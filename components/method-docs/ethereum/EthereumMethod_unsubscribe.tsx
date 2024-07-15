@@ -13,7 +13,7 @@ export function EthereumMethod_unsubscribe() {
       network="ethereum"
       cu={10}
       description={
-        "Cancels an existing subscription so that no further events are sent."
+        "Unsubscribes from a subscription using the specified subscription ID"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_unsubscribe() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"Returns true if the subscription was successfully unsubscribed, false otherwise."}
     />
   );
 }
@@ -187,7 +187,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "subscription_id",
     type: "string",
     paramDescription:
-      "A subscription ID that was previously generated in a eth_subscribe RPC request.",
+      "The ID of the subscription to unsubscribe from",
   },
 ];
 
@@ -203,8 +203,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription:
-      "A boolean value indicating if the subscription was canceled successfully.",
   },
 ];
 

@@ -13,7 +13,7 @@ export function EthereumMethod_getProof() {
       network="ethereum"
       cu={11}
       description={
-        "Returns the account and storage values of the specified account including the Merkle-proof."
+        "Retrieves the Merkle proof for a specific account and its storage slots"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_getProof() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns an account object"}
+      responseParamsDescription={"Contains the account proof and storage proofs."}
     />
   );
 }
@@ -222,19 +222,19 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "address",
     type: "string",
     paramDescription:
-      "The address of the account for which the balance is to be checked.",
+      "The Ethereum address of the account for which the proof is being generated.",
   },
   {
     paramName: "storageKeys",
     type: "array_of_strings",
     paramDescription:
-      "An array of storage-keys that should be proofed and included",
+      "An array of storage slot keys for which to generate proofs.",
   },
   {
     paramName: "blockNumber",
     type: "string",
     paramDescription:
-      "The block number as a string in hexadecimal format or tags.",
+      "he block number at which to generate the proof. This can be specified as an integer or a string (\"latest\", \"earliest\", \"pending\").",
   },
 ];
 
@@ -250,8 +250,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-    paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -263,34 +261,34 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "accountProof",
         type: "array_of_strings",
         paramDescription:
-          "An array of rlp-serialized MerkleTree-Nodes which starts with the stateRoot-Node and follows the path of the SHA3 address as key.",
+          "An array of strings representing the account's proof.",
       },
       {
         paramName: "balance",
         type: "string",
-        paramDescription: "The current balance of the account in wei.",
+        paramDescription: "The account's balance in wei, as a hexadecimal string.",
       },
       {
         paramName: "codeHash",
         type: "string",
-        paramDescription: "A 32 byte hash of the code of the account.",
+        paramDescription: "The code hash of the account.",
       },
       {
         paramName: "nonce",
         type: "string",
         paramDescription:
-          "The hash of the generated proof-of-work. Null if pending.",
+          "The account's nonce.",
       },
       {
         paramName: "storageHash",
         type: "string",
-        paramDescription: "A 32 byte SHA3 of the storageRoot.",
+        paramDescription: "The storage hash of the account.",
       },
       {
         paramName: "storageProof",
         type: "array_of_objects",
         paramDescription:
-          "An array of storage-entries as requested. Each entry is an object with the following fields:",
+          "An array of objects representing the storage proofs for the specified storage slots.",
       },
       {
         paramName: "key",

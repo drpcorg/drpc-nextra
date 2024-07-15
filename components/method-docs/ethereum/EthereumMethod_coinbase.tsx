@@ -12,7 +12,7 @@ export function EthereumMethod_coinbase() {
       method="eth_coinbase"
       network="ethereum"
       cu={0}
-      description={"Returns the client coinbase address."}
+      description={"Returns the address of the client's coinbase"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}

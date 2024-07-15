@@ -12,7 +12,7 @@ export function EthereumMethod_mining() {
       method="eth_mining"
       network="ethereum"
       cu={0}
-      description={"Returns true if node is actively mining new blocks."}
+      description={"Checks if the Ethereum node is currently mining new blocks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +21,7 @@ export function EthereumMethod_mining() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"Returns true if the node is actively mining, false otherwise."}
     />
   );
 }
@@ -196,7 +196,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription: "It is true if the node is mining, otherwise false",
   },
 ];
 

@@ -13,7 +13,7 @@ export function EthereumMethod_getStorageAt() {
       network="ethereum"
       cu={14}
       description={
-        "Returns the value from a storage position at a given address."
+        "Retrieves the value stored at a specific storage slot of a contract address at a given block"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_getStorageAt() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the value at this storage position."}
+      responseParamsDescription={""}
     />
   );
 }
@@ -204,39 +204,30 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription: "The address to check for storage.",
+    paramDescription: "The Ethereum address of the smart contract.",
   },
   {
     paramName: "position",
     type: "string",
-    paramDescription: "The integer of the position in storage.",
+    paramDescription: "The storage slot position in hexadecimal format.",
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "Either the hex value of a block number OR a block hash OR One of the following block tags.",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
-      },
-      {
-        value: "safe",
-        description: "a block validated by the beacon chain",
-      },
-      {
-        value: "finalized",
-        description: "a block confirmed by over two-thirds of validators",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -254,6 +245,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
+    paramDescription: "The value stored at the specified storage slot, returned as a hexadecimal string.",
   },
 ];
 

@@ -13,7 +13,7 @@ export function EthereumMethod_subscribe() {
       network="ethereum"
       cu={10}
       description={
-        "Subscribe to different Ethereum event types like newHeads, logs, pendingTransactions, and minedTransactions using WebSockets."
+        "Creates a subscription to receive real-time updates for various events on the Ethereum blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_subscribe() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the hex encoded subscription ID. "}
+      responseParamsDescription={"The subscription ID, represented as a hexadecimal string. "}
     />
   );
 }
@@ -189,26 +189,26 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "subscription_name",
     type: "string",
     paramDescription:
-      "The type of event you want to subscribe. This method supports the following subscription types:",
+      "Specifies the event type for subscription. Supported types include:",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "newHeads",
         type: "string",
         paramDescription:
-          "It fires a notification each time a new header is appended to the chain, including chain reorganizations.",
+          "Triggers a notification for each new block header added, including chain reorganizations.",
       },
       {
         paramName: "logs",
         type: "string",
         paramDescription:
-          "It returns logs that are included in new imported blocks and match the given filter criteria.",
+          "Returns logs matching filter criteria in newly imported blocks.",
       },
       {
         paramName: "newPendingTransactions",
         type: "string",
         paramDescription:
-          "It returns the hash for all transactions that are added to the pending state and are signed with a key that is available in the node.",
+          "Returns the hash of all new pending transactions signed with a key available in the node.",
       },
     ],
   },
@@ -217,13 +217,13 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "flag",
     type: "boolean",
     paramDescription:
-      "If true, method will return the full transaction data, otherwise only the transaction hash",
+      "If true, returns full transaction data; otherwise, only the transaction hash.",
   },
   {
     paramName: "data",
     type: "object",
     paramDescription:
-      "The arguments such as an address, multiple addresses, and topics.",
+      "Arguments like address, multiple addresses, and topics.",
   },
 ];
 

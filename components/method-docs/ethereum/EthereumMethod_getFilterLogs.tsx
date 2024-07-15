@@ -13,7 +13,7 @@ export function EthereumMethod_getFilterLogs() {
       network="ethereum"
       cu={60}
       description={
-        "Returns an array of all logs matching filter with given id, can compute the same results with an eth_getLogs call."
+        "Retrieves all past logs for a filter"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_getFilterLogs() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"An array containing all logs that match the filter criteria, providing historical data relevant to the filter’s configuration."}
     />
   );
 }
@@ -215,7 +215,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "filterID",
     type: "string",
-    paramDescription: "The filter id.",
+    paramDescription: "The ID of the filter for which to retrieve all past logs.",
   },
 ];
 
@@ -239,55 +239,55 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "blockHash",
         type: "string",
         paramDescription:
-          "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
+          "32-byte hash of the block containing the log, or null if pending.",
       },
       {
         paramName: "blockNumber",
         type: "string",
         paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
+          "Block number containing the log, or null if pending.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
         paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
+          "Index position of the transaction that generated the log, or null if pending.",
       },
       {
         paramName: "address",
         type: "string",
-        paramDescription: "20 Bytes - address from which this log originated.",
+        paramDescription: "20-byte address from which the log originated.",
       },
       {
         paramName: "logIndex",
         type: "string",
         paramDescription:
-          "Integer of the log index position in the block. null when its pending log.",
+          "Index position of the log in the block, or null if pending.",
       },
       {
-        paramName: "data",
-        type: "string",
-        paramDescription:
-          "Contains one or more 32 Bytes non-indexed arguments of the log.",
-      },
-      {
-        paramName: "removed",
-        type: "boolean",
-        paramDescription:
-          "true when the log was removed, due to a chain reorganization. false if its a valid log.",
-      },
-      {
-        paramName: "topics",
-        type: "array_of_strings",
-        paramDescription:
-          "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
-      },
-      {
-        paramName: "transactionHash",
-        type: "string",
-        paramDescription:
-          "Hash of the transactions this log was created from. null when its pending log.",
-      },
+            paramName: "data",
+            type: "string",
+            paramDescription:
+              "Non-indexed arguments of the log, in 32-byte segments.",
+          },
+          {
+            paramName: "removed",
+            type: "boolean",
+            paramDescription:
+              "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
+          },
+          {
+            paramName: "topics",
+            type: "array_of_strings",
+            paramDescription:
+              "Array of zero to four 32-byte data strings of indexed log arguments.",
+          },
+          {
+            paramName: "transactionHash",
+            type: "string",
+            paramDescription:
+              "Hash of the transaction that generated the log, or null if pending.",
+          },
     ],
   },
 ];

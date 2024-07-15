@@ -13,7 +13,7 @@ export function EthereumMethod_uninstallFilter() {
       network="ethereum"
       cu={10}
       description={
-        "Uninstalls a filter with given id. Should always be called when watch is no longer needed."
+        "Uninstalls a filter with the specified filter ID"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_uninstallFilter() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns true if the filter was successfully uninstalled, otherwise false."
+        "Returns true if the filter was successfully uninstalled, false otherwise"
       }
     />
   );
@@ -201,7 +201,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "filterID",
     type: "string",
-    paramDescription: "The filter id.",
+    paramDescription: "TThe ID of the filter to uninstall,",
   },
 ];
 
@@ -217,8 +217,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription:
-      "A boolean indicating if the operation was successful or not.",
   },
 ];
 

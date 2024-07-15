@@ -12,7 +12,7 @@ export function EthereumMethod_maxPriorityFeePerGas() {
       method="eth_maxPriorityFeePerGas"
       network="ethereum"
       cu={16}
-      description={"Get the priority fee needed to be included in a block."}
+      description={"Retrieves the maximum priority fee per gas (in wei) that the user is willing to pay to incentivize miners to include their transaction"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +21,7 @@ export function EthereumMethod_maxPriorityFeePerGas() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the estimated priority fee per gas."}
+      responseParamsDescription={"The maximum priority fee per gas in wei, represented as a hexadecimal string."}
     />
   );
 }
@@ -196,7 +196,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-    paramDescription: "Returns the estimated priority fee per gas.",
   },
 ];
 

@@ -13,7 +13,7 @@ export function EthereumMethod_hashrate() {
       network="ethereum"
       cu={0}
       description={
-        "Returns the number of hashes per second that the node is mining with."
+        "Retrieves the number of hashes per second that the node is mining with"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_hashrate() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"The number of hashes per second that the node is currently mining at, returned as a hexadecimal string."}
     />
   );
 }
@@ -199,8 +199,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription:
-      "The number of hashes per second encoded in hexadecimal format.",
   },
 ];
 

@@ -12,7 +12,7 @@ export function EthereumMethod_getCode() {
       method="eth_getCode"
       network="ethereum"
       cu={24}
-      description={"Returns code at a given address."}
+      description={"Is essential for developers to inspect and verify contract code deployed on the Ethereum blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +21,7 @@ export function EthereumMethod_getCode() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the code from the given address."}
+      responseParamsDescription={"The smart contract code (EVM bytecode) stored at the specified address, returned as a hexadecimal string."}
     />
   );
 }
@@ -190,21 +190,28 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "Either the hex value of a block number OR a block hash OR One of the following block tags:",
+    paramDescription: "The block number or tag (\"latest\", \"earliest\", \"pending\") at which to get the balance.",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
+      },
+      {
+        value: "safe",
+        description: "A block that has been validated by the beacon chain.",
+      },
+      {
+        value: "finalized",
+        description: "a block confirmed by over two-thirds of validators",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "A block approved by more than two-thirds of the validators.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

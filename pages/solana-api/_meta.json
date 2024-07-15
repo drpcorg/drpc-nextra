@@ -1,0 +1,13 @@
+{
+  "getBlockHeight": "getBlockHeight",
+  "getAccountInfo": "getAccountInfo",
+  "simulateTransaction": "simulateTransaction",
+  "getBalance": "getBalance",
+  "getBlock": "getBlock",
+  "getBlockCommitment": "getBlockCommitment",
+  "getBlockProduction": "getBlockProduction",
+  "getBlocks": "getBlocks",
+  "getBlocksWithLimit": "getBlocksWithLimit",
+  "getBlockTime": "getBlockTime",
+  "getClusterNodes": "getClusterNodes"
+}

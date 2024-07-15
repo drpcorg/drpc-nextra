@@ -12,7 +12,7 @@ export function EthereumMethod_net_peerCount() {
       method="net_peerCount"
       network="ethereum"
       cu={0}
-      description={"Returns number of peers currently connected to the client."}
+      description={"Retrieves the number of peers currently connected to the Ethereum client"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +21,7 @@ export function EthereumMethod_net_peerCount() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={"The number of peers connected to the client, returned as a hexadecimal string."}
     />
   );
 }
@@ -196,8 +196,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription:
-      "The integer of the number of connected peers encoded as hexadecimal.",
   },
 ];
 
