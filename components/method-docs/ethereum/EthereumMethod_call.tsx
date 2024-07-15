@@ -13,7 +13,7 @@ export function EthereumMethod_call() {
       network="ethereum"
       cu={21}
       description={
-        "Executes a new message call immediately without creating a transaction on the block chain."
+          "Performs a message call instantly without recording it as a transaction on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -258,56 +258,56 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "The address from which the transaction is sent.",
+        paramDescription: "(optional) Sender's address.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription: "The address to which the transaction is addressed.",
+        paramDescription: "Recipient's address.",
       },
       {
         paramName: "gas",
         type: "integer",
         paramDescription:
-          "The integer of gas provided for the transaction execution.",
+          "(optional) Gas limit for the transaction.",
       },
       {
         paramName: "gasPrice",
         type: "integer",
         paramDescription:
-          "The integer of gasPrice used for each paid gas encoded as hexadecimal.",
+          "(optional) Gas price in wei.",
       },
       {
         paramName: "value",
         type: "integer",
         paramDescription:
-          "The integer of value sent with this transaction encoded as hexadecimal.",
+          "(optional) Amount of wei to send.",
       },
       {
         paramName: "data",
         type: "string",
         paramDescription:
-          "The hash of the method signature and encoded parameters.",
+          "(optional) Encoded method signature and parameters.",
       },
     ],
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The hex value of a block number, hash or tags:",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

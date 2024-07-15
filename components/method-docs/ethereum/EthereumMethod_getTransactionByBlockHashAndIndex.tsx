@@ -13,7 +13,7 @@ export function EthereumMethod_getTransactionByBlockHashAndIndex() {
       network="ethereum"
       cu={19}
       description={
-        "Returns information about a transaction by block hash and transaction index position."
+        "Retrieves a specific transaction from a block using the block's hash and the transaction's index position "
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_getTransactionByBlockHashAndIndex() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A transaction object, or null when no transaction was found."
+        "Detailed transaction object if found, or null if no transaction is found at the given index."
       }
     />
   );
@@ -211,13 +211,13 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockHash",
     type: "string",
-    paramDescription: "The block hash",
+    paramDescription: "The hash of the block containing the transaction.",
   },
   {
     paramName: "index",
     type: "string",
     paramDescription:
-      "An integer of the transaction index position encoded as a hexadecimal",
+      "The index position of the transaction within the block, specified as an integer or hexadecimal string.",
   },
 ];
 
@@ -233,33 +233,31 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "object",
-    paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "blockHash",
         type: "string",
         paramDescription:
-          "The number of the block where the given transaction was included.",
+          "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
         paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
+          "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
         paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
+          "Position of the transaction in the block (null if pending)",
       },
       {
         paramName: "nonce",
         type: "string",
         paramDescription:
-          "The number of transactions made by the sender prior to this one.",
+          "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -269,7 +267,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "20 Bytes - address of the sender.",
+        paramDescription: "Transaction hash.",
       },
       {
         paramName: "gas",
@@ -279,12 +277,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription: "Gas price provided by the sender in Wei.",
+        paramDescription: "Gas price provided by the sender in wei.",
       },
       {
         paramName: "input",
         type: "string",
-        paramDescription: "The data send along with the transaction.",
+        paramDescription: "Data sent with the transaction.",
       },
       {
         paramName: "r",
@@ -300,7 +298,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "to",
         type: "string",
         paramDescription:
-          "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+          "Receiver's address (null if contract creation).",
       },
       {
         paramName: "v",

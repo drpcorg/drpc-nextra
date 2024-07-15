@@ -13,7 +13,7 @@ export function EthereumMethod_newBlockFilter() {
       network="ethereum"
       cu={20}
       description={
-        "Creates a filter in the node, to notify when a new block arrives."
+        "Creates a filter to notify when new blocks are added to the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_newBlockFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns a filter id."}
+      responseParamsDescription={"The ID of the newly created filter, represented as a hexadecimal string."}
     />
   );
 }

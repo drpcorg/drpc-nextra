@@ -12,7 +12,7 @@ export function EthereumMethod_gasPrice() {
       method="eth_gasPrice"
       network="ethereum"
       cu={15}
-      description={"Returns the current price per gas in wei."}
+      description={"Helps in estimating the cost for transaction fees, ensuring efficient and accurate gas pricing for transactions on the Ethereum network"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function EthereumMethod_gasPrice() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns integer of the current price per gas in wei."
+        "Retrieves the current gas price in wei from the latest Ethereum block."
       }
     />
   );

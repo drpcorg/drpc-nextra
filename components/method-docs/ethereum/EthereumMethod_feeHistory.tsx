@@ -12,7 +12,7 @@ export function EthereumMethod_feeHistory() {
       method="eth_feeHistory"
       network="ethereum"
       cu={15}
-      description={"Returns a collection of historical gas information."}
+      description={"Retrieves historical gas fee data for Ethereum transactions, aiding in better gas price estimation and transaction planning based on past network activity"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -272,15 +272,17 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockCount",
     type: "integer",
+    paramDescription: "The number of blocks for which to retrieve fee history.",
   },
   {
     paramName: "newestBlock",
     type: "string",
+    paramDescription: "The highest block number (inclusive) to be used as the reference point. Can be a block number or a string (\"latest\", \"pending\")."
   },
   {
     paramName: "rewardPercentiles",
     type: "array_of_integers",
-    paramDescription: "optional",
+    paramDescription: "(optional) A list of percentiles for which to return gas used and priority fees per block.",
   },
 ];
 
@@ -296,36 +298,36 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "An array of addresses owned by the client.",
+    paramDescription: "A list of addresses owned by the client.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "oldestBlock",
         type: "int64",
-        paramDescription: "An array of block base fees per gas.",
+        paramDescription: "Base fees per gas for each block in the list.",
       },
       {
         paramName: "gasUsedRatio",
         type: "array_of_numbers",
         paramDescription:
-          "An array representing the ratios of block gas used. ",
+          "Ratios of gas used to gas limit for each block.",
       },
       {
         paramName: "reward",
         type: "array_of_arrays_of_strings",
         paramDescription:
-          "A two-dimensional array showing the effective priority fees per gas at the specified block percentiles. ",
+          "Priority fees per gas at the specified percentiles for each block.",
       },
       {
         paramName: "baseFeePerBlobGas",
         type: "array_of_strings",
-        paramDescription: "An array of base fees per blob gas for blocks. ",
+        paramDescription: "Base fees per blob gas for each block.",
       },
       {
         paramName: "blobGasUsedRatio",
         type: "array_of_numbers",
         paramDescription:
-          "An array showing the ratios of blob gas used in blocks.",
+          "Ratios of blob gas used to blob gas limit for each block.",
       },
     ],
   },

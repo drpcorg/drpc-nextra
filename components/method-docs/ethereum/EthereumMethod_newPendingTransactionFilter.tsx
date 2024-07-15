@@ -13,7 +13,7 @@ export function EthereumMethod_newPendingTransactionFilter() {
       network="ethereum"
       cu={20}
       description={
-        "Creates a filter in the node, to notify when new pending transactions arrive."
+        "Creates a filter to notify when new pending transactions are added to the transaction pool"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_newPendingTransactionFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns a filter id."}
+      responseParamsDescription={"The ID of the newly created filter, represented as a hexadecimal string. "}
     />
   );
 }

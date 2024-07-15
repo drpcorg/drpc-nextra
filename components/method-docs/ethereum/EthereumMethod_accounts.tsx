@@ -12,7 +12,7 @@ export function EthereumMethod_accounts() {
       method="eth_accounts"
       network="ethereum"
       cu={0}
-      description={"Returns a list of addresses owned by client."}
+      description={"Returns Ethereum account addresses owned by the client"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -218,7 +218,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "An array of addresses owned by the client",
+    paramDescription: "An array of account addresses, each address is represented as a string.",
   },
 ];
 

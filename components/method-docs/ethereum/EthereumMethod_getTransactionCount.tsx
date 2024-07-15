@@ -12,7 +12,7 @@ export function EthereumMethod_getTransactionCount() {
       method="eth_getTransactionCount"
       network="ethereum"
       cu={11}
-      description={"Returns the number of transactions sent from an address."}
+      description={"Retrieves the number of transactions sent from a specified address"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function EthereumMethod_getTransactionCount() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "The integer of the number of transactions sent from an address encoded as hexadecimal."
+        "The number of transactions sent from the specified address, returned as a hexadecimal string."
       }
     />
   );
@@ -202,26 +202,25 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "address",
     type: "string",
     paramDescription:
-      "The address from which the transaction count to be checked",
+      "The Ethereum address for which to retrieve the transaction count.",
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "Either the hex value of a block number OR a block hash OR One of the following block tag:",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

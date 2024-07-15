@@ -13,7 +13,7 @@ export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
       network="ethereum"
       cu={13}
       description={
-        "Returns information about a transaction by block number and transaction index position."
+        "Retrieves a specific transaction from a block by its number and index position"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A block object with the following fields, or null when no block was found."
+        "Detailed transaction object if found, or null if no transaction is found at the given index."
       }
     />
   );
@@ -189,31 +189,21 @@ const RESPONSE_JSON = `{
 const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
-    type: "array_of_strings",
-    paramDescription:
-      "The block number as a string in hexadecimal format or tags:",
+    type: "string",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
-      },
-      {
-        value: "safe",
-        description: "a block validated by the beacon chain",
-      },
-      {
-        value: "finalized",
-        description: "a block confirmed by over two-thirds of validators",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description:
-          "transactions broadcasted but not yet included in a block.",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -221,7 +211,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "index",
     type: "string",
     paramDescription:
-      "An integer of the transaction index position encoded as a hexadecimal.",
+      "The index position of the transaction within the block, specified as an integer or a hexadecimal string.",
   },
 ];
 
@@ -237,33 +227,31 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-    paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "blockHash",
         type: "string",
         paramDescription:
-          "The number of the block where the given transaction was included.",
+          "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
         paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
+          "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
         paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
+          "Position of the transaction in the block (null if pending)",
       },
       {
         paramName: "nonce",
         type: "string",
         paramDescription:
-          "The number of transactions made by the sender prior to this one.",
+          "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -273,7 +261,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "20 Bytes - address of the sender.",
+        paramDescription: "Transaction hash.",
       },
       {
         paramName: "gas",
@@ -283,33 +271,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription: "Gas price provided by the sender in Wei.",
-      },
-      {
-        paramName: "maxFeePerGas",
-        type: "string",
-        paramDescription: "The maximum fee per gas set in the transaction.",
-      },
-      {
-        paramName: "maxPriorityFeePerGas",
-        type: "string",
-        paramDescription:
-          "The maximum priority gas fee set in the transaction.",
+        paramDescription: "Gas price provided by the sender in wei.",
       },
       {
         paramName: "input",
         type: "string",
-        paramDescription: "The data send along with the transaction.",
-      },
-      {
-        paramName: "chainID",
-        type: "string",
-        paramDescription: "The chain id of the transaction, if any.",
-      },
-      {
-        paramName: "v",
-        type: "string",
-        paramDescription: "ECDSA recovery id.",
+        paramDescription: "Data sent with the transaction.",
       },
       {
         paramName: "r",
@@ -325,17 +292,17 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "to",
         type: "string",
         paramDescription:
-          "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+          "Receiver's address (null if contract creation).",
+      },
+      {
+        paramName: "v",
+        type: "string",
+        paramDescription: "ECDSA recovery id.",
       },
       {
         paramName: "value",
         type: "string",
         paramDescription: "Value transferred in Wei.",
-      },
-      {
-        paramName: "type",
-        type: "string",
-        paramDescription: "The transaction type.",
       },
     ],
   },

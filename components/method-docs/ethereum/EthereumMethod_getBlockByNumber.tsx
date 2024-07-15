@@ -13,7 +13,7 @@ export function EthereumMethod_getBlockByNumber() {
       network="ethereum"
       cu={24}
       description={
-        "Returns information of the block matching the given block number."
+        "Retrieves detailed information about a specific block on the Ethereum blockchain by its number"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_getBlockByNumber() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A block object, or null when no block was found. The block object contains the following fields:"
+        "The block object if the block is found, containing detailed information such as block hash, parent hash, miner, transactions, gas used, and more. If the block is not found, it returns null."
       }
     />
   );
@@ -240,33 +240,28 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized.",
+    paramDescription: "The block number or tag (\"latest\", \"earliest\", \"pending\") at which to get the balance.",
     paramEnum: [
       {
-        value: "pending",
-        description:
-          "A sample next block built by the client on top of latest and containing the set of transactions usually taken from local mempool. Intuitively, you can think of these as blocks that have not been mined yet.",
-      },
-      {
         value: "latest",
-        description:
-          "The most recent block in the canonical chain observed by the client, this block may be re-orged out of the canonical chain even under healthy/normal conditions.",
+        isDefault: true,
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "safe",
-        description:
-          "The most recent crypto-economically secure block, cannot be re-orged outside of manual intervention driven by community coordination. Intuitively, this block is “unlikely” to be re-orged.",
+        description: "A block that has been validated by the beacon chain.",
       },
       {
         value: "finalized",
-        description:
-          "The most recent crypto-economically secure block, that has been accepted by >2/3 of validators. Cannot be re-orged outside of manual intervention driven by community coordination. Intuitively, this block is very unlikely to be re-orged.",
+        description: "a block confirmed by over two-thirds of validators",
       },
       {
         value: "earliest",
-        description:
-          "The lowest numbered block the client has available. Intuitively, you can think of this as the first block created.",
+        description: "A block approved by more than two-thirds of the validators.",
+      },
+      {
+        value: "pending",
+        description: "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -274,7 +269,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "transaction_detail_flag",
     type: "boolean",
     paramDescription:
-      "The method returns the full transaction objects when this value is true otherwise, it returns only the hashes of the transactions",
+      "If set to true, returns the full transaction objects for all transactions in the block; if false, returns only the transaction hashes.",
   },
 ];
 
@@ -283,135 +278,135 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     paramName: "baseFeePerGas",
     type: "string",
     paramDescription:
-      "A string of the base fee encoded in hexadecimal format. Please note that this response field will not be included in a block requested before the EIP-1559 upgrade",
+      "Hexadecimal string of the base fee per gas. Not included for blocks before the EIP-1559 upgrade.",
   },
   {
     paramName: "difficulty",
     type: "integer",
     paramDescription:
-      "The integer of the difficulty for this block encoded as a hexadecimal",
+      "The block's difficulty level, encoded as a hexadecimal.",
   },
 
   {
     paramName: "extraData",
-    paramDescription: "The “extra data” field of this block",
+    paramDescription: "Additional data field of the block.",
     type: "string",
   },
 
   {
     paramName: "gasLimit",
     paramDescription:
-      "The maximum gas allowed in this block encoded as a hexadecimal",
+      "Maximum gas allowed in the block, in hexadecimal.",
     type: "string",
   },
 
   {
     paramName: "gasUsed",
     paramDescription:
-      "The total used gas by all transactions in this block encoded as a hexadecimal",
+      "Total gas used by all transactions in the block, in hexadecimal.",
     type: "string",
   },
 
   {
     paramName: "hash",
-    paramDescription: "The block hash of the requested block. null if pending",
+    paramDescription: "Hash of the block, null if pending.",
     type: "string",
   },
 
   {
     paramName: "logsBloom",
     paramDescription:
-      "The bloom filter for the logs of the block. null if pending",
+      "Bloom filter for the block's logs, null if pending.",
     type: "string",
   },
 
   {
     paramName: "miner",
     paramDescription:
-      "The address of the beneficiary to whom the mining rewards were given",
+      "Address of the block's mining reward beneficiary.",
     type: "string",
   },
 
   {
     paramName: "mixHash",
-    paramDescription: "A string of a 256-bit hash encoded as a hexadecimal",
+    paramDescription: "256-bit hash as a hexadecimal string.",
     type: "string",
   },
 
   {
     paramName: "nonce",
     paramDescription:
-      "The hash of the generated proof-of-work. null if pending",
+      "Proof-of-work hash, null if pending.",
     type: "string",
   },
 
   {
     paramName: "number",
     paramDescription:
-      "The block number of the requested block encoded as hexadecimal. null if pending",
+      "Block number as a hexadecimal, null if pending.",
     type: "string",
   },
 
   {
     paramName: "parentHash",
-    paramDescription: "The hash of the parent block",
+    paramDescription: "Hash of the parent block.",
     type: "string",
   },
 
   {
     paramName: "receiptsRoot",
-    paramDescription: "The root of the receipts trie of the block",
+    paramDescription: "Root of the block's receipts trie.",
     type: "string",
   },
 
   {
     paramName: "sha3Uncles",
-    paramDescription: "The SHA3 of the uncles data in the block",
+    paramDescription: "SHA3 hash of the block's uncles data.",
     type: "string",
   },
 
   {
     paramName: "size",
     paramDescription:
-      "The size of this block in bytes as an Integer value encoded as hexadecimal",
+      "Size of the block in bytes, as a hexadecimal integer.",
     type: "string",
   },
 
   {
     paramName: "stateRoot",
-    paramDescription: "The root of the final state trie of the block",
+    paramDescription: "Root of the block's final state trie.",
     type: "string",
   },
 
   {
     paramName: "timestamp",
-    paramDescription: "The UNIX timestamp for when the block was collated",
+    paramDescription: "UNIX timestamp of the block's collation.",
     type: "string",
   },
 
   {
     paramName: "totalDifficulty",
     paramDescription:
-      "The integer of the total difficulty of the chain until this block encoded as a hexadecimal",
+      "Total difficulty of the blockchain up to this block, in hexadecimal.",
     type: "string",
   },
 
   {
     paramName: "transactions",
     paramDescription:
-      "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
+      "List of transaction objects; refer to eth_getTransactionByHash for details.",
     type: "array",
   },
 
   {
     paramName: "transactionsRoot",
-    paramDescription: "The root of the transaction trie of the block",
+    paramDescription: "Root of the block's transaction trie.",
     type: "string",
   },
 
   {
     paramName: "uncles",
-    paramDescription: "An array of uncle hashes",
+    paramDescription: "List of uncle block hashes.",
     type: "array",
   },
 ];

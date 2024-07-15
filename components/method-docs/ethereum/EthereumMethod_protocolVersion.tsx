@@ -12,7 +12,7 @@ export function EthereumMethod_protocolVersion() {
       method="eth_protocolVersion"
       network="ethereum"
       cu={0}
-      description={"Returns the current ethereum protocol version."}
+      description={"Retrieves the current Ethereum protocol version that the client is using"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function EthereumMethod_protocolVersion() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the current ethereum protocol version."
+        "The protocol version, represented as a string."
       }
     />
   );

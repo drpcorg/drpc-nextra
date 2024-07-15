@@ -12,7 +12,7 @@ export function EthereumMethod_web3_clientVersion() {
       method="web3_clientVersion"
       network="ethereum"
       cu={0}
-      description={"Returns the current client version."}
+      description={"Retrieves the current version of the Ethereum client that the node is running"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +21,7 @@ export function EthereumMethod_web3_clientVersion() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the current client version."}
+      responseParamsDescription={"The version of the Ethereum client, including the name and version number, as a string"}
     />
   );
 }

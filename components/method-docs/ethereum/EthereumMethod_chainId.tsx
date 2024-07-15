@@ -13,7 +13,7 @@ export function EthereumMethod_chainId() {
       network="ethereum"
       cu={0}
       description={
-        "Returns the current network/chain ID, used to sign replay-protected transaction introduced in EIP-155."
+          "Provides the current network or chain ID, essential for signing replay-protected transactions as defined in EIP-155"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +23,7 @@ export function EthereumMethod_chainId() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns integer of the current chain ID."}
+      responseParamsDescription={"Returns the current chain ID as an integer."}
     />
   );
 }
@@ -209,7 +209,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "HEX string representing the current chain/network ID.",
+    paramDescription: "Hexadecimal string that represents the current chain or network ID.",
   },
 ];
 

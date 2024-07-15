@@ -13,7 +13,7 @@ export function EthereumMethod_net_listening() {
       network="ethereum"
       cu={0}
       description={
-        "Returns true if client is actively listening for network connections."
+        "Checks if the Ethereum client is actively listening for network connections"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,7 +24,7 @@ export function EthereumMethod_net_listening() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns true when listening, otherwise false."
+        "RReturns true if the client is listening for network connections, false otherwise."
       }
     />
   );
@@ -206,8 +206,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription:
-      "A boolean indicating if the operation was successful or not.",
   },
 ];
 
