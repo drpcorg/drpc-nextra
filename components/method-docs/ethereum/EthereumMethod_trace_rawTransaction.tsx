@@ -2,7 +2,7 @@ import EthereumMethod from "../../EthereumMethod/EthereumMethod";
 import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
@@ -363,16 +363,78 @@ const RESPONSE_PARAMS: ReqResParam[] = [
             paramDescription: "Transaction's position in the block.",
           },
           {
-            paramName: "type",
+            paramName: "gas",
             type: "string",
-            paramDescription: "The type of trace.",
+            paramDescription: "The gas provided for the call.",
           },
           {
-            paramName: "vmTrace",
+            paramName: "input",
             type: "string",
             paramDescription:
               "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
           },
+        ],
+      },
+      {
+        paramName: "blockHash",
+        type: "string",
+        paramDescription: "The hash of the block where the trace occurred.",
+      },
+      {
+        paramName: "blockNumber",
+        type: "string",
+        paramDescription: "The number of the block where the trace occurred.",
+      },
+      {
+        paramName: "result",
+        type: "string",
+        childrenParamsType: "object",
+        childrenParams: [
+          {
+            paramName: "gasUsed",
+            type: "string",
+            paramDescription: "Gas used by the trace.",
+          },
+          {
+            paramName: "output",
+            type: "string",
+            paramDescription: "Call output.",
+          },
+        ],
+      },
+      {
+        paramName: "subtraces",
+        type: "integer",
+        paramDescription: "Number of subtraces created by this trace..",
+      },
+      {
+        paramName: "traceAddress",
+        type: "array_of_strings",
+        paramDescription:
+          "Position of this trace in the call stack.",
+      },
+      {
+        paramName: "transactionHash",
+        type: "string",
+        paramDescription:
+          "Hash of the transaction containing this trace.",
+      },
+      {
+        paramName: "transactionPosition",
+        type: "string",
+        paramDescription: "Transaction's position in the block.",
+      },
+      {
+        paramName: "type",
+        type: "string",
+        paramDescription: "The type of trace.",
+      },
+      {
+        paramName: "vmTrace",
+        type: "string",
+        paramDescription:
+          "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
+      },
         ],
       },
     ],

@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getClusterNodes() {
@@ -193,8 +193,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-    `
-},
+    `,
+  },
 ];
 
 const RESPONSE_JSON = `{
@@ -229,36 +229,38 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     type: "string",
     childrenParamsType: "object",
     childrenParams: [
-        {
-          paramName: "pubkey",
-          type: "string",
-          paramDescription: "The node's public key, encoded in base-58.",
-        },
-        {
-          paramName: "rpc",
-          type: "string",
-          paramDescription: "The RPC (Remote Procedure Call) address of the node.",
-        },
-        {
-          paramName: "pubkey",
-          type: "string",
-          paramDescription: "The node's public key, encoded in base-58.",
-        },
-        {
-          paramName: "version",
-          type: "string",
-          paramDescription: "The version of the Solana software the node is running.",
-        },
-        {
-          paramName: "featureSet",
-          type: "string",
-          paramDescription: "The set of features supported by the node.",
-        },
-        {
-          paramName: "shredVersion",
-          type: "string",
-          paramDescription: "The shred version the node is using.",
-        },
+      {
+        paramName: "pubkey",
+        type: "string",
+        paramDescription: "The node's public key, encoded in base-58.",
+      },
+      {
+        paramName: "rpc",
+        type: "string",
+        paramDescription:
+          "The RPC (Remote Procedure Call) address of the node.",
+      },
+      {
+        paramName: "pubkey",
+        type: "string",
+        paramDescription: "The node's public key, encoded in base-58.",
+      },
+      {
+        paramName: "version",
+        type: "string",
+        paramDescription:
+          "The version of the Solana software the node is running.",
+      },
+      {
+        paramName: "featureSet",
+        type: "string",
+        paramDescription: "The set of features supported by the node.",
+      },
+      {
+        paramName: "shredVersion",
+        type: "string",
+        paramDescription: "The shred version the node is using.",
+      },
     ],
   },
 ];
