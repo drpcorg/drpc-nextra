@@ -1,10 +1,32 @@
 .invisible {
-  font-size: "36px";
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  white-space: nowrap;
 }
 
 .h2 {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.h2 span {
+  font-size: 28px;
+  font-family: inherit;
+  letter-spacing: -0.75px;
+}
+
+.h2 a {
+  display: none;
+  margin-left: 8px;
+  font-size: 28px;
+}
+
+.h2:hover a {
+  display: inline-block;
+  opacity: 0.25;
 }
