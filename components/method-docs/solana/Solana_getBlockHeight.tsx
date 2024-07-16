@@ -12,7 +12,7 @@ export function Solana_getBlockHeight() {
       method="getBlockHeight"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves the current block height"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -20,9 +20,9 @@ export function Solana_getBlockHeight() {
       requestParamsType="array_of_objects"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="array_of_objects"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "The current block height"
       }
     />
   );
@@ -97,18 +97,12 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": 0
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-  {
-    paramName: "blockNumber",
-    type: "string",
-    paramDescription:
-      "This describes the block number to fetch the transaction by.",
-  },
   {
     paramName: "commitment",
     type: "string",
@@ -131,11 +125,6 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
     ],
   },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
-  },
 ];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
@@ -149,8 +138,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   },
   {
     paramName: "result",
-    type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    type: "integer",
   },
 ];
 

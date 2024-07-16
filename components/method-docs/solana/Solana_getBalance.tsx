@@ -12,17 +12,17 @@ export function Solana_getBalance() {
       method="getBalance"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves the balance of an account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="array"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "Contains balance information for the specified account"
       }
     />
   );
@@ -97,44 +97,39 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": {
+    "context": {
+      "slot": 0
+    },
+    "value": 0
+  }
 }`;
 
-const REQUEST_PARAMS: RequestParamProp = [
+  const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockNumber",
+    paramName: "accountPublicKey",
     type: "string",
     paramDescription:
-      "This describes the block number to fetch the transaction by.",
+      "The public key of the account to query.",
   },
   {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
+    paramName: "config",
+    type: "object",
+    paramDescription: "Configuration object containing optional parameters:",
+    childrenParams: [
       {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+        paramName: "commitment",
+        type: "string",
+        paramDescription: "Sets the commitment level for the blocks queried. Valid options are: finalized, confirmed, processed",
       },
       {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
+        paramName: "minContextSlot",
+        type: "object",
+        paramDescription: "The minimum slot number at which the request can be evaluated."
       },
     ],
-  },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
   },
 ];
 
@@ -150,7 +145,17 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    childrenParamsType: "array",
+    childrenParams: [
+        {
+          paramName: "slot",
+          type: "int64",
+        },
+        {
+          paramName: "value",
+          type: "number",
+        },
+    ],
   },
 ];
 

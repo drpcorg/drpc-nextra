@@ -12,7 +12,7 @@ export function Solana_getAccountInfo() {
       method="getAccountInfo"
       network="solana"
       cu={10}
-      description={"Returns all information associated with the account of provided Pubkey."}
+      description={"Retrieves detailed information about a specific account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function Solana_getAccountInfo() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A JSON object."
+        "Contains detailed information about the account"
       }
     />
   );
@@ -97,44 +97,39 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": {
+    "context": {
+      "slot": 0
+    },
+    "value": 0
+  }
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockNumber",
+    paramName: "accountPublicKey",
     type: "string",
     paramDescription:
-      "This describes the block number to fetch the transaction by.",
+      "The public key of the account to query.",
   },
   {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
+    paramName: "config",
+    type: "object",
+    paramDescription: "Configuration object containing optional parameters:",
+    childrenParams: [
       {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+        paramName: "encoding",
+        type: "string",
+        paramDescription: "Specifies the data encoding for the returned account information"
       },
       {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
+        paramName: "dataSlice",
+        type: "object",
+        paramDescription: "Limits the returned account data based on the specified offset and length fields. Available only for \"base58\", \"base64\", or \"base64+zstd\" encodings."
       },
     ],
-  },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
   },
 ];
 
@@ -150,7 +145,45 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    childrenParamsType: "array",
+    childrenParams: [
+        {
+          paramName: "slot",
+          type: "int64",
+        },
+        {
+          paramName: "value",
+          type: "object",
+          childrenParamsType: "object",
+          childrenParams: [
+              {
+                paramName: "lamports",
+                type: "int64",
+                paramDescription: "The number of lamports (smallest unit of SOL) assigned to this account.",
+              },
+              {
+                paramName: "owner",
+                type: "string",
+                paramDescription: "Base-58 encoded public key of the program assigned to this account",
+              },
+              {
+                paramName: "data",
+                type: "string",
+                paramDescription: "Data associated with the account, either as encoded binary data or in JSON format, depending on the specified encoding. Format: [data, encoding] or JSON object",
+              },
+              {
+                paramName: "executable",
+                type: "string",
+                paramDescription: "dicates if the account contains a program and is read-only.",
+              },
+              {
+                paramName: "rentEpoch",
+                type: "string",
+                paramDescription: "The epoch at which this account will next owe rent.",
+              },
+          ]
+        },
+    ],
   },
 ];
 

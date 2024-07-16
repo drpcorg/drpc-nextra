@@ -12,17 +12,17 @@ export function Solana_getClusterNodes() {
       method="getClusterNodes"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves information about all the nodes"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "An array of objects where each object contains details about a node"
       }
     />
   );

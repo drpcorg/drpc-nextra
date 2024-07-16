@@ -12,7 +12,7 @@ export function Solana_simulateTransaction() {
       method="simulateTransaction"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Simulates the execution of a transaction without submitting it to the network"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function Solana_simulateTransaction() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "The simulation result, including details such as the status, logs, and any errors encountered during the simulation"
       }
     />
   );

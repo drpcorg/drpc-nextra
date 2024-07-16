@@ -12,7 +12,7 @@ export function Solana_getBlockProduction() {
       method="getBlockProduction"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves block production information for the current epoch or a specified slot range"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -20,9 +20,9 @@ export function Solana_getBlockProduction() {
       requestParamsType="array_of_objects"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="object"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "Contains block production information"
       }
     />
   );
@@ -97,17 +97,36 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": {
+    "byIdentity": {},
+    "range": {
+      "firstSlot": 0,
+      "lastSlot": 0
+    }
+  }
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "blockNumber",
+    paramName: "range",
     type: "string",
     paramDescription:
-      "This describes the block number to fetch the transaction by.",
+      "Specifies the slot range to query block production for",
+    childrenParamsType: "object",
+    childrenParams: [
+      {
+        paramName: "firstSlot",
+        type: "integer",
+        paramDescription: "The starting slot of the range.",
+      },
+      {
+        paramName: "lastSlot",
+        type: "integer",
+        paramDescription: " The ending slot of the range",
+      },
+    ],
   },
   {
     paramName: "commitment",
@@ -131,11 +150,6 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
     ],
   },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
-  },
 ];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
@@ -150,7 +164,33 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    childrenParamsType: "object",
+    childrenParams: [
+      {
+        paramName: "byIdentity",
+        type: "object",
+        paramDescription: "A dictionary of validator identities",
+      },
+      {
+    paramName: "range",
+    type: "string",
+    paramDescription:
+      "Specifies the slot range to query block production for",
+    childrenParamsType: "object",
+    childrenParams: [
+      {
+        paramName: "firstSlot",
+        type: "integer",
+        paramDescription: "The starting slot of the range.",
+      },
+      {
+        paramName: "lastSlot",
+        type: "integer",
+        paramDescription: " The ending slot of the range",
+      },
+    ],
+  },
+    ],
   },
 ];
 
