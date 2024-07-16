@@ -280,24 +280,21 @@ const REQUEST_PARAMS: RequestParamProp = [
       'Limits the returned account data based on the specified offset and length fields. Available only for "base58", "base64", or "base64+zstd" encodings.',
   },
   {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
+    paramName: "config",
+    type: "object",
+    paramDescription: "Configuration object containing optional parameters:",
+    childrenParams: [
       {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+        paramName: "encoding",
+        type: "string",
+        paramDescription:
+          "Specifies the data encoding for the returned account information",
       },
       {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
+        paramName: "dataSlice",
+        type: "object",
+        paramDescription:
+          'Limits the returned account data based on the specified offset and length fields. Available only for "base58", "base64", or "base64+zstd" encodings.',
       },
     ],
   },
