@@ -12,17 +12,17 @@ export function Solana_getBlocksWithLimit() {
       method="getBlocksWithLimit"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves a list of confirmed blocks starting from a specified slot up to a given limit on the Solana blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="array"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="array_of_integers"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "An array of block numbers starting from the specified slot and extending up to the given limit that have been confirmed"
       }
     />
   );
@@ -97,18 +97,14 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": [
+    0
+  ]
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-  {
-    paramName: "blockNumber",
-    type: "string",
-    paramDescription:
-      "This describes the block number to fetch the transaction by.",
-  },
   {
     paramName: "commitment",
     type: "string",
@@ -131,11 +127,6 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
     ],
   },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
-  },
 ];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
@@ -150,7 +141,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "The current block height encoded in u64 format",
   },
 ];
 

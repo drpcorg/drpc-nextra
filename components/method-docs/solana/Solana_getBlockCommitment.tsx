@@ -12,7 +12,7 @@ export function Solana_getBlockCommitment() {
       method="getBlockCommitment"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={"Retrieves the commitment levels for a specific block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,7 +22,7 @@ export function Solana_getBlockCommitment() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "Contains commitment information for the block"
       }
     />
   );
@@ -97,9 +97,14 @@ fetch(url, {
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": {
+    "commitment": [
+      0
+    ],
+    "totalStake": 0
+  }
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
@@ -107,34 +112,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "blockNumber",
     type: "string",
     paramDescription:
-      "This describes the block number to fetch the transaction by.",
-  },
-  {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
-      {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
-      },
-      {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
-      },
-    ],
-  },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
+      "The number of the block to retrieve commitment information for.",
   },
 ];
 
@@ -149,8 +127,20 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   },
   {
     paramName: "result",
-    type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    type: "object",
+    childrenParamsType: "array",
+    childrenParams: [
+        {
+          paramName: "commitment",
+          type: "array_of_integers",
+          paramDescription: "The commitment level of the block.",
+        },
+        {
+          paramName: "totalStake",
+          type: "int64",
+          paramDescription: "The total stake of validators confirming the block.",
+        },
+        ],
   },
 ];
 

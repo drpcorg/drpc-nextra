@@ -12,17 +12,17 @@ export function Solana_getBlock() {
       method="getBlock"
       network="solana"
       cu={0}
-      description={"Returns the current block height encoded in u64 format."}
+      description={" Retrieves detailed information about a specific block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="array"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="object"
       responseParamsDescription={
-        "The current block height encoded in u64 format"
+        "Contains detailed information about the block"
       }
     />
   );
