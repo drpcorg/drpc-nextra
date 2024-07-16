@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { textToHrefId } from "../../utils/text/textToHrefId";
 import { PropsWithChildren } from "react";
-import classes from "./H1.module.css";
+import classes from "./H2.module.css";
 import { isApiDocsPagePath } from "../../utils/text/isApiDocsPagePath";
 
 export function H2({ children }: PropsWithChildren) {
@@ -19,7 +19,9 @@ export function H2({ children }: PropsWithChildren) {
   return (
     <h2 className={classes.h2}>
       <span>{children}</span>
-      <a href={`#${id}`} id={id} aria-label="Permalink for this section" />
+      <a href={`#${id}`} id={id} aria-label="Permalink for this section">
+        #
+      </a>
     </h2>
   );
 }
