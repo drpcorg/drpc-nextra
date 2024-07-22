@@ -11,7 +11,7 @@ export function Solana_getBalance() {
     <SolanaMethod
       method="getBalance"
       network="solana"
-      cu={0}
+      cu={12}
       description={"Retrieves the balance of an account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -20,7 +20,7 @@ export function Solana_getBalance() {
       requestParamsType="array"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="object"
       responseParamsDescription={
         "Contains balance information for the specified account"
       }
@@ -31,67 +31,173 @@ export function Solana_getBalance() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \\
-    --url ${DRPC_ENDPOINT_URL} \\
-    --header 'accept: application/json' \\
-    --header 'content-type: application/json' \\
-    --data '
-{
- "id": 1,
- "jsonrpc": "2.0",
- "method": "getBlockHeight"
-}
-'`,
+    code: () => `curl --location --request POST '${DRPC_ENDPOINT_URL}' \\
+--header 'Content-Type: application/json' \\
+--data-raw '  {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method":"getBalance", 
+    "params":
+    [
+    "83astBRguLMdt2h5U1Tpdq5tjFoJ6noeGwaY3mDLVcri"
+    ]
+  }'`,
   },
   {
     language: "js",
     code: () => `const url = '${DRPC_ENDPOINT_URL}';
-const headers = {
-    'Content-Type': 'application/json'
-};
 
-const data = {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "getBlockHeight"
-};
+const data = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getBalance",
+  "params": ["ExamplePublicKeyHere"]
+});
 
 fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: data
 })
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
 `,
   },
   {
     language: "node",
-    code: () => `// First, install node-fetch if you haven't already:
-// npm install node-fetch
+    code: () => `const https = require('https');
 
-const fetch = require('node-fetch');
+const data = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getBalance",
+  "params": ["ExamplePublicKeyHere"]
+});
 
-const url = '${DRPC_ENDPOINT_URL}';
-const headers = {
+const options = {
+  hostname: '${DRPC_ENDPOINT_URL}',
+  path: '',
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
+  }
 };
 
-const data = {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "getBlockHeight"
-};
+const req = https.request(options, res => {
+  let data = '';
 
-fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+  res.on('data', chunk => {
+    data += chunk;
+  });
+
+  res.on('end', () => {
+    console.log(JSON.parse(data));
+  });
+});
+
+req.on('error', error => {
+  console.error('Error:', error);
+});
+
+req.write(data);
+req.end();
+`,
+  },
+  {
+    language: "go",
+    code: () => `package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	url := "${DRPC_ENDPOINT_URL}"
+
+	requestBody, err := json.Marshal(map[string]interface{}{
+		"id":      1,
+		"jsonrpc": "2.0",
+		"method":  "getBalance",
+		"params":  []interface{}{"ExamplePublicKeyHere"},
+	})
+
+	if err != nil {
+		fmt.Println("Error marshaling JSON:", err)
+		return
+	}
+
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(requestBody))
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	var result map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&result)
+
+	fmt.Println(result)
+}
+`,
+  },
+  {
+    language: "python",
+    code: () => `import requests
+import json
+
+url = '${DRPC_ENDPOINT_URL}'
+headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getBalance",
+    "params": ["ExamplePublicKeyHere"]
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(data))
+print(response.json())
+`,
+  },
+  {
+    language: "rust",
+    code: () => `use reqwest::Client;
+use serde_json::json;
+use tokio;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    let url = "${DRPC_ENDPOINT_URL}";
+
+    let request_body = json!({
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "getBalance",
+        "params": ["ExamplePublicKeyHere"]
+    });
+
+    let response = client.post(url)
+        .json(&request_body)
+        .send()
+        .await?;
+
+    let response_text = response.text().await?;
+    println!("{}", response_text);
+
+    Ok(())
+}
 `,
   },
 ];
@@ -160,13 +266,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Track the current height of the blockchain for real-time updates.",
-  "Verify if a node or client is fully synced with the blockchain.",
-  "Use block height as a reference for querying historical transactions and events.",
+  "Verify wallet balance before transactions",
+  "Monitor account balance for automated financial services",
+  "Check balance changes to detect unusual account activity",
 ];
 
 const CONSTRAINTS = [
-  "Delays in response during high network activity.",
-  "Potential discrepancies in height during network forks or reorganizations.",
-  "Subject to rate limits, affecting frequent data retrieval.",
+  "Requires valid Solana public key",
+  "Network delays can affect response time",
+  "Rate limits may impact frequent balance checks",
 ];
