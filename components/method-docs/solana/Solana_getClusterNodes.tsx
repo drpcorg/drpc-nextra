@@ -11,7 +11,7 @@ export function Solana_getClusterNodes() {
     <SolanaMethod
       method="getClusterNodes"
       network="solana"
-      cu={0}
+      cu={23}
       description={"Retrieves information about all the nodes"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -20,7 +20,7 @@ export function Solana_getClusterNodes() {
       requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="string"
+      responseParamsType="array_of_objects"
       responseParamsDescription={
         "An array of objects where each object contains details about a node"
       }
@@ -32,34 +32,34 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `curl --request POST \\
-    --url ${DRPC_ENDPOINT_URL} \\
-    --header 'accept: application/json' \\
-    --header 'content-type: application/json' \\
-    --data '
+     --url ${DRPC_ENDPOINT_URL} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
+     --data '
 {
- "id": 1,
- "jsonrpc": "2.0",
- "method": "getBlockHeight"
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getClusterNodes"
 }
 '`,
   },
   {
     language: "js",
     code: () => `const url = '${DRPC_ENDPOINT_URL}';
-const headers = {
-    'Content-Type': 'application/json'
-};
 
-const data = {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "getBlockHeight"
-};
+const data = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getClusterNodes"
+});
 
 fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: data
 })
 .then(response => response.json())
 .then(data => console.log(data))
@@ -68,75 +68,152 @@ fetch(url, {
   },
   {
     language: "node",
-    code: () => `// First, install node-fetch if you haven't already:
-// npm install node-fetch
+    code: () => `const https = require('https');
 
-const fetch = require('node-fetch');
+const data = JSON.stringify({
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "getClusterNodes"
+});
 
-const url = '${DRPC_ENDPOINT_URL}';
-const headers = {
+const options = {
+  hostname: '${DRPC_ENDPOINT_URL}',
+  path: '',
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
     'Content-Type': 'application/json'
+  }
 };
 
-const data = {
-    jsonrpc: "2.0",
-    id: 1,
-    method: "getBlockHeight"
-};
+const req = https.request(options, res => {
+  let responseData = '';
 
-fetch(url, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
+  res.on('data', chunk => {
+    responseData += chunk;
+  });
+
+  res.on('end', () => {
+    console.log(JSON.parse(responseData));
+  });
+});
+
+req.on('error', error => {
+  console.error('Error:', error);
+});
+
+req.write(data);
+req.end();
 `,
   },
+  {
+    language: "go",
+    code: () => `package main
+
+import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	url := "${DRPC_ENDPOINT_URL}"
+
+	requestBody, err := json.Marshal(map[string]interface{}{
+		"id":      1,
+		"jsonrpc": "2.0",
+		"method":  "getClusterNodes",
+	})
+
+	if err != nil {
+		fmt.Println("Error marshaling JSON:", err)
+		return
+	}
+
+	resp, err := http.Post(url, "application/json", bytes.NewBuffer(requestBody))
+	if err != nil {
+		fmt.Println("Error making request:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	var result map[string]interface{}
+	json.NewDecoder(resp.Body).Decode(&result)
+
+	fmt.Println(result)
+}
+`,
+  },
+  {
+    language: "python",
+    code: () => `import requests
+import json
+
+url = '${DRPC_ENDPOINT_URL}'
+headers = {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+}
+
+data = {
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "getClusterNodes"
+}
+
+response = requests.post(url, headers=headers, data=json.dumps(data))
+print(response.json())
+`,
+  },
+  {
+    language: "rust",
+    code: () => `use reqwest::Client;
+use serde_json::json;
+use tokio;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    let url = "${DRPC_ENDPOINT_URL}";
+
+    let request_body = json!({
+        "id": 1,
+        "jsonrpc": "2.0",
+        "method": "getClusterNodes"
+    });
+
+    let response = client.post(url)
+        .json(&request_body)
+        .send()
+        .await?;
+
+    let response_text = response.text().await?;
+    println!("{}", response_text);
+
+    Ok(())
+}
+    `
+},
 ];
 
 const RESPONSE_JSON = `{
-  "jsonrpc": "2.0",
-  "result": 255886793,
-  "id": 1
+  "id": 0,
+  "jsonrpc": "string",
+  "result": [
+    {
+      "pubkey": "string",
+      "gossip": "string",
+      "tpu": "string",
+      "rpc": "string",
+      "version": "string",
+      "featureSet": 0,
+      "shredVersion": 0
+    }
+  ]
 }`;
 
-const REQUEST_PARAMS: RequestParamProp = [
-  {
-    paramName: "blockNumber",
-    type: "string",
-    paramDescription:
-      "This describes the block number to fetch the transaction by.",
-  },
-  {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
-      {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
-      },
-      {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
-      },
-    ],
-  },
-  {
-    paramName: "minContextSlot",
-    type: "integer",
-    paramDescription: "The minimum slot at which the request can be evaluated",
-  },
-];
+const REQUEST_PARAMS: RequestParamProp = null;
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {
@@ -150,18 +227,50 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "The current block height encoded in u64 format",
+    childrenParamsType: "object",
+    childrenParams: [
+        {
+          paramName: "pubkey",
+          type: "string",
+          paramDescription: "The node's public key, encoded in base-58.",
+        },
+        {
+          paramName: "rpc",
+          type: "string",
+          paramDescription: "The RPC (Remote Procedure Call) address of the node.",
+        },
+        {
+          paramName: "pubkey",
+          type: "string",
+          paramDescription: "The node's public key, encoded in base-58.",
+        },
+        {
+          paramName: "version",
+          type: "string",
+          paramDescription: "The version of the Solana software the node is running.",
+        },
+        {
+          paramName: "featureSet",
+          type: "string",
+          paramDescription: "The set of features supported by the node.",
+        },
+        {
+          paramName: "shredVersion",
+          type: "string",
+          paramDescription: "The shred version the node is using.",
+        },
+    ],
   },
 ];
 
 const USE_CASES = [
-  "Track the current height of the blockchain for real-time updates.",
-  "Verify if a node or client is fully synced with the blockchain.",
-  "Use block height as a reference for querying historical transactions and events.",
+  "Retrieve active cluster nodes for network status monitoring",
+  "Analyze node distribution for improving network topology",
+  "Identify and track Solana node availability",
 ];
 
 const CONSTRAINTS = [
-  "Delays in response during high network activity.",
-  "Potential discrepancies in height during network forks or reorganizations.",
-  "Subject to rate limits, affecting frequent data retrieval.",
+  "Requires connection to a functional Solana node",
+  "Network issues may delay node data retrieval",
+  "Frequent requests can trigger rate limiting",
 ];
