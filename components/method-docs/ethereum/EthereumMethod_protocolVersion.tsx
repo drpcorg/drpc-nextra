@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_protocolVersion() {
+export function EthereumMethod_protocolVersion(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_protocolVersion"
       network="ethereum"
       cu={0}
-      description={"Retrieves the current Ethereum protocol version that the client is using"}
+      description={
+        "Retrieves the current Ethereum protocol version that the client is using"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +29,7 @@ export function EthereumMethod_protocolVersion() {
       responseParamsDescription={
         "The protocol version, represented as a string."
       }
+      {...props}
     />
   );
 }

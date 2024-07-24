@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_feeHistory() {
+export function EthereumMethod_feeHistory(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_feeHistory"
       network="ethereum"
       cu={15}
-      description={"Retrieves historical gas fee data for Ethereum transactions, aiding in better gas price estimation and transaction planning based on past network activity"}
+      description={
+        "Retrieves historical gas fee data for Ethereum transactions, aiding in better gas price estimation and transaction planning based on past network activity"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,6 +25,7 @@ export function EthereumMethod_feeHistory() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="array"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -277,12 +281,14 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "newestBlock",
     type: "string",
-    paramDescription: "The highest block number (inclusive) to be used as the reference point. Can be a block number or a string (\"latest\", \"pending\")."
+    paramDescription:
+      'The highest block number (inclusive) to be used as the reference point. Can be a block number or a string ("latest", "pending").',
   },
   {
     paramName: "rewardPercentiles",
     type: "array_of_integers",
-    paramDescription: "(optional) A list of percentiles for which to return gas used and priority fees per block.",
+    paramDescription:
+      "(optional) A list of percentiles for which to return gas used and priority fees per block.",
   },
 ];
 
@@ -309,8 +315,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "gasUsedRatio",
         type: "array_of_numbers",
-        paramDescription:
-          "Ratios of gas used to gas limit for each block.",
+        paramDescription: "Ratios of gas used to gas limit for each block.",
       },
       {
         paramName: "reward",

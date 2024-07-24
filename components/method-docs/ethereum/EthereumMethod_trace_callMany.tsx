@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_callMany() {
+export function EthereumMethod_trace_callMany(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_callMany"
@@ -26,6 +29,7 @@ export function EthereumMethod_trace_callMany() {
       responseParamsDescription={
         "An array of trace results, each containing detailed execution traces of the corresponding call"
       }
+      {...props}
     />
   );
 }
@@ -324,14 +328,12 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "Hash of the block containing the transaction.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "Block number containing the transaction.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
@@ -357,8 +359,7 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "Receiver's address (null if contract creation).",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "value",
@@ -383,7 +384,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -396,7 +398,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: 'Specifies the trace options, such as "vmTrace", "trace", and "stateDiff".',
+    paramDescription:
+      'Specifies the trace options, such as "vmTrace", "trace", and "stateDiff".',
   },
 ];
 
@@ -487,14 +490,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

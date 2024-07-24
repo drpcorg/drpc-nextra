@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_replayBlockTransactions() {
+export function EthereumMethod_trace_replayBlockTransactions(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_replayBlockTransactions"
       network="ethereum"
       cu={90}
-      description={"Replays all transactions in a specified block and returns detailed trace information for each transaction"}
+      description={
+        "Replays all transactions in a specified block and returns detailed trace information for each transaction"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +26,10 @@ export function EthereumMethod_trace_replayBlockTransactions() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"An array containing trace objects for each transaction in the block, detailing execution information"}
+      responseParamsDescription={
+        "An array containing trace objects for each transaction in the block, detailing execution information"
+      }
+      {...props}
     />
   );
 }
@@ -235,7 +243,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: ' An array specifying the types of traces to include, such as "trace", "vmTrace", and "stateDiff".',
+    paramDescription:
+      ' An array specifying the types of traces to include, such as "trace", "vmTrace", and "stateDiff".',
   },
 ];
 
@@ -326,14 +335,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

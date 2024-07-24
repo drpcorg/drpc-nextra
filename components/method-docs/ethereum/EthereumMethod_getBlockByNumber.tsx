@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockByNumber() {
+export function EthereumMethod_getBlockByNumber(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="getBlockByNumber"
@@ -26,6 +29,7 @@ export function EthereumMethod_getBlockByNumber() {
       responseParamsDescription={
         "The block object if the block is found, containing detailed information such as block hash, parent hash, miner, transactions, gas used, and more. If the block is not found, it returns null."
       }
+      {...props}
     />
   );
 }
@@ -240,7 +244,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number or tag (\"latest\", \"earliest\", \"pending\") at which to get the balance.",
+    paramDescription:
+      'The block number or tag ("latest", "earliest", "pending") at which to get the balance.',
     paramEnum: [
       {
         value: "latest",
@@ -257,11 +262,13 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "earliest",
-        description: "A block approved by more than two-thirds of the validators.",
+        description:
+          "A block approved by more than two-thirds of the validators.",
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -283,8 +290,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "difficulty",
     type: "integer",
-    paramDescription:
-      "The block's difficulty level, encoded as a hexadecimal.",
+    paramDescription: "The block's difficulty level, encoded as a hexadecimal.",
   },
 
   {
@@ -295,8 +301,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "gasLimit",
-    paramDescription:
-      "Maximum gas allowed in the block, in hexadecimal.",
+    paramDescription: "Maximum gas allowed in the block, in hexadecimal.",
     type: "string",
   },
 
@@ -315,15 +320,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "logsBloom",
-    paramDescription:
-      "Bloom filter for the block's logs, null if pending.",
+    paramDescription: "Bloom filter for the block's logs, null if pending.",
     type: "string",
   },
 
   {
     paramName: "miner",
-    paramDescription:
-      "Address of the block's mining reward beneficiary.",
+    paramDescription: "Address of the block's mining reward beneficiary.",
     type: "string",
   },
 
@@ -335,15 +338,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "nonce",
-    paramDescription:
-      "Proof-of-work hash, null if pending.",
+    paramDescription: "Proof-of-work hash, null if pending.",
     type: "string",
   },
 
   {
     paramName: "number",
-    paramDescription:
-      "Block number as a hexadecimal, null if pending.",
+    paramDescription: "Block number as a hexadecimal, null if pending.",
     type: "string",
   },
 
@@ -367,8 +368,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "size",
-    paramDescription:
-      "Size of the block in bytes, as a hexadecimal integer.",
+    paramDescription: "Size of the block in bytes, as a hexadecimal integer.",
     type: "string",
   },
 

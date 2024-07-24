@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_maxPriorityFeePerGas() {
+export function EthereumMethod_maxPriorityFeePerGas(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_maxPriorityFeePerGas"
       network="ethereum"
       cu={16}
-      description={"Retrieves the maximum priority fee per gas (in wei) that the user is willing to pay to incentivize miners to include their transaction"}
+      description={
+        "Retrieves the maximum priority fee per gas (in wei) that the user is willing to pay to incentivize miners to include their transaction"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +26,10 @@ export function EthereumMethod_maxPriorityFeePerGas() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The maximum priority fee per gas in wei, represented as a hexadecimal string."}
+      responseParamsDescription={
+        "The maximum priority fee per gas in wei, represented as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_net_listening() {
+export function EthereumMethod_net_listening(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="net_listening"
@@ -26,6 +29,7 @@ export function EthereumMethod_net_listening() {
       responseParamsDescription={
         "RReturns true if the client is listening for network connections, false otherwise."
       }
+      {...props}
     />
   );
 }

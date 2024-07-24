@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockByNumberfull() {
+export function EthereumMethod_getBlockByNumberfull(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="getBlockByNumberfull"
@@ -26,6 +29,7 @@ export function EthereumMethod_getBlockByNumberfull() {
       responseParamsDescription={
         "Detailed block object if found, or null if no block is found."
       }
+      {...props}
     />
   );
 }
@@ -258,7 +262,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number or tag (\"latest\", \"earliest\", \"pending\") at which to get the balance.",
+    paramDescription:
+      'The block number or tag ("latest", "earliest", "pending") at which to get the balance.',
     paramEnum: [
       {
         value: "latest",
@@ -275,19 +280,20 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "earliest",
-        description: "A block approved by more than two-thirds of the validators.",
+        description:
+          "A block approved by more than two-thirds of the validators.",
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
   {
     paramName: "transaction_detail_flag",
     type: "boolean",
-    paramDescription:
-      "Must be true to retrieve full transaction details.",
+    paramDescription: "Must be true to retrieve full transaction details.",
   },
 ];
 
@@ -295,14 +301,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "baseFeePerGas",
     type: "string",
-    paramDescription:
-      "Base fee per gas in hexadecimal.",
+    paramDescription: "Base fee per gas in hexadecimal.",
   },
   {
     paramName: "difficulty",
     type: "integer",
-    paramDescription:
-      "Block difficulty as an integer (hexadecimal).",
+    paramDescription: "Block difficulty as an integer (hexadecimal).",
   },
 
   {
@@ -313,8 +317,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "gasLimit",
-    paramDescription:
-      "Maximum gas allowed in the block (hexadecimal string).",
+    paramDescription: "Maximum gas allowed in the block (hexadecimal string).",
     type: "string",
   },
 
@@ -333,15 +336,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "logsBloom",
-    paramDescription:
-      "Bloom filter for logs (null if pending).",
+    paramDescription: "Bloom filter for logs (null if pending).",
     type: "string",
   },
 
   {
     paramName: "miner",
-    paramDescription:
-      " Address of the mining reward recipient.",
+    paramDescription: " Address of the mining reward recipient.",
     type: "string",
   },
 
@@ -353,8 +354,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "nonce",
-    paramDescription:
-      "Number of prior transactions from the sender.",
+    paramDescription: "Number of prior transactions from the sender.",
     type: "string",
   },
 
@@ -385,8 +385,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "size",
-    paramDescription:
-      "Block size in bytes.",
+    paramDescription: "Block size in bytes.",
     type: "string",
   },
 
@@ -404,29 +403,25 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
   {
     paramName: "totalDifficulty",
-    paramDescription:
-      "Total difficulty of the chain up to this block.",
+    paramDescription: "Total difficulty of the chain up to this block.",
     type: "string",
   },
 
   {
     paramName: "transactions",
-    paramDescription:
-      "Array of transaction objects, including:",
+    paramDescription: "Array of transaction objects, including:",
     type: "array",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "Hash of the block containing the transaction.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "Block number containing the transaction.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
@@ -437,8 +432,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription:
-          "Number of prior transactions from the sender.",
+        paramDescription: "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -478,8 +472,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "Receiver's address (null if contract creation).",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "v",

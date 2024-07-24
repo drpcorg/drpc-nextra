@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_unsubscribe() {
+export function EthereumMethod_unsubscribe(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_unsubscribe"
@@ -23,7 +24,10 @@ export function EthereumMethod_unsubscribe() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns true if the subscription was successfully unsubscribed, false otherwise."}
+      responseParamsDescription={
+        "Returns true if the subscription was successfully unsubscribed, false otherwise."
+      }
+      {...props}
     />
   );
 }
@@ -186,8 +190,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "subscription_id",
     type: "string",
-    paramDescription:
-      "The ID of the subscription to unsubscribe from",
+    paramDescription: "The ID of the subscription to unsubscribe from",
   },
 ];
 

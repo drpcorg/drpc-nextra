@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_rawTransaction() {
+export function EthereumMethod_trace_rawTransaction(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_rawTransaction"
@@ -26,6 +29,7 @@ export function EthereumMethod_trace_rawTransaction() {
       responseParamsDescription={
         "The trace results, including detailed execution traces such as opcodes executed, state changes, and call stack information"
       }
+      {...props}
     />
   );
 }
@@ -213,12 +217,14 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "data",
     type: "string",
-    paramDescription: "The raw transaction data, encoded as a hexadecimal string.",
+    paramDescription:
+      "The raw transaction data, encoded as a hexadecimal string.",
   },
   {
     paramName: "array",
     type: "array",
-    paramDescription: "The raw signed transaction data, provided as an array of objects.",
+    paramDescription:
+      "The raw signed transaction data, provided as an array of objects.",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -271,103 +277,102 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         childrenParamsType: "object",
         childrenParams: [
           {
-        paramName: "action",
-        type: "object",
-        childrenParamsType: "object",
-        paramDescription: "Contains details about the trace action.",
-        childrenParams: [
-          {
-            paramName: "callType",
-            type: "string",
-            paramDescription: "The type of call.",
+            paramName: "action",
+            type: "object",
+            childrenParamsType: "object",
+            paramDescription: "Contains details about the trace action.",
+            childrenParams: [
+              {
+                paramName: "callType",
+                type: "string",
+                paramDescription: "The type of call.",
+              },
+              {
+                paramName: "from",
+                type: "string",
+                paramDescription: "The sender's address.",
+              },
+              {
+                paramName: "to",
+                type: "string",
+                paramDescription: "The receiver's address.",
+              },
+              {
+                paramName: "value",
+                type: "string",
+                paramDescription: "The value transferred in wei.",
+              },
+              {
+                paramName: "gas",
+                type: "string",
+                paramDescription: "The gas provided for the call.",
+              },
+              {
+                paramName: "input",
+                type: "string",
+                paramDescription: "The data sent with the call.",
+              },
+            ],
           },
           {
-            paramName: "from",
+            paramName: "blockHash",
             type: "string",
-            paramDescription: "The sender's address.",
+            paramDescription: "The hash of the block where the trace occurred.",
           },
           {
-            paramName: "to",
+            paramName: "blockNumber",
             type: "string",
-            paramDescription: "The receiver's address.",
+            paramDescription:
+              "The number of the block where the trace occurred.",
           },
           {
-            paramName: "value",
+            paramName: "result",
             type: "string",
-            paramDescription: "The value transferred in wei.",
+            childrenParamsType: "object",
+            childrenParams: [
+              {
+                paramName: "gasUsed",
+                type: "string",
+                paramDescription: "Gas used by the trace.",
+              },
+              {
+                paramName: "output",
+                type: "string",
+                paramDescription: "Call output.",
+              },
+            ],
           },
           {
-            paramName: "gas",
-            type: "string",
-            paramDescription: "The gas provided for the call.",
+            paramName: "subtraces",
+            type: "integer",
+            paramDescription: "Number of subtraces created by this trace..",
           },
           {
-            paramName: "input",
-            type: "string",
-            paramDescription: "The data sent with the call.",
-          },
-        ],
-      },
-      {
-        paramName: "blockHash",
-        type: "string",
-        paramDescription: "The hash of the block where the trace occurred.",
-      },
-      {
-        paramName: "blockNumber",
-        type: "string",
-        paramDescription: "The number of the block where the trace occurred.",
-      },
-      {
-        paramName: "result",
-        type: "string",
-        childrenParamsType: "object",
-        childrenParams: [
-          {
-            paramName: "gasUsed",
-            type: "string",
-            paramDescription: "Gas used by the trace.",
+            paramName: "traceAddress",
+            type: "array_of_strings",
+            paramDescription: "Position of this trace in the call stack.",
           },
           {
-            paramName: "output",
+            paramName: "transactionHash",
             type: "string",
-            paramDescription: "Call output.",
+            paramDescription: "Hash of the transaction containing this trace.",
           },
-        ],
-      },
-      {
-        paramName: "subtraces",
-        type: "integer",
-        paramDescription: "Number of subtraces created by this trace..",
-      },
-      {
-        paramName: "traceAddress",
-        type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
-      },
-      {
-        paramName: "transactionHash",
-        type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
-      },
-      {
-        paramName: "transactionPosition",
-        type: "string",
-        paramDescription: "Transaction's position in the block.",
-      },
-      {
-        paramName: "type",
-        type: "string",
-        paramDescription: "The type of trace.",
-      },
-      {
-        paramName: "vmTrace",
-        type: "string",
-        paramDescription:
-          "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
-      },
+          {
+            paramName: "transactionPosition",
+            type: "string",
+            paramDescription: "Transaction's position in the block.",
+          },
+          {
+            paramName: "type",
+            type: "string",
+            paramDescription: "The type of trace.",
+          },
+          {
+            paramName: "vmTrace",
+            type: "string",
+            paramDescription:
+              "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
+          },
         ],
       },
     ],

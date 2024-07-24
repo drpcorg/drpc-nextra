@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_newFilter() {
+export function EthereumMethod_newFilter(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_newFilter"
@@ -23,7 +24,10 @@ export function EthereumMethod_newFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The ID of the newly created filter, represented as a hexadecimal string. "}
+      responseParamsDescription={
+        "The ID of the newly created filter, represented as a hexadecimal string. "
+      }
+      {...props}
     />
   );
 }
@@ -235,8 +239,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "fromBlock",
     type: "string",
-    paramDescription:
-      " (optional) The starting block for the filter.",
+    paramDescription: " (optional) The starting block for the filter.",
     paramEnum: [
       {
         value: "latest",
@@ -249,7 +252,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -269,15 +273,15 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
   {
     paramName: "topics",
     type: "array_of_strings",
-    paramDescription:
-      " (optional) An array of log topics.",
+    paramDescription: " (optional) An array of log topics.",
   },
 ];
 

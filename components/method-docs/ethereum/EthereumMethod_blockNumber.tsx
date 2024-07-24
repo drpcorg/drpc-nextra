@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_blockNumber() {
+export function EthereumMethod_blockNumber(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_blockNumber"
@@ -22,8 +23,9 @@ export function EthereumMethod_blockNumber() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-          "Returns a list of log objects or an empty list if there have been no updates since the previous query."
+        "Returns a list of log objects or an empty list if there have been no updates since the previous query."
       }
+      {...props}
     />
   );
 }
@@ -204,7 +206,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "The latest block number, returned as a hexadecimal string.",
+    paramDescription:
+      "The latest block number, returned as a hexadecimal string.",
   },
 ];
 

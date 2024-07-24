@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_createAccessList() {
+export function EthereumMethod_createAccessList(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_createAccessList"
       network="ethereum"
       cu={30}
-      description={
-        "Creates an EIP2930 access list from a Transaction object"
-      }
+      description={"Creates an EIP2930 access list from a Transaction object"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +25,7 @@ export function EthereumMethod_createAccessList() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -222,7 +224,7 @@ use tokio;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = reqwest::Client::new();
-    let url = "${DRPC_ENDPOINT_URL }";
+    let url = "${DRPC_ENDPOINT_URL}";
 
     let request_body = json!({
         "id": 1,
@@ -266,7 +268,7 @@ const RESPONSE_JSON = `{
 }`;
 
 const REQUEST_PARAMS: RequestParamProp = [
-   {
+  {
     paramName: "blockNumber",
     type: "string",
     paramDescription: "(optional) Block number as an integer, or string",
@@ -282,7 +284,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

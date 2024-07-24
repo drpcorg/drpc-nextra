@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,13 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_syncing() {
+export function EthereumMethod_syncing(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_syncing"
       network="ethereum"
       cu={0}
-      description={
-        "Checks the synchronization status of an Ethereum node"
-      }
+      description={"Checks the synchronization status of an Ethereum node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -23,7 +22,10 @@ export function EthereumMethod_syncing() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns an object with synchronization details if the node is syncing, or false if the node is fully synced."}
+      responseParamsDescription={
+        "Returns an object with synchronization details if the node is syncing, or false if the node is fully synced."
+      }
+      {...props}
     />
   );
 }
@@ -220,7 +222,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "highestBlock ",
         type: "string",
-        paramDescription: "The estimated highest block number, encoded in hexadecimal.",
+        paramDescription:
+          "The estimated highest block number, encoded in hexadecimal.",
       },
     ],
   },

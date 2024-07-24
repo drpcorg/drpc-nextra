@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_web3_clientVersion() {
+export function EthereumMethod_web3_clientVersion(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="web3_clientVersion"
       network="ethereum"
       cu={0}
-      description={"Retrieves the current version of the Ethereum client that the node is running"}
+      description={
+        "Retrieves the current version of the Ethereum client that the node is running"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +26,10 @@ export function EthereumMethod_web3_clientVersion() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The version of the Ethereum client, including the name and version number, as a string"}
+      responseParamsDescription={
+        "The version of the Ethereum client, including the name and version number, as a string"
+      }
+      {...props}
     />
   );
 }

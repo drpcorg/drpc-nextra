@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_debug_traceTransaction() {
+export function EthereumMethod_debug_traceTransaction(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="debug_traceTransaction"
@@ -24,6 +27,7 @@ export function EthereumMethod_debug_traceTransaction() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"Array of block traces."}
+      {...props}
     />
   );
 }
@@ -257,8 +261,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "Specifies the block number to locate the transaction.",
+    paramDescription: "Specifies the block number to locate the transaction.",
   },
   {
     paramName: "tracer",
@@ -304,7 +307,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-    paramDescription: "Detailed trace data for the specified transaction, including call stack, gas usage, and execution results.",
+    paramDescription:
+      "Detailed trace data for the specified transaction, including call stack, gas usage, and execution results.",
     childrenParamsType: "object",
     childrenParams: [
       {

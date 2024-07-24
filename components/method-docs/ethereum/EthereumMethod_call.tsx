@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_call() {
+export function EthereumMethod_call(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_call"
       network="ethereum"
       cu={21}
       description={
-          "Performs a message call instantly without recording it as a transaction on the blockchain"
+        "Performs a message call instantly without recording it as a transaction on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,6 +25,7 @@ export function EthereumMethod_call() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"The result of the call."}
+      {...props}
     />
   );
 }
@@ -268,26 +270,22 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "gas",
         type: "integer",
-        paramDescription:
-          "(optional) Gas limit for the transaction.",
+        paramDescription: "(optional) Gas limit for the transaction.",
       },
       {
         paramName: "gasPrice",
         type: "integer",
-        paramDescription:
-          "(optional) Gas price in wei.",
+        paramDescription: "(optional) Gas price in wei.",
       },
       {
         paramName: "value",
         type: "integer",
-        paramDescription:
-          "(optional) Amount of wei to send.",
+        paramDescription: "(optional) Amount of wei to send.",
       },
       {
         paramName: "data",
         type: "string",
-        paramDescription:
-          "(optional) Encoded method signature and parameters.",
+        paramDescription: "(optional) Encoded method signature and parameters.",
       },
     ],
   },
@@ -307,7 +305,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_net_version() {
+export function EthereumMethod_net_version(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="net_version"
       network="ethereum"
       cu={0}
-      description={"Retrieves the current network ID the Ethereum client is connected to"}
+      description={
+        "Retrieves the current network ID the Ethereum client is connected to"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +24,10 @@ export function EthereumMethod_net_version() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The network ID as a string, representing the specific Ethereum network the client is connected to."}
+      responseParamsDescription={
+        "The network ID as a string, representing the specific Ethereum network the client is connected to."
+      }
+      {...props}
     />
   );
 }
@@ -196,7 +202,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    },
+  },
 ];
 
 const USE_CASES = [

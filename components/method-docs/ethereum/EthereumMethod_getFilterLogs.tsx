@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getFilterLogs() {
+export function EthereumMethod_getFilterLogs(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getFilterLogs"
       network="ethereum"
       cu={60}
-      description={
-        "Retrieves all past logs for a filter"
-      }
+      description={"Retrieves all past logs for a filter"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -23,7 +24,10 @@ export function EthereumMethod_getFilterLogs() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"An array containing all logs that match the filter criteria, providing historical data relevant to the filter’s configuration."}
+      responseParamsDescription={
+        "An array containing all logs that match the filter criteria, providing historical data relevant to the filter’s configuration."
+      }
+      {...props}
     />
   );
 }
@@ -215,7 +219,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "filterID",
     type: "string",
-    paramDescription: "The ID of the filter for which to retrieve all past logs.",
+    paramDescription:
+      "The ID of the filter for which to retrieve all past logs.",
   },
 ];
 
@@ -265,29 +270,29 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           "Index position of the log in the block, or null if pending.",
       },
       {
-            paramName: "data",
-            type: "string",
-            paramDescription:
-              "Non-indexed arguments of the log, in 32-byte segments.",
-          },
-          {
-            paramName: "removed",
-            type: "boolean",
-            paramDescription:
-              "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
-          },
-          {
-            paramName: "topics",
-            type: "array_of_strings",
-            paramDescription:
-              "Array of zero to four 32-byte data strings of indexed log arguments.",
-          },
-          {
-            paramName: "transactionHash",
-            type: "string",
-            paramDescription:
-              "Hash of the transaction that generated the log, or null if pending.",
-          },
+        paramName: "data",
+        type: "string",
+        paramDescription:
+          "Non-indexed arguments of the log, in 32-byte segments.",
+      },
+      {
+        paramName: "removed",
+        type: "boolean",
+        paramDescription:
+          "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
+      },
+      {
+        paramName: "topics",
+        type: "array_of_strings",
+        paramDescription:
+          "Array of zero to four 32-byte data strings of indexed log arguments.",
+      },
+      {
+        paramName: "transactionHash",
+        type: "string",
+        paramDescription:
+          "Hash of the transaction that generated the log, or null if pending.",
+      },
     ],
   },
 ];

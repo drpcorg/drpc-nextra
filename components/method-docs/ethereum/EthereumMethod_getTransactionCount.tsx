@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getTransactionCount() {
+export function EthereumMethod_getTransactionCount(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getTransactionCount"
       network="ethereum"
       cu={11}
-      description={"Retrieves the number of transactions sent from a specified address"}
+      description={
+        "Retrieves the number of transactions sent from a specified address"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +29,7 @@ export function EthereumMethod_getTransactionCount() {
       responseParamsDescription={
         "The number of transactions sent from the specified address, returned as a hexadecimal string."
       }
+      {...props}
     />
   );
 }
@@ -220,7 +226,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_filter() {
+export function EthereumMethod_trace_filter(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_filter"
       network="ethereum"
       cu={75}
-      description={"Retrieves traces of all transactions that match specific filter criteria"}
+      description={
+        "Retrieves traces of all transactions that match specific filter criteria"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +29,7 @@ export function EthereumMethod_trace_filter() {
       responseParamsDescription={
         "Array of trace objects matching the filter criteria, each containing details about the transaction trace"
       }
+      {...props}
     />
   );
 }
@@ -231,12 +237,14 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "fromBlock",
     type: "string",
-    paramDescription: "Specifies the starting block number or tag (e.g., \"latest\", \"earliest\") from which to begin the trace.",
+    paramDescription:
+      'Specifies the starting block number or tag (e.g., "latest", "earliest") from which to begin the trace.',
   },
   {
     paramName: "toBlock",
     type: "string",
-    paramDescription: "Specifies the ending block number or tag up to which to include in the trace.",
+    paramDescription:
+      "Specifies the ending block number or tag up to which to include in the trace.",
   },
   {
     paramName: "fromAddress",
@@ -256,7 +264,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "count",
     type: "string",
-    paramDescription: "The number of traces to retrieve starting from the offset.",
+    paramDescription:
+      "The number of traces to retrieve starting from the offset.",
   },
 ];
 
@@ -347,14 +356,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

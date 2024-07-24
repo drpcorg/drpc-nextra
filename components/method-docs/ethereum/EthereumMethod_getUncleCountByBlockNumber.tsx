@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getUncleCountByBlockNumber() {
+export function EthereumMethod_getUncleCountByBlockNumber(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getUncleCountByBlockNumber"
@@ -26,6 +29,7 @@ export function EthereumMethod_getUncleCountByBlockNumber() {
       responseParamsDescription={
         "The number of uncle blocks associated with the specified block"
       }
+      {...props}
     />
   );
 }
@@ -203,7 +207,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

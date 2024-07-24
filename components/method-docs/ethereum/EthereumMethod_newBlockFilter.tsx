@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_newBlockFilter() {
+export function EthereumMethod_newBlockFilter(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_newBlockFilter"
@@ -23,7 +26,10 @@ export function EthereumMethod_newBlockFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The ID of the newly created filter, represented as a hexadecimal string."}
+      responseParamsDescription={
+        "The ID of the newly created filter, represented as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }

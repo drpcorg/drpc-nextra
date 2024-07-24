@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getUncleByBlockHashAndIndex() {
+export function EthereumMethod_getUncleByBlockHashAndIndex(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getUncleByBlockHashAndIndex"
@@ -23,9 +26,8 @@ export function EthereumMethod_getUncleByBlockHashAndIndex() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "The uncle block object if found."
-      }
+      responseParamsDescription={"The uncle block object if found."}
+      {...props}
     />
   );
 }
@@ -398,7 +400,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "index",
     type: "string",
-    paramDescription: "The index position of the uncle block within the specified block.",
+    paramDescription:
+      "The index position of the uncle block within the specified block.",
   },
 ];
 
@@ -417,140 +420,135 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     childrenParamsType: "object",
     childrenParams: [
       {
-    paramName: "baseFeePerGas",
-    type: "string",
-    paramDescription:
-      "Hexadecimal string of the base fee per gas. Not included for blocks before the EIP-1559 upgrade.",
-  },
-  {
-    paramName: "difficulty",
-    type: "integer",
-    paramDescription:
-      "The block's difficulty level, encoded as a hexadecimal.",
-  },
+        paramName: "baseFeePerGas",
+        type: "string",
+        paramDescription:
+          "Hexadecimal string of the base fee per gas. Not included for blocks before the EIP-1559 upgrade.",
+      },
+      {
+        paramName: "difficulty",
+        type: "integer",
+        paramDescription:
+          "The block's difficulty level, encoded as a hexadecimal.",
+      },
 
-  {
-    paramName: "extraData",
-    paramDescription: "Additional data field of the block.",
-    type: "string",
-  },
+      {
+        paramName: "extraData",
+        paramDescription: "Additional data field of the block.",
+        type: "string",
+      },
 
-  {
-    paramName: "gasLimit",
-    paramDescription:
-      "Maximum gas allowed in the block, in hexadecimal.",
-    type: "string",
-  },
+      {
+        paramName: "gasLimit",
+        paramDescription: "Maximum gas allowed in the block, in hexadecimal.",
+        type: "string",
+      },
 
-  {
-    paramName: "gasUsed",
-    paramDescription:
-      "Total gas used by all transactions in the block, in hexadecimal.",
-    type: "string",
-  },
+      {
+        paramName: "gasUsed",
+        paramDescription:
+          "Total gas used by all transactions in the block, in hexadecimal.",
+        type: "string",
+      },
 
-  {
-    paramName: "hash",
-    paramDescription: "Hash of the block, null if pending.",
-    type: "string",
-  },
+      {
+        paramName: "hash",
+        paramDescription: "Hash of the block, null if pending.",
+        type: "string",
+      },
 
-  {
-    paramName: "logsBloom",
-    paramDescription:
-      "Bloom filter for the block's logs, null if pending.",
-    type: "string",
-  },
+      {
+        paramName: "logsBloom",
+        paramDescription: "Bloom filter for the block's logs, null if pending.",
+        type: "string",
+      },
 
-  {
-    paramName: "miner",
-    paramDescription:
-      "Address of the block's mining reward beneficiary.",
-    type: "string",
-  },
+      {
+        paramName: "miner",
+        paramDescription: "Address of the block's mining reward beneficiary.",
+        type: "string",
+      },
 
-  {
-    paramName: "mixHash",
-    paramDescription: "256-bit hash as a hexadecimal string.",
-    type: "string",
-  },
+      {
+        paramName: "mixHash",
+        paramDescription: "256-bit hash as a hexadecimal string.",
+        type: "string",
+      },
 
-  {
-    paramName: "nonce",
-    paramDescription:
-      "Proof-of-work hash, null if pending.",
-    type: "string",
-  },
+      {
+        paramName: "nonce",
+        paramDescription: "Proof-of-work hash, null if pending.",
+        type: "string",
+      },
 
-  {
-    paramName: "number",
-    paramDescription:
-      "Block number as a hexadecimal, null if pending.",
-    type: "string",
-  },
+      {
+        paramName: "number",
+        paramDescription: "Block number as a hexadecimal, null if pending.",
+        type: "string",
+      },
 
-  {
-    paramName: "parentHash",
-    paramDescription: "Hash of the parent block.",
-    type: "string",
-  },
+      {
+        paramName: "parentHash",
+        paramDescription: "Hash of the parent block.",
+        type: "string",
+      },
 
-  {
-    paramName: "receiptsRoot",
-    paramDescription: "Root of the block's receipts trie.",
-    type: "string",
-  },
+      {
+        paramName: "receiptsRoot",
+        paramDescription: "Root of the block's receipts trie.",
+        type: "string",
+      },
 
-  {
-    paramName: "sha3Uncles",
-    paramDescription: "SHA3 hash of the block's uncles data.",
-    type: "string",
-  },
+      {
+        paramName: "sha3Uncles",
+        paramDescription: "SHA3 hash of the block's uncles data.",
+        type: "string",
+      },
 
-  {
-    paramName: "size",
-    paramDescription:
-      "Size of the block in bytes, as a hexadecimal integer.",
-    type: "string",
-  },
+      {
+        paramName: "size",
+        paramDescription:
+          "Size of the block in bytes, as a hexadecimal integer.",
+        type: "string",
+      },
 
-  {
-    paramName: "stateRoot",
-    paramDescription: "Root of the block's final state trie.",
-    type: "string",
-  },
+      {
+        paramName: "stateRoot",
+        paramDescription: "Root of the block's final state trie.",
+        type: "string",
+      },
 
-  {
-    paramName: "timestamp",
-    paramDescription: "UNIX timestamp of the block's collation.",
-    type: "string",
-  },
+      {
+        paramName: "timestamp",
+        paramDescription: "UNIX timestamp of the block's collation.",
+        type: "string",
+      },
 
-  {
-    paramName: "totalDifficulty",
-    paramDescription:
-      "Total difficulty of the blockchain up to this block, in hexadecimal.",
-    type: "string",
-  },
+      {
+        paramName: "totalDifficulty",
+        paramDescription:
+          "Total difficulty of the blockchain up to this block, in hexadecimal.",
+        type: "string",
+      },
 
-  {
-    paramName: "transactions",
-    paramDescription:
-      "List of transaction objects; refer to eth_getTransactionByHash for details.",
-    type: "array",
-  },
+      {
+        paramName: "transactions",
+        paramDescription:
+          "List of transaction objects; refer to eth_getTransactionByHash for details.",
+        type: "array",
+      },
 
-  {
-    paramName: "transactionsRoot",
-    paramDescription: "Root of the block's transaction trie.",
-    type: "string",
-  },
+      {
+        paramName: "transactionsRoot",
+        paramDescription: "Root of the block's transaction trie.",
+        type: "string",
+      },
 
-  {
-    paramName: "uncles",
-    paramDescription: "List of uncle block hashes.",
-    type: "array",
-  },
+      {
+        paramName: "uncles",
+        paramDescription: "List of uncle block hashes.",
+        type: "array",
+      },
     ],
   },
 ];
