@@ -22,6 +22,12 @@
       "breadcrumb": false
     }
   },
+  "optimism-api": {
+    "title": "Optimism API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",

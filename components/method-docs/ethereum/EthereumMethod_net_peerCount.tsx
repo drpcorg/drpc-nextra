@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_net_peerCount() {
+export function EthereumMethod_net_peerCount(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="net_peerCount"
       network="ethereum"
       cu={0}
-      description={"Retrieves the number of peers currently connected to the Ethereum client"}
+      description={
+        "Retrieves the number of peers currently connected to the Ethereum client"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +26,10 @@ export function EthereumMethod_net_peerCount() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The number of peers connected to the client, returned as a hexadecimal string."}
+      responseParamsDescription={
+        "The number of peers connected to the client, returned as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }

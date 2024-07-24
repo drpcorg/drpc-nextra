@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getProof() {
+export function EthereumMethod_getProof(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_getProof"
@@ -23,7 +24,10 @@ export function EthereumMethod_getProof() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Contains the account proof and storage proofs."}
+      responseParamsDescription={
+        "Contains the account proof and storage proofs."
+      }
+      {...props}
     />
   );
 }
@@ -234,7 +238,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "blockNumber",
     type: "string",
     paramDescription:
-      "he block number at which to generate the proof. This can be specified as an integer or a string (\"latest\", \"earliest\", \"pending\").",
+      'he block number at which to generate the proof. This can be specified as an integer or a string ("latest", "earliest", "pending").',
   },
 ];
 
@@ -266,7 +270,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "balance",
         type: "string",
-        paramDescription: "The account's balance in wei, as a hexadecimal string.",
+        paramDescription:
+          "The account's balance in wei, as a hexadecimal string.",
       },
       {
         paramName: "codeHash",
@@ -276,8 +281,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription:
-          "The account's nonce.",
+        paramDescription: "The account's nonce.",
       },
       {
         paramName: "storageHash",

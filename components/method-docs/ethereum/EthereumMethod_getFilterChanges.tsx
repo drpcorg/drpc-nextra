@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getFilterChanges() {
+export function EthereumMethod_getFilterChanges(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getFilterChanges"
@@ -23,7 +26,10 @@ export function EthereumMethod_getFilterChanges() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The array of log objects or transaction hashes that represent the changes detected by the filter. "}
+      responseParamsDescription={
+        "The array of log objects or transaction hashes that represent the changes detected by the filter. "
+      }
+      {...props}
     />
   );
 }
@@ -236,82 +242,82 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       "The content of this array depends on the type of filter created.",
     childrenParamsType: "object",
     childrenParams: [
-    {
-            paramName: "blockHash",
-            type: "string",
-            paramDescription:
-              "32-byte hash of the block containing the log, or null if pending.",
-          },
-          {
-            paramName: "blockNumber",
-            type: "string",
-            paramDescription:
-              "Block number containing the log, or null if pending.",
-          },
-          {
-            paramName: "transactionIndex",
-            type: "string",
-            paramDescription:
-              "Index position of the transaction that generated the log, or null if pending.",
-          },
-          {
-            paramName: "address",
-            type: "string",
-            paramDescription:
-              "20-byte address from which the log originated.",
-          },
-          {
-            paramName: "logIndex",
-            type: "string",
-            paramDescription:
-              "Index position of the log in the block, or null if pending.",
-          },
-          {
-            paramName: "data",
-            type: "string",
-            paramDescription:
-              "Non-indexed arguments of the log, in 32-byte segments.",
-          },
-          {
-            paramName: "removed",
-            type: "boolean",
-            paramDescription:
-              "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
-          },
-          {
-            paramName: "topics",
-            type: "array_of_strings",
-            paramDescription:
-              "Array of zero to four 32-byte data strings of indexed log arguments.",
-          },
-          {
-            paramName: "transactionHash",
-            type: "string",
-            paramDescription:
-              "Hash of the transaction that generated the log, or null if pending.",
-          },
-          {
-            paramName: "logsBloom",
-            type: "string",
-            paramDescription:
-              "256-byte bloom filter for quick log retrieval by light clients.",
-          },
-          {
-            paramName: "status",
-            type: "integer",
-            paramDescription: "Status of the transaction: 1 for success, 0 for failure.",
-          },
-          {
-            paramName: "effectiveGasPrice",
-            paramDescription: "The effective gas price for the transaction.",
-            type: "string",
-          },
-          {
-            paramName: "type",
-            paramDescription: "Type of the transaction.",
-            type: "string",
-          },
-        ],
+      {
+        paramName: "blockHash",
+        type: "string",
+        paramDescription:
+          "32-byte hash of the block containing the log, or null if pending.",
+      },
+      {
+        paramName: "blockNumber",
+        type: "string",
+        paramDescription:
+          "Block number containing the log, or null if pending.",
+      },
+      {
+        paramName: "transactionIndex",
+        type: "string",
+        paramDescription:
+          "Index position of the transaction that generated the log, or null if pending.",
+      },
+      {
+        paramName: "address",
+        type: "string",
+        paramDescription: "20-byte address from which the log originated.",
+      },
+      {
+        paramName: "logIndex",
+        type: "string",
+        paramDescription:
+          "Index position of the log in the block, or null if pending.",
+      },
+      {
+        paramName: "data",
+        type: "string",
+        paramDescription:
+          "Non-indexed arguments of the log, in 32-byte segments.",
+      },
+      {
+        paramName: "removed",
+        type: "boolean",
+        paramDescription:
+          "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
+      },
+      {
+        paramName: "topics",
+        type: "array_of_strings",
+        paramDescription:
+          "Array of zero to four 32-byte data strings of indexed log arguments.",
+      },
+      {
+        paramName: "transactionHash",
+        type: "string",
+        paramDescription:
+          "Hash of the transaction that generated the log, or null if pending.",
+      },
+      {
+        paramName: "logsBloom",
+        type: "string",
+        paramDescription:
+          "256-byte bloom filter for quick log retrieval by light clients.",
+      },
+      {
+        paramName: "status",
+        type: "integer",
+        paramDescription:
+          "Status of the transaction: 1 for success, 0 for failure.",
+      },
+      {
+        paramName: "effectiveGasPrice",
+        paramDescription: "The effective gas price for the transaction.",
+        type: "string",
+      },
+      {
+        paramName: "type",
+        paramDescription: "Type of the transaction.",
+        type: "string",
+      },
+    ],
   },
 ];
 

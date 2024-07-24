@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_replayTransactionsvmTrace() {
+export function EthereumMethod_trace_replayTransactionsvmTrace(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_replayTransactionsvmTrace"
@@ -23,7 +26,10 @@ export function EthereumMethod_trace_replayTransactionsvmTrace() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Detailed trace information of the transaction, including vmTrace data that details the virtual machine's state during execution, showing opcodes, call stack, and state changes"}
+      responseParamsDescription={
+        "Detailed trace information of the transaction, including vmTrace data that details the virtual machine's state during execution, showing opcodes, call stack, and state changes"
+      }
+      {...props}
     />
   );
 }
@@ -259,7 +265,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: 'An array specifying the trace types to include, such as "trace", "vmTrace", and "stateDiff"',
+    paramDescription:
+      'An array specifying the trace types to include, such as "trace", "vmTrace", and "stateDiff"',
   },
 ];
 
@@ -350,14 +357,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

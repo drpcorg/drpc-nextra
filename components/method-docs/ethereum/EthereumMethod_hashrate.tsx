@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_hashrate() {
+export function EthereumMethod_hashrate(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_hashrate"
@@ -23,7 +24,10 @@ export function EthereumMethod_hashrate() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The number of hashes per second that the node is currently mining at, returned as a hexadecimal string."}
+      responseParamsDescription={
+        "The number of hashes per second that the node is currently mining at, returned as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }

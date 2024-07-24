@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getLogs() {
+export function EthereumMethod_getLogs(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_getLogs"
@@ -26,6 +27,7 @@ export function EthereumMethod_getLogs() {
       responseParamsDescription={
         "Returns array of log objects, or an empty array if nothing has changed since last poll."
       }
+      {...props}
     />
   );
 }

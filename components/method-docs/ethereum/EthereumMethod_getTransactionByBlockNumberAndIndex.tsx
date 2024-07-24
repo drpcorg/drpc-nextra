@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
+export function EthereumMethod_getTransactionByBlockNumberAndIndex(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getTransactionByBlockNumberAndIndex"
@@ -26,6 +29,7 @@ export function EthereumMethod_getTransactionByBlockNumberAndIndex() {
       responseParamsDescription={
         "Detailed transaction object if found, or null if no transaction is found at the given index."
       }
+      {...props}
     />
   );
 }
@@ -203,7 +207,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -232,14 +237,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "Hash of the block containing the transaction.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "Block number containing the transaction.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
@@ -250,8 +253,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription:
-          "Number of prior transactions from the sender.",
+        paramDescription: "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -291,8 +293,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "Receiver's address (null if contract creation).",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "v",

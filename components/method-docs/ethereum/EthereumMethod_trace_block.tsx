@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_block() {
+export function EthereumMethod_trace_block(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="trace_block"
       network="ethereum"
       cu={90}
-      description={"Retrieves detailed execution traces of all transactions included in a specific block"}
+      description={
+        "Retrieves detailed execution traces of all transactions included in a specific block"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +24,10 @@ export function EthereumMethod_trace_block() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"An array containing trace objects for each transaction in the block. "}
+      responseParamsDescription={
+        "An array containing trace objects for each transaction in the block. "
+      }
+      {...props}
     />
   );
 }
@@ -257,7 +263,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -350,14 +357,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

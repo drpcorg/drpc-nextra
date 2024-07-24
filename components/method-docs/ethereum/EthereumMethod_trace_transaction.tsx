@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_transaction() {
+export function EthereumMethod_trace_transaction(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_transaction"
       network="ethereum"
       cu={90}
-      description={"Retrieves detailed trace information for a given transaction by its hash"}
+      description={
+        "Retrieves detailed trace information for a given transaction by its hash"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,6 +27,7 @@ export function EthereumMethod_trace_transaction() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"Detailed execution traces of the transaction"}
+      {...props}
     />
   );
 }
@@ -356,14 +362,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",
@@ -375,13 +379,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         type: "string",
         paramDescription: "The type of trace.",
       },
-          {
-            paramName: "transactionHash",
-            type: "string",
-          },
-          {
-            paramName: "transactionPosition",
-            type: "string",
+      {
+        paramName: "transactionHash",
+        type: "string",
+      },
+      {
+        paramName: "transactionPosition",
+        type: "string",
       },
     ],
   },

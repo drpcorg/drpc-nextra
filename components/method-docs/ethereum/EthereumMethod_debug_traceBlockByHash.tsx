@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_debug_traceBlockByHash() {
+export function EthereumMethod_debug_traceBlockByHash(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="debug_traceBlockByHash"
       network="ethereum"
       cu={90}
-      description={"Traces the execution of all transactions in a block specified by its hash, providing detailed execution traces."}
+      description={
+        "Traces the execution of all transactions in a block specified by its hash, providing detailed execution traces."
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,6 +27,7 @@ export function EthereumMethod_debug_traceBlockByHash() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"Array of block traces."}
+      {...props}
     />
   );
 }
@@ -402,13 +408,13 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockHash",
     type: "string",
-    paramDescription:
-      "The hash of the block to be traced.",
+    paramDescription: "The hash of the block to be traced.",
   },
   {
     paramName: "tracer",
     type: "object",
-    paramDescription: "Supports callTracer and prestateTracer for detailed trace analysis.",
+    paramDescription:
+      "Supports callTracer and prestateTracer for detailed trace analysis.",
     childrenParamsType: "object",
     childrenParams: [
       {

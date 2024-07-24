@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_replayBlockTransactionsvmTrace() {
+export function EthereumMethod_trace_replayBlockTransactionsvmTrace(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="trace_replayBlockTransactions#vmTrace"
@@ -23,7 +26,10 @@ export function EthereumMethod_trace_replayBlockTransactionsvmTrace() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"An array of trace objects for each transaction, including vmTrace data that details the virtual machine's state during the transaction execution"}
+      responseParamsDescription={
+        "An array of trace objects for each transaction, including vmTrace data that details the virtual machine's state during the transaction execution"
+      }
+      {...props}
     />
   );
 }
@@ -263,7 +269,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "traceType",
     type: "string",
-    paramDescription: 'vmTrace',
+    paramDescription: "vmTrace",
   },
   {
     paramName: "vmTrace",
@@ -360,14 +366,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",

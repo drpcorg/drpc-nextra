@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockTransactionCountByNumber() {
+export function EthereumMethod_getBlockTransactionCountByNumber(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getBlockTransactionCountByNumber"
@@ -26,6 +29,7 @@ export function EthereumMethod_getBlockTransactionCountByNumber() {
       responseParamsDescription={
         "The number of transactions in the specified block."
       }
+      {...props}
     />
   );
 }
@@ -191,7 +195,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number or tag (\"latest\", \"earliest\", \"pending\") at which to get the balance.",
+    paramDescription:
+      'The block number or tag ("latest", "earliest", "pending") at which to get the balance.',
     paramEnum: [
       {
         value: "latest",
@@ -208,11 +213,13 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "earliest",
-        description: "A block approved by more than two-thirds of the validators.",
+        description:
+          "A block approved by more than two-thirds of the validators.",
       },
       {
         value: "pending",
-        description: "Transactions that have been broadcast but not yet included in a block.",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

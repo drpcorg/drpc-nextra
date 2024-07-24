@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getTransactionReceipt() {
+export function EthereumMethod_getTransactionReceipt(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getTransactionReceipt"
       network="ethereum"
       cu={30}
-      description={"Retrieves the receipt of a specific transaction by its hash"}
+      description={
+        "Retrieves the receipt of a specific transaction by its hash"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +29,7 @@ export function EthereumMethod_getTransactionReceipt() {
       responseParamsDescription={
         "The transaction receipt object if the transaction is found, or null if not."
       }
+      {...props}
     />
   );
 }
@@ -233,7 +239,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription: "The hash of the transaction for which the receipt is to be retrieved.",
+    paramDescription:
+      "The hash of the transaction for which the receipt is to be retrieved.",
   },
 ];
 
@@ -254,14 +261,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "Hash of the block containing the transaction.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "Block number containing the transaction.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
@@ -272,8 +277,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "nonce",
         type: "string",
-        paramDescription:
-          "Number of prior transactions from the sender.",
+        paramDescription: "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -288,8 +292,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "Receiver's address (null if contract creation).",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "cumulativeGasUsed",
@@ -300,14 +303,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "gasUsed",
         type: "string",
-        paramDescription:
-          "Gas used by this specific transaction alone.",
+        paramDescription: "Gas used by this specific transaction alone.",
       },
       {
         paramName: "contractAddress",
         type: "string",
-        paramDescription:
-          "Address of the contract created, if applicable.",
+        paramDescription: "Address of the contract created, if applicable.",
       },
       {
         paramName: "logs",
@@ -317,68 +318,69 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         childrenParamsType: "object",
         childrenParams: [
           {
-        paramName: "blockHash",
-        type: "string",
-        paramDescription:
-          "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
-      },
-      {
-        paramName: "blockNumber",
-        type: "string",
-        paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
-      },
-      {
-        paramName: "transactionIndex",
-        type: "string",
-        paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
-      },
-      {
-        paramName: "address",
-        type: "string",
-        paramDescription: "20 Bytes - address from which this log originated.",
-      },
-      {
-        paramName: "logIndex",
-        type: "string",
-        paramDescription:
-          "Integer of the log index position in the block. null when its pending log.",
-      },
-      {
-        paramName: "data",
-        type: "string",
-        paramDescription:
-          "Contains one or more 32 Bytes non-indexed arguments of the log.",
-      },
-      {
-        paramName: "removed",
-        type: "boolean",
-        paramDescription:
-          "true when the log was removed, due to a chain reorganization. false if its a valid log.",
-      },
-      {
-        paramName: "topics",
-        type: "array_of_strings",
-        paramDescription:
-          "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
-      },
-      {
-        paramName: "transactionHash",
-        type: "string",
-        paramDescription:
-          "Hash of the transactions this log was created from. null when its pending log.",
-      },
+            paramName: "blockHash",
+            type: "string",
+            paramDescription:
+              "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
+          },
+          {
+            paramName: "blockNumber",
+            type: "string",
+            paramDescription:
+              "The block number where this log was in. null when its pending. null when its pending log.",
+          },
+          {
+            paramName: "transactionIndex",
+            type: "string",
+            paramDescription:
+              "Integer of the transactions index position log was created from. null when its pending log.",
+          },
+          {
+            paramName: "address",
+            type: "string",
+            paramDescription:
+              "20 Bytes - address from which this log originated.",
+          },
+          {
+            paramName: "logIndex",
+            type: "string",
+            paramDescription:
+              "Integer of the log index position in the block. null when its pending log.",
+          },
+          {
+            paramName: "data",
+            type: "string",
+            paramDescription:
+              "Contains one or more 32 Bytes non-indexed arguments of the log.",
+          },
+          {
+            paramName: "removed",
+            type: "boolean",
+            paramDescription:
+              "true when the log was removed, due to a chain reorganization. false if its a valid log.",
+          },
+          {
+            paramName: "topics",
+            type: "array_of_strings",
+            paramDescription:
+              "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
+          },
+          {
+            paramName: "transactionHash",
+            type: "string",
+            paramDescription:
+              "Hash of the transactions this log was created from. null when its pending log.",
+          },
           {
             paramName: "logsBloom",
             type: "string",
-            paramDescription:
-              "Bloom filter for the logs.",
+            paramDescription: "Bloom filter for the logs.",
           },
           {
             paramName: "status",
             type: "integer",
-            paramDescription: "ETransaction status, either 1 (success) or 0 (failure)",
+            paramDescription:
+              "ETransaction status, either 1 (success) or 0 (failure)",
           },
           {
             paramName: "effectiveGasPrice",

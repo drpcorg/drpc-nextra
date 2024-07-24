@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_estimateGas() {
+export function EthereumMethod_estimateGas(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_getEstimateGas"
@@ -23,7 +24,10 @@ export function EthereumMethod_estimateGas() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The estimated gas amount needed for the transaction, returned as a hexadecimal string."}
+      responseParamsDescription={
+        "The estimated gas amount needed for the transaction, returned as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }
@@ -257,26 +261,22 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "gas",
         type: "integer",
-        paramDescription:
-          "(optional) The gas limit for the transaction.",
+        paramDescription: "(optional) The gas limit for the transaction.",
       },
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription:
-          "(optional) The gas price in wei.",
+        paramDescription: "(optional) The gas price in wei.",
       },
       {
         paramName: "value",
         type: "integer",
-        paramDescription:
-          "(optional) The value sent in wei.",
+        paramDescription: "(optional) The value sent in wei.",
       },
       {
         paramName: "data",
         type: "string",
-        paramDescription:
-          "(optional) The data sent with the transaction.",
+        paramDescription: "(optional) The data sent with the transaction.",
       },
     ],
   },

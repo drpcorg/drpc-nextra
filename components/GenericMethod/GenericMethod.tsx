@@ -34,6 +34,17 @@ export type GenericMethodProps = {
   responseParams: ReqResParam[];
   responseParamsType: TParamType;
   responseParamsDescription?: string;
+
+  // Replace code snippets URL with different URL
+  replaceCodeSnippetsURLFrom?: string;
+  replaceCodeSnippetsURLTo?: string;
+};
+
+export type GenericMethodPropsReplacing = Pick<
+  GenericMethodProps,
+  "replaceCodeSnippetsURLFrom" | "replaceCodeSnippetsURLTo"
+> & {
+  network?: string;
 };
 
 export default function GenericMethod({
@@ -50,14 +61,35 @@ export default function GenericMethod({
   responseParams,
   responseParamsType,
   responseParamsDescription,
+  replaceCodeSnippetsURLFrom,
+  replaceCodeSnippetsURLTo,
 }: GenericMethodProps) {
   const [snippet, setSnippet] = React.useState<CodeSnippetObject["language"]>(
     codeSnippets?.[0]?.language || null
   );
 
   const snippetCode = React.useMemo(() => {
-    return codeSnippets.find((s) => s.language === snippet)?.code() || null;
-  }, [codeSnippets, snippet]);
+    const codeSnippetString =
+      codeSnippets.find((s) => s.language === snippet)?.code() || null;
+    // Replace the URL in the code snippet if the URL is provided
+    // For identical cases such as Optimism and Ethereum, we can replace the URL
+    if (
+      codeSnippetString &&
+      replaceCodeSnippetsURLFrom &&
+      replaceCodeSnippetsURLTo
+    ) {
+      return codeSnippetString.replaceAll(
+        replaceCodeSnippetsURLFrom,
+        replaceCodeSnippetsURLTo
+      );
+    }
+    return codeSnippetString;
+  }, [
+    codeSnippets,
+    snippet,
+    replaceCodeSnippetsURLFrom,
+    replaceCodeSnippetsURLTo,
+  ]);
 
   const snippetLanguage = React.useMemo(() => {
     return codeSnippets.find((s) => s.language === snippet)?.language || null;

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_mining() {
+export function EthereumMethod_mining(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_mining"
@@ -21,7 +22,10 @@ export function EthereumMethod_mining() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns true if the node is actively mining, false otherwise."}
+      responseParamsDescription={
+        "Returns true if the node is actively mining, false otherwise."
+      }
+      {...props}
     />
   );
 }

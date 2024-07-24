@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_subscribe() {
+export function EthereumMethod_subscribe(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_subscribe"
@@ -23,7 +24,10 @@ export function EthereumMethod_subscribe() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"The subscription ID, represented as a hexadecimal string. "}
+      responseParamsDescription={
+        "The subscription ID, represented as a hexadecimal string. "
+      }
+      {...props}
     />
   );
 }
@@ -222,8 +226,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "data",
     type: "object",
-    paramDescription:
-      "Arguments like address, multiple addresses, and topics.",
+    paramDescription: "Arguments like address, multiple addresses, and topics.",
   },
 ];
 

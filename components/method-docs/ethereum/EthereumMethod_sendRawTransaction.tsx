@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,9 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_sendRawTransaction() {
+export function EthereumMethod_sendRawTransaction(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_sendRawTransaction"
@@ -26,6 +29,7 @@ export function EthereumMethod_sendRawTransaction() {
       responseParamsDescription={
         "The hash of the transaction, represented as a hexadecimal string. "
       }
+      {...props}
     />
   );
 }

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_accounts() {
+export function EthereumMethod_accounts(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_accounts"
@@ -22,6 +23,7 @@ export function EthereumMethod_accounts() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -218,7 +220,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "An array of account addresses, each address is represented as a string.",
+    paramDescription:
+      "An array of account addresses, each address is represented as a string.",
   },
 ];
 

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,7 +7,7 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_coinbase() {
+export function EthereumMethod_coinbase(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_coinbase"
@@ -22,6 +23,7 @@ export function EthereumMethod_coinbase() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
