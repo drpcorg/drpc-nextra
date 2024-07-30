@@ -7,12 +7,12 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_trace_replayTransactionsvmTrace(
+export function EthereumMethod_trace_replayTransactionvmTrace(
   props: GenericMethodPropsReplacing
 ) {
   return (
     <EthereumMethod
-      method="trace_replayTransactionsvmTrace"
+      method="trace_replayTransactionvmTrace"
       network="ethereum"
       cu={300}
       description={
