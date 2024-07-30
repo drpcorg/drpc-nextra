@@ -12,7 +12,7 @@ export function EthereumMethod_getBlockByNumber(
 ) {
   return (
     <EthereumMethod
-      method="getBlockByNumber"
+      method="eth_getBlockByNumber"
       network="ethereum"
       cu={24}
       description={
