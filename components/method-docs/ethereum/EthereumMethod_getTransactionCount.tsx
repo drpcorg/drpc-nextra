@@ -208,7 +208,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "address",
     type: "string",
     paramDescription:
-      "The Ethereum address for which to retrieve the transaction count.",
+      "The address for which to retrieve the transaction count.",
   },
   {
     paramName: "blockNumber",
@@ -255,7 +255,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid Ethereum address input",
+  "Requires valid address input",
   "Node synchronization with blockchain required.",
   "Depends on the latest blockchain state.",
 ];

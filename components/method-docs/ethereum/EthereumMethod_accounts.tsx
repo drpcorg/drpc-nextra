@@ -13,7 +13,7 @@ export function EthereumMethod_accounts(props: GenericMethodPropsReplacing) {
       method="eth_accounts"
       network="ethereum"
       cu={0}
-      description={"Returns Ethereum account addresses owned by the client"}
+      description={"Returns an account addresses owned by the client"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -226,7 +226,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve a list of managed Ethereum accounts",
+  "Retrieve a list of managed accounts",
   "Verify available accounts on the connected node",
   "Populate account dropdown menus",
 ];

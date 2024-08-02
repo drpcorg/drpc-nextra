@@ -216,6 +216,6 @@ const USE_CASES = [
 
 const CONSTRAINTS = [
   "Node must be running in mining mode",
-  "Requires valid and connected Ethereum node",
+  "Requires valid and connected node",
   "Coinbase address must be properly configured",
 ];

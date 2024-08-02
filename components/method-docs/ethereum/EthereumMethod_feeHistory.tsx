@@ -14,7 +14,7 @@ export function EthereumMethod_feeHistory(props: GenericMethodPropsReplacing) {
       network="ethereum"
       cu={15}
       description={
-        "Retrieves historical gas fee data for Ethereum transactions, aiding in better gas price estimation and transaction planning based on past network activity"
+        "Retrieves historical gas fee data for transactions, aiding in better gas price estimation and transaction planning based on past network activity"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -340,7 +340,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 
 const USE_CASES = [
   "Retrieve gas price history",
-  "DApp Authentication: Verify user's Ethereum addresses",
+  "DApp Authentication: Verify user's addresses",
   "Account Selection UI: Populate account dropdown menus",
 ];
 

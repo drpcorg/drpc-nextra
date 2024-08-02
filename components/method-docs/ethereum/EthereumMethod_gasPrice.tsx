@@ -14,7 +14,7 @@ export function EthereumMethod_gasPrice(props: GenericMethodPropsReplacing) {
       network="ethereum"
       cu={15}
       description={
-        "Helps in estimating the cost for transaction fees, ensuring efficient and accurate gas pricing for transactions on the Ethereum network"
+        "Helps in estimating the cost for transaction fees, ensuring efficient and accurate gas pricing for transactions on the network"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -25,7 +25,7 @@ export function EthereumMethod_gasPrice(props: GenericMethodPropsReplacing) {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Retrieves the current gas price in wei from the latest Ethereum block."
+        "Retrieves the current gas price in wei from the latest block."
       }
       {...props}
     />

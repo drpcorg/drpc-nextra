@@ -14,7 +14,7 @@ export function EthereumMethod_getCode(props: GenericMethodPropsReplacing) {
       network="ethereum"
       cu={24}
       description={
-        "Is essential for developers to inspect and verify contract code deployed on the Ethereum blockchain"
+        "Is essential for developers to inspect and verify contract code deployed on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

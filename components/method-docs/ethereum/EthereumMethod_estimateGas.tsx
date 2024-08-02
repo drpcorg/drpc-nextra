@@ -336,7 +336,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid Ethereum addresses",
+  "Requires valid addresses",
   "Estimates vary with network conditions",
   "Calculation depends on the node's processing speed",
 ];

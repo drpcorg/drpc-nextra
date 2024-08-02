@@ -16,7 +16,7 @@ export function EthereumMethod_sendRawTransaction(
       network="ethereum"
       cu={90}
       description={
-        "Submits a pre-signed transaction for broadcast to the Ethereum network"
+        "Submits a pre-signed transaction for broadcast to the network"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -215,7 +215,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Broadcast signed transaction to the Ethereum network",
+  "Broadcast signed transaction to the network",
   "Validate and send raw transaction for execution",
   "Submit a pre-signed transaction to the blockchain",
 ];

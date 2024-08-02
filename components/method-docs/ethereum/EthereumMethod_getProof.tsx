@@ -226,7 +226,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "address",
     type: "string",
     paramDescription:
-      "The Ethereum address of the account for which the proof is being generated.",
+      "The address of the account for which the proof is being generated.",
   },
   {
     paramName: "storageKeys",

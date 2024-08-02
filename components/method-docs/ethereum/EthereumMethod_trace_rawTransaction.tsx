@@ -267,7 +267,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "stateDiff",
         type: "string",
         paramDescription:
-          "Details the changes to the Ethereum state as a result of the transaction execution.",
+          "Details the changes to the state as a result of the transaction execution.",
       },
       {
         paramName: "trace",

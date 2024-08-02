@@ -207,7 +207,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Monitor mining performance of the Ethereum node",
+  "Monitor mining performance of the node",
   "Track hashrate to evaluate node's mining capability",
   "Assess node's computational power for blockchain validation",
 ];

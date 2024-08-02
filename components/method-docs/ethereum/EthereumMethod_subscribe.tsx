@@ -14,7 +14,7 @@ export function EthereumMethod_subscribe(props: GenericMethodPropsReplacing) {
       network="ethereum"
       cu={10}
       description={
-        "Creates a subscription to receive real-time updates for various events on the Ethereum blockchain"
+        "Creates a subscription to receive real-time updates for various events on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -252,7 +252,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous WebSocket connection to Ethereum node",
+  "Requires continuous WebSocket connection to the node",
   "Node must support eth_subscribe method",
   "Subscription management needed to handle multiple events",
 ];

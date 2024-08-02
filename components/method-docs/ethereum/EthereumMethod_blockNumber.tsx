@@ -219,6 +219,6 @@ const USE_CASES = [
 
 const CONSTRAINTS = [
   "Node must be synchronized with the network",
-  "Requires access to a reliable Ethereum node",
+  "Requires access to a reliable node",
   "Network latency may affect response time",
 ];
