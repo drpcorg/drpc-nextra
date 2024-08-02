@@ -28,6 +28,12 @@
       "breadcrumb": false
     }
   },
+  "cosmos-api": {
+    "title": "Cosmos API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",
