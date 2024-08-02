@@ -192,7 +192,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous connection to the Ethereum node",
+  "Requires continuous connection to the node",
   "Node must support pending transaction filters",
   "Accurate pending transaction tracking depends on node performance",
 ];

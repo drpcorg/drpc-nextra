@@ -13,7 +13,7 @@ export function EthereumMethod_mining(props: GenericMethodPropsReplacing) {
       method="eth_mining"
       network="ethereum"
       cu={0}
-      description={"Checks if the Ethereum node is currently mining new blocks"}
+      description={"Checks if the node is currently mining new blocks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -204,13 +204,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Check if the Ethereum node is actively mining",
+  "Check if the node is actively mining",
   "Verify mining status for node operational checks",
   "Monitor node activity to ensure mining processes",
 ];
 
 const CONSTRAINTS = [
-  "Requires active connection to the Ethereum node",
+  "Requires active connection to the node",
   "Node must support the eth_mining method",
   "Accurate response depends on node's mining configuration",
 ];

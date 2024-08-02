@@ -14,7 +14,7 @@ export function EthereumMethod_net_version(props: GenericMethodPropsReplacing) {
       network="ethereum"
       cu={0}
       description={
-        "Retrieves the current network ID the Ethereum client is connected to"
+        "Retrieves the current network ID the client is connected to"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -25,7 +25,7 @@ export function EthereumMethod_net_version(props: GenericMethodPropsReplacing) {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "The network ID as a string, representing the specific Ethereum network the client is connected to."
+        "The network ID as a string, representing the specific network the client is connected to."
       }
       {...props}
     />
@@ -206,13 +206,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Determine network version for Ethereum node",
+  "Determine network version for the node",
   "Validate the connected network version",
   "Check network ID for compatibility verification",
 ];
 
 const CONSTRAINTS = [
-  "Requires network access to Ethereum node",
+  "Requires network access to the node",
   "Node must support net_version method",
   "Accurate response depends on node synchronization",
 ];

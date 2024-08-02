@@ -16,7 +16,7 @@ export function EthereumMethod_net_peerCount(
       network="ethereum"
       cu={0}
       description={
-        "Retrieves the number of peers currently connected to the Ethereum client"
+        "Retrieves the number of peers currently connected to the client"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -208,7 +208,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve a list of managed Ethereum accounts",
+  "Retrieve a list of managed accounts",
   "Verify available accounts on the connected node",
   "Populate account dropdown menus",
 ];

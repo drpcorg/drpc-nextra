@@ -232,7 +232,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription: "The Ethereum address to query the balance for.",
+    paramDescription: "The address to query the balance for.",
   },
   {
     paramName: "blockNumber",
@@ -291,7 +291,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires a valid Ethereum account address",
+  "Requires a valid account address",
   "Node must be synchronized with the latest state",
   "Network latency may delay balance retrieval",
 ];

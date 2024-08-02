@@ -219,7 +219,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 const USE_CASES = [
   "Verify chain ID before signing new transactions",
   "Ensure transactions are compatible with the head block",
-  "Identify the Ethereum chain for network-specific operations",
+  "Identify the chain for network-specific operations",
 ];
 
 const CONSTRAINTS = [

@@ -13,7 +13,7 @@ export function EthereumMethod_syncing(props: GenericMethodPropsReplacing) {
       method="eth_syncing"
       network="ethereum"
       cu={0}
-      description={"Checks the synchronization status of an Ethereum node"}
+      description={"Checks the synchronization status of a node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -230,13 +230,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Check node synchronization status with Ethereum blockchain",
+  "Check node synchronization status with the blockchain",
   "Monitor progress of node syncing to network",
   "Validate node sync state for operational readiness",
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous connection to the Ethereum node",
+  "Requires continuous connection to the node",
   "Node must support eth_syncing method",
   "Accurate synchronization data depends on node performance",
 ];

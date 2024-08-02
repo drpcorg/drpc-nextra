@@ -16,7 +16,7 @@ export function EthereumMethod_protocolVersion(
       network="ethereum"
       cu={0}
       description={
-        "Retrieves the current Ethereum protocol version that the client is using"
+        "Retrieves the current protocol version that the client is using"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -216,13 +216,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Check current Ethereum protocol version on node",
-  "Ensure compatibility with Ethereum protocol updates",
+  "Check current protocol version on node",
+  "Ensure compatibility with protocol updates",
   "Validate node is running expected protocol version",
 ];
 
 const CONSTRAINTS = [
-  "Requires network access to Ethereum node",
+  "Requires network access to node",
   "Node must support protocol version query",
   "Accurate response depends on node synchronization",
 ];

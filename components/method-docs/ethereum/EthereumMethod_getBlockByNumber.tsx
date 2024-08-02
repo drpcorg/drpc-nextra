@@ -16,7 +16,7 @@ export function EthereumMethod_getBlockByNumber(
       network="ethereum"
       cu={24}
       description={
-        "Retrieves detailed information about a specific block on the Ethereum blockchain by its number"
+        "Retrieves detailed information about a specific block on the blockchain by its number"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -208,7 +208,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription: "The Ethereum address of the smart contract.",
+    paramDescription: "The address of the smart contract.",
   },
   {
     paramName: "position",

@@ -335,7 +335,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 const USE_CASES = [
   "Analyze internal transactions for a specific transaction",
   "Trace smart contract execution paths and outcomes",
-  "Debug complex transaction behavior within Ethereum blockchain",
+  "Debug complex transaction behavior within blockchain",
 ];
 
 const CONSTRAINTS = [

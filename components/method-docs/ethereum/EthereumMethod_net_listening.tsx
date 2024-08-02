@@ -16,7 +16,7 @@ export function EthereumMethod_net_listening(
       network="ethereum"
       cu={0}
       description={
-        "Checks if the Ethereum client is actively listening for network connections"
+        "Checks if the client is actively listening for network connections"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -214,7 +214,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Broadcast a signed transaction to the Ethereum network",
+  "Broadcast a signed transaction to the network",
   "Validate and execute a pre-signed transaction",
   "Submit transaction for inclusion in the next block",
 ];
