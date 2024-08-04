@@ -38,7 +38,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     code: () => `
 wscat -c wss://eth.drpc.org.org
 
-{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_minedTransactions"]}'`,
+{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newHeads"]}'`,
   },
   {
     language: "js",

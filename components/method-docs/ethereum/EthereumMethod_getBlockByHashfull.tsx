@@ -45,7 +45,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   "jsonrpc": "2.0",
   "method": "eth_getBlockByHash",
   "params": [
-    true,
+    "0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3",
     true
   ]
 }
@@ -58,7 +58,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 const data = {
   jsonrpc: "2.0",
   method: "eth_getBlockByHash",
-  params: [true, true],
+  params: ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", true],
   id: 1
 };
 
@@ -83,7 +83,7 @@ const url = '${DRPC_ENDPOINT_URL}';
 const data = {
   jsonrpc: "2.0",
   method: "eth_getBlockByHash",
-  params: [true, true],
+  params: ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", true],
   id: 1
 };
 
@@ -116,7 +116,7 @@ func main() {
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
 		"method":  "eth_getBlockByHash",
-		"params":  []interface{}{true, true},
+		"params":  []interface{}{"0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", true},
 		"id":      1,
 	}
 
@@ -150,7 +150,7 @@ url = '${DRPC_ENDPOINT_URL}'
 data = {
     "jsonrpc": "2.0",
     "method": "eth_getBlockByHash",
-    "params": [true, true],
+    "params": ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", true],
     "id": 1
 }
 
@@ -172,7 +172,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let data = json!({
         "jsonrpc": "2.0",
         "method": "eth_getBlockByHash",
-        "params": [true, true],
+        "params": ["0x3f07a9c83155594c000642e7d60e8a8a00038d03e9849171a05ed0e2d47acbb3", true],
         "id": 1
     });
 

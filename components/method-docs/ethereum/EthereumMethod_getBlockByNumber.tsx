@@ -48,7 +48,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
  "method": "eth_getBlockByNumber",
  "params": [
    "finalized",
-   "finalized"
+   false
  ]
 }
 '`,
@@ -65,7 +65,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['finalized', 'finalized']
+    params: ['finalized', false]
 };
 
 fetch(url, {
@@ -90,7 +90,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['finalized', 'finalized']
+    params: ['finalized', false]
 };
 
 fetch(url, {
@@ -125,7 +125,7 @@ func main() {
         "id":      1,
         "jsonrpc": "2.0",
         "method":  "eth_getBlockByNumber",
-        "params":  []interface{}{"finalized", "finalized"},
+        "params":  []interface{}{"finalized", false},
     }
 
     jsonData, err := json.Marshal(data)
@@ -172,7 +172,7 @@ data = {
     "id": 1,
     "jsonrpc": "2.0",
     "method": "eth_getBlockByNumber",
-    "params": ["finalized", "finalized"]
+    "params": ["finalized", "false"]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -194,7 +194,7 @@ async fn main() -> Result<(), reqwest::Error> {
         "id": 1,
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
-        "params": ["finalized", "finalized"]
+        "params": ["finalized", false]
     });
 
     let response = client.post(url)
