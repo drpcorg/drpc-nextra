@@ -1,0 +1,102 @@
+# Price configuration
+
+dRPC provides pay as you go pricing for our clients, meaning the pay for each call. Each call has a price in terms
+of CU (compute units), you can [read more here](../pricing/compute-units.mdx).
+
+But providers can redefine those values for themselves through provider dashboard using CU lang.
+
+## CU lang
+
+We provide a small configuration language that allows to set prices.
+If you're familiar with CSS, it's very similar and allows you to easily augment prices for borad range of methods.
+
+### Example
+
+```
+// multiplies all prices by 0.9
+* {
+  mul: 0.9;
+}
+
+// all methods for solana will use 100% of CU
+$solana {
+  mul: 1;
+}
+
+// drops price by 50% on all network for eth_call method
+#eth_call {
+  mul: 0.5;
+}
+
+// only drop price by 20% for eth_call on metis
+$metis #eth_call {
+  mul: 0.8;
+}
+
+// all archive eth_call on ethereum will have 100% price
+$ethereum #eth_call archive {
+  mul: 1;
+}
+
+// both networks will use 100% of CU
+$metis, $manta-pacific {
+  mul: 1;
+}
+
+```
+
+### Anatomy of pricing rule
+
+Each rule consists of 2 parts: selector and modifier.
+
+- selector allows to specify for which call modifier should apply
+- modifier augments the prices for selected calls
+
+### Modifiers
+
+Currently we only support `mul` modifier. This modifier takes base price of the call and multiplies it by specified number.
+Currently we only allow float values between 0 and 1, so base price is currently price ceiling, but it can change in future.
+
+### Selectors
+
+There are several types of selectors
+
+- all (`*`) selector, applies to all calls
+- method selector (`#eth_call`), applies to all calls of specifci methods
+- network selector (`$solana`), applies to all calls of specific networks
+- archive selector (`archive`), applies to all archive calls
+
+#### Selectors composability
+
+- `*` is not composable, you can only use it alone
+- you can increase specificity of selector using several different types of selectors together `$ethereum #eth_call archive`, but you can only use 1 type of each selector
+- you can combine several selectors in one using `,`. For example, `#eth_call, #eth_getLogs`.
+
+#### Specificity
+
+Obviously, you can have a lot of rules in your configuration and each call can match several rules.
+However, we need to select one to apply its modifier, so there is a concept of specificity.
+
+It works the same as with CSS. Basically we take selector and convert it to binary number using order below:
+
+1. method selector
+2. network selector
+3. archive selector
+4. all selector
+
+For example, let's compare 2 selectors: `#eth_call` and `$metis archive`.
+
+Selector `#eth_call` converts to `1000`:
+1. method selector (1)
+2. network selector (0)
+3. archive selector (0)
+4. all selector (0)
+
+Selector `$metis archive` converts to `0110`:
+1. method selector (0)
+2. network selector(1)
+3. archive selector (1)
+4. all selector (0)
+
+Now we just compare those 2 numbers and `1000` > `0110`, so the selector `#eth_call`
+will have more specificity, thus it will overpower any other selector matching any eth_call.
