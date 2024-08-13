@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_protocolVersion() {
+export function EthereumMethod_protocolVersion(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_protocolVersion"
       network="ethereum"
       cu={0}
-      description={"Returns the current ethereum protocol version."}
+      description={
+        "Retrieves the current protocol version that the client is using"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,8 +27,9 @@ export function EthereumMethod_protocolVersion() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns the current ethereum protocol version."
+        "The protocol version, represented as a string."
       }
+      {...props}
     />
   );
 }
@@ -210,13 +216,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Check current Ethereum protocol version on node",
-  "Ensure compatibility with Ethereum protocol updates",
+  "Check current protocol version on node",
+  "Ensure compatibility with protocol updates",
   "Validate node is running expected protocol version",
 ];
 
 const CONSTRAINTS = [
-  "Requires network access to Ethereum node",
+  "Requires network access to node",
   "Node must support protocol version query",
   "Accurate response depends on node synchronization",
 ];

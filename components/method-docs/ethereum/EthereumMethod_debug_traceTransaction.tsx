@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_debug_traceTransaction() {
+export function EthereumMethod_debug_traceTransaction(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="debug_traceTransaction"
       network="ethereum"
       cu={90}
       description={
-        "Attempts to run the transaction in the exact same manner as it was executed on the network."
+        "Traces the execution of a given transaction, providing detailed information about its internal operations for debugging purposes"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,6 +27,7 @@ export function EthereumMethod_debug_traceTransaction() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"Array of block traces."}
+      {...props}
     />
   );
 }
@@ -257,19 +261,18 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "This describes the block number to fetch the transaction by.",
+    paramDescription: "Specifies the block number to locate the transaction.",
   },
   {
     paramName: "tracer",
     type: "object",
-    paramDescription: "Currently supports callTracer and prestateTracer",
+    paramDescription: "Supports callTracer and prestateTracer.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "tracer",
         type: "string",
-        paramDescription: "Default: callTracer",
+        paramDescription: "Default value is callTracer.",
       },
       {
         paramName: "tracerConfig",
@@ -286,7 +289,7 @@ const REQUEST_PARAMS: RequestParamProp = [
         paramName: "timeout",
         type: "string",
         paramDescription:
-          'A duration string of decimal numbers that overrides the default timeout of 5 seconds for JavaScript-based tracing calls. Max timeout is "10s". Valid time units are "ns", "us", "ms", "s" each with optional fraction, such as "300ms" or "2s45ms".',
+          'Specifies a custom timeout for JavaScript-based tracing calls. Default is 5 seconds, maximum is 10 seconds. Valid units are "ns", "us", "ms", "s", with optional fractions, e.g., "200ms".',
       },
     ],
   },
@@ -304,7 +307,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_objects",
-    paramDescription: "Is different for callTracer and prestateTracer",
+    paramDescription:
+      "Detailed trace data for the specified transaction, including call stack, gas usage, and execution results.",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -315,48 +319,48 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "from",
             type: "string",
-            paramDescription: "The address of the sender.",
+            paramDescription: "Sender's address.",
           },
           {
             paramName: "to",
             type: "string",
-            paramDescription: "The address of the receiver.",
+            paramDescription: "Receiver's address.",
           },
           {
             paramName: "value",
             type: "string",
-            paramDescription: "The value transferred in wei.",
+            paramDescription: "Amount transferred in wei.",
           },
           {
             paramName: "gas",
             type: "string",
-            paramDescription: "The gas provided for the call.",
+            paramDescription: "Gas allocated for the call.",
           },
           {
             paramName: "input",
             type: "string",
-            paramDescription: "The data sent along with the call.",
+            paramDescription: "Data sent with the call.",
           },
 
           {
             paramName: "gasUsed",
             type: "string",
-            paramDescription: "The amount of gas used by the trace.",
+            paramDescription: "Gas consumed by the trace.",
           },
           {
             paramName: "output",
             type: "string",
-            paramDescription: "The output of the call.",
+            paramDescription: "Result of the call.",
           },
           {
             paramName: "error",
             type: "string",
-            paramDescription: "Error, if any",
+            paramDescription: "Any error encountered.",
           },
           {
             paramName: "revertReason",
             type: "string",
-            paramDescription: "solidity revert reason, if any",
+            paramDescription: "Solidity revert reason, if any.",
           },
           {
             paramName: "calls",
@@ -373,21 +377,22 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "balance",
             type: "string",
-            paramDescription: "Balance in wei",
+            paramDescription: "Account balance in wei.",
           },
           {
             paramName: "nonce",
             type: "uint64",
+            paramDescription: "The transaction count for the account.",
           },
           {
             paramName: "code",
             type: "string",
-            paramDescription: "Hex-encoded bytecode",
+            paramDescription: "Hex-encoded contract bytecode.",
           },
           {
             paramName: "storage",
             type: "map[string]string",
-            paramDescription: "Storage slots of the contract",
+            paramDescription: "Contract's storage slots.",
           },
         ],
       },

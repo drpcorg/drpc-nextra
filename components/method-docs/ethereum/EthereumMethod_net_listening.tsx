@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_net_listening() {
+export function EthereumMethod_net_listening(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="net_listening"
       network="ethereum"
       cu={0}
       description={
-        "Returns true if client is actively listening for network connections."
+        "Checks if the client is actively listening for network connections"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,8 +27,9 @@ export function EthereumMethod_net_listening() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns true when listening, otherwise false."
+        "RReturns true if the client is listening for network connections, false otherwise."
       }
+      {...props}
     />
   );
 }
@@ -206,13 +210,11 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription:
-      "A boolean indicating if the operation was successful or not.",
   },
 ];
 
 const USE_CASES = [
-  "Broadcast a signed transaction to the Ethereum network",
+  "Broadcast a signed transaction to the network",
   "Validate and execute a pre-signed transaction",
   "Submit transaction for inclusion in the next block",
 ];

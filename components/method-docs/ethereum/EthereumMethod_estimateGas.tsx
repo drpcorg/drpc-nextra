@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_estimateGas() {
+export function EthereumMethod_estimateGas(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_getEstimateGas"
       network="ethereum"
       cu={60}
       description={
-        "Generates an estimate of the gas needed for a transaction without adding it to the blockchain."
+        "Calculates the exact amount of gas required, optimizing transaction efficiency and preventing out-of-gas errors"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +24,10 @@ export function EthereumMethod_estimateGas() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the amount of gas used."}
+      responseParamsDescription={
+        "The estimated gas amount needed for the transaction, returned as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }
@@ -247,36 +251,32 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "The address from which the transaction is sent.",
+        paramDescription: "(optional) The sender's address.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription: "The address to which the transaction is addressed.",
+        paramDescription: "The recipient's address.",
       },
       {
         paramName: "gas",
         type: "integer",
-        paramDescription:
-          "The integer of gas provided for the transaction execution",
+        paramDescription: "(optional) The gas limit for the transaction.",
       },
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription:
-          "The integer of gasPrice used for each paid gas (hexadecimal)",
+        paramDescription: "(optional) The gas price in wei.",
       },
       {
         paramName: "value",
         type: "integer",
-        paramDescription:
-          "The integer of value sent with this transaction (hexadecimal)",
+        paramDescription: "(optional) The value sent in wei.",
       },
       {
         paramName: "data",
         type: "string",
-        paramDescription:
-          "The hash of the method signature and encoded parameters.",
+        paramDescription: "(optional) The data sent with the transaction.",
       },
     ],
   },
@@ -284,31 +284,31 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "object",
     type: "object",
     paramDescription:
-      "The state override set with address-to-state mapping where each address maps to an object containing",
+      "A state override set, mapping addresses to their respective states. Each address maps to an object with:",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "balance",
         type: "string",
         paramDescription:
-          "Fake balance to set for the account before executing the call.",
+          "Simulated balance assigned to the account prior to executing the call.",
       },
       {
         paramName: "nonce",
         type: "string",
         paramDescription:
-          "Fake nonce to set for the account before executing the call.",
+          "Simulated nonce assigned to the account before the call.",
       },
       {
         paramName: "code",
         type: "integer",
-        paramDescription: "Fake EVM bytecode to inject into the account",
+        paramDescription: "Simulated EVM bytecode inserted into the account.",
       },
       {
         paramName: "stateDiff",
         type: "string",
         paramDescription:
-          "Fake key-value mapping to override all slots in the account storage",
+          "Simulated key-value pairs to override the account's storage slots.",
       },
     ],
   },
@@ -326,7 +326,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "Returns the amount of gas used.",
   },
 ];
 
@@ -337,7 +336,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid Ethereum addresses",
+  "Requires valid addresses",
   "Estimates vary with network conditions",
   "Calculation depends on the node's processing speed",
 ];

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getUncleCountByBlockNumber() {
+export function EthereumMethod_getUncleCountByBlockNumber(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getUncleCountByBlockNumber"
       network="ethereum"
       cu={15}
       description={
-        "Returns the number of uncles in a block matching the given block number."
+        "Retrieves the number of uncle blocks for a specific block identified by its number"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,8 +27,9 @@ export function EthereumMethod_getUncleCountByBlockNumber() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "Returns integer of the number of uncles in this block."
+        "The number of uncle blocks associated with the specified block"
       }
+      {...props}
     />
   );
 }
@@ -190,8 +194,23 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "The integer of a block number encoded in hexadecimal format starting with 0x",
+    paramDescription: "(optional) Block number as an integer, or string",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "The most recent block in the blockchain (default).",
+      },
+      {
+        value: "earliest",
+        description: "The first block, also known as the genesis block.",
+      },
+      {
+        value: "pending",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
+      },
+    ],
   },
 ];
 
@@ -199,8 +218,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "uncles",
     type: "string",
-    paramDescription:
-      "The integer value of the number of uncles in the block encoded as hexadecimal.",
   },
 ];
 

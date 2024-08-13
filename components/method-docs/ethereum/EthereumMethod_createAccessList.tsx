@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_createAccessList() {
+export function EthereumMethod_createAccessList(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_createAccessList"
       network="ethereum"
       cu={30}
-      description={
-        "Returns list of addresses and storage keys that are read and written by the transaction (except the sender account and precompiles), plus the estimated gas consumed when the access list is added."
-      }
+      description={"Creates an EIP2930 access list from a Transaction object"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,6 +25,7 @@ export function EthereumMethod_createAccessList() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -269,14 +271,29 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription:
-      "The block number in hexadecimal format or the string latest, earliest, pending, safe or finalized.",
+    paramDescription: "(optional) Block number as an integer, or string",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "The most recent block in the blockchain (default).",
+      },
+      {
+        value: "earliest",
+        description: "The first block, also known as the genesis block.",
+      },
+      {
+        value: "pending",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
+      },
+    ],
   },
   {
     paramName: "transaction_detail_flag",
     type: "boolean",
     paramDescription:
-      "The method returns the full transaction objects when this value is true otherwise, it returns only the hashes of the transactions.",
+      "When set to true, the method returns complete transaction objects. If false, it only returns the transaction hashes.",
   },
 ];
 
@@ -293,7 +310,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     paramName: "result",
     type: "object",
     paramDescription:
-      "A block object, or null when no block was found. The block object contains the following fields:",
+      "A block object, or null if no block is found, contains the following fields:",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -306,12 +323,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "address",
             type: "string",
-            paramDescription: "Address read or written by the transaction",
+            paramDescription: "The address accessed by the transaction.",
           },
           {
             paramName: "storageKeys",
             type: "string",
-            paramDescription: "List of storage keys used by the transaction",
+            paramDescription: "Storage keys utilized by the transaction.",
           },
         ],
       },
@@ -319,7 +336,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "gasUsed",
         type: "string",
         paramDescription:
-          "Estimated gas consumed when the access list is added. ",
+          "The estimated gas consumed when the access list is included.",
       },
     ],
   },

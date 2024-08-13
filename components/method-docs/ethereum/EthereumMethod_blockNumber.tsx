@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,13 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_blockNumber() {
+export function EthereumMethod_blockNumber(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_blockNumber"
       network="ethereum"
       cu={10}
-      description={"Returns the number of the most recent block."}
+      description={"The method is used to get the recent block number"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,8 +23,9 @@ export function EthereumMethod_blockNumber() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns array of log objects, or an empty array if nothing has changed since last poll."
+        "Returns a list of log objects or an empty list if there have been no updates since the previous query."
       }
+      {...props}
     />
   );
 }
@@ -204,7 +206,8 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription: "An array of addresses owned by the client",
+    paramDescription:
+      "The latest block number, returned as a hexadecimal string.",
   },
 ];
 
@@ -216,6 +219,6 @@ const USE_CASES = [
 
 const CONSTRAINTS = [
   "Node must be synchronized with the network",
-  "Requires access to a reliable Ethereum node",
+  "Requires access to a reliable node",
   "Network latency may affect response time",
 ];

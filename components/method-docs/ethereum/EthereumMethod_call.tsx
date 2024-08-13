@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_call() {
+export function EthereumMethod_call(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_call"
       network="ethereum"
       cu={21}
       description={
-        "Executes a new message call immediately without creating a transaction on the block chain."
+        "Performs a message call instantly without recording it as a transaction on the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,6 +25,7 @@ export function EthereumMethod_call() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={"The result of the call."}
+      {...props}
     />
   );
 }
@@ -258,56 +260,53 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "The address from which the transaction is sent.",
+        paramDescription: "(optional) Sender's address.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription: "The address to which the transaction is addressed.",
+        paramDescription: "Recipient's address.",
       },
       {
         paramName: "gas",
         type: "integer",
-        paramDescription:
-          "The integer of gas provided for the transaction execution.",
+        paramDescription: "(optional) Gas limit for the transaction.",
       },
       {
         paramName: "gasPrice",
         type: "integer",
-        paramDescription:
-          "The integer of gasPrice used for each paid gas encoded as hexadecimal.",
+        paramDescription: "(optional) Gas price in wei.",
       },
       {
         paramName: "value",
         type: "integer",
-        paramDescription:
-          "The integer of value sent with this transaction encoded as hexadecimal.",
+        paramDescription: "(optional) Amount of wei to send.",
       },
       {
         paramName: "data",
         type: "string",
-        paramDescription:
-          "The hash of the method signature and encoded parameters.",
+        paramDescription: "(optional) Encoded method signature and parameters.",
       },
     ],
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The hex value of a block number, hash or tags:",
+    paramDescription: "(optional) Block number as an integer, or string",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },

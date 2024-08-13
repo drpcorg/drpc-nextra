@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_newPendingTransactionFilter() {
+export function EthereumMethod_newPendingTransactionFilter(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_newPendingTransactionFilter"
       network="ethereum"
       cu={20}
       description={
-        "Creates a filter in the node, to notify when new pending transactions arrive."
+        "Creates a filter to notify when new pending transactions are added to the transaction pool"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +26,10 @@ export function EthereumMethod_newPendingTransactionFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns a filter id."}
+      responseParamsDescription={
+        "The ID of the newly created filter, represented as a hexadecimal string. "
+      }
+      {...props}
     />
   );
 }
@@ -186,7 +192,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous connection to the Ethereum node",
+  "Requires continuous connection to the node",
   "Node must support pending transaction filters",
   "Accurate pending transaction tracking depends on node performance",
 ];

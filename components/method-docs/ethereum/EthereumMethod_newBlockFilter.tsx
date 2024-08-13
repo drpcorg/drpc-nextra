@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_newBlockFilter() {
+export function EthereumMethod_newBlockFilter(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_newBlockFilter"
       network="ethereum"
       cu={20}
       description={
-        "Creates a filter in the node, to notify when a new block arrives."
+        "Creates a filter to notify when new blocks are added to the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +26,10 @@ export function EthereumMethod_newBlockFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns a filter id."}
+      responseParamsDescription={
+        "The ID of the newly created filter, represented as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }
@@ -216,7 +222,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires active connection to the Ethereum node",
+  "Requires active connection to the node",
   "Node must support block filter creation",
   "Accurate response depends on node synchronization",
 ];

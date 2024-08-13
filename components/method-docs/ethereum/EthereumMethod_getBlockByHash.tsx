@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockByHash() {
+export function EthereumMethod_getBlockByHash(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getBlockByHash"
       network="ethereum"
       cu={21}
-      description={"Returns information about a block by block hash."}
+      description={
+        "Retrieves information about a block by its hash, providing details about the block and its transactions"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,8 +27,9 @@ export function EthereumMethod_getBlockByHash() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns a block object with the following fields, or null when no block was found."
+        "The block object if found, or null if no block is found."
       }
+      {...props}
     />
   );
 }

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getFilterChanges() {
+export function EthereumMethod_getFilterChanges(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getFilterChanges"
       network="ethereum"
       cu={20}
       description={
-        "Polling method for a filter, which returns an array of logs which occurred since last poll."
+        "Retrieves the changes (logs or transaction hashes) for a filter created with eth_newFilter or eth_newBlockFilter"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +26,10 @@ export function EthereumMethod_getFilterChanges() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={
+        "The array of log objects or transaction hashes that represent the changes detected by the filter. "
+      }
+      {...props}
     />
   );
 }
@@ -216,7 +222,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "filterID",
     type: "string",
-    paramDescription: "The filter id.",
+    paramDescription: "The ID of the filter for which to retrieve changes.",
   },
 ];
 
@@ -233,61 +239,83 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     paramName: "result",
     type: "array_of_objects",
     paramDescription:
-      "Array of log objects, or an empty array if nothing has changed since last poll.",
+      "The content of this array depends on the type of filter created.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "blockHash",
         type: "string",
         paramDescription:
-          "32 Bytes - hash of the block where this log was in. null when its pending. null when its pending log",
+          "32-byte hash of the block containing the log, or null if pending.",
       },
       {
         paramName: "blockNumber",
         type: "string",
         paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
+          "Block number containing the log, or null if pending.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
         paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
+          "Index position of the transaction that generated the log, or null if pending.",
       },
       {
         paramName: "address",
         type: "string",
-        paramDescription: "20 Bytes - address from which this log originated.",
+        paramDescription: "20-byte address from which the log originated.",
       },
       {
         paramName: "logIndex",
         type: "string",
         paramDescription:
-          "Integer of the log index position in the block. null when its pending log.",
+          "Index position of the log in the block, or null if pending.",
       },
       {
         paramName: "data",
         type: "string",
         paramDescription:
-          "Contains one or more 32 Bytes non-indexed arguments of the log.",
+          "Non-indexed arguments of the log, in 32-byte segments.",
       },
       {
         paramName: "removed",
         type: "boolean",
         paramDescription:
-          "true when the log was removed, due to a chain reorganization. false if its a valid log.",
+          "Indicates if the log was removed due to a chain reorganization (true) or is valid (false).",
       },
       {
         paramName: "topics",
         type: "array_of_strings",
         paramDescription:
-          "Array of zero to four 32 Bytes DATA of indexed log arguments. In solidity: The first topic is the hash of the signature of the event (e.g. Deposit(address,bytes32,uint256)), except you declare the event with the anonymous specifier.",
+          "Array of zero to four 32-byte data strings of indexed log arguments.",
       },
       {
         paramName: "transactionHash",
         type: "string",
         paramDescription:
-          "Hash of the transactions this log was created from. null when its pending log.",
+          "Hash of the transaction that generated the log, or null if pending.",
+      },
+      {
+        paramName: "logsBloom",
+        type: "string",
+        paramDescription:
+          "256-byte bloom filter for quick log retrieval by light clients.",
+      },
+      {
+        paramName: "status",
+        type: "integer",
+        paramDescription:
+          "Status of the transaction: 1 for success, 0 for failure.",
+      },
+      {
+        paramName: "effectiveGasPrice",
+        paramDescription: "The effective gas price for the transaction.",
+        type: "string",
+      },
+      {
+        paramName: "type",
+        paramDescription: "Type of the transaction.",
+        type: "string",
       },
     ],
   },

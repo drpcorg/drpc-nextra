@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockByHashfull() {
+export function EthereumMethod_getBlockByHashfull(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getBlockByHashfull"
       network="ethereum"
       cu={60}
-      description={"Returns information about a block by block hash."}
+      description={
+        "Fetches detailed information about a block using its hash, including all its transactions when transaction_detail_flag is set to true"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,9 +26,8 @@ export function EthereumMethod_getBlockByHashfull() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Returns a block object with the following fields, or null when no block was found."
-      }
+      responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -238,13 +242,13 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription: "The hash (32 bytes) of the block.",
+    paramDescription: "The 32-byte identifier of the block.",
   },
   {
     paramName: "transaction_detail_flag",
     type: "boolean",
     paramDescription:
-      "It returns the full transaction objects when it is true otherwise it returns only the hashes of the transactions.",
+      "When set to true, full transaction objects are returned; otherwise, only the transaction hashes are provided.",
   },
 ];
 
@@ -260,150 +264,139 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "object",
-    paramDescription:
-      "A block object with the following fields, or null when no block was found.",
+    paramDescription: "Contains detailed information about the block if found.",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "nonce",
         type: "string",
         paramDescription:
-          "8 Bytes - hash of the generated proof-of-work. null when its pending block.",
+          "8-byte hash of the generated proof-of-work; null for pending blocks.",
       },
       {
         paramName: "hash",
         type: "string",
-        paramDescription:
-          "32 Bytes - hash of the block. null when its pending block.",
+        paramDescription: "32-byte block hash; null for pending blocks.",
       },
       {
         paramName: "baseFeePerGas",
         type: "string",
         paramDescription:
-          "the base fee, in wei, that is charged for each unit of gas used, during the execution of the given block, encoded as a hexadecimal.",
+          "Base fee per gas in wei for the block, encoded in hexadecimal.",
       },
       {
         paramName: "number",
         type: "string",
-        paramDescription: "the block number. null when its pending block.",
+        paramDescription: "Block number; null for pending blocks.",
       },
       {
         paramName: "parentHash",
         type: "string",
-        paramDescription: "32 Bytes - hash of the parent block.",
+        paramDescription: "32-byte hash of the parent block.",
       },
       {
         paramName: "sha3Uncles",
         type: "string",
-        paramDescription: "32 Bytes - SHA3 of the uncles data in the block.",
+        paramDescription: "32-byte SHA3 hash of the uncles data.",
       },
       {
         paramName: "logsBloom",
         type: "string",
         paramDescription:
-          "256 Bytes - the bloom filter for the logs of the block. null when its pending block.",
+          "256-byte bloom filter for the block's logs; null for pending blocks.",
       },
       {
         paramName: "transactionsRoot",
         type: "string",
-        paramDescription:
-          "32 Bytes - the root of the transaction trie of the block.",
+        paramDescription: "32-byte root of the transaction trie.",
       },
       {
         paramName: "stateRoot",
         type: "string",
-        paramDescription:
-          "32 Bytes - the root of the final state trie of the block.",
+        paramDescription: "32-byte root of the final state trie.",
       },
       {
         paramName: "receiptsRoot",
         type: "string",
-        paramDescription:
-          "32 Bytes - the root of the receipts trie of the block.",
+        paramDescription: "32-byte root of the receipts trie.",
       },
       {
         paramName: "miner",
         type: "string",
-        paramDescription:
-          "20 Bytes - the address of the beneficiary to whom the mining rewards were given.",
+        paramDescription: "20-byte address of the mining reward recipient.",
       },
       {
         paramName: "difficulty",
         type: "string",
-        paramDescription: "Integer of the difficulty for this block.",
+        paramDescription: "Difficulty level of the block.",
       },
       {
         paramName: "totalDifficulty",
         type: "string",
-        paramDescription:
-          "Integer of the total difficulty of the chain until this block.",
+        paramDescription: "Total difficulty of the chain up to this block.",
       },
       {
         paramName: "extraData",
         type: "string",
-        paramDescription: 'The "extra data" field of this block.',
+        paramDescription: "Extra data field of the block.",
       },
       {
         paramName: "size",
         type: "string",
-        paramDescription: "Integer the size of this block in bytes.",
+        paramDescription: "Size of the block in bytes.",
       },
       {
         paramName: "gasLimit",
         type: "string",
-        paramDescription: "The maximum gas allowed in this block.",
+        paramDescription: "Maximum gas allowed in the block.",
       },
       {
         paramName: "gasUsed",
         type: "string",
-        paramDescription:
-          "The total used gas by all transactions in this block.",
+        paramDescription: "Total gas used by all transactions in the block.",
       },
       {
         paramName: "timestamp",
         type: "string",
-        paramDescription: "The unix timestamp for when the block was collated.",
+        paramDescription: "Unix timestamp of the block creation.",
       },
       {
         paramName: "transactions",
-        paramDescription:
-          "An array of transaction objects - please see eth_getTransactionByHash for exact shape",
+        paramDescription: "Array of transaction objects",
         type: "array",
         childrenParamsType: "object",
         childrenParams: [
           {
             paramName: "blockHash",
             type: "string",
-            paramDescription:
-              "The number of the block where the given transaction was included.",
+            paramDescription: "Hash of the block containing the transaction.",
           },
           {
             paramName: "blockNumber",
             type: "string",
             paramDescription:
-              "The block number where this log was in. null when its pending. null when its pending log.",
+              "Block number containing this transaction; null for pending transactions.",
           },
           {
             paramName: "transactionIndex",
             type: "string",
             paramDescription:
-              "Integer of the transactions index position log was created from. null when its pending log.",
+              "Index position of the transaction in the block; null for pending transactions.",
           },
           {
             paramName: "nonce",
             type: "string",
-            paramDescription:
-              "The number of transactions made by the sender prior to this one.",
+            paramDescription: "Number of prior transactions from the sender.",
           },
           {
             paramName: "hash",
             type: "string",
-            paramDescription: "32 Bytes - hash of the transaction.",
+            paramDescription: "2-byte transaction hash.",
           },
           {
             paramName: "from",
             type: "string",
-            paramDescription: "20 Bytes - address of the sender.",
+            paramDescription: "20-byte address of the sender.",
           },
           {
             paramName: "gas",
@@ -413,12 +406,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "gasPrice",
             type: "string",
-            paramDescription: "Gas price provided by the sender in Wei.",
+            paramDescription: "Gas price provided by the sender in wei.",
           },
           {
             paramName: "input",
             type: "string",
-            paramDescription: "The data send along with the transaction.",
+            paramDescription: "Data sent with the transaction.",
           },
           {
             paramName: "r",
@@ -428,13 +421,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "s",
             type: "string",
-            paramDescription: "ECDSA signature r.",
+            paramDescription: "ECDSA signature s.",
           },
           {
             paramName: "to",
             type: "string",
             paramDescription:
-              "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+              "20-byte address of the receiver; null for contract creation transactions.",
           },
           {
             paramName: "v",
@@ -451,7 +444,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "uncles",
         type: "array_of_strings",
-        paramDescription: "Array of uncle hashes.",
+        paramDescription: "List of uncle block hashes.",
       },
     ],
   },

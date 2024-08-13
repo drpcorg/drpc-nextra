@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_uninstallFilter() {
+export function EthereumMethod_uninstallFilter(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_uninstallFilter"
       network="ethereum"
       cu={10}
-      description={
-        "Uninstalls a filter with given id. Should always be called when watch is no longer needed."
-      }
+      description={"Uninstalls a filter with the specified filter ID"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -24,8 +25,9 @@ export function EthereumMethod_uninstallFilter() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns true if the filter was successfully uninstalled, otherwise false."
+        "Returns true if the filter was successfully uninstalled, false otherwise"
       }
+      {...props}
     />
   );
 }
@@ -201,7 +203,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "filterID",
     type: "string",
-    paramDescription: "The filter id.",
+    paramDescription: "TThe ID of the filter to uninstall,",
   },
 ];
 
@@ -217,8 +219,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "boolean",
-    paramDescription:
-      "A boolean indicating if the operation was successful or not.",
   },
 ];
 

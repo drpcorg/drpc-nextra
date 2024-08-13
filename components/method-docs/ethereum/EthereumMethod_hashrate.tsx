@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_hashrate() {
+export function EthereumMethod_hashrate(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_hashrate"
       network="ethereum"
       cu={0}
       description={
-        "Returns the number of hashes per second that the node is mining with."
+        "Retrieves the number of hashes per second that the node is mining with"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +24,10 @@ export function EthereumMethod_hashrate() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={
+        "The number of hashes per second that the node is currently mining at, returned as a hexadecimal string."
+      }
+      {...props}
     />
   );
 }
@@ -199,13 +203,11 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription:
-      "The number of hashes per second encoded in hexadecimal format.",
   },
 ];
 
 const USE_CASES = [
-  "Monitor mining performance of the Ethereum node",
+  "Monitor mining performance of the node",
   "Track hashrate to evaluate node's mining capability",
   "Assess node's computational power for blockchain validation",
 ];

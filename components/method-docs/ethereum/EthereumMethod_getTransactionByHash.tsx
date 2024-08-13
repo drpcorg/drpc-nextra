@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getTransactionByHash() {
+export function EthereumMethod_getTransactionByHash(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getTransactionByHash"
       network="ethereum"
       cu={11}
       description={
-        "Returns the information about a transaction requested by transaction hash."
+        "Retrieves detailed information about a specific transaction using its hash"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,8 +27,9 @@ export function EthereumMethod_getTransactionByHash() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A transaction object, or null when no transaction was found."
+        "The transaction object if found, or null if no transaction is found with the given hash."
       }
+      {...props}
     />
   );
 }
@@ -206,7 +210,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription: "The hash of a transaction.",
+    paramDescription: "The hash of the transaction to retrieve.",
   },
 ];
 
@@ -227,26 +231,23 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "The number of the block where the given transaction was included.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "The block number where this log was in. null when its pending. null when its pending log.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
         paramDescription:
-          "Integer of the transactions index position log was created from. null when its pending log.",
+          "Position of the transaction in the block (null if pending)",
       },
       {
         paramName: "nonce",
         type: "string",
-        paramDescription:
-          "The number of transactions made by the sender prior to this one.",
+        paramDescription: "Number of prior transactions from the sender.",
       },
       {
         paramName: "hash",
@@ -256,7 +257,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "from",
         type: "string",
-        paramDescription: "20 Bytes - address of the sender.",
+        paramDescription: "Transaction hash.",
       },
       {
         paramName: "gas",
@@ -266,12 +267,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "gasPrice",
         type: "string",
-        paramDescription: "Gas price provided by the sender in Wei.",
+        paramDescription: "Gas price provided by the sender in wei.",
       },
       {
         paramName: "input",
         type: "string",
-        paramDescription: "The data send along with the transaction.",
+        paramDescription: "Data sent with the transaction.",
       },
       {
         paramName: "r",
@@ -286,8 +287,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "20 Bytes - address of the receiver. null when it's a contract creation transaction.",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "v",

@@ -1,15 +1,13 @@
-# Compute units
-
+# Compute Units
 A compute unit is a measurement of the computational resources required to fulfill a particular request for data via JSON RPC protocol. DRPC uses CUs to calculate the cost of a request, and also to track the workload of each data provider.
 
 ## Methods costs in CU
 
-Here is an actual method list with its CU pricing. This table is correct for all blockchains and networks that DRPC support.
+Here is an actual method list with its CU pricing. The cost is $0.30 for 1M CU. This table is correct for all blockchains and networks that DRPC support.
 If you call a method that is not a part of this table, the default cost is 100 CU. If you think something is wrong, ask in [our discord](https://drpc.org/discord).
 
-Methods that require archive nodes have the same price as full nodes.
+## Ethereum and EVM: Polygon, Optimism, Base, BNB Smart Chain, Arbitrum
 
-## Ethereum like
 
 | Method                                     |         CU          |
 |--------------------------------------------|---------------------|
@@ -136,7 +134,7 @@ Methods that require archive nodes have the same price as full nodes.
 | getFees                                 | 10    |
 | getConfirmedBlocks                      | 10    |
 | getTokenLargestAccounts                 | 10    |
-| getTokenOwnersByDelegate                | 10    |
+| getTokenAccountsByDelegate              | 10    |
 | getInflationGovernor                    | 10    |
 | getSlotLeader                           | 11    |
 | getMultipleAccounts                     | 11    |

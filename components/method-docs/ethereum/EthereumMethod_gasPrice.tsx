@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_gasPrice() {
+export function EthereumMethod_gasPrice(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_gasPrice"
       network="ethereum"
       cu={15}
-      description={"Returns the current price per gas in wei."}
+      description={
+        "Helps in estimating the cost for transaction fees, ensuring efficient and accurate gas pricing for transactions on the network"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,8 +25,9 @@ export function EthereumMethod_gasPrice() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "Returns integer of the current price per gas in wei."
+        "Retrieves the current gas price in wei from the latest block."
       }
+      {...props}
     />
   );
 }

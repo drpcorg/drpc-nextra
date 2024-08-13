@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,13 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_coinbase() {
+export function EthereumMethod_coinbase(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_coinbase"
       network="ethereum"
       cu={0}
-      description={"Returns the client coinbase address."}
+      description={"Returns the address of the client's coinbase"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,6 +23,7 @@ export function EthereumMethod_coinbase() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={""}
+      {...props}
     />
   );
 }
@@ -214,6 +216,6 @@ const USE_CASES = [
 
 const CONSTRAINTS = [
   "Node must be running in mining mode",
-  "Requires valid and connected Ethereum node",
+  "Requires valid and connected node",
   "Coinbase address must be properly configured",
 ];

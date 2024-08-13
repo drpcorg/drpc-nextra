@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getUncleCountByBlockHash() {
+export function EthereumMethod_getUncleCountByBlockHash(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getUncleCountByBlockHash"
       network="ethereum"
       cu={15}
       description={
-        "Returns the number of uncles in a block matching the given block hash."
+        "Retrieves the number of uncle blocks for a specific block identified by its hash"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,8 +27,9 @@ export function EthereumMethod_getUncleCountByBlockHash() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="string"
       responseParamsDescription={
-        "The integer value of the number of uncles in the block encoded as hexadecimal."
+        "The number of uncle blocks associated with the specified block, returned as an integer."
       }
+      {...props}
     />
   );
 }
@@ -191,7 +195,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription: "The hash of the block to get uncles for.",
+    paramDescription:
+      "The hash of the block for which to count the uncle blocks.",
   },
 ];
 
@@ -199,8 +204,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "uncles",
     type: "string",
-    paramDescription:
-      "The integer value of the number of uncles in the block encoded as hexadecimal.",
   },
 ];
 

@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_newFilter() {
+export function EthereumMethod_newFilter(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_newFilter"
       network="ethereum"
       cu={20}
       description={
-        "Creates a filter object, based on filter options, to notify when the state changes (logs)."
+        "Creates a filter object to notify when logs that match specific criteria are added to the blockchain"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +24,10 @@ export function EthereumMethod_newFilter() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns a filter id."}
+      responseParamsDescription={
+        "The ID of the newly created filter, represented as a hexadecimal string. "
+      }
+      {...props}
     />
   );
 }
@@ -224,76 +228,60 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramName: "blockHash",
     type: "string",
     paramDescription:
-      "The block hash to filter logs from. If this parameter is present, then the fromBlock and toBlock parameters are ignored.",
+      " Specifies the block hash to filter logs from. If this parameter is set, the fromBlock and toBlock parameters will be ignored.",
   },
   {
     paramName: "address",
     type: "array_of_strings",
     paramDescription:
-      "Contract address or a list of addresses from which logs should originate.",
+      " (optional) Contract address or a list of addresses from which logs should originate.",
   },
   {
     paramName: "fromBlock",
     type: "string",
-    paramDescription:
-      "String - Either the hex value of a block number OR block tags:",
+    paramDescription: " (optional) The starting block for the filter.",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
-      },
-      {
-        value: "safe",
-        description: "a block validated by the beacon chain",
-      },
-      {
-        value: "finalized",
-        description: "a block confirmed by over two-thirds of validators",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
   {
     paramName: "toBlock",
     type: "string",
-    paramDescription: "Either the hex value of a block number OR block tags:",
+    paramDescription: "(optional) The ending block for the filter",
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
-      },
-      {
-        value: "safe",
-        description: "a block validated by the beacon chain",
-      },
-      {
-        value: "finalized",
-        description: "a block confirmed by over two-thirds of validators",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description: "The first block, also known as the genesis block.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
   {
     paramName: "topics",
     type: "array_of_strings",
-    paramDescription:
-      "Array of 32 Bytes DATA topics. Topics are order-dependent. Each topic can also be an array of DATA with 'or' options.",
+    paramDescription: " (optional) An array of log topics.",
   },
 ];
 

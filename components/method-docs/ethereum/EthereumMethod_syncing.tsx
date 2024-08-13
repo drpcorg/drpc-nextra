@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,15 +7,13 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_syncing() {
+export function EthereumMethod_syncing(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_syncing"
       network="ethereum"
       cu={0}
-      description={
-        "Returns an object with the sync status of the node if the node is out-of-sync and is syncing."
-      }
+      description={"Checks the synchronization status of a node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -23,7 +22,10 @@ export function EthereumMethod_syncing() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
+      responseParamsDescription={
+        "Returns an object with synchronization details if the node is syncing, or false if the node is fully synced."
+      }
+      {...props}
     />
   );
 }
@@ -203,39 +205,38 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "array_of_strings",
-    paramDescription:
-      "The result is false if JSON Object is not syncing otherwise it's true:",
     childrenParamsType: "object",
     childrenParams: [
       {
         paramName: "startingBlock ",
         type: "string",
         paramDescription:
-          "The block at which the import started encoded as hexadecimal",
+          "The block number where the import process started, encoded in hexadecimal.",
       },
       {
         paramName: "currentBlock ",
         type: "string",
         paramDescription:
-          "The current block, same as eth_blockNumber encoded as hexadecimal",
+          "TThe current block number, the same as eth_blockNumber, encoded in hexadecimal.",
       },
       {
-        paramName: "startingBlock ",
+        paramName: "highestBlock ",
         type: "string",
-        paramDescription: "The estimated highest block encoded as hexadecimal",
+        paramDescription:
+          "The estimated highest block number, encoded in hexadecimal.",
       },
     ],
   },
 ];
 
 const USE_CASES = [
-  "Check node synchronization status with Ethereum blockchain",
+  "Check node synchronization status with the blockchain",
   "Monitor progress of node syncing to network",
   "Validate node sync state for operational readiness",
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous connection to the Ethereum node",
+  "Requires continuous connection to the node",
   "Node must support eth_syncing method",
   "Accurate synchronization data depends on node performance",
 ];

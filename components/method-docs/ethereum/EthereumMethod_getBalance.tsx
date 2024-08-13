@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBalance() {
+export function EthereumMethod_getBalance(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_getBalance"
       network="ethereum"
       cu={11}
-      description={"Returns the balance of the account of a given address."}
+      description={
+        "This method is essential for determining an account's available funds"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,6 +24,7 @@ export function EthereumMethod_getBalance() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
+      {...props}
     />
   );
 }
@@ -228,21 +232,22 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "address",
     type: "string",
-    paramDescription: "Address to check for balance.",
+    paramDescription: "The address to query the balance for.",
   },
   {
     paramName: "blockNumber",
     type: "string",
-    paramDescription: "The block number or block hash to search up to",
+    paramDescription:
+      'The block number or tag ("latest", "earliest", "pending") at which to get the balance.',
     paramEnum: [
       {
         value: "latest",
         isDefault: true,
-        description: "the blockchain's most recent block",
+        description: "The most recent block in the blockchain (default).",
       },
       {
         value: "safe",
-        description: "a block validated by the beacon chain",
+        description: "A block that has been validated by the beacon chain.",
       },
       {
         value: "finalized",
@@ -250,11 +255,13 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
       {
         value: "earliest",
-        description: "the first or genesis block",
+        description:
+          "A block approved by more than two-thirds of the validators.",
       },
       {
         value: "pending",
-        description: "transactions broadcasted but not yet included in a block",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
       },
     ],
   },
@@ -273,7 +280,7 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     paramName: "result",
     type: "string",
     paramDescription:
-      "The ETH balance of the specified address in hexadecimal value, measured in wei.",
+      "The balance of the account in wei, returned as a hexadecimal string.",
   },
 ];
 
@@ -284,7 +291,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires a valid Ethereum account address",
+  "Requires a valid account address",
   "Node must be synchronized with the latest state",
   "Network latency may delay balance retrieval",
 ];

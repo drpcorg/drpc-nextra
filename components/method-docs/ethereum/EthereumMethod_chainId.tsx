@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,14 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_chainId() {
+export function EthereumMethod_chainId(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="eth_chainId"
       network="ethereum"
       cu={0}
       description={
-        "Returns the current network/chain ID, used to sign replay-protected transaction introduced in EIP-155."
+        "Provides the current network or chain ID, essential for signing replay-protected transactions as defined in EIP-155"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -23,7 +24,8 @@ export function EthereumMethod_chainId() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns integer of the current chain ID."}
+      responseParamsDescription={"Returns the current chain ID as an integer."}
+      {...props}
     />
   );
 }
@@ -209,14 +211,15 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription: "HEX string representing the current chain/network ID.",
+    paramDescription:
+      "Hexadecimal string that represents the current chain or network ID.",
   },
 ];
 
 const USE_CASES = [
   "Verify chain ID before signing new transactions",
   "Ensure transactions are compatible with the head block",
-  "Identify the Ethereum chain for network-specific operations",
+  "Identify the chain for network-specific operations",
 ];
 
 const CONSTRAINTS = [

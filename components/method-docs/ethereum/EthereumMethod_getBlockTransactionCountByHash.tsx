@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,14 +7,16 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getBlockTransactionCountByHash() {
+export function EthereumMethod_getBlockTransactionCountByHash(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getBlockTransactionCountByHash"
       network="ethereum"
       cu={15}
       description={
-        "Returns the number of transactions for the block matching the given block hash."
+        "Is essential for analyzing block activity and transaction volume, providing a quick count of transactions within a given block"
       }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
@@ -24,8 +27,9 @@ export function EthereumMethod_getBlockTransactionCountByHash() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "The number of transactions associated with a specific block, in hexadecimal value."
+        "The number of transactions present in the specified block."
       }
+      {...props}
     />
   );
 }
@@ -190,6 +194,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
+    paramDescription:
+      "The hash of the block for which the transaction count is to be retrieved.",
   },
 ];
 

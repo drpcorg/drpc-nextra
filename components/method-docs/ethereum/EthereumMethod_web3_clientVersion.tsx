@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_web3_clientVersion() {
+export function EthereumMethod_web3_clientVersion(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="web3_clientVersion"
       network="ethereum"
       cu={0}
-      description={"Returns the current client version."}
+      description={
+        "Retrieves the current version of the client that the node is running"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +26,10 @@ export function EthereumMethod_web3_clientVersion() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the current client version."}
+      responseParamsDescription={
+        "The version of the client, including the name and version number, as a string"
+      }
+      {...props}
     />
   );
 }
@@ -200,13 +208,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve the version of the connected Ethereum client",
+  "Retrieve the version of the connected client",
   "Verify client software version for compatibility checks",
   "Identify node client version for troubleshooting purposes",
 ];
 
 const CONSTRAINTS = [
-  "Requires network access to the Ethereum node",
+  "Requires network access to the node",
   "Node must support web3_clientVersion method",
   "Accurate response depends on node's current state",
 ];

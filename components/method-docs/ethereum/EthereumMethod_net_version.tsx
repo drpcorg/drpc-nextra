@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,15 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_net_version() {
+export function EthereumMethod_net_version(props: GenericMethodPropsReplacing) {
   return (
     <EthereumMethod
       method="net_version"
       network="ethereum"
       cu={0}
-      description={"Returns the current network id."}
+      description={
+        "Retrieves the current network ID the client is connected to"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,7 +24,10 @@ export function EthereumMethod_net_version() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={"Returns the current network id."}
+      responseParamsDescription={
+        "The network ID as a string, representing the specific network the client is connected to."
+      }
+      {...props}
     />
   );
 }
@@ -196,19 +202,17 @@ const RESPONSE_PARAMS: ReqResParam[] = [
   {
     paramName: "result",
     type: "string",
-    paramDescription:
-      "The current network id. 1 - Ethereum Mainnet, 2 - Morden Testnet (deprecated), 3 - Ropsten Testnet, 4 - Rinkeby Testnet, 42 - Kovan Testnet.",
   },
 ];
 
 const USE_CASES = [
-  "Determine network version for Ethereum node",
+  "Determine network version for the node",
   "Validate the connected network version",
   "Check network ID for compatibility verification",
 ];
 
 const CONSTRAINTS = [
-  "Requires network access to Ethereum node",
+  "Requires network access to the node",
   "Node must support net_version method",
   "Accurate response depends on node synchronization",
 ];

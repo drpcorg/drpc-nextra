@@ -1,4 +1,5 @@
 import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
@@ -6,13 +7,17 @@ import {
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
-export function EthereumMethod_getTransactionReceipt() {
+export function EthereumMethod_getTransactionReceipt(
+  props: GenericMethodPropsReplacing
+) {
   return (
     <EthereumMethod
       method="eth_getTransactionReceipt"
       network="ethereum"
       cu={30}
-      description={"Returns the receipt of a transaction by transaction hash."}
+      description={
+        "Retrieves the receipt of a specific transaction by its hash"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -22,8 +27,9 @@ export function EthereumMethod_getTransactionReceipt() {
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
       responseParamsDescription={
-        "A transaction receipt object, or null when no receipt was found."
+        "The transaction receipt object if the transaction is found, or null if not."
       }
+      {...props}
     />
   );
 }
@@ -233,7 +239,8 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "hash",
     type: "string",
-    paramDescription: "The hash of a transaction.",
+    paramDescription:
+      "The hash of the transaction for which the receipt is to be retrieved.",
   },
 ];
 
@@ -254,53 +261,54 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "blockHash",
         type: "string",
-        paramDescription:
-          "32 Bytes - The hash of the block where the given transaction was included.",
+        paramDescription: "Hash of the block containing the transaction.",
       },
       {
         paramName: "blockNumber",
         type: "string",
-        paramDescription:
-          "The number of the block where the given transaction was included.",
+        paramDescription: "Block number containing the transaction.",
       },
       {
         paramName: "transactionIndex",
         type: "string",
-        paramDescription: "The index of the transaction within the block.",
+        paramDescription:
+          "Position of the transaction in the block (null if pending)",
       },
       {
-        paramName: "transactionHash",
+        paramName: "nonce",
         type: "string",
-        paramDescription: "32 Bytes - hash of the transaction",
+        paramDescription: "Number of prior transactions from the sender.",
+      },
+      {
+        paramName: "hash",
+        type: "string",
+        paramDescription: "32 Bytes - hash of the transaction.",
       },
       {
         paramName: "from",
         type: "string",
-        paramDescription: "I20 Bytes - address of the sender.",
+        paramDescription: "Transaction hash.",
       },
       {
         paramName: "to",
         type: "string",
-        paramDescription:
-          "20 Bytes - address of the receiver. null when its a contract creation transaction.",
+        paramDescription: "Receiver's address (null if contract creation).",
       },
       {
         paramName: "cumulativeGasUsed",
         type: "string",
         paramDescription:
-          "The total amount of gas used when this transaction was executed in the block.",
+          "Total gas used when the transaction was executed in the block.",
       },
       {
         paramName: "gasUsed",
         type: "string",
-        paramDescription:
-          "The amount of gas used by this specific transaction alone.",
+        paramDescription: "Gas used by this specific transaction alone.",
       },
       {
         paramName: "contractAddress",
         type: "string",
-        paramDescription:
-          "20 Bytes - The contract address created, if the transaction was a contract creation, otherwise null",
+        paramDescription: "Address of the contract created, if applicable.",
       },
       {
         paramName: "logs",
@@ -366,13 +374,13 @@ const RESPONSE_PARAMS: ReqResParam[] = [
           {
             paramName: "logsBloom",
             type: "string",
-            paramDescription:
-              "256 Bytes - Bloom filter for light clients to quickly retrieve related logs.",
+            paramDescription: "Bloom filter for the logs.",
           },
           {
             paramName: "status",
             type: "integer",
-            paramDescription: "Either 1 (success) or 0 (failure)",
+            paramDescription:
+              "ETransaction status, either 1 (success) or 0 (failure)",
           },
           {
             paramName: "effectiveGasPrice",
