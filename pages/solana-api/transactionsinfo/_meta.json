@@ -1,0 +1,10 @@
+{
+  "getTransactionCount": "getTransactionCount",
+  "getConfirmedTransaction": "getConfirmedTransaction",
+  "getTransaction": "getTransaction",
+  "sendTransaction": "sendTransaction",
+  "simulateTransaction": "simulateTransaction",
+  "getSignaturesForAddress": "getSignaturesForAddress",
+  "getSignatureStatuses": "getSignatureStatuses",
+  "getConfirmedSignaturesForAddress2": "getConfirmedSignaturesForAddress2"
+}

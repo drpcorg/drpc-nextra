@@ -1,0 +1,13 @@
+{
+  "getEpochInfo": "getEpochInfo",
+  "getEpochSchedule": "getEpochSchedule",
+  "getFeeForMessage": "getFeeForMessage",
+  "getHighestSnapshotSlot": "getHighestSnapshotSlot",
+  "getGenesisHash": "getGenesisHash",
+  "getRecentPerformanceSamples": "getRecentPerformanceSamples",
+  "getFirstAvailableBlock": "getFirstAvailableBlock",
+  "getMinimumBalanceForRentExemption": "getMinimumBalanceForRentExemption",
+  "getFees": "getFees",
+  "getFeeCalculatorForBlockhash": "getFeeCalculatorForBlockhash",
+  "getRecentPrioritizationFees": "getRecentPrioritizationFees"
+}

@@ -1,0 +1,9 @@
+{
+  "getMaxRetransmitSlot": "getMaxRetransmitSlot",
+  "getMaxShredInsertSlot": "getMaxShredInsertSlot",
+  "getSlot": "getSlot",
+  "getSlotLeader": "getSlotLeader",
+  "getSlotLeaders": "getSlotLeaders",
+  "minimumLedgerSlot": "minimumLedgerSlot",
+  "getLeaderSchedule": "getLeaderSchedule"
+}

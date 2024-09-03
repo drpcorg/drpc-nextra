@@ -1,0 +1,6 @@
+{
+  "getInflationGovernor": "getInflationGovernor",
+  "getInflationRate": "getInflationRate",
+  "getInflationReward": "getInflationReward",
+  "getSupply": "getSupply"
+}
