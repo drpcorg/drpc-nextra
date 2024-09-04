@@ -13,7 +13,7 @@ export function Cosmos_abci_info() {
     <CosmosMethod
       method="abci_info"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves application information and protocol versions"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

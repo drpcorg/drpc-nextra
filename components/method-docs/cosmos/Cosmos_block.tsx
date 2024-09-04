@@ -13,7 +13,7 @@ export function Cosmos_block() {
     <CosmosMethod
       method="block"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves detailed block data"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

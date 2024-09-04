@@ -1,10 +1,10 @@
-# Ethereum API overview
+# Optimism API overview
 
-These endpoints allow developers to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+Optimism is a Layer 2 scaling solution for Ethereum. These APIs enable to retrieve data, send transactions, and manage smart contracts with ease.
 
 ## Accounts info
 
-Returns data about an account's balance, contract code, or stored data on the Ethereum blockchain.
+Retrieves data about an account’s on-chain storage, balance, and contract code.
 
 [eth_accounts](/ethereum-api/accountinfo/eth_accounts)
 
@@ -18,7 +18,7 @@ Returns data about an account's balance, contract code, or stored data on the Et
 
 ## Blocks info
 
-Retrieves detailed information from a specified Ethereum block, including transactions, receipts, and block data.
+Retrieves detailed information about a specific block on the blockchain using its number or hash.
 
 [eth_blockNumber](/ethereum-api/blocksinfo/eth_getStorageAt)
 
@@ -34,7 +34,7 @@ Retrieves detailed information from a specified Ethereum block, including transa
 
 ## Chain info
 
-Supplies details about the Ethereum network, its protocol version, and its configuration.
+Gathers essential details about the Optimism network and its protocol settings.
 
 [eth_chainId](/ethereum-api/chaininfo/eth_chainId)
 
@@ -52,7 +52,7 @@ Supplies details about the Ethereum network, its protocol version, and its confi
 
 ## Debug and trace
 
-Available only on paid tier. Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis
+Available only on paid tier. Contains advanced debugging and tracing tools.
 
 [trace_filter](/ethereum-api/debugandtrace/trace_filter)
 
@@ -80,7 +80,7 @@ Available only on paid tier. Allows to trace transactions, inspect block executi
 
 ## Event logs
 
-Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
+Extracts logs related to smart contract events like token transfers or ownership changes.
 
 [eth_getLogs](/ethereum-api/eventlogs/eth_getLogs)
 
@@ -94,7 +94,7 @@ Provides logs of events emitted by smart contracts, useful for tracking token tr
 
 ## Executing transactions
 
-Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
+Enables the sending, contract interaction, or writing data to the chain.
 
 [eth_call](/ethereum-api/executingtransactions/eth_call)
 
@@ -102,7 +102,7 @@ Facilitates sending ETH, executing smart contracts, and performing on-chain oper
 
 ## Gas estimation
 
-Estimates gas fees for transactions and provides historical and current gas price data.
+Estimates gas prices and consumption for transactions.
 
 [eth_feeHistory](/ethereum-api/gasestimation/eth_feeHistory)
 
@@ -116,7 +116,7 @@ Estimates gas fees for transactions and provides historical and current gas pric
 
 ## Getting uncles
 
-Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+Retrieves information about uncle blocks (blocks rejected by the network).
 
 [eth_getUncleByBlockHashAndIndex](/ethereum-api/gettinguncles/eth_getUncleByBlockHashAndIndex)
 
@@ -128,21 +128,21 @@ Retrieves information about "uncle" blocks, which are valid but not included in 
 
 ## Mining
 
-Provides details on the mining state of the Ethereum node
+Consists of methods that provide information related to the mining process.
 
 [eth_coinbase](/ethereum-api/mining/eth_coinbase)
 [eth_mining](/ethereum-api/mining/eth_mining)
 
 ## Subscriptions
 
-Allows to subscribe to specific Ethereum events in real-time via WebSockets.
+Enables WebSocket connections for continuous monitoring of blockchain changes.
 
 [eth_subscribe](/ethereum-api/subscriptions/eth_subscribe)
 [eth_unsubscribe](/ethereum-api/subscriptions/eth_unsubscribe)
 
 ## Transactions info
 
-Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
+Accesses transaction details, such as their state, count, or receipts.
 
 [eth_getTransactionByHash](/ethereum-api/transactionsinfo/eth_getTransactionByHash)
 
@@ -160,7 +160,7 @@ Retrieves data on individual transactions, such as status, receipt, and inclusio
 
 ## Web3
 
-Returns general network configuration data for Ethereum nodes.
+Provides fundamental utility functions to interact with the blockchain.
 
 [web3_clientVersion](/ethereum-api/web3/web3_clientVersion)
 [web3_sha3](/ethereum-api/web3/web3_sha3)

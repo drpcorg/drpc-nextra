@@ -13,7 +13,7 @@ export function Cosmos_genesis_chunked() {
     <CosmosMethod
       method="genesis_chunked"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves the genesis file in chunks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

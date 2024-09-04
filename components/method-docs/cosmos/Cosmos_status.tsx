@@ -13,7 +13,7 @@ export function Cosmos_status() {
     <CosmosMethod
       method="status"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves real-time information about the Cosmos blockchain node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -1,15 +1,16 @@
 {
   "blocksinfo": "Blocks info",
-  "transactions info": "Transactions info",
+  "transactionsinfo": "Transactions info",
   "debugandtrace": "Debug and trace",
   "accountinfo": "Account info",
   "eventlogs": "Event logs",
   "chaininfo": "Chain info",
   "executingtransactions": "Executing transactions",
   "gasestimation": "Gas estimation",
-  "getting uncles": "Getting uncles",
+  "gettinguncles": "Getting uncles",
   "web3": "Web3",
   "subscriptions": "Subscriptions",
-  "mining": "Mining"
+  "mining": "Mining",
+  "ethereumoptimismdifference-zxcv": "Ethereum and Optimism Difference"
 }
 

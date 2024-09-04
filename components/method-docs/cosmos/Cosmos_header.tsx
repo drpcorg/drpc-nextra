@@ -13,7 +13,7 @@ export function Cosmos_header() {
     <CosmosMethod
       method="header"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves block header information"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

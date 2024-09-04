@@ -13,7 +13,7 @@ export function Cosmos_health() {
     <CosmosMethod
       method="health"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Checks the health status"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

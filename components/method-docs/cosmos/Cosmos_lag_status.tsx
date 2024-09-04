@@ -13,7 +13,7 @@ export function Cosmos_lag_status() {
     <CosmosMethod
       method="lag_status"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves node's synchronization status"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -13,7 +13,7 @@ export function Cosmos_consensus_state() {
     <CosmosMethod
       method="consensus_state"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to retrieve the current consensus state"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

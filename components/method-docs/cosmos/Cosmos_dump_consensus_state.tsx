@@ -13,7 +13,7 @@ export function Cosmos_dump_consensus_state() {
     <CosmosMethod
       method="dump_consensus_state"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to obtain a detailed snapshot of the consensus state"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

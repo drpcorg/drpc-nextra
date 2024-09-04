@@ -13,7 +13,7 @@ export function Cosmos_num_unconfirmed_txs() {
     <CosmosMethod
       method="num_unconfirmed_txs"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves the number of unconfirmed transactions"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

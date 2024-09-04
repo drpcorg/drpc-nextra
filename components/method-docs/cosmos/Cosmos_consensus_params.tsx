@@ -13,7 +13,7 @@ export function Cosmos_consensus_params() {
     <CosmosMethod
       method="consensus_params"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to access and update consensus parameters"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

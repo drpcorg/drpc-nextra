@@ -13,7 +13,7 @@ export function Cosmos_block_search() {
     <CosmosMethod
       method="block_search"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to effectively search for blocks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

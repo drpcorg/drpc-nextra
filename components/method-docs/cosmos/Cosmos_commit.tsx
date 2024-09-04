@@ -13,7 +13,7 @@ export function Cosmos_commit() {
     <CosmosMethod
       method="commit"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to retrieve block commit information"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

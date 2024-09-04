@@ -13,7 +13,7 @@ export function Cosmos_header_by_hash() {
     <CosmosMethod
       method="header_by_hash"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves the number of unconfirmed transactions"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

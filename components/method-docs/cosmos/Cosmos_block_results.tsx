@@ -13,7 +13,7 @@ export function Cosmos_block_results() {
     <CosmosMethod
       method="block_results"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves the transaction and block results"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

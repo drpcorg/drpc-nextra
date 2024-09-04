@@ -13,7 +13,7 @@ export function Cosmos_abci_query() {
     <CosmosMethod
       method="abci_query"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Performs precise queries on the Cosmos blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

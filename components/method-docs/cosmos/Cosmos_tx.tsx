@@ -13,7 +13,7 @@ export function Cosmos_tx() {
     <CosmosMethod
       method="tx"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves detailed transaction data"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

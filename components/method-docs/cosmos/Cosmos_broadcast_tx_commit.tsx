@@ -13,7 +13,7 @@ export function Cosmos_broadcast_tx_commit() {
     <CosmosMethod
       method="broadcast_tx_commit"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves how to broadcast and commit transactions"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

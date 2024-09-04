@@ -13,7 +13,7 @@ export function Cosmos_blockchain() {
     <CosmosMethod
       method="blockchain"
       network="Cosmos"
-      cu={10}
+      cu={20}
       description={"Retrieves a range of block data within a specific height range"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
