@@ -33,7 +33,7 @@ export function Cosmos_tx() {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --location '${DRPC_ENDPOINT_URL}' \\
+    code: () => `curl --location '${DRPC_ENDPOINT_URL_COSMOS}' \\
 --header 'Content-Type: application/json' \\
 --data '{
     "jsonrpc": "2.0",
@@ -44,7 +44,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   },
   {
     language: "js",
-    code: () => `const url = '${DRPC_ENDPOINT_URL}';
+    code: () => `const url = '${DRPC_ENDPOINT_URL_COSMOS}';
 
 const data = JSON.stringify({
   "jsonrpc": "2.0",
@@ -83,7 +83,7 @@ const data = JSON.stringify({
 });
 
 const options = {
-  hostname: '${DRPC_ENDPOINT_URL}',
+  hostname: '${DRPC_ENDPOINT_URL_COSMOS}',
   path: '',
   method: 'POST',
   headers: {
@@ -123,7 +123,7 @@ import (
 )
 
 func main() {
-	url := "${DRPC_ENDPOINT_URL}"
+	url := "${DRPC_ENDPOINT_URL_COSMOS}"
 
 	requestBody, err := json.Marshal(map[string]interface{}{
 		"jsonrpc": "2.0",
@@ -159,7 +159,7 @@ func main() {
     code: () => `import requests
 import json
 
-url = '${DRPC_ENDPOINT_URL}'
+url = '${DRPC_ENDPOINT_URL_COSMOS}'
 headers = {
     'Content-Type': 'application/json'
 }
@@ -187,7 +187,7 @@ use tokio;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = Client::new();
-    let url = "${DRPC_ENDPOINT_URL}";
+    let url = "${DRPC_ENDPOINT_URL_COSMOS}";
 
     let request_body = json!({
         "jsonrpc": "2.0",

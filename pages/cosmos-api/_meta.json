@@ -1,6 +1,6 @@
 {
-  "blockinfo": "Block info",
-  "transactioninfo": "Transaction info",
+  "blocksinfo": "Blocks info",
+  "transactionsinfo": "Transactions info",
   "consensusinfo": "Consensus info",
   "chaininfo": "Chain info"
 }
