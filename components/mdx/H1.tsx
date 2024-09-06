@@ -1,15 +1,16 @@
-import { PropsWithChildren } from "react";
-import classes from "./H1.module.css";
-import { useRouter } from "next/router";
-import { textToHrefId } from "../../utils/text/textToHrefId";
-import { isApiDocsPagePath } from "../../utils/text/isApiDocsPagePath";
 import clsx from "clsx";
+import { useRouter } from "next/router";
+import { PropsWithChildren } from "react";
+
+import { shouldMakeInvisibleHeading } from "../../utils/text/shouldMakeInvisibleHeading";
+import { textToHrefId } from "../../utils/text/textToHrefId";
+import classes from "./H1.module.css";
 
 export function H1({ children }: PropsWithChildren) {
   const router = useRouter();
   const id = textToHrefId(children.toString());
 
-  if (isApiDocsPagePath(router.asPath)) {
+  if (shouldMakeInvisibleHeading(router.asPath)) {
     return (
       <h1 className={clsx(classes.invisible)}>
         <span>{children}</span>
