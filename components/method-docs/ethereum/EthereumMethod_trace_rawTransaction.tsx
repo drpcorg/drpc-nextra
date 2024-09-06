@@ -2,7 +2,7 @@ import EthereumMethod from "../../EthereumMethod/EthereumMethod";
 import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp
+  RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 import { DRPC_ENDPOINT_URL } from "./constants";
@@ -410,14 +410,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
       {
         paramName: "traceAddress",
         type: "array_of_strings",
-        paramDescription:
-          "Position of this trace in the call stack.",
+        paramDescription: "Position of this trace in the call stack.",
       },
       {
         paramName: "transactionHash",
         type: "string",
-        paramDescription:
-          "Hash of the transaction containing this trace.",
+        paramDescription: "Hash of the transaction containing this trace.",
       },
       {
         paramName: "transactionPosition",
@@ -434,8 +432,6 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         type: "string",
         paramDescription:
           "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
-      },
-        ],
       },
     ],
   },
