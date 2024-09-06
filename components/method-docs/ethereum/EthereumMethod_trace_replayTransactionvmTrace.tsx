@@ -12,7 +12,7 @@ export function EthereumMethod_trace_replayTransactionvmTrace(
 ) {
   return (
     <EthereumMethod
-      method="trace_replayTransactionvmTrace"
+      method="trace_replayTransaction#vmTrace"
       network="ethereum"
       cu={300}
       description={

@@ -1,0 +1,34 @@
+# Arbitrum and Ethereum: Key Differences
+
+Arbitrum, a Layer 2 scaling solution, is designed to be highly compatible with Ethereum. Despite this compatibility, there are some differences between the two that developers should be aware of.
+
+## Block and Transaction Properties
+## Blocks and Time
+
+Time behaves differently on Arbitrum compared to Ethereum's Layer 1 (L1). The timing assumptions typically applied to L1 blocks do not directly translate to Arbitrum blocks. For a deeper understanding of how block timing and numbers work in Arbitrum, consult the section on Block Numbers and Time.
+
+## L1 Fees
+
+Transactions on Arbitrum incur L2 fees similar to Ethereum's gas fees. However, they also include an L1 fee component to cover the cost of calldata. More information on L1 pricing can be found in the L1 pricing section.
+
+## Precompiles
+
+Arbitrum has several special precompiles not present on Ethereum. Notably, the ArbAddressTable allows contracts to map addresses to integers, which can save on calldata and fees.Transactions
+
+## Transactions
+
+Arbitrum introduces additional transaction types, including:
+
+* ArbitrumDepositTxType: Deposit of ETH from L1 to L2.
+
+* ArbitrumUnsignedTxType: Allows an L1 user to call an L2 contract via the bridge.
+
+* ArbitrumContractTxType: Enables an L1 contract to call an L2 contract method via the bridge.
+
+* ArbitrumRetryTxType: Redeems a retryable ticket on L2, finalizing a retryable that failed due to low gas.
+
+* ArbitrumSubmitRetryableTxType: Submits retryable tickets via the L1 bridge, allowing for arbitrary L1 to L2 messages.
+
+* ArbitrumInternalTxType: Internal transactions created by ArbOS for state updates.
+
+For those familiar with Ethereum, transitioning to Arbitrum should be relatively smooth, but attention to these details will help ensure a successful and efficient development experience.

@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlocks() {
@@ -12,7 +12,9 @@ export function Solana_getBlocks() {
       method="getBlocks"
       network="solana"
       cu={12}
-      description={"Retrieves a list of confirmed blocks between two specified slots"}
+      description={
+        "Retrieves a list of confirmed blocks between two specified slots"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -187,8 +189,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-    `
-},
+    `,
+  },
 ];
 
 const RESPONSE_JSON = `{

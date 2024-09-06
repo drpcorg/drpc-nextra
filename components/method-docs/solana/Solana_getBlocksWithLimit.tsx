@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlocksWithLimit() {
@@ -12,7 +12,9 @@ export function Solana_getBlocksWithLimit() {
       method="getBlocksWithLimit"
       network="solana"
       cu={5}
-      description={"Retrieves a list of confirmed blocks starting from a specified slot up to a given limit on the Solana blockchain"}
+      description={
+        "Retrieves a list of confirmed blocks starting from a specified slot up to a given limit on the Solana blockchain"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -187,8 +189,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-    `
-},
+    `,
+  },
 ];
 
 const RESPONSE_JSON = `{

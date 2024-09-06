@@ -1,0 +1,10 @@
+{
+  "block": "block",
+  "block_by_hash": "block_by_hash",
+  "block_results": "block_results",
+  "block_search": "block_search",
+  "blockchain": "blockchain",
+  "header": "header",
+  "header_by_hash": "header_by_hash",
+  "commit": "commit"
+}

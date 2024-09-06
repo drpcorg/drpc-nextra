@@ -1,0 +1,8 @@
+{
+  "getTokenSupply": "getTokenSupply",
+  "getTokenAccountBalance": "getTokenAccountBalance",
+  "getTokenAccountsByDelegate": "getTokenAccountsByDelegate",
+  "getTokenAccountsByOwner": "getTokenAccountsByOwner",
+  "getTokenLargestAccounts": "getTokenLargestAccounts",
+  "requestAirdrop": "requestAirdrop"
+}

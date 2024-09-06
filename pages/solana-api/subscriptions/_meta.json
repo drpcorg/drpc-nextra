@@ -1,0 +1,14 @@
+{
+  "accountSubscribe": "accountSubscribe",
+  "accountUnsubscribe": "accountUnsubscribe",
+  "blockSubscribe": "blockSubscribe",
+  "blockUnsubscribe": "blockUnsubscribe",
+  "logsSubscribe": "logsSubscribe",
+  "logUnsubscribe": "logUnsubscribe",
+  "programSubscribe": "programSubscribe",
+  "programUnsubscribe": "programUnsubscribe",
+  "signatureSubscribe": "signatureSubscribe",
+  "signatureUnsubscribe": "signatureUnsubscribe",
+  "slotSubscribe": "slotSubscribe",
+  "slotUnsubscribe": "slotUnsubscribe"
+}

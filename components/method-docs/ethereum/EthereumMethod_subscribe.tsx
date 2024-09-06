@@ -5,7 +5,7 @@ import {
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
-import { DRPC_ENDPOINT_URL } from "./constants";
+import {DRPC_ENDPOINT_URL, DRPC_ENDPOINT_URL_WSCAT} from "./constants";
 
 export function EthereumMethod_subscribe(props: GenericMethodPropsReplacing) {
   return (
@@ -36,13 +36,13 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
     code: () => `
-wscat -c wss://eth.drpc.org.org
+wscat -c ${DRPC_ENDPOINT_URL_WSCAT}
 
-{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["alchemy_minedTransactions"]}'`,
+{"jsonrpc":"2.0","id": 2, "method": "eth_subscribe", "params": ["newHeads"]}'`,
   },
   {
     language: "js",
-    code: () => `const url = '${DRPC_ENDPOINT_URL}';
+    code: () => `const url = '${DRPC_ENDPOINT_URL_WSCAT}';
 
 const data = {
   jsonrpc: "2.0",
@@ -67,7 +67,7 @@ fetch(url, {
     language: "node",
     code: () => `const fetch = require('node-fetch');
 
-const url = '${DRPC_ENDPOINT_URL}';
+const url = '${DRPC_ENDPOINT_URL_WSCAT}';
 
 const data = {
   jsonrpc: "2.0",
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	url := "${DRPC_ENDPOINT_URL}"
+	url := "${DRPC_ENDPOINT_URL_WSCAT}"
 
 	data := map[string]interface{}{
 		"jsonrpc": "2.0",
@@ -134,7 +134,7 @@ func main() {
     code: () => `import requests
 import json
 
-url = '${DRPC_ENDPOINT_URL}'
+url = '${DRPC_ENDPOINT_URL_WSCAT}'
 
 data = {
     "jsonrpc": "2.0",
@@ -156,7 +156,7 @@ use serde_json::json;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let url = "${DRPC_ENDPOINT_URL}";
+    let url = "${DRPC_ENDPOINT_URL_WSCAT}";
 
     let data = json!({
         "jsonrpc": "2.0",
@@ -254,5 +254,4 @@ const USE_CASES = [
 const CONSTRAINTS = [
   "Requires continuous WebSocket connection to the node",
   "Node must support eth_subscribe method",
-  "Subscription management needed to handle multiple events",
 ];

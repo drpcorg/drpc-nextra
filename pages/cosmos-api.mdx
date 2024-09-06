@@ -1,0 +1,48 @@
+# Cosmos API overview
+
+The Cosmos blockchain network, designed as an ecosystem of connected blockchains, provides similar retrieval methods for managing transactions, block data, consensus information, and node operations. Below is a breakdown of Cosmos-specific categories and methods.
+
+## Blocks info
+
+Retrieves details about specific blocks and their contents.
+
+[block](/cosmos-api/blocksinfo/block) \
+[block_by_hash](/cosmos-api/blocksinfo/block_by_hash) \
+[block_results](/cosmos-api/blocksinfo/block_results) \
+[block_search](/cosmos-api/blocksinfo/block_search) \
+[blockchain](/cosmos-api/blocksinfo/blockchain) \
+[header](/cosmos-api/blocksinfo/header) \
+[header_by_hash](/cosmos-api/blocksinfo/header_by_hash) \
+[commit](/cosmos-api/blocksinfo/commit)
+
+## Chain info
+
+Allows to gather detailed information about the current state and configuration of the blockchain.
+
+[abci_info](/cosmos-api/chaininfo/abci_info) \
+[abci_query](/cosmos-api/chaininfo/abci_query) \
+[genesis_chunked](/cosmos-api/chaininfo/genesis_chunked) \
+[health](/cosmos-api/chaininfo/health) \
+[lag_status](/cosmos-api/chaininfo/lag_status) \
+[status](/cosmos-api/chaininfo/status)
+
+
+## Consensus info
+
+Ensures that validators agree on the state of the blockchain.
+
+[consensus_params](/cosmos-api/consensusinfo/consensus_params) \
+[consensus_state](/cosmos-api/consensusinfo/consensus_state) \
+[dump_consensus_state](/cosmos-api/consensusinfo/dump_consensus_state)
+
+## Transactions info
+
+Provides access to information about on-chain transactions and their current state.
+
+[broadcast_tx](/cosmos-api/transactionsinfo/broadcast_tx) \
+[broadcast_tx_commit](/cosmos-api/transactionsinfo/broadcast_tx_commit) \
+[check_tx](/cosmos-api/transactionsinfo/check_tx) \
+[num_unconfirmed_txs](/cosmos-api/transactionsinfo/num_unconfirmed_txs) \
+[tx](/cosmos-api/transactionsinfo/tx) \
+[tx_search](/cosmos-api/transactionsinfo/tx_search)
+

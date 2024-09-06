@@ -1,0 +1,8 @@
+{
+  "abci_info": "abci_info",
+  "abci_query": "abci_query",
+  "genesis_chunked": "genesis_chunked",
+  "health": "health",
+  "lag_status": "lag_status",
+  "status": "status"
+}

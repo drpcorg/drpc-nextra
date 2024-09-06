@@ -1,0 +1,14 @@
+{
+  "getBlock": "getBlock",
+  "getBlockCommitment": "getBlockCommitment",
+  "getBlockProduction": "getBlockProduction",
+  "getBlocks": "getBlocks",
+  "getBlocksWithLimit": "getBlocksWithLimit",
+  "getBlockTime": "getBlockTime",
+  "getBlockHeight": "getBlockHeight",
+  "getConfirmedBlocks": "getConfirmedBlocks",
+  "getConfirmedBlock": "getConfirmedBlock",
+  "isBlockhashValid": "isBlockhashValid",
+  "getRecentBlockhash": "getRecentBlockhash",
+  "getLatestBlockhash": "getLatestBlockhash"
+}

@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlockTime() {
@@ -12,7 +12,9 @@ export function Solana_getBlockTime() {
       method="getBlockTime"
       network="solana"
       cu={9}
-      description={"Retrieves the estimated production time of a specific block"}
+      description={
+        "Retrieves the estimated production time of a specific block"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -201,8 +203,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-    `
-},
+    `,
+  },
 ];
 
 const RESPONSE_JSON = `{

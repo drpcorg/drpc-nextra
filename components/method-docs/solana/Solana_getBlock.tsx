@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlock() {
@@ -282,27 +282,31 @@ const REQUEST_PARAMS: RequestParamProp = [
       {
         paramName: "encoding",
         type: "string",
-        paramDescription: "Specifies the data encoding for each returned transaction. Options include: json, jsonParsed, base58, base64",
+        paramDescription:
+          "Specifies the data encoding for each returned transaction. Options include: json, jsonParsed, base58, base64",
       },
       {
         paramName: "transactionDetails",
         type: "string",
-        paramDescription: " Determines the level of transaction detail returned. Options include: full, signatures, none"
+        paramDescription:
+          " Determines the level of transaction detail returned. Options include: full, signatures, none",
       },
       {
         paramName: "rewards",
         type: "boolean",
-        paramDescription: " Indicates whether to include the rewards array"
+        paramDescription: " Indicates whether to include the rewards array",
       },
       {
         paramName: "commitment",
         type: "string",
-        paramDescription: "Sets the commitment level for the blocks queried. Valid options are: finalized, confirmed, processed",
+        paramDescription:
+          "Sets the commitment level for the blocks queried. Valid options are: finalized, confirmed, processed",
       },
       {
         paramName: "minContextSlot",
         type: "object",
-        paramDescription: "The minimum slot number at which the request can be evaluated."
+        paramDescription:
+          "The minimum slot number at which the request can be evaluated.",
       },
     ],
   },
@@ -322,155 +326,167 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     type: "string",
     childrenParamsType: "object",
     childrenParams: [
-        {
-          paramName: "blockHeight",
-          type: "integer",
-          paramDescription: "The height of the block in the blockchain"
-        },
-        {
-          paramName: "blockTime",
-          type: "int64",
-          paramDescription: "The timestamp of the block. null indicates that the time is not available."
-        },
-        {
-          paramName: "blockhash",
-          type: "string",
-          paramDescription: "The unique identifier (hash) of the block."
-        },
-        {
-          paramName: "parentSlot",
-          type: "integer",
-          paramDescription: "The slot number of the parent block."
-        },
-        {
-          paramName: "previousBlockhash",
-          type: "string",
-          paramDescription: "The hash of the previous block in the chain."
-        },
-        {
-          paramName: "transactions",
-          type: "array_of_objects",
-          paramDescription: "A list of transactions included in the block.",
-          childrenParamsType: "object",
-          childrenParams: [
+      {
+        paramName: "blockHeight",
+        type: "integer",
+        paramDescription: "The height of the block in the blockchain",
+      },
+      {
+        paramName: "blockTime",
+        type: "int64",
+        paramDescription:
+          "The timestamp of the block. null indicates that the time is not available.",
+      },
+      {
+        paramName: "blockhash",
+        type: "string",
+        paramDescription: "The unique identifier (hash) of the block.",
+      },
+      {
+        paramName: "parentSlot",
+        type: "integer",
+        paramDescription: "The slot number of the parent block.",
+      },
+      {
+        paramName: "previousBlockhash",
+        type: "string",
+        paramDescription: "The hash of the previous block in the chain.",
+      },
+      {
+        paramName: "transactions",
+        type: "array_of_objects",
+        paramDescription: "A list of transactions included in the block.",
+        childrenParamsType: "object",
+        childrenParams: [
+          {
+            paramName: "meta",
+            type: "object",
+            paramDescription: "Metadata about the transaction",
+            childrenParamsType: "object",
+            childrenParams: [
               {
-                paramName: "meta",
+                paramName: "err",
                 type: "object",
-                paramDescription: "Metadata about the transaction",
-                childrenParamsType: "object",
-                childrenParams: [
-                    {
-                      paramName: "err",
-                      type: "object",
-                      paramDescription: "Error information, null if no error."
-                    },
-                    {
-                      paramName: "fee",
-                      type: "uint64",
-                      paramDescription: "Transaction fee in lamports."
-                    },
-                    {
-                      paramName: "innerInstructions",
-                      type: "array",
-                      paramDescription: "List of inner instructions."
-                    },
-                    {
-                      paramName: "logMessages",
-                      type: "array",
-                      paramDescription: "Log messages from the transaction execution."
-                    },
-                    {
-                      paramName: "postBalances",
-                      type: "array",
-                      paramDescription: "Balances of accounts after the transaction."
-                    },
-                    {
-                      paramName: "postTokenBalances",
-                      type: "array",
-                      paramDescription: "Token balances of accounts after the transaction"
-                    },
-                    {
-                      paramName: "preBalances",
-                      type: "array",
-                      paramDescription: "TBalances of accounts before the transaction."
-                    },
-                    {
-                      paramName: "preTokenBalances",
-                      type: "array",
-                      paramDescription: "Token balances of accounts before the transaction"
-                    },
-                    {
-                      paramName: "status",
-                      type: "array",
-                    },
-                    {
-                      paramName: "loadedAddresses",
-                      type: "object",
-                      paramDescription: "Addresses loaded from address lookup tables for the transaction. This is undefined if maxSupportedTransactionVersion was not specified in the request parameters.",
-                      childrenParamsType: "array_of_arrays_of_strings",
-                      childrenParams: [
-                          {
-                            paramName: "writable",
-                            type: "array_of_strings",
-                          },
-                          {
-                            paramName: "readonly",
-                            type: "array_of_strings",
-                          },
-                      ],
-                    },
-                ],
+                paramDescription: "Error information, null if no error.",
               },
               {
-                paramName: "version",
-                type: "number",
-                paramDescription: "The version of the transaction. It is undefined if maxSupportedTransactionVersion was not set in the request parameters."
+                paramName: "fee",
+                type: "uint64",
+                paramDescription: "Transaction fee in lamports.",
               },
               {
-                paramName: "transaction",
+                paramName: "innerInstructions",
+                type: "array",
+                paramDescription: "List of inner instructions.",
+              },
+              {
+                paramName: "logMessages",
+                type: "array",
+                paramDescription:
+                  "Log messages from the transaction execution.",
+              },
+              {
+                paramName: "postBalances",
+                type: "array",
+                paramDescription: "Balances of accounts after the transaction.",
+              },
+              {
+                paramName: "postTokenBalances",
+                type: "array",
+                paramDescription:
+                  "Token balances of accounts after the transaction",
+              },
+              {
+                paramName: "preBalances",
+                type: "array",
+                paramDescription:
+                  "TBalances of accounts before the transaction.",
+              },
+              {
+                paramName: "preTokenBalances",
+                type: "array",
+                paramDescription:
+                  "Token balances of accounts before the transaction",
+              },
+              {
+                paramName: "status",
+                type: "array",
+              },
+              {
+                paramName: "loadedAddresses",
                 type: "object",
-                paramDescription: " Details of the transaction",
-              },
-              {
-                paramName: "signatures",
-                type: "array_of_strings",
-                paramDescription: "List of signatures for the transaction.",
-              },
-              {
-                paramName: "rewards",
-                type: "boolean",
-                paramDescription: " Indicates whether to include the rewards array",
-                childrenParamsType: "object",
+                paramDescription:
+                  "Addresses loaded from address lookup tables for the transaction. This is undefined if maxSupportedTransactionVersion was not specified in the request parameters.",
+                childrenParamsType: "array_of_arrays_of_strings",
                 childrenParams: [
                   {
-                    paramName: "pubkey",
-                    type: "string",
-                    paramDescription: "The public key of the account that received the reward, encoded in base-58.",
+                    paramName: "writable",
+                    type: "array_of_strings",
                   },
                   {
-                    paramName: "lamports",
-                    type: "integer",
-                    paramDescription: "The number of lamports (i64) credited or debited to the account as a reward.",
-                  },
-                  {
-                    paramName: "postBalance",
-                    type: "integer",
-                    paramDescription: "The account's balance in lamports (u64) after the reward was applied.",
-                  },
-                  {
-                    paramName: "rewardType",
-                    type: "string",
-                    paramDescription: "The type of reward received. Possible values are \"fee\", \"rent\", \"voting\", and \"staking\".",
-                  },
-                  {
-                    paramName: "commission",
-                    type: "integer",
-                    paramDescription: "The commission taken by the vote account when the reward was credited. This is only present for voting and staking rewards.",
+                    paramName: "readonly",
+                    type: "array_of_strings",
                   },
                 ],
               },
-          ],
-        },
+            ],
+          },
+          {
+            paramName: "version",
+            type: "number",
+            paramDescription:
+              "The version of the transaction. It is undefined if maxSupportedTransactionVersion was not set in the request parameters.",
+          },
+          {
+            paramName: "transaction",
+            type: "object",
+            paramDescription: " Details of the transaction",
+          },
+          {
+            paramName: "signatures",
+            type: "array_of_strings",
+            paramDescription: "List of signatures for the transaction.",
+          },
+          {
+            paramName: "rewards",
+            type: "boolean",
+            paramDescription: " Indicates whether to include the rewards array",
+            childrenParamsType: "object",
+            childrenParams: [
+              {
+                paramName: "pubkey",
+                type: "string",
+                paramDescription:
+                  "The public key of the account that received the reward, encoded in base-58.",
+              },
+              {
+                paramName: "lamports",
+                type: "integer",
+                paramDescription:
+                  "The number of lamports (i64) credited or debited to the account as a reward.",
+              },
+              {
+                paramName: "postBalance",
+                type: "integer",
+                paramDescription:
+                  "The account's balance in lamports (u64) after the reward was applied.",
+              },
+              {
+                paramName: "rewardType",
+                type: "string",
+                paramDescription:
+                  'The type of reward received. Possible values are "fee", "rent", "voting", and "staking".',
+              },
+              {
+                paramName: "commission",
+                type: "integer",
+                paramDescription:
+                  "The commission taken by the vote account when the reward was credited. This is only present for voting and staking rewards.",
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];

@@ -12,7 +12,7 @@ export function EthereumMethod_getBlockByNumberfull(
 ) {
   return (
     <EthereumMethod
-      method="eth_getBlockByNumberfull"
+      method="eth_getBlockByNumber#full"
       network="ethereum"
       cu={60}
       description={
@@ -47,7 +47,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   "jsonrpc": "2.0",
   "method": "eth_getBlockByNumber",
   "params": [
-    true,
+    "finalized",
     true
   ]
 }
@@ -65,7 +65,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['true', 'true']
+    params: ['finalized', true]
 };
 
 fetch(url, {
@@ -90,7 +90,7 @@ const data = {
     id: 1,
     jsonrpc: '2.0',
     method: 'eth_getBlockByNumber',
-    params: ['true', 'true']
+    params: ['finalized', true]
 };
 
 fetch(url, {
@@ -125,7 +125,7 @@ func main() {
         "id":      1,
         "jsonrpc": "2.0",
         "method":  "eth_getBlockByNumber",
-        "params":  []interface{}{"true", "true"},
+        "params":  []interface{}{"finalized", true},
     }
 
     jsonData, err := json.Marshal(data)
@@ -172,7 +172,7 @@ data = {
     "id": 1,
     "jsonrpc": "2.0",
     "method": "eth_getBlockByNumber",
-    "params": ["true", "true"]
+    "params": ["finalized", true]
 }
 
 response = requests.post(url, headers=headers, json=data)
@@ -194,7 +194,7 @@ async fn main() -> Result<(), reqwest::Error> {
         "id": 1,
         "jsonrpc": "2.0",
         "method": "eth_getBlockByNumber",
-        "params": ["true", "true"]
+        "params": ["finalized", true]
     });
 
     let response = client.post(url)

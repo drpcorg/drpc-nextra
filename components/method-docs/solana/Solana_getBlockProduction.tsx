@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlockProduction() {
@@ -12,7 +12,9 @@ export function Solana_getBlockProduction() {
       method="getBlockProduction"
       network="solana"
       cu={13}
-      description={"Retrieves block production information for the current epoch or a specified slot range"}
+      description={
+        "Retrieves block production information for the current epoch or a specified slot range"
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -21,9 +23,7 @@ export function Solana_getBlockProduction() {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        "Contains block production information"
-      }
+      responseParamsDescription={"Contains block production information"}
     />
   );
 }
@@ -193,8 +193,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-    `
-},
+    `,
+  },
 ];
 
 const RESPONSE_JSON = `{
@@ -213,8 +213,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "range",
     type: "string",
-    paramDescription:
-      "Specifies the slot range to query block production for",
+    paramDescription: "Specifies the slot range to query block production for",
     childrenParamsType: "object",
     childrenParams: [
       {
@@ -273,24 +272,24 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramDescription: "A dictionary of validator identities",
       },
       {
-    paramName: "range",
-    type: "string",
-    paramDescription:
-      "Specifies the slot range to query block production for",
-    childrenParamsType: "object",
-    childrenParams: [
-      {
-        paramName: "firstSlot",
-        type: "integer",
-        paramDescription: "The starting slot of the range.",
+        paramName: "range",
+        type: "string",
+        paramDescription:
+          "Specifies the slot range to query block production for",
+        childrenParamsType: "object",
+        childrenParams: [
+          {
+            paramName: "firstSlot",
+            type: "integer",
+            paramDescription: "The starting slot of the range.",
+          },
+          {
+            paramName: "lastSlot",
+            type: "integer",
+            paramDescription: " The ending slot of the range",
+          },
+        ],
       },
-      {
-        paramName: "lastSlot",
-        type: "integer",
-        paramDescription: " The ending slot of the range",
-      },
-    ],
-  },
     ],
   },
 ];

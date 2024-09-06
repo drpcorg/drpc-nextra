@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBalance() {
@@ -12,7 +12,9 @@ export function Solana_getBalance() {
       method="getBalance"
       network="solana"
       cu={12}
-      description={"Retrieves the balance of an account on the Solana blockchain."}
+      description={
+        "Retrieves the balance of an account on the Solana blockchain."
+      }
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -213,12 +215,11 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-  const REQUEST_PARAMS: RequestParamProp = [
+const REQUEST_PARAMS: RequestParamProp = [
   {
     paramName: "accountPublicKey",
     type: "string",
-    paramDescription:
-      "The public key of the account to query.",
+    paramDescription: "The public key of the account to query.",
   },
   {
     paramName: "config",
@@ -228,12 +229,14 @@ const RESPONSE_JSON = `{
       {
         paramName: "commitment",
         type: "string",
-        paramDescription: "Sets the commitment level for the blocks queried. Valid options are: finalized, confirmed, processed",
+        paramDescription:
+          "Sets the commitment level for the blocks queried. Valid options are: finalized, confirmed, processed",
       },
       {
         paramName: "minContextSlot",
         type: "object",
-        paramDescription: "The minimum slot number at which the request can be evaluated."
+        paramDescription:
+          "The minimum slot number at which the request can be evaluated.",
       },
     ],
   },
@@ -253,14 +256,14 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     type: "string",
     childrenParamsType: "array",
     childrenParams: [
-        {
-          paramName: "slot",
-          type: "int64",
-        },
-        {
-          paramName: "value",
-          type: "number",
-        },
+      {
+        paramName: "slot",
+        type: "int64",
+      },
+      {
+        paramName: "value",
+        type: "number",
+      },
     ],
   },
 ];

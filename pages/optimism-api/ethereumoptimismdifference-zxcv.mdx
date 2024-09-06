@@ -1,0 +1,37 @@
+# Optimism and Ethereum: Difference
+
+Optimism is a Layer 2 scaling solution for Ethereum designed to improve transaction speed and reduce costs while maintaining compatibility with the Ethereum mainnet. Optimism aims to be as close to Ethereum as possible, but there are some key differences.
+
+## Blocks and Time
+
+The timing mechanisms and assumptions used for Ethereum's Layer 1 (L1) do not directly apply to Optimism's Layer 2 (L2).
+
+## Block Hashes and Randomness
+
+In Ethereum block hashes can be used for randomness, but Optimism's L2 block hashes should not be relied upon for secure random number generation.
+
+## L1 Fees
+
+Transactions on Optimism involve L2 fees similar to Ethereum's gas fees. Additionally, Optimism transactions require an L1 fee component to cover the cost of calldata.
+
+## Precompiles
+
+Optimism introduces specific precompiles not available on Ethereum. One notable example is the OptimismPrecompile, which is used for certain operations on L2.
+
+## Transactions
+
+Optimism supports additional transaction types beyond those on Ethereum mainnet. Notable types include:
+
+* OptimismDepositTxType: For depositing ETH from L1 to L2 via the Optimism bridge.
+
+* OptimismUnsignedTxType: Allows an L1 user to call an L2 contract via the bridge.
+
+* OptimismContractTxType: Enables an L1 contract to interact with an L2 contract through the bridge.
+
+* OptimismRetryTxType: Redeems a retryable ticket on L2, completing a retryable that failed due to insufficient gas.
+
+* OptimismSubmitRetryableTxType: Submits retryable tickets via the L1 bridge, facilitating arbitrary L1 to L2 messages.
+
+* OptimismInternalTxType: Internal transactions initiated by the Optimism operating system for state updates.
+
+Navigating the differences between Optimism and Ethereum is essential for developers aiming to leverage Layer 2 scaling solutions effectively.

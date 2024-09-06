@@ -1,9 +1,9 @@
-import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
+import SolanaMethod from "../../SolanaMethod/SolanaMethod";
 import { DRPC_ENDPOINT_URL } from "./constants";
 
 export function Solana_getBlockCommitment() {
@@ -239,17 +239,17 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     type: "object",
     childrenParamsType: "array",
     childrenParams: [
-        {
-          paramName: "commitment",
-          type: "array_of_integers",
-          paramDescription: "The commitment level of the block.",
-        },
-        {
-          paramName: "totalStake",
-          type: "int64",
-          paramDescription: "The total stake of validators confirming the block.",
-        },
-        ],
+      {
+        paramName: "commitment",
+        type: "array_of_integers",
+        paramDescription: "The commitment level of the block.",
+      },
+      {
+        paramName: "totalStake",
+        type: "int64",
+        paramDescription: "The total stake of validators confirming the block.",
+      },
+    ],
   },
 ];
 

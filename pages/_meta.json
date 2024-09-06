@@ -16,14 +16,26 @@
       "breadcrumb": false
     }
   },
+  "optimism-api": {
+    "title": "Optimism API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "arbitrum-api": {
+    "title": "Arbitrum API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "solana-api": {
     "title": "Solana API",
     "theme": {
       "breadcrumb": false
     }
   },
-  "optimism-api": {
-    "title": "Optimism API",
+  "cosmos-api": {
+    "title": "Cosmos API",
     "theme": {
       "breadcrumb": false
     }

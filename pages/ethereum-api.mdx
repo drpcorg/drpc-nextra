@@ -1,0 +1,127 @@
+# Ethereum API overview
+
+These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+
+## Accounts info
+
+Returns data about an account's balance, contract code, or stored data on the Ethereum blockchain.
+
+[eth_accounts](/ethereum-api/accountinfo/eth_accounts) \
+[eth_getBalance](/ethereum-api/accountinfo/eth_getBalance) \
+[eth_getCode](/ethereum-api/accountinfo/eth_getCode) \
+[eth_getProof](/ethereum-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/ethereum-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Retrieves detailed information from a specified Ethereum block, including transactions, receipts, and block data.
+
+[eth_blockNumber](/ethereum-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/ethereum-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/ethereum-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/ethereum-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/ethereum-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/ethereum-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/ethereum-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/ethereum-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/ethereum-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Supplies details about the Ethereum network, its protocol version, and its configuration.
+
+[eth_chainId](/ethereum-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/ethereum-api/chaininfo/eth_protocolVersion) \
+[net_listening](/ethereum-api/chaininfo/net_listening) \
+[net_version](/ethereum-api/chaininfo/net_version) \
+[net_peerCount](/ethereum-api/chaininfo/net_peerCount) \
+[eth_syncing](/ethereum-api/chaininfo/eth_syncing) \
+[eth_hashrate](/ethereum-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available only on paid tier. Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis
+
+[trace_filter](/ethereum-api/debugandtrace/trace_filter) \
+[trace_rawTransaction](/ethereum-api/debugandtrace/trace_rawTransaction) \
+[trace_block](/ethereum-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/ethereum-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/ethereum-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/ethereum-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/ethereum-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/ethereum-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/ethereum-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/ethereum-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/ethereum-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/ethereum-api/debugandtrace/trace_callMany) \
+[trace_get](/ethereum-api/debugandtrace/trace_get) \
+[trace_call](/ethereum-api/debugandtrace/trace_call)
+
+## Event logs
+
+Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
+
+[eth_getLogs](/ethereum-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/ethereum-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/ethereum-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/ethereum-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/ethereum-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
+
+[eth_call](/ethereum-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/ethereum-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Estimates gas fees for transactions and provides historical and current gas price data.
+
+[eth_feeHistory](/ethereum-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/ethereum-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/ethereum-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/ethereum-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/ethereum-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/ethereum-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/ethereum-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/ethereum-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/ethereum-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Provides details on the mining state of the Ethereum node
+
+[eth_coinbase](/ethereum-api/mining/eth_coinbase) \
+[eth_mining](/ethereum-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows to subscribe to specific Ethereum events in real-time via WebSockets.
+
+[eth_subscribe](/ethereum-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/ethereum-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
+
+[eth_getTransactionByHash](/ethereum-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/ethereum-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/ethereum-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/ethereum-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/ethereum-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/ethereum-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/ethereum-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Returns general network configuration data for Ethereum nodes.
+
+[web3_clientVersion](/ethereum-api/web3/web3_clientVersion) \
+[web3_sha3](/ethereum-api/web3/web3_sha3)

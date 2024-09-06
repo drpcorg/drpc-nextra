@@ -1,0 +1,6 @@
+{
+  "getClusterNodes": "getClusterNodes",
+  "getHealth": "getHealth",
+  "getVersion": "getVersion",
+  "getIdentity": "getIdentity"
+}

@@ -1,0 +1,9 @@
+{
+  "getBalance": "getBalance",
+  "getAccountInfo": "getAccountInfo",
+  "getVoteAccounts": "getVoteAccounts",
+  "getLargestAccounts": "getLargestAccounts",
+  "getMultipleAccounts": "getMultipleAccounts",
+  "getProgramAccounts": "getProgramAccounts",
+  "getStakeActivation": "getStakeActivation"
+}
