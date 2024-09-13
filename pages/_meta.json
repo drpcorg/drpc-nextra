@@ -6,6 +6,7 @@
   "specs": "Implementation docs",
   "web-api": "Client Statistics API",
   "providers": "Providers",
+  "referral": "DRPC Referral",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
