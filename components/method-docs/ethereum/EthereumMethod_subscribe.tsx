@@ -210,17 +210,10 @@ const REQUEST_PARAMS: RequestParamProp = [
       },
     ],
   },
-
-  {
-    paramName: "flag",
-    type: "boolean",
-    paramDescription:
-      "If true, returns full transaction data; otherwise, only the transaction hash.",
-  },
   {
     paramName: "data",
     type: "object",
-    paramDescription: "Arguments like address, multiple addresses, and topics.",
+    paramDescription: "Is specifically used for logs subscriptions. Arguments like address, multiple addresses, and topics.",
   },
 ];
 
