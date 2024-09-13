@@ -208,12 +208,6 @@ const REQUEST_PARAMS: RequestParamProp = [
         paramDescription:
           "Returns logs matching filter criteria in newly imported blocks.",
       },
-      {
-        paramName: "newPendingTransactions",
-        type: "string",
-        paramDescription:
-          "Returns the hash of all new pending transactions signed with a key available in the node.",
-      },
     ],
   },
 
