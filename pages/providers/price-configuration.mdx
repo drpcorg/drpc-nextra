@@ -1,3 +1,15 @@
+import Head from "next/head";
+
+<Head>
+  <title>
+    Customizing Pricing with CU Lang: dRPC's Flexible Cost Configuration
+  </title>
+  <meta
+    name="description"
+    content="Explore dRPC's dynamic pricing model where providers can adjust call costs using CU lang. Understand how to configure prices with selectors and modifiers for various methods and networks."
+  />
+</Head>
+
 # Price configuration
 
 dRPC provides pay as you go pricing for our clients, meaning the pay for each call. Each call has a price in terms
@@ -87,12 +99,14 @@ It works the same as with CSS. Basically we take selector and convert it to bina
 For example, let's compare 2 selectors: `#eth_call` and `$metis archive`.
 
 Selector `#eth_call` converts to `1000`:
+
 1. method selector (1)
 2. network selector (0)
 3. archive selector (0)
 4. all selector (0)
 
 Selector `$metis archive` converts to `0110`:
+
 1. method selector (0)
 2. network selector(1)
 3. archive selector (1)
