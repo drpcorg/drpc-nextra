@@ -1,19 +1,19 @@
-import EthereumMethod from "../../EthereumMethod/EthereumMethod";
+import ArbitrumMethod from "../../ArbitrumMethod/ArbitrumMethod";
 import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
-import { DRPC_ENDPOINT_URL } from "./constants";
+import { DRPC_ENDPOINT_URL_ARBITRUM } from "./constants";
 
-export function EthereumMethod_trace_replayTransaction(
+export function ArbitrumMethod_arbtrace_replayTransaction(
   props: GenericMethodPropsReplacing
 ) {
   return (
-    <EthereumMethod
-      method="trace_replayBlockTransactions"
-      network="ethereum"
+    <ArbitrumMethod
+      method="arbtrace_replayBlockTransactions"
+      network="arbitrum"
       cu={90}
       description={
         "Replays a transaction, providing detailed trace information about its execution"
@@ -37,27 +37,41 @@ export function EthereumMethod_trace_replayTransaction(
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl ${DRPC_ENDPOINT_URL} \\
--X POST \\
--H "Content-Type: application/json" \\
--d '{"method":"trace_replayTransaction","params":["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f",["trace"]],"id":1,"jsonrpc":"2.0"}'
-`,
+    code: () => `curl --request POST \\
+     --url ${DRPC_ENDPOINT_URL_ARBITRUM} \\
+     --header 'accept: application/json' \\
+     --header 'content-type: application/json' \\
+     --data '{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "arbtrace_replayTransaction",
+  "params": [
+    "0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+    [
+      "trace"
+    ]
+  ]
+}'`,
   },
   {
     language: "js",
-    code: () => `const url = '${DRPC_ENDPOINT_URL}';
+    code: () => `const url = '${DRPC_ENDPOINT_URL_ARBITRUM}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_replayTransaction",
-  params: ["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f", ["trace"]],
+  method: "arbtrace_replayTransaction",
+  params: [
+    "0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+    ["trace"]
+  ],
   id: 1
 };
 
 fetch(url, {
   method: 'POST',
   headers: {
-    'Content-Type': 'application/json'
+    'accept': 'application/json',
+    'content-type': 'application/json'
   },
   body: JSON.stringify(data)
 })
@@ -68,26 +82,22 @@ fetch(url, {
   },
   {
     language: "node",
-    code: () => `const fetch = require('node-fetch');
+    code: () => `const axios = require('axios');
 
-const url = '${DRPC_ENDPOINT_URL}';
+const url = '${DRPC_ENDPOINT_URL_ARBITRUM}';
 
 const data = {
   jsonrpc: "2.0",
-  method: "trace_replayTransaction",
-  params: ["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f", ["trace"]],
+  method: "arbtrace_replayTransaction",
+  params: [
+    "0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+    ["trace"]
+  ],
   id: 1
 };
 
-fetch(url, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(res => console.log(res))
+axios.post(url, data)
+  .then(response => console.log(response.data))
   .catch(error => console.error('Error:', error));
 `,
   },
@@ -103,13 +113,16 @@ import (
 )
 
 func main() {
-	url := "${DRPC_ENDPOINT_URL}"
+	url := "${DRPC_ENDPOINT_URL_ARBITRUM}"
 
 	data := map[string]interface{}{
+		"id": 1,
 		"jsonrpc": "2.0",
-		"method":  "trace_replayTransaction",
-		"params":  []interface{}{"0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f", []string{"trace"}},
-		"id":      1,
+		"method": "arbtrace_replayTransaction",
+		"params": []interface{}{
+			"0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+			[]string{"trace"},
+		},
 	}
 
 	jsonData, err := json.Marshal(data)
@@ -137,16 +150,19 @@ func main() {
     code: () => `import requests
 import json
 
-url = '${DRPC_ENDPOINT_URL}'
+url = '${DRPC_ENDPOINT_URL_ARBITRUM}'
 
 data = {
+    "id": 1,
     "jsonrpc": "2.0",
-    "method": "trace_replayTransaction",
-    "params": ["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f", ["trace"]],
-    "id": 1
+    "method": "arbtrace_replayTransaction",
+    "params": [
+        "0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+        ["trace"]
+    ]
 }
 
-response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
+response = requests.post(url, headers={'accept': 'application/json', 'content-type': 'application/json'}, data=json.dumps(data))
 res = response.json()
 
 print(res)
@@ -159,13 +175,16 @@ use serde_json::json;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let url = "${DRPC_ENDPOINT_URL}";
+    let url = "${DRPC_ENDPOINT_URL_ARBITRUM}";
 
     let data = json!({
+        "id": 1,
         "jsonrpc": "2.0",
-        "method": "trace_replayTransaction",
-        "params": ["0x02d4a872e096445e80d05276ee756cefef7f3b376bcec14246469c0cd97dad8f", ["trace"]],
-        "id": 1
+        "method": "arbtrace_replayTransaction",
+        "params": [
+            "0xe8648e3ad982a3d67ef0880d6631343cffff364786994b34e5fa292cfef0e680",
+            ["trace"]
+        ]
     });
 
     let client = Client::new();
@@ -186,28 +205,111 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 const RESPONSE_JSON = `{
   "jsonrpc": "2.0",
+  "id": 1,
   "result": {
-    "output": "0x",
+    "output": "0x000000000000000000000000000000000000000000000000000000000e2627b4",
     "stateDiff": null,
     "trace": [
       {
         "action": {
           "callType": "call",
-          "from": "0x6f1fb6efdf50f34bfa3f2bc0e5576edd71631638",
-          "gas": "0x1dcd11f8",
-          "input": "0xa67a6a45000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000",
-          "to": "0x1e0447b19bb6ecfdae1e4ae1694b0c3659614e4e",
+          "from": "0x492bf2ae22a0796ba5078d4db40ea14e41c73c54",
+          "gas": "0x205c2",
+          "input": "0xc4de93a50000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000e20b5f0000000000000000000000000492bf2ae22a0796ba5078d4db40ea14e41c73c54",
+          "to": "0x53bf833a5d6c4dda888f69c22c88c9f356a41614",
           "value": "0x0"
         },
-        "error": "Reverted",
-        "subtraces": 0,
+        "result": {
+          "gasUsed": "0xd8cd",
+          "output": "0x000000000000000000000000000000000000000000000000000000000e2627b4"
+        },
+        "subtraces": 2,
         "traceAddress": [],
+        "type": "call"
+      },
+      {
+        "action": {
+          "callType": "staticcall",
+          "from": "0x53bf833a5d6c4dda888f69c22c88c9f356a41614",
+          "gas": "0x1fad9",
+          "input": "0x068bcd8d0000000000000000000000000000000000000000000000000000000000000001",
+          "to": "0x55bdb4164d28fbaf0898e0ef14a589ac09ac9970",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0x105",
+          "output": "0x000000000000000000000000892785f33cdee22a30aef750f285e18c18040c3e"
+        },
+        "subtraces": 0,
+        "traceAddress": [
+          0
+        ],
+        "type": "call"
+      },
+      {
+        "action": {
+          "callType": "call",
+          "from": "0x53bf833a5d6c4dda888f69c22c88c9f356a41614",
+          "gas": "0x1f87e",
+          "input": "0x0986b61a000000000000000000000000492bf2ae22a0796ba5078d4db40ea14e41c73c54000000000000000000000000000000000000000000000000000000000e20b5f0000000000000000000000000492bf2ae22a0796ba5078d4db40ea14e41c73c54",
+          "to": "0x892785f33cdee22a30aef750f285e18c18040c3e",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0xd278",
+          "output": "0x000000000000000000000000000000000000000000000000000000000e2627b4"
+        },
+        "subtraces": 1,
+        "traceAddress": [
+          1
+        ],
+        "type": "call"
+      },
+      {
+        "action": {
+          "callType": "call",
+          "from": "0x892785f33cdee22a30aef750f285e18c18040c3e",
+          "gas": "0x1e928",
+          "input": "0xa9059cbb000000000000000000000000492bf2ae22a0796ba5078d4db40ea14e41c73c54000000000000000000000000000000000000000000000000000000000e2627b4",
+          "to": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0xc92b",
+          "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "subtraces": 1,
+        "traceAddress": [
+          1,
+          0
+        ],
+        "type": "call"
+      },
+      {
+        "action": {
+          "callType": "delegatecall",
+          "from": "0xff970a61a04b1ca14834a43f5de4533ebddb5cc8",
+          "gas": "0x1e089",
+          "input": "0xa9059cbb000000000000000000000000492bf2ae22a0796ba5078d4db40ea14e41c73c54000000000000000000000000000000000000000000000000000000000e2627b4",
+          "to": "0x1efb3f88bc88f03fd1804a5c53b7141bbef5ded8",
+          "value": "0x0"
+        },
+        "result": {
+          "gasUsed": "0xc804",
+          "output": "0x0000000000000000000000000000000000000000000000000000000000000001"
+        },
+        "subtraces": 0,
+        "traceAddress": [
+          1,
+          0,
+          0
+        ],
         "type": "call"
       }
     ],
-    "vmTrace": null
-  },
-  "id": 0
+    "vmTrace": null,
+    "destroyedContracts": null
+  }
 }
 `;
 
@@ -345,7 +447,6 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash as parameter",
-  "Node must support trace_replayTransaction method",
-  "Detailed trace can result in large data output",
+  "arbtrace_ methods can be used on blocks prior to 22207816, while debug_trace methods can be used for blocks after 22207818",
+  "Block 22207817 cannot be traced but is empty.",
 ];
