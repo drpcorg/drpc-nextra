@@ -52,6 +52,7 @@ openssl ec -in private.pem -pubout -out public.pembash
 ### Step 3: Set Up JWT Authentication Server
 
 - Implement a server (e.g., using Express.js) to generate JWTs using the private key and provide clients with an endpoint to fetch JWTs.
+- If you want to rate limit your jwt, you should add the 'limitCUPerMinute' claim to the payload of your token and specify how many CUs per minute you want to limit
 
 <Tabs items={['Node.js']}>
 <Tab>
@@ -74,7 +75,11 @@ const privateKey = fs.readFileSync("../private.pem");
         },
     };
 
-    const GENERATED_JWT = jwt.sign({}, privateKey, signOptions);
+    const payload = {
+        limitCUPerMinute: 200000, // add this claim to payload if you want to rate limit your jwt; this is CUs per minute
+    };
+
+    const GENERATED_JWT = jwt.sign(payload, privateKey, signOptions);
 
     // Log the newly created JWT
     console.log(GENERATED_JWT);
