@@ -12,7 +12,7 @@ export function ArbitrumMethod_arbtrace_replayTransaction(
 ) {
   return (
     <ArbitrumMethod
-      method="arbtrace_replayBlockTransactions"
+      method="arbtrace_replayTransaction"
       network="arbitrum"
       cu={90}
       description={
