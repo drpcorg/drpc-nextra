@@ -4,9 +4,9 @@ const METHOD_DOCS_URL_BASES = [
   "/ethereum-api",
   "/optimism-api",
   "/solana-api",
-  "/polygon-api,",
-  "/avalanche-api,",
-  "/mantle-api,"
+  "/polygon-api",
+  "/avalanche-api",
+  "/mantle-api"
 ];
 
 export function shouldMakeInvisibleHeading(value: string) {

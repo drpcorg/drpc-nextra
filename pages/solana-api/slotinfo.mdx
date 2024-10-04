@@ -1,11 +1,14 @@
-## Accounts info
+## Slot info
 
-Retrieves data about an account’s on-chain storage, balance, and contract code.
+Slots represent periods of time during which a leader is responsible for processing transactions. These methods provide data related to slot timing and leadership.
 
-[eth_accounts](/optimism-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the client.  \
-[eth_getBalance](/optimism-api/accountinfo/eth_getBalance) : Fetches the balance of an account.  \
-[eth_getCode](/optimism-api/accountinfo/eth_getCode) : Returns the smart contract code stored at an address.  \
-[eth_getProof](/optimism-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state.  \
-[eth_getStorageAt](/optimism-api/accountinfo/eth_getStorageAt) : Retrieves data stored at a specific storage slot of an account.
+[getMaxRetransmitSlot](/solana-api/slotinfo/getMaxRetransmitSlot) : Retrieves the maximum slot for retransmission.  \
+[getMaxShredInsertSlot](/solana-api/slotinfo/getMaxShredInsertSlot) : Provides the maximum slot for shred insertion. \
+[getSlot](/solana-api/slotinfo/getSlot) : Returns the current slot.  \
+[getSlotLeader](/solana-api/slotinfo/getSlotLeader) : Fetches the leader for the current slot.  \
+[getSlotLeaders](/solana-api/slotinfo/getSlotLeaders) : Lists leaders for upcoming slots.  \
+[minimumLedgerSlot](/solana-api/slotinfo/minimumLedgerSlot) : Retrieves the minimum ledger slot. \
+[getLeaderSchedule](/solana-api/slotinfo/getLeaderSchedule) : Provides the schedule of slot leaders.
 
-These methods are essential for managing account data on Optimism.
+These methods help monitor and analyze slot-related data on the Solana network.
+
