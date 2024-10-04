@@ -21,6 +21,19 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "gettinguncles",
   "web3",
   "subscriptions",
+  "mining",
+  "consensusinfo",
+  "networkinflationinfo",
+  "networkinfo",
+  "nodeinfo",
+  "slotinfo",
+  "tokeninfo",
+  "borspecific",
+  "ethereumarbitrumdifference",
+  "ethereumavalanchedifference",
+  "ethereummantledifference",
+  "ethereumoptimismdifference",
+  "ethereumpolygondifference",
 ];
 
 export function shouldMakeInvisibleHeading(value: string) {
