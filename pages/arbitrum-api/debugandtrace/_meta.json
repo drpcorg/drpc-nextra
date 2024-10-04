@@ -7,6 +7,7 @@
   "debug_traceBlockByHash": "debug_traceBlockByHash",
   "arbtrace_transaction": "arbtrace_transaction",
   "debug_traceTransaction": "debug_traceTransaction",
+  "debug_traceCall": "debug_traceCall",
   "arbtrace_replayTransaction": "arbtrace_replayTransaction",
   "arbtrace_replayTransactionvmTrace": "arbtrace_replayTransaction#vmTrace",
   "arbtrace_callMany": "arbtrace_callMany",

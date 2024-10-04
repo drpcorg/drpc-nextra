@@ -41,6 +41,24 @@
       "breadcrumb": false
     }
   },
+   "avalanche-api": {
+    "title": "Avalanche API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "polygon-api": {
+    "title": "Polygon API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "mantle-api": {
+    "title": "Mantle API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",

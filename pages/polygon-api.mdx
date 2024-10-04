@@ -1,0 +1,134 @@
+# Polygon API overview
+
+Polygon is a Layer 2 scaling solution for Ethereum, designed to improve transaction speed and reduce costs while maintaining the security and functionality of the Ethereum blockchain.
+
+## Accounts info
+
+Retrieves essential data about an account, including its balance, contract code, and stored data.
+
+[eth_accounts](/polygon-api/accountinfo/eth_accounts) \
+[eth_getBalance](/polygon-api/accountinfo/eth_getBalance) \
+[eth_getCode](/polygon-api/accountinfo/eth_getCode) \
+[eth_getProof](/polygon-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/polygon-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Retrieves detailed information from a specified  block, including transactions, receipts, and block data.
+
+[eth_blockNumber](/polygon-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/polygon-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/polygon-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/polygon-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/polygon-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/polygon-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/polygon-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/polygon-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/polygon-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Provides key details about the Polygon network’s state and performance
+
+[eth_chainId](/polygon-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/polygon-api/chaininfo/eth_protocolVersion) \
+[net_listening](/polygon-api/chaininfo/net_listening) \
+[net_version](/polygon-api/chaininfo/net_version) \
+[net_peerCount](/polygon-api/chaininfo/net_peerCount) \
+[eth_syncing](/polygon-api/chaininfo/eth_syncing) \
+[eth_hashrate](/polygon-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available only on paid tier. Provides advanced debugging and tracing tools to analyze and troubleshoot transactions and blocks on the Polygon network
+
+[trace_filter](/polygon-api/debugandtrace/trace_filter) \
+[trace_block](/polygon-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/polygon-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/polygon-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/polygon-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/polygon-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/polygon-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/polygon-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/polygon-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/polygon-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/polygon-api/debugandtrace/trace_callMany) \
+[trace_call](/polygon-api/debugandtrace/trace_call) \
+[debug_traceCall](/polygon-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Provides methods for filtering and retrieving event logs
+
+[eth_getLogs](/polygon-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/polygon-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/polygon-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/polygon-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/polygon-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Provides essential methods for sending transactions, executing smart contract calls, and performing on-chain operations
+
+[eth_call](/polygon-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/polygon-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Provides methods to estimate the gas required for transactions and fetch information related to gas prices
+
+[eth_feeHistory](/polygon-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/polygon-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/polygon-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/polygon-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/polygon-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+[eth_getUncleCountByBlockHash](/polygon-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/polygon-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Contains methods related to mining operations
+
+[eth_coinbase](/polygon-api/mining/eth_coinbase) \
+[eth_mining](/polygon-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows to subscribe to specific events
+
+[eth_subscribe](/polygon-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/polygon-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Provides methods to retrieve transaction details, counts, and receipts
+
+[eth_getTransactionByHash](/polygon-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/polygon-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/polygon-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/polygon-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/polygon-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/polygon-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/polygon-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Provides methods for retrieving basic network configuration data related to nodes
+
+[web3_clientVersion](/polygon-api/web3/web3_clientVersion) \
+[web3_sha3](/polygon-api/web3/web3_sha3)
+
+## Bor specific
+
+Contains methods for interacting with the Polygon Bor client, which is responsible for block production
+
+[bor_getAuthor](/polygon-api/borspecific/bor_getAuthor) \
+[bor_getCurrentProposer](/polygon-api/borspecific/bor_getCurrentProposer) \
+[bor_getCurrentValidators](/polygon-api/borspecific/bor_getCurrentValidatorsr) \
+[bor_getRootHash](/polygon-api/borspecific/bor_getRootHash) \
+[bor_getSignersAtHash](/polygon-api/borspecific/bor_getSignersAtHash)
