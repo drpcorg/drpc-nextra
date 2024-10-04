@@ -44,9 +44,7 @@ export function shouldMakeInvisibleHeading(value: string) {
     (base) => value === base || value === `${base}/`
   );
   const isDocsChapterPage = METHOD_DOCS_URL_BASES.some((base) =>
-    METHOD_DOCS_URL_CHAPTERS.some((chapter) =>
-      value.startsWith(`${base}/${chapter}`)
-    )
+    METHOD_DOCS_URL_CHAPTERS.some((chapter) => value === `${base}/${chapter}`)
   );
 
   return isDocsPage && !isDocsInfoPage && !isDocsChapterPage;
