@@ -7,6 +7,7 @@
   "web-api": "Client Statistics API",
   "providers": "Providers",
   "referral": "DRPC Referral",
+  "faucets": "Faucets",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
