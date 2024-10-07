@@ -12,5 +12,6 @@
   "trace_replayTransactionvmTrace": "trace_replayTransaction#vmTrace",
   "trace_callMany": "trace_callMany",
   "trace_get": "trace_get",
-  "trace_call": "trace_call"
+  "trace_call": "trace_call",
+  "debug_traceCall": "debug_traceCall"
 }

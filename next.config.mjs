@@ -11,6 +11,9 @@ const withNextra = nextra({
   },
 });
 
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = withNextra({
   basePath: "/docs",
   output: "standalone",

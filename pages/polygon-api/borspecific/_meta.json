@@ -1,0 +1,7 @@
+{
+  "bor_getAuthor": "bor_getAuthor",
+  "bor_getCurrentProposer": "bor_getCurrentProposer",
+  "bor_getCurrentValidators": "bor_getCurrentValidators",
+  "bor_getRootHash": "bor_getRootHash",
+  "bor_getSignersAtHash": "bor_getSignersAtHash"
+}

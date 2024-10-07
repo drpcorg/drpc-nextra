@@ -390,16 +390,27 @@ const REQUEST_PARAMS: RequestParamProp = [
     ],
   },
   {
-    paramName: "vmTrace",
-    type: "string",
-    paramDescription:
-      "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
-  },
-  {
     paramName: "traceType",
     type: "string",
     paramDescription:
       'Specifies the trace options, such as "vmTrace", "trace", and "stateDiff".',
+    paramEnum: [
+        {
+        value: "trace",
+        isDefault: true,
+        description: "To get the basic trace of the given transaction.",
+      },
+      {
+        value: "vmTrace",
+        isDefault: false,
+        description: "To get a full trace of the virtual machine's state during the execution of the given of given transaction, including for any subcalls",
+      },
+      {
+        value: "stateDiff",
+        isDefault: false,
+        description: "To get information on altered Ethereum state due to execution of the given transaction.",
+      },
+    ]
   },
 ];
 

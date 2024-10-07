@@ -348,6 +348,11 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramDescription: "Transaction's position in the block.",
       },
       {
+        paramName: "vmTrace",
+        type: "string",
+        paramDescription: "The virtual machine trace.",
+      },
+      {
         paramName: "type",
         type: "string",
         paramDescription: "The type of trace.",

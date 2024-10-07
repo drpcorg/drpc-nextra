@@ -1,0 +1,17 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Event logs
+
+Extracts logs related to smart contract events like token transfers or ownership changes.
+
+[eth_getLogs](/optimism-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
+[eth_newFilter](/optimism-api/eventlogs/eth_newFilter) : Creates a new filter to track specific events.  \
+[eth_getFilterChanges](/optimism-api/eventlogs/eth_getFilterChanges) : Retrieves changes for an active filter since its last check. \
+[eth_uninstallFilter](/optimism-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
+[eth_getFilterLogs](/optimism-api/eventlogs/eth_getFilterLogs) : Fetches logs from an active filter.
+
+These methods are essential for monitoring contract events on Optimism.
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,17 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+# Accounts info
+
+Provides key methods for retrieving various types of data related to accounts on the Arbitrum network. It includes information about account balances, contract codes, and on-chain stored data. Key methods are:
+
+[eth_accounts](/arbitrum-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
+[eth_getBalance](/arbitrum-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
+[eth_getCode](/arbitrum-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
+[eth_getProof](/arbitrum-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account’s state. \
+[eth_getStorageAt](/arbitrum-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage.
+
+These methods enable to efficiently manage and retrieve vital information about accounts and smart contracts on the Arbitrum network.
+
+<Space h={16} />
+<GetStarted />

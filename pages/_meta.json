@@ -7,6 +7,7 @@
   "web-api": "Client Statistics API",
   "providers": "Providers",
   "referral": "DRPC Referral",
+  "faucets": "Faucets",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
@@ -37,6 +38,24 @@
   },
   "cosmos-api": {
     "title": "Cosmos API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+   "avalanche-api": {
+    "title": "Avalanche API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "polygon-api": {
+    "title": "Polygon API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "mantle-api": {
+    "title": "Mantle API",
     "theme": {
       "breadcrumb": false
     }

@@ -219,7 +219,7 @@ const REQUEST_PARAMS: RequestParamProp = [
   },
   {
     paramName: "traceType",
-    type: "string",
+    type: "array",
     paramDescription:
       'An array specifying the types of traces to include, such as "trace", "vmTrace", and "stateDiff".',
   },
@@ -323,6 +323,11 @@ const RESPONSE_PARAMS: ReqResParam[] = [
         paramName: "transactionPosition",
         type: "string",
         paramDescription: "Transaction's position in the block.",
+      },
+      {
+        paramName: "vmTrace",
+        type: "string",
+        paramDescription: "The virtual machine trace.",
       },
       {
         paramName: "type",

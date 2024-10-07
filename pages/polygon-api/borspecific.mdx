@@ -1,0 +1,17 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Bor specific
+
+Contains methods for interacting with the Polygon Bor client, which is responsible for block production.
+
+[bor_getAuthor](/polygon-api/borspecific/bor_getAuthor) : Retrieves the address of the block proposer for a given block.  \
+[bor_getCurrentProposer](/polygon-api/borspecific/bor_getCurrentProposer) : Returns the current proposer responsible for producing the next block.  \
+[bor_getCurrentValidators](/polygon-api/borspecific/bor_getCurrentValidators) : Retrieves the list of current validators.  \
+[bor_getRootHash](/polygon-api/borspecific/bor_getRootHash) : Returns the root hash of a block.  \
+[bor_getSignersAtHash](/polygon-api/borspecific/bor_getSignersAtHash) : Fetches the list of signers for a block by its hash.
+
+These methods are essential for managing block production on the Polygon network.
+
+<Space h={16} />
+<GetStarted />

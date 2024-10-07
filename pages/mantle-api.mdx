@@ -1,0 +1,109 @@
+# Mantle API overview
+
+Mantle is a Layer 2 scaling solution for Ethereum, designed to offer faster transactions and lower fees while leveraging Ethereum’s security and decentralized infrastructure.
+
+## Accounts info
+
+Retrieve key data about accounts on the Mantle network
+
+[eth_accounts](/mantle-api/accountinfo/eth_accounts) \
+[eth_getBalance](/mantle-api/accountinfo/eth_getBalance) \
+[eth_getCode](/mantle-api/accountinfo/eth_getCode) \
+[eth_getProof](/mantle-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/mantle-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Provides methods to retrieve detailed information about specific blocks
+
+[eth_blockNumber](/mantle-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/mantle-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/mantle-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/mantle-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/mantle-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/mantle-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockTransactionCountByHash](/mantle-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/mantle-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Provides crucial details about the state and performance of the Mantle network
+
+[eth_chainId](/mantle-api/chaininfo/eth_chainId) \
+[net_listening](/mantle-api/chaininfo/net_listening) \
+[net_version](/mantle-api/chaininfo/net_version) \
+[net_peerCount](/mantle-api/chaininfo/net_peerCount) \
+[eth_syncing](/mantle-api/chaininfo/eth_syncing) \
+[eth_hashrate](/mantle-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Offers advanced debugging and tracing capabilities
+
+[debug_traceBlockByHash](/mantle-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/mantle-api/debugandtrace/debug_traceBlockByNumber) \
+[debug_traceTransaction](/mantle-api/debugandtrace/debug_traceTransaction)
+
+## Event logs
+
+Provides methods for filtering and retrieving event logs
+
+[eth_getLogs](/mantle-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/mantle-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/mantle-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/mantle-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/mantle-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Provides essential methods for sending transactions, executing smart contract calls, and performing on-chain operations
+
+[eth_call](/mantle-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/mantle-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Provides methods to estimate the gas required for transactions and fetch information related to gas prices
+
+[eth_feeHistory](/mantle-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/mantle-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/mantle-api/gasestimation/eth_gasPrice) \
+[eth_maxPriorityFeePerGas](/mantle-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+[eth_getUncleCountByBlockHash](/mantle-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/mantle-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Contains methods related to mining operations
+
+[eth_mining](/mantle-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows to subscribe to specific events
+
+[eth_subscribe](/mantle-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/mantle-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Provides methods to retrieve transaction details, counts, and receipts
+
+[eth_getTransactionByHash](/mantle-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/mantle-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/mantle-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_getTransactionByBlockHashAndIndex](/mantle-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/mantle-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex)
+
+## Web3
+
+Provides methods for retrieving basic network configuration data related to nodes
+
+[web3_clientVersion](/mantle-api/web3/web3_clientVersion) \
+[web3_sha3](/mantle-api/web3/web3_sha3)
+
