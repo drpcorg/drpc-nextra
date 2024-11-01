@@ -1,0 +1,5 @@
+{
+  "sendBoc": "sendBoc",
+  "sendBocReturnHash": "sendBocReturnHash",
+  "sendQuery": "sendQuery"
+}

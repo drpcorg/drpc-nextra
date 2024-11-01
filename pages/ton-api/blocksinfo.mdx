@@ -1,0 +1,21 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Blocks Info
+
+Retrieves detailed information about Ton blocks, including block signatures, proofs, and shard information.
+
+[getMasterchainInfo](/ton-api/blocksinfo/getMasterchainInfo): Provides information about the master chain, including the current state. \
+[getMasterchainBlockSignatures](/ton-api/blocksinfo/getMasterchainBlockSignatures): Retrieves block signature data for enhanced security validation. \
+[getShardBlockProof](/ton-api/blocksinfo/getShardBlockProof): Supplies proof information for shards in a specific block. \
+[lookupBlock](/ton-api/blocksinfo/lookupBlock): Finds block details based on specific criteria, including block height or timestamp. \
+[shards](/ton-api/blocksinfo/shards): Returns information on the shard layout for a specific master chain block. \
+[getBlockHeader](/ton-api/blocksinfo/getBlockHeader): Retrieves headers for a specific block, containing basic metadata. \
+[blocks](/ton-api/blocksinfo/blocks): Retrieves general block information from the TON blockchain, including block details like block ID, timestamp, and previous block reference. \
+[masterchainBlockShards](/ton-api/blocksinfo/masterchainBlockShards): Fetches details of the shards associated with a specific masterchain block. \
+[masterchainBlockShardsState](/ton-api/blocksinfo/masterchainBlockShardsState): Provides the state of each shard in a specified masterchain block.
+
+These methods allow developers to retrieve detailed information about blocks, including master chain and shard data, enabling a deeper understanding of the blockchain's structure and history.
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,11 @@
+{
+  "getMasterchainInfo": "getMasterchainInfo",
+  "getMasterchainBlockSignatures": "getMasterchainBlockSignatures",
+  "getShardBlockProof": "getShardBlockProof",
+  "lookupBlock": "lookupBlock",
+  "shards": "shards",
+  "getBlockHeader": "getBlockHeader",
+  "blocks": "blocks",
+  "masterchainBlockShards": "masterchainBlockShards",
+  "masterchainBlockShardState ": "masterchainBlockShardState "
+}

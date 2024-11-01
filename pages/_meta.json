@@ -60,6 +60,12 @@
       "breadcrumb": false
     }
   },
+  "ton-api": {
+    "title": "Ton API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",

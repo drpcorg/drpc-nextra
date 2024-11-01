@@ -27,7 +27,7 @@ export function EthereumMethod_subscribe(props: GenericMethodPropsReplacing) {
       responseParamsDescription={
         "The subscription ID, represented as a hexadecimal string. "
       }
-      {...props}
+      {...props}               
     />
   );
 }
@@ -239,6 +239,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
+  "newPendingTransaction subscription is not supported",
   "Requires continuous WebSocket connection to the node",
   "Node must support eth_subscribe method",
 ];

@@ -1,0 +1,11 @@
+{
+  "blocksinfo": "Blocks info",
+  "transactionsinfo": "Transactions info",
+  "consensusandchaininfo": "Consensus and Chain info",
+  "accountinfo": "Account info",
+  "addressmanagement": "Address Management",
+  "tokendata": "Token Data",
+  "executingtransactions": "Executing Transactions",
+  "gasestimation": "Gas Estimation",
+  "smartcontractexecution": "Smart Contract Execution"
+}

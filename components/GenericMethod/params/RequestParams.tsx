@@ -9,9 +9,14 @@ import { ReqResParam } from "./types";
 type Props = {
   requestParamsType: TParamType;
   requestParams: ReqResParam[] | null;
+  isRESTApi?: boolean;
 };
 
-export function RequestParams({ requestParams, requestParamsType }: Props) {
+export function RequestParams({
+  requestParams,
+  requestParamsType,
+  isRESTApi,
+}: Props) {
   return (
     <Grid gutter={10}>
       <Grid.Col span={12}>
@@ -28,30 +33,34 @@ export function RequestParams({ requestParams, requestParamsType }: Props) {
 
       <Grid.Col span={12}>
         <section className={classes.root}>
-          <div className={classes.line}>
-            <Text color="white" size="sm" fontWeight="medium">
-              id
-            </Text>
-            <Text color="gray" size="xs" italic>
-              integer
-            </Text>
-          </div>
-          <div className={classes.line}>
-            <Text color="white" size="sm" fontWeight="medium">
-              jsonrpc
-            </Text>
-            <Text color="gray" size="xs" italic>
-              string
-            </Text>
-          </div>
-          <div className={classes.line}>
-            <Text color="white" size="sm" fontWeight="medium">
-              method
-            </Text>
-            <Text color="gray" size="xs" italic>
-              string
-            </Text>
-          </div>
+          {isRESTApi ? null : (
+            <>
+              <div className={classes.line}>
+                <Text color="white" size="sm" fontWeight="medium">
+                  id
+                </Text>
+                <Text color="gray" size="xs" italic>
+                  integer
+                </Text>
+              </div>
+              <div className={classes.line}>
+                <Text color="white" size="sm" fontWeight="medium">
+                  jsonrpc
+                </Text>
+                <Text color="gray" size="xs" italic>
+                  string
+                </Text>
+              </div>
+              <div className={classes.line}>
+                <Text color="white" size="sm" fontWeight="medium">
+                  method
+                </Text>
+                <Text color="gray" size="xs" italic>
+                  string
+                </Text>
+              </div>
+            </>
+          )}
 
           <section className={classes.params}>
             <Text color="white" size="sm" fontWeight="medium">
