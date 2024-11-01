@@ -1,7 +1,7 @@
 import GenericMethodRest, {
   GenericMethodProps,
-} from "../GenericMethodRest/GenericMethodRest";
+} from "../GenericMethod/GenericMethod";
 
 export default function TonMethod(props: GenericMethodProps) {
-  return <GenericMethodRest {...props} />;
+  return <GenericMethodRest {...props} isRESTApi />;
 }

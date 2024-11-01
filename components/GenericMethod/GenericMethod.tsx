@@ -38,6 +38,9 @@ export type GenericMethodProps = {
   // Replace code snippets URL with different URL
   replaceCodeSnippetsURLFrom?: string;
   replaceCodeSnippetsURLTo?: string;
+
+  // Misc
+  isRESTApi?: boolean;
 };
 
 export type GenericMethodPropsReplacing = Pick<
@@ -63,6 +66,7 @@ export default function GenericMethod({
   responseParamsDescription,
   replaceCodeSnippetsURLFrom,
   replaceCodeSnippetsURLTo,
+  isRESTApi,
 }: GenericMethodProps) {
   const [snippet, setSnippet] = React.useState<CodeSnippetObject["language"]>(
     codeSnippets?.[0]?.language || null
@@ -172,6 +176,7 @@ export default function GenericMethod({
           <RequestParams
             requestParams={requestParams}
             requestParamsType={requestParamsType}
+            isRESTApi={isRESTApi}
           />
         </Grid.Col>
 
