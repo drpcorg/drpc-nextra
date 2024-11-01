@@ -9,7 +9,7 @@ export function MantleMethod_getTransactionCount() {
     <EthereumMethod_getTransactionCount
       replaceCodeSnippetsURLFrom={DRPC_ENDPOINT_URL}
       replaceCodeSnippetsURLTo={DRPC_ENDPOINT_URL_MANTLE}
-      network="mantlev"
+      network="mantle"
     />
   );
 }

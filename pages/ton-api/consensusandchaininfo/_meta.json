@@ -1,0 +1,7 @@
+{
+  "getConsensusBlock": "getConsensusBlock",
+  "getConfigParam": "getConfigParam",
+  "getConfigAll": "getConfigAll",
+  "getOutMsgQueueSizes": "getOutMsgQueueSizes",
+  "masterchainInfo": "masterchainInfo"
+}

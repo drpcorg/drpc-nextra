@@ -1,0 +1,9 @@
+{
+  "getAddressInformation": "getAddressInformation",
+  "getExtendedAddressInformation": "getExtendedAddressInformation",
+  "getWalletInformation": "getWalletInformation",
+  "getAddressBalance": "getAddressBalance",
+  "getAddressState": "getAddressState",
+  "detectAddress": "detectAddress",
+  "wallet": "wallet"
+}

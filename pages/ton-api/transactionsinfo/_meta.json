@@ -1,0 +1,13 @@
+{
+  "getTransactions": "getTransactions",
+  "getBlockTransactions": "getBlockTransactions",
+  "getBlockTransactionsExt": "getBlockTransactionsExt",
+  "tryLocateTx": "tryLocateTx",
+  "tryLocateResultTx": "tryLocateResultTx",
+  "tryLocateSourceTx": "tryLocateSourceTx",
+  "transactions":  "transactions",
+  "transactionsByMessage": "transactionsByMessage",
+  "transactionsByMasterchainBlock": "transactionsByMasterchainBlock",
+  "adjacentTransactions": "adjacentTransactions"
+
+}

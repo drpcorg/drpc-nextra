@@ -7,6 +7,8 @@ const METHOD_DOCS_URL_BASES = [
   "/polygon-api",
   "/avalanche-api",
   "/mantle-api",
+  "/bitcoinapi",
+  "/ton-api"  ,
 ];
 
 const METHOD_DOCS_URL_CHAPTERS = [
@@ -29,11 +31,16 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "slotinfo",
   "tokeninfo",
   "borspecific",
+  "memorypool",
   "ethereumarbitrumdifference",
   "ethereumavalanchedifference",
   "ethereummantledifference",
   "ethereumoptimismdifference",
   "ethereumpolygondifference",
+  "addressmanagement",
+  "consensusandchaininfo" ,
+  "smartcontractexecution",
+  "tokendata",
 ];
 
 export function shouldMakeInvisibleHeading(value: string) {

@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Transactions Info
+
+Provides data about specific transactions, transaction history, and related transaction operations.
+
+[getTransactions](/ton-api/transactionsinfo/getBlockTransactions): Fetches transaction history for a specified address. \
+[getBlockTransactions](/ton-api/transactionsinfo/getBlockTransactions): Retrieves transactions within a specified block. \
+[getBlockTransactionsExt](/ton-api/transactionsinfo/getBlockTransactionsExt): Offers extended details about all transactions within a block. \
+[tryLocateTx](/ton-api/transactionsinfo/tryLocateTx): Searches for a specific transaction across multiple blocks. \
+[tryLocateResultTx](/ton-api/transactionsinfo/tryLocateResultTx): Locates the result of a transaction within the blockchain, \
+[tryLocateSourceTx](/ton-api/transactionsinfo/tryLocateSourceTx): Searches for the originating source of a transaction. \
+[transactions](/ton-api/transactionsinfo/transactions): Retrieves a list of transactions. \
+[transactionsByMessage](/ton-api/transactionsinfo/transactionsByMessage): Fetches transactions associated with a specific message. \
+[transactionsByMasterchainBlock](/ton-api/transactionsinfo/transactionsByMasterchainBlock): Retrieves all transactions contained within a specified masterchain block \
+[adjacentTransactions](/ton-api/transactionsinfo/adjacentTransactions): Retrieves transactions that are adjacent to a specified transaction
+
+Transaction methods facilitate tracking and locating specific transactions, making it easier to audit transaction history and verify transaction details across the blockchain.
+
+<Space h={16} />
+<GetStarted />

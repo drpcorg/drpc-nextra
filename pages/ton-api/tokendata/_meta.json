@@ -1,0 +1,10 @@
+{
+  "getTokenData": "getTokenData",
+  "nfttransfers": "nft/transfers",
+  "nftitems": "nft/items",
+  "nftcollections": "nft/collections",
+  "jettonmasters": "jetton/masters",
+  "jettonwallets": "jetton/wallets",
+  "jettontransfers": "jetton/transfers",
+  "jettonburns": "jetton/burns"
+}

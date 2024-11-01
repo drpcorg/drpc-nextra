@@ -1,0 +1,96 @@
+# Ton API Overview
+
+These endpoints provide essential data for interacting with the Ton blockchain, including accounts, transactions, blocks, and network information.
+
+## Account Info
+
+Returns details about an account's balance, associated addresses, and wallet information on Ton Chain.
+
+[getAddressInformation](/ton-api/accountinfo/getAddressInformation) \
+[getExtendedAddressInformation](/ton-api/accountinfo/getExtendedAddressInformation) \
+[getWalletInformation](/ton-api/accountinfo/getWalletInformation) \
+[getAddressBalance](/ton-api/accountinfo/getAddressBalance) \
+[detectAddress](/ton-api/accountinfo/detectAddress) \
+[wallet](/ton-api/accountinfo/wallet)
+
+## Blocks Info
+
+Retrieves detailed information about Ton blocks, including block signatures, proofs, and shard information.
+
+[getMasterchainInfo](/ton-api/blocksinfo/getMasterchainInfo) \
+[getMasterchainBlockSignatures](/ton-api/blocksinfo/getMasterchainBlockSignatures) \
+[getShardBlockProof](/ton-api/blocksinfo/getShardBlockProof) \
+[lookupBlock](/ton-api/blocksinfo/lookupBlock) \
+[shards](/ton-api/blocksinfo/shards) \
+[getBlockHeader](/ton-api/blocksinfo/getBlockHeader) \
+[blocks](/ton-api/blocksinfo/blocks) \
+[masterchainBlockShards](/ton-api/blocksinfo/masterchainBlockShards) \
+[masterchainBlockShardsState](/ton-api/blocksinfo/masterchainBlockShardsState)
+
+## Transactions Info
+
+Provides data about specific transactions, transaction history, and related transaction operations.
+
+[getTransactions](/ton-api/transactionsinfo/getTransactions) \
+[getBlockTransactions](/ton-api/transactionsinfo/getBlockTransactions) \
+[getBlockTransactionsExt](/ton-api/transactionsinfo/getBlockTransactionsExt) \
+[tryLocateTx](/ton-api/transactionsinfo/tryLocateTx) \
+[tryLocateResultTx](/ton-api/transactionsinfo/tryLocateResultTx) \
+[tryLocateSourceTx](/ton-api/transactionsinfo/tryLocateSourceTx) \
+[transactions](/ton-api/transactionsinfo/transactions) \
+[transactionsByMessage](/ton-api/transactionsinfo/transactionsByMessage) \
+[transactionsByMasterchainBlock](/ton-api/transactionsinfo/transactionsByMasterchainBlock) \
+[adjacentTransactions](/ton-api/transactionsinfo/adjacentTransactions)
+
+## Address Management
+
+Methods to handle address packing and unpacking, as well as related state information.
+
+[packAddress](/ton-api/addressmanagement/packAddress) \
+[unpackAddress](/ton-api/addressmanagement/unpackAddress) \
+[addressBook](/ton-api/addressmanagement/addressBook)
+
+## Consensus and Chain info
+
+Provides data on Ton Chain consensus and configuration parameters.
+
+[getConsensusBlock](/ton-api/consensusandchaininfo/getConsensusBlock) \
+[getConfigParam](/ton-api/consensusandchaininfo/getConfigParam) \
+[getConfigAll](/ton-api/consensusandchaininfo/getConfigAll) \
+[getOutMsgQueueSizes](/ton-api/consensusandchaininfo/getOutMsgQueueSizes) \
+[masterchainInfo](/ton-api/consensusandchaininfo/masterchainInfo)
+
+## Token Data
+
+Retrieve specific token-related data on Ton Chain.
+
+[getTokenData](/ton-api/tokendata/getTokenData) \
+[nft/transfers](/ton-api/tokendata/nfttransfers) \
+[nft/items](/ton-api/tokendata/nftitems) \
+[nft/collections](/ton-api/tokendata/nftcollections) \
+[jetton/masters](/ton-api/tokendata/jettonmasters) \
+[jetton/wallets](/ton-api/tokendata/jettonwallets) \
+[jetton/transfers](/ton-api/tokendata/jettontransfers) \
+[jetton/burns](/ton-api/tokendata/jettonburns)
+
+## Executing Transactions
+
+Enables sending data (e.g., serialized BOCs) and managing queries.
+
+[sendBoc](/ton-api/executingtransactions/sendBoc) \
+[sendBocReturnHash](/ton-api/executingtransactions/sendBocReturnHash) \
+[sendQuery](/ton-api/executingtransactions/sendQuery)
+
+## Gas Estimation
+
+Calculates estimated fees for specific operations on Ton Chain.
+
+[estimateFee](/ton-api/gasestimation/estimateFee)
+
+## Smart Contract Execution
+
+Facilitates the execution of smart contract methods and handles JSON-RPC requests.
+
+[runGetMethod](/ton-api/smartcontractexecution/runGetMethod) \
+[jsonRPC](/ton-api/smartcontractexecution/jsonRPC) \
+[messages](/ton-api/smartcontractexecution/messages)
