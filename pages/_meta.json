@@ -4,7 +4,7 @@
   "gettingstarted": "Getting started",
   "pricing": "Pricing",
   "specs": "Implementation docs",
-  "web-api": "Client Statistics API",
+  "web-api": "Web APIs",
   "providers": "Providers",
   "referral": "DRPC Referral",
   "faucets": "Faucets",
@@ -42,7 +42,7 @@
       "breadcrumb": false
     }
   },
-   "avalanche-api": {
+  "avalanche-api": {
     "title": "Avalanche API",
     "theme": {
       "breadcrumb": false
