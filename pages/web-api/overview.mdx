@@ -13,14 +13,14 @@ Tokens can be regenerated on the same page where you generated them.
 
 All the listed API endpoints have rate limit for **10 requests per 1 minute**.
 
-## Stats API
+## Statistics API
 
 In the dRPC Dashboard you can see the statistics of the user on the `Dashboard` -> `Stats` page. There are charts and tables with the information about the user's activity.
 There's also a possibility to get the same information via the API.
 
-To get started with **Statistics API** you need to generate API token in the dRPC Dashboard. You can do it in the `Dashboard` -> `Settings` -> `Stats API` page.
+To get started with **Statistics API** you need to generate API token in the dRPC Dashboard. You can do it in the `Dashboard` -> `Settings` -> `Statistics API` page.
 
-## Stats API JSON
+## Statistics API JSON
 
 The JSON data is available at the `https://drpc.org/api/metrics/json` endpoint.
 For JSON endpoint you must specify `range` query parameter to get the data for the specified time range.
@@ -46,7 +46,7 @@ type GroupedDataItem = {
 };
 ```
 
-## Stats API Prometheus metrics
+## Statistics API Prometheus metrics
 
 The Prometheus metrics are available at the `https://drpc.org/api/metrics/prom` endpoint.
 For Prometheus metrics time range is last day.
