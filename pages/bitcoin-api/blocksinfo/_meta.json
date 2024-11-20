@@ -1,0 +1,6 @@
+{
+  "getblockhash": "getblockhash",
+  "getblockcount": "getblockcount",
+  "getbestblockhash": "getbestblockhash",
+  "getblock": "getblock"
+}

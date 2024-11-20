@@ -9,6 +9,9 @@ const METHOD_DOCS_URL_BASES = [
   "/mantle-api",
   "/bitcoinapi",
   "/ton-api"  ,
+  "/bitcoin-api",
+  "/base-api",
+  "/celo-api",
 ];
 
 const METHOD_DOCS_URL_CHAPTERS = [
@@ -37,10 +40,14 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "ethereummantledifference",
   "ethereumoptimismdifference",
   "ethereumpolygondifference",
+  "ethereumbasedifference",
+  "ethereumcelodifference",
   "addressmanagement",
   "consensusandchaininfo" ,
   "smartcontractexecution",
   "tokendata",
+  "connectioninfo",
+  "feeinfo",
 ];
 
 export function shouldMakeInvisibleHeading(value: string) {

@@ -1,0 +1,5 @@
+{
+  "getconnectioncount": "getconnectioncount",
+  "getblockchaininfo": "getblockchaininfo",
+  "getnetworkinfo": "getnetworkinfo"
+}

@@ -66,6 +66,18 @@
       "breadcrumb": false
     }
   },
+  "bitcoin-api": {
+    "title": "Bitcoin API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "base-api": {
+    "title": "Base API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",

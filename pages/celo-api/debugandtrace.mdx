@@ -1,0 +1,26 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Debug and trace
+
+Available only on the paid tier. Allows tracing transactions, inspecting block execution, and replaying transactions or blocks for detailed analysis.
+
+[trace_filter](/celo-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
+[trace_block](/celo-api/debugandtrace/trace_block) : Traces execution of all transactions in a block. \
+[trace_replayBlockTransactions](/celo-api/debugandtrace/arbtrace_replayBlockTransactions) : Replays block transactions for debugging. \
+[trace_replayBlockTransactions#vmTrace](/celo-api/debugandtrace/arbtrace_replayBlockTransactionsvmTrace) : Provides VM-level trace during block replay. \
+[debug_traceBlockByHash](/celo-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/celo-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[trace_transaction](/celo-api/debugandtrace/arbtrace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/celo-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[trace_replayTransaction](/celo-api/debugandtrace/arbtrace_replayTransaction) : Replays a transaction for debugging. \
+[trace_replayTransaction#vmTrace](/celo-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay. \
+[trace_callMany](/celo-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
+[trace_get](/celo-api/debugandtrace/trace_get) : Retrieves trace data by criteria. \
+[trace_call](/celo-api/debugandtrace/trace_call) : Executes a trace call. \
+[debug_traceCall](/celo-api/debugandtrace/debug_traceCall) : Traces a specific call without state change.
+
+These methods provide advanced debugging capabilities, enabling developers to trace execution flows, analyze failed transactions, and inspect block behavior on the Celo network.
+
+<Space h={16} />
+<GetStarted />
