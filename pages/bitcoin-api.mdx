@@ -1,0 +1,42 @@
+# Bitcoin API Overview
+
+These methods provide essential data for interacting with the blockchain, covering key aspects like block details, transaction handling, network information, and fee estimation.
+
+## Blocks info
+
+The Blocks Info group encompasses commands that provide detailed information about the blocks within the blockchain. These functions allow users to query specific blocks, understand the current state of the blockchain, and retrieve essential data such as block hashes and counts.
+
+[getblockhash](/bitcoin-api/blocksinfo/getblockhash) \
+[getblockcount](/bitcoin-api/blocksinfo/getblockcount) \
+[getbestblockhash](/bitcoin-api/blocksinfo/getbestblockhash) \
+[getblock](/bitcoin-api/blocksinfo/getblock)
+
+## Transactions Info
+
+These functions enable users to access raw transaction data, monitor transaction statuses, inspect specific transaction outputs, list unspent outputs, and track the total amount received by addresses.
+
+[getrawtransaction](/bitcoin-api/transactionsinfo/getrawtransaction) \
+[gettransaction](/bitcoin-api/transactionsinfo/gettransaction) \
+[gettxout](/bitcoin-api/transactionsinfo/gettxout) \
+[listunspent](/bitcoin-api/transactionsinfo/listunspent) \
+[getrecievedbyaddress](/bitcoin-api/transactionsinfo/getrecievedbyaddress)
+
+## Network info
+
+Functions allow users to monitor the number of active connections, assess the synchronization state of the blockchain, and retrieve detailed network parameters.
+
+[getconnectioncount](/bitcoin-api/networkinfo/getconnectioncount) \
+[getblockchaininfo](/bitcoin-api/networkinfo/getblockchaininfo) \
+[getnetworkinfo](/bitcoin-api/networkinfo/getnetworkinfo)
+
+## Fee info
+
+The Fee Info group includes commands related to estimating transaction fees.
+
+[estimatesmartfee](/bitcoin-api/feeinfo/estimatesmartfee)
+
+## Executing Transactions
+
+Contains commands that facilitate the broadcasting and execution of transactions on the blockchain network
+
+[sendrawtransaction](/bitcoin-api/executingtransactions/sendrawtransaction)

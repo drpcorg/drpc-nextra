@@ -1,0 +1,127 @@
+# Celo API overview
+
+These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+
+## Accounts info
+
+Returns data about an account's balance, contract code, or stored data.
+
+[eth_accounts](/celo-api/accountinfo/eth_accounts) \
+[eth_getBalance](/celo-api/accountinfo/eth_getBalance) \
+[eth_getCode](/celo-api/accountinfo/eth_getCode) \
+[eth_getProof](/celo-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/celo-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Retrieves detailed information from a specified block, including transactions, receipts, and block data.
+
+[eth_blockNumber](/celo-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/celo-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/celo-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/celo-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/celo-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/celo-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/celo-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/celo-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/celo-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Supplies details about the Celo network, its protocol version, and its configuration.
+
+[eth_chainId](/celo-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/celo-api/chaininfo/eth_protocolVersion) \
+[net_listening](/celo-api/chaininfo/net_listening) \
+[net_version](/celo-api/chaininfo/net_version) \
+[net_peerCount](/celo-api/chaininfo/net_peerCount) \
+[eth_syncing](/celo-api/chaininfo/eth_syncing) \
+[eth_hashrate](/celo-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available only on paid tier. Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis
+
+[trace_filter](/celo-api/debugandtrace/trace_filter) \
+[trace_block](/celo-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/celo-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/celo-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/celo-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/celo-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/celo-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/celo-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/celo-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/celo-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/celo-api/debugandtrace/trace_callMany) \
+[trace_get](/celo-api/debugandtrace/trace_get) \
+[trace_call](/celo-api/debugandtrace/trace_call) \
+[debug_traceCall](/celo-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
+
+[eth_getLogs](/celo-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/celo-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/celo-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/celo-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/celo-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
+
+[eth_call](/celo-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/celo-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Estimates gas fees for transactions and provides historical and current gas price data.
+
+[eth_feeHistory](/celo-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/celo-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/celo-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/celo-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/celo-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/celo-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/celo-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/celo-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/celo-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Provides details on the mining state of the Celo node
+
+[eth_coinbase](/celo-api/mining/eth_coinbase) \
+[eth_mining](/celo-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows to subscribe to specific Celo events in real-time via WebSockets.
+
+[eth_subscribe](/celo-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/celo-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
+
+[eth_getTransactionByHash](/celo-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/celo-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/celo-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/celo-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/celo-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/celo-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/celo-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Returns general network configuration data for Celo nodes.
+
+[web3_clientVersion](/celo-api/web3/web3_clientVersion) \
+[web3_sha3](/celo-api/web3/web3_sha3)
