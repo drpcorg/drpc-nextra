@@ -1,0 +1,67 @@
+# Subscriptions for EVM Chains
+Subscriptions for EVM-based blockchains provide developers with a way to monitor blockchain activity in real time. Using WebSocket connections, you can subscribe to specific events like new blocks, pending transactions, or smart contract logs. This eliminates the need for constant polling and improves efficiency in your DApp or backend services.
+
+## How dRPC charges subscriptions
+
+dRPC charges following actions:
+
+- **Subscription**: Establishing WSS connection and subscribing to events.
+- **Notification**: Receiving notifications from the events you've subscribed to.
+
+
+| Action Type                                        | CU    |
+|----------------------------------------------------|-------|
+| Subscription                                       | 10    |
+| Notification                                       | 25    |
+
+
+## Supported Subscription Types
+EVM chains support a variety of subscription types tailored to your needs:
+
+**New Heads (newHeads)** \
+Receive notifications for each new block added to the blockchain. Each update contains details such as the block hash, parent hash, and timestamp.
+
+**Logs (logs)** \
+Filter smart contract events by address or topics. Could be used for tracking specific activities in decentralized applications (e.g., token transfers or contract state changes).
+
+**Pending Transactions: dRPC doesn't support this type of subscription** \
+Monitor unconfirmed transactions as they are added to the mempool.
+
+Example: Subscribe to New Blocks
+Here’s an example of subscribing to new block headers using WebSockets:
+
+```javascript
+const WebSocket = require('ws');
+
+// Connect to your node
+const ws = new WebSocket('wss://lb.drpc.org/ogrpc?network=NETWORK-NAME&dkey=YOUR-DRPC-KEY');
+
+ws.on('open', () => {
+  // Subscribe to new block headers
+  ws.send(JSON.stringify({
+    jsonrpc: "2.0",
+    method: "eth_subscribe",
+    params: ["newHeads"],
+    id: 1
+  }));
+});
+
+ws.on('message', (data) => {
+  const response = JSON.parse(data);
+  if (response.method === "eth_subscription") {
+    console.log("New block:", response.params.result);
+  }
+});
+```
+
+## Why Use Subscriptions?
+Real-Time Data: Instantly receive updates without polling. \
+Efficient Resource Use: Saves bandwidth and reduces infrastructure load. \
+DApp Optimization: Enhance user experience with instant feedback for blockchain events.
+
+## Best Practices
+Filter Data: Use parameters like addresses and topics to reduce unnecessary updates. \
+Manage Connections: Limit the number of subscriptions to optimize performance. \
+Handle Reconnects: Ensure your WebSocket connection automatically re-establishes after disruptions.
+
+Subscriptions offer a streamlined and efficient way to interact with EVM blockchains. By leveraging this functionality, you can build responsive and resource-efficient applications that stay up-to-date with on-chain activity.
