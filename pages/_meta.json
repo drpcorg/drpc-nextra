@@ -8,6 +8,7 @@
   "providers": "Providers",
   "referral": "DRPC Referral",
   "faucets": "Faucets",
+  "subscriptions": "Subscriptions",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"

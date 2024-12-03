@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Space } from "@mantine/core";
 
-import { Group } from "@mantine/core";
+import { Flex, Stack, Group, Grid } from "@mantine/core";
 import Goat from "/pages/icons/Goat.svg";
 import Lisk from "/pages/icons/Lisk.svg";
 import Alephzero from "/pages/icons/Alephzero.svg";
@@ -10,97 +10,91 @@ import Everclear from "/pages/icons/Everclear.png";
 import Gnosis from "/pages/icons/Gnosis.svg";
 import OpenCampusCodex from "/pages/icons/OpenCampusCodex.svg";
 import Gameswift from "/pages/icons/Gameswift.png";
+import login from "/pages/icons/login.png";
+import proofofwork from "/pages/icons/proofofwork.png";
+import gitcoin from "/pages/icons/gitcoin.png";
+import mining from "/pages/icons/mining.png";
+import minimum from "/pages/icons/minimum.png";
+import claim from "/pages/icons/claim.png";
 
 # What is a faucet?
+
 A testnet faucet gives web3 developers free tokens to deploy, test, and optimize smart contracts on test blockchains. \
 Since running smart contracts on public mainnet blockchains like Ethereum and Polygon requires gas fees, testnets offer a way for developers to work in an environment similar to the mainnet without incurring real-money costs for gas fees.
 
 ## How to use dRPC faucets?
 
-1. **Select your faucet**:
+1. **Select your faucet (click on the image)**:
 
-<Space h={16} />
+<Stack spacing={20} align={"center"}>
+
 <Link href={"https://drpc.org/faucet/goat"} target="_blank">
-        <Image
-          src={Goat}
-          alt="Goat"
-          width={210}
-          height={210}
-        />
-      </Link>
-<Space h={16} />
+  <Image src={Goat} alt="Goat" width={210} height={210} />
+</Link>
 
-<Space h={30} />
 <Link href={"https://drpc.org/faucet/lisk"} target="_blank">
-        <Image
-          src={Lisk}
-          alt="Lisk"
-          width={210}
-          height={210}
-        />
-      </Link>
-<Space h={16} />
+  <Image src={Lisk} alt="Lisk" width={210} height={210} />
+</Link>
 
-<Space h={30} />
 <Link href={"https://drpc.org/faucet/alephzero"} target="_blank">
-        <Image
-          src={Alephzero}
-          alt="Alephzero"
-          width={210}
-          height={210}
-        />
-      </Link>
-<Space h={16} />
-
-<Space h={40} />
+  <Image src={Alephzero} alt="Alephzero" width={210} height={210} />
+</Link>
 
 <Link href={"https://drpc.org/faucet/everclear"} target="_blank">
-        <Image
-          src={Everclear}
-          alt="Everclear"
-          width={210}
-          height={210}
-        />
-      </Link>
-
-<Space h={16} />
+  <Image src={Everclear} alt="Everclear" width={210} height={210} />
+</Link>
 
 <Link href={"https://drpc.org/faucet/gnosis"} target="_blank">
-        <Image
-          src={Gnosis}
-          alt="Gnosis"
-          width={210}
-          height={210}
-        />
-      </Link>
-
-<Space h={16} />
+  <Image src={Gnosis} alt="Gnosis" width={210} height={210} />
+</Link>
 
 <Link href={"https://drpc.org/faucet/open-campus-codex"} target="_blank">
-        <Image
-          src={OpenCampusCodex}
-          alt="OpenCampusCodex"
-          width={210}
-          height={210}
-        />
-      </Link>
+  <Image src={OpenCampusCodex} alt="OpenCampusCodex" width={210} height={210} />
+</Link>
 
-<Space h={16} />
-
-<Space h={40} />
 <Link href={"https://drpc.org/faucet/gameswift"} target="_blank">
-        <Image
-          src={Gameswift}
-          alt="Gameswift"
-          width={210}
-          height={210}
-        />
-      </Link>
+  <Image src={Gameswift} alt="Gameswift" width={210} height={210} />
+</Link>
+
+</Stack>
 
 2. **Sign in your dRPC account**
 
-3. **Enter your ETH address**
+<Flex w={"100%"} justify={"center"}>
+  <Image src={login} alt="login" width={800} height={800} />
+</Flex>
 
-Faucets use Proof of Work (PoW) consensus mechanism existed in blockchain networks to validate transactions and secure the network. In PoW, miners compete to solve complex mathematical puzzles, which require significant computational power. The first miner to solve the puzzle gets to add a new block of transactions to the blockchain and is rewarded with cryptocurrency.
+3. **Enter your ETH address or Gitcoin passport**
 
-4. **Claim tokens**
+Proof of Work (PoW) consensus mechanism existed in blockchain networks to validate transactions and secure the network. In PoW, miners compete to solve complex mathematical puzzles, which require significant computational power. The first miner to solve the puzzle gets to add a new block of transactions to the blockchain and is rewarded with cryptocurrency.
+
+<Flex w={"100%"} justify={"center"}>
+  <Image src={proofofwork} alt="proofofwork" width={800} height={800} />
+</Flex>
+
+Gitcoin is a platform that enables users to verify their identity or activity through contributions to open-source projects, participation in Web3 communities, or completing tasks on the platform. Gitcoin ensures that users requesting funds are genuine contributors to the ecosystem, reducing fraud and incentivizing meaningful engagement in blockchain and Web3 development.
+
+<Flex w={"100%"} justify={"center"}>
+  <Image src={gitcoin} alt="gitcoin" width={800} height={800} />
+</Flex>
+
+If you choose gitcoin passport you can straightaway claim your tokens.
+
+4. **Start mining**
+
+<Flex w={"100%"} justify={"center"}>
+  <Image src={mining} alt="mining" width={800} height={800} />
+</Flex>
+5. **Claim tokens**
+
+<Flex w={"100%"} justify={"center"}>
+  <Image src={minimum} alt="minimum" width={800} height={800} />
+</Flex>
+
+The moment you reach the number of tokens equal to the minimum claim, you can claim them.
+
+<Flex w={"100%"} justify={"center"}>
+  <Image src={claim} alt="claim" width={750} height={750} />
+</Flex>
+
+Tokens can be claimed no more than the maximum claim and no more than once a day.
