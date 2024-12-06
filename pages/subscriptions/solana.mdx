@@ -3,7 +3,7 @@ WebSocket subscriptions in Solana offer a way to monitor blockchain events in re
 
 ## How dRPC charges subscriptions
 
-This billing will be valid from 1 January 2025
+This billing will be valid from 1 February 2025
 - **Subscription**: Establishing WSS connection and subscribing to events.
 - **Notification**: Receiving notifications from the events you've subscribed to.
 
@@ -34,7 +34,7 @@ Below is an example of using WebSockets to subscribe to updates on a specific ac
 import WebSocket from 'ws';
 
 // Connect to the Solana WebSocket endpoint
-const ws = new WebSocket('wss://lb.drpc.org/ogrpc?network=solana&dkey=YOUR-DRPC-KEY');
+const ws = new WebSocket('wss://lb.drpc.org/ogws?network=solana&dkey=YOUR-DRPC-KEY');
 
 ws.on('open', () => {
   // Subscribe to account changes
