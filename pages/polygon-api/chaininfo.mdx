@@ -1,14 +1,19 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Chain info | dRPC"
+  description={`Provides key details about the Polygon network’s state and performance.`}
+/>
 ## Chain info
 
 Provides key details about the Polygon network’s state and performance.
 
-[eth_chainId](/polygon-api/chaininfo/eth_chainId) : Returns the network's chain ID.  \
+[eth_chainId](/polygon-api/chaininfo/eth_chainId) : Returns the network's chain ID. \
 [eth_protocolVersion](/polygon-api/chaininfo/eth_protocolVersion) : Retrieves the protocol version used by the client. \
 [net_listening](/polygon-api/chaininfo/net_listening) : Indicates whether the node is listening for network connections. \
-[net_version](/polygon-api/chaininfo/net_version) : Returns the current network version.  \
+[net_version](/polygon-api/chaininfo/net_version) : Returns the current network version. \
 [net_peerCount](/polygon-api/chaininfo/net_peerCount) : Displays the number of connected peers. \
 [eth_syncing](/polygon-api/chaininfo/eth_syncing) : Shows the synchronization status of the node. \
 [eth_hashrate](/polygon-api/chaininfo/eth_hashrate) : Provides the network’s current mining hashrate.

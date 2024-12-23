@@ -1,11 +1,16 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Getting uncles | dRPC"
+  description={`Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.`}
+/>
 ## Getting uncles
 
 Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
 
-[eth_getUncleCountByBlockHash](/mantle-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a given block by its hash.  \
+[eth_getUncleCountByBlockHash](/mantle-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a given block by its hash. \
 [eth_getUncleCountByBlockNumber](/mantle-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncle blocks for a specific block by its number.
 
 These methods help track uncle blocks and their occurrence on the Mantle network.

@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 
-import { shouldMakeInvisibleHeading } from "../../utils/text/shouldMakeInvisibleHeading";
+import { shouldMakeInvisibleHeading } from "../../utils/text/seo";
 import { textToHrefId } from "../../utils/text/textToHrefId";
 import classes from "./H2.module.css";
 

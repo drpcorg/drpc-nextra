@@ -1,18 +1,23 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Blocks info | dRPC"
+  description={`Retrieves detailed information about a specific block using its number or hash.`}
+/>
 ## Blocks info
 
 Retrieves detailed information about a specific block using its number or hash.
 
-[eth_blockNumber](/optimism-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number.  \
-[eth_getBlockByHash](/optimism-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash.  \
-[eth_getBlockByHash#full](/optimism-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash.  \
-[eth_getBlockByNumber](/optimism-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number.  \
+[eth_blockNumber](/optimism-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number. \
+[eth_getBlockByHash](/optimism-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByHash#full](/optimism-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash. \
+[eth_getBlockByNumber](/optimism-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number. \
 [eth_getBlockByNumber#full](/optimism-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
-[eth_newBlockFilter](/optimism-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks.  \
-[eth_getBlockReceipts](/optimism-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block.  \
-[eth_getBlockTransactionCountByHash](/optimism-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash.  \
+[eth_newBlockFilter](/optimism-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockReceipts](/optimism-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block. \
+[eth_getBlockTransactionCountByHash](/optimism-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash. \
 [eth_getBlockTransactionCountByNumber](/optimism-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Returns the number of transactions in a block by its number.
 
 These methods help monitor and analyze blockchain activity on Optimism.
