@@ -1,11 +1,16 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Subscriptions | dRPC"
+  description={`Allows subscribing to specific events.`}
+/>
 ## Subscriptions
 
 Allows subscribing to specific events.
 
-[eth_subscribe](/polygon-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events like new blocks or logs.  \
+[eth_subscribe](/polygon-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events like new blocks or logs. \
 [eth_unsubscribe](/polygon-api/subscriptions/eth_unsubscribe) : Unsubscribes from an active event subscription.
 
 These methods enable real-time event monitoring on the Polygon network.

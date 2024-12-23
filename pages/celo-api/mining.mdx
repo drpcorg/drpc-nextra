@@ -1,11 +1,16 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Mining | dRPC"
+  description={`Provides details on the mining state of the node`}
+/>
 ## Mining
 
 Provides details on the mining state of the node.
 
-[eth_coinbase](/celo-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards.  \
+[eth_coinbase](/celo-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards. \
 [eth_mining](/celo-api/mining/eth_mining) : Indicates whether the node is actively mining blocks. \
 
 These methods are useful for monitoring and managing mining activities on the Celo network.

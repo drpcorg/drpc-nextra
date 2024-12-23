@@ -1,20 +1,24 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Slot info | dRPC"
+  description={`Slots represent periods of time during which a leader is responsible for processing transactions. These methods provide data related to slot timing and leadership.`}
+/>
 ## Slot info
 
 Slots represent periods of time during which a leader is responsible for processing transactions. These methods provide data related to slot timing and leadership.
 
-[getMaxRetransmitSlot](/solana-api/slotinfo/getMaxRetransmitSlot) : Retrieves the maximum slot for retransmission.  \
+[getMaxRetransmitSlot](/solana-api/slotinfo/getMaxRetransmitSlot) : Retrieves the maximum slot for retransmission. \
 [getMaxShredInsertSlot](/solana-api/slotinfo/getMaxShredInsertSlot) : Provides the maximum slot for shred insertion. \
-[getSlot](/solana-api/slotinfo/getSlot) : Returns the current slot.  \
-[getSlotLeader](/solana-api/slotinfo/getSlotLeader) : Fetches the leader for the current slot.  \
-[getSlotLeaders](/solana-api/slotinfo/getSlotLeaders) : Lists leaders for upcoming slots.  \
+[getSlot](/solana-api/slotinfo/getSlot) : Returns the current slot. \
+[getSlotLeader](/solana-api/slotinfo/getSlotLeader) : Fetches the leader for the current slot. \
+[getSlotLeaders](/solana-api/slotinfo/getSlotLeaders) : Lists leaders for upcoming slots. \
 [minimumLedgerSlot](/solana-api/slotinfo/minimumLedgerSlot) : Retrieves the minimum ledger slot. \
 [getLeaderSchedule](/solana-api/slotinfo/getLeaderSchedule) : Provides the schedule of slot leaders.
 
 These methods help monitor and analyze slot-related data on the Solana network.
-
 
 <Space h={16} />
 <GetStarted />

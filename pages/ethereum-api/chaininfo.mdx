@@ -1,22 +1,24 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Chain info | dRPC"
+  description={`Supplies details about the Ethereum network, its protocol version, and its configuration`}
+/>
 ## Chain info
 
 Supplies details about the Ethereum network, its protocol version, and its configuration.
 
-[eth_chainId](/ethereum-api/chaininfo/eth_chainId) : Returns the chain ID of the network.  \
-[eth_protocolVersion](/ethereum-api/chaininfo/eth_protocolVersion) : Provides the protocol version in use by the client.  \
+[eth_chainId](/ethereum-api/chaininfo/eth_chainId) : Returns the chain ID of the network. \
+[eth_protocolVersion](/ethereum-api/chaininfo/eth_protocolVersion) : Provides the protocol version in use by the client. \
 [net_listening](/ethereum-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
-[net_version](/ethereum-api/chaininfo/net_version) : Retrieves the current network version.  \
-[net_peerCount](/ethereum-api/chaininfo/net_peerCount) : Returns the number of active peers connected to the node.  \
-[eth_syncing](/ethereum-api/chaininfo/eth_syncing) : Indicates if the node is currently synchronizing with the network.  \
+[net_version](/ethereum-api/chaininfo/net_version) : Retrieves the current network version. \
+[net_peerCount](/ethereum-api/chaininfo/net_peerCount) : Returns the number of active peers connected to the node. \
+[eth_syncing](/ethereum-api/chaininfo/eth_syncing) : Indicates if the node is currently synchronizing with the network. \
 [eth_hashrate](/ethereum-api/chaininfo/eth_hashrate) : Provides the node's current mining hashrate.
 
 These methods offer insights into the network's health, configuration, and performance on Ethereum.
 
 <Space h={16} />
 <GetStarted />
-
-
-

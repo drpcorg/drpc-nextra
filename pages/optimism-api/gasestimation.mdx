@@ -1,13 +1,18 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Gas estimation | dRPC"
+  description={`Estimates gas prices and consumption for transactions.`}
+/>
 ## Gas estimation
 
 Estimates gas prices and consumption for transactions.
 
-[eth_feeHistory](/optimism-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks.  \
-[eth_estimateGas](/optimism-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction.  \
-[eth_gasPrice](/optimism-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network.  \
+[eth_feeHistory](/optimism-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks. \
+[eth_estimateGas](/optimism-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction. \
+[eth_gasPrice](/optimism-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network. \
 [eth_createAccessList](/optimism-api/gasestimation/eth_createAccessList) : Generates an access list for transaction optimization. \
 [eth_maxPriorityFeePerGas](/optimism-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee for gas.
 

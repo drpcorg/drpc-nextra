@@ -1,11 +1,16 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Executing transactions | dRPC"
+  description={`Enables the sending of ETH, contract interaction, or writing data to the chain.`}
+/>
 ## Executing transactions
 
 Enables the sending of ETH, contract interaction, or writing data to the chain.
 
-[eth_call](/optimism-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state.  \
+[eth_call](/optimism-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state. \
 [eth_sendRawTransaction](/optimism-api/executingtransactions/eth_sendRawTransaction) : Broadcasts a raw, signed transaction to the blockchain for execution.
 
 These methods are essential for interacting with smart contracts and sending transactions on the Optimism network.

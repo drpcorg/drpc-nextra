@@ -1,14 +1,19 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Event logs | dRPC"
+  description={`Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes`}
+/>
 ## Event logs
 
 Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
 
-[eth_getLogs](/ethereum-api/eventlogs/eth_getLogs) : Retrieves logs based on specified filter criteria.  \
-[eth_newFilter](/ethereum-api/eventlogs/eth_newFilter) : Creates a new filter to monitor events.  \
-[eth_getFilterChanges](/ethereum-api/eventlogs/eth_getFilterChanges) : Retrieves changes for an active filter since its last check.  \
-[eth_uninstallFilter](/ethereum-api/eventlogs/eth_uninstallFilter) : Uninstalls an active filter.  \
+[eth_getLogs](/ethereum-api/eventlogs/eth_getLogs) : Retrieves logs based on specified filter criteria. \
+[eth_newFilter](/ethereum-api/eventlogs/eth_newFilter) : Creates a new filter to monitor events. \
+[eth_getFilterChanges](/ethereum-api/eventlogs/eth_getFilterChanges) : Retrieves changes for an active filter since its last check. \
+[eth_uninstallFilter](/ethereum-api/eventlogs/eth_uninstallFilter) : Uninstalls an active filter. \
 [eth_getFilterLogs](/ethereum-api/eventlogs/eth_getFilterLogs) : Fetches logs from a previously created filter.
 
 These methods are critical for monitoring smart contract activity on Ethereum.

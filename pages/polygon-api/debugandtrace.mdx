@@ -1,23 +1,28 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Debug and trace | dRPC"
+  description={`Available only on the paid tier. Provides advanced debugging and tracing tools to analyze and troubleshoot transactions and blocks on the Polygon network.`}
+/>
 ## Debug and trace
 
 Available only on the paid tier. Provides advanced debugging and tracing tools to analyze and troubleshoot transactions and blocks on the Polygon network.
 
-[trace_filter](/polygon-api/debugandtrace/trace_filter) : Filters trace data based on criteria.  \
-[trace_block](/polygon-api/debugandtrace/trace_block) : Traces the execution of all transactions in a block.  \
+[trace_filter](/polygon-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
+[trace_block](/polygon-api/debugandtrace/trace_block) : Traces the execution of all transactions in a block. \
 [trace_replayBlockTransactions](/polygon-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for debugging. \
 [trace_replayBlockTransactions#vmTrace](/polygon-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides VM-level trace during block replay. \
-[debug_traceBlockByHash](/polygon-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash.  \
-[debug_traceBlockByNumber](/polygon-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number.  \
-[trace_transaction](/polygon-api/debugandtrace/trace_transaction) : Traces a specific transaction.  \
-[debug_traceTransaction](/polygon-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction.  \
-[trace_replayTransaction](/polygon-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging.  \
-[trace_replayTransaction#vmTrace](/polygon-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay.  \
-[trace_callMany](/polygon-api/debugandtrace/trace_callMany) : Executes multiple trace calls.  \
-[trace_get](/polygon-api/debugandtrace/trace_get) : Retrieves trace data based on criteria.  \
-[trace_call](/polygon-api/debugandtrace/trace_call) : Executes a trace call.  \
+[debug_traceBlockByHash](/polygon-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash. \
+[debug_traceBlockByNumber](/polygon-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number. \
+[trace_transaction](/polygon-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/polygon-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction. \
+[trace_replayTransaction](/polygon-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging. \
+[trace_replayTransaction#vmTrace](/polygon-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay. \
+[trace_callMany](/polygon-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
+[trace_get](/polygon-api/debugandtrace/trace_get) : Retrieves trace data based on criteria. \
+[trace_call](/polygon-api/debugandtrace/trace_call) : Executes a trace call. \
 [debug_traceCall](/polygon-api/debugandtrace/debug_traceCall) : Traces a specific call without changing state.
 
 These methods provide detailed debugging and analysis capabilities on the Polygon network.
