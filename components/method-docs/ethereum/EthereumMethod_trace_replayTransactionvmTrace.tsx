@@ -450,7 +450,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash as input",
+  "Available only on paid tier",
   "High computational load for complex transactions",
   "Detailed traces can result in large data responses",
 ];

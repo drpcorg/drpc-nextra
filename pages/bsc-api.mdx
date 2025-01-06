@@ -1,0 +1,128 @@
+# BNB Smart Chain API overview
+
+These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+
+## Accounts info
+
+Retrieves information about account balances, contract code, and stored data on the blockchain.
+
+[eth_accounts](/bsc-api/accountinfo/eth_accounts) \
+[eth_getBalance](/bsc-api/accountinfo/eth_getBalance) \
+[eth_getCode](/bsc-api/accountinfo/eth_getCode) \
+[eth_getProof](/bsc-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/bsc-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Provides detailed data on blocks, including transactions, receipts, and block information.
+
+[eth_blockNumber](/bsc-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/bsc-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/bsc-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/bsc-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/bsc-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/bsc-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/bsc-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/bsc-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/bsc-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Supplies details on the network's configuration, protocol version, and overall health.
+
+[eth_chainId](/bsc-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/bsc-api/chaininfo/eth_protocolVersion) \
+[net_listening](/bsc-api/chaininfo/net_listening) \
+[net_version](/bsc-api/chaininfo/net_version) \
+[net_peerCount](/bsc-api/chaininfo/net_peerCount) \
+[eth_syncing](/bsc-api/chaininfo/eth_syncing) \
+[eth_hashrate](/bsc-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available only on the paid tier, these methods allow tracing transactions, inspecting block execution, and replaying transactions or blocks for detailed analysis.
+
+[trace_filter](/bsc-api/debugandtrace/trace_filter) \
+[trace_rawTransaction](/bsc-api/debugandtrace/trace_rawTransaction) \
+[trace_block](/bsc-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/bsc-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/bsc-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/bsc-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/bsc-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/bsc-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/bsc-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/bsc-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/bsc-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/bsc-api/debugandtrace/trace_callMany) \
+[trace_get](/bsc-api/debugandtrace/trace_get) \
+[trace_call](/bsc-api/debugandtrace/trace_call) \
+[debug_traceCall](/bsc-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Provides logs of events emitted by smart contracts, useful for tracking token transfers, state changes, and other activities.
+
+[eth_getLogs](/bsc-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/bsc-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/bsc-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/bsc-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/bsc-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Facilitates sending transactions, executing smart contracts, and performing other on-chain operations.
+
+[eth_call](/bsc-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/bsc-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Estimates transaction gas fees and provides current and historical gas price data.
+
+[eth_feeHistory](/bsc-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/bsc-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/bsc-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/bsc-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/bsc-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/bsc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/bsc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/bsc-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/bsc-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Provides details about the mining status and rewards of the node.
+
+[eth_coinbase](/bsc-api/mining/eth_coinbase) \
+[eth_mining](/bsc-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows subscribing to real-time blockchain events using WebSockets.
+
+[eth_subscribe](/bsc-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/bsc-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Retrieves data on individual transactions, including their status, receipt, and inclusion in a block.
+
+[eth_getTransactionByHash](/bsc-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/bsc-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/bsc-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/bsc-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/bsc-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Provides general network configuration data, such as client version and cryptographic functions.
+
+[web3_clientVersion](/bsc-api/web3/web3_clientVersion) \
+[web3_sha3](/bsc-api/web3/web3_sha3)

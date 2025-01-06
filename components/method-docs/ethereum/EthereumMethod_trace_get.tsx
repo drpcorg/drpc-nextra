@@ -339,7 +339,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and trace index",
+  "Available only on paid tier",
   "Node must support the trace_get method",
   "Trace data accuracy depends on node synchronization",
 ];

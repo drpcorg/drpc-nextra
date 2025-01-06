@@ -12,6 +12,9 @@ const METHOD_DOCS_URL_BASES = [
   "/bitcoin-api",
   "/base-api",
   "/celo-api",
+  "/bsc-api",
+  "/bartio-api",
+  "/fantom-api",
 ];
 
 const METHOD_DOCS_URL_CHAPTERS = [
@@ -48,6 +51,9 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "tokendata",
   "connectioninfo",
   "feeinfo",
+  "ethereumbscdifference",
+  "ethereumfantomdifference",
+  "ethereumbartiodifference",
 ];
 
 export function shouldMakeInvisibleHeading(value: string) {

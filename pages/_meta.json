@@ -9,6 +9,8 @@
   "referral": "DRPC Referral",
   "faucets": "Faucets",
   "subscriptions": "Subscriptions",
+  "archive-nodes": "Archive nodes",
+  "mev-protection": "MEV Protection",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
@@ -75,6 +77,30 @@
   },
   "base-api": {
     "title": "Base API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "celo-api": {
+    "title": "Celo API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "bsc-api": {
+    "title": "BNB Smart Chain API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "fantom-api": {
+    "title": "Fantom API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "bartio-api": {
+    "title": "Berachain bArtio API",
     "theme": {
       "breadcrumb": false
     }

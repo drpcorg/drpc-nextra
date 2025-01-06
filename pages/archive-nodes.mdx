@@ -1,0 +1,186 @@
+# Archive Nodes: Why They Matter
+
+Public blockchains operate as vast peer-to-peer networks of interconnected computers. Each device, referred to as a node, plays a role in storing blockchain data, processing transactions, and verifying the state of the network. \
+Not all nodes are created equal; they serve different purposes based on their design and capabilities. Among these, archive nodes stand out for their ability to store the complete historical data of a blockchain. Full nodes maintain only the most recent states, light nodes rely on full nodes for data requests, archive nodes provide comprehensive access to the entire history of the network.
+
+## Archive Nodes in Ethereum
+An Ethereum archive node is a type of full node that retains the entire history of the blockchain, including the genesis block—the very first block ever created. Full and light nodes serve distinct purposes, archive nodes offer an unmatched ability to retrieve historical data.
+
+ **Full Nodes** \
+Full nodes store the current blockchain state along with the most recent 128 blocks. They handle tasks like validating new blocks, executing smart contracts, and processing transactions. Full nodes aren’t designed for intensive archival queries. \
+**Light Nodes (Light Clients)** \
+Light clients store only block headers, which provide minimal blockchain information such as timestamps and hashes. They depend on full nodes for additional data and require minimal resources, making them ideal for users with limited hardware. \
+**Archive Nodes** \
+Archive nodes, in contrast, store all the data of full nodes alongside the complete historical states of the blockchain. They require significant hardware investment but are invaluable for retrieving historical snapshots, such as account balances at specific block heights.
+
+## dPRC Archive nodes
+
+This is a table illustrating the availability dRPC's archive nodes.
+
+| Network                                            | Archive nodes availability |
+|----------------------------------------------------|----------------------------|
+| Ethereum Mainnet                                   | available                  |
+| Ethereum Sepolia                                   | available                  |
+| Ethereum Holesky                                   | available                  |
+| BNB Smart Chain Mainnet                            | only on paid tier          |
+| BNB Smart Chain Testnet                            | available                  |
+| Polygon Mainnet                                    | available                  |
+| Polygon Amoy                                       | available                  |
+| Polygon zkEVM                                      | available                  |
+| Polygon zkEVM Cardona                              | available                  |
+| Arbitrum Mainnet                                   | available                  |
+| Arbitrum Sepolia                                   | available                  |
+| Optimism Mainnet                                   | available                  |
+| Optimism Sepolia                                   | available                  |
+| ZkSync Era Mainnet                                 | only on paid tier          |
+| ZkSync Era Sepolia                                 | available                  |
+| Solana Mainnet                                     | not available              |
+| Solana Devnet                                      | not available              |
+| Starknet Mainnet                                   | available                  |
+| Starknet Sepolia                                   | only on paid tier          |
+| Linea Mainnet                                      | available                  |
+| Linea Sepolia                                      | only on paid tier          |
+| Base Mainnet                                       | available                  |
+| Base Sepolia                                       | available                  |
+| Fantom Mainnet                                     | available                  |
+| Fantom Testnet                                     | not available              |
+| Avalanche Mainnet                                  | available                  |
+| Avalanche Fuji                                     | available                  |
+| Gnosis Mainnet                                     | only on paid tier          |
+| Gnosis Chaido                                      | available                  |
+| Scroll Mainnet                                     | available                  |
+| Scroll Sepolia                                     | only on paid tier          |
+| Mantle Mainnet                                     | available                  |
+| Mantle Sepolia                                     | available                  |
+| Arbitrum Nova Mainnet                              | available                  |
+| Aurora Mainnet                                     | available                  |
+| Aurora Sepolia                                     | available                  |
+| Aleph Zero Mainnet                                 | available                  |
+| Aleph Zero Sepolia                                 | available                  |
+| Apechain Mainnet                                   | available                  |
+| Apechain Curtis                                    | available                  |
+| Arbitrum Blueberry Testnet                         | available                  |
+| Axelar Mainnet                                     | not available              |
+| Axelar Testnet                                     | not available              |
+| Berachain Bartio                                   | available                  |
+| Bitcoin Mainnet                                    | only on paid tier          |
+| Bitcoin Testnet                                    | available                  |
+| Bittorrent Mainnet                                 | not available              |
+| Blast Mainnet                                      | available                  |
+| Blast Testnet                                      | only on paid tier          |
+| BOB Mainnet                                        | available                  |
+| BOB Sepolia                                        | available                  |
+| Boba BNB Mainnet                                   | available                  |
+| Boba Ethereum Mainnet                              | available                  |
+| Celo Mainnet                                       | only on paid tier          |
+| Celo Alfajores                                     | only on paid tier          |
+| Core Mainnet                                       | available                  |
+| Core Testnet                                       | available                  |
+| Cosmos Hub Mainnet                                 | not available              |
+| Cronos Mainnet                                     | available                  |
+| Cronos Testnet                                     | available                  |
+| Cronos zkEVM Mainnet                               | available                  |
+| Cronos zkEVM Testnet                               | available                  |
+| Dymension Mainnet                                  | available                  |
+| Ethereum Beacon Chain Mainnet                      | only on paid tier          |
+| Ethereum Beacon Chain Sepolia                      | only on paid tier          |
+| Ethereum Beacon Chain Holesky                      | not available              |
+| Everclear Mainnet                                  | available                  |
+| Everclear Sepolia                                  | available                  |
+| Evmos Mainnet                                      | available                  |
+| Evmos Testnet                                      | available                  |
+| Filecoin Mainnet                                   | available                  |
+| Filecoin Calibration Testnet                       | available                  |
+| Fraxtal Mainnet                                    | available                  |
+| Fraxtal Testnet                                    | available                  |
+| Fuse Mainnet                                       | not available              |
+| GameSwift Testnet                                  | available                  |
+| Goat Mainnet Alpha                                 | available                  |
+| Goat Testnet3                                      | available                  |
+| HAQQ Mainnet                                       | available                  |
+| HAQQ Testnet                                       | available                  |
+| Harmony Mainnet Shard 0                            | available                  |
+| Harmony Mainnet Shard 1                            | available                  |
+| Heco Mainnet                                       | not available              |
+| Immutable zkEVM Mainnet                            | available                  |
+| Immutable zkEVM Testnet                            | available                  |
+| Kava Mainnet                                       | available                  |
+| Kava Testnet                                       | available                  |
+| Kroma Mainnet                                      | available                  |
+| Kroma Sepolia                                      | available                  |
+| Kusama Mainnet                                     | available                  |
+| Lens Testnet                                       | available                  |
+| Lisk Mainnet                                       | available                  |
+| Lisk Testnet                                       | available                  |
+| Manta Pacific Mainnet                              | available                  |
+| Manta Pacific Sepolia                              | available                  |
+| Metal L2 Mainnet                                   | available                  |
+| Metal L2 Testnet                                   | available                  |
+| Metis Mainnet                                      | available                  |
+| Mode Mainnet                                       | available                  |
+| Mode Testnet                                       | available                  |
+| Moonbeam Mainnet                                   | available                  |
+| Moonbeam Moonbase Alpha                            | available                  |
+| Moonriver                                          | available                  |
+| Near Mainnet                                       | not available              |
+| Near Testnet                                       | not available              |
+| Neon EVM Mainnet                                   | available                  |
+| Neutron Mainnet                                    | not available              |
+| Neutron Testnet                                    | not available              |
+| OKT Chain Mainnet                                  | available                  |
+| OpBNB Mainnet                                      | only on paid tier          |
+| OpBNB Testnet                                      | not available              |
+| OP Celestia Raspberry                              | available                  |
+| Open Campus Codex Sepolia                          | available                  |
+| Osmosis Mainnet                                    | not available              |
+| Osmosis Testnet                                    | not available              |
+| Playnance Mainnet                                  | available                  |
+| Polkadot Mainnet                                   | available                  |
+| Re.al Mainnet                                      | available                  |
+| Ronin Mainnet                                      | available                  |
+| Ronin Saigon                                       | available                  |
+| Rootstock Mainnet                                  | available                  |
+| Rootstock Testnet                                  | available                  |
+| Sei Mainnet                                        | not available              |
+| Sei Devnet                                         | not available              |
+| Sei Testnet                                        | not available              |
+| Snaxchain Mainnet                                  | available                  |
+| Soneium Minato                                     | available                  |
+| Sonic Mainnet                                      | available                  |
+| Sonic Blaze Testnet                                | available                  |
+| Taiko Mainnet                                      | available                  |
+| Taiko Hekla                                        | available                  |
+| Telos Mainnet                                      | available                  |
+| Telos Testnet                                      | not available              |
+| Thunderscore Mainnet                               | not available              |
+| Thunderscore Testnet                               | available                  |
+| Ton                                                | available                  |
+| Tron Mainnet                                       | not available              |
+| Tron Shasta                                        | not available              |
+| Unichain Sepolia                                   | available                  |
+| Vara Network Testnet                               | available                  |
+| Viction Mainnet                                    | not available              |
+| Viction Testnet                                    | available                  |
+| Wemix Mainnet                                      | available                  |
+| Wemix Testnet                                      | available                  |
+| Worldchain Mainnet                                 | available                  |
+| Worldchain Sepolia                                 | only on paid tier          |
+| XLayer Mainnet                                     | available                  |
+| XLayer Testnet                                     | available                  |
+| Zero Network Mainnet                               | available                  |
+| ZetaChain Mainnet                                  | available                  |
+| ZetaChain Testnet                                  | available                  |
+| Zircuit Mainnet                                    | available                  |
+| Zircuit Testnet                                    | available                  |
+| Zora Mainnet                                       | available                  |
+| Zora Sepolia                                       | available                  |
+
+## How Archive Nodes Operate
+Archive nodes build a complete history of blockchain states by synchronizing every block from the genesis. During this process, they verify all blocks, re-execute every transaction, and store all intermediate states. This meticulous process explains their ability to serve historical data efficiently.
+
+### Synchronization Process
+Synchronizing an archive node involves downloading full block data—headers, transactions, and receipts—while validating and storing it. This “full sync” ensures that the node accurately represents the blockchain’s history.
+### Time Investment
+Syncing an archive node can take anywhere from one to three months, depending on the blockchain size and any technical challenges encountered. Archive nodes retain every bit of information, making the process significantly longer.
+### Storage Requirements for Archive Nodes
+The data storage needs of archive nodes are immense. For instance, Ethereum archive nodes managed by popular clients like Geth and OpenEthereum currently exceed 10 TB in size. By comparison, full nodes only store approximately 700 GB. This disparity is due to archive nodes maintaining all historical data, unlike full nodes that discard obsolete information.

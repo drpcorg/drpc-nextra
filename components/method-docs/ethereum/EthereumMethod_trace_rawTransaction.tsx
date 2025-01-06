@@ -444,7 +444,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Invalid or corrupted transaction data will result in errors",
+  "Available only on paid tier",
   "Not all nodes may have tracing capabilities enabled",
   "The types of traces must be specified correctly in the request",
 ];

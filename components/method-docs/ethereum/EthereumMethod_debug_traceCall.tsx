@@ -417,7 +417,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires a valid call object and block number/state",
+  "Available only on paid tier",
   "Node must support `debug_traceCall`",
   "High resource usage for large or complex calls",
 ];

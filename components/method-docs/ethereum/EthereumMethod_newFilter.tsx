@@ -307,7 +307,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid block range and contract address",
+  "Available only on paid tier",
   "Node must support filter creation functionality",
   "Accurate block and address input essential for results",
 ];

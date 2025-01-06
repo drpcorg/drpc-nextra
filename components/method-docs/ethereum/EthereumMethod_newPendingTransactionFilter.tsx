@@ -192,7 +192,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires continuous connection to the node",
+  "Available only on paid tier",
   "Node must support pending transaction filters",
   "Accurate pending transaction tracking depends on node performance",
 ];

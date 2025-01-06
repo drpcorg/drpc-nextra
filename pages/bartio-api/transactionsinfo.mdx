@@ -1,0 +1,19 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Transactions info
+
+Provides details on specific transactions, including their status, receipts, and block inclusion.
+
+[eth_getTransactionByHash](/bartio-api/transactionsinfo/eth_getTransactionByHash) : Retrieves detailed information about a transaction using its unique hash. \
+[eth_getTransactionCount](/bartio-api/transactionsinfo/eth_getTransactionCount) : Returns the total count of transactions initiated by a particular address. \
+[eth_getTransactionReceipt](/bartio-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a transaction that has been processed.  \
+[eth_newPendingTransactionFilter](/bartio-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor and track transactions that are pending confirmation. \
+[eth_getTransactionByBlockHashAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a specific transaction using the block hash and its index within that block. \
+[eth_getTransactionByBlockNumberAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Obtains a transaction by referencing the block number and its index in that block. \
+[txpool_content](/bartio-api/transactionsinfo/txpool_content) :  Displays the current state of the transaction pool, including pending and queued transactions.
+
+These endpoints are critical for retrieving, monitoring, and managing transaction data within the Berachain network.
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,52 @@
+# Understanding MEV
+
+MEV, or Maximum Extractable Value (formerly known as Miner Extractable Value), is a concept relevant to both Proof-of-Work and Proof-of-Stake blockchains, such as Bitcoin and Ethereum. Simply put, MEV measures the total potential value that can be extracted by manipulating transaction ordering in a blockchain network process that operates permissionlessly, meaning no special privileges are required.
+
+This ability allows miners or validators to earn additional profits beyond typical block rewards and transaction fees. The extra revenue is derived by reordering, inserting, or excluding specific transactions within a block. This creates arbitrage opportunities that can be exploited. But how do block producers identify such opportunities? In most cases, they don’t. Instead, third-party entities known as "searchers" use sophisticated algorithms to identify and capitalize on these opportunities.
+
+## Risks Associated with toxic MEV
+
+Increased Costs and Congestion: MEV tactics often lead to network congestion and higher transaction fees as searchers compete for block space. \
+Centralization and Censorship: MEV contributes to the centralization of power among a few entities, undermining blockchain decentralization. Some validators use middleware that enforces OFAC-sanctioned address lists, compromising Ethereum’s neutrality. \
+Loss of Privacy: MEV actors monitoring the mempool reduce user privacy, exposing transaction details and intentions.
+
+## MEV Protection
+
+dRPC provides MEV protection for **Ethereum, Base, BNB Smart Chain** and **Polygon**. MEV protection involves a combination of strategies designed to secure blockchain networks from exploitative practices. These strategies ensure fair transaction processing, privacy, and network efficiency.
+
+**Transparent and permissionless transaction execution**: By leveraging cryptographic tools and obfuscating transaction data, this method prevents malicious actors from exploiting pending transactions while maintaining high network efficiency. \
+**Transaction privacy and real-time monitoring**: By securing mempool data and detecting suspicious activity patterns, this approach reduces exposure to MEV attacks and ensures safer transaction sequencing. \
+**Latency optimization**: By minimizing the time it takes for transactions to propagate across the network, this solution decreases the opportunities for MEV bots to exploit pending transactions. \
+**Staking mechanisms**: These solutions redistribute staking rewards and improve validator operations, ensuring fairness and reducing incentives for engaging in MEV, while maintaining decentralization and network neutrality.
+
+
+## Types of MEV
+
+There are several types of MEV:
+
+### Frontrunning, Backrunning, and Sandwiching
+
+**Front-Running Attack** \
+A front-running attack occurs when an attacker prioritizes their transaction ahead of a target by offering a higher gas fee, ensuring miners process it first. This manipulation is used to profit or execute specific actions at the victim’s expense.
+
+**Back-Running Attack** \
+Backrunning happens when an attacker places their transaction immediately after the victim's, exploiting the outcome. This is achieved by setting a lower gas fee to ensure their transaction is processed after the target.
+
+**Sandwich Attack** \
+A sandwich attack combines frontrunning and backrunning. The attacker executes a trade before the victim’s transaction and another after it to manipulate prices and extract profits. Automated Market Makers (AMMs) like Uniswap are particularly vulnerable, as they calculate token prices based on liquidity pools, creating opportunities for MEV bots to exploit trades on decentralized exchanges (DEXs).
+### Liquidations
+
+Searchers target on-chain lending protocols with liquidation mechanisms. They frontrun transactions to capitalize on arbitrage opportunities created when liquidating under-collateralized loans.
+
+### Just-in-Time (JIT) Liquidity
+
+JIT liquidity involves providing liquidity to a DeFi protocol precisely when needed and withdrawing it immediately after the transaction. Searchers identify large trades that would impact liquidity pools, add liquidity just before the trade, and withdraw it afterward, profiting from fees or slippage.
+
+### Time Bandit Attacks
+
+This advanced MEV strategy involves rewriting blockchain history to exploit opportunities. Validators may destabilize consensus to revise blocks and capture previously missed MEV profits.
+
+
+
+
+

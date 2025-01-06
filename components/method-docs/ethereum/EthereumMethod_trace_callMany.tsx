@@ -535,7 +535,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Complex calls may increase execution time",
+  "Available only on paid tier",
   "May produce large amounts of trace data",
   "Requires accurate block reference for consistent results",
 ];

@@ -345,7 +345,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash as parameter",
+  "Available only on paid tier",
   "Node must support trace_replayTransaction method",
   "Detailed trace can result in large data output",
 ];

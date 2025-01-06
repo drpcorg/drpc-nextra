@@ -385,7 +385,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires access to the latest block data",
+  "Available only on paid tier",
   "Node must support the trace_block method",
   "AHigh computational cost for tracing recent blocks",
 ];

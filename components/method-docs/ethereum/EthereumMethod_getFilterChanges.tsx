@@ -328,7 +328,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid filter ID input",
+  "Available only on paid tier",
   "Node must support filter change queries",
   "Accurate filter ID essential for relevant updates",
 ];

@@ -343,7 +343,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid block number as input parameter",
+  "Available only on paid tier",
   "Node must support the debug_traceBlockByNumber method",
   "High computational cost for tracing complex blocks",
 ];
