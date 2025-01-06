@@ -1,13 +1,18 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Transactions info | dRPC"
+  description={`Provides methods to retrieve transaction details, counts, and receipts.`}
+/>
 ## Transactions info
 
 Provides methods to retrieve transaction details, counts, and receipts.
 
-[eth_getTransactionByHash](/mantle-api/transactionsinfo/eth_getTransactionByHash) : Retrieves details of a transaction by its hash.  \
+[eth_getTransactionByHash](/mantle-api/transactionsinfo/eth_getTransactionByHash) : Retrieves details of a transaction by its hash. \
 [eth_getTransactionCount](/mantle-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
-[eth_getTransactionReceipt](/mantle-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a processed transaction.  \
+[eth_getTransactionReceipt](/mantle-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a processed transaction. \
 [eth_getTransactionByBlockHashAndIndex](/mantle-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction from a block by hash and index. \
 [eth_getTransactionByBlockNumberAndIndex](/mantle-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index.
 

@@ -1,11 +1,16 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Subscriptions | dRPC"
+  description={`Allows you to subscribe to specific events in real-time via WebSockets.`}
+/>
 ## Subscriptions
 
 Allows you to subscribe to specific events in real-time via WebSockets.
 
-[eth_subscribe](/arbitrum-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs.  \
+[eth_subscribe](/arbitrum-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs. \
 [eth_unsubscribe](/arbitrum-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription. \
 
 These methods are crucial for applications requiring real-time event tracking on the Arbitrum network.

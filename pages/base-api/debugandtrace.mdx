@@ -1,13 +1,18 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Debug and trace | dRPC"
+  description="Available only on the paid tier. These methods are useful for analyzing execution flows and debugging."
+/>
 ## Debug and trace
 
 Available only on the paid tier. These methods are useful for analyzing execution flows and debugging.
 
 [debug_traceBlockByHash](/base-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of all transactions in a block by its hash. \
 [debug_traceBlockByNumber](/base-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of all transactions in a block by its number. \
-[debug_traceTransaction](/base-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a specific transaction.  \
+[debug_traceTransaction](/base-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a specific transaction. \
 [debug_traceCall](/base-api/debugandtrace/debug_traceCall) : Traces a specific call without altering the blockchain state.\
 
 These methods provide advanced debugging capabilities on the Base network.

@@ -1,12 +1,17 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Consensus info | dRPC"
+  description={`Ensures that validators agree on the state of the blockchain`}
+/>
 ## Consensus info
 
 Ensures that validators agree on the state of the blockchain.
 
-[consensus_params](/cosmos-api/consensusinfo/consensus_params) : Retrieves the parameters governing the consensus process.  \
-[consensus_state](/cosmos-api/consensusinfo/consensus_state) : Returns the current state of the consensus algorithm.  \
+[consensus_params](/cosmos-api/consensusinfo/consensus_params) : Retrieves the parameters governing the consensus process. \
+[consensus_state](/cosmos-api/consensusinfo/consensus_state) : Returns the current state of the consensus algorithm. \
 [dump_consensus_state](/cosmos-api/consensusinfo/dump_consensus_state) : Provides a detailed dump of the consensus state for debugging.
 
 These methods help monitor and maintain consensus among validators on the Cosmos network.

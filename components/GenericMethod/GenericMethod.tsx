@@ -107,11 +107,8 @@ export default function GenericMethod({
   return (
     <>
       <Head>
-        <title>{`${method} RPC Method | ${metaNetwork}`}</title>
-        <meta
-          name="description"
-          content={`Explore ${method} RPC Method use cases, constraints, and examples to get started.`}
-        ></meta>
+        <title>{`${method} - ${metaNetwork}`}</title>
+        <meta name="description" content={description}></meta>
       </Head>
 
       {/* Note: <main> already has pt 1rem, so we add 14px to match 30px from the design */}

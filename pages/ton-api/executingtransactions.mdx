@@ -1,12 +1,17 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Executing Transactions | dRPC"
+  description={`Enables sending data (e.g., serialized BOCs) and managing queries.`}
+/>
 ## Executing Transactions
 
 Enables sending data (e.g., serialized BOCs) and managing queries.
 
 [sendBoc](/ton-api/executingtransactions/sendBoc): Sends a serialized BOC (Bag of Cells) for processing. \
-[sendBocReturnHash](/ton-api/executingtransactions/sendBocReturnHash):  Submits a BOC and returns its hash for tracking. \
+[sendBocReturnHash](/ton-api/executingtransactions/sendBocReturnHash): Submits a BOC and returns its hash for tracking. \
 [sendQuery](/ton-api/executingtransactions/sendQuery): Executes a query transaction on the blockchain.
 
 These methods enable the submission and tracking of transactions, empowering users to interact with the blockchain and execute commands seamlessly.

@@ -1,15 +1,20 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Chain info | dRPC"
+  description={`Allows gathering detailed information about the current state and configuration of the blockchain`}
+/>
 ## Chain info
 
 Allows gathering detailed information about the current state and configuration of the blockchain.
 
-[abci_info](/cosmos-api/chaininfo/abci_info) : Provides information about the ABCI application state.  \
-[abci_query](/cosmos-api/chaininfo/abci_query) : Queries the application for state information.  \
-[genesis_chunked](/cosmos-api/chaininfo/genesis_chunked) : Retrieves the genesis file in chunks.  \
-[health](/cosmos-api/chaininfo/health) : Checks the health of the node.  \
-[lag_status](/cosmos-api/chaininfo/lag_status) : Displays the lag status of the node.  \
+[abci_info](/cosmos-api/chaininfo/abci_info) : Provides information about the ABCI application state. \
+[abci_query](/cosmos-api/chaininfo/abci_query) : Queries the application for state information. \
+[genesis_chunked](/cosmos-api/chaininfo/genesis_chunked) : Retrieves the genesis file in chunks. \
+[health](/cosmos-api/chaininfo/health) : Checks the health of the node. \
+[lag_status](/cosmos-api/chaininfo/lag_status) : Displays the lag status of the node. \
 [status](/cosmos-api/chaininfo/status) : Fetches the current status of the node.
 
 These methods are essential for monitoring and managing the Cosmos blockchain.

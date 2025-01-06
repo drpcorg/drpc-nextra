@@ -1,17 +1,22 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
+<Meta
+  title="Transactions info | dRPC"
+  description={`Allows interaction with and retrieval of data about specific transactions, including signatures and status.`}
+/>
 ## Transactions info
 
 Allows interaction with and retrieval of data about specific transactions, including signatures and status.
 
-[getTransactionCount](/solana-api/transactionsinfo/getTransactionCount) : Returns the number of transactions sent from a specific address.  \
-[getConfirmedTransaction](/solana-api/transactionsinfo/getConfirmedTransaction) : Retrieves details of a confirmed transaction.  \
-[getTransaction](/solana-api/transactionsinfo/getTransaction) : Fetches information about a transaction by its signature.  \
-[sendTransaction](/solana-api/transactionsinfo/sendTransaction) : Sends a transaction to the network.  \
-[simulateTransaction](/solana-api/transactionsinfo/simulateTransaction) : Simulates the execution of a transaction.  \
-[getSignaturesForAddress](/solana-api/transactionsinfo/getSignaturesForAddress) : Lists signatures for transactions associated with a specific address.  \
-[getSignatureStatuses](/solana-api/transactionsinfo/getSignatureStatuses) : Retrieves the statuses of transaction signatures.  \
+[getTransactionCount](/solana-api/transactionsinfo/getTransactionCount) : Returns the number of transactions sent from a specific address. \
+[getConfirmedTransaction](/solana-api/transactionsinfo/getConfirmedTransaction) : Retrieves details of a confirmed transaction. \
+[getTransaction](/solana-api/transactionsinfo/getTransaction) : Fetches information about a transaction by its signature. \
+[sendTransaction](/solana-api/transactionsinfo/sendTransaction) : Sends a transaction to the network. \
+[simulateTransaction](/solana-api/transactionsinfo/simulateTransaction) : Simulates the execution of a transaction. \
+[getSignaturesForAddress](/solana-api/transactionsinfo/getSignaturesForAddress) : Lists signatures for transactions associated with a specific address. \
+[getSignatureStatuses](/solana-api/transactionsinfo/getSignatureStatuses) : Retrieves the statuses of transaction signatures. \
 [getConfirmedSignaturesForAddress2](/solana-api/transactionsinfo/getConfirmedSignaturesForAddress2) : Provides confirmed signatures for a specific address.
 
 These methods facilitate comprehensive transaction management on the Solana network.
