@@ -87,24 +87,6 @@
       "breadcrumb": false
     }
   },
-  "bsc-api": {
-    "title": "BNB Smart Chain API",
-    "theme": {
-      "breadcrumb": false
-    }
-  },
-  "fantom-api": {
-    "title": "Fantom API",
-    "theme": {
-      "breadcrumb": false
-    }
-  },
-  "bartio-api": {
-    "title": "Berachain bArtio API",
-    "theme": {
-      "breadcrumb": false
-    }
-  },
   "drpc-account": {
     "title": "My Account",
     "type": "page",
