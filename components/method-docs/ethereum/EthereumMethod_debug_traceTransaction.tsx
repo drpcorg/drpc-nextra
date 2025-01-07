@@ -407,7 +407,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid transaction hash and tracer parameter",
+  "Available only on paid tier",
   "Node must support the debug_traceTransaction method",
   "High resource usage for tracing complex transactions",
 ];

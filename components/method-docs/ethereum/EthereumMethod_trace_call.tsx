@@ -532,7 +532,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid input data and addresses",
+  "Available only on paid tier",
   "Node must support trace_call method",
   "Large data output for complex transactions",
 ];

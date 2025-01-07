@@ -298,13 +298,12 @@ const RESPONSE_PARAMS: ReqResParam[] = [
 ];
 
 const USE_CASES = [
-  "Retrieve historical logs for a specific filter",
   "Analyze past events from a created filter",
   "Audit contract interactions using filter logs",
 ];
 
 const CONSTRAINTS = [
-  "Requires valid filter ID for log retrieval",
+  "Available only on paid tier",
   "Node must support historical log queries",
   "Accurate filter ID essential for correct log data",
 ];

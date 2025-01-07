@@ -222,7 +222,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires active connection to the node",
+  "Available only on paid tier",
   "Node must support block filter creation",
   "Accurate response depends on node synchronization",
 ];

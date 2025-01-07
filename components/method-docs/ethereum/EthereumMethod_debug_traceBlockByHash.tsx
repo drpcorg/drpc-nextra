@@ -548,7 +548,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Limited to nodes with debugging capabilities enabled",
+  "Available only on paid tier",
   "Traces may include large data sets for complex blocks",
   "Potential delays due to high processing requirements",
 ];

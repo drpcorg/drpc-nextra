@@ -368,7 +368,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires accurate raw transaction encoding",
+  "Available only on paid tier",
   "Limited to nodes with tracing enabled",
   "High resource usage for detailed trace analysis",
 ];

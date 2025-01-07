@@ -9,6 +9,8 @@
   "referral": "DRPC Referral",
   "faucets": "Faucets",
   "subscriptions": "Subscriptions",
+  "archive-nodes": "Archive nodes",
+  "mev-protection": "MEV Protection",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
@@ -75,6 +77,12 @@
   },
   "base-api": {
     "title": "Base API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
+  "celo-api": {
+    "title": "Celo API",
     "theme": {
       "breadcrumb": false
     }

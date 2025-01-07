@@ -384,7 +384,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "Requires valid block range and address parameters",
+  "Available only on paid tier",
   "Node must support the trace_filter method",
   "Accurate results depend on node's data completeness",
 ];

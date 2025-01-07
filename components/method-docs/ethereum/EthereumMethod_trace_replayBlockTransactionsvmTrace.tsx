@@ -459,7 +459,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "High computational resources for detailed VM tracing",
+  "Available only on paid tier",
   "Requires access to a fully synchronized node",
   "Large response size for blocks with many transactions",
 ];
