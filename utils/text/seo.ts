@@ -12,6 +12,9 @@ const METHOD_DOCS_URL_BASES_MAP = {
   "/bitcoin-api": "Bitcoin",
   "/base-api": "Base",
   "/celo-api": "Celo",
+  "/bsc-api": "BNB Smart Chain",
+  "/bartio-api": "Berachain bArtio",
+  "/fantom-api": "Fantom",
 };
 
 const METHOD_DOCS_URL_BASES_MAP_KEYS = Object.keys(METHOD_DOCS_URL_BASES_MAP);
@@ -50,6 +53,9 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "tokendata",
   "connectioninfo",
   "feeinfo",
+  "ethereumfantomdifference",
+  "ethereumbscdifference",
+  "ethereumbartiodifference",
 ];
 
 type RouteCheckResult = {
