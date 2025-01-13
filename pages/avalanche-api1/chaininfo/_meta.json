@@ -1,0 +1,7 @@
+{
+  "eth_chainId": "eth_chainId",
+  "net_listening": "net_listening",
+  "net_version": "net_version",
+  "net_peerCount": "net_peerCount",
+  "eth_syncing": "eth_syncing"
+}

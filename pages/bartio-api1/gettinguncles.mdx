@@ -1,0 +1,16 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Getting uncles
+
+Fetches information about "uncle" blocks, which are valid blocks not included in the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Retrieves the specifics of an uncle block using the parent block’s hash and the uncle’s position. \
+[eth_getUncleByBlockNumberAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Obtains details of an uncle block based on the parent block’s number and the uncle’s index. \
+[eth_getUncleCountByBlockHash](/bartio-api/gettinguncles/eth_getUncleCountByBlockHash) : Provides the total count of uncle blocks linked to a particular block hash. \
+[eth_getUncleCountByBlockNumber](/bartio-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncle blocks associated with a block identified by its number.
+
+These endpoints are vital for examining uncle blocks within the Berachain network.
+
+<Space h={16} />
+<GetStarted />

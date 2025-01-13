@@ -1,0 +1,5 @@
+{
+  "eth_getBalance": "eth_getBalance",
+  "eth_getCode": "eth_getCode",
+  "eth_getStorageAt": "eth_getStorageAt"
+}

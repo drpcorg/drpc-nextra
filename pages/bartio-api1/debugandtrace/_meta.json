@@ -1,0 +1,17 @@
+{
+  "trace_filter": "trace_filter",
+  "trace_rawTransaction": "trace_rawTransaction",
+  "debug_traceBlockByNumber": "debug_traceBlockByNumber",
+  "trace_block": "trace_block",
+  "trace_replayBlockTransactions": "trace_replayBlockTransactions",
+  "trace_replayBlockTransactionsvmTrace": "trace_replayBlockTransactions#vmTrace",
+  "debug_traceBlockByHash": "debug_traceBlockByHash",
+  "trace_transaction": "trace_transaction",
+  "debug_traceTransaction": "debug_traceTransaction",
+  "trace_replayTransaction": "trace_replayTransaction",
+  "trace_replayTransactionvmTrace": "trace_replayTransaction#vmTrace",
+  "trace_callMany": "trace_callMany",
+  "trace_get": "trace_get",
+  "trace_call": "trace_call",
+  "debug_traceCall": "debug_traceCall"
+}

@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Blocks info
+
+Provides comprehensive information about specific blocks, including their transactions, receipts, and overall block data. These functions offer valuable insights into block details, the number of transactions, and the outcomes of their execution.
+
+[eth_blockNumber](/fantom-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number on the chain. \
+[eth_getBlockByHash](/fantom-api/blocksinfo/eth_getBlockByHash) : Obtains the details of a block using its unique hash identifier. \
+[eth_getBlockByHash#full](/fantom-api/blocksinfo/eth_getBlockByHashfull) : Retrieves comprehensive information of a block based on its hash. \
+[eth_getBlockByNumber](/fantom-api/blocksinfo/eth_getBlockByNumber) : Accesses block information using its numerical position within the blockchain. \
+[eth_getBlockByNumber#full](/fantom-api/blocksinfo/eth_getBlockByNumberfull) :  Fetches full details of a block identified by its block number. \
+[eth_newBlockFilter](/fantom-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Sets up a filter to listen for newly added blocks on the network. \
+[eth_getBlockReceipts](/fantom-api/blocksinfo/eth_getBlockReceipts) :  Retrieves the transaction receipts associated with a specific block. \
+[eth_getBlockTransactionCountByHash](/fantom-api/blocksinfo/eth_getBlockTransactionCountByHash) : Returns the total number of transactions within a block identified by its hash. \
+[eth_getBlockTransactionCountByNumber](/fantom-api/blocksinfo/eth_getBlockTransactionCountByNumber) :  Provides the count of transactions in a block based on its block number.
+
+These endpoints are essential for monitoring and analyzing activities on the Berachain network’s blockchain.
+
+
+<Space h={16} />
+<GetStarted />

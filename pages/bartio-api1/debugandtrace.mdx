@@ -1,0 +1,27 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Debug and trace
+
+Provides information about the Berachain network, including its protocol version, configuration, and current status.
+
+[trace_filter](/bartio-api/debugandtrace/trace_filter) : Applies a filter to retrieve trace information based on specified criteria.  \
+[trace_rawTransaction](/bartio-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction to assist in debugging processes. \
+[trace_block](/bartio-api/debugandtrace/trace_block) : Observes the execution flow of a particular block. \
+[trace_replayBlockTransactions](/bartio-api/debugandtrace/trace_replayBlockTransactions) : Re-executes all transactions within a block for detailed scrutiny.  \
+[trace_replayBlockTransactions#vmTrace](/bartio-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides a virtual machine-level trace during the replay of block transactions. \
+[debug_traceBlockByHash](/bartio-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of a block identified by its hash. \
+[debug_traceBlockByNumber](/bartio-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of a block based on its numerical position in the blockchain. \
+[trace_transaction](/bartio-api/debugandtrace/trace_transaction) : Maps out the execution pathway of a specific transaction. \
+[debug_traceTransaction](/bartio-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a particular transaction.  \
+[trace_replayTransaction](/bartio-api/debugandtrace/trace_replayTransaction) : Re-executes a transaction to support detailed analysis.  \
+[trace_replayTransaction#vmTrace](/bartio-api/debugandtrace/trace_replayTransactionvmTrace) : Offers a virtual machine-level trace during the replay of a transaction. \
+[trace_callMany](/bartio-api/debugandtrace/trace_callMany) : Executes multiple trace operations concurrently. \
+[trace_get](/bartio-api/debugandtrace/trace_get) : Fetches existing trace records based on specified identifiers.  \
+[trace_call](/bartio-api/debugandtrace/trace_call) : Performs a single trace operation for a designated action.  \
+[debug_traceCall](/bartio-api/debugandtrace/debug_traceCall) : Monitors a specific call without altering the blockchain state.
+
+These endpoints are crucial for overseeing the health, configuration, and performance of the Berachain network.
+
+<Space h={16} />
+<GetStarted />
