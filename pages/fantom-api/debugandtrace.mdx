@@ -1,0 +1,27 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Debug and trace
+
+Available exclusively on the paid tier, these endpoints facilitate transaction tracing, block execution examination, and the replaying of transactions or blocks for comprehensive analysis.
+
+[trace_filter](/fantom-api/debugandtrace/trace_filter) : Filters trace information based on defined criteria.  \
+[trace_rawTransaction](/fantom-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction to assist in debugging. \
+[trace_block](/fantom-api/debugandtrace/trace_block) : Monitors the execution flow of a specific block. \
+[trace_replayBlockTransactions](/fantom-api/debugandtrace/trace_replayBlockTransactions) : Replays all transactions within a block for detailed analysis.  \
+[trace_replayBlockTransactions#vmTrace](/fantom-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides a virtual machine-level trace during the replay of block transactions. \
+[debug_traceBlockByHash](/fantom-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of a block identified by its hash. \
+[debug_traceBlockByNumber](/fantom-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of a block based on its numerical position in the blockchain. \
+[trace_transaction](/fantom-api/debugandtrace/trace_transaction) : Traces the execution path of a specific transaction. \
+[debug_traceTransaction](/fantom-api/debugandtrace/debug_traceTransaction) : Provides in-depth trace details for a particular transaction.  \
+[trace_replayTransaction](/fantom-api/debugandtrace/trace_replayTransaction) : Replays a transaction to facilitate analysis.  \
+[trace_replayTransaction#vmTrace](/fantom-api/debugandtrace/trace_replayTransactionvmTrace) : Offers a virtual machine-level trace during the replay of a transaction. \
+[trace_callMany](/fantom-api/debugandtrace/trace_callMany) : Executes multiple trace calls simultaneously. \
+[trace_get](/fantom-api/debugandtrace/trace_get) : Retrieves existing trace data based on provided identifiers.  \
+[trace_call](/fantom-api/debugandtrace/trace_call) : Executes a single trace call for a specified operation.  \
+[debug_traceCall](/fantom-api/debugandtrace/debug_traceCall) : Traces a specific call without making any state changes to the blockchain.
+
+These endpoints provide sophisticated debugging capabilities, enabling detailed analysis of execution flows and effective troubleshooting of issues on the Fantom network.
+
+<Space h={16} />
+<GetStarted />

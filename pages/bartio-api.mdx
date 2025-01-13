@@ -1,0 +1,128 @@
+# Berachain Network API Overview
+
+These endpoints enable the retrieval of information about blocks, transactions, balances, logs, and more, supporting seamless blockchain development and integration.
+
+## Accounts info
+
+Accesses details about account balances, contract code, and stored data on the blockchain.
+
+[eth_accounts](/bartio-api/accountinfo/eth_accounts) \
+[eth_getBalance](/bartio-api/accountinfo/eth_getBalance) \
+[eth_getCode](/bartio-api/accountinfo/eth_getCode) \
+[eth_getProof](/bartio-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/bartio-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Provides comprehensive data on blocks, including transactions, receipts, and block specifics.
+
+[eth_blockNumber](/bartio-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/bartio-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/bartio-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/bartio-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/bartio-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/bartio-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/bartio-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/bartio-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/bartio-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Supplies details on the network's configuration, protocol version, and overall status.
+
+[eth_chainId](/bartio-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/bartio-api/chaininfo/eth_protocolVersion) \
+[net_listening](/bartio-api/chaininfo/net_listening) \
+[net_version](/bartio-api/chaininfo/net_version) \
+[net_peerCount](/bartio-api/chaininfo/net_peerCount) \
+[eth_syncing](/bartio-api/chaininfo/eth_syncing) \
+[eth_hashrate](/bartio-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available exclusively on the premium tier, these methods allow for transaction tracing, inspecting block execution, and replaying transactions or blocks for in-depth analysis.
+
+[trace_filter](/bartio-api/debugandtrace/trace_filter) \
+[trace_rawTransaction](/bartio-api/debugandtrace/trace_rawTransaction) \
+[trace_block](/bartio-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/bartio-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/bartio-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/bartio-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/bartio-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/bartio-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/bartio-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/bartio-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/bartio-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/bartio-api/debugandtrace/trace_callMany) \
+[trace_get](/bartio-api/debugandtrace/trace_get) \
+[trace_call](/bartio-api/debugandtrace/trace_call) \
+[debug_traceCall](/bartio-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Captures logs of events emitted by smart contracts, useful for monitoring token transfers, state changes, and other activities.
+
+[eth_getLogs](/bartio-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/bartio-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/bartio-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/bartio-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/bartio-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Enables sending transactions, executing smart contracts, and performing other on-chain operations.
+
+[eth_call](/bartio-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/bartio-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Calculates transaction gas fees and provides both historical and current gas price data.
+
+[eth_feeHistory](/bartio-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/bartio-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/bartio-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/bartio-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/bartio-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/bartio-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/bartio-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Provides details about the node's mining status and rewards.
+
+[eth_coinbase](/bartio-api/mining/eth_coinbase) \
+[eth_mining](/bartio-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows subscribing to real-time blockchain events using WebSockets.
+
+[eth_subscribe](/bartio-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/bartio-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Fetches data on individual transactions, including their status, receipt, and inclusion in a block.
+
+[eth_getTransactionByHash](/bartio-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/bartio-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/bartio-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/bartio-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/bartio-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Provides general network configuration data, such as client version and cryptographic functions.
+
+[web3_clientVersion](/bartio-api/web3/web3_clientVersion) \
+[web3_sha3](/bartio-api/web3/web3_sha3)

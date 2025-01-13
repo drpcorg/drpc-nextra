@@ -1,0 +1,128 @@
+# BNB Smart Chain API overview
+
+Fantom provides a robust set of API endpoints for retrieving information about blocks, transactions, balances, logs, and more, enabling seamless blockchain development and integration.
+
+## Accounts info
+
+Retrieve details about account balances, contract code, and stored data on the Fantom blockchain.
+
+[eth_accounts](/fantom-api/accountinfo/eth_accounts) \
+[eth_getBalance](/fantom-api/accountinfo/eth_getBalance) \
+[eth_getCode](/fantom-api/accountinfo/eth_getCode) \
+[eth_getProof](/fantom-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/fantom-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Access detailed information about blocks, including transactions, receipts, and metadata.
+
+[eth_blockNumber](/fantom-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/fantom-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/fantom-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/fantom-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/fantom-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/fantom-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/fantom-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/fantom-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/fantom-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Retrieve details about the network's configuration, protocol version, and synchronization status.
+
+[eth_chainId](/fantom-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/fantom-api/chaininfo/eth_protocolVersion) \
+[net_listening](/fantom-api/chaininfo/net_listening) \
+[net_version](/fantom-api/chaininfo/net_version) \
+[net_peerCount](/fantom-api/chaininfo/net_peerCount) \
+[eth_syncing](/fantom-api/chaininfo/eth_syncing) \
+[eth_hashrate](/fantom-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available on paid tiers, these methods allow advanced debugging, transaction tracing, and block execution analysis.
+
+[trace_filter](/fantom-api/debugandtrace/trace_filter) \
+[trace_rawTransaction](/fantom-api/debugandtrace/trace_rawTransaction) \
+[trace_block](/fantom-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/fantom-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/fantom-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/fantom-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/fantom-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/fantom-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/fantom-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/fantom-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/fantom-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/fantom-api/debugandtrace/trace_callMany) \
+[trace_get](/fantom-api/debugandtrace/trace_get) \
+[trace_call](/fantom-api/debugandtrace/trace_call) \
+[debug_traceCall](/fantom-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Retrieve logs emitted by smart contracts for tracking token transfers, state changes, and other events.
+
+[eth_getLogs](/fantom-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/fantom-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/fantom-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/fantom-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/fantom-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Enable transaction submission, smart contract execution, and other on-chain interactions.
+
+[eth_call](/fantom-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/fantom-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Estimate gas fees for transactions and retrieve historical gas price data.
+
+[eth_feeHistory](/fantom-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/fantom-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/fantom-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/fantom-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/fantom-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieve details about "uncle" blocks that are valid but excluded from the main chain.
+
+[eth_getUncleByBlockHashAndIndex](/fantom-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/fantom-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/fantom-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/fantom-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Retrieve data about node mining status and rewards.
+
+[eth_coinbase](/fantom-api/mining/eth_coinbase) \
+[eth_mining](/fantom-api/mining/eth_mining)
+
+## Subscriptions
+
+Subscribe to real-time blockchain events via WebSocket connections.
+
+[eth_subscribe](/fantom-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/fantom-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Fetch data on individual transactions, including status, receipts, and block inclusion details.
+
+[eth_getTransactionByHash](/fantom-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/fantom-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/fantom-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/fantom-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/fantom-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/fantom-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/fantom-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Access general network configuration data, including client version and cryptographic utilities.
+
+[web3_clientVersion](/fantom-api/web3/web3_clientVersion) \
+[web3_sha3](/fantom-api/web3/web3_sha3)
