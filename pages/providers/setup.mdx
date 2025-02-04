@@ -302,6 +302,14 @@ location / {
 }
 ```
 
+Example of a `ingress-nginx` configuration:
+
+```yaml
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/backend-protocol: GRPC
+```
+
 ## Creating dRPC account
 
 Providers can use dRPC for free, as long as they use it to query their own infrastructure. The benefits include:
