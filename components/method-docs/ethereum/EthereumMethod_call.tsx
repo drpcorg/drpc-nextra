@@ -33,24 +33,26 @@ export function EthereumMethod_call(props: GenericMethodPropsReplacing) {
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   {
     language: "shell",
-    code: () => `curl --request POST \\
-     --url ${DRPC_ENDPOINT_URL} \\
-     --header 'accept: application/json' \\
-     --header 'content-type: application/json' \\
-     --data '
+    code: () => `curl ${DRPC_ENDPOINT_URL} \\
+--request POST \\
+--header "Content-Type: application/json" \\
+--data '
 {
   "id": 1,
   "jsonrpc": "2.0",
   "method": "eth_call",
   "params": [
-    "0x61A80",
+    "0x10F558C",
     {
-      "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-      "gas": "0x0",
-      "gasPrice": "0x9184e72a000",
-      "value": "0x0",
-      "data": "0x"
-    }
+      "from": "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+      "to": "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+      "gas": "0x13880",
+      "gasPrice": "0x4B3ECF6D4",
+      "data": "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600"
+    },
+    {"0x4B275BDea1cA622256ebb8B15B51861b52703d16":{
+      "balance": "0x277BFC44534B0000"
+    }}
   ]
 }
 '`,
@@ -64,28 +66,30 @@ const data = {
   jsonrpc: "2.0",
   method: "eth_call",
   params: [
-    "0x61A80",
+    "0x10F558C",
     {
-      to: "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-      gas: "0x0",
-      gasPrice: "0x9184e72a000",
-      value: "0x0",
-      data: "0x"
+      from: "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+      to: "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+      gas: "0x13880",
+      gasPrice: "0x4B3ECF6D4",
+      data: "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600"
+    },
+    {
+      "0x4B275BDea1cA622256ebb8B15B51861b52703d16": {
+        balance: "0x277BFC44534B0000"
+      }
     }
   ]
 };
 
 fetch(url, {
-  method: 'POST',
-  headers: {
-    'accept': 'application/json',
-    'content-type': 'application/json'
-  },
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
 })
   .then(response => response.json())
-  .then(res => console.log(res))
-  .catch(error => console.error('Error:', error));
+  .then(console.log)
+  .catch(console.error);
 `,
   },
   {
@@ -99,28 +103,30 @@ const data = {
   jsonrpc: "2.0",
   method: "eth_call",
   params: [
-    "0x61A80",
+    "0x10F558C",
     {
-      to: "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-      gas: "0x0",
-      gasPrice: "0x9184e72a000",
-      value: "0x0",
-      data: "0x"
+      from: "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+      to: "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+      gas: "0x13880",
+      gasPrice: "0x4B3ECF6D4",
+      data: "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600"
+    },
+    {
+      "0x4B275BDea1cA622256ebb8B15B51861b52703d16": {
+        balance: "0x277BFC44534B0000"
+      }
     }
   ]
 };
 
 fetch(url, {
-  method: 'POST',
-  headers: {
-    'accept': 'application/json',
-    'content-type': 'application/json'
-  },
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify(data)
 })
   .then(response => response.json())
-  .then(res => console.log(res))
-  .catch(error => console.error('Error:', error));
+  .then(console.log)
+  .catch(console.error);
 `,
   },
   {
@@ -137,21 +143,26 @@ import (
 func main() {
 	url := "${DRPC_ENDPOINT_URL}"
 
-	data := map[string]interface{}{
-		"id":      1,
-		"jsonrpc": "2.0",
-		"method":  "eth_call",
-		"params": []interface{}{
-			"0x61A80",
-			map[string]interface{}{
-				"to":       "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-				"gas":      "0x0",
-				"gasPrice": "0x9184e72a000",
-				"value":    "0x0",
-				"data":     "0x",
-			},
-		},
-	}
+      data := map[string]interface{}{
+  "id":      1,
+  "jsonrpc": "2.0",
+  "method":  "eth_call",
+  "params": []interface{}{
+  "0x10F558C",
+    map[string]string{
+      "from":     "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+      "to":       "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+      "gas":      "0x13880",
+      "gasPrice": "0x4B3ECF6D4",
+      "data":     "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600",
+    },
+    map[string]interface{}{
+      "0x4B275BDea1cA622256ebb8B15B51861b52703d16": map[string]string{
+          "balance": "0x277BFC44534B0000",
+      },
+    },
+  },
+  }
 
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -180,18 +191,23 @@ import json
 
 url = '${DRPC_ENDPOINT_URL}'
 
-data = {
+ddata = {
     "id": 1,
     "jsonrpc": "2.0",
     "method": "eth_call",
     "params": [
-        "0x61A80",
+        "0x10F558C",
         {
-            "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-            "gas": "0x0",
-            "gasPrice": "0x9184e72a000",
-            "value": "0x0",
-            "data": "0x"
+            "from": "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+            "to": "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+            "gas": "0x13880",
+            "gasPrice": "0x4B3ECF6D4",
+            "data": "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600"
+        },
+        {
+            "0x4B275BDea1cA622256ebb8B15B51861b52703d16": {
+                "balance": "0x277BFC44534B0000"
+            }
         }
     ]
 }
@@ -211,22 +227,27 @@ use serde_json::json;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let url = "${DRPC_ENDPOINT_URL}";
 
-    let data = json!({
+    et payload = json!({
         "id": 1,
         "jsonrpc": "2.0",
         "method": "eth_call",
         "params": [
-            "0x61A80",
+            "0x10F558C",
             {
-                "to": "0xd46e8dd67c5d32be8058bb8eb970870f07244567",
-                "gas": "0x0",
-                "gasPrice": "0x9184e72a000",
-                "value": "0x0",
-                "data": "0x"
+                "from": "0x4B275BDea1cA622256ebb8B15B51861b52703d16",
+                "to": "0xa62894D5196bC44e4C3978400Ad07E7b30352372",
+                "gas": "0x13880",
+                "gasPrice": "0x4B3ECF6D4",
+                "data": "0xa9059cbb0000000000000000000000007422172afc6ea4da9c011e87b7cb002d55b754430000000000000000000000000000000000000000000000000c7d713b0e3f3600"
+            },
+            {
+                "0x4B275BDea1cA622256ebb8B15B51861b52703d16": {
+                    "balance": "0x277BFC44534B0000"
+                }
             }
         ]
     });
-
+    
     let client = Client::new();
     let res = client.post(url)
         .json(&data)
@@ -251,12 +272,34 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
+    paramName: "blockNumber",
+    type: "string",
+    paramDescription: "(optional) Block number as an integer, or string",
+    paramEnum: [
+      {
+        value: "latest",
+        isDefault: true,
+        description: "The most recent block in the blockchain (default).",
+      },
+      {
+        value: "earliest",
+        description: "The first block, also known as the genesis block.",
+      },
+      {
+        value: "pending",
+        description:
+          "Transactions that have been broadcast but not yet included in a block.",
+      },
+    ],
+  },
+  {
     paramName: "transaction",
     type: "object",
     paramDescription:
       "The transaction call object which contains the following fields.",
     childrenParamsType: "object",
     childrenParams: [
+
       {
         paramName: "from",
         type: "string",
@@ -290,23 +333,37 @@ const REQUEST_PARAMS: RequestParamProp = [
     ],
   },
   {
-    paramName: "blockNumber",
-    type: "string",
-    paramDescription: "(optional) Block number as an integer, or string",
-    paramEnum: [
+    paramName: "State Override",
+    type: "object",
+    paramDescription:
+      "Tenables temporary modifications to a contract’s state for a specific call without altering the actual contract. Each address maps to an object containing:",
+    childrenParamsType: "object",
+    childrenParams: [
+
       {
-        value: "latest",
-        isDefault: true,
-        description: "The most recent block in the blockchain (default).",
+        paramName: "balance",
+        type: "string",
+        paramDescription: "Specifies a temporary balance for the account before executing the call.",
       },
       {
-        value: "earliest",
-        description: "The first block, also known as the genesis block.",
+        paramName: "nonce",
+        type: "string",
+        paramDescription: "Sets a temporary nonce for the account before executing the call.",
       },
       {
-        value: "pending",
-        description:
-          "Transactions that have been broadcast but not yet included in a block.",
+        paramName: "code",
+        type: "string",
+        paramDescription: "(Injects temporary EVM bytecode into the account before executing the call.",
+      },
+      {
+        paramName: "state",
+        type: "object",
+        paramDescription: "Replaces all storage slots of the account with specified key-value pairs before executing the call.",
+      },
+      {
+        paramName: "stateDiff",
+        type: "integer",
+        paramDescription: "Modifies specific storage slots in the account while keeping the rest unchanged before executing the call.",
       },
     ],
   },

@@ -100,7 +100,7 @@
     }
   },
   "bartio-api": {
-    "title": "Berachain bArtio API",
+    "title": "Berachain API",
     "theme": {
       "breadcrumb": false
     }

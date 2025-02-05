@@ -9,6 +9,5 @@
   "getConfirmedBlocks": "getConfirmedBlocks",
   "getConfirmedBlock": "getConfirmedBlock",
   "isBlockhashValid": "isBlockhashValid",
-  "getRecentBlockhash": "getRecentBlockhash",
   "getLatestBlockhash": "getLatestBlockhash"
 }
