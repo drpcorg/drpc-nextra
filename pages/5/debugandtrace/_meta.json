@@ -1,0 +1,16 @@
+{
+  "arbtrace_filter": "arbtrace_filter",
+  "debug_traceBlockByNumber": "debug_traceBlockByNumber",
+  "arbtrace_block": "arbtrace_block",
+  "arbtrace_replayBlockTransactions": "arbtrace_replayBlockTransactions",
+  "arbtrace_replayBlockTransactionsvmTrace": "arbtrace_replayBlockTransactionsvmTrace#vmTrace",
+  "debug_traceBlockByHash": "debug_traceBlockByHash",
+  "arbtrace_transaction": "arbtrace_transaction",
+  "debug_traceTransaction": "debug_traceTransaction",
+  "debug_traceCall": "debug_traceCall",
+  "arbtrace_replayTransaction": "arbtrace_replayTransaction",
+  "arbtrace_replayTransactionvmTrace": "arbtrace_replayTransaction#vmTrace",
+  "arbtrace_callMany": "arbtrace_callMany",
+  "arbtrace_get": "arbtrace_get",
+  "arbtrace_call": "arbtrace_call"
+}
