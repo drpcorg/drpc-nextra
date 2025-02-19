@@ -106,78 +106,77 @@ If you call a method that is not a part of this table, the default cost is 100 C
 
 ## Solana
 
-| Method                                             | Cost  |
-|----------------------------------------------------|-------|
-| accountSubscribe                                   | 10    |
-| accountUnsubscribe                                 | 0     |
-| blockSubscribe                                     | 10    |
-| blockUnsubscribe                                   | 0     |
-| Notifications from the events you've subscribed to | 25    |
-| getAccountInfo                                     | 10    |
-| getBalance                                         | 12    |
-| getBlock                                           | 66    |
-| getBlockCommitment                                 | 5     |
-| getBlockHeight                                     | 11    |
-| getBlockProduction                                 | 13    |
-| getBlockTime                                       | 9     |
-| getBlocks                                          | 12    |
-| getBlocksWithLimit                                 | 5     |
-| getClusterNodes                                    | 23    |
-| getConfirmedBlock                                  | 151   |
-| getConfirmedBlocks                                 | 10    |
-| getConfirmedSignaturesForAddress2                  | 35    |
-| getConfirmedTransaction                            | 38    |
-| getEpochInfo                                       | 9     |
-| getEpochSchedule                                   | 10    |
-| getFirstAvailableBlock                             | 33    |
-| getFeeCalculatorForBlockhash                       | 11    |
-| getFeeForMessage                                   | 10    |
-| getFees                                            | 10    |
-| getGenesisHash                                     | 13    |
-| getHealth                                          | 0     |
-| getHighestSnapshotSlot                             | 9     |
-| getInflationGovernor                               | 10    |
-| getInflationRate                                   | 8     |
-| getInflationReward                                 | 341   |
-| getIdentity                                        | 5     |
-| getLatestBlockhash                                 | 7     |
-| getLeaderSchedule                                  | 5     |
-| getLargestAccounts                                 | 3000  |
-| getMaxRetransmitSlot                               | 8     |
-| getMaxShredInsertSlot                              | 10    |
-| getMultipleAccounts                                | 11    |
-| getMinimumBalanceForRentExemption                  | 12    |
-| getRecentBlockhash                                 | 12    |
-| getRecentPerformanceSamples                        | 8     |
-| getRecentPrioritizationFees                        | 20    |
-| getSignaturesForAddress                            | 28    |
-| getSignatureStatuses                               | 11    |
-| getSlot                                            | 7     |
-| getSlotLeader                                      | 11    |
-| getSlotLeaders                                     | 16    |
-| getStakeActivation                                 | 10    |
-| getSupply                                          | 822   |
-| getTokenAccountBalance                             | 9     |
-| getTokenAccountsByDelegate                         | 10    |
-| getTokenAccountsByOwner                            | 12    |
-| getTokenLargestAccounts                            | 10    |
-| getTokenSupply                                     | 14    |
-| getTransaction                                     | 59    |
-| getTransactionCount                                | 16    |
-| getVoteAccounts                                    | 5     |
-| getVersion                                         | 10    |
-| isBlockhashValid                                   | 10    |
-| logsSubscribe                                      | 10    |
-| logsUnsubscribe                                    | 0     |
-| programSubscribe                                   | 10    |
-| programUnsubscribe                                 | 0     |
-| requestAirdrop                                     | 5     |
-| sendTransaction                                    | 10    |
-| simulateTransaction                                | 11    |
-| signatureSubscribe                                 | 10    |
-| signatureUnsubscribe                               | 0     |
-| slotSubscribe                                      | 10    |
-| slotUnsubscribe                                    | 0     |
+| Method                                             | Cost         |
+|----------------------------------------------------|--------------|
+| accountSubscribe                                   | ~~25~~ 10    |
+| accountUnsubscribe                                 | 0            |
+| blockSubscribe                                     | ~~25~~ 10    |
+| blockUnsubscribe                                   | 0            |
+| Notifications from the events you've subscribed to | ~~65~~ 25    |
+| getAccountInfo                                     | 10           |
+| getBalance                                         | 12           |
+| getBlock                                           | 66           |
+| getBlockCommitment                                 | 5            |
+| getBlockHeight                                     | 11           |
+| getBlockProduction                                 | 13           |
+| getBlockTime                                       | 9            |
+| getBlocks                                          | 12           |
+| getBlocksWithLimit                                 | 5            |
+| getClusterNodes                                    | 23           |
+| getConfirmedBlock                                  | 151          |
+| getConfirmedBlocks                                 | 10           |
+| getConfirmedSignaturesForAddress2                  | 35           |
+| getConfirmedTransaction                            | 38           |
+| getEpochInfo                                       | 9            |
+| getEpochSchedule                                   | 10           |
+| getFirstAvailableBlock                             | 33           |
+| getFeeCalculatorForBlockhash                       | 11           |
+| getFeeForMessage                                   | 10           |
+| getFees                                            | 10           |
+| getGenesisHash                                     | 13           |
+| getHealth                                          | 0            |
+| getHighestSnapshotSlot                             | 9            |
+| getInflationGovernor                               | 10           |
+| getInflationRate                                   | 8            |
+| getInflationReward                                 | 341          |
+| getIdentity                                        | 5            |
+| getLatestBlockhash                                 | 7            |
+| getLeaderSchedule                                  | 5            |
+| getLargestAccounts                                 | 3000         |
+| getMaxRetransmitSlot                               | 8            |
+| getMultipleAccounts                                | 11           |
+| getMinimumBalanceForRentExemption                  | 12           |
+| getRecentBlockhash                                 | 12           |
+| getRecentPerformanceSamples                        | 8            |
+| getRecentPrioritizationFees                        | 20           |
+| getSignaturesForAddress                            | 28           |
+| getSignatureStatuses                               | 11           |
+| getSlot                                            | 7            |
+| getSlotLeader                                      | 11           |
+| getSlotLeaders                                     | 16           |
+| getStakeActivation                                 | 10           |
+| getSupply                                          | 822          |
+| getTokenAccountBalance                             | 9            |
+| getTokenAccountsByDelegate                         | 10           |
+| getTokenAccountsByOwner                            | 12           |
+| getTokenLargestAccounts                            | 10           |
+| getTokenSupply                                     | 14           |
+| getTransaction                                     | 59           |
+| getTransactionCount                                | 16           |
+| getVoteAccounts                                    | 5            |
+| getVersion                                         | 10           |
+| isBlockhashValid                                   | 10           |
+| logsSubscribe                                      | ~~25~~ 10    |
+| logsUnsubscribe                                    | 0            |
+| programSubscribe                                   | ~~25~~ 10    |
+| programUnsubscribe                                 | 0            |
+| requestAirdrop                                     | 5            |
+| sendTransaction                                    | 10           |
+| simulateTransaction                                | 11           |
+| signatureSubscribe                                 | ~~25~~ 10    |
+| signatureUnsubscribe                               | 0            |
+| slotSubscribe                                      | ~~25~~ 10    |
+| slotUnsubscribe                                    | 0            |
 
 
 ## Starknet
