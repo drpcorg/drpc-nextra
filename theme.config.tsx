@@ -10,6 +10,8 @@ import {
   isDocsMethodPage,
 } from "./utils/text/seo";
 
+const DocsBaseURL = "https://drpc.org/docs";
+
 const config: DocsThemeConfig = {
   logo: <Logo />,
   project: {
@@ -35,8 +37,9 @@ const config: DocsThemeConfig = {
     h2: H2,
   },
   useNextSeoProps() {
-    const { asPath } = useRouter();
-    const extra = asPath === "/" ? { canonical: "https://drpc.org/docs" } : {};
+    const router = useRouter();
+    const { asPath } = router;
+    const extra = { canonical: `${DocsBaseURL}${asPath}` };
     const defaultSeoProps = {
       titleTemplate: "Documentation for dRPC | Docs for dRPC Platform",
       description:

@@ -1,0 +1,13 @@
+name: "Run PR checks"
+
+on:
+  workflow_dispatch: null
+  pull_request: null
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: yarn --immutable
+      - run: yarn build
