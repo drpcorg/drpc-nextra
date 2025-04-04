@@ -1,0 +1,17 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+## Gas estimation
+
+Calculates gas fees for transactions and offers both historical and up-to-date gas price insights.
+
+[eth_feeHistory](/berachain-api/gasestimation/eth_feeHistory) : Accesses past gas fee information over a defined block range. \
+[eth_estimateGas](/berachain-api/gasestimation/eth_estimateGas) : Projects the gas amount necessary to carry out a specific transaction. \
+[eth_gasPrice](/berachain-api/gasestimation/eth_gasPrice) :  Retrieves the prevailing gas price on the Berachain network. \
+[eth_createAccessList](/berachain-api/gasestimation/eth_createAccessList) : Constructs an access list to enhance efficiency and minimize gas usage. \
+[eth_maxPriorityFeePerGas](/berachain-api/gasestimation/eth_maxPriorityFeePerGas) : Obtains the highest priority fee per gas unit that can be offered.
+
+These endpoints are crucial for optimizing and controlling transaction expenses on the Berachain network.
+
+<Space h={16} />
+<GetStarted />

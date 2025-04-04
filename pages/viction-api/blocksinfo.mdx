@@ -1,0 +1,23 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+
+## Blocks info
+
+Retrieves detailed information from a specified Viction block, including transactions, receipts, and block metadata. These methods enable in-depth analysis of block details, transaction volume, and execution results.
+
+[eth_blockNumber](/viction-api/blocksinfo/eth_blockNumber): Returns the latest block number. \
+[eth_getBlockByHash](/viction-api/blocksinfo/eth_getBlockByHash): Fetches block details using its hash. \
+[eth_getBlockByHash#full](/viction-api/blocksinfo/eth_getBlockByHashfull): Retrieves a complete block, including all transactions. \
+[eth_getBlockByNumber](/viction-api/blocksinfo/eth_getBlockByNumber): Obtains block details by number. \
+[eth_getBlockByNumber#full](/viction-api/blocksinfo/eth_getBlockByNumberfull): Fetches a full block with transaction data. \
+[eth_newBlockFilter](/viction-api/blocksinfo/eth_newBlockFilter): Creates a filter to monitor new blocks. \
+[eth_getBlockReceipts](/viction-api/blocksinfo/eth_getBlockReceipts): Retrieves transaction receipts for a block. \
+[eth_getBlockTransactionCountByHash](/viction-api/blocksinfo/eth_getBlockTransactionCountByHash): Returns the number of transactions in a block by hash. \
+[eth_getBlockTransactionCountByNumber](/viction-api/blocksinfo/eth_getBlockTransactionCountByNumber): Gets the transaction count in a block by number.
+
+These methods are essential for monitoring and analyzing blockchain activity on Viction.
+
+<Space h={16} />
+<GetStarted />

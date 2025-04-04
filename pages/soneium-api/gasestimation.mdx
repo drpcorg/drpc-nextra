@@ -1,0 +1,17 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+
+## Gas estimation
+
+Provides tools for estimating transaction costs, retrieving historical gas fees, and optimizing gas usage.
+
+[eth_feeHistory](/soneium-api/gasestimation/eth_feeHistory): Returns past base fees and priority fees for gas estimation. \
+[eth_estimateGas](/soneium-api/gasestimation/eth_estimateGas): Calculates the expected gas required for a transaction. \
+[eth_gasPrice](/soneium-api/gasestimation/eth_gasPrice): Retrieves the latest gas price set by the network. \
+[eth_createAccessList](/soneium-api/gasestimation/eth_createAccessList): Generates an access list to improve gas efficiency. \
+[eth_maxPriorityFeePerGas](/soneium-api/gasestimation/eth_maxPriorityFeePerGas): Returns the maximum priority fee per gas unit suggested by the network.
+
+<Space h={16} />
+<GetStarted />

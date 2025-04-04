@@ -1,4 +1,117 @@
-# BNB Smart Chain API overview
+# BNB Smart Chain API Overview
+
+Welcome to the BNB Smart Chain API Quickstart and Reference Guide. This guide provides everything you need to start building on BNB Smart Chain using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate BNB Smart Chain seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first BNB Smart Chain API request.
+- A detailed list of **all BNB Smart Chain API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#BNBSmartChainAPIMethods)
+
+## BNB Smart Chain API Quickstart
+
+To get started with building on BNB Smart Chain using dRPC's BNB Smart Chain RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public BNB Smart Chain RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium BNB Smart Chain RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://bsc.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://eth.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir BNB Smart Chain-drpc-quickstart
+cd BNB Smart Chain-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the BNB Smart Chain RPC endpoints section. Copy the HTTPS endpoint URL for the BNB Smart Chain Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=bsc&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=bsc&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest BNB Smart Chain block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains, and MEV protection. For more details, visit their [BNB Smart Chain API documentation](https://docs.bnbchain.org/bnb-smart-chain/).
+
+By following these steps, you can start building on BNB Smart Chain using dRPC's reliable and efficient RPC endpoints.
+
+<a id="BNBSmartChainAPIMethods"></a>
+
+## BNB Smart Chain API Methods
+
+
 
 These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
 
@@ -6,74 +119,74 @@ These endpoints allow to retrieve information about blocks, transactions, balanc
 
 Retrieves information about account balances, contract code, and stored data on the blockchain.
 
-[eth_accounts](/bsc-api/accountinfo/eth_accounts) \
-[eth_getBalance](/bsc-api/accountinfo/eth_getBalance) \
-[eth_getCode](/bsc-api/accountinfo/eth_getCode) \
-[eth_getProof](/bsc-api/accountinfo/eth_getProof) \
-[eth_getStorageAt](/bsc-api/accountinfo/eth_getStorageAt)
+[eth_accounts](/bsc-api/accountinfo/eth_accounts) :  Lists accounts controlled by the client. \
+[eth_getBalance](/bsc-api/accountinfo/eth_getBalance) : Returns the account balance in Wei.  \
+[eth_getCode](/bsc-api/accountinfo/eth_getCode) : Fetches contract code at a given address. \
+[eth_getProof](/bsc-api/accountinfo/eth_getProof) : Provides a Merkle proof of account or storage. \
+[eth_getStorageAt](/bsc-api/accountinfo/eth_getStorageAt) : Retrieves the value from a specific storage slot of an account.
 
 ## Blocks info
 
 Provides detailed data on blocks, including transactions, receipts, and block information.
 
-[eth_blockNumber](/bsc-api/blocksinfo/eth_blockNumber) \
-[eth_getBlockByHash](/bsc-api/blocksinfo/eth_getBlockByHash) \
-[eth_getBlockByHash#full](/bsc-api/blocksinfo/eth_getBlockByHashfull) \
-[eth_getBlockByNumber](/bsc-api/blocksinfo/eth_getBlockByNumber) \
-[eth_getBlockByNumber#full](/bsc-api/blocksinfo/eth_getBlockByNumberfull) \
-[eth_newBlockFilter](/bsc-api/blocksinfo/eth_newBlockFilter) \
-[eth_getBlockReceipts](/bsc-api/blocksinfo/eth_getBlockReceipts) \
-[eth_getBlockTransactionCountByHash](/bsc-api/blocksinfo/eth_getBlockTransactionCountByHash) \
-[eth_getBlockTransactionCountByNumber](/bsc-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+[eth_blockNumber](/bsc-api/blocksinfo/eth_blockNumber) : Gets the most recent block number. \
+[eth_getBlockByHash](/bsc-api/blocksinfo/eth_getBlockByHash) : Retrieves block details using its hash. \
+[eth_getBlockByHash#full](/bsc-api/blocksinfo/eth_getBlockByHashfull) : Returns complete block details using its hash. \
+[eth_getBlockByNumber](/bsc-api/blocksinfo/eth_getBlockByNumber) : Retrieves block details using its number. \
+[eth_getBlockByNumber#full](/bsc-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details using its number. \
+[eth_newBlockFilter](/bsc-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Sets a filter to monitor new blocks. \
+[eth_getBlockReceipts](/bsc-api/blocksinfo/eth_getBlockReceipts) : Gets transaction receipts for a specific block. \
+[eth_getBlockTransactionCountByHash](/bsc-api/blocksinfo/eth_getBlockTransactionCountByHash) : Returns the number of transactions in a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/bsc-api/blocksinfo/eth_getBlockTransactionCountByNumber) :  Retrieves the number of transactions in a block by its number.
 
 ## Chain info
 
 Supplies details on the network's configuration, protocol version, and overall health.
 
-[eth_chainId](/bsc-api/chaininfo/eth_chainId) \
-[eth_protocolVersion](/bsc-api/chaininfo/eth_protocolVersion) \
-[net_listening](/bsc-api/chaininfo/net_listening) \
-[net_version](/bsc-api/chaininfo/net_version) \
-[net_peerCount](/bsc-api/chaininfo/net_peerCount) \
-[eth_syncing](/bsc-api/chaininfo/eth_syncing) \
-[eth_hashrate](/bsc-api/chaininfo/eth_hashrate)
+[eth_chainId](/bsc-api/chaininfo/eth_chainId) : Returns the chain ID of the network.  \
+[eth_protocolVersion](/bsc-api/chaininfo/eth_protocolVersion) : Provides the protocol version in use by the client.  \
+[net_listening](/bsc-api/chaininfo/net_listening) : Checks if the client is listening for network connections. \
+[net_version](/bsc-api/chaininfo/net_version) : Retrieves the current network version.  \
+[net_peerCount](/bsc-api/chaininfo/net_peerCount) : Returns the number of active peers connected to the node.  \
+[eth_syncing](/bsc-api/chaininfo/eth_syncing) : Indicates whether the node is synchronizing with the network.  \
+[eth_hashrate](/bsc-api/chaininfo/eth_hashrate) : Provides the node's current mining hashrate.
 
 ## Debug and trace
 
 Available only on the paid tier, these methods allow tracing transactions, inspecting block execution, and replaying transactions or blocks for detailed analysis.
 
-[trace_filter](/bsc-api/debugandtrace/trace_filter) \
-[trace_rawTransaction](/bsc-api/debugandtrace/trace_rawTransaction) \
-[trace_block](/bsc-api/debugandtrace/trace_block) \
-[trace_replayBlockTransactions](/bsc-api/debugandtrace/trace_replayBlockTransactions) \
-[trace_replayBlockTransactions#vmTrace](/bsc-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
-[debug_traceBlockByHash](/bsc-api/debugandtrace/debug_traceBlockByHash) \
-[debug_traceBlockByNumber](/bsc-api/debugandtrace/debug_traceBlockByNumber) \
-[trace_transaction](/bsc-api/debugandtrace/trace_transaction) \
-[debug_traceTransaction](/bsc-api/debugandtrace/debug_traceTransaction) \
-[trace_replayTransaction](/bsc-api/debugandtrace/trace_replayTransaction) \
-[trace_replayTransaction#vmTrace](/bsc-api/debugandtrace/trace_replayTransactionvmTrace) \
-[trace_callMany](/bsc-api/debugandtrace/trace_callMany) \
-[trace_get](/bsc-api/debugandtrace/trace_get) \
-[trace_call](/bsc-api/debugandtrace/trace_call) \
-[debug_traceCall](/bsc-api/debugandtrace/debug_traceCall)
+[trace_filter](/bsc-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria.  \
+[trace_rawTransaction](/bsc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging purposes. \
+[trace_block](/bsc-api/debugandtrace/trace_block) : Traces the execution of a block.  \
+[trace_replayBlockTransactions](/bsc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for analysis.  \
+[trace_replayBlockTransactions#vmTrace](/bsc-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides a VM-level trace during block replay. \
+[debug_traceBlockByHash](/bsc-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash.  \
+[debug_traceBlockByNumber](/bsc-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number.  \
+[trace_transaction](/bsc-api/debugandtrace/trace_transaction) : Traces a specific transaction.  \
+[debug_traceTransaction](/bsc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction.  \
+[trace_replayTransaction](/bsc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for analysis.  \
+[trace_replayTransaction#vmTrace](/bsc-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay.  \
+[trace_callMany](/bsc-api/debugandtrace/trace_callMany) : Executes multiple trace calls.  \
+[trace_get](/bsc-api/debugandtrace/trace_get) : Retrieves trace data.  \
+[trace_call](/bsc-api/debugandtrace/trace_call) : Executes a trace call.  \
+[debug_traceCall](/bsc-api/debugandtrace/debug_traceCall) : Traces a specific call without altering state.
 
 ## Event logs
 
 Provides logs of events emitted by smart contracts, useful for tracking token transfers, state changes, and other activities.
 
-[eth_getLogs](/bsc-api/eventlogs/eth_getLogs) \
-[eth_newFilter](/bsc-api/eventlogs/eth_newFilter) \
-[eth_getFilterChanges](/bsc-api/eventlogs/eth_getFilterChanges) \
-[eth_uninstallFilter](/bsc-api/eventlogs/eth_uninstallFilter) \
-[eth_getFilterLogs](/bsc-api/eventlogs/eth_getFilterLogs)
+[eth_getLogs](/bsc-api/eventlogs/eth_getLogs) : Fetches logs based on specific filter criteria.  \
+[eth_newFilter](/bsc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track events.  \
+[eth_getFilterChanges](/bsc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves updates for an active filter since the last query. \
+[eth_uninstallFilter](/bsc-api/eventlogs/eth_uninstallFilter) : Removes an active filter.  \
+[eth_getFilterLogs](/bsc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Retrieves logs from an existing filter.
 
 ## Executing transactions
 
 Facilitates sending transactions, executing smart contracts, and performing other on-chain operations.
 
-[eth_call](/bsc-api/executingtransactions/eth_call) \
-[eth_sendRawTransaction](/bsc-api/executingtransactions/eth_sendRawTransaction)
+[eth_call](/bsc-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without altering state. \
+[eth_sendRawTransaction](/bsc-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the blockchain for execution.
 
 ## Gas estimation
 
@@ -89,40 +202,41 @@ Estimates transaction gas fees and provides current and historical gas price dat
 
 Retrieves information about "uncle" blocks, which are valid but not included in the main blockchain.
 
-[eth_getUncleByBlockHashAndIndex](/bsc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
-[eth_getUncleByBlockNumberAndIndex](/bsc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
-[eth_getUncleCountByBlockHash](/bsc-api/gettinguncles/eth_getUncleCountByBlockHash) \
-[eth_getUncleCountByBlockNumber](/bsc-api/gettinguncles/eth_getUncleCountByBlockNumber)
+[eth_feeHistory](/bsc-api/gasestimation/eth_feeHistory) : Retrieves historical gas fee data over a range of blocks. \
+[eth_estimateGas](/bsc-api/gasestimation/eth_estimateGas) : Estimates the gas required for executing a transaction.  \
+[eth_gasPrice](/bsc-api/gasestimation/eth_gasPrice) :  Returns the current gas price on the network. \
+[eth_createAccessList](/bsc-api/gasestimation/eth_createAccessList) : Generates an access list to optimize gas costs. \
+[eth_maxPriorityFeePerGas](/bsc-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee per gas unit.
 
 ## Mining
 
 Provides details about the mining status and rewards of the node.
 
-[eth_coinbase](/bsc-api/mining/eth_coinbase) \
-[eth_mining](/bsc-api/mining/eth_mining)
+[eth_coinbase](/bsc-api/mining/eth_coinbase) : Returns the address of the miner receiving mining rewards. \
+[eth_mining](/bsc-api/mining/eth_mining) : Indicates whether the node is actively mining blocks.
 
 ## Subscriptions
 
 Allows subscribing to real-time blockchain events using WebSockets.
 
-[eth_subscribe](/bsc-api/subscriptions/eth_subscribe) \
-[eth_unsubscribe](/bsc-api/subscriptions/eth_unsubscribe)
+[eth_subscribe](/bsc-api/subscriptions/eth_subscribe) : Subscribes to blockchain events like new blocks, pending transactions, or logs. \
+[eth_unsubscribe](/bsc-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription.
 
 ## Transactions info
 
 Retrieves data on individual transactions, including their status, receipt, and inclusion in a block.
 
-[eth_getTransactionByHash](/bsc-api/transactionsinfo/eth_getTransactionByHash) \
-[eth_getTransactionCount](/bsc-api/transactionsinfo/eth_getTransactionCount) \
-[eth_getTransactionReceipt](/bsc-api/transactionsinfo/eth_getTransactionReceipt) \
-[eth_newPendingTransactionFilter](/bsc-api/transactionsinfo/eth_newPendingTransactionFilter) \
-[eth_getTransactionByBlockHashAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
-[eth_getTransactionByBlockNumberAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
-[txpool_content](/bsc-api/transactionsinfo/txpool_content)
+[eth_getTransactionByHash](/bsc-api/transactionsinfo/eth_getTransactionByHash) : Retrieves transaction details using the transaction hash.  \
+[eth_getTransactionCount](/bsc-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from a specific address. \
+[eth_getTransactionReceipt](/bsc-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a completed transaction.  \
+[eth_newPendingTransactionFilter](/bsc-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to track pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Fetches a transaction by its block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/bsc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by its block number and index. \
+[txpool_content](/bsc-api/transactionsinfo/txpool_content) : Displays the contents of the transaction pool.
 
 ## Web3
 
 Provides general network configuration data, such as client version and cryptographic functions.
 
-[web3_clientVersion](/bsc-api/web3/web3_clientVersion) \
-[web3_sha3](/bsc-api/web3/web3_sha3)
+[web3_clientVersion](/bsc-api/web3/web3_clientVersion) : Returns the version of the node client in use. \
+[web3_sha3](/bsc-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided data.

@@ -1,4 +1,115 @@
-# Avalanche API overview
+# Avalanche API Overview
+
+Welcome to the Avalanche API Quickstart and Reference Guide. This guide provides everything you need to start building on Avalanche using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Avalanche seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Avalanche API request.
+- A detailed list of **all Avalanche API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#AvalancheAPIMethods)
+
+## Avalanche API Quickstart
+
+To get started with building on Avalanche using dRPC's Avalanche RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Avalanche RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Avalanche RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://avalanche.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://avalanche.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Avalanche-drpc-quickstart
+cd Avalanche-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Avalanche RPC endpoints section. Copy the HTTPS endpoint URL for the Avalanche Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=avalanche&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=avalanche&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Avalanche block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains. For more details, visit their [Avalanche API documentation](https://build.avax.network/docs/quick-start).
+
+By following these steps, you can start building on Avalanche using dRPC's reliable and efficient RPC endpoints.
+
+<a id="AvalancheAPIMethods"></a>
+
+## Avalanche API Methods
 
 Avalanche is a decentralized blockchain platform designed to deliver high throughput, low latency, and customizable subnets, making it ideal for building decentralized applications (dApps) and financial solutions with scalability and security.
 
@@ -6,58 +117,58 @@ Avalanche is a decentralized blockchain platform designed to deliver high throug
 
 Retrieves essential on-chain data related to accounts
 
-[eth_getBalance](/avalanche-api/accountinfo/eth_getBalance) \
-[eth_getCode](/avalanche-api/accountinfo/eth_getCode) \
-[eth_getStorageAt](/avalanche-api/accountinfo/eth_getStorageAt)
+[eth_getBalance](/avalanche-api/accountinfo/eth_getBalance) : Retrieves the balance of an account. \
+[eth_getCode](/avalanche-api/accountinfo/eth_getCode) : Fetches the smart contract code stored at a given address. \
+[eth_getStorageAt](/avalanche-api/accountinfo/eth_getStorageAt) : Retrieves the data stored at a specific storage slot of an account.
 
 ## Blocks info
 
 Provides methods for retrieving detailed information about specific blocks
 
-[eth_blockNumber](/avalanche-api/blocksinfo/eth_blockNumber) \
-[eth_getBlockByHash](/avalanche-api/blocksinfo/eth_getBlockByHash) \
-[eth_getBlockByHash#full](/avalanche-api/blocksinfo/eth_getBlockByHashfull) \
-[eth_getBlockByNumber](/avalanche-api/blocksinfo/eth_getBlockByNumber) \
-[eth_getBlockByNumber#full](/avalanche-api/blocksinfo/eth_getBlockByNumberfull) \
-[eth_newBlockFilter](/avalanche-api/blocksinfo/eth_newBlockFilter) \
-[eth_getBlockTransactionCountByHash](/avalanche-api/blocksinfo/eth_getBlockTransactionCountByHash) \
-[eth_getBlockTransactionCountByNumber](/avalanche-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+[eth_blockNumber](/avalanche-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
+[eth_getBlockByHash](/avalanche-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByHash#full](/avalanche-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash. \
+[eth_getBlockByNumber](/avalanche-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by block number. \
+[eth_getBlockByNumber#full](/avalanche-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
+[eth_newBlockFilter](/avalanche-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockTransactionCountByHash](/avalanche-api/blocksinfo/eth_getBlockTransactionCountByHash) : Returns the transaction count for a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/avalanche-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Retrieves the transaction count for a block by its number.
 
 ## Chain info
 
 Provides essential data about the state and performance of the Avalanche network
 
-[eth_chainId](/avalanche-api/chaininfo/eth_chainId) \
-[net_listening](/avalanche-api/chaininfo/net_listening) \
-[net_version](/avalanche-api/chaininfo/net_version) \
-[net_peerCount](/avalanche-api/chaininfo/net_peerCount) \
-[eth_syncing](/avalanche-api/chaininfo/eth_syncing)
+[eth_chainId](/avalanche-api/chaininfo/eth_chainId) : Returns the chain ID of the network. \
+[net_listening](/avalanche-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
+[net_version](/avalanche-api/chaininfo/net_version) : Returns the current network version. \
+[net_peerCount](/avalanche-api/chaininfo/net_peerCount) : Retrieves the number of active peers connected to the node. \
+[eth_syncing](/avalanche-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node.
 
 ## Debug and trace
 
 Available only on paid tier. These methods are useful for analyzing execution flows and debugging
 
-[debug_traceBlockByHash](/avalanche-api/debugandtrace/debug_traceBlockByHash) \
-[debug_traceBlockByNumber](/avalanche-api/debugandtrace/debug_traceBlockByNumber) \
-[debug_traceTransaction](/avalanche-api/debugandtrace/debug_traceTransaction) \
-[debug_traceCall](/avalanche-api/debugandtrace/debug_traceCall)
+[debug_traceBlockByHash](/avalanche-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of all transactions in a block by its hash. \
+[debug_traceBlockByNumber](/avalanche-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of all transactions in a block by its number. \
+[debug_traceTransaction](/avalanche-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a specific transaction. \
+[debug_traceCall](/avalanche-api/debugandtrace/debug_traceCall) : Traces a specific call without altering the blockchain state.\
 
 ## Event logs
 
 Allows the filtering and retrieval of event logs generated by smart contracts
 
-[eth_getLogs](/avalanche-api/eventlogs/eth_getLogs) \
-[eth_newFilter](/avalanche-api/eventlogs/eth_newFilter) \
-[eth_getFilterChanges](/avalanche-api/eventlogs/eth_getFilterChanges) \
-[eth_uninstallFilter](/avalanche-api/eventlogs/eth_uninstallFilter) \
-[eth_getFilterLogs](/avalanche-api/eventlogs/eth_getFilterLogs)
+[eth_getLogs](/avalanche-api/eventlogs/eth_getLogs) : Retrieves event logs based on specified filter criteria. \
+[eth_newFilter](/avalanche-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs.  \
+[eth_getFilterChanges](/avalanche-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for a filter since its last check. \
+[eth_uninstallFilter](/avalanche-api/eventlogs/eth_uninstallFilter) : Uninstalls a previously created filter.  \
+[eth_getFilterLogs](/avalanche-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
 
 ## Executing transactions
 
 Are essential for interacting with smart contracts and sending transactions
 
-[eth_call](/avalanche-api/executingtransactions/eth_call) \
-[eth_sendRawTransaction](/avalanche-api/executingtransactions/eth_sendRawTransaction)
+[eth_call](/avalanche-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without making any state changes. \
+[eth_sendRawTransaction](/avalanche-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the Avalanche blockchain for execution.
 
 ## Gas estimation
 
@@ -74,30 +185,31 @@ These methods help optimize transaction costs by estimating the necessary gas fe
 
 Provides methods to retrieve information about uncle blocks
 
-[eth_getUncleCountByBlockHash](/avalanche-api/gettinguncles/eth_getUncleCountByBlockHash) \
-[eth_getUncleCountByBlockNumber](/avalanche-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+[eth_getUncleCountByBlockHash](/avalanche-api/gettinguncles/eth_getUncleCountByBlockHash) : Retrieves the number of uncle blocks for a given block by its hash.
+[eth_getUncleCountByBlockNumber](/avalanche-api/gettinguncles/eth_getUncleCountByBlockNumber) : Returns the number of uncle blocks for a specified block number.
 
 ## Subscriptions
 
 Enables real-time monitoring of blockchain events via WebSockets
 
-[eth_subscribe](/avalanche-api/subscriptions/eth_subscribe) \
-[eth_unsubscribe](/avalanche-api/subscriptions/eth_unsubscribe)
+[eth_subscribe](/avalanche-api/subscriptions/eth_subscribe) : Subscribes to events such as new blocks, pending transactions, or log updates. \
+[eth_unsubscribe](/avalanche-api/subscriptions/eth_unsubscribe) : Unsubscribes from an active WebSocket event subscription.
 
 ## Transactions info
 
 Provides methods to retrieve transaction details, counts, and receipts
 
-[eth_getTransactionByHash](/avalanche-api/transactionsinfo/eth_getTransactionByHash) \
-[eth_getTransactionCount](/avalanche-api/transactionsinfo/eth_getTransactionCount) \
-[eth_getTransactionReceipt](/avalanche-api/transactionsinfo/eth_getTransactionReceipt) \
-[eth_newPendingTransactionFilter](/avalanche-api/transactionsinfo/eth_newPendingTransactionFilter) \
-[eth_getTransactionByBlockHashAndIndex](/avalanche-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
-[eth_getTransactionByBlockNumberAndIndex](/avalanche-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex)
+[eth_getTransactionByHash](/avalanche-api/transactionsinfo/eth_getTransactionByHash) : Retrieves transaction details using a transaction hash.  \
+[eth_getTransactionCount](/avalanche-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address.  \
+[eth_getTransactionReceipt](/avalanche-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction.  \
+[eth_newPendingTransactionFilter](/avalanche-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter for monitoring pending transactions.  \
+[eth_getTransactionByBlockHashAndIndex](/avalanche-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction from a block by hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/avalanche-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index.
 
 ## Web3
 
 Provides methods to retrieve transaction-related data
 
-[web3_clientVersion](/avalanche-api/web3/web3_clientVersion) \
-[web3_sha3](/avalanche-api/web3/web3_sha3)
+[web3_clientVersion](/avalanche-api/web3/web3_clientVersion) : Returns the version of the Avalanche node client in use. \
+[web3_sha3](/avalanche-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided data.

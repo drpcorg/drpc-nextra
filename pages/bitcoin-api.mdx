@@ -1,15 +1,121 @@
 # Bitcoin API Overview
 
+Welcome to the Bitcoin API Quickstart and Reference Guide. This guide provides everything you need to start building on Bitcoin using a JSON-RPC API. Whether you're retrieving account balances, fetching block details, sending transactions, or estimating fees, this comprehensive guide will help you integrate Bitcoin seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Bitcoin API request.
+
+- A detailed list of **all Bitcoin API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#BitcoinAPIMethods)
+
+Bitcoin API Quickstart
+
+To get started with building on Bitcoin using a Bitcoin RPC API, follow these steps:
+
+**1. Set Up a Bitcoin Node or Use a Public RPC Endpoint**
+
+Running your own Bitcoin node gives you full control over blockchain interactions. Alternatively, you can use public or third-party Bitcoin RPC endpoints.
+
+**Public RPC endpoint example:**
+
+HTTPS:
+
+```bash
+https://bitcoin.drpc.org/
+```
+WSS:
+
+```bash
+wss://bitcoin.drpc.org/
+```
+2. Set Up Your Development Environment
+
+You can interact with Bitcoin's JSON-RPC API using various methods. In this example, we will use Node.js. Ensure you have Node.js and npm installed. Verify installation by running:
+
+```
+node -v
+npm -v
+```
+
+If not installed, download and install them from the official Node.js website.
+
+3. Initialize Your Project
+
+Create a new directory for your project and initialize it:
+
+```
+mkdir bitcoin-api-quickstart
+cd bitcoin-api-quickstart
+npm init --yes
+```
+
+4. Install Axios
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+```
+npm install axios
+```
+5. Obtain an RPC Endpoint
+
+If using a third-party provider, log in and navigate to the Bitcoin RPC endpoints section. Copy the HTTPS endpoint URL.
+
+6. Write Your First Script
+
+Create an `index.js` file in your project directory and add the following code:
+
+```
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=bitcoin&dkey=YOUR_DRPC_API_KEY'; // Replace with your actual Bitcoin RPC endpoint
+const auth = { username: 'your_username', password: 'your_password' }; // Replace with your credentials
+
+const payload = {
+  jsonrpc: '1.0',
+  id: 'btc-api',
+  method: 'getblockcount',
+  params: []
+};
+
+axios.post(url, payload, { auth })
+  .then(response => {
+    console.log('The latest block number is', response.data.result);
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `https://lb.drpc.org/ogrpc?network=bitcoin&dkey=YOUR_DRPC_API_KEY` with the actual RPC endpoint URL and update the authentication credentials as needed.
+
+7. Run Your Script
+
+Execute your script using Node.js:
+
+node index.js
+
+You should see the latest Bitcoin block number printed in your console.
+
+**Additional Information**
+
+Bitcoin nodes provide secure access to blockchain data and transaction processing. By following these steps, you can start building on Bitcoin using a reliable RPC API. For more details use [Bitcoin API Documentation](https://bitcoincore.org/en/doc/)
+
+
+<a id="BitcoinAPIMethods"></a>
+
+## Bitcoin API Methods
+
 These methods provide essential data for interacting with the blockchain, covering key aspects like block details, transaction handling, network information, and fee estimation.
 
 ## Blocks info
 
 The Blocks Info group encompasses commands that provide detailed information about the blocks within the blockchain. These functions allow users to query specific blocks, understand the current state of the blockchain, and retrieve essential data such as block hashes and counts.
 
-[getblockhash](/bitcoin-api/blocksinfo/getblockhash) \
-[getblockcount](/bitcoin-api/blocksinfo/getblockcount) \
-[getbestblockhash](/bitcoin-api/blocksinfo/getbestblockhash) \
-[getblock](/bitcoin-api/blocksinfo/getblock)
+[getblockhash](/bitcoin-api/blocksinfo/getblockhash): Retrieves the hash of a block by height. \
+[getblockcount](/bitcoin-api/blocksinfo/getblockcount): Provides the total number of blocks in the blockchain. \
+[getbestblockhash](/bitcoin-api/blocksinfo/getbestblockhash): Fetches the hash of the most recent block. \
+[getblock](/bitcoin-api/blocksinfo/getblock): Retrieves detailed data about a specific block.
 
 ## Transactions Info
 
@@ -25,18 +131,18 @@ These functions enable users to access raw transaction data, monitor transaction
 
 Functions allow users to monitor the number of active connections, assess the synchronization state of the blockchain, and retrieve detailed network parameters.
 
-[getconnectioncount](/bitcoin-api/networkinfo/getconnectioncount) \
-[getblockchaininfo](/bitcoin-api/networkinfo/getblockchaininfo) \
-[getnetworkinfo](/bitcoin-api/networkinfo/getnetworkinfo)
+[getconnectioncount](/bitcoin-api/networkinfo/getconnectioncount) : Returns the number of active connections to other nodes. \
+[getblockchaininfo](/bitcoin-api/networkinfo/getblockchaininfo): Provides an overview of the blockchain’s status, including network and difficulty information. \
+[getnetworkinfo](/bitcoin-api/networkinfo/getnetworkinfo) : Returns network-related information.
 
 ## Fee info
 
 The Fee Info group includes commands related to estimating transaction fees.
 
-[estimatesmartfee](/bitcoin-api/feeinfo/estimatesmartfee)
+[estimatesmartfee](/bitcoin-api/feeinfo/estimatesmartfee): Estimates the transaction fee based on current network conditions.
 
 ## Executing Transactions
 
 Contains commands that facilitate the broadcasting and execution of transactions on the blockchain network
 
-[sendrawtransaction](/bitcoin-api/executingtransactions/sendrawtransaction)
+[sendrawtransaction](/bitcoin-api/executingtransactions/sendrawtransaction): Submits a raw transaction to the network for processing.

@@ -1,0 +1,230 @@
+# Viction API Overview
+
+Welcome to the Viction API Quickstart and Reference Guide. This guide provides everything you need to start building on Viction using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Viction seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Viction API request.
+- A detailed list of **all Viction API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#VictionAPIMethods)
+
+## Viction API Quickstart
+
+To get started with building on Viction using dRPC's Viction RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Viction RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Viction RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://viction.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://viction.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Viction-drpc-quickstart
+cd Viction-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Viction RPC endpoints section. Copy the HTTPS endpoint URL for the Viction Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=viction&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=viction&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Viction block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains, and MEV protection. For more details, visit their [Viction API documentation](https://www.viction.xyz).
+
+By following these steps, you can start building on Viction using dRPC's reliable and efficient RPC endpoints.
+
+<a id="VictionAPIMethods"></a>
+
+## Viction API Overview
+
+These endpoints provide access to blockchain data, enabling efficient development and integration by retrieving details on blocks, transactions, accounts, logs, and more.
+
+### Accounts Info
+Retrieves information about account balances, contract code, and stored data.
+
+[eth_accounts](/viction-api/accountinfo/eth_accounts): Lists accounts managed by the client. \
+[eth_getBalance](/viction-api/accountinfo/eth_getBalance): Returns the balance of an account in Wei. \
+[eth_getCode](/viction-api/accountinfo/eth_getCode): Fetches the smart contract code at a given address. \
+[eth_getProof](/viction-api/accountinfo/eth_getProof): Provides a Merkle proof of an account or its storage. \
+[eth_getStorageAt](/viction-api/accountinfo/eth_getStorageAt): Retrieves the stored value at a specific storage slot.
+
+### Blocks Info
+Provides detailed data about blocks, including transactions, receipts, and block metadata.
+
+[eth_blockNumber](/viction-api/blocksinfo/eth_blockNumber): Retrieves the latest block number. \
+[eth_getBlockByHash](/viction-api/blocksinfo/eth_getBlockByHash): Fetches block details by hash. \
+[eth_getBlockByHash#full](/viction-api/blocksinfo/eth_getBlockByHashfull): Retrieves a full block including all transactions. \
+[eth_getBlockByNumber](/viction-api/blocksinfo/eth_getBlockByNumber): Fetches a block’s details by its number. \
+[eth_getBlockByNumber#full](/viction-api/blocksinfo/eth_getBlockByNumberfull): Retrieves a full block with transaction data. \
+[eth_newBlockFilter](/viction-api/blocksinfo/eth_newBlockFilter): Creates a filter for tracking new blocks. \
+[eth_getBlockReceipts](/viction-api/blocksinfo/eth_getBlockReceipts): Retrieves transaction receipts for a block. \
+[eth_getBlockTransactionCountByHash](/viction-api/blocksinfo/eth_getBlockTransactionCountByHash): Returns the transaction count in a block by hash. \
+[eth_getBlockTransactionCountByNumber](/viction-api/blocksinfo/eth_getBlockTransactionCountByNumber): Fetches the transaction count for a block by number.
+
+### Chain Info
+Supplies details about the network’s configuration, protocol version, and connectivity status.
+
+[eth_chainId](/viction-api/chaininfo/eth_chainId): Returns the unique chain ID of the network. \
+[eth_protocolVersion](/viction-api/chaininfo/eth_protocolVersion): Retrieves the current protocol version. \
+[net_listening](/viction-api/chaininfo/net_listening): Indicates whether the client is listening for connections. \
+[net_version](/viction-api/chaininfo/net_version): Returns the network version. \
+[net_peerCount](/viction-api/chaininfo/net_peerCount): Provides the number of connected peers. \
+[eth_syncing](/viction-api/chaininfo/eth_syncing): Checks if the node is synchronizing with the blockchain. \
+[eth_hashrate](/viction-api/chaininfo/eth_hashrate): Reports the node’s mining hash rate.
+
+### Debug & Trace (Paid Tier)
+Enables advanced debugging, transaction tracing, and block execution inspection.
+
+[trace_filter](/viction-api/debugandtrace/trace_filter): Filters trace data based on custom criteria. \
+[trace_rawTransaction](/viction-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging. \
+[trace_block](/viction-api/debugandtrace/trace_block): Traces block execution step by step. \
+[trace_replayBlockTransactions](/viction-api/debugandtrace/trace_replayBlockTransactions): Replays all transactions in a block. \
+[trace_replayBlockTransactions#vmTrace](/viction-api/debugandtrace/trace_replayBlockTransactions#vmTrace): Provides a VM execution trace during block replay. \
+[debug_traceBlockByHash](/viction-api/debugandtrace/debug_traceBlockByHash): Traces a block’s execution by its hash. \
+[debug_traceBlockByNumber](/viction-api/debugandtrace/debug_traceBlockByNumber): Traces a block’s execution by its number. \
+[trace_transaction](/viction-api/debugandtrace/trace_transaction): Traces the execution of a specific transaction. \
+[debug_traceTransaction](/viction-api/debugandtrace/debug_traceTransaction): Provides a detailed trace for transaction execution. \
+[trace_replayTransaction](/viction-api/debugandtrace/trace_replayTransaction): Replays a transaction for analysis. \
+[trace_replayTransaction#vmTrace](/viction-api/debugandtrace/trace_replayTransactionvmTrace): Returns a VM trace during transaction replay. \
+[trace_callMany](/viction-api/debugandtrace/trace_callMany): Executes multiple trace calls in one request. \
+[trace_get](/viction-api/debugandtrace/trace_get): Retrieves stored trace data. \
+[trace_call](/viction-api/debugandtrace/trace_call): Runs a trace call without affecting state. \
+[debug_traceCall](/viction-api/debugandtrace/debug_traceCall): Traces a contract call for debugging.
+
+### Event Logs
+Tracks logs emitted by smart contracts, aiding in token transfers and state monitoring.
+
+[eth_getLogs](/viction-api/eventlogs/eth_getLogs): Retrieves logs that match filter criteria. \
+[eth_newFilter](/viction-api/eventlogs/eth_newFilter): Creates a filter for tracking contract events. \
+[eth_getFilterChanges](/viction-api/eventlogs/eth_getFilterChanges): Fetches new event logs since the last update. \
+[eth_uninstallFilter](/viction-api/eventlogs/eth_uninstallFilter): Removes an existing event filter. \
+[eth_getFilterLogs](/viction-api/eventlogs/eth_getFilterLogs): Returns all logs matching a filter.
+
+## Executing transactions
+Enables interaction with smart contracts, token transfers, and other blockchain-based operations by executing transactions.
+
+[eth_call](/viction-api/executingtransactions/eth_call): Facilitates contract calls without submitting transactions. \
+[eth_sendRawTransaction](/viction-api/executingtransactions/eth_sendRawTransaction): Sends signed transactions to the network. \
+
+## Gas estimation
+Provides tools for estimating transaction costs, retrieving historical gas fees, and optimizing gas usage.
+
+[eth_feeHistory](/viction-api/gasestimation/eth_feeHistory): Retrieves historical base fees and priority fee trends. \
+[eth_estimateGas](/viction-api/gasestimation/eth_estimateGas): Estimates the gas required for a transaction. \
+[eth_gasPrice](/viction-api/gasestimation/eth_gasPrice): Returns the current network gas price. \
+[eth_createAccessList](/viction-api/gasestimation/eth_createAccessList): Generates an access list for efficient gas usage. \
+[eth_maxPriorityFeePerGas](/viction-api/gasestimation/eth_maxPriorityFeePerGas): Fetches the max priority fee per gas.
+
+## Getting uncles
+Fetches information about uncle blocks, which are valid but excluded from the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/viction-api/gettinguncles/eth_getUncleByBlockHashAndIndex): Retrieves an uncle block by its parent block hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/viction-api/gettinguncles/eth_getUncleByBlockNumberAndIndex): Fetches an uncle block using block number and index. \
+[eth_getUncleCountByBlockHash](/viction-api/gettinguncles/eth_getUncleCountByBlockHash): Returns the number of uncles in a block by its hash. \
+[eth_getUncleCountByBlockNumber](/viction-api/gettinguncles/eth_getUncleCountByBlockNumber): Retrieves the count of uncles for a given block number.
+
+## Mining
+Provides data related to the mining status and rewards of a node.
+
+[eth_coinbase](/viction-api/mining/eth_coinbase): Returns the address of the mining node. \
+[eth_mining](/viction-api/mining/eth_mining): Indicates whether the node is actively mining.
+
+## Subscriptions
+Enables real-time event tracking by subscribing to blockchain activities through WebSockets.
+
+[eth_subscribe](/viction-api/subscriptions/eth_subscribe): Subscribes to real-time Ethereum events via WebSockets. \
+[eth_unsubscribe](/viction-api/subscriptions/eth_unsubscribe): Cancels a previously created subscription.
+
+## Transactions info
+Retrieves details about individual transactions, including their status, block inclusion, and receipts.
+
+[eth_getTransactionByHash](/viction-api/transactionsinfo/eth_getTransactionByHash): Fetches transaction details using its hash. \
+[eth_getTransactionCount](/viction-api/transactionsinfo/eth_getTransactionCount): Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/viction-api/transactionsinfo/eth_getTransactionReceipt): Retrieves the receipt of a completed transaction. \
+[eth_newPendingTransactionFilter](/viction-api/transactionsinfo/eth_newPendingTransactionFilter): Creates a filter for pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/viction-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex): Gets a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/viction-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex): Fetches a transaction using block number and index. \
+[txpool_content](/viction-api/transactionsinfo/txpool_content): Returns the list of pending and queued transactions.
+
+## Web3
+Provides general network-related data, including client version details and cryptographic functions.
+
+[web3_clientVersion](/viction-api/web3/web3_clientVersion): Provides the client version of the node. \
+[web3_sha3](/viction-api/web3/web3_sha3): Computes the Keccak-256 hash of the input data.
+
+
+

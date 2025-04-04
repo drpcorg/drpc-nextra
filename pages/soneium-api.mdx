@@ -1,0 +1,225 @@
+# Soneium API Overview
+
+Welcome to the Soneium API Quickstart and Reference Guide. This guide provides everything you need to start building on Soneium using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Soneium seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Soneium API request.
+- A detailed list of **all Soneium API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#SoneiumAPIMethods)
+
+## Soneium API Quickstart
+
+To get started with building on Soneium using dRPC's Soneium RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Soneium RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Soneium RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://soneium.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://soneium.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Soneium-drpc-quickstart
+cd Soneium-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Soneium RPC endpoints section. Copy the HTTPS endpoint URL for the Soneium Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=soneium&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=soneium&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Soneium block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains, and MEV protection. For more details, visit their [Soneium API documentation](https://docs.soneium.org).
+
+By following these steps, you can start building on Soneium using dRPC's reliable and efficient RPC endpoints.
+
+<a id="SoneiumAPIMethods"></a>
+
+
+## Soneium API Overview
+
+These endpoints grant access to blockchain data, allowing seamless development and integration by retrieving insights on blocks, transactions, accounts, logs, and more.
+
+### Accounts Info
+Provides details on account balances, smart contract code, and stored data.
+
+[eth_accounts](/soneium-api/accountinfo/eth_accounts): Displays accounts managed by the client. \
+[eth_getBalance](/soneium-api/accountinfo/eth_getBalance): Fetches an account’s balance in Wei. \
+[eth_getCode](/soneium-api/accountinfo/eth_getCode): Returns the deployed contract code at a given address. \
+[eth_getProof](/soneium-api/accountinfo/eth_getProof): Delivers a Merkle proof for an account or its storage. \
+[eth_getStorageAt](/soneium-api/accountinfo/eth_getStorageAt): Retrieves a specific value stored in contract storage.
+
+### Blocks Info
+Offers comprehensive details about blocks, including transactions, receipts, and metadata.
+
+[eth_blockNumber](/soneium-api/blocksinfo/eth_blockNumber): Returns the most recent block number. \
+[eth_getBlockByHash](/soneium-api/blocksinfo/eth_getBlockByHash): Retrieves block details using its hash. \
+[eth_getBlockByHash#full](/soneium-api/blocksinfo/eth_getBlockByHashfull): Fetches a complete block, including transactions. \
+[eth_getBlockByNumber](/soneium-api/blocksinfo/eth_getBlockByNumber): Provides block information based on block number. \
+[eth_getBlockByNumber#full](/soneium-api/blocksinfo/eth_getBlockByNumberfull): Returns an entire block with transaction data. \
+[eth_newBlockFilter](/soneium-api/blocksinfo/eth_newBlockFilter): Sets up a filter to monitor new blocks. \
+[eth_getBlockReceipts](/soneium-api/blocksinfo/eth_getBlockReceipts): Retrieves all transaction receipts from a block. \
+[eth_getBlockTransactionCountByHash](/soneium-api/blocksinfo/eth_getBlockTransactionCountByHash): Returns the number of transactions in a block by hash. \
+[eth_getBlockTransactionCountByNumber](/soneium-api/blocksinfo/eth_getBlockTransactionCountByNumber): Retrieves the transaction count in a block using its number.
+
+### Chain Info
+Provides network-related data, including protocol versions, synchronization status, and peer connections.
+
+[eth_chainId](/soneium-api/chaininfo/eth_chainId): Fetches the chain ID specific to the network. \
+[eth_protocolVersion](/soneium-api/chaininfo/eth_protocolVersion): Returns the current protocol version in use. \
+[net_listening](/soneium-api/chaininfo/net_listening): Confirms whether the client is accepting network connections. \
+[net_version](/soneium-api/chaininfo/net_version): Retrieves the version of the network. \
+[net_peerCount](/soneium-api/chaininfo/net_peerCount): Shows the number of active peer connections. \
+[eth_syncing](/soneium-api/chaininfo/eth_syncing): Checks if the node is still synchronizing. \
+[eth_hashrate](/soneium-api/chaininfo/eth_hashrate): Reports the mining power of the node.
+
+### Debug & Trace (Paid Tier)
+Enables deep transaction analysis, execution tracing, and debugging.
+
+[trace_filter](/soneium-api/debugandtrace/trace_filter): Filters blockchain traces based on custom parameters. \
+[trace_rawTransaction](/soneium-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging purposes. \
+[trace_block](/soneium-api/debugandtrace/trace_block): Tracks execution flow for an entire block. \
+[trace_replayBlockTransactions](/soneium-api/debugandtrace/trace_replayBlockTransactions): Replays all transactions in a given block. \
+[trace_replayBlockTransactions#vmTrace](/soneium-api/debugandtrace/trace_replayBlockTransactions#vmTrace): Returns a virtual machine execution trace during block replay. \
+[debug_traceBlockByHash](/soneium-api/debugandtrace/debug_traceBlockByHash): Traces execution steps for a block using its hash. \
+[debug_traceBlockByNumber](/soneium-api/debugandtrace/debug_traceBlockByNumber): Traces block execution by block number. \
+[trace_transaction](/soneium-api/debugandtrace/trace_transaction): Provides an execution trace of a single transaction. \
+[debug_traceTransaction](/soneium-api/debugandtrace/debug_traceTransaction): Offers a detailed breakdown of a transaction's execution. \
+[eth_traceReplayTransaction](/soneium-api/debugandtrace/eth_traceReplayTransaction): Re-executes a transaction for debugging. \
+[trace_replayTransaction#vmTrace](/soneium-api/debugandtrace/trace_replayTransactionvmTrace): Captures VM state changes during transaction replay. \
+[trace_callMany](/soneium-api/debugandtrace/trace_callMany): Executes multiple trace calls in one request. \
+[trace_get](/soneium-api/debugandtrace/trace_get): Retrieves previously recorded traces. \
+[trace_call](/soneium-api/debugandtrace/trace_call): Simulates a trace call without making changes. \
+[debug_traceCall](/soneium-api/debugandtrace/debug_traceCall): Runs a contract call trace for debugging purposes.
+
+### Event Logs
+Monitors logs from smart contracts, making it useful for tracking events and state changes.
+
+[eth_getLogs](/soneium-api/eventlogs/eth_getLogs): Fetches logs matching a given filter. \
+[eth_newFilter](/soneium-api/eventlogs/eth_newFilter): Establishes a filter to track contract events. \
+[eth_getFilterChanges](/soneium-api/eventlogs/eth_getFilterChanges): Returns new logs detected since the last check. \
+[eth_uninstallFilter](/soneium-api/eventlogs/eth_uninstallFilter): Removes an event filter. \
+[eth_getFilterLogs](/soneium-api/eventlogs/eth_getFilterLogs): Retrieves logs matching a specified filter.
+
+## Executing transactions
+
+Enables interaction with smart contracts, token transfers, and other blockchain-based operations by executing transactions.
+
+[eth_call](/soneium-api/executingtransactions/eth_call): Executes contract calls without committing transactions. \
+[eth_sendRawTransaction](/soneium-api/executingtransactions/eth_sendRawTransaction): Broadcasts signed transactions to the blockchain.
+
+## Gas estimation
+Provides tools for estimating transaction costs, retrieving historical gas fees, and optimizing gas usage.
+
+[eth_feeHistory](/soneium-api/gasestimation/eth_feeHistory): Returns historical gas fee trends and priority fee insights. \
+[eth_estimateGas](/soneium-api/gasestimation/eth_estimateGas): Calculates the gas required for a transaction. \
+[eth_gasPrice](/soneium-api/gasestimation/eth_gasPrice): Provides the latest network gas price. \
+[eth_createAccessList](/soneium-api/gasestimation/eth_createAccessList): Generates an optimized access list for transactions. \
+[eth_maxPriorityFeePerGas](/soneium-api/gasestimation/eth_maxPriorityFeePerGas): Retrieves the maximum priority fee per gas unit.
+
+## Getting uncles
+Fetches information about uncle blocks, which are valid but excluded from the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/soneium-api/gettinguncles/eth_getUncleByBlockHashAndIndex): Finds an uncle block using the parent block’s hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/soneium-api/gettinguncles/eth_getUncleByBlockNumberAndIndex): Retrieves an uncle block by block number and index. \
+[eth_getUncleCountByBlockHash](/soneium-api/gettinguncles/eth_getUncleCountByBlockHash): Returns the total number of uncles in a block by hash. \
+[eth_getUncleCountByBlockNumber](/soneium-api/gettinguncles/eth_getUncleCountByBlockNumber): Provides the count of uncle blocks for a specific block number.
+
+## Mining
+Provides data related to the mining status and rewards of a node.
+
+[eth_coinbase](/soneium-api/mining/eth_coinbase): Retrieves the mining node’s wallet address. \
+[eth_mining](/soneium-api/mining/eth_mining): Checks if the node is actively mining.
+
+## Subscriptions
+Enables real-time event tracking by subscribing to blockchain activities through WebSockets.
+
+[eth_subscribe](/soneium-api/subscriptions/eth_subscribe): Subscribes to live blockchain events via WebSockets. \
+[eth_unsubscribe](/soneium-api/subscriptions/eth_unsubscribe): Stops receiving updates from a subscription.
+
+## Transactions info
+Retrieves details about individual transactions, including their status, block inclusion, and receipts.
+
+[eth_getTransactionByHash](/soneium-api/transactionsinfo/eth_getTransactionByHash): Retrieves transaction data using its hash. \
+[eth_getTransactionCount](/soneium-api/transactionsinfo/eth_getTransactionCount): Fetches the number of transactions sent by an address. \
+[eth_getTransactionReceipt](/soneium-api/transactionsinfo/eth_getTransactionReceipt): Returns a transaction’s receipt.
+
+## Web3
+Provides general network-related data, including client version details and cryptographic functions.
+
+[web3_clientVersion](/soneium-api/web3/web3_clientVersion): Provides information about the client’s software version. \
+[web3_sha3](/soneium-api/web3/web3_sha3): Computes a Keccak-256 hash of the provided data.

@@ -6,11 +6,13 @@
   "specs": "Implementation docs",
   "web-api": "Web APIs",
   "providers": "Providers",
-  "referral": "DRPC Referral",
   "faucets": "Faucets",
-  "subscriptions": "Subscriptions",
-  "archive-nodes": "Archive nodes",
-  "mev-protection": "MEV Protection",
+  "drpc-account": {
+    "title": "My Account",
+    "type": "page",
+    "href": "https://drpc.org/login",
+    "newWindow": true
+  },
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
@@ -99,16 +101,11 @@
       "breadcrumb": false
     }
   },
-  "bartio-api": {
-    "title": "Berachain bArtio API",
+  "berachain-api": {
+    "title": "Berachain API",
     "theme": {
       "breadcrumb": false
     }
-  },
-  "drpc-account": {
-    "title": "My Account",
-    "type": "page",
-    "href": "https://drpc.org/login",
-    "newWindow": true
   }
+
 }

@@ -1,4 +1,117 @@
-# Arbitrum API overview
+
+# Arbitrum API Overview
+
+Welcome to the Arbitrum API Quickstart and Reference Guide. This guide provides everything you need to start building on Arbitrum using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Arbitrum seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Arbitrum API request.
+- A detailed list of **all Arbitrum API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#ArbitrumAPIMethods)
+
+## Arbitrum API Quickstart
+
+To get started with building on Arbitrum using dRPC's Arbitrum RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Arbitrum RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Arbitrum RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://arbitrum.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://arbitrum.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Arbitrum-drpc-quickstart
+cd Arbitrum-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Arbitrum RPC endpoints section. Copy the HTTPS endpoint URL for the Arbitrum Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=arbitrum&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=arbitrum&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Arbitrum block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains. For more details, visit their [Arbitrum API documentation](https://docs.arbitrum.io/build-decentralized-apps/arbitrum-vs-ethereum/rpc-methods).
+
+By following these steps, you can start building on Arbitrum using dRPC's reliable and efficient RPC endpoints.
+
+<a id="ArbitrumAPIMethods"></a>
+
+## Arbitrum API Methods
+
 
 These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
 
@@ -6,120 +119,120 @@ These endpoints allow to retrieve information about blocks, transactions, balanc
 
 Returns data about an account's balance, contract code, or stored data on the blockchain.
 
-[eth_accounts](/arbitrum-api/accountinfo/eth_accounts) \
-[eth_getBalance](/arbitrum-api/accountinfo/eth_getBalance) \
-[eth_getCode](/arbitrum-api/accountinfo/eth_getCode) \
-[eth_getProof](/arbitrum-api/accountinfo/eth_getProof) \
-[eth_getStorageAt](/arbitrum-api/accountinfo/eth_getStorageAt)
+[eth_accounts](/arbitrum-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
+[eth_getBalance](/arbitrum-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
+[eth_getCode](/arbitrum-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
+[eth_getProof](/arbitrum-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account’s state. \
+[eth_getStorageAt](/arbitrum-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage.
 
 ## Blocks info
 
 Retrieves detailed information from a specified Arbitrum block, including transactions, receipts, and block data.
 
-[eth_blockNumber](/arbitrum-api/blocksinfo/eth_blockNumber) \
-[eth_getBlockByHash](/arbitrum-api/blocksinfo/eth_getBlockByHash) \
-[eth_getBlockByHash#full](/arbitrum-api/blocksinfo/eth_getBlockByHashfull) \
-[eth_getBlockByNumber](/arbitrum-api/blocksinfo/eth_getBlockByNumber) \
-[eth_getBlockByNumber#full](/arbitrum-api/blocksinfo/eth_getBlockByNumberfull) \
-[eth_newBlockFilter](/arbitrum-api/blocksinfo/eth_newBlockFilter) \
-[eth_getBlockReceipts](/arbitrum-api/blocksinfo/eth_getBlockReceipts) \
-[eth_getBlockTransactionCountByHash](/arbitrum-api/blocksinfo/eth_getBlockTransactionCountByHash) \
-[eth_getBlockTransactionCountByNumber](/arbitrum-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+[eth_blockNumber](/arbitrum-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
+[eth_getBlockByHash](/arbitrum-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByHash#full](/arbitrum-api/blocksinfo/eth_getBlockByHashfull) : Retrieves full block details by hash. \
+[eth_getBlockByNumber](/arbitrum-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number. \
+[eth_getBlockByNumber#full](/arbitrum-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
+[eth_newBlockFilter](/arbitrum-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockReceipts](/arbitrum-api/blocksinfo/eth_getBlockReceipts) : Retrieves receipts for a given block. \
+[eth_getBlockTransactionCountByHash](/arbitrum-api/blocksinfo/eth_getBlockTransactionCountByHash) : Gets the transaction count of a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/arbitrum-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Gets the transaction count of a block by its number.
 
 ## Chain info
 
 Supplies details about the network, its protocol version, and its configuration.
 
-[eth_chainId](/arbitrum-api/chaininfo/eth_chainId) \
-[eth_protocolVersion](/arbitrum-api/chaininfo/eth_protocolVersion) \
-[net_listening](/arbitrum-api/chaininfo/net_listening) \
-[net_version](/arbitrum-api/chaininfo/net_version) \
-[net_peerCount](/arbitrum-api/chaininfo/net_peerCount) \
-[eth_syncing](/arbitrum-api/chaininfo/eth_syncing) \
-[eth_hashrate](/arbitrum-api/chaininfo/eth_hashrate)
+[eth_chainId](/arbitrum-api/chaininfo/eth_chainId) : Retrieves the chain ID of the network. \
+[eth_protocolVersion](/arbitrum-api/chaininfo/eth_protocolVersion) : Returns the protocol version used by the client. \
+[net_listening](/arbitrum-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
+[net_version](/arbitrum-api/chaininfo/net_version) : Returns the current network version. \
+[net_peerCount](/arbitrum-api/chaininfo/net_peerCount) : Retrieves the number of active peers. \
+[eth_syncing](/arbitrum-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node. \
+[eth_hashrate](/arbitrum-api/chaininfo/eth_hashrate) : Provides the current mining hashrate of the network.
 
 ## Debug and trace
 
 Available only on paid tier. Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis
 
-[arbtrace_filter](/arbitrum-api/debugandtrace/arbtrace_filter) \
-[arbtrace_block](/arbitrum-api/debugandtrace/arbtrace_block) \
-[arbtrace_replayBlockTransactions](/arbitrum-api/debugandtrace/arbtrace_replayBlockTransactions) \
-[arbtrace_replayBlockTransactions#vmTrace](/arbitrum-api/debugandtrace/arbtrace_replayBlockTransactionsvmTrace) \
-[debug_traceBlockByHash](/arbitrum-api/debugandtrace/debug_traceBlockByHash) \
-[debug_traceBlockByNumber](/arbitrum-api/debugandtrace/debug_traceBlockByNumber) \
-[arbtrace_transaction](/arbitrum-api/debugandtrace/arbtrace_transaction) \
-[debug_traceTransaction](/arbitrum-api/debugandtrace/debug_traceTransaction) \
-[arbtrace_replayTransaction](/arbitrum-api/debugandtrace/arbtrace_replayTransaction) \
-[arbtrace_replayTransaction#vmTrace](/arbitrum-api/debugandtrace/arbtrace_replayTransactionvmTrace) \
-[arbtrace_callMany](/arbitrum-api/debugandtrace/arbtrace_callMany) \
-[arbtrace_get](/arbitrum-api/debugandtrace/arbtrace_get) \
-[arbtrace_call](/arbitrum-api/debugandtrace/arbtrace_call) \
-[debug_traceCall](/arbitrum-api/debugandtrace/debug_traceCall)
+[arbtrace_filter](/arbitrum-api/debugandtrace/arbtrace_filter) : Filters trace data based on criteria. \
+[arbtrace_block](/arbitrum-api/debugandtrace/arbtrace_block) : Traces execution of all transactions in a block. \
+[arbtrace_replayBlockTransactions](/arbitrum-api/debugandtrace/arbtrace_replayBlockTransactions) : Replays block transactions for debugging. \
+[arbtrace_replayBlockTransactions#vmTrace](/arbitrum-api/debugandtrace/arbtrace_replayBlockTransactionsvmTrace) : Provides VM-level trace during block replay. \
+[debug_traceBlockByHash](/arbitrum-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/arbitrum-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[arbtrace_transaction](/arbitrum-api/debugandtrace/arbtrace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/arbitrum-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[arbtrace_replayTransaction](/arbitrum-api/debugandtrace/arbtrace_replayTransaction) : Replays a transaction for debugging. \
+[arbtrace_replayTransaction#vmTrace](/arbitrum-api/debugandtrace/arbtrace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay. \
+[arbtrace_callMany](/arbitrum-api/debugandtrace/arbtrace_callMany) : Executes multiple trace calls. \
+[arbtrace_get](/arbitrum-api/debugandtrace/arbtrace_get) : Retrieves trace data by criteria. \
+[arbtrace_call](/arbitrum-api/debugandtrace/arbtrace_call) : Executes a trace call. \
+[debug_traceCall](/arbitrum-api/debugandtrace/debug_traceCall) : Traces a specific call without state change.
 
 ## Event logs
 
 Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
 
-[eth_getLogs](/arbitrum-api/eventlogs/eth_getLogs) \
-[eth_newFilter](/arbitrum-api/eventlogs/eth_newFilter) \
-[eth_getFilterChanges](/arbitrum-api/eventlogs/eth_getFilterChanges) \
-[eth_uninstallFilter](/arbitrum-api/eventlogs/eth_uninstallFilter) \
-[eth_getFilterLogs](/arbitrum-api/eventlogs/eth_getFilterLogs)
+[eth_getLogs](/arbitrum-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
+[eth_newFilter](/arbitrum-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs.\
+[eth_getFilterChanges](/arbitrum-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
+[eth_uninstallFilter](/arbitrum-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
+[eth_getFilterLogs](/arbitrum-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
 
 ## Executing transactions
 
 Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
 
-[eth_call](/arbitrum-api/executingtransactions/eth_call) \
-[eth_sendRawTransaction](/arbitrum-api/executingtransactions/eth_sendRawTransaction)
+[eth_call](/arbitrum-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without broadcasting it to the network. \
+[eth_sendRawTransaction](/arbitrum-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the blockchain for execution. \
 
 ## Gas estimation
 
 Estimates gas fees for transactions and provides historical and current gas price data.
 
-[eth_feeHistory](/arbitrum-api/gasestimation/eth_feeHistory) \
-[eth_estimateGas](/arbitrum-api/gasestimation/eth_estimateGas) \
-[eth_gasPrice](/arbitrum-api/gasestimation/eth_gasPrice) \
-[eth_createAccessList](/arbitrum-api/gasestimation/eth_createAccessList) \
-[eth_maxPriorityFeePerGas](/arbitrum-api/gasestimation/eth_maxPriorityFeePerGas)
+[eth_feeHistory](/arbitrum-api/gasestimation/eth_feeHistory) : Retrieves historical gas fees over a specified range of blocks. \
+[eth_estimateGas](/arbitrum-api/gasestimation/eth_estimateGas) : Estimates the gas required for a transaction based on its parameters. \
+[eth_gasPrice](/arbitrum-api/gasestimation/eth_gasPrice) : Returns the current gas price. \
+[eth_createAccessList](/arbitrum-api/gasestimation/eth_createAccessList) : Generates an access list to reduce gas costs. \
+[eth_maxPriorityFeePerGas](/arbitrum-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee per gas unit.
 
 ## Getting uncles
 
 Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
 
-[eth_getUncleCountByBlockHash](/arbitrum-api/gettinguncles/eth_getUncleCountByBlockHash) \
-[eth_getUncleCountByBlockNumber](/arbitrum-api/gettinguncles/eth_getUncleCountByBlockNumber)
+[eth_getUncleCountByBlockHash](/arbitrum-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a block hash. \
+[eth_getUncleCountByBlockNumber](/arbitrum-api/gettinguncles/eth_getUncleCountByBlockNumber) : Returns the number of uncle blocks for a block number.
 
 ## Mining
 
 Provides details on the mining state of the node
 
-[eth_coinbase](/arbitrum-api/mining/eth_coinbase) \
-[eth_mining](/arbitrum-api/mining/eth_mining)
+[eth_coinbase](/arbitrum-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards. \
+[eth_mining](/arbitrum-api/mining/eth_mining) : Indicates whether the node is actively mining blocks.
 
 ## Subscriptions
 
 Allows to subscribe to specific Arbitrum events in real-time via WebSockets.
 
-[eth_subscribe](/arbitrum-api/subscriptions/eth_subscribe) \
-[eth_unsubscribe](/arbitrum-api/subscriptions/eth_unsubscribe)
+[eth_subscribe](/arbitrum-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs. \
+[eth_unsubscribe](/arbitrum-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription.
 
 ## Transactions info
 
 Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
 
-[eth_getTransactionByHash](/arbitrum-api/transactionsinfo/eth_getTransactionByHash) \
-[eth_getTransactionCount](/arbitrum-api/transactionsinfo/eth_getTransactionCount) \
-[eth_getTransactionReceipt](/arbitrum-api/transactionsinfo/eth_getTransactionReceipt) \
-[eth_newPendingTransactionFilter](/arbitrum-api/transactionsinfo/eth_newPendingTransactionFilter) \
-[eth_getTransactionByBlockHashAndIndex](/arbitrum-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
-[eth_getTransactionByBlockNumberAndIndex](/arbitrum-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
-[txpool_content](/arbitrum-api/transactionsinfo/txpool_content)
+[eth_getTransactionByHash](/arbitrum-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
+[eth_getTransactionCount](/arbitrum-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/arbitrum-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
+[eth_newPendingTransactionFilter](/arbitrum-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Creates a filter for pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/arbitrum-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/arbitrum-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index. \
+[txpool_content](/arbitrum-api/transactionsinfo/txpool_content) : Provides details of the transaction pool content.
 
 ## Web3
 
 Returns general network configuration data for nodes.
 
-[web3_clientVersion](/arbitrum-api/web3/web3_clientVersion) \
-[web3_sha3](/arbitrum-api/web3/web3_sha3)
+[web3_clientVersion](/arbitrum-api/web3/web3_clientVersion) : Returns the version of the node client in use. \
+[web3_sha3](/arbitrum-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided data.

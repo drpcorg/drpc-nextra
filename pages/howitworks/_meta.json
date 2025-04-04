@@ -1,4 +1,9 @@
 {
   "overview": "DRPC overview",
-  "ratelimiting": "Rate limiting"
+  "ratelimiting": "Rate limiting",
+  "archive-nodes": "Archive Nodes",
+  "faucets": "Faucets",
+  "mev-protection": "MEV protection",
+  "referral": "Referral",
+  "subscriptions": "Subscriptions"
 }

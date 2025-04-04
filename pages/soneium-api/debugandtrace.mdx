@@ -1,0 +1,27 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+
+## Debug and trace
+
+Available only on the paid tier. Enables deep transaction analysis, execution tracing, and debugging.
+
+[trace_filter](/soneium-api/debugandtrace/trace_filter): Filters blockchain traces based on custom parameters. \
+[trace_rawTransaction](/soneium-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging purposes. \
+[trace_block](/soneium-api/debugandtrace/trace_block): Tracks execution flow for an entire block. \
+[trace_replayBlockTransactions](/soneium-api/debugandtrace/trace_replayBlockTransactions): Replays all transactions in a given block. \
+[trace_replayBlockTransactions#vmTrace](/soneium-api/debugandtrace/trace_replayBlockTransactions#vmTrace): Returns a virtual machine execution trace during block replay. \
+[debug_traceBlockByHash](/soneium-api/debugandtrace/debug_traceBlockByHash): Traces execution steps for a block using its hash. \
+[debug_traceBlockByNumber](/soneium-api/debugandtrace/debug_traceBlockByNumber): Traces block execution by block number. \
+[trace_transaction](/soneium-api/debugandtrace/trace_transaction): Provides an execution trace of a single transaction. \
+[debug_traceTransaction](/soneium-api/debugandtrace/debug_traceTransaction): Offers a detailed breakdown of a transaction's execution. \
+[trace_replayTransaction](/soneium-api/debugandtrace/trace_replayTransaction): Re-executes a transaction for debugging. \
+[trace_replayTransaction#vmTrace](/soneium-api/debugandtrace/trace_replayTransactionvmTrace): Captures VM state changes during transaction replay. \
+[trace_callMany](/soneium-api/debugandtrace/trace_callMany): Executes multiple trace calls in one request. \
+[trace_get](/soneium-api/debugandtrace/trace_get): Retrieves previously recorded traces. \
+[trace_call](/soneium-api/debugandtrace/trace_call): Simulates a trace call without making changes. \
+[debug_traceCall](/soneium-api/debugandtrace/debug_traceCall): Runs a contract call trace for debugging purposes.
+
+<Space h={16} />
+<GetStarted />

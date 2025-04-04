@@ -15,6 +15,9 @@ const METHOD_DOCS_URL_BASES = [
   "/bsc-api",
   "/bartio-api",
   "/fantom-api",
+  "/soneium-api",
+  "/sonic-api",
+  "/viction-api",
 ];
 
 const METHOD_DOCS_URL_CHAPTERS = [
