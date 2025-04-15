@@ -2,7 +2,7 @@ import Head from "next/head";
 
 <Head>
   <title>
-    Understanding dRPC Rate Limiting: Rules for Free Public Node Request
+    Understanding dRPC Rate Limiting: Rules for Free and Paid Node Request
   </title>
   <meta
     name="description"
@@ -12,13 +12,13 @@ import Head from "next/head";
 
 # Rate limiting
 
-We only have rate limiting for requests to public nodes (they are always free of charge).
+We have different rate limiting for requests to public nodes (they are always free of charge) and for paid nodes.
 Because we charge users on per request basis, you can make as much paid requests as you want while you have enough CUs on your deposit.
 
 For requests to free nodes we have following rules:
 
-1. At normal conditions we have a limit of 315000 CUs per minute per IP. This is approximately 250 eth_call requests per second
+1. At normal conditions for free tier we have a limit of 315000 CUs per minute per IP. This is approximately 250 eth_call requests per second
 2. If there is a high demand for free requests in a specific region, the limit may be reduced. The minimum limit is set at 50400 CUs per minute, which is equivalent to 40 eth_call requests.
-3. Some methods cost 0 CU (like eth_chainId), but when rate limiting the minimum cost of every call is 10 CU, thus free methods could't be abused
+3. The rate limit for requests to paid nodes is approximately 5000 eth_call requests per second.
+4. Some methods cost 0 CU (like eth_chainId), but when rate limiting the minimum cost of every call is 10 CU, thus free methods could't be abused
 
-We also have public nodes that do not require registration, which have the same rate limiting logic, the full list: https://drpc.org/public-endpoints
