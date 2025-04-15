@@ -3,24 +3,21 @@ import proxy from "./reverse-proxy.png";
 
 # Dshackle setup instructions
 
+Dshackle is a proxy used by dRPC as an entry point for your provider. It allows you to aggregate multiple nodes under one provider and to route JSON-RPC requests to specific nodes based on their capabilities or special requirements (e.g., trace calls).
+
 ## Provider name
 
 Your provider name is a unique identifier for your nodes in dRPC. The convention is to name it using `your-company-name` + `any-suffix`.
 
 ## Install Dshackle
 
-Dshackle is a proxy used by dRPC as an entry point for your provider. It allows you to aggregate multiple nodes behind one provider and custom route JSON-RPC requests to specific nodes if they have specific needs (e.g., trace calls).
-
-The easiest way to install Dshackle is to use the [docker image](https://hub.docker.com/r/drpcorg/dshackle).
-
-An alternative way is to build it from source using this [repository](https://github.com/p2p-org/dshackle).
+The easiest way to install Dshackle is by using the [docker image](https://hub.docker.com/r/drpcorg/dshackle).
 
 ## Docker-compose example
 
 Create `docker-compose.yaml` file with the following content:
 
 ```yaml
-version: "3"
 services:
   dshackle:
     container_name: dshackle
@@ -37,11 +34,11 @@ You can start it by `docker compose up -d` command.
 
 ## Minimal provider config
 
-This configuration defines the simplest possible provider with two nodes that will serve the requests. You can add any number of nodes.
+This configuration defines the simplest possible provider with two nodes that will serve requests. You can add any number of additional nodes as needed.
 
-Note: We expect you to set up your Dshackle with TLS enabled and valid SSL certificate.
+Note: We expect you to set up your Dshackle instance with TLS enabled and a valid SSL certificate.
 
-***ATTENTION***: Connect your nodes to dshackle **ONLY** directly without any load balancers between them. Otherwise, there will be errors and problems with the state of your nodes. Dshackle is balancer itself.
+***ATTENTION***: Connect your nodes to Dshackle **ONLY** directly, without any load balancers in between. Using a load balancer between your nodes and Dshackle can lead to errors and inconsistent node states. Dshackle acts as a load balancer itself.
 
 ```yaml
 version: v1
@@ -56,7 +53,7 @@ tls:
 
 auth:
   enabled: true
-  publicKeyOwner: drpc
+  publicKeyOwner: drpc # always drpc
   server:
     keys:
       provider-private-key: /path_to_keys/private-provider-name.p8.key
@@ -69,55 +66,33 @@ cluster:
       method-groups:
         enabled:
           - trace
-          - filter #only if you are running nethermind or erigon node
+          - filter # only if you are running nethermind or erigon node
       connection:
-        ethereum-pos:
-          execution:
-            rpc:
-              url: "http://example2.com:8545"
-            ws:
-              url: "ws://example2.com:8545"
+        generic:
+          rpc:
+            url: "http://example1.com:8545"
+          ws:
+            url: "ws://example1.com:8545"
     - id: ethnode2
       chain: ethereum
-      labels:
-        archive: true
       method-groups:
         enabled:
           - trace
       connection:
-        ethereum-pos:
-          execution:
-            rpc:
-              url: "http://example1.com:8545"
-            ws:
-              frameSize: 20Mb
-              msgSize: 50Mb
-              url: "ws://example1.com:8545"
+        generic:
+          rpc:
+            url: "http://example2.com:8545"
+          ws:
+            url: "ws://example2.com:8545"
 ```
 
 ## Archive nodes
 
-If you have archive nodes, you must mark them with the `archive` label, as shown in the example:
-
-```yaml
-id: ethnode2
-chain: ethereum
-labels:
-  archive: true
-connection:
-  ethereum-pos:
-    execution:
-      rpc:
-        url: "http://example1.com:8545"
-      ws:
-        frameSize: 20Mb
-        msgSize: 50Mb
-        url: "ws://example1.com:8545"
-```
+Dshackle automatically detects the node type (full or archive). If you have any concerns about how your node was detected on the dRPC side, please reach out to the dRPC developers in your dedicated Discord channel.
 
 ## Filter nodes
 
-There are a group of methods that allow you to create custom filters:
+There is a group of methods that allow you to create custom filters:
 
 ```
 eth_newFilter
@@ -128,32 +103,29 @@ eth_getFilterLogs
 eth_uninstallFilter
 ```
 
-They are quite tricky to support because they require something like "sticky sessions" for nodes, which is implemented in dRPC. However, not all execution clients implement all of these methods. Currently, we have tested and confirmed that everything works well with the following:
+These methods are quite tricky to support because they require something like "sticky sessions" for nodes, which is implemented in dRPC. However, not all execution clients support all of them. Currently, we have tested and confirmed that everything works well with the following:
 
 1. Nethermind
 2. Erigon
-3. Geth works, but it is very slow for `eth_getFilterLogs`; therefore, we do not recommend using it for those requests.
+3. Geth works, but it is very slow for `eth_getFilterLogs`, so we do not recommend using it for those requests
 
-So, if you’re confident that all the methods mentioned above are working correctly for your node, additionally mark it in the configuration:
+If you're confident that all the methods mentioned above are working correctly on your node, please mark it accordingly in the configuration:
 
 ```yaml
-id: ethnode2
+id: ethnode1
 chain: ethereum
 method-groups:
   enabled:
     - filter 
 connection:
-  ethereum-pos:
-    execution:
-      rpc:
-        url: "http://example1.com:8545"
-      ws:
-        frameSize: 20Mb
-        msgSize: 50Mb
-        url: "ws://example1.com:8545"
+  generic:
+    rpc:
+      url: "http://example1.com:8545"
+    ws:
+      url: "ws://example1.com:8545"
 ```
 
-This way, dRPC will know that it can route filter requests to your operator, and Dshackle will handle the routing of those requests to your marked nodes.
+This way, dRPC will know it can route filter requests to your Dshackle server, which will handle routing those requests to your marked nodes.
 
 ## Arbitrum and Optimism redirects
 
@@ -172,7 +144,7 @@ If you have Arbitrum/Optimism nodes which setup to handle historical requests, d
 
 ## Full configuration reference
 
-You can find detailed documentation on all possible configuration options [here](https://github.com/p2p-org/dshackle/blob/master/docs/reference-configuration.adoc).
+You can find detailed documentation on all available configuration options [here](https://github.com/drpcorg/dshackle/blob/master/docs/reference-configuration.adoc).
 
 ## Reload config
 
@@ -182,13 +154,11 @@ You can do it via sending a `kill` command with `HUP` signal to your container, 
 
 **Attention**: your volume in docker with `dshackle.yaml` must not be with `ro` modifier otherwise reload config doesn't work.
 
-## Mutual Authorization
+## Authorization
 
-Previously, we also used TLS for mutual authorization - you provided us with your CA, and we provided ours. This ensured that we were who we said we were, and you were who you said you were. However, the process of manually generating certificates could be tricky and might cause further issues if something were configured incorrectly. That’s why we’ve decided to revise our mutual authorization approach.
+Our new authorization algorithm is based on private/public key pairs and JWT tokens. We hold our private key and your public key, while you retain your own private key and our public key. Using these keys, both sides generate JWT tokens, verify their validity, and if confirmed, authorization is successfully established.
 
-Our new authorization algorithm is based on private/public key pairs and JWT tokens. We hold our private key and your public key, while you possess your own private key and our public key. Using these keys, we generate JWT tokens on both sides, verify their validity, and if they are confirmed to be valid, authorization is successfully achieved.
-
-Currently, we support only RSA keys. You can use the following script to generate such a pair, specifying the key suffix as the first argument. 
+Currently, we support only RSA keys. You can use the following script to generate a key pair, specifying the key suffix as the first argument:
 
 `rsa-key-generator.sh`:
 
@@ -210,14 +180,14 @@ rm private-$1.pem
 echo "Key pair is generated"
 ```
 
-For example, if you want to generate your pair with the `provider-name` suffix, you would execute `./rsa-key-generator.sh provider-name`. After that, you will receive a pair of keys: a private key named `private-provider-name.p8.key` and a public key named `public-provider-name.pem`. Please share your **public key** with us.
+For example, if you want to generate your pair with the `provider-name` suffix, you would execute `./rsa-key-generator.sh provider-name`. After that, you will receive a pair of keys: a private key named `private-provider-name.p8.key` and a public key named `public-provider-name.pem`. Please share your **public key** with us. You can share it in your dedicated channel on our Discord server.
 
-Now it's necessary to configure dshackle to work with the new auth process. For that you must add the following configuration to your `dshackle.yaml`:
+To enable authentication, add the following configuration to your `dshackle.yaml`:
 
 ```yaml
 auth:
   enabled: true
-  publicKeyOwner: drpc
+  publicKeyOwner: drpc # always drpc
   server:
     keys:
       provider-private-key: /path_to_keys/private-provider-name.p8.key
@@ -318,14 +288,14 @@ Providers can use dRPC for free, as long as they use it to query their own infra
 2. Detailed statistics
 3. Automatic fallback mechanism
 
-Also, we need to associate your account with the specific provider in our dRPC config. For now, this has to be done manually.
+Also, we need to associate your account with a specific provider in our dRPC configuration. For now, this is done manually. The association is based on your Team ID.
 
 ### Register on drpc.org
 
 1. Go to https://drpc.org
 2. Select your preferred authorization method (MetaMask, email, etc)
 3. Go to `Settings` -> `Team`
-4. Copy `Team ID` and send it to us
+4. Copy your `Team ID` and send it to us in your dedicated channel on our Discord server
 
 ## Heap dumps
 
@@ -338,3 +308,14 @@ Max number of heap dumps in the folder is 3. Dshackle monitors it and automatica
 ## Additional info
 
 Since **1.10.0** version ([for more info](https://blog.ethereum.org/2021/03/03/geth-v1-10-0)) geth abandoned of indexing all transactions by default (they take transactions from **2,350,000** last blocks). Because of that tx methods like `eth_getTransactionByHash` and `eth_getTransactionReceipt` return null for old blocks. If you wish to disable transaction unindexing altogether, you can run Geth with --txlookuplimit=0. Please take this into account if you have geth nodes.
+
+## Dshackle Upgrade
+
+We release new versions of Dshackle quite often, improving stability and performance while adding support for new networks. Providers should stay up to date and install new versions as soon as possible, as using outdated versions may impact your earnings on our platform.
+
+You can track updates through the following methods:
+- dRPC Discord – Channel `#announcements` in the Providers section
+- GitHub Releases – https://github.com/drpcorg/dshackle/releases
+
+You can subscribe to new releases on GitHub through various options, such as GitHub Notifications (Watching) or external services like https://newreleases.io
+
