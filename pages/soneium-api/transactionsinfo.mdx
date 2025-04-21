@@ -1,0 +1,23 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Transactions info| dRPC"
+/>
+
+## Transactions info
+
+Retrieves details about individual transactions, including their status, block inclusion, and receipts.
+
+[eth_getTransactionByHash](/soneium-api/transactionsinfo/eth_getTransactionByHash): Fetches transaction details using its hash. \
+[eth_getTransactionCount](/soneium-api/transactionsinfo/eth_getTransactionCount): Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/soneium-api/transactionsinfo/eth_getTransactionReceipt): Retrieves the receipt of a finalized transaction. \
+[eth_newPendingTransactionFilter](/soneium-api/transactionsinfo/eth_newPendingTransactionFilter): Creates a filter to track pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/soneium-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex): Fetches a transaction using its block hash and position. \
+[eth_getTransactionByBlockNumberAndIndex](/soneium-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex): Retrieves a transaction based on its block number and index. \
+[txpool_content](/soneium-api/transactionsinfo/txpool_content): Displays a list of pending and queued transactions. \
+
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,24 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Viction chain info| dRPC"
+/>
+
+## Chain info
+
+Provides details about the Viction network, including its protocol version and configuration.
+
+[eth_chainId](/viction-api/chaininfo/eth_chainId):  Returns the network’s unique chain ID. \
+[eth_protocolVersion](/viction-api/chaininfo/eth_protocolVersion):  Retrieves the current protocol version. \
+[net_listening](/viction-api/chaininfo/net_listening): Indicates if the client is actively listening for connections. \
+[net_version](/viction-api/chaininfo/net_version): Returns the network version.  \
+[net_peerCount](/viction-api/chaininfo/net_peerCount): Provides the number of connected peers. \
+[eth_syncing](/viction-api/chaininfo/eth_syncing): Checks if the node is syncing with the network.  \
+[eth_hashrate](/viction-api/chaininfo/eth_hashrate):  Reports the node’s mining hash rate.
+
+These methods help assess the health, configuration, and performance of the Viction network.
+
+<Space h={16} />
+<GetStarted />

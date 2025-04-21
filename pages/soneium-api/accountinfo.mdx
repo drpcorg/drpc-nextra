@@ -1,0 +1,21 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Soneium accounts info| dRPC"
+/>
+
+## Accounts info
+
+Retrieves data related to account balances, contract code, and stored values.
+
+[eth_accounts](/soneium-api/accountinfo/eth_accounts): Displays the list of accounts controlled by the node. \
+[eth_getBalance](/soneium-api/accountinfo/eth_getBalance): Returns the balance of an account in the smallest unit of currency (Wei). \
+[eth_getCode](/soneium-api/accountinfo/eth_getCode): Provides the contract code deployed at a specific address. \
+[eth_getProof](/soneium-api/accountinfo/eth_getProof): Delivers a Merkle proof for an account and its stored data. \
+[eth_getStorageAt](/soneium-api/accountinfo/eth_getStorageAt): Fetches the value stored in a contract at a given storage slot.
+
+
+<Space h={16} />
+<GetStarted />

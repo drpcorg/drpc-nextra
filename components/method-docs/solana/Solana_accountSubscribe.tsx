@@ -45,11 +45,17 @@ const ws = new WebSocket('${DRPC_ENDPOINT_URL_WSCAT}');
 
 ws.on('open', function open() {
   ws.send(JSON.stringify({
-    "id": 1,
-    "jsonrpc": "2.0",
-    "method": "logsUnsubscribe",
-    "params": [0]
-  }));
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+}));
 });
 
 ws.on('message', function incoming(data) {
@@ -68,12 +74,17 @@ ws.on('error', function error(error) {
 const ws = new WebSocket('${DRPC_ENDPOINT_URL_WSCAT}');
 
 ws.on('open', function open() {
-  ws.send(JSON.stringify({
-    "id": 1,
-    "jsonrpc": "2.0",
-    "method": "logsUnsubscribe",
-    "params": [0]
-  }));
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+}));
 });
 
 ws.on('message', function incoming(data) {
@@ -98,11 +109,17 @@ def on_error(ws, error):
 
 def on_open(ws):
     ws.send(json.dumps({
-        "id": 1,
-        "jsonrpc": "2.0",
-        "method": "logsUnsubscribe",
-        "params": [0]
-    }))
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+}))
 
 ws = websocket.WebSocketApp("${DRPC_ENDPOINT_URL_WSCAT}",
                             on_message=on_message,
@@ -131,11 +148,17 @@ func main() {
 	defer ws.Close()
 
 	request := map[string]interface{}{
-		"id": 1,
-		"jsonrpc": "2.0",
-		"method": "logsUnsubscribe",
-		"params": []interface{}{0},
-	}
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+}
 
 	if err := ws.WriteJSON(request); err != nil {
 		log.Fatal("Error sending request:", err)
@@ -165,11 +188,17 @@ async fn main() {
     let (mut write, mut read) = ws_stream.split();
 
     let unsubscribe_request = json!({
-        "id": 1,
-        "jsonrpc": "2.0",
-        "method": "logsUnsubscribe",
-        "params": [0]
-    });
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+});
 
     write.send(Message::Text(unsubscribe_request.to_string())).await.expect("Failed to send message");
 

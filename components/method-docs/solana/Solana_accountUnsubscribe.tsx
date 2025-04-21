@@ -34,7 +34,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     language: "shell",
     code: () => `wscat -c ${DRPC_ENDPOINT_URL_WSCAT} \\
 # wait for connection
-{"id":1,"jsonrpc":"2.0","method":"logsUnsubscribe","params":[0]}
+{"id":1,"jsonrpc":"2.0","method":"accountUnsubscribe","params":[0]}
 `,
   },
   {
@@ -47,7 +47,7 @@ ws.on('open', function open() {
   ws.send(JSON.stringify({
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "logsUnsubscribe",
+    "method": "accountUnsubscribe",
     "params": [0]
   }));
 });
@@ -71,7 +71,7 @@ ws.on('open', function open() {
   ws.send(JSON.stringify({
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "logsUnsubscribe",
+    "method": "accountUnsubscribe",
     "params": [0]
   }));
 });
@@ -100,7 +100,7 @@ def on_open(ws):
     ws.send(json.dumps({
         "id": 1,
         "jsonrpc": "2.0",
-        "method": "logsUnsubscribe",
+        "method": "accountUnsubscribe",
         "params": [0]
     }))
 
@@ -133,7 +133,7 @@ func main() {
 	request := map[string]interface{}{
 		"id": 1,
 		"jsonrpc": "2.0",
-		"method": "logsUnsubscribe",
+		"method": "accountUnsubscribe",
 		"params": []interface{}{0},
 	}
 
@@ -167,7 +167,7 @@ async fn main() {
     let unsubscribe_request = json!({
         "id": 1,
         "jsonrpc": "2.0",
-        "method": "logsUnsubscribe",
+        "method": "accountUnsubscribe",
         "params": [0]
     });
 

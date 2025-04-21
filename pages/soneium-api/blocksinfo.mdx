@@ -1,0 +1,27 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Soneium blocks info| dRPC"
+/>
+
+
+## Blocks info
+
+Supplies comprehensive details about blockchain blocks, including metadata, transactions, and receipts.
+
+[eth_blockNumber](/soneium-api/blocksinfo/eth_blockNumber): Returns the latest block number. \
+[eth_getBlockByHash](/soneium-api/blocksinfo/eth_getBlockByHash): Retrieves block details using its unique hash. \
+[eth_getBlockByHash#full](/soneium-api/blocksinfo/eth_getBlockByHashfull): Fetches a full block, including all transaction details. \
+[eth_getBlockByNumber](/soneium-api/blocksinfo/eth_getBlockByNumber): Provides block data based on its position in the chain. \
+[eth_getBlockByNumber#full](/soneium-api/blocksinfo/eth_getBlockByNumberfull): Returns an entire block, complete with transaction data. \
+[eth_newBlockFilter](/soneium-api/blocksinfo/eth_newBlockFilter): Creates a filter to track new blocks in real-time. \
+[eth_getBlockReceipts](/soneium-api/blocksinfo/eth_getBlockReceipts): Retrieves transaction receipts associated with a block. \
+[eth_getBlockTransactionCountByHash](/soneium-api/blocksinfo/eth_getBlockTransactionCountByHash): Determines the number of transactions in a block using its hash. \
+[eth_getBlockTransactionCountByNumber](/soneium-api/blocksinfo/eth_getBlockTransactionCountByNumber): Returns the count of transactions in a block identified by its number.
+
+
+
+<Space h={16} />
+<GetStarted />

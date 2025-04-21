@@ -1,24 +1,27 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta title="BSC debug and trace info | dRPC" />
 
 ## Debug and trace
 
 Available exclusively on the paid tier, these methods allow for transaction tracing, block execution inspection, and transaction/block replay for in-depth analysis.
 
-[trace_filter](/bsc-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria.  \
+[trace_filter](/bsc-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
 [trace_rawTransaction](/bsc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging purposes. \
-[trace_block](/bsc-api/debugandtrace/trace_block) : Traces the execution of a block.  \
-[trace_replayBlockTransactions](/bsc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for analysis.  \
+[trace_block](/bsc-api/debugandtrace/trace_block) : Traces the execution of a block. \
+[trace_replayBlockTransactions](/bsc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for analysis. \
 [trace_replayBlockTransactions#vmTrace](/bsc-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides a VM-level trace during block replay. \
-[debug_traceBlockByHash](/bsc-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash.  \
-[debug_traceBlockByNumber](/bsc-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number.  \
-[trace_transaction](/bsc-api/debugandtrace/trace_transaction) : Traces a specific transaction.  \
-[debug_traceTransaction](/bsc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction.  \
-[trace_replayTransaction](/bsc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for analysis.  \
-[trace_replayTransaction#vmTrace](/bsc-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay.  \
-[trace_callMany](/bsc-api/debugandtrace/trace_callMany) : Executes multiple trace calls.  \
-[trace_get](/bsc-api/debugandtrace/trace_get) : Retrieves trace data.  \
-[trace_call](/bsc-api/debugandtrace/trace_call) : Executes a trace call.  \
+[debug_traceBlockByHash](/bsc-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash. \
+[debug_traceBlockByNumber](/bsc-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number. \
+[trace_transaction](/bsc-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/bsc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction. \
+[trace_replayTransaction](/bsc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for analysis. \
+[trace_replayTransaction#vmTrace](/bsc-api/debugandtrace/trace_replayTransactionvmTrace) : Provides VM-level trace during transaction replay. \
+[trace_callMany](/bsc-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
+[trace_get](/bsc-api/debugandtrace/trace_get) : Retrieves trace data. \
+[trace_call](/bsc-api/debugandtrace/trace_call) : Executes a trace call. \
 [debug_traceCall](/bsc-api/debugandtrace/debug_traceCall) : Traces a specific call without altering state.
 
 These methods offer advanced debugging tools for analyzing execution flows and troubleshooting issues on the network.

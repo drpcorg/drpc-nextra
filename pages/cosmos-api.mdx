@@ -1,4 +1,117 @@
-# Cosmos API overview
+
+# Cosmos API Overview
+
+Welcome to the Cosmos API Quickstart and Reference Guide. This guide provides everything you need to start building on Cosmos using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Cosmos seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Cosmos API request.
+- A detailed list of **all Cosmos API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#CosmosAPIMethods)
+
+## Cosmos API Quickstart
+
+To get started with building on Cosmos using dRPC's Cosmos RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Cosmos RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Cosmos RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://cosmos.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://cosmos.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Cosmos-drpc-quickstart
+cd Cosmos-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Cosmos RPC endpoints section. Copy the HTTPS endpoint URL for the Cosmos Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=cosmos&dkey=YOUR_DRPC_API_KEY'; // Replace with your actual Cosmos RPC endpoint
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 'cosmos-api',
+  method: 'status',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('Node status:', response.data.result);
+  })
+  .catch(error => {
+    console.error('Error fetching node status:', error);
+  });
+```
+
+Replace `https://lb.drpc.org/ogrpc?network=cosmos&dkey=YOUR_DRPC_API_KEY` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Cosmos block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains..
+
+By following these steps, you can start building on Cosmos using dRPC's reliable and efficient RPC endpoints. For more details use [Cosmos Documentation](https://docs.cosmos.network).
+
+<a id="CosmosAPIMethods"></a>
+
+## Cosmos API Methods
+
 
 The Cosmos blockchain network, designed as an ecosystem of connected blockchains, provides similar retrieval methods for managing transactions, block data, consensus information, and node operations. Below is a breakdown of Cosmos-specific categories and methods.
 
@@ -6,43 +119,43 @@ The Cosmos blockchain network, designed as an ecosystem of connected blockchains
 
 Retrieves details about specific blocks and their contents.
 
-[block](/cosmos-api/blocksinfo/block) \
-[block_by_hash](/cosmos-api/blocksinfo/block_by_hash) \
-[block_results](/cosmos-api/blocksinfo/block_results) \
-[block_search](/cosmos-api/blocksinfo/block_search) \
-[blockchain](/cosmos-api/blocksinfo/blockchain) \
-[header](/cosmos-api/blocksinfo/header) \
-[header_by_hash](/cosmos-api/blocksinfo/header_by_hash) \
-[commit](/cosmos-api/blocksinfo/commit)
+[block](/cosmos-api/blocksinfo/block) : Retrieves detailed information about a specific block. \
+[block_by_hash](/cosmos-api/blocksinfo/block_by_hash) : Fetches a block by its hash. \
+[block_results](/cosmos-api/blocksinfo/block_results) : Provides the result of all transactions in a block. \
+[block_search](/cosmos-api/blocksinfo/block_search) : Searches for blocks using specific criteria. \
+[blockchain](/cosmos-api/blocksinfo/blockchain) : Retrieves metadata for a series of blocks. \
+[header](/cosmos-api/blocksinfo/header) : Fetches block headers. \
+[header_by_hash](/cosmos-api/blocksinfo/header_by_hash) : Retrieves block headers by hash. \
+[commit](/cosmos-api/blocksinfo/commit) : Provides the block commit details.
 
 ## Chain info
 
 Allows to gather detailed information about the current state and configuration of the blockchain.
 
-[abci_info](/cosmos-api/chaininfo/abci_info) \
-[abci_query](/cosmos-api/chaininfo/abci_query) \
-[genesis_chunked](/cosmos-api/chaininfo/genesis_chunked) \
-[health](/cosmos-api/chaininfo/health) \
-[lag_status](/cosmos-api/chaininfo/lag_status) \
-[status](/cosmos-api/chaininfo/status)
+[abci_info](/cosmos-api/chaininfo/abci_info) : Provides information about the ABCI application state. \
+[abci_query](/cosmos-api/chaininfo/abci_query) : Queries the application for state information. \
+[genesis_chunked](/cosmos-api/chaininfo/genesis_chunked) : Retrieves the genesis file in chunks. \
+[health](/cosmos-api/chaininfo/health) : Checks the health of the node. \
+[lag_status](/cosmos-api/chaininfo/lag_status) : Displays the lag status of the node. \
+[status](/cosmos-api/chaininfo/status) : Fetches the current status of the node.
 
 
 ## Consensus info
 
 Ensures that validators agree on the state of the blockchain.
 
-[consensus_params](/cosmos-api/consensusinfo/consensus_params) \
-[consensus_state](/cosmos-api/consensusinfo/consensus_state) \
-[dump_consensus_state](/cosmos-api/consensusinfo/dump_consensus_state)
+[consensus_params](/cosmos-api/consensusinfo/consensus_params) : Retrieves the parameters governing the consensus process. \
+[consensus_state](/cosmos-api/consensusinfo/consensus_state) : Returns the current state of the consensus algorithm. \
+[dump_consensus_state](/cosmos-api/consensusinfo/dump_consensus_state) : Provides a detailed dump of the consensus state for debugging.
 
 ## Transactions info
 
 Provides access to information about on-chain transactions and their current state.
 
-[broadcast_tx](/cosmos-api/transactionsinfo/broadcast_tx) \
-[broadcast_tx_commit](/cosmos-api/transactionsinfo/broadcast_tx_commit) \
-[check_tx](/cosmos-api/transactionsinfo/check_tx) \
-[num_unconfirmed_txs](/cosmos-api/transactionsinfo/num_unconfirmed_txs) \
-[tx](/cosmos-api/transactionsinfo/tx) \
-[tx_search](/cosmos-api/transactionsinfo/tx_search)
+[broadcast_tx](/cosmos-api/transactionsinfo/broadcast_tx) : Broadcasts a transaction to the network without waiting for its inclusion in a block. \
+[broadcast_tx_commit](/cosmos-api/transactionsinfo/broadcast_tx_commit) : Broadcasts a transaction and waits for its inclusion in a block. \
+[check_tx](/cosmos-api/transactionsinfo/check_tx) : Checks a transaction for validity without broadcasting it. \
+[num_unconfirmed_txs](/cosmos-api/transactionsinfo/num_unconfirmed_txs) : Returns the number of unconfirmed transactions in the mempool. \
+[tx](/cosmos-api/transactionsinfo/tx) : Retrieves details of a specific transaction by its hash. \
+[tx_search](/cosmos-api/transactionsinfo/tx_search) : Searches for transactions based on criteria.
 

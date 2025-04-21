@@ -1,3 +1,91 @@
+# TON API Overview
+
+Welcome to the TON API Quickstart and Reference Guide. This guide provides everything you need to start building on The Open Network (TON) using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating fees, this comprehensive guide will help you integrate TON seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first TON API request.
+- A detailed list of **all TON API methods**, categorized for easy reference.
+
+To get started with building on TON using dRPC's TON RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public TON RPC Endpoints**
+
+By signing up for a free dRPC account, you can access their Premium TON RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS:
+```bash
+https://ton.drpc.org/
+```
+WSS:
+```bash
+wss://ton.drpc.org
+```
+**2. Set Up Your Development Environment**
+
+RPC can be requested in various ways. In this example, we will use Node.js. Ensure you have Node.js and npm installed on your system. You can verify their installation by running:
+```bash
+node -v
+npm -v
+```
+If not installed, download and install them from the official Node.js website.
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+```bash
+mkdir ton-drpc-quickstart
+cd ton-drpc-quickstart
+npm init --yes
+```
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+```bash
+npm install axios
+```
+**. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the TON RPC endpoints section. Copy the HTTPS endpoint URL for the TON Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/rest/YOUR_DRPC_API_KEY/ton/detectAddress?address=EQDJlZqZfh1OQ4PY2ze4bSEBznjc8fGzkE2YiP5XLvDv1M6u';
+
+axios.get(url, {
+  headers: {
+    'accept': 'application/json'
+  }
+})
+.then(response => {
+  console.log('Response:', response.data);
+})
+.catch(error => {
+  console.error('Error:', error);
+});
+```
+Replace 'https://lb.drpc.org/rest/YOUR_DRPC_API_KEY/ton/' with the actual endpoint URL.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+```bash
+node index.js
+```
+You should see the TON masterchain info printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high-performance nodes, access to multiple chains, and security enhancements. For more details, visit their [TON documentation](https://docs.ton.org).
+
+By following these steps, you can start building on TON using dRPC's reliable and efficient RPC endpoints.
+
 # Ton API Overview
 
 These endpoints provide essential data for interacting with the Ton blockchain, including accounts, transactions, blocks, and network information.
@@ -6,91 +94,90 @@ These endpoints provide essential data for interacting with the Ton blockchain, 
 
 Returns details about an account's balance, associated addresses, and wallet information on Ton Chain.
 
-[getAddressInformation](/ton-api/accountinfo/getAddressInformation) \
-[getExtendedAddressInformation](/ton-api/accountinfo/getExtendedAddressInformation) \
-[getWalletInformation](/ton-api/accountinfo/getWalletInformation) \
-[getAddressBalance](/ton-api/accountinfo/getAddressBalance) \
-[detectAddress](/ton-api/accountinfo/detectAddress) \
-[wallet](/ton-api/accountinfo/wallet)
+[getAddressInformation](/ton-api/accountinfo/getAddressInformation): Provides basic information for a specific address. \
+[getExtendedAddressInformation](/ton-api/accountinfo/getExtendedAddressInformation): Offers extended information, including any additional metadata for the address. \
+[getWalletInformation](/ton-api/accountinfo/getWalletInformation): Fetches details about the wallet type and state. \
+[getAddressBalance](/ton-api/accountinfo/getAddressBalance): Returns the current balance of an address. \
+[detectAddress](/ton-api/accountinfo/detectAddress): Detects and verifies the format of a given address. \
+[wallet](/ton-api/accountinfo/wallet): Retrieves detailed information about a specific wallet.
 
 ## Blocks Info
 
 Retrieves detailed information about Ton blocks, including block signatures, proofs, and shard information.
 
-[getMasterchainInfo](/ton-api/blocksinfo/getMasterchainInfo) \
-[getMasterchainBlockSignatures](/ton-api/blocksinfo/getMasterchainBlockSignatures) \
-[getShardBlockProof](/ton-api/blocksinfo/getShardBlockProof) \
-[lookupBlock](/ton-api/blocksinfo/lookupBlock) \
-[shards](/ton-api/blocksinfo/shards) \
-[getBlockHeader](/ton-api/blocksinfo/getBlockHeader) \
-[blocks](/ton-api/blocksinfo/blocks) \
-[masterchainBlockShards](/ton-api/blocksinfo/masterchainBlockShards) \
-[masterchainBlockShardsState](/ton-api/blocksinfo/masterchainBlockShardsState)
+[getMasterchainInfo](/ton-api/blocksinfo/getMasterchainInfo): Provides information about the master chain, including the current state. \
+[getMasterchainBlockSignatures](/ton-api/blocksinfo/getMasterchainBlockSignatures): Retrieves block signature data for enhanced security validation. \
+[getShardBlockProof](/ton-api/blocksinfo/getShardBlockProof): Supplies proof information for shards in a specific block. \
+[lookupBlock](/ton-api/blocksinfo/lookupBlock): Finds block details based on specific criteria, including block height or timestamp. \
+[shards](/ton-api/blocksinfo/shards): Returns information on the shard layout for a specific master chain block. \
+[getBlockHeader](/ton-api/blocksinfo/getBlockHeader): Retrieves headers for a specific block, containing basic metadata. \
+[blocks](/ton-api/blocksinfo/blocks): Retrieves general block information from the TON blockchain, including block details like block ID, timestamp, and previous block reference. \
+[masterchainBlockShards](/ton-api/blocksinfo/masterchainBlockShards): Fetches details of the shards associated with a specific masterchain block. \
+[masterchainBlockShardsState](/ton-api/blocksinfo/masterchainBlockShardsState): Provides the state of each shard in a specified masterchain block.
 
 ## Transactions Info
 
 Provides data about specific transactions, transaction history, and related transaction operations.
-
-[getTransactions](/ton-api/transactionsinfo/getTransactions) \
-[getBlockTransactions](/ton-api/transactionsinfo/getBlockTransactions) \
-[getBlockTransactionsExt](/ton-api/transactionsinfo/getBlockTransactionsExt) \
-[tryLocateTx](/ton-api/transactionsinfo/tryLocateTx) \
-[tryLocateResultTx](/ton-api/transactionsinfo/tryLocateResultTx) \
-[tryLocateSourceTx](/ton-api/transactionsinfo/tryLocateSourceTx) \
-[transactions](/ton-api/transactionsinfo/transactions) \
-[transactionsByMessage](/ton-api/transactionsinfo/transactionsByMessage) \
-[transactionsByMasterchainBlock](/ton-api/transactionsinfo/transactionsByMasterchainBlock) \
-[adjacentTransactions](/ton-api/transactionsinfo/adjacentTransactions)
+[getTransactions](/ton-api/transactionsinfo/getBlockTransactions): Fetches transaction history for a specified address. \
+[getBlockTransactions](/ton-api/transactionsinfo/getBlockTransactions): Retrieves transactions within a specified block. \
+[getBlockTransactionsExt](/ton-api/transactionsinfo/getBlockTransactionsExt): Offers extended details about all transactions within a block. \
+[tryLocateTx](/ton-api/transactionsinfo/tryLocateTx): Searches for a specific transaction across multiple blocks. \
+[tryLocateResultTx](/ton-api/transactionsinfo/tryLocateResultTx): Locates the result of a transaction within the blockchain, \
+[tryLocateSourceTx](/ton-api/transactionsinfo/tryLocateSourceTx): Searches for the originating source of a transaction. \
+[transactions](/ton-api/transactionsinfo/transactions): Retrieves a list of transactions. \
+[transactionsByMessage](/ton-api/transactionsinfo/transactionsByMessage): Fetches transactions associated with a specific message. \
+[transactionsByMasterchainBlock](/ton-api/transactionsinfo/transactionsByMasterchainBlock): Retrieves all transactions contained within a specified masterchain block \
+[adjacentTransactions](/ton-api/transactionsinfo/adjacentTransactions): Retrieves transactions that are adjacent to a specified transaction
 
 ## Address Management
 
 Methods to handle address packing and unpacking, as well as related state information.
 
-[packAddress](/ton-api/addressmanagement/packAddress) \
-[unpackAddress](/ton-api/addressmanagement/unpackAddress) \
-[addressBook](/ton-api/addressmanagement/addressBook)
+[packAddress](/ton-api/addressmanagement/packAddress): Encodes a TON blockchain address into a compact. \
+[unpackAddress](/ton-api/addressmanagement/unpackAddress): Decodes a previously packed TON blockchain address back into its original format. \
+[addressBook](/ton-api/addressmanagement/addressBook): Retrieves information about a specific address
 
 ## Consensus and Chain info
 
 Provides data on Ton Chain consensus and configuration parameters.
 
-[getConsensusBlock](/ton-api/consensusandchaininfo/getConsensusBlock) \
-[getConfigParam](/ton-api/consensusandchaininfo/getConfigParam) \
-[getConfigAll](/ton-api/consensusandchaininfo/getConfigAll) \
-[getOutMsgQueueSizes](/ton-api/consensusandchaininfo/getOutMsgQueueSizes) \
-[masterchainInfo](/ton-api/consensusandchaininfo/masterchainInfo)
+[getConsensusBlock](/ton-api/consensusandchaininfo/getConsensusBlock): Supplies details on the most recent consensus block. \
+[getConfigParam](/ton-api/consensusandchaininfo/getConfigParam): Retrieves specific configuration parameters for the network. \
+[getConfigAll](/ton-api/consensusandchaininfo/getConfigAll): Fetches all configuration parameters in one response. \
+[getOutMsgQueueSizes](/ton-api/consensusandchaininfo/getOutMsgQueueSizes): Provides the sizes of outbound message queues. \
+[masterchainInfo](/ton-api/consensusandchaininfo/masterchainInfo): Retrieves information about the current state of the masterchain
 
 ## Token Data
 
 Retrieve specific token-related data on Ton Chain.
 
-[getTokenData](/ton-api/tokendata/getTokenData) \
-[nft/transfers](/ton-api/tokendata/nfttransfers) \
-[nft/items](/ton-api/tokendata/nftitems) \
-[nft/collections](/ton-api/tokendata/nftcollections) \
-[jetton/masters](/ton-api/tokendata/jettonmasters) \
-[jetton/wallets](/ton-api/tokendata/jettonwallets) \
-[jetton/transfers](/ton-api/tokendata/jettontransfers) \
-[jetton/burns](/ton-api/tokendata/jettonburns)
+[getTokenData](/ton-api/tokendata/getTokenData) Fetches metadata and details for a specific token, including its status and history. \
+[nft/transfers](/ton-api/tokendata/nfttransfers): Retrieves a list of NFT transfer events. \
+[nft/items](/ton-api/tokendata/nftitems): Provides information about individual NFTs, including their metadata, ownership. \
+[nft/collections](/ton-api/tokendata/nftcollections): Retrieves data on NFT collections. \
+[jetton/masters](/ton-api/tokendata/jettonmasters): Retrieves information about Jetton master contracts. \
+[jetton/wallets](/ton-api/tokendata/jettonwallets): Provides details on Jetton wallets. \
+[jetton/transfers](/ton-api/tokendata/jettontransfers): Retrieves a list of Jetton transfer events. \
+[jetton/burns](/ton-api/tokendata/jettonburns): Provides information on Jetton burn events.
 
 ## Executing Transactions
 
 Enables sending data (e.g., serialized BOCs) and managing queries.
 
-[sendBoc](/ton-api/executingtransactions/sendBoc) \
-[sendBocReturnHash](/ton-api/executingtransactions/sendBocReturnHash) \
-[sendQuery](/ton-api/executingtransactions/sendQuery)
+[sendBoc](/ton-api/executingtransactions/sendBoc): Sends a serialized BOC (Bag of Cells) for processing. \
+[sendBocReturnHash](/ton-api/executingtransactions/sendBocReturnHash): Submits a BOC and returns its hash for tracking. \
+[sendQuery](/ton-api/executingtransactions/sendQuery): Executes a query transaction on the blockchain.
 
 ## Gas Estimation
 
 Calculates estimated fees for specific operations on Ton Chain.
 
-[estimateFee](/ton-api/gasestimation/estimateFee)
+[estimateFee](/ton-api/gasestimation/estimateFee): Provides an estimated fee for a given transaction or operation.
 
 ## Smart Contract Execution
 
 Facilitates the execution of smart contract methods and handles JSON-RPC requests.
 
-[runGetMethod](/ton-api/smartcontractexecution/runGetMethod) \
-[jsonRPC](/ton-api/smartcontractexecution/jsonRPC) \
-[messages](/ton-api/smartcontractexecution/messages)
+[runGetMethod](/ton-api/smartcontractexecution/runGetMethod): Runs a specific smart contract method and returns the result. \
+[messages](/ton-api/smartcontractexecution/messages): Retrieves a list of messages. \
+[jsonRPC](/ton-api/smartcontractexecution/jsonRPC): Executes general JSON-RPC operations on the network.

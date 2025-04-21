@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Viction accounts info| dRPC"
+/>
+
+## Accounts info
+
+Returns data about an account’s balance, contract code, or stored values on the Viction network.
+
+[eth_accounts](/viction-api/accountinfo/eth_accounts) : Lists accounts managed by the client. \
+[eth_getBalance](/viction-api/accountinfo/eth_getBalance) : Retrieves an account’s balance in Wei. \
+[eth_getCode](/viction-api/accountinfo/eth_getCode) : Returns the smart contract code at a specified address. \
+[eth_getProof](/viction-api/accountinfo/eth_getProof) : Generates a Merkle proof for an account or its storage. \
+[eth_getStorageAt](/viction-api/accountinfo/eth_getStorageAt) : Fetches the stored value from a particular storage slot.
+
+These functions are fundamental for interacting with accounts on Viction.
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,20 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta title="Berachain accounts info | dRPC" />
+
+## Accounts info
+
+Provides details about an account’s balance, smart contract code, or stored information.
+
+[eth_accounts](/bartio-api/accountinfo/eth_accounts) : Enumerates all accounts managed by the client. \
+[eth_getBalance](/bartio-api/accountinfo/eth_getBalance) : Retrieves the Ether balance of a specified account in Wei. \
+[eth_getCode](/bartio-api/accountinfo/eth_getCode) : Obtains the smart contract bytecode deployed at a particular address. \
+[eth_getProof](/bartio-api/accountinfo/eth_getProof) : Generates a Merkle proof for an account’s balance or its storage contents. \
+[eth_getStorageAt](/bartio-api/accountinfo/eth_getStorageAt) : Fetches the value stored at a specific storage slot of an account.
+
+These endpoints are essential for managing and interacting with accounts on the Berachain network.
+
+<Space h={16} />
+<GetStarted />

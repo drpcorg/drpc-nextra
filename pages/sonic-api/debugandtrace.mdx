@@ -1,0 +1,33 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Sonic debug and trace info| dRPC"
+/>
+
+## Debug and trace
+
+Available only on the paid tier. Allows tracing transactions, inspecting block execution, and replaying transactions or blocks for detailed analysis.
+
+[trace_filter](/sonic-api/debugandtrace/trace_filter): Filters trace data based on specified criteria. \
+[trace_rawTransaction](/sonic-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging purposes. \
+[trace_block](/sonic-api/debugandtrace/trace_block): Traces the execution of a block. \
+[trace_replayBlockTransactions](/sonic-api/debugandtrace/trace_replayBlockTransactions): Replays transactions within a block for analysis. \
+[trace_replayBlockTransactions#vmTrace](/sonic-api/debugandtrace/trace_replayBlockTransactionsvmTrace): Provides a VM-level execution trace during block replay. \
+[debug_traceBlockByHash](/sonic-api/debugandtrace/debug_traceBlockByHash): Traces block execution using its hash. \
+[debug_traceBlockByNumber](/sonic-api/debugandtrace/debug_traceBlockByNumber): Traces block execution by its number. \
+[trace_transaction](/sonic-api/debugandtrace/trace_transaction): Traces a specific transaction’s execution. \
+[debug_traceTransaction](/sonic-api/debugandtrace/debug_traceTransaction): Provides a detailed execution trace for a transaction. \
+[trace_replayTransaction](/sonic-api/debugandtrace/trace_replayTransaction): Replays a transaction to analyze its behavior. \
+[trace_replayTransaction#vmTrace](/sonic-api/debugandtrace/trace_replayTransactionvmTrace): Offers a VM-level execution trace during transaction replay. \
+[trace_callMany](/sonic-api/debugandtrace/trace_callMany): Executes multiple trace calls simultaneously. \
+[trace_get](/sonic-api/debugandtrace/trace_get): Retrieves trace data for an execution. \
+[trace_call](/sonic-api/debugandtrace/trace_call): Runs a trace call without modifying state. \
+[debug_traceCall](/sonic-api/debugandtrace/debug_traceCall): Traces a specific contract call for debugging.
+
+These methods offer powerful debugging and analysis tools for investigating execution flows and troubleshooting issues on Sonic.
+
+
+<Space h={16} />
+<GetStarted />

@@ -13,8 +13,11 @@ const METHOD_DOCS_URL_BASES_MAP = {
   "/base-api": "Base",
   "/celo-api": "Celo",
   "/bsc-api": "BNB Smart Chain",
-  "/bartio-api": "Berachain bArtio",
+  "/berachain-api": "Berachain",
   "/fantom-api": "Fantom",
+  "/soneium-api": "Soneium",
+  "/sonic-api": "Sonic",
+  "/viction-api": "Viction",
 };
 
 const METHOD_DOCS_URL_BASES_MAP_KEYS = Object.keys(METHOD_DOCS_URL_BASES_MAP);
@@ -55,7 +58,7 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "feeinfo",
   "ethereumfantomdifference",
   "ethereumbscdifference",
-  "ethereumbartiodifference",
+  "ethereumbartiodifference"
 ];
 
 type RouteCheckResult = {

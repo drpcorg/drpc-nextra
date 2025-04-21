@@ -1,0 +1,25 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Sonic transactions info| dRPC"
+/>
+
+## Transactions info
+
+Fetches details about individual transactions, including status, receipts, and block inclusion.
+
+[eth_getTransactionByHash](/sonic-api/transactionsinfo/eth_getTransactionByHash): Retrieves a transaction using its hash. \
+[eth_getTransactionCount](/sonic-api/transactionsinfo/eth_getTransactionCount): Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/sonic-api/transactionsinfo/eth_getTransactionReceipt): Fetches the receipt of a transaction, including execution status. \
+[eth_newPendingTransactionFilter](/sonic-api/transactionsinfo/eth_newPendingTransactionFilter): Creates a filter to track pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/sonic-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex): Retrieves a transaction from a block using its hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/sonic-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex): Fetches a transaction by block number and index. \
+[txpool_content](/sonic-api/transactionsinfo/txpool_content): Provides details of pending transactions in the transaction pool.
+
+These methods are essential for tracking and managing transactions on the Sonic network.
+
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,24 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Viction transactions info| dRPC"
+/>
+
+## Transactions info
+
+Fetches details about individual transactions, including status, receipts, and block inclusion.
+
+[eth_getTransactionByHash](/viction-api/transactionsinfo/eth_getTransactionByHash): Retrieves a transaction using its hash. \
+[eth_getTransactionCount](/viction-api/transactionsinfo/eth_getTransactionCount): Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/viction-api/transactionsinfo/eth_getTransactionReceipt): Fetches the receipt of a transaction, including execution status. \
+[eth_newPendingTransactionFilter](/viction-api/transactionsinfo/eth_newPendingTransactionFilter): Creates a filter to track pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/viction-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex): Retrieves a transaction from a block using its hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/viction-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex): Fetches a transaction by block number and index. \
+[txpool_content](/viction-api/transactionsinfo/txpool_content): Provides details of pending transactions in the transaction pool.
+
+These methods are essential for tracking and managing transactions on the Viction network.
+
+<Space h={16} />
+<GetStarted />

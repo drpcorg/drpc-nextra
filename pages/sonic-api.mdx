@@ -1,0 +1,243 @@
+# Sonic API Overview
+
+Welcome to the Sonic API Quickstart and Reference Guide. This guide provides everything you need to start building on Sonic using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Sonic seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Sonic API request.
+- A detailed list of **all Sonic API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#SonicAPIMethods)
+
+## Sonic API Quickstart
+
+To get started with building on Sonic using dRPC's Sonic RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Sonic RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Sonic RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://sonic.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://sonic.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Sonic-drpc-quickstart
+cd Sonic-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Sonic RPC endpoints section. Copy the HTTPS endpoint URL for the Sonic Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=sonic&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=sonic&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Sonic block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains, and MEV protection. For more details, visit their [Sonic API documentation](https://docs.soniclabs.com).
+
+By following these steps, you can start building on Sonic using dRPC's reliable and efficient RPC endpoints.
+
+<a id="SonicAPIMethods"></a>
+
+## Sonic API Overview
+
+These endpoints provide access to blockchain data, enabling efficient development and integration by retrieving details on blocks, transactions, accounts, logs, and more.
+
+### Accounts Info
+
+Provides information about an account’s balance, contract code, and stored data on the Sonic network.
+
+[eth_accounts](/sonic-api/accountinfo/eth_accounts): Displays a list of accounts managed by the client. \
+[eth_getBalance](/sonic-api/accountinfo/eth_getBalance): Fetches an account’s balance in Wei. \
+[eth_getCode](/sonic-api/accountinfo/eth_getCode): Retrieves the smart contract code deployed at a given address. \
+[eth_getProof](/sonic-api/accountinfo/eth_getProof): Generates a Merkle proof for an account or its storage slots. \
+[eth_getStorageAt](/sonic-api/accountinfo/eth_getStorageAt): Obtains the value stored at a specific storage slot.
+
+### Blocks Info
+Fetches comprehensive information from a specific Sonic block, including transactions, receipts, and metadata. These methods facilitate detailed analysis of block contents, transaction volume, and execution outcomes.
+
+[eth_blockNumber](/sonic-api/blocksinfo/eth_blockNumber): Retrieves the latest block number. \
+[eth_getBlockByHash](/sonic-api/blocksinfo/eth_getBlockByHash): Retrieves block information using its hash. \
+[eth_getBlockByHash#full](/sonic-api/blocksinfo/eth_getBlockByHashfull): Provides full block details, including all transactions. \
+[eth_getBlockByNumber](/sonic-api/blocksinfo/eth_getBlockByNumber): Gets block information by its number. \
+[eth_getBlockByNumber#full](/sonic-api/blocksinfo/eth_getBlockByNumberfull): Returns a complete block with all transaction data. \
+[eth_newBlockFilter](/sonic-api/blocksinfo/eth_newBlockFilter): Sets up a filter to track new blocks in real time. \
+[eth_getBlockReceipts](/sonic-api/blocksinfo/eth_getBlockReceipts): Retrieves transaction receipts for a specific block. \
+[eth_getBlockTransactionCountByHash](/sonic-api/blocksinfo/eth_getBlockTransactionCountByHash): Returns the number of transactions in a block using its hash. \
+[eth_getBlockTransactionCountByNumber](/sonic-api/blocksinfo/eth_getBlockTransactionCountByNumber): Fetches the transaction count for a block based on its number.
+
+
+### Chain Info
+Offers information about the Sonic network, including its protocol version and configuration details.
+
+[eth_chainId](/sonic-api/chaininfo/eth_chainId): Retrieves the network’s unique chain ID. \
+[eth_protocolVersion](/sonic-api/chaininfo/eth_protocolVersion): Returns the current protocol version. \
+[net_listening](/sonic-api/chaininfo/net_listening): Shows whether the client is actively listening for incoming connections. \
+[net_version](/sonic-api/chaininfo/net_version): Provides the network version. \
+[net_peerCount](/sonic-api/chaininfo/net_peerCount): Displays the number of peers connected to the network. \
+[eth_syncing](/sonic-api/chaininfo/eth_syncing): Verifies if the node is currently syncing with the network. \
+[eth_hashrate](/sonic-api/chaininfo/eth_hashrate): Reports the mining hash rate of the node.
+
+
+### Debug & Trace (Paid Tier)
+Enables advanced debugging, transaction tracing, and block execution inspection.
+
+Available exclusively on the paid tier. Enables transaction tracing, block execution inspection, and replaying transactions or blocks for in-depth analysis.
+
+[trace_filter](/sonic-api/debugandtrace/trace_filter): Filters trace data based on defined criteria. \
+[trace_rawTransaction](/sonic-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging. \
+[trace_block](/sonic-api/debugandtrace/trace_block): Traces the execution flow of a block. \
+[trace_replayBlockTransactions](/sonic-api/debugandtrace/trace_replayBlockTransactions): Replays all transactions in a block for detailed analysis. \
+[trace_replayBlockTransactions#vmTrace](/sonic-api/debugandtrace/trace_replayBlockTransactionsvmTrace): Provides a virtual machine (VM)-level execution trace during block replay. \
+[debug_traceBlockByHash](/sonic-api/debugandtrace/debug_traceBlockByHash): Traces the execution of a block using its hash. \
+[debug_traceBlockByNumber](/sonic-api/debugandtrace/debug_traceBlockByNumber): Traces block execution based on its number. \
+[trace_transaction](/sonic-api/debugandtrace/trace_transaction): Traces the execution of a specific transaction. \
+[debug_traceTransaction](/sonic-api/debugandtrace/debug_traceTransaction): Generates a detailed execution trace for a transaction. \
+[trace_replayTransaction](/sonic-api/debugandtrace/trace_replayTransaction): Replays a transaction for behavioral analysis. \
+[trace_replayTransaction#vmTrace](/sonic-api/debugandtrace/trace_replayTransactionvmTrace): Provides a VM-level trace during transaction replay. \
+[trace_callMany](/sonic-api/debugandtrace/trace_callMany): Executes multiple trace calls concurrently. \
+[trace_get](/sonic-api/debugandtrace/trace_get): Retrieves execution trace data. \
+[trace_call](/sonic-api/debugandtrace/trace_call): Executes a trace call without altering state. \
+[debug_traceCall](/sonic-api/debugandtrace/debug_traceCall): Traces a contract call for debugging purposes.
+
+
+### Event Logs
+Captures logs of events emitted by smart contracts, which are crucial for monitoring token transfers and state changes.
+
+[eth_getLogs](/sonic-api/eventlogs/eth_getLogs): Retrieves event logs based on specified filter criteria. \
+[eth_newFilter](/sonic-api/eventlogs/eth_newFilter): Sets up a new filter to monitor targeted events. \
+[eth_getFilterChanges](/sonic-api/eventlogs/eth_getFilterChanges): Retrieves new event logs since the last filter check. \
+[eth_uninstallFilter](/sonic-api/eventlogs/eth_uninstallFilter): Deletes an existing event filter. \
+[eth_getFilterLogs](/sonic-api/eventlogs/eth_getFilterLogs): Fetches all historical logs matching a specified filter.
+
+
+## Executing transactions
+Enables interaction with smart contracts, token transfers, and other blockchain operations by executing transactions.
+
+[eth_call](/sonic-api/executingtransactions/eth_call): Executes contract calls without broadcasting a transaction. \
+[eth_sendRawTransaction](/sonic-api/executingtransactions/eth_sendRawTransaction): Submits signed transactions to the network.
+
+## Gas estimation
+Calculates gas fees for transactions and offers both historical and real-time gas price data.
+
+[eth_feeHistory](/sonic-api/gasestimation/eth_feeHistory): Provides historical gas fee data for trend analysis. \
+[eth_estimateGas](/sonic-api/gasestimation/eth_estimateGas): Estimates the gas required for a specific transaction. \
+[eth_gasPrice](/sonic-api/gasestimation/eth_gasPrice): Retrieves the current gas price from the network. \
+[eth_createAccessList](/sonic-api/gasestimation/eth_createAccessList): Generates an access list to improve gas efficiency. \
+[eth_maxPriorityFeePerGas](/sonic-api/gasestimation/eth_maxPriorityFeePerGas): Suggests a priority fee for faster transaction processing.
+
+
+## Getting uncles
+Retrieves information about "uncle" blocks—valid blocks that were mined but not included in the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/sonic-api/gettinguncles/eth_getUncleByBlockHashAndIndex): Retrieves an uncle block using its hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/sonic-api/gettinguncles/eth_getUncleByBlockNumberAndIndex): Fetches an uncle block based on its number and index. \
+[eth_getUncleCountByBlockHash](/sonic-api/gettinguncles/eth_getUncleCountByBlockHash): Returns the total number of uncle blocks for a specific block hash. \
+[eth_getUncleCountByBlockNumber](/sonic-api/gettinguncles/eth_getUncleCountByBlockNumber): Provides the count of uncle blocks for a given block number.
+
+## Mining
+Retrieves details about the mining state of a Sonic node.
+
+[eth_coinbase](/sonic-api/mining/eth_coinbase): Returns the address receiving mining rewards. \
+[eth_mining](/sonic-api/mining/eth_mining): Indicates whether the node is actively mining.
+
+## Subscriptions
+Allows real-time monitoring of specific Sonic events through WebSockets.
+
+[eth_subscribe](/sonic-api/subscriptions/eth_subscribe): Subscribes to blockchain events like new blocks or logs. \
+[eth_unsubscribe](/sonic-api/subscriptions/eth_unsubscribe): Terminates an active subscription.
+
+
+## Transactions info
+Retrieves detailed information from a specified Sonic block, including transactions, receipts, and block metadata. These methods enable in-depth analysis of block details, transaction volume, and execution results.
+
+[eth_blockNumber](/sonic-api/blocksinfo/eth_blockNumber): Returns the latest block number. \
+[eth_getBlockByHash](/sonic-api/blocksinfo/eth_getBlockByHash): Fetches block details using its hash. \
+[eth_getBlockByHash#full](/sonic-api/blocksinfo/eth_getBlockByHashfull): Retrieves a complete block, including all transactions. \
+[eth_getBlockByNumber](/sonic-api/blocksinfo/eth_getBlockByNumber): Obtains block details by number. \
+[eth_getBlockByNumber#full](/sonic-api/blocksinfo/eth_getBlockByNumberfull): Fetches a full block with transaction data. \
+[eth_newBlockFilter](/sonic-api/blocksinfo/eth_newBlockFilter): Creates a filter to monitor new blocks. \
+[eth_getBlockReceipts](/sonic-api/blocksinfo/eth_getBlockReceipts): Retrieves transaction receipts for a block. \
+[eth_getBlockTransactionCountByHash](/sonic-api/blocksinfo/eth_getBlockTransactionCountByHash): Returns the number of transactions in a block by hash. \
+[eth_getBlockTransactionCountByNumber](/sonic-api/blocksinfo/eth_getBlockTransactionCountByNumber): Gets the transaction count in a block by number.
+
+
+## Web3
+Fetches general network configuration information, including client version and cryptographic functions.
+
+[web3_clientVersion](/sonic-api/web3/web3_clientVersion): Retrieves the version of the client software.  \
+[web3_sha3](/sonic-api/web3/web3_sha3): Generates a Keccak-256 hash from the provided data.
+
+
+
+

@@ -11,7 +11,7 @@ export function BSCMethod_uninstallFilter() {
     <EthereumMethod_uninstallFilter
       replaceCodeSnippetsURLFrom={DRPC_ENDPOINT_URL}
       replaceCodeSnippetsURLTo={DRPC_ENDPOINT_URL_BSC}
-      network="BNb Smart Chain"
+      network="BNB Smart Chain"
     />
   );
 }

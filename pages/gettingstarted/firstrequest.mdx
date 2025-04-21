@@ -89,33 +89,3 @@ web3.eth.getBlockNumber().then((result) => {
 </Tab>
 </Tabs>
 
-## DRPC SDK
-
-However, there is also DRPC SDK, which supports DRPC protocol, it's an alternative protocol
-for calling blockchain methods which allows us to do additional things like response verification,
-provider response signatures client check, etc.
-
-Currently, there is only JS version of this library.
-
-1. To install run:
-
-`npm install @drpcorg/drpc-sdk`
-
-2. You can use typescript to customize your endpoint without UI.
-   We also support providers for ethere.js and web3.js, for example:
-
-```ts copy
-import { DrpcProvider } from "drpc-sdk/dist/esm/providers/ethers";
-// for cjs
-// import { DrpcProvider } from 'drpc-sdk/dist/cjs/providers/ethers';
-
-async function getBlock(tag) {
-  let provider = new DrpcProvider({
-    dkey: "YOUR-API-KEY",
-    provider_ids: ["public"],
-  });
-  let block = await provider.getBlock(tag);
-}
-```
-
-3. You can check the complete docs for our SDK here: [https://p2p-org.github.io/drpc-client/](https://p2p-org.github.io/drpc-client/)

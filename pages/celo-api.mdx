@@ -1,4 +1,115 @@
-# Celo API overview
+# Celo API Overview
+
+Welcome to the Celo API Quickstart and Reference Guide. This guide provides everything you need to start building on Celo using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Celo seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Celo API request.
+- A detailed list of **all Celo API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#CeloAPIMethods)
+
+## Celo API Quickstart
+
+To get started with building on Celo using dRPC's Celo RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Celo RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Celo RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://celo.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://celo.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Celo-drpc-quickstart
+cd Celo-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Celo RPC endpoints section. Copy the HTTPS endpoint URL for the Celo Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=celo&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=celo&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Celo block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains. For more details, visit their [Celo documentation](https://docs.celo.org/integration).
+
+By following these steps, you can start building on Celo using dRPC's reliable and efficient RPC endpoints.
+
+<a id="CeloAPIMethods"></a>
+
+## Celo API Methods
 
 These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
 

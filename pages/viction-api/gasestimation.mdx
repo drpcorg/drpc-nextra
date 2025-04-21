@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Viction gas estimation info| dRPC"
+/>
+
+## Gas estimation
+
+Calculates gas fees for transactions and provides historical and real-time gas price data.
+
+[eth_feeHistory](/viction-api/gasestimation/eth_feeHistory): Returns past gas fee data for trend analysis. \
+[eth_estimateGas](/viction-api/gasestimation/eth_estimateGas): Estimates gas required for a transaction. \
+[eth_gasPrice](/viction-api/gasestimation/eth_gasPrice): Fetches the current gas price. \
+[eth_createAccessList](/viction-api/gasestimation/eth_createAccessList): Generates an access list to optimize gas usage. \
+[eth_maxPriorityFeePerGas](/viction-api/gasestimation/eth_maxPriorityFeePerGas): Provides the suggested priority fee for transactions.
+
+These methods assist in optimizing transaction costs on Viction.
+
+<Space h={16} />
+<GetStarted />

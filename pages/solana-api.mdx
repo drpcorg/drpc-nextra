@@ -1,3 +1,99 @@
+# Solana API Overview
+
+Welcome to the Solana API Quickstart and Reference Guide. This guide provides everything you need to start building on Solana using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Solana seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Solana API request.
+- A detailed list of **all Solana API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#SolanaAPIMethods)
+
+To get started with building on Solana using dRPC's Solana RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Solana RPC Endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Solana RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS:
+```bash
+https://solana.drpc.org/
+```
+WSS:
+```bash
+wss://solana.drpc.org
+```
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we will use Node.js. Ensure you have Node.js and npm installed on your system. You can verify their installation by running:
+```bash
+node -v
+npm -v
+```
+If not installed, download and install them from the official Node.js website.
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+```bash
+mkdir solana-drpc-quickstart
+cd solana-drpc-quickstart
+npm init --yes
+```
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+```bash
+npm install axios
+```
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Solana RPC endpoints section. Copy the HTTPS endpoint URL for the Solana Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=solana&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'getSlot',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The current slot is', response.data.result);
+  })
+  .catch(error => {
+    console.error('Error fetching slot:', error);
+  });
+```
+Replace https://lb.drpc.org/ogrpc?network=solana&dkey=YOUR_DRPC_API_KEY' with the actual endpoint URL you obtained from dRPC.
+
+7. Run Your Script
+
+Execute your script using Node.js:
+```bash
+node index.js
+```
+You should see the current Solana slot printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high-performance nodes, access to multiple chains, and MEV protection. For more details, visit their [Solana API documentation](https://solana.com/docs/rpc).
+
+By following these steps, you can start building on Solana using dRPC's reliable and efficient RPC endpoints.
+
+<a id="SolanaAPIMethods"></a>
+
 # Solana API endpoints
 
 These methods are retrieving information about blocks, accounts, or transactions, these methods provide a comprehensive way to understand the state and functioning of the network.
@@ -6,113 +102,114 @@ These methods are retrieving information about blocks, accounts, or transactions
 
 Offers detailed information regarding the on-chain state of accounts.
 
-[getAccountInfo](/solana-api/accountinfo/getAccountInfo) \
-[getBalance](/solana-api/accountinfo/getBalance) \
-[getVoteAccounts](/solana-api/accountinfo/getVoteAccounts) \
-[getLargestAccounts](/solana-api/accountinfo/getLargestAccounts) \
-[getMultipleAccounts](/solana-api/accountinfo/getMultipleAccounts) \
-[getProgramAccounts](/solana-api/accountinfo/getProgramAccounts) \
-[getStakeActivation](/solana-api/accountinfo/getStakeActivation)
+[getAccountInfo](/solana-api/accountinfo/getAccountInfo) : Retrieves the account's data and lamports. \
+[getBalance](/solana-api/accountinfo/getBalance) : Returns the balance of the specified account. \
+[getVoteAccounts](/solana-api/accountinfo/getVoteAccounts) : Fetches vote accounts for the current epoch. \
+[getLargestAccounts](/solana-api/accountinfo/getLargestAccounts) : Lists the largest accounts by balance. \
+[getMultipleAccounts](/solana-api/accountinfo/getMultipleAccounts) : Retrieves data for multiple accounts at once. \
+[getProgramAccounts](/solana-api/accountinfo/getProgramAccounts) : Returns accounts associated with a specific program. \
+[getStakeActivation](/solana-api/accountinfo/getStakeActivation) : Provides activation status of a stake account.
 
 ## Blocks info
 
 Provides detailed insights about blocks on the blockchain.
 
-[getBlockCommitment](/solana-api/blocksinfo/getBlockCommitment) \
-[getBlockProduction](/solana-api/blocksinfo/getBlockProduction) \
-[getBlocks](/solana-api/blocksinfo/getBlocks) \
-[getBlock](/solana-api/blocksinfo/getBlock) \
-[getBlocksWithLimit](/solana-api/blocksinfo/getBlocksWithLimit) \
-[getBlockHeight](/solana-api/blocksinfo/getBlockHeight) \
-[getBlockTime](/solana-api/blocksinfo/getBlockTime) \
-[getConfirmedBlocks](/solana-api/blocksinfo/getConfirmedBlocks) \
-[getConfirmedBlock](/solana-api/blocksinfo/getConfirmedBlock) \
-[isBlockhashValid](/solana-api/blocksinfo/isBlockhashValid) \
-[getLatestBlockhash](/solana-api/blocksinfo/getLatestBlockhash)
+[getBlockCommitment](/solana-api/blocksinfo/getBlockCommitment) : Fetches the commitment level of a block. \
+[getBlockProduction](/solana-api/blocksinfo/getBlockProduction) : Provides information on block production rates. \
+[getBlocks](/solana-api/blocksinfo/getBlocks) : Lists blocks based on specified criteria. \
+[getBlock](/solana-api/blocksinfo/getBlock) : Retrieves details of a specific block. \
+[getBlocksWithLimit](/solana-api/blocksinfo/getBlocksWithLimit) : Fetches a limited number of blocks. \
+[getBlockHeight](/solana-api/blocksinfo/getBlockHeight) : Returns the height of a specific block. \
+[getBlockTime](/solana-api/blocksinfo/getBlockTime) : Provides the timestamp for a block. \
+[getConfirmedBlocks](/solana-api/blocksinfo/getConfirmedBlocks) : Lists confirmed blocks in the chain. \
+[getConfirmedBlock](/solana-api/blocksinfo/getConfirmedBlock) : Retrieves a confirmed block's details. \
+[isBlockhashValid](/solana-api/blocksinfo/isBlockhashValid) : Checks if a blockhash is valid. \
+[getRecentBlockhash](/solana-api/blocksinfo/getRecentBlockhash) : Fetches the most recent blockhash. \
+[getLatestBlockhash](/solana-api/blocksinfo/getLatestBlockhash) : Returns the latest blockhash.
 
 ## Network info
 
 Offers aggregate data related to the overall network status and operational metrics.
 
-[getEpochInfo](/solana-api/networkinfo/getEpochInfo) \
-[getEpochSchedule](/solana-api/networkinfo/getEpochSchedule) \
-[getFeeForMessage](/solana-api/networkinfo/getFeeForMessage) \
-[getHighestSnapshotSlot](/solana-api/networkinfo/getHighestSnapshotSlot) \
-[getGenesisHash](/solana-api/networkinfo/getGenesisHash) \
-[getRecentPerformanceSamples](/solana-api/networkinfo/getRecentPerformanceSamples) \
-[getFirstAvailableBlock](/solana-api/networkinfo/getFirstAvailableBlock) \
-[getMinimumBalanceForRentExemption](/solana-api/networkinfo/getMinimumBalanceForRentExemption) \
-[getFees](/solana-api/networkinfo/getFees) \
-[getFeeCalculatorForBlockhash](/solana-api/networkinfo/getFeeCalculatorForBlockhash) \
-[getRecentPrioritizationFees](/solana-api/networkinfo/getRecentPrioritizationFees)
+[getEpochInfo](/solana-api/networkinfo/getEpochInfo) : Retrieves information about the current epoch. \
+[getEpochSchedule](/solana-api/networkinfo/getEpochSchedule) : Provides the schedule for the current epoch. \
+[getFeeForMessage](/solana-api/networkinfo/getFeeForMessage) : Returns the fee for processing a specific message. \
+[getHighestSnapshotSlot](/solana-api/networkinfo/getHighestSnapshotSlot) : Fetches the highest snapshot slot in the network. \
+[getGenesisHash](/solana-api/networkinfo/getGenesisHash) : Retrieves the hash of the genesis block. \
+[getRecentPerformanceSamples](/solana-api/networkinfo/getRecentPerformanceSamples) : Provides recent performance metrics for the network. \
+[getFirstAvailableBlock](/solana-api/networkinfo/getFirstAvailableBlock) : Returns the first available block in the chain. \
+[getMinimumBalanceForRentExemption](/solana-api/networkinfo/getMinimumBalanceForRentExemption) : Fetches the minimum balance required for rent exemption. \
+[getFees](/solana-api/networkinfo/getFees) : Returns the current fee structure for transactions. \
+[getFeeCalculatorForBlockhash](/solana-api/networkinfo/getFeeCalculatorForBlockhash) : Provides the fee calculator for a specific blockhash. \
+[getRecentPrioritizationFees](/solana-api/networkinfo/getRecentPrioritizationFees) : Retrieves recent prioritization fees for transactions.
 
 ## Subscriptions
 
 Allows clients to receive real-time updates and notifications about various on-chain events.
 
-[accountSubscribe](/solana-api/subscriptions/accountSubscribe) \
-[accountUnsubscribe](/solana-api/subscriptions/accountUnsubscribe) \
-[blockSubscribe](/solana-api/subscriptions/blockSubscribe) \
-[blockUnsubscribe](/solana-api/subscriptions/blockUnsubscribe) \
-[logsSubscribe](/solana-api/subscriptions/logsSubscribe) \
-[logUnsubscribe](/solana-api/subscriptions/logUnsubscribe) \
-[programSubscribe](/solana-api/subscriptions/programSubscribe) \
-[programUnsubscribe](/solana-api/subscriptions/programUnsubscribe) \
-[signatureSubscribe](/solana-api/subscriptions/signatureSubscribe) \
-[signatureUnsubscribe](/solana-api/subscriptions/signatureUnsubscribe) \
-[slotSubscribe](/solana-api/subscriptions/slotSubscribe) \
-[slotUnsubscribe](/solana-api/subscriptions/slotUnsubscribe)
+[accountSubscribe](/solana-api/subscriptions/accountSubscribe) : Subscribes to account updates. \
+[accountUnsubscribe](/solana-api/subscriptions/accountUnsubscribe) : Unsubscribes from account updates. \
+[blockSubscribe](/solana-api/subscriptions/blockSubscribe) : Subscribes to block updates. \
+[blockUnsubscribe](/solana-api/subscriptions/blockUnsubscribe) : Unsubscribes from block updates. \
+[logsSubscribe](/solana-api/subscriptions/logsSubscribe) : Subscribes to log updates. \
+[logUnsubscribe](/solana-api/subscriptions/logUnsubscribe) : Unsubscribes from log updates. \
+[programSubscribe](/solana-api/subscriptions/programSubscribe) : Subscribes to program updates. \
+[programUnsubscribe](/solana-api/subscriptions/programUnsubscribe) : Unsubscribes from program updates. \
+[signatureSubscribe](/solana-api/subscriptions/signatureSubscribe) : Subscribes to signature updates. \
+[signatureUnsubscribe](/solana-api/subscriptions/signatureUnsubscribe) : Unsubscribes from signature updates. \
+[slotSubscribe](/solana-api/subscriptions/slotSubscribe) : Subscribes to slot updates. \
+[slotUnsubscribe](/solana-api/subscriptions/slotUnsubscribe) : Unsubscribes from slot updates.
 
 ## Node info
 
 Provides data related to the configuration and health of the Solana nodes, which form the backbone of the network.
 
-[getClusterNodes](/solana-api/nodeinfo/getClusterNodes) \
-[getHealth](/solana-api/nodeinfo/getHealth) \
-[getVersion](/solana-api/nodeinfo/getVersion) \
-[getIdentity](/solana-api/nodeinfo/getIdentity)
+[getClusterNodes](/solana-api/nodeinfo/getClusterNodes) : Retrieves the list of nodes in the cluster. \
+[getHealth](/solana-api/nodeinfo/getHealth) : Checks the health status of the node. \
+[getVersion](/solana-api/nodeinfo/getVersion) : Returns the version of the Solana node software. \
+[getIdentity](/solana-api/nodeinfo/getIdentity) : Provides the node's identity information.
 
 ## Slot info
 
 Slots represent periods of time during which a leader is responsible for processing transactions. These methods provide data related to slot timing and leadership.
 
-[getMaxRetransmitSlot](/solana-api/slotinfo/getMaxRetransmitSlot) \
-[getMaxShredInsertSlot](/solana-api/slotinfo/getMaxShredInsertSlot) \
-[getSlot](/solana-api/slotinfo/getSlot) \
-[getSlotLeader](/solana-api/slotinfo/getSlotLeader) \
-[getSlotLeaders](/solana-api/slotinfo/getSlotLeaders) \
-[minimumLedgerSlot](/solana-api/slotinfo/minimumLedgerSlot) \
-[getLeaderSchedule](/solana-api/slotinfo/getLeaderSchedule)
+[getMaxRetransmitSlot](/solana-api/slotinfo/getMaxRetransmitSlot) : Retrieves the maximum slot for retransmission. \
+[getMaxShredInsertSlot](/solana-api/slotinfo/getMaxShredInsertSlot) : Provides the maximum slot for shred insertion. \
+[getSlot](/solana-api/slotinfo/getSlot) : Returns the current slot. \
+[getSlotLeader](/solana-api/slotinfo/getSlotLeader) : Fetches the leader for the current slot. \
+[getSlotLeaders](/solana-api/slotinfo/getSlotLeaders) : Lists leaders for upcoming slots. \
+[minimumLedgerSlot](/solana-api/slotinfo/minimumLedgerSlot) : Retrieves the minimum ledger slot. \
+[getLeaderSchedule](/solana-api/slotinfo/getLeaderSchedule) : Provides the schedule of slot leaders.
 
 ## Network inflation info
 
 Solana implements a staking and inflation model to incentivize validators and participants. These methods help retrieve inflation-related data.
 
-[getInflationGovernor](/solana-api/networkinflationinfo/getInflationGovernor) \
-[getInflationRate](/solana-api/networkinflationinfo/getInflationRate) \
-[getInflationReward](/solana-api/networkinflationinfo/getInflationReward) \
-[getSupply](/solana-api/networkinflationinfo/getSupply)
+[getInflationGovernor](/solana-api/networkinflationinfo/getInflationGovernor) : Retrieves the inflation governor for the network. \
+[getInflationRate](/solana-api/networkinflationinfo/getInflationRate) : Returns the current inflation rate. \
+[getInflationReward](/solana-api/networkinflationinfo/getInflationReward) : Provides the inflation reward amount for validators. \
+[getSupply](/solana-api/networkinflationinfo/getSupply) : Retrieves the total supply of tokens in the network.
 
 ## Token info
 
 Focuses on accounts and balances associated with specific tokens
 
-[getTokenSupply](/solana-api/tokeninfo/getTokenSupply) \
-[getTokenAccountBalance](/solana-api/tokeninfo/getTokenAccountBalance) \
-[getTokenAccountsByDelegate](/solana-api/tokeninfo/getTokenAccountsByDelegate) \
-[getTokenAccountsByOwner](/solana-api/tokeninfo/getTokenAccountsByOwner) \
-[getTokenLargestAccounts](/solana-api/tokeninfo/getTokenLargestAccounts) \
-[requestAirdrop](/solana-api/tokeninfo/requestAirdrop)
+[getTokenSupply](/solana-api/tokeninfo/getTokenSupply) : Retrieves the total supply of a specific token. \
+[getTokenAccountBalance](/solana-api/tokeninfo/getTokenAccountBalance) : Returns the balance of a specific token account. \
+[getTokenAccountsByDelegate](/solana-api/tokeninfo/getTokenAccountsByDelegate) : Lists token accounts associated with a delegate. \
+[getTokenAccountsByOwner](/solana-api/tokeninfo/getTokenAccountsByOwner) : Fetches token accounts owned by a specific address. \
+[getTokenLargestAccounts](/solana-api/tokeninfo/getTokenLargestAccounts) : Provides a list of the largest token accounts. \
+[requestAirdrop](/solana-api/tokeninfo/requestAirdrop) : Requests an airdrop of tokens to a specified account.
 
 ## Transactions info
 
 Allows to interact with and retrieve data about specific transactions, from signatures to transaction status.
 
-[getTransactionCount](/solana-api/transactionsinfo/getTransactionCount) \
-[getConfirmedTransaction](/solana-api/transactionsinfo/getConfirmedTransaction) \
-[getTransaction](/solana-api/transactionsinfo/getTransaction) \
-[sendTransaction](/solana-api/transactionsinfo/sendTransaction) \
-[simulateTransaction](/solana-api/transactionsinfo/simulateTransaction) \
-[getSignaturesForAddress](/solana-api/transactionsinfo/getSignaturesForAddress) \
-[getSignatureStatuses](/solana-api/transactionsinfo/getSignatureStatuses) \
-[getConfirmedSignaturesForAddress2](/solana-api/transactionsinfo/getConfirmedSignaturesForAddress2)
+[getTransactionCount](/solana-api/transactionsinfo/getTransactionCount) : Returns the number of transactions sent from a specific address. \
+[getConfirmedTransaction](/solana-api/transactionsinfo/getConfirmedTransaction) : Retrieves details of a confirmed transaction. \
+[getTransaction](/solana-api/transactionsinfo/getTransaction) : Fetches information about a transaction by its signature. \
+[sendTransaction](/solana-api/transactionsinfo/sendTransaction) : Sends a transaction to the network. \
+[simulateTransaction](/solana-api/transactionsinfo/simulateTransaction) : Simulates the execution of a transaction. \
+[getSignaturesForAddress](/solana-api/transactionsinfo/getSignaturesForAddress) : Lists signatures for transactions associated with a specific address. \
+[getSignatureStatuses](/solana-api/transactionsinfo/getSignatureStatuses) : Retrieves the statuses of transaction signatures. \
+[getConfirmedSignaturesForAddress2](/solana-api/transactionsinfo/getConfirmedSignaturesForAddress2) : Provides confirmed signatures for a specific address.

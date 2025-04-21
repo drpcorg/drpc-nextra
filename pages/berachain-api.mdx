@@ -1,0 +1,241 @@
+# Berachain API Overview
+
+Welcome to the Berachain API Quickstart and Reference Guide. This guide provides everything you need to start building on Berachain using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Berachain seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Berachain API request.
+- A detailed list of **all Berachain API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#BerachainAPIMethods)
+
+## Berachain API Quickstart
+
+To get started with building on Berachain using dRPC's Berachain RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Berachain RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Berachain RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://berachain.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://berachain.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Berachain-drpc-quickstart
+cd Berachain-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Berachain RPC endpoints section. Copy the HTTPS endpoint URL for the Berachain Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.org/ogrpc?network=berachain&dkey=YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.org/ogrpc?network=berachain&dkey=YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Berachain block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains, and MEV protection. For more details, visit their [Berachain API documentation](https://docs.berachain.com).
+
+By following these steps, you can start building on Berachain using dRPC's reliable and efficient RPC endpoints.
+
+<a id="BerachainAPIMethods"></a>
+
+## Berachain API Methods
+
+
+
+These endpoints enable the retrieval of information about blocks, transactions, balances, logs, and more, supporting seamless blockchain development and integration.
+
+## Accounts info
+
+Accesses details about account balances, contract code, and stored data on the blockchain.
+
+[eth_accounts](/bartio-api/accountinfo/eth_accounts) :  Enumerates all accounts managed by the client. \
+[eth_getBalance](/bartio-api/accountinfo/eth_getBalance) : Retrieves the Ether balance of a specified account in Wei. \
+[eth_getCode](/bartio-api/accountinfo/eth_getCode) :  Obtains the smart contract bytecode deployed at a particular address. \
+[eth_getProof](/bartio-api/accountinfo/eth_getProof) : Generates a Merkle proof for an account’s balance or its storage contents. \
+[eth_getStorageAt](/bartio-api/accountinfo/eth_getStorageAt) : Fetches the value stored at a specific storage slot of an account.
+
+## Blocks info
+
+Provides comprehensive data on blocks, including transactions, receipts, and block specifics.
+
+[eth_blockNumber](/fantom-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number on the chain. \
+[eth_getBlockByHash](/fantom-api/blocksinfo/eth_getBlockByHash) : Obtains the details of a block using its unique hash identifier. \
+[eth_getBlockByHash#full](/fantom-api/blocksinfo/eth_getBlockByHashfull) : Retrieves comprehensive information of a block based on its hash. \
+[eth_getBlockByNumber](/fantom-api/blocksinfo/eth_getBlockByNumber) : Accesses block information using its numerical position within the blockchain. \
+[eth_getBlockByNumber#full](/fantom-api/blocksinfo/eth_getBlockByNumberfull) :  Fetches full details of a block identified by its block number. \
+[eth_newBlockFilter](/fantom-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Sets up a filter to listen for newly added blocks on the network. \
+[eth_getBlockReceipts](/fantom-api/blocksinfo/eth_getBlockReceipts) :  Retrieves the transaction receipts associated with a specific block. \
+[eth_getBlockTransactionCountByHash](/fantom-api/blocksinfo/eth_getBlockTransactionCountByHash) : Returns the total number of transactions within a block identified by its hash. \
+[eth_getBlockTransactionCountByNumber](/fantom-api/blocksinfo/eth_getBlockTransactionCountByNumber) :  Provides the count of transactions in a block based on its block number.
+
+## Chain info
+
+Supplies details on the network's configuration, protocol version, and overall status.
+
+[eth_chainId](/bartio-api/chaininfo/eth_chainId) : Obtains the unique chain identifier of the Berachain network. \
+[eth_protocolVersion](/bartio-api/chaininfo/eth_protocolVersion) : Displays the version of the Ethereum protocol that the client is currently utilizing. \
+[net_listening](/bartio-api/chaininfo/net_listening) : Checks whether the client is actively accepting incoming network connections. \
+[net_version](/bartio-api/chaininfo/net_version) : Retrieves the current network ID of the Berachain network.  \
+[net_peerCount](/bartio-api/chaininfo/net_peerCount) : Indicates the number of peers currently connected to the node.  \
+[eth_syncing](/bartio-api/chaininfo/eth_syncing) : Shows whether the node is in the process of synchronizing with the Berachain blockchain.  \
+[eth_hashrate](/bartio-api/chaininfo/eth_hashrate) : Provides the node’s current mining hashrate.
+
+## Debug and trace
+
+Available exclusively on the premium tier, these methods allow for transaction tracing, inspecting block execution, and replaying transactions or blocks for in-depth analysis.
+
+[trace_filter](/bartio-api/debugandtrace/trace_filter) : Applies a filter to retrieve trace information based on specified criteria.  \
+[trace_rawTransaction](/bartio-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction to assist in debugging processes. \
+[trace_block](/bartio-api/debugandtrace/trace_block) : Observes the execution flow of a particular block. \
+[trace_replayBlockTransactions](/bartio-api/debugandtrace/trace_replayBlockTransactions) : Re-executes all transactions within a block for detailed scrutiny.  \
+[trace_replayBlockTransactions#vmTrace](/bartio-api/debugandtrace/trace_replayBlockTransactionsvmTrace) : Provides a virtual machine-level trace during the replay of block transactions. \
+[debug_traceBlockByHash](/bartio-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of a block identified by its hash. \
+[debug_traceBlockByNumber](/bartio-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of a block based on its numerical position in the blockchain. \
+[trace_transaction](/bartio-api/debugandtrace/trace_transaction) : Maps out the execution pathway of a specific transaction. \
+[debug_traceTransaction](/bartio-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a particular transaction.  \
+[trace_replayTransaction](/bartio-api/debugandtrace/trace_replayTransaction) : Re-executes a transaction to support detailed analysis.  \
+[trace_replayTransaction#vmTrace](/bartio-api/debugandtrace/trace_replayTransactionvmTrace) : Offers a virtual machine-level trace during the replay of a transaction. \
+[trace_callMany](/bartio-api/debugandtrace/trace_callMany) : Executes multiple trace operations concurrently. \
+[trace_get](/bartio-api/debugandtrace/trace_get) : Fetches existing trace records based on specified identifiers.  \
+[trace_call](/bartio-api/debugandtrace/trace_call) : Performs a single trace operation for a designated action.  \
+[debug_traceCall](/bartio-api/debugandtrace/debug_traceCall) : Monitors a specific call without altering the blockchain state.
+
+## Event logs
+
+Captures logs of events emitted by smart contracts, useful for monitoring token transfers, state changes, and other activities.
+
+[eth_getLogs](/bartio-api/eventlogs/eth_getLogs) : Fetches event logs that match specified filter criteria.  \
+[eth_newFilter](/bartio-api/eventlogs/eth_newFilter) :  Available only on paid tier. Creates a new filter to monitor particular events. \
+[eth_getFilterChanges](/bartio-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves new events or updates for an existing filter since the last request. \
+[eth_uninstallFilter](/bartio-api/eventlogs/eth_uninstallFilter) : Removes a previously set filter from the active monitoring list.  \
+[eth_getFilterLogs](/bartio-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Obtains all event logs associated with a specified filter.
+
+## Executing transactions
+
+Enables sending transactions, executing smart contracts, and performing other on-chain operations.
+
+[eth_call](/bartio-api/executingtransactions/eth_call) : Performs a read-only function invocation on a smart contract without altering the blockchain state. \
+[eth_sendRawTransaction](/bartio-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the Berachain network for inclusion in the blockchain.
+
+## Gas estimation
+
+Calculates transaction gas fees and provides both historical and current gas price data.
+
+[eth_feeHistory](/bartio-api/gasestimation/eth_feeHistory) : Accesses past gas fee information over a defined block range. \
+[eth_estimateGas](/bartio-api/gasestimation/eth_estimateGas) : Projects the gas amount necessary to carry out a specific transaction. \
+[eth_gasPrice](/bartio-api/gasestimation/eth_gasPrice) :  Retrieves the prevailing gas price on the Berachain network. \
+[eth_createAccessList](/bartio-api/gasestimation/eth_createAccessList) : Constructs an access list to enhance efficiency and minimize gas usage. \
+[eth_maxPriorityFeePerGas](/bartio-api/gasestimation/eth_maxPriorityFeePerGas) : Obtains the highest priority fee per gas unit that can be offered.
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the main blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Retrieves the specifics of an uncle block using the parent block’s hash and the uncle’s position. \
+[eth_getUncleByBlockNumberAndIndex](/bartio-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Obtains details of an uncle block based on the parent block’s number and the uncle’s index. \
+[eth_getUncleCountByBlockHash](/bartio-api/gettinguncles/eth_getUncleCountByBlockHash) : Provides the total count of uncle blocks linked to a particular block hash. \
+[eth_getUncleCountByBlockNumber](/bartio-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncle blocks associated with a block identified by its number.
+
+## Mining
+
+Provides details about the node's mining status and rewards.
+
+[eth_coinbase](/bartio-api/mining/eth_coinbase) : Fetches the address assigned to receive mining rewards. \
+[eth_mining](/bartio-api/mining/eth_mining) : Indicates whether the node is actively engaged in mining new blocks.
+
+## Subscriptions
+
+Allows subscribing to real-time blockchain events using WebSockets.
+
+[eth_subscribe](/bartio-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or event logs. \
+[eth_unsubscribe](/bartio-api/subscriptions/eth_unsubscribe) : Cancels an existing event subscription.
+
+## Transactions info
+
+Fetches data on individual transactions, including their status, receipt, and inclusion in a block.
+
+[eth_getTransactionByHash](/bartio-api/transactionsinfo/eth_getTransactionByHash) : Retrieves detailed information about a transaction using its unique hash. \
+[eth_getTransactionCount](/bartio-api/transactionsinfo/eth_getTransactionCount) : Returns the total count of transactions initiated by a particular address. \
+[eth_getTransactionReceipt](/bartio-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a transaction that has been processed.  \
+[eth_newPendingTransactionFilter](/bartio-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor and track transactions that are pending confirmation. \
+[eth_getTransactionByBlockHashAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a specific transaction using the block hash and its index within that block. \
+[eth_getTransactionByBlockNumberAndIndex](/bartio-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Obtains a transaction by referencing the block number and its index in that block. \
+[txpool_content](/bartio-api/transactionsinfo/txpool_content) :  Displays the current state of the transaction pool, including pending and queued transactions.
+
+## Web3
+
+Provides general network configuration data, such as client version and cryptographic functions.
+
+[web3_clientVersion](/bartio-api/web3/web3_clientVersion) : Fetches the current version of the node client in use. \
+[web3_sha3](/bartio-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash for the given input data.

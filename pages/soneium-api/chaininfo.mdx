@@ -1,0 +1,23 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Soneium chain info| dRPC"
+/>
+
+## Chain info
+
+Provides insights into network configuration, connection status, and synchronization progress.
+
+[eth_chainId](/soneium-api/chaininfo/eth_chainId): Retrieves the unique identifier of the blockchain network. \
+[eth_protocolVersion](/soneium-api/chaininfo/eth_protocolVersion): Fetches the current protocol version being used. \
+[net_listening](/soneium-api/chaininfo/net_listening): Indicates whether the node is open to incoming connections. \
+[net_version](/soneium-api/chaininfo/net_version): Returns the version of the network the node is connected to. \
+[net_peerCount](/soneium-api/chaininfo/net_peerCount): Shows the total number of active peer connections. \
+[eth_syncing](/soneium-api/chaininfo/eth_syncing): Reports whether the node is still catching up with the blockchain. \
+[eth_hashrate](/soneium-api/chaininfo/eth_hashrate): Provides the current mining hash rate of the node.
+
+
+<Space h={16} />
+<GetStarted />
