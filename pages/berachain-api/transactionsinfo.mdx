@@ -1,9 +1,8 @@
 import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
 import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
 
-<Meta
-  title="Berachain transactions info | dRPC"
-/>
+<Meta title="Berachain transactions info | dRPC" />
 
 ## Transactions info
 
@@ -11,11 +10,11 @@ Provides details on specific transactions, including their status, receipts, and
 
 [eth_getTransactionByHash](/berachain-api/transactionsinfo/eth_getTransactionByHash) : Retrieves detailed information about a transaction using its unique hash. \
 [eth_getTransactionCount](/berachain-api/transactionsinfo/eth_getTransactionCount) : Returns the total count of transactions initiated by a particular address. \
-[eth_getTransactionReceipt](/berachain-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a transaction that has been processed.  \
+[eth_getTransactionReceipt](/berachain-api/transactionsinfo/eth_getTransactionReceipt) : Fetches the receipt for a transaction that has been processed. \
 [eth_newPendingTransactionFilter](/berachain-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor and track transactions that are pending confirmation. \
 [eth_getTransactionByBlockHashAndIndex](/berachain-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a specific transaction using the block hash and its index within that block. \
 [eth_getTransactionByBlockNumberAndIndex](/berachain-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Obtains a transaction by referencing the block number and its index in that block. \
-[txpool_content](/berachain-api/transactionsinfo/txpool_content) :  Displays the current state of the transaction pool, including pending and queued transactions.
+[txpool_content](/berachain-api/transactionsinfo/txpool_content) : Displays the current state of the transaction pool, including pending and queued transactions.
 
 These endpoints are critical for retrieving, monitoring, and managing transaction data within the Berachain network.
 
