@@ -15,11 +15,11 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | debug_traceBlockByNumber                            | ~~90~~ 20   |
 | debug_traceCall                                     | ~~90~~ 20   |
 | debug_traceTransaction                              | ~~90~~ 20   |
-| eth_accounts                                        | ~~0~~ 20    |
+| eth_accounts                                        | 0           |
 | eth_blockNumber                                     | ~~10~~ 20   |
 | eth_call                                            | ~~21~~ 20   |
-| eth_chainId                                         | ~~0~~ 20    |
-| eth_coinbase                                        | ~~0~~ 20    |
+| eth_chainId                                         |        0    |
+| eth_coinbase                                        |        0    |
 | eth_createAccessList                                | ~~30~~ 20   |
 | eth_estimateGas                                     | ~~60~~ 20   |
 | eth_feeHistory                                      | ~~15~~ 20   |
@@ -47,22 +47,22 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | eth_getUncleByBlockNumberAndIndex                   | ~~15~~ 20   |
 | eth_getUncleCountByBlockHash                        | ~~15~~ 20   |
 | eth_getUncleCountByBlockNumber                      | ~~15~~ 20   |
-| eth_hashrate                                        | ~~0~~ 20    |
+| eth_hashrate                                        |   0         |
 | eth_maxPriorityFeePerGas                            | ~~16~~ 20   |
-| eth_mining                                          | ~~0~~ 20    |
+| eth_mining                                          | 0           |
 | eth_newBlockFilter                                  | ~~20~~ 20   |
 | eth_newFilter                                       | ~~20~~ 20   |
 | eth_newPendingTransactionFilter                     | ~~20~~ 20   |
-| eth_protocolVersion                                 | ~~0~~ 20    |
+| eth_protocolVersion                                 |       0     |
 | eth_sendRawTransaction                              | ~~90~~ 20   |
-| eth_syncing                                         | ~~0~~ 20    |
+| eth_syncing                                         | 0           |
 | eth_subscribe                                       | ~~10~~ 20   |
 | Notifications from the events you've subscribed to  | ~~25~~ 20   |
 | eth_uninstallFilter                                 | ~~10~~ 20   |
 | eth_unsubscribe                                     | ~~10~~ 20   |
-| net_listening                                       | ~~0~~ 20    |
-| net_peerCount                                       | ~~0~~ 20    |
-| net_version                                         | ~~0~~ 20    |
+| net_listening                                       | 0           |
+| net_peerCount                                       | 0           |
+| net_version                                         | 0           |
 | trace_block                                         | ~~90~~ 20   |
 | trace_call                                          | ~~60~~ 20   |
 | trace_callMany                                      | ~~90~~ 20   |
@@ -75,7 +75,7 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | trace_replayTransaction#vmTrace                     | ~~300~~ 20  |
 | trace_transaction                                   | ~~90~~ 20   |
 | txpool_content                                      | ~~1000~~ 20 |
-| web3_clientVersion                                  | ~~0~~ 20    |
+| web3_clientVersion                                  | 0           |
 | web3_sha3                                           | ~~10~~ 20   |
 | bor_getAuthor                                       | ~~10~~ 20   |
 | bor_getCurrentProposer                              | ~~10~~ 20   |
@@ -94,9 +94,9 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | getblockcount        | ~~30~~ 20  |
 | getblockhash         | ~~30~~ 20  |
 | getblocknumber       | ~~30~~ 20  |
-| getconnectioncount   | ~~0~~ 20   |
+| getconnectioncount   | 0          |
 | getmemorypool        | ~~100~~ 20 |
-| getnetworkinfo       | ~~0~~ 20   |
+| getnetworkinfo       | 0          |
 | getreceivedbyaddress | ~~30~~ 20  |
 | getrawtransaction    | ~~30~~ 20  |
 | gettransaction       | ~~30~~ 20  |
@@ -109,9 +109,9 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | Method                                             | Cost                |
 |----------------------------------------------------|---------------------|
 | accountSubscribe                                   | ~~10~~ 20           |
-| accountUnsubscribe                                 | ~~0~~ 20            |
+| accountUnsubscribe                                 | 0                   |
 | blockSubscribe                                     |        ~~10~~ 20    |
-| blockUnsubscribe                                   | ~~0~~ 20            |
+| blockUnsubscribe                                   | 0                   |
 | Notifications from the events you've subscribed to |        ~~25~~ 20    |
 | getAccountInfo                                     | ~~10~~ 20           |
 | getBalance                                         | ~~12~~ 20           |
@@ -134,7 +134,7 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | getFeeForMessage                                   | ~~10~~ 20           |
 | getFees                                            | ~~10~~ 20           |
 | getGenesisHash                                     | ~~13~~ 20           |
-| getHealth                                          | ~~0~~ 20            |
+| getHealth                                          | 0                   |
 | getHighestSnapshotSlot                             | ~~9~~ 20            |
 | getInflationGovernor                               | ~~10~~ 20           |
 | getInflationRate                                   | ~~8~~ 20            |
@@ -167,16 +167,16 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | getVersion                                         | ~~10~~ 20           |
 | isBlockhashValid                                   | ~~10~~ 20           |
 | logsSubscribe                                      |        ~~10~~ 20    |
-| logsUnsubscribe                                    | ~~0~~ 20            |
+| logsUnsubscribe                                    | 0                   |
 | programSubscribe                                   |        ~~10~~ 20    |
-| programUnsubscribe                                 | ~~0~~ 20            |
+| programUnsubscribe                                 | 0                   |
 | requestAirdrop                                     | ~~5~~ 20            |
 | sendTransaction                                    | ~~10~~ 20           |
 | simulateTransaction                                | ~~11~~ 20           |
 | signatureSubscribe                                 |        ~~10~~ 20    |
-| signatureUnsubscribe                               | ~~0~~ 20            |
+| signatureUnsubscribe                               | 0                   |
 | slotSubscribe                                      |        ~~10~~ 20    |
-| slotUnsubscribe                                    | ~~0~~ 20            |
+| slotUnsubscribe                                    | 0                   |
 
 
 
@@ -213,70 +213,71 @@ If you call a method that is not a part of this table, the default cost is 100 C
 
 ## Varanet
 
-| Method                              | Cost |
-|-------------------------------------|------|
-| author_pendingExtrinsics            | 50   |
-| author_removeExtrinsic              | 50   |
-| author_submitExtrinsic              | 100  |
-| chain_getBlock                      | 50   |
-| chain_getBlockHash                  | 50   |
-| chain_getFinalisedHead              | 50   |
-| chain_getFinalizedHead              | 50   |
-| chain_getHead                       | 50   |
-| chain_getHeader                     | 50   |
-| chain_getRuntimeVersion             | 50   |
-| chain_subscribeAllHeads             | 50   |
-| chain_subscribeFinalizedHeads       | 50   |
-| chain_subscribeNewHeads             | 50   |
-| chain_subscribeRuntimeVersion       | 50   |
-| chain_unsubscribeAllHeads           | 50   |
-| chain_unsubscribeFinalizedHeads     | 50   |
-| chain_unsubscribeNewHeads           | 50   |
-| chain_unsubscribeRuntimeVersion     | 50   |
-| childstate_getKeys                  | 50   |
-| childstate_getKeysPaged             | 50   |
-| childstate_getKeysPagedAt           | 50   |
-| childstate_getStorage               | 50   |
-| childstate_getStorageEntries        | 50   |
-| childstate_getStorageHash           | 50   |
-| childstate_getStorageSize           | 50   |
-| gear_calculateHandleGas             | 50   |
-| gear_calculateInitCreateGas         | 50   |
-| gear_calculateInitUploadGas         | 50   |
-| gear_calculateReplyGas              | 50   |
-| gear_readMetahash                   | 50   |
-| gear_readState                      | 50   |
-| gear_readStateBatch                 | 50   |
-| gear_readStateUsingWasm             | 50   |
-| gear_readStateUsingWasmBatch        | 50   |
-| grandpa_proveFinality               | 50   |
-| grandpa_roundState                  | 50   |
-| payment_queryFeeDetails             | 50   |
-| payment_queryInfo                   | 50   |
-| rpc_modules                         | 50   |
-| state_call                          | 50   |
-| state_callAt                        | 50   |
-| state_getChildReadProof             | 50   |
-| state_getKeys                       | 50   |
-| state_getKeysPaged                  | 50   |
-| state_getKeysPagedAt                | 50   |
-| state_getMetadata                   | 50   |
-| state_getPairs                      | 50   |
-| state_getReadProof                  | 50   |
-| state_getRuntimeVersion             | 50   |
-| state_getStorage                    | 50   |
-| state_getStorageAt                  | 50   |
-| state_getStorageHash                | 50   |
-| state_getStorageHashAt              | 50   |
-| state_getStorageSize                | 50   |
-| state_getStorageSizeAt              | 50   |
-| state_queryStorage                  | 50   |
-| state_queryStorageAt                | 50   |
-| state_traceBlock                    | 50   |
-| state_trieMigrationStatus           | 50   |
-| system_chain                        | 50   |
-| subscribe_newHead                   | 50   |
-| unsubscribe_newHead                 | 50   |
+| Method                              | Cost        |
+|-------------------------------------|-------------|
+| author_pendingExtrinsics            | ~~50~~ 20   |
+| author_removeExtrinsic              | ~~50~~ 20   |
+| author_submitExtrinsic              | ~~100~~ 20  |
+| chain_getBlock                      | ~~50~~ 20   |
+| chain_getBlockHash                  | ~~50~~ 20   |
+| chain_getFinalisedHead              | ~~50~~ 20   |
+| chain_getFinalizedHead              | ~~50~~ 20   |
+| chain_getHead                       | ~~50~~ 20   |
+| chain_getHeader                     | ~~50~~ 20   |
+| chain_getRuntimeVersion             | ~~50~~ 20   |
+| chain_subscribeAllHeads             | ~~50~~ 20   |
+| chain_subscribeFinalizedHeads       | ~~50~~ 20   |
+| chain_subscribeNewHeads             | ~~50~~ 20   |
+| chain_subscribeRuntimeVersion       | ~~50~~ 20   |
+| chain_unsubscribeAllHeads           | ~~50~~ 20   |
+| chain_unsubscribeFinalizedHeads     | ~~50~~ 20   |
+| chain_unsubscribeNewHeads           | ~~50~~ 20   |
+| chain_unsubscribeRuntimeVersion     | ~~50~~ 20   |
+| childstate_getKeys                  | ~~50~~ 20   |
+| childstate_getKeysPaged             | ~~50~~ 20   |
+| childstate_getKeysPagedAt           | ~~50~~ 20   |
+| childstate_getStorage               | ~~50~~ 20   |
+| childstate_getStorageEntries        | ~~50~~ 20   |
+| childstate_getStorageHash           | ~~50~~ 20   |
+| childstate_getStorageSize           | ~~50~~ 20   |
+| gear_calculateHandleGas             | ~~50~~ 20   |
+| gear_calculateInitCreateGas         | ~~50~~ 20   |
+| gear_calculateInitUploadGas         | ~~50~~ 20   |
+| gear_calculateReplyGas              | ~~50~~ 20   |
+| gear_readMetahash                   | ~~50~~ 20   |
+| gear_readState                      | ~~50~~ 20   |
+| gear_readStateBatch                 | ~~50~~ 20   |
+| gear_readStateUsingWasm             | ~~50~~ 20   |
+| gear_readStateUsingWasmBatch        | ~~50~~ 20   |
+| grandpa_proveFinality               | ~~50~~ 20   |
+| grandpa_roundState                  | ~~50~~ 20   |
+| payment_queryFeeDetails             | ~~50~~ 20   |
+| payment_queryInfo                   | ~~50~~ 20   |
+| rpc_modules                         | ~~50~~ 20   |
+| state_call                          | ~~50~~ 20   |
+| state_callAt                        | ~~50~~ 20   |
+| state_getChildReadProof             | ~~50~~ 20   |
+| state_getKeys                       | ~~50~~ 20   |
+| state_getKeysPaged                  | ~~50~~ 20   |
+| state_getKeysPagedAt                | ~~50~~ 20   |
+| state_getMetadata                   | ~~50~~ 20   |
+| state_getPairs                      | ~~50~~ 20   |
+| state_getReadProof                  | ~~50~~ 20   |
+| state_getRuntimeVersion             | ~~50~~ 20   |
+| state_getStorage                    | ~~50~~ 20   |
+| state_getStorageAt                  | ~~50~~ 20   |
+| state_getStorageHash                | ~~50~~ 20   |
+| state_getStorageHashAt              | ~~50~~ 20   |
+| state_getStorageSize                | ~~50~~ 20   |
+| state_getStorageSizeAt              | ~~50~~ 20   |
+| state_queryStorage                  | ~~50~~ 20   |
+| state_queryStorageAt                | ~~50~~ 20   |
+| state_traceBlock                    | ~~50~~ 20   |
+| state_trieMigrationStatus           | ~~50~~ 20   |
+| system_chain                        | ~~50~~ 20   |
+| subscribe_newHead                   | ~~50~~ 20   |
+| unsubscribe_newHead                 | ~~50~~ 20   |
+
 
 
 ## harmony
@@ -341,7 +342,7 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | hmy_pendingTransactions                            | ~~30~~ 20   |
 | hmy_sendRawStakingTransaction                      | ~~90~~ 20   |
 | hmy_sendRawTransaction                             | ~~90~~ 20   |
-| hmy_syncing                                        | ~~0~~ 20    |
+| hmy_syncing                                        | 0           |
 | hmyv2_blockNumber                                  | ~~10~~ 20   |
 | hmyv2_getBalance                                   | ~~11~~ 20   |
 | hmyv2_getBalanceByBlockNumber                      | ~~11~~ 20   |
