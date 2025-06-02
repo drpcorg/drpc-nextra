@@ -11,7 +11,7 @@ export function Solana_getLatestBlockhash() {
     <SolanaMethod
       method="getLatestBlockhash"
       network="solana"
-      cu={7}
+      cu={20}
       description={"Fetches the most recent blockhash"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

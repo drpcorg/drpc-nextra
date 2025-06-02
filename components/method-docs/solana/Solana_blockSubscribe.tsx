@@ -12,7 +12,7 @@ export function Solana_blockSubscribe() {
     <SolanaMethod
       method="blockSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Allows to subscribe to updates for changes in the block of the blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -12,7 +12,7 @@ export function EthereumMethod_getCode(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_getCode"
       network="ethereum"
-      cu={24}
+      cu={20}
       description={
         "Is essential for developers to inspect and verify contract code deployed on the blockchain"
       }

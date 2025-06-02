@@ -12,7 +12,7 @@ export function BitcoinMethod_getblockhash(props: GenericMethodPropsReplacing) {
     <BitcoinMethod
       method="getblockhash"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Retrieves the hash of a block by height."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

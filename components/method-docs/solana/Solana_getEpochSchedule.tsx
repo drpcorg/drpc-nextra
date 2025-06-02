@@ -11,7 +11,7 @@ export function Solana_getEpochSchedule() {
     <SolanaMethod
       method="getEpochSchedule"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Offers comprehensive information about the epoch schedule"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

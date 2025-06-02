@@ -12,7 +12,7 @@ export function BitcoinMethod_getrawtransaction(props: GenericMethodPropsReplaci
     <BitcoinMethod
       method="getrawtransaction"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Retrieves the raw, hexadecimal-encoded data of a specific Bitcoin transaction using its transaction ID."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

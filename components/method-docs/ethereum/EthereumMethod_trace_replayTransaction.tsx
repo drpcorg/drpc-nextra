@@ -14,7 +14,7 @@ export function EthereumMethod_trace_replayTransaction(
     <EthereumMethod
       method="trace_replayBlockTransactions"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Replays a transaction, providing detailed trace information about its execution"
       }

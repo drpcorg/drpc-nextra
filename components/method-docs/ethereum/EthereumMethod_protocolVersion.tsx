@@ -14,7 +14,7 @@ export function EthereumMethod_protocolVersion(
     <EthereumMethod
       method="eth_protocolVersion"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Retrieves the current protocol version that the client is using"
       }

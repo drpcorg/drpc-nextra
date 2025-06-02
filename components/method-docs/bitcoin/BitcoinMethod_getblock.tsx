@@ -12,7 +12,7 @@ export function BitcoinMethod_getblock(props: GenericMethodPropsReplacing) {
     <BitcoinMethod
       method="getblock"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Retrieves detailed data about a specific block."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

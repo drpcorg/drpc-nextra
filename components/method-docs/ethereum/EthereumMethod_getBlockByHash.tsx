@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockByHash(
     <EthereumMethod
       method="eth_getBlockByHash"
       network="ethereum"
-      cu={21}
+      cu={20}
       description={
         "Retrieves information about a block by its hash, providing details about the block and its transactions"
       }

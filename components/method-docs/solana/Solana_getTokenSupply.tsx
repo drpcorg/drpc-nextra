@@ -11,7 +11,7 @@ export function Solana_getTokenSupply() {
     <SolanaMethod
       method="getTokenSupply"
       network="solana"
-      cu={14}
+      cu={20}
       description={"Provides the total supply of a specified SPL token, aiding developers"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

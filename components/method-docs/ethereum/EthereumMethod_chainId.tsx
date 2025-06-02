@@ -12,7 +12,7 @@ export function EthereumMethod_chainId(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_chainId"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Provides the current network or chain ID, essential for signing replay-protected transactions as defined in EIP-155"
       }

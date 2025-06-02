@@ -11,7 +11,7 @@ export function Solana_getGenesisHash() {
     <SolanaMethod
       method="getGenesisHash"
       network="solana"
-      cu={13}
+      cu={20}
       description={"Retrieves the genesis hash of the blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

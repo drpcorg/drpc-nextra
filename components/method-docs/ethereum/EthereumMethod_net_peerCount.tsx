@@ -14,7 +14,7 @@ export function EthereumMethod_net_peerCount(
     <EthereumMethod
       method="net_peerCount"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Retrieves the number of peers currently connected to the client"
       }

@@ -11,7 +11,7 @@ export function Solana_getBlockTime() {
     <SolanaMethod
       method="getBlockTime"
       network="solana"
-      cu={9}
+      cu={20}
       description={
         "Retrieves the estimated production time of a specific block"
       }

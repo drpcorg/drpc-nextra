@@ -11,7 +11,7 @@ export function Solana_getBlockProduction() {
     <SolanaMethod
       method="getBlockProduction"
       network="solana"
-      cu={13}
+      cu={20}
       description={
         "Retrieves block production information for the current epoch or a specified slot range"
       }

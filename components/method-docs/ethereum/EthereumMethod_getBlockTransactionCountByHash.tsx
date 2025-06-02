@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockTransactionCountByHash(
     <EthereumMethod
       method="eth_getBlockTransactionCountByHash"
       network="ethereum"
-      cu={15}
+      cu={20}
       description={
         "Is essential for analyzing block activity and transaction volume, providing a quick count of transactions within a given block"
       }

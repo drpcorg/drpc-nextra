@@ -14,7 +14,7 @@ export function EthereumMethod_debug_traceTransaction(
     <EthereumMethod
       method="debug_traceTransaction"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Traces the execution of a given transaction, providing detailed information about its internal operations for debugging purposes"
       }

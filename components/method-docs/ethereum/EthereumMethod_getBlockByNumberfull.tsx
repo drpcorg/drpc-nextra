@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockByNumberfull(
     <EthereumMethod
       method="eth_getBlockByNumber#full"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={
         "Retrieves detailed information about a specific block by its number, including comprehensive details for all transactions within that block"
       }

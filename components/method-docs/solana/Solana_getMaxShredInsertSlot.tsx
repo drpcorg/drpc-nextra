@@ -11,7 +11,7 @@ export function Solana_getMaxShredInsertSlot() {
     <SolanaMethod
       method="getMaxShredInsertSlot"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Provides the highest slot number that has been inserted with shreds, helping track and optimize"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

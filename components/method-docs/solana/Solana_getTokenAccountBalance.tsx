@@ -11,7 +11,7 @@ export function Solana_getTokenAccountBalance() {
     <SolanaMethod
       method="getTokenAccountBalance"
       network="solana"
-      cu={9}
+      cu={20}
       description={"The method in Solana retrieves the balance of a specified SPL token account"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

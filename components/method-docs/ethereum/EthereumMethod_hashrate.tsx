@@ -12,7 +12,7 @@ export function EthereumMethod_hashrate(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_hashrate"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Retrieves the number of hashes per second that the node is mining with"
       }

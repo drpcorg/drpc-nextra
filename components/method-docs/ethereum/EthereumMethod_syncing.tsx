@@ -12,7 +12,7 @@ export function EthereumMethod_syncing(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_syncing"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={"Checks the synchronization status of a node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

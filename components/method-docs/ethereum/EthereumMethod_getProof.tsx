@@ -12,7 +12,7 @@ export function EthereumMethod_getProof(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_getProof"
       network="ethereum"
-      cu={11}
+      cu={20}
       description={
         "Retrieves the Merkle proof for a specific account and its storage slots"
       }

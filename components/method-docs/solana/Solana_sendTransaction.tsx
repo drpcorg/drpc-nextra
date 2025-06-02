@@ -11,7 +11,7 @@ export function Solana_sendTransaction() {
     <SolanaMethod
       method="sendTransaction"
       network="solana"
-      cu={10}
+      cu={20}
       description={"The method in Solana allows developers to send a signed transaction to the network"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

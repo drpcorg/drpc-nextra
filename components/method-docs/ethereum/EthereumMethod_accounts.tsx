@@ -12,7 +12,7 @@ export function EthereumMethod_accounts(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_accounts"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={"Returns an account addresses owned by the client"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

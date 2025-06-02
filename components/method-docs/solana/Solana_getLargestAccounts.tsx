@@ -11,7 +11,7 @@ export function Solana_getLargestAccounts() {
     <SolanaMethod
       method="getLargestAccounts"
       network="solana"
-      cu={3000}
+      cu={20}
       description={"Provides a list of the largest accounts by balance, enabling developers to identify major stakeholders"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

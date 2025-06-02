@@ -12,7 +12,7 @@ export function BitcoinMethod_getrecievedbyaddress(props: GenericMethodPropsRepl
     <BitcoinMethod
       method="getreceivedbyaddress"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Shows the total amount received by a specific address."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

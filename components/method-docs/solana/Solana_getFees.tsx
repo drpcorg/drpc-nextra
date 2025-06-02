@@ -11,7 +11,7 @@ export function Solana_getFees() {
     <SolanaMethod
       method="getFees"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Provides with the latest fee structure information"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

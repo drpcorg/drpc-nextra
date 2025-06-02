@@ -11,7 +11,7 @@ export function Solana_getProgramAccounts() {
     <SolanaMethod
       method="getProgramAccounts"
       network="solana"
-      cu={117}
+      cu={20}
       description={"Fetches all accounts owned by a specified program"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -12,7 +12,7 @@ export function EthereumMethod_trace_call(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="trace_call"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={
         "Executes a new message call immediately without creating a transaction on the blockchain, and returns detailed trace information about the execution"
       }

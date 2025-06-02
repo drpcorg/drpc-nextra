@@ -11,7 +11,7 @@ export function Solana_getBalance() {
     <SolanaMethod
       method="getBalance"
       network="solana"
-      cu={12}
+      cu={20}
       description={
         "Retrieves the balance of an account on the Solana blockchain."
       }

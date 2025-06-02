@@ -12,7 +12,7 @@ export function BitcoinMethod_estimatesmartfee(props: GenericMethodPropsReplacin
     <BitcoinMethod
       method="estimatesmartfee"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Estimates the transaction fee based on current network conditions."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

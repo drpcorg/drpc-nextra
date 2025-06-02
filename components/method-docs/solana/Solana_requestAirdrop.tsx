@@ -11,7 +11,7 @@ export function Solana_requestAirdrop() {
     <SolanaMethod
       method="requestAirdrop"
       network="solana"
-      cu={5}
+      cu={20}
       description={"Requests a specific amount of test tokens to be airdropped to a given address"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -11,7 +11,7 @@ export function Solana_getFeeForMessage() {
     <SolanaMethod
       method="getFeeForMessage"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Calculates the estimated fee for a given transaction message"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -12,7 +12,7 @@ export function Solana_slotUnsubscribe() {
     <SolanaMethod
       method="slotUnsubscribe"
       network="solana"
-      cu={0}
+      cu={20}
       description={"Terminates an active subscription to transaction signature updates"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

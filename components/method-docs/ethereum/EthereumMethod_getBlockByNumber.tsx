@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockByNumber(
     <EthereumMethod
       method="eth_getBlockByNumber"
       network="ethereum"
-      cu={24}
+      cu={20}
       description={
         "Retrieves detailed information about a specific block on the blockchain by its number"
       }

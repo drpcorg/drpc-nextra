@@ -11,7 +11,7 @@ export function Solana_getConfirmedSignaturesForAddress2() {
     <SolanaMethod
       method="getConfirmedSignaturesForAddress2"
       network="solana"
-      cu={35}
+      cu={20}
       description={"Allows to fetch a list of confirmed transaction signatures for a specified address"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

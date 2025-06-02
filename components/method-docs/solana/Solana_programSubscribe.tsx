@@ -12,7 +12,7 @@ export function Solana_programSubscribe() {
     <SolanaMethod
       method="programSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Enables to subscribe to real-time updates for specific program accounts"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

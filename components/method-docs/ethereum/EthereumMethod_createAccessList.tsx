@@ -14,7 +14,7 @@ export function EthereumMethod_createAccessList(
     <EthereumMethod
       method="eth_createAccessList"
       network="ethereum"
-      cu={30}
+      cu={20}
       description={"Creates an EIP2930 access list from a Transaction object"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

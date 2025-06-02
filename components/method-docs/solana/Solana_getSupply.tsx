@@ -11,7 +11,7 @@ export function Solana_getSupply() {
     <SolanaMethod
       method="getSupply"
       network="solana"
-      cu={822}
+      cu={20}
       description={"Returns information about the total supply of tokens, including circulating and non-circulating amounts"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

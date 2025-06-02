@@ -14,7 +14,7 @@ export function EthereumMethod_web3_clientVersion(
     <EthereumMethod
       method="web3_clientVersion"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Retrieves the current version of the client that the node is running"
       }

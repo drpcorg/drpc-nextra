@@ -12,7 +12,7 @@ export function EthereumMethod_gasPrice(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_gasPrice"
       network="ethereum"
-      cu={15}
+      cu={20}
       description={
         "Helps in estimating the cost for transaction fees, ensuring efficient and accurate gas pricing for transactions on the network"
       }

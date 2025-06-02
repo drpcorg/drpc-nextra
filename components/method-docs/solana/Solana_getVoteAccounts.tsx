@@ -11,7 +11,7 @@ export function Solana_getVoteAccounts() {
     <SolanaMethod
       method="getVoteAccounts"
       network="solana"
-      cu={5}
+      cu={20}
       description={"The method in Solana retrieves the current software version of the node"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

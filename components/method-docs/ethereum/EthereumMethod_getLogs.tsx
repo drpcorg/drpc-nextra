@@ -12,7 +12,7 @@ export function EthereumMethod_getLogs(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_getLogs"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={
         "Returns an array of all logs matching a given filter object"
       }

@@ -11,7 +11,7 @@ export function Solana_getBlockHeight() {
     <SolanaMethod
       method="getBlockHeight"
       network="solana"
-      cu={11}
+      cu={20}
       description={"Retrieves the current block height"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -14,7 +14,7 @@ export function EthereumMethod_web3_sha3(
     <EthereumMethod
       method="web3_sha3"
       network="ethereum"
-      cu={10}
+      cu={20}
       description={
         "Traces the execution of all transactions in a block specified by its hash"
       }

@@ -12,7 +12,7 @@ export function EthereumMethod_net_version(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="net_version"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Retrieves the current network ID the client is connected to"
       }

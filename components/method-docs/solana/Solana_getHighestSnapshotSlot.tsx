@@ -11,7 +11,7 @@ export function Solana_getHighestSnapshotSlot() {
     <SolanaMethod
       method="getHighestSnapshotSlot"
       network="solana"
-      cu={9}
+      cu={20}
       description={"Returns the highest slot number that has a snapshot"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

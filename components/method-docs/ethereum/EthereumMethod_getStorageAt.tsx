@@ -14,7 +14,7 @@ export function EthereumMethod_getStorageAt(
     <EthereumMethod
       method="eth_getStorageAt"
       network="ethereum"
-      cu={14}
+      cu={20}
       description={
         "Retrieves the value stored at a specific storage slot of a contract address at a given block"
       }

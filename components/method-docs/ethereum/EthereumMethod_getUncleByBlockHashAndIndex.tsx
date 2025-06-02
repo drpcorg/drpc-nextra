@@ -14,7 +14,7 @@ export function EthereumMethod_getUncleByBlockHashAndIndex(
     <EthereumMethod
       method="eth_getUncleByBlockHashAndIndex"
       network="ethereum"
-      cu={15}
+      cu={20}
       description={
         "Retrieves information about an uncle block by the block's hash and the uncle's index position"
       }

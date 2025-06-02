@@ -12,7 +12,7 @@ export function Solana_accountSubscribe() {
     <SolanaMethod
       method="accountSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Retrieves detailed information about a specific account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

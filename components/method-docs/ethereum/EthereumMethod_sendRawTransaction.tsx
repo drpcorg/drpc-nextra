@@ -14,7 +14,7 @@ export function EthereumMethod_sendRawTransaction(
     <EthereumMethod
       method="eth_sendRawTransaction"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Submits a pre-signed transaction for broadcast to the network"
       }

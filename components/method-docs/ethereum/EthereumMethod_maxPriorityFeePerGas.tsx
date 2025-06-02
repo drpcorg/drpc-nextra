@@ -14,7 +14,7 @@ export function EthereumMethod_maxPriorityFeePerGas(
     <EthereumMethod
       method="eth_maxPriorityFeePerGas"
       network="ethereum"
-      cu={16}
+      cu={20}
       description={
         "Retrieves the maximum priority fee per gas (in wei) that the user is willing to pay to incentivize miners to include their transaction"
       }

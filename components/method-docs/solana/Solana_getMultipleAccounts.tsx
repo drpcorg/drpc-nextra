@@ -11,7 +11,7 @@ export function Solana_getMultipleAccounts() {
     <SolanaMethod
       method="getMultipleAccounts"
       network="solana"
-      cu={11}
+      cu={20}
       description={"Retrieves detailed information for multiple specified accounts in a single request"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

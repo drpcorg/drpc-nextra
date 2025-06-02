@@ -11,7 +11,7 @@ export function Solana_getConfirmedBlock() {
     <SolanaMethod
       method="getConfirmedBlock"
       network="solana"
-      cu={151}
+      cu={20}
       description={"Retrieves detailed information about a specific account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

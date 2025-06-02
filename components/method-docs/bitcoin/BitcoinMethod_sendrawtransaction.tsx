@@ -12,7 +12,7 @@ export function BitcoinMethod_sendrawtransaction(props: GenericMethodPropsReplac
     <BitcoinMethod
       method="sendrawtransaction"
       network="bitcoin"
-      cu={100}
+      cu={20}
       description={"Submits a raw transaction to the network for processing."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

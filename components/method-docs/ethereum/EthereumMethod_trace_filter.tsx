@@ -14,7 +14,7 @@ export function EthereumMethod_trace_filter(
     <EthereumMethod
       method="trace_filter"
       network="ethereum"
-      cu={75}
+      cu={20}
       description={
         "Retrieves traces of all transactions that match specific filter criteria"
       }

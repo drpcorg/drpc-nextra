@@ -12,7 +12,7 @@ export function BitcoinMethod_gettxout(props: GenericMethodPropsReplacing) {
     <BitcoinMethod
       method="gettxout"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Fetches details of an unspent transaction output."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

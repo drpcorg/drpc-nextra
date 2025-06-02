@@ -14,7 +14,7 @@ export function EthereumMethod_trace_callMany(
     <EthereumMethod
       method="trace_callMany"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Executes multiple message calls sequentially without creating transactions on the blockchain"
       }

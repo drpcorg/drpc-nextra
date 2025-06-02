@@ -11,7 +11,7 @@ export function Solana_isBlockhashValid() {
     <SolanaMethod
       method="isBlockhashValid"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Checks the validity of a specified blockhash, assisting in verifying blockhashes for transaction processing and blockchain operations"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

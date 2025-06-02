@@ -12,7 +12,7 @@ export function EthereumMethod_trace_block(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="trace_block"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Retrieves detailed execution traces of all transactions included in a specific block"
       }

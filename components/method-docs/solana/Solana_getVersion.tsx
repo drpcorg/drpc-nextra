@@ -11,7 +11,7 @@ export function Solana_getVersion() {
     <SolanaMethod
       method="getVersion"
       network="solana"
-      cu={10}
+      cu={20}
       description={"The method in Solana returns the Solana version"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

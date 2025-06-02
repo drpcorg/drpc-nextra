@@ -11,7 +11,7 @@ export function Solana_getStakeActivation() {
     <SolanaMethod
       method="getStakeActivation"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Provides the activation status of a stake account, including its active, inactive, and activating stake amounts"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

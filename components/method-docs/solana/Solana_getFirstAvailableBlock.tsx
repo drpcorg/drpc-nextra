@@ -11,7 +11,7 @@ export function Solana_getFirstAvailableBlock() {
     <SolanaMethod
       method="getFirstAvailableBlock"
       network="solana"
-      cu={33}
+      cu={20}
       description={"Returns the slot of the first available block in the ledger"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -11,7 +11,7 @@ export function Solana_getSignatureStatuses() {
     <SolanaMethod
       method="getSignatureStatuses"
       network="solana"
-      cu={11}
+      cu={20}
       description={"Checks the status of multiple transaction signatures"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

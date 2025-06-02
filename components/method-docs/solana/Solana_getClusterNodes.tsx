@@ -11,7 +11,7 @@ export function Solana_getClusterNodes() {
     <SolanaMethod
       method="getClusterNodes"
       network="solana"
-      cu={23}
+      cu={20}
       description={"Retrieves information about all the nodes"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

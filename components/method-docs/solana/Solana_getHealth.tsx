@@ -11,7 +11,7 @@ export function Solana_getHealth() {
     <SolanaMethod
       method="getHealth"
       network="solana"
-      cu={5}
+      cu={20}
       description={"Checks the health status of the node, helping to ensure the reliability and performance of the blockchain applications"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
