@@ -4,7 +4,7 @@ A compute unit is a measurement of the computational resources required to fulfi
 ## Methods costs in CU
 
 All RPC methods cost a flat 20 compute units starting Monday 2nd June. The cost is $0.30 for 1M CU. This table is correct for all blockchains and networks that DRPC support.
-If you call a method that is not a part of this table, the default cost is 100 CU. If you think something is wrong, ask in [our discord](https://drpc.org/discord).
+If you call a method that is not a part of this table, the default cost is 20 CU. If you think something is wrong, ask in [our support portal](https://support.drpc.org).
 
 ## Ethereum and EVM: Polygon, Optimism, Base, BNB Smart Chain, Arbitrum
 
@@ -208,75 +208,6 @@ If you call a method that is not a part of this table, the default cost is 100 C
 | starknet_getTransactionReceipt                     | ~~15~~ 20    |
 | starknet_pendingTransactions                       | ~~50~~ 20    |
 | starknet_syncing                                   | ~~10~~ 20    |
-
-
-
-## Varanet
-
-| Method                              | Cost        |
-|-------------------------------------|-------------|
-| author_pendingExtrinsics            | ~~50~~ 20   |
-| author_removeExtrinsic              | ~~50~~ 20   |
-| author_submitExtrinsic              | ~~100~~ 20  |
-| chain_getBlock                      | ~~50~~ 20   |
-| chain_getBlockHash                  | ~~50~~ 20   |
-| chain_getFinalisedHead              | ~~50~~ 20   |
-| chain_getFinalizedHead              | ~~50~~ 20   |
-| chain_getHead                       | ~~50~~ 20   |
-| chain_getHeader                     | ~~50~~ 20   |
-| chain_getRuntimeVersion             | ~~50~~ 20   |
-| chain_subscribeAllHeads             | ~~50~~ 20   |
-| chain_subscribeFinalizedHeads       | ~~50~~ 20   |
-| chain_subscribeNewHeads             | ~~50~~ 20   |
-| chain_subscribeRuntimeVersion       | ~~50~~ 20   |
-| chain_unsubscribeAllHeads           | ~~50~~ 20   |
-| chain_unsubscribeFinalizedHeads     | ~~50~~ 20   |
-| chain_unsubscribeNewHeads           | ~~50~~ 20   |
-| chain_unsubscribeRuntimeVersion     | ~~50~~ 20   |
-| childstate_getKeys                  | ~~50~~ 20   |
-| childstate_getKeysPaged             | ~~50~~ 20   |
-| childstate_getKeysPagedAt           | ~~50~~ 20   |
-| childstate_getStorage               | ~~50~~ 20   |
-| childstate_getStorageEntries        | ~~50~~ 20   |
-| childstate_getStorageHash           | ~~50~~ 20   |
-| childstate_getStorageSize           | ~~50~~ 20   |
-| gear_calculateHandleGas             | ~~50~~ 20   |
-| gear_calculateInitCreateGas         | ~~50~~ 20   |
-| gear_calculateInitUploadGas         | ~~50~~ 20   |
-| gear_calculateReplyGas              | ~~50~~ 20   |
-| gear_readMetahash                   | ~~50~~ 20   |
-| gear_readState                      | ~~50~~ 20   |
-| gear_readStateBatch                 | ~~50~~ 20   |
-| gear_readStateUsingWasm             | ~~50~~ 20   |
-| gear_readStateUsingWasmBatch        | ~~50~~ 20   |
-| grandpa_proveFinality               | ~~50~~ 20   |
-| grandpa_roundState                  | ~~50~~ 20   |
-| payment_queryFeeDetails             | ~~50~~ 20   |
-| payment_queryInfo                   | ~~50~~ 20   |
-| rpc_modules                         | ~~50~~ 20   |
-| state_call                          | ~~50~~ 20   |
-| state_callAt                        | ~~50~~ 20   |
-| state_getChildReadProof             | ~~50~~ 20   |
-| state_getKeys                       | ~~50~~ 20   |
-| state_getKeysPaged                  | ~~50~~ 20   |
-| state_getKeysPagedAt                | ~~50~~ 20   |
-| state_getMetadata                   | ~~50~~ 20   |
-| state_getPairs                      | ~~50~~ 20   |
-| state_getReadProof                  | ~~50~~ 20   |
-| state_getRuntimeVersion             | ~~50~~ 20   |
-| state_getStorage                    | ~~50~~ 20   |
-| state_getStorageAt                  | ~~50~~ 20   |
-| state_getStorageHash                | ~~50~~ 20   |
-| state_getStorageHashAt              | ~~50~~ 20   |
-| state_getStorageSize                | ~~50~~ 20   |
-| state_getStorageSizeAt              | ~~50~~ 20   |
-| state_queryStorage                  | ~~50~~ 20   |
-| state_queryStorageAt                | ~~50~~ 20   |
-| state_traceBlock                    | ~~50~~ 20   |
-| state_trieMigrationStatus           | ~~50~~ 20   |
-| system_chain                        | ~~50~~ 20   |
-| subscribe_newHead                   | ~~50~~ 20   |
-| unsubscribe_newHead                 | ~~50~~ 20   |
 
 
 
