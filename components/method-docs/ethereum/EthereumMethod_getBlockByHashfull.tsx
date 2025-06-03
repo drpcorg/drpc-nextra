@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockByHashfull(
     <EthereumMethod
       method="eth_getBlockByHash#full"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={
         "Fetches detailed information about a block using its hash, including all its transactions when transaction_detail_flag is set to true"
       }

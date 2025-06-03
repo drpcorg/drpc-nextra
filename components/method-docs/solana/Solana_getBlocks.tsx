@@ -11,7 +11,7 @@ export function Solana_getBlocks() {
     <SolanaMethod
       method="getBlocks"
       network="solana"
-      cu={12}
+      cu={20}
       description={
         "Retrieves a list of confirmed blocks between two specified slots"
       }

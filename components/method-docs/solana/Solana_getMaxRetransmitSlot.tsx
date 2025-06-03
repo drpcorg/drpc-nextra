@@ -11,7 +11,7 @@ export function Solana_getMaxRetransmitSlot() {
     <SolanaMethod
       method="getMaxRetransmitSlot"
       network="solana"
-      cu={8}
+      cu={20}
       description={"Returns the highest slot that has been retransmitted"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

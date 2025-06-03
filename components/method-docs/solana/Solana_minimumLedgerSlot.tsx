@@ -11,7 +11,7 @@ export function Solana_minimumLedgerSlot() {
     <SolanaMethod
       method="minimumLedgerSlot"
       network="solana"
-      cu={11}
+      cu={20}
       description={"Returns the lowest slot available in the ledger"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

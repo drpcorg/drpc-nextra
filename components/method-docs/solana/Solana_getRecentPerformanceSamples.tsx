@@ -11,7 +11,7 @@ export function Solana_getRecentPerformanceSamples() {
     <SolanaMethod
       method="getRecentPerformanceSamples"
       network="solana"
-      cu={8}
+      cu={20}
       description={"Provides recent performance samples, including transaction and slot statistics"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

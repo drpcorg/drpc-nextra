@@ -11,7 +11,7 @@ export function Solana_getTokenAccountsByOwner() {
     <SolanaMethod
       method="getTokenAccountsByOwner"
       network="solana"
-      cu={12}
+      cu={20}
       description={"The  method in Solana fetches all token accounts owned by a specified owner"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

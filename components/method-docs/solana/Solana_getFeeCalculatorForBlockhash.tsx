@@ -11,7 +11,7 @@ export function Solana_getFeeCalculatorForBlockhash() {
     <SolanaMethod
       method="getFeeCalculatorForBlockhash"
       network="solana"
-      cu={11}
+      cu={20}
       description={"The method in Solana retrieves the fee calculator associated with a blockhash"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

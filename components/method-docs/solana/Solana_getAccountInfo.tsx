@@ -11,7 +11,7 @@ export function Solana_getAccountInfo() {
     <SolanaMethod
       method="getAccountInfo"
       network="solana"
-      cu={10}
+      cu={20}
       description={
         "Retrieves detailed information about a specific account on the Solana blockchain."
       }

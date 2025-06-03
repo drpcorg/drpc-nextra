@@ -11,7 +11,7 @@ export function Solana_getSlotLeaders() {
     <SolanaMethod
       method="getAccountInfo"
       network="solana"
-      cu={16}
+      cu={20}
       description={"Returns a list of slot leaders for a specified range, aiding in analyzing block production patterns"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

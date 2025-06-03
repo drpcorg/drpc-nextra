@@ -14,7 +14,7 @@ export function EthereumMethod_net_listening(
     <EthereumMethod
       method="net_listening"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={
         "Checks if the client is actively listening for network connections"
       }

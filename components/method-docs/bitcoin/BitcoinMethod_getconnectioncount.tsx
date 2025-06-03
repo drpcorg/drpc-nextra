@@ -12,7 +12,7 @@ export function BitcoinMethod_getconnectioncount(props: GenericMethodPropsReplac
     <BitcoinMethod
       method="getconnectioncount"
       network="bitcoin"
-      cu={0}
+      cu={20}
       description={"Returns the number of active connections to other nodes."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -11,7 +11,7 @@ export function Solana_getTransactionCount() {
     <SolanaMethod
       method="getTransactionCount"
       network="solana"
-      cu={16}
+      cu={20}
       description={"Provides the total number of transactions processed by the network, enabling developers to assess network activity and transaction throughput"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

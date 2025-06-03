@@ -11,7 +11,7 @@ export function Solana_getTokenAccountsByDelegate() {
     <SolanaMethod
       method="getTokenAccountsByDelegate"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Retrieves all token accounts for which a specified delegate is authorized, assisting developers in managing delegated token activities"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

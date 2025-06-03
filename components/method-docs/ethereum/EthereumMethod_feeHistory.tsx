@@ -12,7 +12,7 @@ export function EthereumMethod_feeHistory(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_feeHistory"
       network="ethereum"
-      cu={15}
+      cu={20}
       description={
         "Retrieves historical gas fee data for transactions, aiding in better gas price estimation and transaction planning based on past network activity"
       }

@@ -14,7 +14,7 @@ export function EthereumMethod_getTransactionCount(
     <EthereumMethod
       method="eth_getTransactionCount"
       network="ethereum"
-      cu={11}
+      cu={20}
       description={
         "Retrieves the number of transactions sent from a specified address"
       }

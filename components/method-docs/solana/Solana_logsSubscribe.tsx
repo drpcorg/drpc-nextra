@@ -12,7 +12,7 @@ export function Solana_logsSubscribe() {
     <SolanaMethod
       method="logsSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Allows to subscribe to updates for changes in the block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

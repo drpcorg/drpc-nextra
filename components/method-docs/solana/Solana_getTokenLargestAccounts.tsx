@@ -11,7 +11,7 @@ export function Solana_getTokenLargestAccounts() {
     <SolanaMethod
       method="getTokenLargestAccounts"
       network="solana"
-      cu={3000}
+      cu={20}
       description={"Returns the largest token accounts of a specified SPL token, helping identify major holders and analyze token concentration"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

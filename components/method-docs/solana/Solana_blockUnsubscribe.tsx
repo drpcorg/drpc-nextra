@@ -12,7 +12,7 @@ export function Solana_blockUnsubscribe() {
     <SolanaMethod
       method="blockUnsubscribe"
       network="solana"
-      cu={0}
+      cu={20}
       description={"Terminates an active subscription to updates on the blockchain block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

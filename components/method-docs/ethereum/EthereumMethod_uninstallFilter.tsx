@@ -14,7 +14,7 @@ export function EthereumMethod_uninstallFilter(
     <EthereumMethod
       method="eth_uninstallFilter"
       network="ethereum"
-      cu={10}
+      cu={20}
       description={"Uninstalls a filter with the specified filter ID"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

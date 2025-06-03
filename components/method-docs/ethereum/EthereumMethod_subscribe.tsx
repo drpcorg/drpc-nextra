@@ -12,7 +12,7 @@ export function EthereumMethod_subscribe(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_subscribe"
       network="ethereum"
-      cu={10}
+      cu={20}
       description={
         "Creates a subscription to receive real-time updates for various events on the blockchain"
       }

@@ -11,7 +11,7 @@ export function Solana_simulateTransaction() {
     <SolanaMethod
       method="simulateTransaction"
       network="solana"
-      cu={11}
+      cu={20}
       description={
         "Simulates the execution of a transaction without submitting it to the network"
       }

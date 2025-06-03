@@ -11,7 +11,7 @@ export function Solana_getBlockCommitment() {
     <SolanaMethod
       method="getBlockCommitment"
       network="solana"
-      cu={5}
+      cu={20}
       description={"Retrieves the commitment levels for a specific block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

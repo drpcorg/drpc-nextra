@@ -11,7 +11,7 @@ export function Solana_getSlot() {
     <SolanaMethod
       method="getSlot"
       network="solana"
-      cu={7}
+      cu={20}
       description={"Retrieves the current slot number, providing developers with the latest position"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

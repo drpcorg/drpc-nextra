@@ -14,7 +14,7 @@ export function EthereumMethod_getTransactionByHash(
     <EthereumMethod
       method="eth_getTransactionByHash"
       network="ethereum"
-      cu={11}
+      cu={20}
       description={
         "Retrieves detailed information about a specific transaction using its hash"
       }

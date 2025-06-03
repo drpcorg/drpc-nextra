@@ -11,7 +11,7 @@ export function Solana_getBlock() {
     <SolanaMethod
       method="getBlock"
       network="solana"
-      cu={66}
+      cu={20}
       description={"Retrieves detailed information about a specific block"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

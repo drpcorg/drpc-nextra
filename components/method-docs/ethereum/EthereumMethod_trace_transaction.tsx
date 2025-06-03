@@ -14,7 +14,7 @@ export function EthereumMethod_trace_transaction(
     <EthereumMethod
       method="trace_transaction"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Retrieves detailed trace information for a given transaction by its hash"
       }

@@ -12,7 +12,7 @@ export function EthereumMethod_blockNumber(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_blockNumber"
       network="ethereum"
-      cu={10}
+      cu={20}
       description={"The method is used to get the recent block number"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

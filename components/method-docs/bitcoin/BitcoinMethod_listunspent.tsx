@@ -12,7 +12,7 @@ export function BitcoinMethod_listunspent(props: GenericMethodPropsReplacing) {
     <BitcoinMethod
       method="listunspent"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Lists unspent transaction outputs for addresses."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

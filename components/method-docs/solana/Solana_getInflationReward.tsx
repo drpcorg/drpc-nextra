@@ -11,7 +11,7 @@ export function Solana_getInflationReward() {
     <SolanaMethod
       method="getInflationReward"
       network="solana"
-      cu={341}
+      cu={20}
       description={"Retrieves information about the inflation rewards earned by a specific account"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -14,7 +14,7 @@ export function EthereumMethod_debug_traceBlockByNumber(
     <EthereumMethod
       method="debug_traceBlockByNumber"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "The debug_traceBlockByNumber method traces the execution of all transactions within a specified block, identified by its block number"
       }

@@ -3,452 +3,459 @@ A compute unit is a measurement of the computational resources required to fulfi
 
 ## Methods costs in CU
 
-Here is an actual method list with its CU pricing. The cost is $0.30 for 1M CU. This table is correct for all blockchains and networks that DRPC support.
+All RPC methods cost a flat 20 compute units starting Monday 2nd June. The cost is $0.30 for 1M CU. This table is correct for all blockchains and networks that DRPC support.
 If you call a method that is not a part of this table, the default cost is 100 CU. If you think something is wrong, ask in [our discord](https://drpc.org/discord).
 
 ## Ethereum and EVM: Polygon, Optimism, Base, BNB Smart Chain, Arbitrum
 
 
-| Method                                              | CU   |
-|-----------------------------------------------------|------|
-| debug_traceBlockByHash                              | 90   |
-| debug_traceBlockByNumber                            | 90   |
-| debug_traceCall                                     | 90   |
-| debug_traceTransaction                              | 90   |
-| eth_accounts                                        | 0    |
-| eth_blockNumber                                     | 10   |
-| eth_call                                            | 21   |
-| eth_chainId                                         | 0    |
-| eth_coinbase                                        | 0    |
-| eth_createAccessList                                | 30   |
-| eth_estimateGas                                     | 60   |
-| eth_feeHistory                                      | 15   |
-| eth_gasPrice                                        | 15   |
-| eth_getBalance                                      | 11   |
-| eth_getBlockByHash                                  | 21   |
-| eth_getBlockByHash#full                             | 60   |
-| eth_getBlockByNumber                                | 24   |
-| eth_getBlockByNumber#full                           | 60   |
-| eth_getBlockReceipts                                | 80   |
-| eth_getBlockTransactionCountByHash                  | 15   |
-| eth_getBlockTransactionCountByNumber                | 11   |
-| eth_getCode                                         | 24   |
-| eth_getFilterChanges                                | 20   |
-| eth_getFilterLogs                                   | 60   |
-| eth_getLogs                                         | 60   |
-| eth_getProof                                        | 11   |
-| eth_getStorageAt                                    | 14   |
-| eth_getTransactionByBlockHashAndIndex               | 19   |
-| eth_getTransactionByBlockNumberAndIndex             | 13   |
-| eth_getTransactionByHash                            | 11   |
-| eth_getTransactionCount                             | 11   |
-| eth_getTransactionReceipt                           | 30   |
-| eth_getUncleByBlockHashAndIndex                     | 15   |
-| eth_getUncleByBlockNumberAndIndex                   | 15   |
-| eth_getUncleCountByBlockHash                        | 15   |
-| eth_getUncleCountByBlockNumber                      | 15   |
-| eth_hashrate                                        | 0    |
-| eth_maxPriorityFeePerGas                            | 16   |
-| eth_mining                                          | 0    |
-| eth_newBlockFilter                                  | 20   |
-| eth_newFilter                                       | 20   |
-| eth_newPendingTransactionFilter                     | 20   |
-| eth_protocolVersion                                 | 0    |
-| eth_sendRawTransaction                              | 90   |
-| eth_syncing                                         | 0    |
-| eth_subscribe                                       | 10   |
-| Notifications from the events you've subscribed to  | 25   |
-| eth_uninstallFilter                                 | 10   |
-| eth_unsubscribe                                     | 10   |
-| net_listening                                       | 0    |
-| net_peerCount                                       | 0    |
-| net_version                                         | 0    |
-| trace_block                                         | 90   |
-| trace_call                                          | 60   |
-| trace_callMany                                      | 90   |
-| trace_filter                                        | 75   |
-| trace_get                                           | 20   |
-| trace_rawTransaction                                | 75   |
-| trace_replayBlockTransactions                       | 90   |
-| trace_replayBlockTransactions#vmTrace               | 300  |
-| trace_replayTransaction                             | 90   |
-| trace_replayTransaction#vmTrace                     | 300  |
-| trace_transaction                                   | 90   |
-| txpool_content                                      | 1000 |
-| web3_clientVersion                                  | 0    |
-| web3_sha3                                           | 10   |
-| bor_getAuthor                                       | 10   |
-| bor_getCurrentProposer                              | 10   |
-| bor_getCurrentValidators                            | 10   |
-| bor_getRootHash                                     | 10   |
-| bor_getSignersAtHash                                | 10   |
+| Method                                              | CU          |
+|-----------------------------------------------------|-------------|
+| debug_traceBlockByHash                              | ~~90~~ 20   |
+| debug_traceBlockByNumber                            | ~~90~~ 20   |
+| debug_traceCall                                     | ~~90~~ 20   |
+| debug_traceTransaction                              | ~~90~~ 20   |
+| eth_accounts                                        | 0           |
+| eth_blockNumber                                     | ~~10~~ 20   |
+| eth_call                                            | ~~21~~ 20   |
+| eth_chainId                                         |        0    |
+| eth_coinbase                                        |        0    |
+| eth_createAccessList                                | ~~30~~ 20   |
+| eth_estimateGas                                     | ~~60~~ 20   |
+| eth_feeHistory                                      | ~~15~~ 20   |
+| eth_gasPrice                                        | ~~15~~ 20   |
+| eth_getBalance                                      | ~~11~~ 20   |
+| eth_getBlockByHash                                  | ~~21~~ 20   |
+| eth_getBlockByHash#full                             | ~~60~~ 20   |
+| eth_getBlockByNumber                                | ~~24~~ 20   |
+| eth_getBlockByNumber#full                           | ~~60~~ 20   |
+| eth_getBlockReceipts                                | ~~80~~ 20   |
+| eth_getBlockTransactionCountByHash                  | ~~15~~ 20   |
+| eth_getBlockTransactionCountByNumber                | ~~11~~ 20   |
+| eth_getCode                                         | ~~24~~ 20   |
+| eth_getFilterChanges                                | ~~20~~ 20   |
+| eth_getFilterLogs                                   | ~~60~~ 20   |
+| eth_getLogs                                         | ~~60~~ 20   |
+| eth_getProof                                        | ~~11~~ 20   |
+| eth_getStorageAt                                    | ~~14~~ 20   |
+| eth_getTransactionByBlockHashAndIndex               | ~~19~~ 20   |
+| eth_getTransactionByBlockNumberAndIndex             | ~~13~~ 20   |
+| eth_getTransactionByHash                            | ~~11~~ 20   |
+| eth_getTransactionCount                             | ~~11~~ 20   |
+| eth_getTransactionReceipt                           | ~~30~~ 20   |
+| eth_getUncleByBlockHashAndIndex                     | ~~15~~ 20   |
+| eth_getUncleByBlockNumberAndIndex                   | ~~15~~ 20   |
+| eth_getUncleCountByBlockHash                        | ~~15~~ 20   |
+| eth_getUncleCountByBlockNumber                      | ~~15~~ 20   |
+| eth_hashrate                                        |   0         |
+| eth_maxPriorityFeePerGas                            | ~~16~~ 20   |
+| eth_mining                                          | 0           |
+| eth_newBlockFilter                                  | ~~20~~ 20   |
+| eth_newFilter                                       | ~~20~~ 20   |
+| eth_newPendingTransactionFilter                     | ~~20~~ 20   |
+| eth_protocolVersion                                 |       0     |
+| eth_sendRawTransaction                              | ~~90~~ 20   |
+| eth_syncing                                         | 0           |
+| eth_subscribe                                       | ~~10~~ 20   |
+| Notifications from the events you've subscribed to  | ~~25~~ 20   |
+| eth_uninstallFilter                                 | ~~10~~ 20   |
+| eth_unsubscribe                                     | ~~10~~ 20   |
+| net_listening                                       | 0           |
+| net_peerCount                                       | 0           |
+| net_version                                         | 0           |
+| trace_block                                         | ~~90~~ 20   |
+| trace_call                                          | ~~60~~ 20   |
+| trace_callMany                                      | ~~90~~ 20   |
+| trace_filter                                        | ~~75~~ 20   |
+| trace_get                                           | ~~20~~ 20   |
+| trace_rawTransaction                                | ~~75~~ 20   |
+| trace_replayBlockTransactions                       | ~~90~~ 20   |
+| trace_replayBlockTransactions#vmTrace               | ~~300~~ 20  |
+| trace_replayTransaction                             | ~~90~~ 20   |
+| trace_replayTransaction#vmTrace                     | ~~300~~ 20  |
+| trace_transaction                                   | ~~90~~ 20   |
+| txpool_content                                      | ~~1000~~ 20 |
+| web3_clientVersion                                  | 0           |
+| web3_sha3                                           | ~~10~~ 20   |
+| bor_getAuthor                                       | ~~10~~ 20   |
+| bor_getCurrentProposer                              | ~~10~~ 20   |
+| bor_getCurrentValidators                            | ~~10~~ 20   |
+| bor_getRootHash                                     | ~~10~~ 20   |
+| bor_getSignersAtHash                                | ~~10~~ 20   |
 
 ## Bitcoin
 
-| Method               | CU  |
-|----------------------|-----|
-| estimatesmartfee     | 30  |
-| getbestblockhash     | 30  |
-| getblock             | 30  |
-| getblockchaininfo    | 30  |
-| getblockcount        | 30  |
-| getblockhash         | 30  |
-| getblocknumber       | 30  |
-| getconnectioncount   | 0   |
-| getmemorypool        | 100 |
-| getnetworkinfo       | 0   |
-| getreceivedbyaddress | 30  |
-| getrawtransaction    | 30  |
-| gettransaction       | 30  |
-| gettxout             | 30  |
-| listunspent          | 30  |
-| sendrawtransaction   | 100 |
+| Method               | CU         |
+|----------------------|------------|
+| estimatesmartfee     | ~~30~~ 20  |
+| getbestblockhash     | ~~30~~ 20  |
+| getblock             | ~~30~~ 20  |
+| getblockchaininfo    | ~~30~~ 20  |
+| getblockcount        | ~~30~~ 20  |
+| getblockhash         | ~~30~~ 20  |
+| getblocknumber       | ~~30~~ 20  |
+| getconnectioncount   | 0          |
+| getmemorypool        | ~~100~~ 20 |
+| getnetworkinfo       | 0          |
+| getreceivedbyaddress | ~~30~~ 20  |
+| getrawtransaction    | ~~30~~ 20  |
+| gettransaction       | ~~30~~ 20  |
+| gettxout             | ~~30~~ 20  |
+| listunspent          | ~~30~~ 20  |
+| sendrawtransaction   | ~~100~~ 20 |
 
 ## Solana
 
-| Method                                             | Cost         |
-|----------------------------------------------------|--------------|
-| accountSubscribe                                   | ~~25~~ 10    |
-| accountUnsubscribe                                 | 0            |
-| blockSubscribe                                     | ~~25~~ 10    |
-| blockUnsubscribe                                   | 0            |
-| Notifications from the events you've subscribed to | ~~65~~ 25    |
-| getAccountInfo                                     | 10           |
-| getBalance                                         | 12           |
-| getBlock                                           | 66           |
-| getBlockCommitment                                 | 5            |
-| getBlockHeight                                     | 11           |
-| getBlockProduction                                 | 13           |
-| getBlockTime                                       | 9            |
-| getBlocks                                          | 12           |
-| getBlocksWithLimit                                 | 5            |
-| getClusterNodes                                    | 23           |
-| getConfirmedBlock                                  | 151          |
-| getConfirmedBlocks                                 | 10           |
-| getConfirmedSignaturesForAddress2                  | 35           |
-| getConfirmedTransaction                            | 38           |
-| getEpochInfo                                       | 9            |
-| getEpochSchedule                                   | 10           |
-| getFirstAvailableBlock                             | 33           |
-| getFeeCalculatorForBlockhash                       | 11           |
-| getFeeForMessage                                   | 10           |
-| getFees                                            | 10           |
-| getGenesisHash                                     | 13           |
-| getHealth                                          | 0            |
-| getHighestSnapshotSlot                             | 9            |
-| getInflationGovernor                               | 10           |
-| getInflationRate                                   | 8            |
-| getInflationReward                                 | 341          |
-| getIdentity                                        | 5            |
-| getLatestBlockhash                                 | 7            |
-| getLeaderSchedule                                  | 5            |
-| getLargestAccounts                                 | 3000         |
-| getMaxRetransmitSlot                               | 8            |
-| getMultipleAccounts                                | 11           |
-| getMinimumBalanceForRentExemption                  | 12           |
-| getRecentBlockhash                                 | 12           |
-| getRecentPerformanceSamples                        | 8            |
-| getRecentPrioritizationFees                        | 20           |
-| getSignaturesForAddress                            | 28           |
-| getSignatureStatuses                               | 11           |
-| getSlot                                            | 7            |
-| getSlotLeader                                      | 11           |
-| getSlotLeaders                                     | 16           |
-| getStakeActivation                                 | 10           |
-| getSupply                                          | 822          |
-| getTokenAccountBalance                             | 9            |
-| getTokenAccountsByDelegate                         | 10           |
-| getTokenAccountsByOwner                            | 12           |
-| getTokenLargestAccounts                            | 10           |
-| getTokenSupply                                     | 14           |
-| getTransaction                                     | 59           |
-| getTransactionCount                                | 16           |
-| getVoteAccounts                                    | 5            |
-| getVersion                                         | 10           |
-| isBlockhashValid                                   | 10           |
-| logsSubscribe                                      | ~~25~~ 10    |
-| logsUnsubscribe                                    | 0            |
-| programSubscribe                                   | ~~25~~ 10    |
-| programUnsubscribe                                 | 0            |
-| requestAirdrop                                     | 5            |
-| sendTransaction                                    | 10           |
-| simulateTransaction                                | 11           |
-| signatureSubscribe                                 | ~~25~~ 10    |
-| signatureUnsubscribe                               | 0            |
-| slotSubscribe                                      | ~~25~~ 10    |
-| slotUnsubscribe                                    | 0            |
+| Method                                             | Cost                |
+|----------------------------------------------------|---------------------|
+| accountSubscribe                                   | ~~10~~ 20           |
+| accountUnsubscribe                                 | 0                   |
+| blockSubscribe                                     |        ~~10~~ 20    |
+| blockUnsubscribe                                   | 0                   |
+| Notifications from the events you've subscribed to |        ~~25~~ 20    |
+| getAccountInfo                                     | ~~10~~ 20           |
+| getBalance                                         | ~~12~~ 20           |
+| getBlock                                           | ~~66~~ 20           |
+| getBlockCommitment                                 | ~~5~~ 20            |
+| getBlockHeight                                     | ~~11~~ 20           |
+| getBlockProduction                                 | ~~13~~ 20           |
+| getBlockTime                                       | ~~9~~ 20            |
+| getBlocks                                          | ~~12~~ 20           |
+| getBlocksWithLimit                                 | ~~5~~ 20            |
+| getClusterNodes                                    | ~~23~~ 20           |
+| getConfirmedBlock                                  | ~~151~~ 20          |
+| getConfirmedBlocks                                 | ~~10~~ 20           |
+| getConfirmedSignaturesForAddress2                  | ~~35~~ 20           |
+| getConfirmedTransaction                            | ~~38~~ 20           |
+| getEpochInfo                                       | ~~9~~ 20            |
+| getEpochSchedule                                   | ~~10~~ 20           |
+| getFirstAvailableBlock                             | ~~33~~ 20           |
+| getFeeCalculatorForBlockhash                       | ~~11~~ 20           |
+| getFeeForMessage                                   | ~~10~~ 20           |
+| getFees                                            | ~~10~~ 20           |
+| getGenesisHash                                     | ~~13~~ 20           |
+| getHealth                                          | 0                   |
+| getHighestSnapshotSlot                             | ~~9~~ 20            |
+| getInflationGovernor                               | ~~10~~ 20           |
+| getInflationRate                                   | ~~8~~ 20            |
+| getInflationReward                                 | ~~341~~ 20          |
+| getIdentity                                        | ~~5~~ 20            |
+| getLatestBlockhash                                 | ~~7~~ 20            |
+| getLeaderSchedule                                  | ~~5~~ 20            |
+| getLargestAccounts                                 | ~~3000~~ 20         |
+| getMaxRetransmitSlot                               | ~~8~~ 20            |
+| getMultipleAccounts                                | ~~11~~ 20           |
+| getMinimumBalanceForRentExemption                  | ~~12~~ 20           |
+| getRecentBlockhash                                 | ~~12~~ 20           |
+| getRecentPerformanceSamples                        | ~~8~~ 20            |
+| getRecentPrioritizationFees                        | ~~20~~ 20           |
+| getSignaturesForAddress                            | ~~28~~ 20           |
+| getSignatureStatuses                               | ~~11~~ 20           |
+| getSlot                                            | ~~7~~ 20            |
+| getSlotLeader                                      | ~~11~~ 20           |
+| getSlotLeaders                                     | ~~16~~ 20           |
+| getStakeActivation                                 | ~~10~~ 20           |
+| getSupply                                          | ~~822~~ 20          |
+| getTokenAccountBalance                             | ~~9~~ 20            |
+| getTokenAccountsByDelegate                         | ~~10~~ 20           |
+| getTokenAccountsByOwner                            | ~~12~~ 20           |
+| getTokenLargestAccounts                            | ~~10~~ 20           |
+| getTokenSupply                                     | ~~14~~ 20           |
+| getTransaction                                     | ~~59~~ 20           |
+| getTransactionCount                                | ~~16~~ 20           |
+| getVoteAccounts                                    | ~~5~~ 20            |
+| getVersion                                         | ~~10~~ 20           |
+| isBlockhashValid                                   | ~~10~~ 20           |
+| logsSubscribe                                      |        ~~10~~ 20    |
+| logsUnsubscribe                                    | 0                   |
+| programSubscribe                                   |        ~~10~~ 20    |
+| programUnsubscribe                                 | 0                   |
+| requestAirdrop                                     | ~~5~~ 20            |
+| sendTransaction                                    | ~~10~~ 20           |
+| simulateTransaction                                | ~~11~~ 20           |
+| signatureSubscribe                                 |        ~~10~~ 20    |
+| signatureUnsubscribe                               | 0                   |
+| slotSubscribe                                      |        ~~10~~ 20    |
+| slotUnsubscribe                                    | 0                   |
+
 
 
 ## Starknet
 
-| Method                                             | Cost  |
-|----------------------------------------------------|-------|
-| starknet_addDeclareTransaction                     | 250   |
-| starknet_addDeployAccountTransaction               | 250   |
-| starknet_addInvokeTransaction                      | 250   |
-| starknet_blockHashAndNumber                        | 10    |
-| starknet_blockNumber                               | 10    |
-| starknet_call                                      | 26    |
-| starknet_chainId                                   | 10    |
-| starknet_estimateFee                               | 87    |
-| starknet_estimateMessageFee                        | 87    |
-| starknet_getBlockTransactionCount                  | 16    |
-| starknet_getBlockWithTxHashes                      | 16    |
-| starknet_getBlockWithTxs                           | 16    |
-| starknet_getClass                                  | 19    |
-| starknet_getClassAt                                | 19    |
-| starknet_getClassHashAt                            | 19    |
-| starknet_getEvents                                 | 75    |
-| starknet_getNonce                                  | 26    |
-| starknet_getStateUpdate                            | 21    |
-| starknet_getStorageAt                              | 17    |
-| starknet_getTransactionByBlockIdAndIndex           | 15    |
-| starknet_getTransactionByHash                      | 17    |
-| starknet_getTransactionReceipt                     | 15    |
-| starknet_pendingTransactions                       | 50    |
-| starknet_syncing                                   | 10    |
+| Method                                             | Cost         |
+|----------------------------------------------------|--------------|
+| starknet_addDeclareTransaction                     | ~~250~~ 20   |
+| starknet_addDeployAccountTransaction               | ~~250~~ 20   |
+| starknet_addInvokeTransaction                      | ~~250~~ 20   |
+| starknet_blockHashAndNumber                        | ~~10~~ 20    |
+| starknet_blockNumber                               | ~~10~~ 20    |
+| starknet_call                                      | ~~26~~ 20    |
+| starknet_chainId                                   | ~~10~~ 20    |
+| starknet_estimateFee                               | ~~87~~ 20    |
+| starknet_estimateMessageFee                        | ~~87~~ 20    |
+| starknet_getBlockTransactionCount                  | ~~16~~ 20    |
+| starknet_getBlockWithTxHashes                      | ~~16~~ 20    |
+| starknet_getBlockWithTxs                           | ~~16~~ 20    |
+| starknet_getClass                                  | ~~19~~ 20    |
+| starknet_getClassAt                                | ~~19~~ 20    |
+| starknet_getClassHashAt                            | ~~19~~ 20    |
+| starknet_getEvents                                 | ~~75~~ 20    |
+| starknet_getNonce                                  | ~~26~~ 20    |
+| starknet_getStateUpdate                            | ~~21~~ 20    |
+| starknet_getStorageAt                              | ~~17~~ 20    |
+| starknet_getTransactionByBlockIdAndIndex           | ~~15~~ 20    |
+| starknet_getTransactionByHash                      | ~~17~~ 20    |
+| starknet_getTransactionReceipt                     | ~~15~~ 20    |
+| starknet_pendingTransactions                       | ~~50~~ 20    |
+| starknet_syncing                                   | ~~10~~ 20    |
+
 
 
 ## Varanet
 
-| Method                              | Cost |
-|-------------------------------------|------|
-| author_pendingExtrinsics            | 50   |
-| author_removeExtrinsic              | 50   |
-| author_submitExtrinsic              | 100  |
-| chain_getBlock                      | 50   |
-| chain_getBlockHash                  | 50   |
-| chain_getFinalisedHead              | 50   |
-| chain_getFinalizedHead              | 50   |
-| chain_getHead                       | 50   |
-| chain_getHeader                     | 50   |
-| chain_getRuntimeVersion             | 50   |
-| chain_subscribeAllHeads             | 50   |
-| chain_subscribeFinalizedHeads       | 50   |
-| chain_subscribeNewHeads             | 50   |
-| chain_subscribeRuntimeVersion       | 50   |
-| chain_unsubscribeAllHeads           | 50   |
-| chain_unsubscribeFinalizedHeads     | 50   |
-| chain_unsubscribeNewHeads           | 50   |
-| chain_unsubscribeRuntimeVersion     | 50   |
-| childstate_getKeys                  | 50   |
-| childstate_getKeysPaged             | 50   |
-| childstate_getKeysPagedAt           | 50   |
-| childstate_getStorage               | 50   |
-| childstate_getStorageEntries        | 50   |
-| childstate_getStorageHash           | 50   |
-| childstate_getStorageSize           | 50   |
-| gear_calculateHandleGas             | 50   |
-| gear_calculateInitCreateGas         | 50   |
-| gear_calculateInitUploadGas         | 50   |
-| gear_calculateReplyGas              | 50   |
-| gear_readMetahash                   | 50   |
-| gear_readState                      | 50   |
-| gear_readStateBatch                 | 50   |
-| gear_readStateUsingWasm             | 50   |
-| gear_readStateUsingWasmBatch        | 50   |
-| grandpa_proveFinality               | 50   |
-| grandpa_roundState                  | 50   |
-| payment_queryFeeDetails             | 50   |
-| payment_queryInfo                   | 50   |
-| rpc_modules                         | 50   |
-| state_call                          | 50   |
-| state_callAt                        | 50   |
-| state_getChildReadProof             | 50   |
-| state_getKeys                       | 50   |
-| state_getKeysPaged                  | 50   |
-| state_getKeysPagedAt                | 50   |
-| state_getMetadata                   | 50   |
-| state_getPairs                      | 50   |
-| state_getReadProof                  | 50   |
-| state_getRuntimeVersion             | 50   |
-| state_getStorage                    | 50   |
-| state_getStorageAt                  | 50   |
-| state_getStorageHash                | 50   |
-| state_getStorageHashAt              | 50   |
-| state_getStorageSize                | 50   |
-| state_getStorageSizeAt              | 50   |
-| state_queryStorage                  | 50   |
-| state_queryStorageAt                | 50   |
-| state_traceBlock                    | 50   |
-| state_trieMigrationStatus           | 50   |
-| system_chain                        | 50   |
-| subscribe_newHead                   | 50   |
-| unsubscribe_newHead                 | 50   |
+| Method                              | Cost        |
+|-------------------------------------|-------------|
+| author_pendingExtrinsics            | ~~50~~ 20   |
+| author_removeExtrinsic              | ~~50~~ 20   |
+| author_submitExtrinsic              | ~~100~~ 20  |
+| chain_getBlock                      | ~~50~~ 20   |
+| chain_getBlockHash                  | ~~50~~ 20   |
+| chain_getFinalisedHead              | ~~50~~ 20   |
+| chain_getFinalizedHead              | ~~50~~ 20   |
+| chain_getHead                       | ~~50~~ 20   |
+| chain_getHeader                     | ~~50~~ 20   |
+| chain_getRuntimeVersion             | ~~50~~ 20   |
+| chain_subscribeAllHeads             | ~~50~~ 20   |
+| chain_subscribeFinalizedHeads       | ~~50~~ 20   |
+| chain_subscribeNewHeads             | ~~50~~ 20   |
+| chain_subscribeRuntimeVersion       | ~~50~~ 20   |
+| chain_unsubscribeAllHeads           | ~~50~~ 20   |
+| chain_unsubscribeFinalizedHeads     | ~~50~~ 20   |
+| chain_unsubscribeNewHeads           | ~~50~~ 20   |
+| chain_unsubscribeRuntimeVersion     | ~~50~~ 20   |
+| childstate_getKeys                  | ~~50~~ 20   |
+| childstate_getKeysPaged             | ~~50~~ 20   |
+| childstate_getKeysPagedAt           | ~~50~~ 20   |
+| childstate_getStorage               | ~~50~~ 20   |
+| childstate_getStorageEntries        | ~~50~~ 20   |
+| childstate_getStorageHash           | ~~50~~ 20   |
+| childstate_getStorageSize           | ~~50~~ 20   |
+| gear_calculateHandleGas             | ~~50~~ 20   |
+| gear_calculateInitCreateGas         | ~~50~~ 20   |
+| gear_calculateInitUploadGas         | ~~50~~ 20   |
+| gear_calculateReplyGas              | ~~50~~ 20   |
+| gear_readMetahash                   | ~~50~~ 20   |
+| gear_readState                      | ~~50~~ 20   |
+| gear_readStateBatch                 | ~~50~~ 20   |
+| gear_readStateUsingWasm             | ~~50~~ 20   |
+| gear_readStateUsingWasmBatch        | ~~50~~ 20   |
+| grandpa_proveFinality               | ~~50~~ 20   |
+| grandpa_roundState                  | ~~50~~ 20   |
+| payment_queryFeeDetails             | ~~50~~ 20   |
+| payment_queryInfo                   | ~~50~~ 20   |
+| rpc_modules                         | ~~50~~ 20   |
+| state_call                          | ~~50~~ 20   |
+| state_callAt                        | ~~50~~ 20   |
+| state_getChildReadProof             | ~~50~~ 20   |
+| state_getKeys                       | ~~50~~ 20   |
+| state_getKeysPaged                  | ~~50~~ 20   |
+| state_getKeysPagedAt                | ~~50~~ 20   |
+| state_getMetadata                   | ~~50~~ 20   |
+| state_getPairs                      | ~~50~~ 20   |
+| state_getReadProof                  | ~~50~~ 20   |
+| state_getRuntimeVersion             | ~~50~~ 20   |
+| state_getStorage                    | ~~50~~ 20   |
+| state_getStorageAt                  | ~~50~~ 20   |
+| state_getStorageHash                | ~~50~~ 20   |
+| state_getStorageHashAt              | ~~50~~ 20   |
+| state_getStorageSize                | ~~50~~ 20   |
+| state_getStorageSizeAt              | ~~50~~ 20   |
+| state_queryStorage                  | ~~50~~ 20   |
+| state_queryStorageAt                | ~~50~~ 20   |
+| state_traceBlock                    | ~~50~~ 20   |
+| state_trieMigrationStatus           | ~~50~~ 20   |
+| system_chain                        | ~~50~~ 20   |
+| subscribe_newHead                   | ~~50~~ 20   |
+| unsubscribe_newHead                 | ~~50~~ 20   |
+
 
 
 ## harmony
 
-| Method                                             | Cost |
-|----------------------------------------------------|------|
-| hmy_call                                           | 21   |
-| hmy_blockNumber                                    | 10   |
-| hmy_getAllValidatorAddresses                       | 10   |
-| hmy_getAllValidatorInformation                     | 30   |
-| hmy_getAllValidatorInformationByBlockNumber        | 10   |
-| hmy_getBalance                                     | 11   |
-| hmy_getBalanceByBlockNumber                        | 11   |
-| hmy_getBlockByHash                                 | 21   |
-| hmy_getBlockByNumber                               | 24   |
-| hmy_getBlockSigners                                | 10   |
-| hmy_getBlockTransactionCountByHash                 | 15   |
-| hmy_getBlockTransactionCountByNumber               | 11   |
-| hmy_getBlocks                                      | 60   |
-| hmy_getCXReceiptByHash                             | 11   |
-| hmy_getCirculatingSupply                           | 5    |
-| hmy_getCode                                        | 24   |
-| hmy_getCurrentStakingErrorSink                     | 5    |
-| hmy_getCurrentTransactionErrorSink                 | 5    |
-| hmy_getDelegationsByDelegator                      | 15   |
-| hmy_getDelegationsByDelegatorAndValidator          | 15   |
-| hmy_getDelegationsByValidator                      | 15   |
-| hmy_getElectedValidatorAddresses                   | 5    |
-| hmy_getEpoch                                       | 10   |
-| hmy_getFilterChanges                               | 20   |
-| hmy_getFilterLogs                                  | 60   |
-| hmy_getGasPrice                                    | 15   |
-| hmy_getLeader                                      | 5    |
-| hmy_getLatestHeader                                | 20   |
-| hmy_getLogs                                        | 60   |
-| hmy_getMedianRawStakeSnapshot                      | 5    |
-| hmy_getNonce                                       | 11   |
-| hmy_getPendingCXReceipts                           | 30   |
-| hmy_getPendingCrossLinks                           | 10   |
-| hmy_getShardingStructure                           | 20   |
-| hmy_getSignedBlocks                                | 5    |
-| hmy_getStakingNetworkInfo                          | 15   |
-| hmy_getStakingTransactionByBlockHashAndIndex       | 19   |
-| hmy_getStakingTransactionByBlockNumberAndIndex     | 13   |
-| hmy_getStakingTransactionByHash                    | 11   |
-| hmy_getStorageAt                                   | 14   |
-| hmy_getTotalSupply                                 | 5    |
-| hmy_getTransaction                                 | 59   |
-| hmy_getTransactionByBlockHashAndIndex              | 19   |
-| hmy_getTransactionByBlockNumberAndIndex            | 13   |
-| hmy_getTransactionByHash                           | 11   |
-| hmy_getTransactionCount                            | 11   |
-| hmy_getTransactionReceipt                          | 30   |
-| hmy_getValidators                                  | 10   |
-| hmy_gasPrice                                       | 15   |
-| hmy_isBlockSigner                                  | 5    |
-| hmy_isLastBlock                                    | 5    |
-| hmy_latestHeader                                   | 20   |
-| hmy_newBlockFilter                                 | 20   |
-| hmy_newFilter                                      | 20   |
-| hmy_newPendingTransactionFilter                    | 20   |
-| hmy_pendingTransactions                            | 30   |
-| hmy_sendRawStakingTransaction                      | 90   |
-| hmy_sendRawTransaction                             | 90   |
-| hmy_syncing                                        | 0    |
-| hmyv2_blockNumber                                  | 10   |
-| hmyv2_getBalance                                   | 11   |
-| hmyv2_getBalanceByBlockNumber                      | 11   |
-| hmyv2_getBlockByHash                               | 21   |
-| hmyv2_getBlockByNumber                             | 24   |
-| hmyv2_getBlockTransactionCountByHash               | 15   |
-| hmyv2_getBlockTransactionCountByNumber             | 11   |
-| hmyv2_getCXReceiptByHash                           | 11   |
-| hmyv2_getCurrentTransactionErrorSink               | 5    |
-| hmyv2_getEpoch                                     | 10   |
-| hmyv2_getPendingCXReceipts                         | 30   |
-| hmyv2_getPendingCrossLinks                         | 10   |
-| hmyv2_getStakingTransactionByBlockHashAndIndex     | 19   |
-| hmyv2_getStakingTransactionByBlockNumberAndIndex   | 13   |
-| hmyv2_getStakingTransactionByHash                  | 11   |
-| hmyv2_getTransactionByBlockHashAndIndex            | 19   |
-| hmyv2_getTransactionByBlockNumberAndIndex          | 13   |
-| hmyv2_getTransactionByHash                         | 11   |
-| hmyv2_getTransactionCount                          | 11   |
-| hmyv2_getTransactionReceipt                        | 30   |
-| hmyv2_getTransactionsHistory                       | 60   |
-| hmyv2_gasPrice                                     | 15   |
-| hmyv2_getValidators                                | 10   |
-| hmyv2_pendingTransactions                          | 30   |
-| hmyv2_getBlocks                                    | 60   |
+| Method                                             | Cost        |
+|----------------------------------------------------|-------------|
+| hmy_call                                           | ~~21~~ 20   |
+| hmy_blockNumber                                    | ~~10~~ 20   |
+| hmy_getAllValidatorAddresses                       | ~~10~~ 20   |
+| hmy_getAllValidatorInformation                     | ~~30~~ 20   |
+| hmy_getAllValidatorInformationByBlockNumber        | ~~10~~ 20   |
+| hmy_getBalance                                     | ~~11~~ 20   |
+| hmy_getBalanceByBlockNumber                        | ~~11~~ 20   |
+| hmy_getBlockByHash                                 | ~~21~~ 20   |
+| hmy_getBlockByNumber                               | ~~24~~ 20   |
+| hmy_getBlockSigners                                | ~~10~~ 20   |
+| hmy_getBlockTransactionCountByHash                 | ~~15~~ 20   |
+| hmy_getBlockTransactionCountByNumber               | ~~11~~ 20   |
+| hmy_getBlocks                                      | ~~60~~ 20   |
+| hmy_getCXReceiptByHash                             | ~~11~~ 20   |
+| hmy_getCirculatingSupply                           | ~~5~~ 20    |
+| hmy_getCode                                        | ~~24~~ 20   |
+| hmy_getCurrentStakingErrorSink                     | ~~5~~ 20    |
+| hmy_getCurrentTransactionErrorSink                 | ~~5~~ 20    |
+| hmy_getDelegationsByDelegator                      | ~~15~~ 20   |
+| hmy_getDelegationsByDelegatorAndValidator          | ~~15~~ 20   |
+| hmy_getDelegationsByValidator                      | ~~15~~ 20   |
+| hmy_getElectedValidatorAddresses                   | ~~5~~ 20    |
+| hmy_getEpoch                                       | ~~10~~ 20   |
+| hmy_getFilterChanges                               | ~~20~~ 20   |
+| hmy_getFilterLogs                                  | ~~60~~ 20   |
+| hmy_getGasPrice                                    | ~~15~~ 20   |
+| hmy_getLeader                                      | ~~5~~ 20    |
+| hmy_getLatestHeader                                | ~~20~~ 20   |
+| hmy_getLogs                                        | ~~60~~ 20   |
+| hmy_getMedianRawStakeSnapshot                      | ~~5~~ 20    |
+| hmy_getNonce                                       | ~~11~~ 20   |
+| hmy_getPendingCXReceipts                           | ~~30~~ 20   |
+| hmy_getPendingCrossLinks                           | ~~10~~ 20   |
+| hmy_getShardingStructure                           | ~~20~~ 20   |
+| hmy_getSignedBlocks                                | ~~5~~ 20    |
+| hmy_getStakingNetworkInfo                          | ~~15~~ 20   |
+| hmy_getStakingTransactionByBlockHashAndIndex       | ~~19~~ 20   |
+| hmy_getStakingTransactionByBlockNumberAndIndex     | ~~13~~ 20   |
+| hmy_getStakingTransactionByHash                    | ~~11~~ 20   |
+| hmy_getStorageAt                                   | ~~14~~ 20   |
+| hmy_getTotalSupply                                 | ~~5~~ 20    |
+| hmy_getTransaction                                 | ~~59~~ 20   |
+| hmy_getTransactionByBlockHashAndIndex              | ~~19~~ 20   |
+| hmy_getTransactionByBlockNumberAndIndex            | ~~13~~ 20   |
+| hmy_getTransactionByHash                           | ~~11~~ 20   |
+| hmy_getTransactionCount                            | ~~11~~ 20   |
+| hmy_getTransactionReceipt                          | ~~30~~ 20   |
+| hmy_getValidators                                  | ~~10~~ 20   |
+| hmy_gasPrice                                       | ~~15~~ 20   |
+| hmy_isBlockSigner                                  | ~~5~~ 20    |
+| hmy_isLastBlock                                    | ~~5~~ 20    |
+| hmy_latestHeader                                   | ~~20~~ 20   |
+| hmy_newBlockFilter                                 | ~~20~~ 20   |
+| hmy_newFilter                                      | ~~20~~ 20   |
+| hmy_newPendingTransactionFilter                    | ~~20~~ 20   |
+| hmy_pendingTransactions                            | ~~30~~ 20   |
+| hmy_sendRawStakingTransaction                      | ~~90~~ 20   |
+| hmy_sendRawTransaction                             | ~~90~~ 20   |
+| hmy_syncing                                        | 0           |
+| hmyv2_blockNumber                                  | ~~10~~ 20   |
+| hmyv2_getBalance                                   | ~~11~~ 20   |
+| hmyv2_getBalanceByBlockNumber                      | ~~11~~ 20   |
+| hmyv2_getBlockByHash                               | ~~21~~ 20   |
+| hmyv2_getBlockByNumber                             | ~~24~~ 20   |
+| hmyv2_getBlockTransactionCountByHash               | ~~15~~ 20   |
+| hmyv2_getBlockTransactionCountByNumber             | ~~11~~ 20   |
+| hmyv2_getCXReceiptByHash                           | ~~11~~ 20   |
+| hmyv2_getCurrentTransactionErrorSink               | ~~5~~ 20    |
+| hmyv2_getEpoch                                     | ~~10~~ 20   |
+| hmyv2_getPendingCXReceipts                         | ~~30~~ 20   |
+| hmyv2_getPendingCrossLinks                         | ~~10~~ 20   |
+| hmyv2_getStakingTransactionByBlockHashAndIndex     | ~~19~~ 20   |
+| hmyv2_getStakingTransactionByBlockNumberAndIndex   | ~~13~~ 20   |
+| hmyv2_getStakingTransactionByHash                  | ~~11~~ 20   |
+| hmyv2_getTransactionByBlockHashAndIndex            | ~~19~~ 20   |
+| hmyv2_getTransactionByBlockNumberAndIndex          | ~~13~~ 20   |
+| hmyv2_getTransactionByHash                         | ~~11~~ 20   |
+| hmyv2_getTransactionCount                          | ~~11~~ 20   |
+| hmyv2_getTransactionReceipt                        | ~~30~~ 20   |
+| hmyv2_getTransactionsHistory                       | ~~60~~ 20   |
+| hmyv2_gasPrice                                     | ~~15~~ 20   |
+| hmyv2_getValidators                                | ~~10~~ 20   |
+| hmyv2_pendingTransactions                          | ~~30~~ 20   |
+| hmyv2_getBlocks                                    | ~~60~~ 20   |
+
 
 ## zkevm
 
-| Method                         | Cost |
-|--------------------------------|------|
-| zkevm_batchNumber              | 10   |
-| zkevm_batchNumberByBlockNumber | 10   |
-| zkevm_consolidatedBlockNumber  | 10   |
-| zkevm_getBatchByNumber         | 15   |
-| zkevm_getBroadcastURI          | 5    |
-| zkevm_isBlockConsolidated      | 5    |
-| zkevm_isBlockVirtualized       | 5    |
-| zkevm_virtualBatchNumber       | 10   |
-| zkevm_verifiedBatchNumber      | 10   |
+| Method                         | Cost        |
+|--------------------------------|-------------|
+| zkevm_batchNumber              | ~~10~~ 20   |
+| zkevm_batchNumberByBlockNumber | ~~10~~ 20   |
+| zkevm_consolidatedBlockNumber  | ~~10~~ 20   |
+| zkevm_getBatchByNumber         | ~~15~~ 20   |
+| zkevm_getBroadcastURI          | ~~5~~ 20    |
+| zkevm_isBlockConsolidated      | ~~5~~ 20    |
+| zkevm_isBlockVirtualized       | ~~5~~ 20    |
+| zkevm_virtualBatchNumber       | ~~10~~ 20   |
+| zkevm_verifiedBatchNumber      | ~~10~~ 20   |
+
 
 
 ## zksync
 
-| Method                         | Cost |
-|--------------------------------|------|
-| zks_estimateFee                | 60   |
-| zks_estimateGasL1ToL2          | 60   |
-| zks_getAllAccountBalances      | 11   |
-| zks_getBlockDetails            | 20   |
-| zks_getBridgeContracts         | 10   |
-| zks_getBytecodeByHash          | 500  |
-| zks_getConfirmedTokens         | 30   |
-| zks_getL1BatchBlockRange       | 10   |
-| zks_getL1BatchDetails          | 20   |
-| zks_getL2ToL1LogProof          | 30   |
-| zks_getL2ToL1MsgProof          | 30   |
-| zks_getMainContract            | 10   |
-| zks_getRawBlockTransactions    | 20   |
-| zks_getTestnetPaymaster        | 10   |
-| zks_getTokenPrice              | 10   |
-| zks_getTransactionDetails      | 11   |
-| zks_L1BatchNumber              | 10   |
-| zks_L1ChainId                  | 5    |
+| Method                         | Cost        |
+|--------------------------------|-------------|
+| zks_estimateFee                | ~~60~~ 20   |
+| zks_estimateGasL1ToL2          | ~~60~~ 20   |
+| zks_getAllAccountBalances      | ~~11~~ 20   |
+| zks_getBlockDetails            | ~~20~~ 20   |
+| zks_getBridgeContracts         | ~~10~~ 20   |
+| zks_getBytecodeByHash          | ~~500~~ 20  |
+| zks_getConfirmedTokens         | ~~30~~ 20   |
+| zks_getL1BatchBlockRange       | ~~10~~ 20   |
+| zks_getL1BatchDetails          | ~~20~~ 20   |
+| zks_getL2ToL1LogProof          | ~~30~~ 20   |
+| zks_getL2ToL1MsgProof          | ~~30~~ 20   |
+| zks_getMainContract            | ~~10~~ 20   |
+| zks_getRawBlockTransactions    | ~~20~~ 20   |
+| zks_getTestnetPaymaster        | ~~10~~ 20   |
+| zks_getTokenPrice              | ~~10~~ 20   |
+| zks_getTransactionDetails      | ~~11~~ 20   |
+| zks_L1BatchNumber              | ~~10~~ 20   |
+| zks_L1ChainId                  | ~~5~~ 20    |
+
 
 
 ## Linea
 
-| Method            | Cost  |
-|-------------------|-------|
-| linea_estimateGas |  60   |
+| Method            | Cost        |
+|-------------------|-------------|
+| linea_estimateGas | ~~60~~ 20   |
 
 ## NEAR
 
-| Method       | Cost |
-|--------------|------|
-| block        | 10   |
-| chunk        | 10   |
-| gas_price    | 10   |
-| network_info | 10   |
-| query        | 10   |
-| send_tx      | 20   |
-| status       | 10   |
-| tx           | 10   |
-| validators   | 10   |
+| Method       | Cost        |
+|--------------|-------------|
+| block        | ~~10~~ 20   |
+| chunk        | ~~10~~ 20   |
+| gas_price    | ~~10~~ 20   |
+| network_info | ~~10~~ 20   |
+| query        | ~~10~~ 20   |
+| send_tx      | ~~20~~ 20   |
+| status       | ~~10~~ 20   |
+| tx           | ~~10~~ 20   |
+| validators   | ~~10~~ 20   |
+
 
 
 ## Cosmos
 
-| Method               | Cost  |
-|----------------------|-------|
-| abci_info            |  20   |
-| abci_query           |  20   |
-| block_by_hash        |  20   |
-| block_results        |  20   |
-| block_search         |  20   |
-| blockchain           |  20   |
-| broadcast_tx         |  20   |
-| broadcast_tx_commit  |  20   |
-| check_tx             |  20   |
-| commit               |  20   |
-| consensus_params     |  20   |
-| consensus_state      |  20   |
-| dump_consensus_state |  20   |
-| genesis_chunked      |  20   |
-| header               |  20   |
-| header_by_hash       |  20   |
-| health               |  20   |
-| lag_status           |  20   |
-| num_unconfirmed_txs  |  20   |
-| status               |  20   |
-| tx                   |  20   |
-| tx_search            |  20   |
+| Method               | Cost        |
+|----------------------|-------------|
+| abci_info            | ~~20~~ 20   |
+| abci_query           | ~~20~~ 20   |
+| block_by_hash        | ~~20~~ 20   |
+| block_results        | ~~20~~ 20   |
+| block_search         | ~~20~~ 20   |
+| blockchain           | ~~20~~ 20   |
+| broadcast_tx         | ~~20~~ 20   |
+| broadcast_tx_commit  | ~~20~~ 20   |
+| check_tx             | ~~20~~ 20   |
+| commit               | ~~20~~ 20   |
+| consensus_params     | ~~20~~ 20   |
+| consensus_state      | ~~20~~ 20   |
+| dump_consensus_state | ~~20~~ 20   |
+| genesis_chunked      | ~~20~~ 20   |
+| header               | ~~20~~ 20   |
+| header_by_hash       | ~~20~~ 20   |
+| health               | ~~20~~ 20   |
+| lag_status           | ~~20~~ 20   |
+| num_unconfirmed_txs  | ~~20~~ 20   |
+| status               | ~~20~~ 20   |
+| tx                   | ~~20~~ 20   |
+| tx_search            | ~~20~~ 20   |

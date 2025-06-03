@@ -14,7 +14,7 @@ export function EthereumMethod_getTransactionByBlockHashAndIndex(
     <EthereumMethod
       method="eth_getTransactionByBlockHashAndIndex"
       network="ethereum"
-      cu={19}
+      cu={20}
       description={
         "Retrieves a specific transaction from a block using the block's hash and the transaction's index position "
       }

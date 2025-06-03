@@ -11,7 +11,7 @@ export function Solana_getInflationGovernor() {
     <SolanaMethod
       method="getInflationGovernor"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Provides detailed information about the current inflation governor settings"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

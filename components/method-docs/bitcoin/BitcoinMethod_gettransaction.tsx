@@ -12,7 +12,7 @@ export function BitcoinMethod_gettransaction(props: GenericMethodPropsReplacing)
     <BitcoinMethod
       method="gettransaction"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Provides detailed information about a specific transaction."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

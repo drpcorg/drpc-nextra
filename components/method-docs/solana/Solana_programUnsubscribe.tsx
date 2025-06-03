@@ -12,7 +12,7 @@ export function Solana_programUnsubscribe() {
     <SolanaMethod
       method="programUnsubscribe"
       network="solana"
-      cu={0}
+      cu={20}
       description={"Cancels an active subscription to updates for a specific program account"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

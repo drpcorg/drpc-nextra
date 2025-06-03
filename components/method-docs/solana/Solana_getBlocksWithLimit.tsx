@@ -11,7 +11,7 @@ export function Solana_getBlocksWithLimit() {
     <SolanaMethod
       method="getBlocksWithLimit"
       network="solana"
-      cu={5}
+      cu={20}
       description={
         "Retrieves a list of confirmed blocks starting from a specified slot up to a given limit on the Solana blockchain"
       }

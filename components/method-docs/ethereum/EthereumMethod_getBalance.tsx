@@ -12,7 +12,7 @@ export function EthereumMethod_getBalance(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_getBalance"
       network="ethereum"
-      cu={11}
+      cu={20}
       description={
         "This method is essential for determining an account's available funds"
       }

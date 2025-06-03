@@ -12,7 +12,7 @@ export function Solana_logUnsubscribe() {
     <SolanaMethod
       method="logUnsubscribe"
       network="solana"
-      cu={0}
+      cu={20}
       description={"Allows to cancel an active subscription to transaction logs"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

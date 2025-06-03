@@ -14,7 +14,7 @@ export function EthereumMethod_debug_traceCall(
     <EthereumMethod
       method="debug_traceCall"
       network="ethereum"
-      cu={90}
+      cu={20}
       description={
         "Trace the execution of a call without broadcasting"
       }

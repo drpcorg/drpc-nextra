@@ -12,7 +12,7 @@ export function BitcoinMethod_getbestblockhash(props: GenericMethodPropsReplacin
     <BitcoinMethod
       method="getbestblockhash"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Fetches the hash of the most recent block."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -12,7 +12,7 @@ export function EthereumMethod_coinbase(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_coinbase"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={"Returns the address of the client's coinbase"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

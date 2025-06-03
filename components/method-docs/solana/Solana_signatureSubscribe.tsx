@@ -12,7 +12,7 @@ export function Solana_signatureSubscribe() {
     <SolanaMethod
       method="signatureSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Allows to subscribe to real-time updates for specific transaction signature"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

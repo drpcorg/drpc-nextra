@@ -14,7 +14,7 @@ export function EthereumMethod_getTransactionReceipt(
     <EthereumMethod
       method="eth_getTransactionReceipt"
       network="ethereum"
-      cu={30}
+      cu={20}
       description={
         "Retrieves the receipt of a specific transaction by its hash"
       }

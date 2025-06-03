@@ -11,7 +11,7 @@ export function Solana_getEpochInfo                                             
     <SolanaMethod
       method="getEpochInfo"
       network="solana"
-      cu={9}
+      cu={20}
       description={"Provides with essential details about the current epoch"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

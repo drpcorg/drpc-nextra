@@ -14,7 +14,7 @@ export function EthereumMethod_trace_rawTransaction(
     <EthereumMethod
       method="trace_rawTransaction"
       network="ethereum"
-      cu={75}
+      cu={20}
       description={
         "Executes a raw transaction and returns detailed trace information about its execution"
       }

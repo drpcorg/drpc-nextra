@@ -11,7 +11,7 @@ export function Solana_getConfirmedTransaction() {
     <SolanaMethod
       method="getConfirmedTransaction"
       network="solana"
-      cu={38}
+      cu={20}
       description={"Retrieves information about a specific confirmed transaction"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

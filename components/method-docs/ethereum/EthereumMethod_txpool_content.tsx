@@ -14,7 +14,7 @@ export function EthereumMethod_txpool_content(
     <EthereumMethod
       method="txpool_content"
       network="ethereum"
-      cu={1000}
+      cu={20}
       description={
         "Retrieves the contents of the transaction pool, including pending and queued transactions"
       }

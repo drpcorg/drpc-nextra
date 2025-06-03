@@ -12,7 +12,7 @@ export function EthereumMethod_unsubscribe(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_unsubscribe"
       network="ethereum"
-      cu={10}
+      cu={20}
       description={
         "Unsubscribes from a subscription using the specified subscription ID"
       }

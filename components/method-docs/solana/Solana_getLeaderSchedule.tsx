@@ -11,7 +11,7 @@ export function Solana_getLeaderSchedule() {
     <SolanaMethod
       method="getLeaderSchedule"
       network="solana"
-      cu={5}
+      cu={20}
       description={"The method in Solana retrieves the leader schedule for a specific epoch"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

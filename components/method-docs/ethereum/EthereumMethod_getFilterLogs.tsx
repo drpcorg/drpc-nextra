@@ -14,7 +14,7 @@ export function EthereumMethod_getFilterLogs(
     <EthereumMethod
       method="eth_getFilterLogs"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={"Retrieves all past logs for a filter"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

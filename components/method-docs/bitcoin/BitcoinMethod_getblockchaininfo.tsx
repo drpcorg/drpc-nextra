@@ -12,7 +12,7 @@ export function BitcoinMethod_getblockchaininfo(props: GenericMethodPropsReplaci
     <BitcoinMethod
       method="getblockchaininfo"
       network="bitcoin"
-      cu={30}
+      cu={20}
       description={"Provides an overview of the blockchain’s status, including network and difficulty information."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

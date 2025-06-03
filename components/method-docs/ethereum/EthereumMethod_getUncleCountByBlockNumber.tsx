@@ -14,7 +14,7 @@ export function EthereumMethod_getUncleCountByBlockNumber(
     <EthereumMethod
       method="eth_getUncleCountByBlockNumber"
       network="ethereum"
-      cu={15}
+      cu={20}
       description={
         "Retrieves the number of uncle blocks for a specific block identified by its number"
       }

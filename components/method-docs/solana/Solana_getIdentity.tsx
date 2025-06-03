@@ -11,7 +11,7 @@ export function Solana_getIdentity() {
     <SolanaMethod
       method="getIdentity"
       network="solana"
-      cu={5}
+      cu={20}
       description={"Retrieves the public key identity of the current node, enabling to verify node authenticity and establish secure connections"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

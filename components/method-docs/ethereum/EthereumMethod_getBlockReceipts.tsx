@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockReceipts(
     <EthereumMethod
       method="eth_getBlockReceipts"
       network="ethereum"
-      cu={80}
+      cu={20}
       description={
         "Provides detailed information about the status, logs, and cumulative gas used for each transaction within the block"
       }

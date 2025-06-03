@@ -14,7 +14,7 @@ export function EthereumMethod_trace_replayTransactionvmTrace(
     <EthereumMethod
       method="trace_replayTransaction#vmTrace"
       network="ethereum"
-      cu={300}
+      cu={20}
       description={
         "Replays a specific transaction, providing detailed trace information about its execution, it includes an in-depth trace of the virtual machine's state throughout the transaction execution"
       }

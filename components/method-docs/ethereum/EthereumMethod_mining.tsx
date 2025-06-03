@@ -12,7 +12,7 @@ export function EthereumMethod_mining(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_mining"
       network="ethereum"
-      cu={0}
+      cu={20}
       description={"Checks if the node is currently mining new blocks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

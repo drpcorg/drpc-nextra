@@ -11,7 +11,7 @@ export function Solana_getConfirmedBlocks() {
     <SolanaMethod
       method="getConfirmedBlocks"
       network="solana"
-      cu={10}
+      cu={20}
       description={"The method in Solana enables to obtain a list of confirmed blocks"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

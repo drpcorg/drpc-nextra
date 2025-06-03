@@ -12,7 +12,7 @@ export function BitcoinMethod_getnetworkinfo(props: GenericMethodPropsReplacing)
     <BitcoinMethod
       method="getnetworkinfo"
       network="bitcoin"
-      cu={0}
+      cu={20}
       description={"Returns network-related information."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

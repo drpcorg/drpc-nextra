@@ -14,7 +14,7 @@ export function EthereumMethod_getBlockTransactionCountByNumber(
     <EthereumMethod
       method="eth_getBlockTransactionCountByNumber"
       network="ethereum"
-      cu={11}
+      cu={20}
       description={
         "Retrieves the number of transactions in a block specified by its block number"
       }

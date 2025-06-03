@@ -12,7 +12,7 @@ export function Solana_accountUnsubscribe() {
     <SolanaMethod
       method="accountUnsubscribe"
       network="solana"
-      cu={0}
+      cu={20}
       description={"Retrieves detailed information about a specific account on the Solana blockchain."}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

@@ -12,7 +12,7 @@ export function EthereumMethod_estimateGas(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_getEstimateGas"
       network="ethereum"
-      cu={60}
+      cu={20}
       description={
         "Calculates the exact amount of gas required, optimizing transaction efficiency and preventing out-of-gas errors"
       }

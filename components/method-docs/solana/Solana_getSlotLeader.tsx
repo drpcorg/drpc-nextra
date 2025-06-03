@@ -11,7 +11,7 @@ export function Solana_getSlotLeader() {
     <SolanaMethod
       method="getSlotLeader"
       network="solana"
-      cu={11}
+      cu={20}
       description={"Identifies the current slot leader, helping understand which node is responsible for producing the next block in the blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

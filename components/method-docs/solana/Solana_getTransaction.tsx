@@ -11,7 +11,7 @@ export function Solana_getTransaction() {
     <SolanaMethod
       method="getTransaction"
       network="solana"
-      cu={59}
+      cu={20}
       description={"Retrieves detailed information about a specific transaction, including its status and metadata"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

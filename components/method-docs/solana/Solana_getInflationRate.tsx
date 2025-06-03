@@ -11,7 +11,7 @@ export function Solana_getInflationRate() {
     <SolanaMethod
       method="getInflationRate"
       network="solana"
-      cu={8}
+      cu={20}
       description={"Returns the current inflation rate of the blockchain"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

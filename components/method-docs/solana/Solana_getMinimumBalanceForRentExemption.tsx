@@ -11,7 +11,7 @@ export function Solana_getMinimumBalanceForRentExemption() {
     <SolanaMethod
       method="getMinimumBalanceForRentExemption"
       network="solana"
-      cu={12}
+      cu={20}
       description={"Calculates the minimum balance required for a specific account size to be rent-exempt"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}

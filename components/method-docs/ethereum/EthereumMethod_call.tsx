@@ -12,7 +12,7 @@ export function EthereumMethod_call(props: GenericMethodPropsReplacing) {
     <EthereumMethod
       method="eth_call"
       network="ethereum"
-      cu={21}
+      cu={20}
       description={
         "Performs a message call instantly without recording it as a transaction on the blockchain"
       }

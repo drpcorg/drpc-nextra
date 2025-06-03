@@ -12,7 +12,7 @@ export function Solana_slotSubscribe() {
     <SolanaMethod
       method="slotSubscribe"
       network="solana"
-      cu={10}
+      cu={20}
       description={"Allows to subscribe to real-time updates for specific slot numbers"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
