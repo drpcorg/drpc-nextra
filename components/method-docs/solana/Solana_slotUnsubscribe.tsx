@@ -34,7 +34,7 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     language: "shell",
     code: () => `wscat -c ${DRPC_ENDPOINT_URL_WSCAT} \\
 # wait for connection
-{"id":1,"jsonrpc":"2.0","method":"slotSubscribe"}
+{"id":1,"jsonrpc":"2.0","method":"slotUnsubscribe"}
 `,
   },
   {
@@ -47,7 +47,7 @@ ws.on('open', function open() {
   ws.send(JSON.stringify({
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "slotSubscribe"
+    "method": "slotUnsubscribe"
   }));
 });
 
@@ -70,7 +70,7 @@ ws.on('open', function open() {
   ws.send(JSON.stringify({
     "id": 1,
     "jsonrpc": "2.0",
-    "method": "slotSubscribe"
+    "method": "slotUnsubscribe"
   }));
 });
 
@@ -98,7 +98,7 @@ def on_open(ws):
     ws.send(json.dumps({
         "id": 1,
         "jsonrpc": "2.0",
-        "method": "slotSubscribe"
+        "method": "slotUnsubscribe"
     }))
 
 ws = websocket.WebSocketApp("${DRPC_ENDPOINT_URL_WSCAT}",
@@ -130,7 +130,7 @@ func main() {
 	request := map[string]interface{}{
 		"id": 1,
 		"jsonrpc": "2.0",
-		"method": "slotSubscribe",
+		"method": "slotUnsubscribe",
 	}
 
 	if err := ws.WriteJSON(request); err != nil {
@@ -163,7 +163,7 @@ async fn main() {
     let subscribe_request = json!({
         "id": 1,
         "jsonrpc": "2.0",
-        "method": "slotSubscribe"
+        "method": "slotUnsubscribe"
     });
 
     write.send(Message::Text(subscribe_request.to_string())).await.expect("Failed to send message");
