@@ -34,7 +34,18 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     language: "shell",
     code: () => `wscat -c ${DRPC_ENDPOINT_URL_WSCAT} \\
 # wait for connection
-{"id":1,"jsonrpc":"2.0","method":"logsUnsubscribe","params":[0]}
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "method": "accountSubscribe",
+  "params": [
+    "CM78CPUeXjn8o3yroDHxUtKsZZgoy4GPkPPXfouKNH12",
+    {
+      "encoding": "jsonParsed",
+      "commitment": "finalized"
+    }
+  ]
+}
 `,
   },
   {

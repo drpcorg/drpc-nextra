@@ -2,4 +2,6 @@
 .DS_Store
 .idea
 node_modules
-public
+public/*
+!public/images/
+!public/images/**
