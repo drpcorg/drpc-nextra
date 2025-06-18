@@ -5,6 +5,15 @@ import proxy from "./reverse-proxy.png";
 
 Dshackle is a proxy used by dRPC as an entry point for your provider. It allows you to aggregate multiple nodes under one provider and to route JSON-RPC requests to specific nodes based on their capabilities or special requirements (e.g., trace calls).
 
+## Dshackle Deployment Considerations
+
+**Running multiple Dshackle servers behind a single DNS name is not supported.** If you want to run multiple Dshackle servers (in the same region or in different regions), please deploy each server with its own DNS name and an SSL certificate for that name.
+
+### Common Dshackle Deployment Schemes:
+
+- **One Dshackle server per data center**: For example, if you have blockchain nodes in a data center in Frankfurt, you can deploy a Dshackle server in the same data center and connect the nodes you host there to it.
+- **Multiple Dshackle servers per data center**: If you'd like to add redundancy and fault tolerance, you can deploy several Dshackle servers in the same data center. Each one must have its own DNS name and SSL certificate. You can then connect your blockchain nodes to both Dshackle servers.
+
 ## Provider name
 
 Your provider name is a unique identifier for your nodes in dRPC. The convention is to name it using `your-company-name` + `any-suffix`.
@@ -156,7 +165,7 @@ You can do it via sending a `kill` command with `HUP` signal to your container, 
 
 ## Authorization
 
-Our new authorization algorithm is based on private/public key pairs and JWT tokens. We hold our private key and your public key, while you retain your own private key and our public key. Using these keys, both sides generate JWT tokens, verify their validity, and if confirmed, authorization is successfully established.
+Our authorization algorithm is based on public/private key pairs and JWT tokens. We hold our private key and your public key, while you retain your private key and our public key. Using these keys, both sides generate JWT tokens, verify their validity, and if the verification succeeds, authorization is successfully established.
 
 Currently, we support only RSA keys. You can use the following script to generate a key pair, specifying the key suffix as the first argument:
 
@@ -190,8 +199,8 @@ auth:
   publicKeyOwner: drpc # always drpc
   server:
     keys:
-      provider-private-key: /path_to_keys/private-provider-name.p8.key
-      external-public-key: /path_to_keys/public-drpc.pem
+      provider-private-key: /path_to_keys/private-provider-name.p8.key # your private key
+      external-public-key: /path_to_keys/public-drpc.pem # dRPC public key
 ```
 
 `external-public-key` is the dRPC public key `public-drpc.pem`:
@@ -280,6 +289,10 @@ metadata:
     nginx.ingress.kubernetes.io/backend-protocol: GRPC
 ```
 
+### Using Other Reverse Proxies
+
+The most important requirement is that your reverse proxy must support gRPC, as dRPC communicates with your Dshackle server using the gRPC protocol.
+
 ## Creating dRPC account
 
 Providers can use dRPC for free, as long as they use it to query their own infrastructure. The benefits include:
@@ -299,9 +312,13 @@ Also, we need to associate your account with a specific provider in our dRPC con
 
 ## Heap dumps
 
-Now it's possible to collect heap dumps from dshackle during `OutOfMemoryError`. It could be very important for us for further troubleshooting and improve our service, send them to us as soon as possible. It's automated but it's necessary to do one thing - add another volume in your docker config - `/path_to_dumps:/etc/dshackle/dumps`.
+It's possible to collect heap dumps from Dshackle server during `OutOfMemoryError`. It could be very important for us for further troubleshooting and improve our service, send them to us as soon as possible. It's automated but it's necessary to do one thing - add another volume in your docker config - `/path_to_dumps:/etc/dshackle/dumps`.
 
-If everything is ok you will see nothing, otherwise there will be the logs `Heap dump creation is turned off` or  `$path does not exist`. Then heap dumps will be created in the folder you specify in your docker config if OutOfMemoryError is thrown. And if so there will be the log `There are some heap dumps, please send them to dshackle developers` during the next dshackle start. This message is printed periodically just to remind about your heap dumps.
+If everything is OK, you won't see any output. Otherwise, you may see logs such as `Heap dump creation is turned off` or `$path does not exist`.
+
+If an `OutOfMemoryError` is thrown, heap dumps will be created in the folder specified in your Docker config. If that happens, you'll see a log message during the next Dshackle startup: `There are some heap dumps, please send them to Dshackle developers.`
+
+This message will be printed periodically as a reminder that heap dumps are present.
 
 Max number of heap dumps in the folder is 3. Dshackle monitors it and automatically clears extra dumps if necessary.
 
