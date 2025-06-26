@@ -208,6 +208,12 @@ const REQUEST_PARAMS: RequestParamProp = [
         paramDescription:
           "Returns logs matching filter criteria in newly imported blocks.",
       },
+      {
+        paramName: "drpc_pendingTransactions",
+        type: "string",
+        paramDescription:
+          "It returns the hash for all transactions that are added to the pending state. This is the dRPC implementation of newPendingTransactions, with plans to extend its functionality.",
+      },
     ],
   },
   {
@@ -239,7 +245,7 @@ const USE_CASES = [
 ];
 
 const CONSTRAINTS = [
-  "newPendingTransaction subscription is not supported",
+  "drpc_pendingTransactions instead of newPendingTransactions",
   "Requires continuous WebSocket connection to the node",
   "Node must support eth_subscribe method",
 ];

@@ -39,17 +39,22 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
 -X POST \\
 -H "Content-Type: application/json" \\
 --data '{
+  "id": 1,
+  "jsonrpc": "2.0",
   "method": "debug_traceCall",
   "params": [
     {
-      "from": null,
-      "to": "0x6b175474e89094c44da98b954eedeac495271d0f",
-      "data": "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
     },
-    "latest"
-  ],
-  "id": 1,
-  "jsonrpc": "2.0"
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
 }'`,
   },
   {
@@ -57,17 +62,22 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
     code: () => `const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  jsonrpc: "2.0",
-  method: "debug_traceCall",
-  params: [
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCall",
+  "params": [
     {
-      from: null,
-      to: "0x6b175474e89094c44da98b954eedeac495271d0f",
-      data: "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
     },
-    "latest"
-  ],
-  id: 1
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
 };
 
 fetch(url, {
@@ -89,17 +99,22 @@ fetch(url, {
 const url = '${DRPC_ENDPOINT_URL}';
 
 const data = {
-  jsonrpc: "2.0",
-  method: "debug_traceCall",
-  params: [
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCall",
+  "params": [
     {
-      from: null,
-      to: "0x6b175474e89094c44da98b954eedeac495271d0f",
-      data: "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
     },
-    "latest"
-  ],
-  id: 1
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
 };
 
 axios.post(url, data)
@@ -122,18 +137,23 @@ func main() {
 	url := "${DRPC_ENDPOINT_URL}"
 
 	data := map[string]interface{}{
-		"id": 1,
-		"jsonrpc": "2.0",
-		"method": "debug_traceCall",
-		"params": []interface{}{
-			map[string]interface{}{
-				"from": nil,
-				"to": "0x6b175474e89094c44da98b954eedeac495271d0f",
-				"data": "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE",
-			},
-			"latest",
-		},
-	}
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCall",
+  "params": [
+    {
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
+    },
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
+}
 
 	jsonData, err := json.Marshal(data)
 	if err != nil {
@@ -163,17 +183,22 @@ import json
 url = '${DRPC_ENDPOINT_URL}'
 
 data = {
-    "id": 1,
-    "jsonrpc": "2.0",
-    "method": "debug_traceCall",
-    "params": [
-        {
-            "from": None,
-            "to": "0x6b175474e89094c44da98b954eedeac495271d0f",
-            "data": "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
-        },
-        "latest"
-    ]
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCall",
+  "params": [
+    {
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
+    },
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
 }
 
 response = requests.post(url, headers={'Content-Type': 'application/json'}, data=json.dumps(data))
@@ -192,18 +217,23 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let url = "${DRPC_ENDPOINT_URL}";
 
     let data = json!({
-        "id": 1,
-        "jsonrpc": "2.0",
-        "method": "debug_traceCall",
-        "params": [
-            {
-                "from": null,
-                "to": "0x6b175474e89094c44da98b954eedeac495271d0f",
-                "data": "0x70a082310000000000000000000000006E0d01A76C3Cf4288372a29124A26D4353EE51BE"
-            },
-            "latest"
-        ]
-    });
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "debug_traceCall",
+  "params": [
+    {
+      "from": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "to": "0x0000000000a39bb272e79075ade125fd351887ac",
+      "gas": "0x1E9EF",
+      "gasPrice": "0xBD32B2ABC",
+      "data": "0xd0e30db0"
+    },
+    "latest",
+    {
+      "tracer": "callTracer"
+    }
+  ]
+});
 
     let client = Client::new();
     let res = client.post(url)
