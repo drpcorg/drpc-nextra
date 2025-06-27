@@ -1,5 +1,9 @@
 {
-  "index": "Welcome to DRPC",
+  "index": "Welcome to dRPC",
+   "-- dRPC Cloud": {
+    "type": "separator",
+    "title": "NodeCloud"
+  },
   "howitworks": "How it works",
   "gettingstarted": "Getting started",
   "pricing": "Pricing",
@@ -13,6 +17,11 @@
     "href": "https://drpc.org/login",
     "newWindow": true
   },
+  "-- dRPC Core": {
+    "type": "separator",
+    "title": "NodeCore"
+  },
+  "nodecore": "What is NodeCore",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"

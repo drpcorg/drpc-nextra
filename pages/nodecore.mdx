@@ -1,0 +1,89 @@
+## What is NodeCore?
+
+NodeCore is a high-performance, on-premise RPC load-balancing solution designed for performance-critical teams, that demand speed, reliability, and control. It intelligently distributes traffic across multiple providers or nodes, optimizing not only cost efficiency but also key performance metrics such as latency and error rates.
+
+NodeCore is designed with four primary goals:
+
+- Cost efficiency.
+    - NodeCore minimizes costs through a combination of a configurable smart caching system and a routing algorithm that take into accounts prices of different providers. This ensures optimal spending without compromising performance.
+- Performance-aware routing.
+    - By continuously collecting and evaluating a broad set of provider metrics, the platform selects the most suitable upstream for each request. Underperforming providers are automatically penalized to maintain consistent quality.
+- Resilient error handling.
+    - NodeCore implements automated retries, parallel requests to reduce long-tail latencies, and dynamically adjusts routing decisions based on provider error rates.
+- Operational simplicity.
+    - Managing multiple RPC providers can be complex. NodeCore centralizes monitoring, usage statistics, and cost tracking across providers, making multi-provider infrastructure easier to operate.
+
+### Who is it for?
+
+- Web3 infrastructure & DevOps teams running their own nodes
+- Enterprises that must keep traffic on‑prem or in VPC
+- Builders who want to combine multiple RPC vendors for cost or redundancy
+
+### Key Features
+
+- **Intelligent cost‑aware routing** (latency, error‑rate & price)
+    - Selects the most suitable provider based on real-time performance metrics and pricing, ensuring optimal speed, cost-efficiency, and reliability.
+- **Multi‑chain / multi‑protocol:** JSON‑RPC, WS, gRPC, REST
+    - Compatible with a wide range of blockchain ecosystems — including Ethereum-like chains, Solana, Cosmos, Bitcoin, Ton, Polkadot, Near, and Starknet — and interfaces such as JSON-RPC, WebSocket, gRPC, and REST.
+- **Aggressive, correctness‑aware caching:** memory, Redis, Postgres
+    - Minimizes redundant traffic by caching frequent requests and reducing load on upstream providers.
+- **Real‑time metrics:** Prometheus & OpenTelemetry out‑of‑the‑box
+    - A centralized interface (available in the enterprise edition) to track provider performance, usage statistics, and cost metrics in real time.
+- **Streaming‑first responses:** low memory footprint for large payloads
+    - Responses are streamed by default to minimize memory footprint and handle large payloads efficiently.
+- **Resilient error handling:** retries, hedging, circuit‑breaker
+- **NodeCloud bridge (optional):** key management & usage billing
+
+## Quickstart Guide
+
+**Coming Soon**
+
+The Quickstart Guide will be published with the first public beta to ensure instructions reflect the finalized install experience.
+
+## Architecture Overview
+
+| Component | Purpose |
+| --- | --- |
+| **Load Balancer** | Accepts client RPC & distributes to upstreams |
+| **NodeCraft Engine** | Modular core implementing caching, routing, retries |
+| **Provider Adapters** | Connectors for REST/JSON‑RPC/WS/gRPC per chain |
+| **Metrics & Tracing** | Prometheus exporter & OTLP spans |
+| **NodeCloud Bridge**  | Syncs keys, budgets & usage to NodeCloud  |
+
+### Trust · Availability · Resiliency Principles
+
+- No single‑provider dependency – smart hedging to *N + 1* nodes
+- Read‑only cache protected by checksum to prevent poisoning
+- Circuit‑breaker automatically ejects misbehaving nodes
+
+## Feature Highlights / Capabilities
+
+### Load Balancing
+
+- Round‑robin, p90 latency, weighted‑cost, sticky‑key routing
+- Parallel hedged reads to reduce long‑tail latency
+- Automatic rate‑limit discovery per provider
+
+### Observability Integrations
+
+- `/metrics` endpoint for Prometheus scraping
+- Ready‑made Grafana dashboard JSON
+- Distributed tracing via OpenTelemetry (OTLP)
+
+### Extensibility & Modularity
+
+- gRPC plugin API for custom rating logic
+- WebHooks for external scoring
+- Lua filters for per‑method overrides *(experimental)*
+
+### Security & Data Control
+
+- Runs entirely within your cluster / bare‑metal
+- mTLS between NodeCore peers
+- Per‑key auth with JWT, SIWE, or IP allow‑lists
+
+## Install & Deployment Options
+
+**Coming Soon**
+
+Deployment recipes (Docker, Helm, Binary) will be provided once the packaging pipeline is stable.
