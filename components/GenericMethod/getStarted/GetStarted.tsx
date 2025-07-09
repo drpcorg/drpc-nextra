@@ -21,7 +21,7 @@ export function GetStarted() {
       <div className={classes.infoBlock}>
         <Group mb={10}>
           <Text color="white" size="lg" fontWeight="semibold">
-            Unlock Access to 50+ chains
+            Unlock Access to 100+ chains
           </Text>
         </Group>
         <Group>
