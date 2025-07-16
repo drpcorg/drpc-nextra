@@ -1,0 +1,66 @@
+## Map
+
+→ The map is visible only if the screen width is 1370+ pixels with the sidebar expanded, and 1215+ pixels if the sidebar is collapsed.
+
+The map features region cards. On the cards:
+
+Top part:
+
+- **Region Status** — the best status from all we see among providers in this region (AVAIL_OK, AVAIL_LAGGING, ...) for the last 5 minutes, converted into a colored dot using the network status formula - see above.
+- **Number of Nodes** reported by providers in this region for the last 5 minutes
+- **Latency** - the average latency from this region over the last 30 minutes. This may include cross-region requests. Calculated only for certain methods (see the sidebar note).
+
+Mid part:
+
+- **Served % -** the percentage of requests served by providers from this region over the last 24 HOURS.
+
+    ```
+    SELECT countMerge(request_count) as request_count, provider_region as region
+    FROM rpc_queries_1d_v3
+    WHERE date >= now() - INTERVAL 24 HOURS `
+    AND network = ${networkId}
+    AND provider_id IN ( ... public providers )
+    GROUP BY provider_region
+    ```
+
+- **Traffic source %** - the percentage of requests from this region for the past 24 HOURS
+
+    ```
+    SELECT countMerge(request_count) as request_count, source_region as region `
+    FROM rpc_queries_1d_v3
+    WHERE date >= now() - INTERVAL 24 HOURS
+    AND network = ${networkId}
+    AND provider_id IN ( ... public providers )
+    GROUP BY source_region
+    ```
+
+
+Bottom part:
+
+- **Coverage fit - the percentage ratio between amount of** requests from this region for the past 24 HOURS (Traffic source) and locally processed requests (when source_region = provider_region)
+
+    ```tsx
+    export function calculateRegionCoveragePercentage(
+      requestsFromRegion: number,
+      requestsLocallyProcessed: number
+    ): number {
+      // No requests from the region, coverage is 100%
+      if (requestsFromRegion === 0) {
+        return 100;
+      }
+
+      // More or equal served requests than requests from the region, coverage is 100%
+      if (requestsLocallyProcessed >= requestsFromRegion) {
+        return 100;
+      }
+
+      // Otherwise make the calculation
+      const coveragePercentage =
+        (requestsLocallyProcessed / requestsFromRegion) * 100;
+
+      return coveragePercentage;
+    }
+    ```
+
+
+If you click on the region card, the region modal will appear.
