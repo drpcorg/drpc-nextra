@@ -1,0 +1,13 @@
+# Supported methods page
+
+Every five minutes, we receive an array of methods supported by each provider in each region, for example, `['eth_getBalance', 'eth_getBlockByHash', ...]`.
+
+This list is not very reliable because the provider can add anything they want to it.
+
+We take all such lists from the past 7 days and combine them into one list, from which we remove duplicates.
+
+Next, we assess the availability of methods from this list:
+
+- green square —  the method is in the list provided by the provider in the last 5 minutes.
+- red square — the method is not in the list provided by the provider in the last 5 minutes.
+- grey square — the provider in this region did not provide a list of available methods at all in the last 5 minutes.

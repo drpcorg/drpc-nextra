@@ -1,0 +1,73 @@
+## Top widgets
+
+This section displays key real-time metrics for the network:
+
+### ⬆️Status
+
+The current network status is determined as the best status among all providers in the network over the last 5 minutes. The best status is the one with the lower priority:
+
+```
+[ProviderStatus.AVAIL_OK]: 0,
+  [ProviderStatus.AVAIL_LAGGING]: 1,
+  [ProviderStatus.AVAIL_IMMATURE]: 2,
+  [ProviderStatus.AVAIL_SYNCING]: 3,
+  [ProviderStatus.AVAIL_FORKED]: 4,
+  [ProviderStatus.AVAIL_UNAVAILABLE]: 5,
+  [ProviderStatus.AVAIL_UNKNOWN]: 6,
+```
+
+Here, AVAIL_OK is the best status and AVAIL_UNKNOWN is the worst.
+
+If there were no statuses within five minutes, the status is considered `AVAIL_UNKNOWN`.
+
+There are four states of the widget:
+
+```
+available: "Available", // green
+warning: "Issues detected", // yellow
+unavailable: "Unavailable", // red
+"n/a": "N/A", // grey
+```
+
+Since there are more statuses than widget states, we map them to widget states as follows:
+
+- AVAIL_OK or AVAIL_LAGGING - available
+- AVAIL_UNAVAILABLE or AVAIL_UNKNOWN - unavailable
+- all other statuses - warning
+
+### ⬆️Nodes
+
+There are two numbers in this widget.
+
+Active nodes - the number of nodes reported by providers. May be unreliable.
+
+We count it as sum `SUM(nodes_count)` from the table `provider_state` for the past 5 minutes.
+
+Planned nodes - the number of nodes that we expect to have in a network. For each planned node, we manually add the following details to the `FoundationNode` table in our database:
+
+- kind (usual or archive)
+- region where the node is located
+- network
+- startDate
+- expireDate (this is needed to mark this node as not active anymore instead of deleting it)
+
+We count the planned nodes by checking the number of entries in this table.
+Right now, there's no automation for this table; we manually insert data into the table and can delete/update it if needed.
+If the foundation requests more nodes in the specific region, we'll manually add the data to this table.
+
+### ⬆️Block Propagation Time
+
+We calculate it through the change in block height.
+
+- Here, by "provider" we will consider the combination of provider_id + provider_index + provider_region
+- For each such "provider," we calculate how much the blockHeight has changed in the last 5 minutes
+- We find `max_delta` (the maximum number of blocks) and `min_delta` (the minimum number of blocks)
+
+Min Block Propagation Time is `300 / max_delta`
+
+Max Block Propagation Time is `300 / min_delta`
+
+### ⬆️Block Height
+
+Counted as `MAX(block_height)` among all our providers in the network for the past 5 minutes.
+

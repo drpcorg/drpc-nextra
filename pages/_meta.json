@@ -1,6 +1,6 @@
 {
   "index": "Welcome to dRPC",
-   "-- dRPC Cloud": {
+   "-- NodeCloud": {
     "type": "separator",
     "title": "NodeCloud"
   },
@@ -17,15 +17,22 @@
     "href": "https://drpc.org/login",
     "newWindow": true
   },
-  "-- dRPC Core": {
+  "-- NodeCore": {
     "type": "separator",
     "title": "NodeCore"
   },
   "nodecore": "What is NodeCore",
+
+  "-- NodeHaus": {
+    "type": "separator",
+    "title": "NodeHaus"
+  },
+  "foundationdashboard": "Foundation Dashboard",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
   },
+
   "ethereum-api": {
     "title": "Ethereum API",
     "theme": {

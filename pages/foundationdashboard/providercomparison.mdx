@@ -1,0 +1,37 @@
+# Provider Comparison Page
+
+This page shows a side-by-side comparison of providers in the network based on latency, block lag, availability, and real-time status data.
+
+## Latency over time
+
+Average latency in the network grouped **by provider**
+
+## Block lag over time
+
+Average value of column `block_lag` in the table `provider_state` for this network, grouped **by provider**
+
+## Availability over time
+
+For every provider we take his best status for the time period. This time period depends on ‘time range’ filter. For ‘last week’, ‘last 30 days’, ‘last 90 days’, the time period is one day. For ‘last 24 hours’, the time period is one hour.
+
+We convert the obtained status into three values:
+
+- AVAIL_OK or AVAIL_LAGGING - available
+- AVAIL_UNAVAILABLE or AVAIL_UNKNOWN - unavailable
+- all other statuses - warning
+
+## Provider Comparison table
+
+The data in the table is grouped by the pair “provider”+”provider region”
+
+**Status**: current provider status (that he reported in the past five minutes)
+
+**Served %** - the share of all requests received by the provider in this region from the total number of requests in the network, for the time period selected in the filters.
+
+**Latency** - the average latency of the provider in this region for the time period selected in the filters.
+
+**Uptime** - the uptime of the provider in this region, calculated using the formula above, for the time period selected in the filters.
+
+**Actual nodes -** the number of nodes reported by the provider in the region in the last five minutes.
+
+**Archived nodes** - whether there is at least one archived node among those reported by the provider in the region in the last five minutes.
