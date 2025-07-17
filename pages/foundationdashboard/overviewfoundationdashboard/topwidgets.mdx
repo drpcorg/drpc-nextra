@@ -2,7 +2,7 @@
 
 This section displays key real-time metrics for the network:
 
-### ⬆️Status
+### Status
 
 The current network status is determined as the best status among all providers in the network over the last 5 minutes. The best status is the one with the lower priority:
 
@@ -35,7 +35,7 @@ Since there are more statuses than widget states, we map them to widget states a
 - AVAIL_UNAVAILABLE or AVAIL_UNKNOWN - unavailable
 - all other statuses - warning
 
-### ⬆️Nodes
+### ️Nodes
 
 There are two numbers in this widget.
 
@@ -55,7 +55,7 @@ We count the planned nodes by checking the number of entries in this table.
 Right now, there's no automation for this table; we manually insert data into the table and can delete/update it if needed.
 If the foundation requests more nodes in the specific region, we'll manually add the data to this table.
 
-### ⬆️Block Propagation Time
+### Block Propagation Time
 
 We calculate it through the change in block height.
 
@@ -67,7 +67,7 @@ Min Block Propagation Time is `300 / max_delta`
 
 Max Block Propagation Time is `300 / min_delta`
 
-### ⬆️Block Height
+### Block Height
 
 Counted as `MAX(block_height)` among all our providers in the network for the past 5 minutes.
 
