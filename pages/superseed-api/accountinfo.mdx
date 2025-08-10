@@ -1,0 +1,21 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Superseed accounts info | dRPC"
+/>
+
+## Accounts info
+
+Retrieves essential on-chain data related to accounts.
+
+[eth_accounts](/superseed-api/accountinfo/eth_accounts): Displays the list of accounts controlled by the node. \
+[eth_getBalance](/superseed-api/accountinfo/eth_getBalance): Returns the balance of an account in the smallest unit of currency (Wei). \
+[eth_getCode](/superseed-api/accountinfo/eth_getCode): Provides the contract code deployed at a specific address. \
+[eth_getProof](/superseed-api/accountinfo/eth_getProof): Delivers a Merkle proof for an account and its stored data. \
+[eth_getStorageAt](/superseed-api/accountinfo/eth_getStorageAt): Fetches the value stored in a contract at a given storage slot.
+These methods are essential for managing account and contract-related data on the Superseed network.
+
+<Space h={16} />
+<GetStarted />

@@ -1,0 +1,23 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Superseed transactions info | dRPC"
+/>
+
+## Transactions info
+
+Provides methods to retrieve transaction details, counts, and receipts.
+
+[eth_getTransactionByHash](/superseed-api/transactionsinfo/eth_getTransactionByHash) : Retrieves transaction details using a transaction hash.  \
+[eth_getTransactionCount](/superseed-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address.  \
+[eth_getTransactionReceipt](/superseed-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction.  \
+[eth_newPendingTransactionFilter](/superseed-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter for monitoring pending transactions.  \
+[eth_getTransactionByBlockHashAndIndex](/superseed-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction from a block by hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/superseed-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index.
+
+These methods help track transaction activity and details on the Superseed network.
+
+<Space h={16} />
+<GetStarted />

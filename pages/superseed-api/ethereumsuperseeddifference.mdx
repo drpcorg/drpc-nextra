@@ -1,0 +1,56 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+# Ethereum and Superseed: Differences
+
+Ethereum and Superseed both support Web3 development and DeFi but differ greatly in architecture, cost efficiency, governance, and focus. Ethereum is a foundational Layer 1 blockchain, Superseed is a Layer 2 network with a unique lending-focused model.
+
+## Consensus & Architecture
+
+**Ethereum**: A standalone blockchain operating on Proof of Stake (PoS) after Ethereum 2.0. Validators stake ETH to secure the network and validate transactions.
+
+**Superseed**: An Optimistic Rollup Layer 2 built on the OP Stack, leveraging Ethereum mainnet security. It batches transactions off-chain, posts data to Ethereum, and uses fraud proofs for validation.
+
+## Transaction Speed & Fees
+
+**Ethereum**: Can experience network congestion and high gas fees, making frequent or small transactions costly.
+
+**Superseed**: Offers faster and significantly cheaper transactions by executing off-chain and settling on Ethereum L1, maintaining security while reducing costs.
+
+## Ecosystem & Use Cases
+
+**Ethereum**: The largest smart contract ecosystem, powering DeFi, NFTs, DAOs, and more. It has the deepest developer community and tooling support.
+
+**Superseed**: Specializes in DeFi lending. It introduces “Supercollateral,” “Proof-of-Repayment,” and other primitives that use protocol revenue to automatically repay user debt.
+
+## Smart Contract Compatibility
+
+**Ethereum**: Uses Solidity for smart contracts deployed directly to L1.
+
+**Superseed**: Fully EVM-compatible, allowing developers to deploy Ethereum contracts with minimal changes using the same tools.
+
+## Governance & Control
+
+**Ethereum**: Governed via decentralized Ethereum Improvement Proposals (EIPs), involving community-wide consensus.
+
+**Superseed**: Protocol-driven governance with economic parameters embedded in the system. Binance is not involved; instead, sequencer and tokenomics design guide upgrades.
+
+## Financial Model & Incentives
+
+**Ethereum**: Fees are distributed to validators and stakers. Incentives are determined by dApps on top.
+
+**Superseed**: Protocol revenues—including sequencer fees, auction proceeds, collateral interest, and token inflation—go toward repaying loans for users holding Supercollateral.
+
+- **Supercollateral**: Over-collateralized positions (often 500%+) earn interest-free loans.
+- **Proof-of-Repayment (PoR)**: Daily auctions where proceeds repay Supercollateral borrowers.
+- **Dynamic Repayment Vault (DRV)**: Smart contracts directing earnings to debt repayment.
+
+## Security & Decentralization
+
+**Ethereum**: Highly decentralized with thousands of validators, offering strong censorship resistance.
+
+**Superseed**: Inherits Ethereum’s L1 security but has a smaller validator set and centralized sequencer, common to many L2s.
+
+
+<Space h={16} />
+<GetStarted />
