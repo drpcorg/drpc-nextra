@@ -68,6 +68,12 @@
       "breadcrumb": false
     }
   },
+  "superseed-api": {
+    "title": "Superseed API",
+    "theme": {
+      "breadcrumb": false
+    }
+  },
   "mantle-api": {
     "title": "Mantle API",
     "theme": {

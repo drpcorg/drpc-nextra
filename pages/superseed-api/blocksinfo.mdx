@@ -1,0 +1,25 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Superseed blocks info | dRPC"
+/>
+
+## Blocks info
+
+Provides methods for retrieving detailed information about specific blocks.
+
+[eth_blockNumber](/superseed-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
+[eth_getBlockByHash](/superseed-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByHash#full](/superseed-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash. \
+[eth_getBlockByNumber](/superseed-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by block number. \
+[eth_getBlockByNumber#full](/superseed-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
+[eth_newBlockFilter](/superseed-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockTransactionCountByHash](/superseed-api/blocksinfo/eth_getBlockTransactionCountByHash) : Returns the transaction count for a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/superseed-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Retrieves the transaction count for a block by its number.
+
+These methods are essential for monitoring block activity on the Superseed network.
+
+<Space h={16} />
+<GetStarted />

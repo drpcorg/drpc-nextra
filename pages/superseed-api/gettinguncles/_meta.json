@@ -1,0 +1,4 @@
+{
+  "eth_getUncleCountByBlockHash": "eth_getUncleCountByBlockHash",
+  "eth_getUncleCountByBlockNumber": "eth_getUncleCountByBlockNumber"
+}

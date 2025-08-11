@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Superseed chain info | dRPC"
+/>
+
+## Chain info
+
+Provides essential data about the state and performance of the Avalanche network.
+
+[eth_chainId](/superseed-api/chaininfo/eth_chainId) : Returns the chain ID of the network. \
+[net_listening](/superseed-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
+[net_version](/superseed-api/chaininfo/net_version) : Returns the current network version. \
+[net_peerCount](/superseed-api/chaininfo/net_peerCount) : Retrieves the number of active peers connected to the node. \
+[eth_syncing](/superseed-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node.
+
+These methods are crucial for monitoring the operational status of the Superseed network.
+
+<Space h={16} />
+<GetStarted />
