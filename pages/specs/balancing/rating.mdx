@@ -58,8 +58,6 @@ The performance prediction algorithm predicts a benchmark that embraces latencie
 
 The rating algorithm take the prediction, the prices and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
-## The parts of the pipeline
-
 ## Performance prediction
 The prediction algorithm uses the performance data of a provider in the last second. 
 We operate in a certain rating dimension and use data only from this dimension (chain, region, etc). 
@@ -71,9 +69,9 @@ Let's see what is inside the performance data.
 
 **EMAs**. As described above, it allow the rating algorithm to remember the history of the provider's performance.
 
-While performance data is the features, the latency with an error penalty is the target. The error penalty is a high number artifically created and put in the dataset that pulls the average latency up.
+While performance data is the *features*, the latency with error penalties is the *target*. The error penalty is an artifically created large number that is put in the dataset. It increases the average benchmark and serves as a penalty.
 
-Essentially we try to predict how well the provider will perform in the next seconds, and then we create ratings based on this prediciton, and the prices.
+Essentially we try to predict how well the provider will perform in the next seconds, and then we create ratings based on this prediciton and the prices.
 
 We have been testing Linear Regressions and various algorithms of time-series forecasting. Our priority was the simplicity and rapid execution with a decent prediciton capabilities.
 
@@ -93,7 +91,7 @@ So values close to the best one are multiplied by a small number and become clos
 (image)
 
 After transformation, the **softmax** function is applied to a transformed prediction vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
-High values imply more traffic, low values imply less traffic here. It is essentialy final ratings with no price consideration.
+Here, high values imply more traffic, low values imply less traffic. These numbers can serve as ratings, but they don't consider prices yet.
 
 > [Softmax](https://en.wikipedia.org/wiki/Softmax_function) is a function that maps a vector of numbers to a probability distribution. It's not real probability but behaves like it. 
 > 
@@ -105,7 +103,7 @@ High values imply more traffic, low values imply less traffic here. It is essent
 
 Next, **prices are transformed** in a way that when multiplied by pre-ratings, they increase ratings of cheaper providers *if the performance of the provider is good* and *if their discount is higher than usual discount in a dimension*.
 
-Currently, the algorithm is adjusted to consider differences between latencies less 10ms to be insignificant if all other factors are equal. Also, the maximal discount value of 50% can’t lead a provider to the top if the latency is too high.
+Currently, the algorithm is adjusted to consider differences between latencies less 10ms to be insignificant if all other factors are equal. Also, no discount can put a provider in the top if the latency is performance is too low.
 
 As a result, we have a set of numbers between 0 and 1 representing the share of traffic (or the probability to serve a request) of each provider in each dimension. 
 When stored to the database and shown in dashboards, the ratings are typically multiplied by 1*10^9 for storage optimization. 
