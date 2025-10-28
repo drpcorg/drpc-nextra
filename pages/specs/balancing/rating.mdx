@@ -20,7 +20,7 @@ type RatingDimension struct {
   Method       string
   Chain        dshackle.ChainRef
   SourceRegion reducerstates.Region
-	Kind         DimensionKind
+  Kind         DimensionKind
 }
 ```
 
@@ -42,9 +42,9 @@ Let’s describe what each field means.
 
 <Image src={mlrating} alt="DRPC rating generation algorithm" sizes="55vw" />
 
-The rating uses **provider performance benchmark** and **provider price** as the features to determine the probability of serving a request in a given dimension.
+The rating uses a **provider performance prediction** and **provider price** as features to determine the probability of serving a request in a given dimension.
 
-The performance benchmark embraces latency, number of errors, and derivative features, such as EMA (Exponential Moving Average) **in the last second**. The last set of features lets the system "remember" latencies older than a second ago. 
+The performance prediction algorithm predicts a benchmark that embraces latencies, number of errors, and derivative features, such as EMA (Exponential Moving Average). The last set of features lets the system "remember" latencies older than a second ago. 
 
 > [EMA](https://en.wikipedia.org/wiki/Exponential_smoothing) is a term from signal processing. It can be represented as follows
 > 
@@ -56,12 +56,14 @@ The performance benchmark embraces latency, number of errors, and derivative fea
 > 
 > For example, calculating EMA with an alpha=0.06 will eventually produce a metric close to an average value in the last 30 seconds.
 
-The ratings take these benchmarks, the prices and are recalculated every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
+The rating algorithm take the prediction, the prices and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
 ## The parts of the pipeline
 
-### Performance data
-Performance benchmarks are calculated using the perforamce data of a provider in the last second. We operate in a certain rating dimension and use data only from this dimension (chain, region, etc). Let's see what is inside the performance data.
+## Performance prediction
+The prediction algorithm uses the performance data of a provider in the last second. 
+We operate in a certain rating dimension and use data only from this dimension (chain, region, etc). 
+Let's see what is inside the performance data.
 
 **Average latency**. The average latency in the last second for each provider in each dimension.
 
@@ -69,12 +71,9 @@ Performance benchmarks are calculated using the perforamce data of a provider in
 
 **EMAs**. As described above, it allow the rating algorithm to remember the history of the provider's performance.
 
-### Performance benchmark
-
-The performance benchmark is a value produced by the **Performance Prediction Algorithm**. 
-Essentially we try to predict how well the provider will perform in the next seconds, and then we create ratings based in this prediciton.
-
 While performance data is the features, the latency with an error penalty is the target. The error penalty is a high number artifically created and put in the dataset that pulls the average latency up.
+
+Essentially we try to predict how well the provider will perform in the next seconds, and then we create ratings based on this prediciton, and the prices.
 
 We have been testing Linear Regressions and various algorithms of time-series forecasting. Our priority was the simplicity and rapid execution with a decent prediciton capabilities.
 
@@ -82,18 +81,18 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 
 ### Rating Calculation Algorithm
 
-Our input is a set of providers and their performance benchmarks (one for each provider), and prices offered by providers in a given dimension. Since benchmarks are highly correlated to the latencies and error rates, low values are better than high values.
+Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. Since predictions are highly correlated to the latencies and error rates, low values are better than high values.
 
-Firstly, we apply a **transformation** to each benchmark. 
+Firstly, we apply a **transformation** to each prediction. 
 We do this with the goal of placing low values closer together and placing high values further away. 
 The transformation is made with a **sigmoid** function. 
 It has low values at the beginning, then a slope, and high values at the end. 
-The `x` here is *the difference between the lowest benchmark in the dimension and the behchmark we apply the transformation to*. 
+The `x` here is *the difference between the lowest prediction in the dimension and the behchmark we apply the transformation to*. 
 So values close to the best one are multiplied by a small number and become closer to each other, and high values are multiplied by a large number and grouped together far away from the low ones.
 
 (image)
 
-After transformation, the **softmax** function is applied to a transformed benchmarked vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
+After transformation, the **softmax** function is applied to a transformed prediction vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
 High values imply more traffic, low values imply less traffic here. It is essentialy final ratings with no price consideration.
 
 > [Softmax](https://en.wikipedia.org/wiki/Softmax_function) is a function that maps a vector of numbers to a probability distribution. It's not real probability but behaves like it. 
