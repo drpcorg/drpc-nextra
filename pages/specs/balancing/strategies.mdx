@@ -60,9 +60,13 @@ type RatingDimension struct {
 
 That’s only reasonable that for different types of methods in different chains provider should have different rating. Here the most interesting parameter is `Kind`, while other parameters help us to define separate rating for each provider say for each region, you could think about `Kind` more as a way to filter some providers from our rating table defined by other parameters.
 
-1. Public — filters only public providers that are free
-2. Best latency — filters only top performers
-3. All — does not filter out anyone
+1. All — contains all available providers 
+2. Public — contains only public free providers
+3. PublicBestLatency — formed dynamycally from the Public pool, contains well-performing public providers
+4. PublicLowPriority — special pool that aggregates rate limited public RPCs (i.e. providers not working with dRPC)
+5. BestLatency — contains only paid, well performing providers
+6. BestLatency Top - contains only paid, top performing providers
+7. MEV - special pool for providers with MEV services
 
 This is important to understand how rounds work.
 
