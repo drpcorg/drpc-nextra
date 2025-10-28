@@ -1,7 +1,6 @@
 import Image from "next/image";
-import ratinggen from "./imgs/rating-generation.png";
-import mlrating from "./imgs/ml-rating.png";
-import ratingpatterns from "./imgs/rating-patterns.png";
+import sigmoid from "./imgs/sigmoid.png";
+import mlrating from "./imgs/rating-with-prices.png";
 
 # Provider rating
 
@@ -88,7 +87,7 @@ It has low values at the beginning, then a slope, and high values at the end.
 The `x` here is *the difference between the lowest prediction in the dimension and the behchmark we apply the transformation to*. 
 So values close to the best one are multiplied by a small number and become closer to each other, and high values are multiplied by a large number and grouped together far away from the low ones.
 
-(image)
+<Image src={sigmoid} alt="Example of a sigmoid function" sizes="55vw" />
 
 After transformation, the **softmax** function is applied to a transformed prediction vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
 Here, high values imply more traffic, low values imply less traffic. These numbers can serve as ratings, but they don't consider prices yet.
