@@ -53,7 +53,7 @@ The performance prediction algorithm predicts a benchmark that embraces latencie
 > 
 > EMA lets create features that "remember" their previous values since they literally use their previous values to calculate new ones. The alpha parameter controls how long-term the memory is.
 > 
-> For example, calculating EMA with an alpha=0.06 will eventually produce a metric close to an average value in the last 30 seconds.
+> For example, calculating EMA with an alpha{'='}0.06 will eventually produce a metric close to an average value in the last 30 seconds.
 
 The rating algorithm take the prediction, the prices and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
@@ -116,7 +116,7 @@ Notes on how the algorithm behaves:
 - Discounts of worse-performing providers have lower effect then discounts of well-performing providers
 - Ratings of providers with latencies close to the best latency are high and close, ranged by the discounts
 - Ratings of providers with latencies far from the best latency are low
-- Difference in latencies of <= 10ms is now considered insignificant by the algorithm
+- Difference in latencies of {'<='} 10ms is now considered insignificant by the algorithm
 
 The rating can be improved or downgraded only by 3 factors: latency, errors and price. 
 However, as you might have noticed, the rating is dependant on ratings of all other providers in the dimension. 
