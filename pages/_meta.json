@@ -1,6 +1,6 @@
 {
   "index": "Welcome to dRPC",
-   "-- dRPC Cloud": {
+  "-- dRPC Cloud": {
     "type": "separator",
     "title": "NodeCloud"
   },
@@ -11,6 +11,7 @@
   "web-api": "Web APIs",
   "providers": "Providers",
   "faucets": "Faucets",
+  "tor": "Tor Support",
   "drpc-account": {
     "title": "My Account",
     "type": "page",
@@ -122,5 +123,4 @@
       "breadcrumb": false
     }
   }
-
 }
