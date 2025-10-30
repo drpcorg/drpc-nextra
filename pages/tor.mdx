@@ -1,0 +1,65 @@
+import Image from "next/image";
+import Link from "next/link";
+import { Space } from "@mantine/core";
+
+import { Flex, Stack, Group, Grid } from "@mantine/core";
+import Head from "next/head";
+
+<Head>
+  <title>
+    Tor Support
+  </title>
+  <meta
+    name="description"
+    content="dRPC Tor Support"
+  />
+</Head>
+
+# Tor Support
+
+dRPC supports access through the Tor network, allowing users to connect to its services while maintaining privacy and anonymity.
+
+Onion address: `7ikxpzt676bjj3vvgdfafryn3qtyvhf4oscja3wzv6ga2nzo2z3ugoqd.onion`
+
+URL format for accessing dRPC through Tor: `[onion_address]/[blockchain]/public`
+
+Examples:
+
+- Ethereum: `7ikxpzt676bjj3vvgdfafryn3qtyvhf4oscja3wzv6ga2nzo2z3ugoqd.onion/ethereum/public`
+- Polygon: `7ikxpzt676bjj3vvgdfafryn3qtyvhf4oscja3wzv6ga2nzo2z3ugoqd.onion/polygon/public`
+
+Full list of supported blockchains can be found in [dRPC Chainlist](https://drpc.org/chainlist).
+
+## Usage
+
+Examples of using dRPC through Tor with `curl` (assuming you have a Tor proxy running on `127.0.0.1:9050`):
+
+```bash
+curl \
+  --socks5-hostname '127.0.0.1:9050' \
+  --url '7ikxpzt676bjj3vvgdfafryn3qtyvhf4oscja3wzv6ga2nzo2z3ugoqd.onion/ethereum/public' \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}'
+```
+
+```bash
+curl \
+  --socks5-hostname '127.0.0.1:9050' \
+  --url '7ikxpzt676bjj3vvgdfafryn3qtyvhf4oscja3wzv6ga2nzo2z3ugoqd.onion/polygon/public' \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}'
+```
+
+Regular dRPC free public endpoints can also be accessed through Tor:
+
+```bash
+curl \
+  --socks5-hostname '127.0.0.1:9050' \
+  --url 'https://eth.drpc.org' \
+  --request POST \
+  --header 'Content-Type: application/json' \
+  --data '{"jsonrpc":"2.0","method":"eth_chainId","params":[],"id":1}'
+```
+
