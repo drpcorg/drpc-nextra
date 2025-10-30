@@ -1,104 +1,139 @@
 import Image from "next/image";
-import ratinggen from "./imgs/rating-generation.png";
-import mlrating from "./imgs/ml-rating.png";
-import ratingpatterns from "./imgs/rating-patterns.png";
+import sigmoid from "./imgs/sigmoid.png";
+import mlrating from "./imgs/rating-with-prices.png";
 
 # Provider rating
 
-The core thing of DRPC’s load balancing algorithm is provider rating. The idea is this rating defines how well given provider matches for given request.
+The core thing of DRPC’s load balancing algorithm is a provider rating. After filtering providers capable of serving the request, the final provider is chosen randomly, and **the probability to be chosen is proportional to the rating**.
+
+Now we will tell more about how the rating is calculated as of the moment this doc is being created.
 
 ## Rating dimension
 
-We won’t list here the exact formulas as they can change often, but we will describe key features. The following logic will change often also, so we provide the current state as we’re writing this doc.
-
-The initial concept to discuss is rating dimensions. Each provider can host many different networks and perform differently on different methods, so we actually need a lot of ratings per provider.
-
-Essentially, our rating system is multidimensional. This means that each provider has several ratings, and each request utilizes one of these "rating dimensions" for load balancing.
+The initial concept to discuss is rating dimensions. Each provider can host many different networks in different locations, and perform differently on different methods. Therefore, each provider has a rating for each available combination. These combinaitons of parameters are called "dimensions".
 
 A rating dimension can be described as a Go structure.
 
 ```go
 type RatingDimension struct {
-	Kind         DimensionKind
-	Method       string
-	Chain        dshackle.ChainRef
-	SourceRegion reducerstates.Region
+  Method       string
+  Chain        dshackle.ChainRef
+  SourceRegion reducerstates.Region
+  Kind         DimensionKind
 }
 ```
 
 Let’s describe what each field means.
 
 - `Method`. Directly represents the method of the request. Since different methods require varying amounts of time and effort to handle, it is essential to differentiate each method as one of the dimensions.
-- `Chain` is a network ID. Obviously, we need to have separate ratings for different chains
-- `SourceRegion` helps us to compare provider`s performance for requests originating from the same region. For example, providers in Europe typically have better ratings for requests from Europe than those from the US.
-- `Kind` is more of a way to filter some providers from our rating table defined by other parameters. We could, of course, filter providers before sampling, but maintaining separate tables for each kind is more efficient.
-  1. Public — filters only public providers that are free
-  2. Best latency — filters only top performers
-  3. All — does not filter out 
-  
-For all different dimension of all providers we calculate the average performance of the provider in that dimension in terms of latency, errors and other features. We calculate it every second. Also we calculate bunch of different exponential moving average (EMA) for this performance averages and also use it as a features. We'll explain this below. 
+- `Chain` is a network ID. Obviously, we need to have separate ratings for different chains.
+- `SourceRegion` helps us to compare provider`s performance for requests originating from different regions. For example, providers in Europe typically have lower latency for requests from Europe than those from the US.
+- `Kind` is a subset of providers we want to calculate ratings for.
+  1. All — contains all available providers 
+  2. Public — contains only public free providers
+  3. PublicBestLatency — formed dynamycally from the Public pool, contains well-performing public providers
+  4. PublicLowPriority — special pool that aggregates rate limited public RPCs (i.e. providers not working with dRPC)
+  5. BestLatency — contains only paid, well performing providers
+  6. BestLatency Top - contains only paid, top performing providers
+  7. MEV - special pool for providers with MEV services
 
 ## Rating calculation
 
 <Image src={mlrating} alt="DRPC rating generation algorithm" sizes="55vw" />
 
-Our system updates ratings every 5 seconds on each dproxy independently, meaning the ratings could vary but not substantially.
+The rating uses a **provider performance prediction** and **provider price** as features to determine the probability of serving a request in a given dimension.
 
-The diagram below illustrates the basics of rating calculation. The rating consists several components:
+The performance prediction algorithm predicts a benchmark that embraces latencies, number of errors, and derivative features, such as EMA (Exponential Moving Average). The last set of features lets the system "remember" latencies older than a second ago. 
 
-- **Provider Performance Data**: Calculated every second by averaging metrics like latency, error rates, EMAs, etc.
-- **Machine Learning Algorithm**: Trained on historical data to predict future performance and calculate ratings based on current performance metrics. The input includes various provider features and exponential moving averages (EMAs) with differing sensitivities to performance over time. This algorithm is not only predictive but also highly interpretable.
-- **Rating Registry**: The final rating is stored in the rating registry for subsequent use.
+> [EMA](https://en.wikipedia.org/wiki/Exponential_smoothing) is a term from signal processing. It can be represented as follows
+> 
+> $$
+> y_t = \alpha x_t + (1 - \alpha) y_{t-1}
+> $$
+> 
+> EMA lets create features that "remember" their previous values since they literally use their previous values to calculate new ones. The alpha parameter controls how long-term the memory is.
+> 
+> For example, calculating EMA with an alpha{'='}0.06 will eventually produce a metric close to an average value in the last 30 seconds.
 
-## The parts of the pipeline
+The rating algorithm take the prediction, the prices and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
-### Performance of the providers as an input
-Performance data is calculated based on the performance of a provider in the last second. Remember that we operate in a certain rating dimension and use data only from this dimension (chain, region, etc).
-Represented as an abstract number and a series of EMAs based on it, closely associated with latency and less so with error rates and other metrics by each dimension. So let's see what is inside the performance data.
+## Performance prediction
+The prediction algorithm uses the performance data of a provider in the last second. 
+We operate in a certain rating dimension and use data only from this dimension (chain, region, etc). 
+Let's see what is inside the performance data.
 
-**Previous average latency**. We use the average latency of the last second for each provider in each dimension.
+**Average latency**. The average latency in the last second for each provider in each dimension.
 
-**Errors**. We have very little tolerance for errors, so if a provider returns 10-20 errors, it will be heavily weighted within the ML algorithm and the next prediction of the performance will be very low.
+**Error rate**. We have very little tolerance for errors, so if a provider returns 10-20 errors, it will be heavily weighted within the ML algorithm and the next prediction of the performance will be very low. It's worth noticing that we filter out errors caused by clients or dRPC. The error effect on a rating can last from seconds to hours, depending on the number and the severity of errors. 
 
-**EMAs**. As described below, allow the ML algorithm to consider the 'history' of the provider's performance.
+**EMAs**. As described above, it allow the rating algorithm to remember the history of the provider's performance.
 
+While performance data is the *features*, the latency with error penalties is the *target*. The error penalty is an artifically created large number that is put in the dataset. It increases the average benchmark and serves as a penalty.
 
-### Exponential moving average
-[EMA](https://en.wikipedia.org/wiki/Exponential_smoothing) is a term from signal processing. It can be represented as follows
+Essentially we try to predict how well the provider will perform in the next seconds, and then we create ratings based on this prediciton and the prices.
 
-$$
-y_t = \alpha x_t + (1 - \alpha) y_{t-1}
-$$
+We have been testing Linear Regressions and various algorithms of time-series forecasting. Our priority was the simplicity and rapid execution with a decent prediciton capabilities.
 
-Our provider's performance is a time series. We can interpolate this time series by different EMAs.
-EMA smooths the series, which can be very noisy, but it retains the overall trend. With different alpha it "remember" past performance at varying points, allowing the algorithm to consider historical data within a specific timeframe.
+For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine learning framework that is written in C++ with Go bindings. We developed training and inference processes of our models with this framework. It works very well on a large scale with a high load. It can be used for online learning. Now we don't use the online learning. An inference model on millions of inputs takes less than half a second.
 
-### Machine Learning Algorithm
+### Rating Calculation Algorithm
 
-The ML algorithm for now is **Linear Regression** on *features* of the providers. As we remember *features* are several things. It is the dimension (chain, method, region, etc.), average latencies, EMAs, errors, some other features that can be added or removed, as we retrain our algorithm quite often. We use Linear Regression because it's the very fast algorithm. Not very sophisticated, but the pros of this approach are speed.
+Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. Since predictions are highly correlated to the latencies and error rates, low values are better than high values.
 
-Firstly, because there is such thing as *domain drift* - it is when data with time changes and algorithm need to be aligned with the current state of the whole system and data.
-Secondly, because we developing our algorithm to be more effective.
+Firstly, we apply a **transformation** to each prediction. 
+We do this with the goal of placing low values closer together and placing high values further away. 
+The transformation is made with a **sigmoid** function. 
+It has low values at the beginning, then a slope, and high values at the end. 
+The `x` here is *the difference between the lowest prediction in the dimension and the behchmark we apply the transformation to*. 
+So values close to the best one are multiplied by a small number and become closer to each other, and high values are multiplied by a large number and grouped together far away from the low ones.
 
-We use [VowpalWabbit](https://vowpalwabbit.org) machine learning framework that is written in C++ with Go bindings. We train our model and inference it with this framework. It works very well on a large scale with a high load. It can be used for online learning. But now we don't use online learning. An inference model on millions of inputs takes less than half a second.
+<Image src={sigmoid} alt="Example of a sigmoid function" sizes="55vw" />
 
-The Linear Regression predicts the performance number for each provider in each dimension for the next several seconds. Now it's 5 seconds. After we have this number we can calculate the rating. In each dimension usually there are several providers. We take the performance numbers of the providers and put them in Softmax function to get the probability distribution. So for us, Softmax is a probability density function. 
+After transformation, the **softmax** function is applied to a transformed prediction vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
+Here, high values imply more traffic, low values imply less traffic. These numbers can serve as ratings, but they don't consider prices yet.
 
-### Softmax 
+> [Softmax](https://en.wikipedia.org/wiki/Softmax_function) is a function that maps a vector of numbers to a probability distribution. It's not real probability but behaves like it. 
+> 
+> $$
+> \sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K{e^{z_j}}}
+> $$
+> 
+> We use an additional parameter in softmax called *temperature* to control the level of "uniformnesss" of the resulting distribution. We usually make the ratings more equal to each other than a plain softmax suggests.
 
-[Softmax](https://en.wikipedia.org/wiki/Softmax_function) is a function that maps a vector of numbers to a probability distribution. It's not real probability but behaves like it. 
+Next, **prices are transformed** in a way that when multiplied by pre-ratings, they increase ratings of cheaper providers *if the performance of the provider is good* and *if their discount is higher than usual discount in a dimension*.
 
-$$
-\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K{e^{z_j}}}
-$$
+Currently, the algorithm is adjusted to consider differences between latencies less 10ms to be insignificant if all other factors are equal. Also, no discount can put a provider in the top if the latency is performance is too low.
 
-So basically our rating is probability distribution across providers in a given dimension, and we can use that probability to weight sampling where we decide which provider gets a request. If the probability of the provider is higher it gets a request with a higher probability. 
+As a result, we have a set of numbers between 0 and 1 representing the share of traffic (or the probability to serve a request) of each provider in each dimension. 
+When stored to the database and shown in dashboards, the ratings are typically multiplied by 1*10^9 for storage optimization. 
 
-But Softmax function is an exponential function means if we don't modify it, the distribution of the probability will be exponential. To handle that we have a parameter called *temperature*, it's unify distribution among providers, which means providers with bad performance get some probability anyway, and the best top provider doesn't take all requests. 
+The ratings are practically never equal to 0 for everyone but a leader. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
 
-Remember, that we don't want the situation where the winner takes all! 
-It serves several goals - all providers get requests anyway, some more, some less and we can test the performance of all providers.
+Notes on how the algorithm behaves:
 
-### Sampling
+- If discounts are all the same in a dimension (e.x. 0%), they do not affect the rating; the rating is based on latencies only
+- If latencies are all the same in a dimension, they do not affect the rating; the rating is based on discounts only
+- Discounts of worse-performing providers have lower effect then discounts of well-performing providers
+- Ratings of providers with latencies close to the best latency are high and close, ranged by the discounts
+- Ratings of providers with latencies far from the best latency are low
+- Difference in latencies of {'<='} 10ms is now considered insignificant by the algorithm
 
-On every request in a certain dimension, we take the rating for this dimension from the registry and random sample with weights of probability in rating to whom we give the request. But before there are [routing strategies](strategies.mdx)
+The rating can be improved or downgraded only by 3 factors: latency, errors and price. 
+However, as you might have noticed, the rating is dependant on ratings of all other providers in the dimension. 
+Thus, since any provider may change their performance and price, even if your parameters stay untouched, your rating may change because of other providers activity.
+
+### Sampling providers
+
+On every request, we take the ratings of available providers in the request's dimension and sample a provider randomly where **the probability of being chosen is the rating**. If the request is served, the process ends. Otherwise, we can try to select another provider or move to the next pool and repeat this action. 
+
+Generally, we choose a provider for a request from pools in the following order:
+
+1. BestLatencyTop *— Only for paid requests*
+2. BestLatency *— Only for paid requests*
+3. Default *— Only for paid requests*
+4. PublicBestLatency
+5. Public
+6. PublicLowPriority
+7. All
+
+Up to this point, we assumed that all considered providers can handle a given request. But determining whether it is true or not for each provider is a separate and crucial step happening in advance. It is described in [routing strategies](strategies.mdx).
