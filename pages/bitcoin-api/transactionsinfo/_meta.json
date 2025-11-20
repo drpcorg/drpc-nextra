@@ -2,6 +2,5 @@
   "getrawtransaction": "getrawtransaction",
   "gettransaction": "gettransaction",
   "gettxout": "gettxout",
-  "listunspent": "listunspent",
-  "getrecievedbyaddress": "getrecievedbyaddress"
+  "listunspent": "listunspent"
 }
