@@ -68,7 +68,8 @@ type RouteCheckResult = {
   blockchain: string | undefined;
 };
 
-export function isDocsPage(value: string): RouteCheckResult {
+// Starts with '/ethereum-api', '/optimism-api', etc. 
+function isDocsPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find((base) =>
     value.startsWith(base)
   );
@@ -78,6 +79,7 @@ export function isDocsPage(value: string): RouteCheckResult {
   };
 }
 
+// Equals to '/ethereum-api', '/optimism-api', etc. 
 export function isDocsInfoPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find(
     (base) => value === base || value === `${base}/`
@@ -88,7 +90,8 @@ export function isDocsInfoPage(value: string): RouteCheckResult {
   };
 }
 
-export function isDocsChapterPage(value: string): RouteCheckResult {
+// Equals to '/ethereum-api/blocksinfo', etc.
+function isDocsChapterPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find((base) =>
     METHOD_DOCS_URL_CHAPTERS.some((chapter) => value === `${base}/${chapter}`)
   );
@@ -99,6 +102,7 @@ export function isDocsChapterPage(value: string): RouteCheckResult {
   };
 }
 
+// Starts with '/ethereum-api/blocksinfo', etc. but not equals to '/ethereum-api/blocksinfo'
 export function isDocsMethodPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find((base) =>
     METHOD_DOCS_URL_CHAPTERS.some(
@@ -121,3 +125,6 @@ export function shouldMakeInvisibleHeading(value: string) {
     !isDocsChapterPage(value).is
   );
 }
+
+export const DEFAULT_META_TITLE = "Documentation for dRPC | Docs for dRPC Platform";
+export const DEFAULT_META_DESCRIPTION = "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗";
