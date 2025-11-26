@@ -3,12 +3,10 @@ import { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 
 import { shouldMakeInvisibleHeading } from "../../utils/text/seo";
-import { textToHrefId } from "../../utils/text/textToHrefId";
 import classes from "./H1.module.css";
 
 export function H1({ children }: PropsWithChildren) {
   const router = useRouter();
-  const id = textToHrefId(children.toString());
 
   if (shouldMakeInvisibleHeading(router.asPath)) {
     return (

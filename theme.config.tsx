@@ -1,11 +1,12 @@
-import React, { PropsWithChildren } from "react";
+import React from "react";
 import Logo from "./components/Logo/logo";
 import { useRouter } from "next/router";
 import { H1 } from "./components/mdx/H1";
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { H2 } from "./components/mdx/H2";
 import {
-  isDocsChapterPage,
+  DEFAULT_META_DESCRIPTION,
+  DEFAULT_META_TITLE,
   isDocsInfoPage,
   isDocsMethodPage,
 } from "./utils/text/seo";
@@ -40,12 +41,14 @@ const config: DocsThemeConfig = {
     const router = useRouter();
     const { asPath } = router;
     const extra = { canonical: `${DocsBaseURL}${asPath}` };
-    const defaultSeoProps = {
-      titleTemplate: "Documentation for dRPC | Docs for dRPC Platform",
-      description:
-        "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗",
-      ...extra,
-    };
+
+    if (asPath === '/') {
+      return {
+        titleTemplate: DEFAULT_META_TITLE,
+        description: DEFAULT_META_DESCRIPTION,
+        ...extra,
+      }
+    }
 
     const checkDocsInfoPage = isDocsInfoPage(asPath);
     // If it's an info page, return the SEO tags for the info page
@@ -64,7 +67,10 @@ const config: DocsThemeConfig = {
       return undefined;
     }
 
-    return defaultSeoProps;
+    return {
+      // If we set up default title and description here, it will override the title and description that we set in the page via Head/Meta component
+      ...extra,
+    };
   },
   sidebar: {
     defaultMenuCollapseLevel: 1,
