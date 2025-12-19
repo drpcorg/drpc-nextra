@@ -126,5 +126,5 @@ export function shouldMakeInvisibleHeading(value: string) {
   );
 }
 
-export const DEFAULT_META_TITLE = "Documentation for dRPC | Docs for dRPC Platform";
-export const DEFAULT_META_DESCRIPTION = "Explore comprehensive documentation for dRPC and streamlining your development process. Discover guides, examples, and tips. 💻📗";
+export const DEFAULT_META_TITLE = "Docs: RPC & Chain Methods Documentation | dRPC";
+export const DEFAULT_META_DESCRIPTION = "Access RPC documentation, chain method references, and integration guides. Clear technical resources for developers building on dRPC.";

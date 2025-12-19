@@ -46,6 +46,7 @@ const config: DocsThemeConfig = {
       return {
         titleTemplate: DEFAULT_META_TITLE,
         description: DEFAULT_META_DESCRIPTION,
+        keywords: 'rpc documentation',
         ...extra,
       }
     }
