@@ -40,12 +40,23 @@ const PERMANENT_REDIRECTS = [
     from: "/celo-api/debugandtrace/arbtrace_replayBlockTransactions",
     to: "/celo-api/debugandtrace/trace_replayBlockTransactions",
   },
+  // Redirection group
   {
     from: "/subscriptions/evm",
     to: "/pricing/subscriptions/evm",
   },
   {
+    from: "/howitworks/subscriptions/evm",
+    to: "/pricing/subscriptions/evm",
+  },
+  // Redirection group
+  {
     from: "/subscriptions/solana",
+    to: "/pricing/subscriptions/solana",
+  },
+
+  {
+    from: "/howitworks/subscriptions/solana",
     to: "/pricing/subscriptions/solana",
   },
 ];
@@ -179,7 +190,7 @@ const nextConfig = withNextra({
     return PERMANENT_REDIRECTS.map((redirect) => ({
       source: redirect.from,
       destination: redirect.to,
-      permanent: true
+      permanent: true,
     }));
   },
 });
