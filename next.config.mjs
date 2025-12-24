@@ -42,11 +42,11 @@ const PERMANENT_REDIRECTS = [
   },
   {
     from: "/subscriptions/evm",
-    to: "/howitworks/subscriptions/evm",
+    to: "/pricing/subscriptions/evm",
   },
   {
     from: "/subscriptions/solana",
-    to: "/howitworks/subscriptions/solana",
+    to: "/pricing/subscriptions/solana",
   },
 ];
 
