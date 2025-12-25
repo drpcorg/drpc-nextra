@@ -38,7 +38,7 @@ Here’s an example of subscribing to new block headers using WebSockets:
 const WebSocket = require('ws');
 
 // Connect to your node
-const ws = new WebSocket('wss://lb.drpc.org/ogws?network=NETWORK-NAME&dkey=YOUR-DRPC-KEY');
+const ws = new WebSocket('wss://lb.drpc.org/NETWORK-NAME/YOUR-DRPC-KEY');
 
 ws.on('open', () => {
   // Subscribe to new block headers

@@ -15,7 +15,7 @@ First, [get your endpoint](./createaccount.mdx).
 Each endpoint on UI by default contains your authentication key as a URL parameter `dkey` and network as `network`.
 
 For example, `ethereum` network of DRPC will look like this:
-`https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY`.
+`https://lb.drpc.live/ethereum/YOUR-DRPC-KEY`.
 
 Another recommended way for authentication is to use special HTTP header `Drpc-Key`.
 
@@ -26,7 +26,7 @@ The following are examples of how to make a requests:
 ```bash copy
 curl -X POST -H 'Content-Type: application/json' \
 -d '{"method": "eth_blockNumber","params": [],"id": "1","jsonrpc": "2.0"}' \
-'https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY'
+'https://lb.drpc.live/ethereum/YOUR-DRPC-KEY'
 ```
 </Tab>
 <Tab>
@@ -39,7 +39,7 @@ curl -X POST -H 'Content-Type: application/json' -H 'Drpc-Key: YOUR-DRPC-KEY' \
 
 <Tab>
 ```http copy
-POST https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY
+POST https://lb.drpc.live/ethereum/YOUR-DRPC-KEY
 content-type: application/json
 
 {"method": "eth_blockNumber","params": [], "id": "1", "jsonrpc": "2.0"}
@@ -73,7 +73,7 @@ So, you can use any standard library for you preferred language to make request,
 
 ```js copy
 let Web3 = require("web3");
-let provider = "https://lb.drpc.org/ogrpc?network=ethereum&dkey=YOUR-DRPC-KEY";
+let provider = "https://lb.drpc.live/ethereum/YOUR-DRPC-KEY";
 let web3Provider = new Web3.providers.HttpProvider(provider);
 let web3 = new Web3(web3Provider);
 
