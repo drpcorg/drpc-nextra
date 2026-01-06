@@ -83,34 +83,17 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 
 Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. Since predictions are highly correlated to the latencies and error rates, low values are better than high values.
 
-Firstly, we apply a **transformation** to each prediction. 
-We do this with the goal of placing low values closer together and placing high values further away. 
-The transformation is made with a **sigmoid** function. 
-It has low values at the beginning, then a slope, and high values at the end. 
-The `x` here is *the difference between the lowest prediction in the dimension and the behchmark we apply the transformation to*. 
-So values close to the best one are multiplied by a small number and become closer to each other, and high values are multiplied by a large number and grouped together far away from the low ones.
+We start with calculating pre-ratings from predictions. 
+It is done by solving a linear equation ensuring that slower providers get consistently lower pre-ratings than the fastest providers.
+Outputs decrease exponentially, starting from highest and almost equal pre-ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
 
-<Image src={sigmoid} alt="Example of a sigmoid function" sizes="55vw" />
+Next, **provider prices** are transformed in a way that when multiplied by pre-ratings, they increase ratings of providers with higher discounts *if the performance of the provider is good* and *if their discount is higher than usual discount in a dimension*.
+After merging pre-ratings and transformed prices, the results are normalized, and we finally get provider ratings.
 
-After transformation, the **softmax** function is applied to a transformed prediction vector multiplied by -1 to obtain a vector that sums up to 1 — “pre”-rating with no discount affect so far. 
-Here, high values imply more traffic, low values imply less traffic. These numbers can serve as ratings, but they don't consider prices yet.
+Ratings is a set of numbers between 0 and 1 representing a share of traffic (or the probability to serve a request) of each provider at a given dimension. 
+When stored to the database and shown in dashboards, the ratings are typically multiplied by 1e9 for storage optimization. 
 
-> [Softmax](https://en.wikipedia.org/wiki/Softmax_function) is a function that maps a vector of numbers to a probability distribution. It's not real probability but behaves like it. 
-> 
-> $$
-> \sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^K{e^{z_j}}}
-> $$
-> 
-> We use an additional parameter in softmax called *temperature* to control the level of "uniformnesss" of the resulting distribution. We usually make the ratings more equal to each other than a plain softmax suggests.
-
-Next, **prices are transformed** in a way that when multiplied by pre-ratings, they increase ratings of cheaper providers *if the performance of the provider is good* and *if their discount is higher than usual discount in a dimension*.
-
-Currently, the algorithm is adjusted to consider differences between latencies less 10ms to be insignificant if all other factors are equal. Also, no discount can put a provider in the top if the latency is performance is too low.
-
-As a result, we have a set of numbers between 0 and 1 representing the share of traffic (or the probability to serve a request) of each provider in each dimension. 
-When stored to the database and shown in dashboards, the ratings are typically multiplied by 1*10^9 for storage optimization. 
-
-The ratings are practically never equal to 0 for everyone but a leader. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
+The ratings are practically never equal to 0. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
 
 Notes on how the algorithm behaves:
 
