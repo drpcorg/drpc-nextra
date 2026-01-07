@@ -82,7 +82,7 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 ### Rating Calculation Algorithm
 
 Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. 
-If a provider has **several dshackles**, we use the dschackle with best predicted performance for rating calculation. After calculation, the rating is deaggregated and assigned to each dshackle by their performances. This means that adding more dshackle can't increase the rating unless they their latency is lower compared to other dshackles.
+If a provider has **several dshackles**, we use a dschackle with the best predicted performance for rating calculation. After calculation, the rating is deaggregated and assigned to each dshackle by their performances. This means that adding more dshackle can't increase the rating unless their latency is lower compared to other dshackles.
 
 Since predictions are highly correlated with the latencies and error rates, low predictions usually cause higher ratings.
 
