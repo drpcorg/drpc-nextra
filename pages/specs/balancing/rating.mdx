@@ -82,6 +82,8 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 ### Rating Calculation Algorithm
 
 Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. 
+If a provider has **several dshackles**, we use the dschackle with best predicted performance for rating calculation. After calculation, the rating is deaggregated and assigned to each dshackle by their performances. This means that adding more dshackle can't increase the rating unless they their latency is lower compared to other dshackles.
+
 Since predictions are highly correlated with the latencies and error rates, low predictions usually cause higher ratings.
 
 We start by calculating pre-ratings from predictions. First, we set a mapping between thresholds and multipliers. For example:
@@ -106,15 +108,16 @@ This means that, for example, a provider with a latency of 75 ms higher than the
 
 If a provider's latency is in between thresholds, linear interpolation between closest multipliers and thresholds is used to determine a multiplier.
 
-It is important to keep multipliers steadily increasing with 2^30 (or 2^29) be at the very end. The reason is that 1/2^30 < 1e-9, and 1e-9 is the minimal possible rating. It means that any rating less than 1e-9 will be scaled to 1e-9, and the information about the relationship between ratings less than 1e-9 will be completely lost (all ratings will be artificially equal).
-
 Once set, a simple equation is constructed:
 
-`x + x/m_1 + x/m_2 + ... + x/m_n = 1` 
+$$
+x + \frac{x}{m_1} + \frac{x}{m_2} + ... + \frac{x}{m_n} = 1
+$$
 
-Where `x` — pre-rating of the fastest provider, and `m_i` — multipliers chosen according to the mapping.
+Where $$x$$ — pre-rating of the fastest provider, each term is a rating of some other provider, and $$m_i$$  — multipliers chosen according to the mapping.
+The expressions sums up to 1 because each rating is basically a share of traffic dedicated to a provider.
 
-Since multipliers are known, we easily find `x` and all other ratings.
+Since multipliers are known, we easily find $$x$$ and all other ratings.
 
 Next, **provider prices** are transformed in a way that when multiplied by pre-ratings, they increase ratings of providers with higher discounts *if their discount is higher than usual discount in a dimension*.
 
