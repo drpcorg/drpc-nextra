@@ -81,17 +81,60 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 
 ### Rating Calculation Algorithm
 
-Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. Since predictions are highly correlated to the latencies and error rates, low values are better than high values.
+Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. 
+Since predictions are highly correlated with the latencies and error rates, low predictions usually cause higher ratings.
 
-We start with calculating pre-ratings from predictions. 
-It is done by solving a linear equation ensuring that slower providers get consistently lower pre-ratings than the fastest providers.
-Outputs decrease exponentially, starting from highest and almost equal pre-ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
+We start by calculating pre-ratings from predictions. First, we set a mapping between thresholds and multipliers. For example:
 
-Next, **provider prices** are transformed in a way that when multiplied by pre-ratings, they increase ratings of providers with higher discounts *if the performance of the provider is good* and *if their discount is higher than usual discount in a dimension*.
-After merging pre-ratings and transformed prices, the results are normalized, and we finally get provider ratings.
+| Threshold	| Multiplier |
+| --------- | ---------- |
+| 0 ms |	1 |
+| 10 ms |	1 |
+| 20 ms |	2 |
+| 50 ms |	4 |
+| 75 ms |	8 |
+| … |	… |
+| 30 s |	2^30 |
 
-Ratings is a set of numbers between 0 and 1 representing a share of traffic (or the probability to serve a request) of each provider at a given dimension. 
+The exact mapping can change.
+
+**Threshold** signifies a difference between the lowest latency in a dimension and a given provider's latency.
+
+**Multiplier** is a ratio between the rating of the fastest provider and a given provider.
+
+This means that, for example, a provider with a latency of 75 ms higher than the lowest one must have a rating 8 times lower than the fastest provider.
+
+If a provider's latency is in between thresholds, linear interpolation between closest multipliers and thresholds is used to determine a multiplier.
+
+It is important to keep multipliers steadily increasing with 2^30 (or 2^29) be at the very end. The reason is that 1/2^30 < 1e-9, and 1e-9 is the minimal possible rating. It means that any rating less than 1e-9 will be scaled to 1e-9, and the information about the relationship between ratings less than 1e-9 will be completely lost (all ratings will be artificially equal).
+
+Once set, a simple equation is constructed:
+
+`x + x/m_1 + x/m_2 + ... + x/m_n = 1` 
+
+Where `x` — pre-rating of the fastest provider, and `m_i` — multipliers chosen according to the mapping.
+
+Since multipliers are known, we easily find `x` and all other ratings.
+
+Next, **provider prices** are transformed in a way that when multiplied by pre-ratings, they increase ratings of providers with higher discounts *if their discount is higher than usual discount in a dimension*.
+
+Each price transofrmed in the following way:
+
+```python
+for price in prices:
+  price_transformed = 1 + (dimension_max_price - price) / dimension_max_price
+```
+
+Transformed prices are then passed through a softmax function with a custom tempreature parameter controlling the sensivity to discounts. The output of this step is a set of numbers between 0 and 1.
+
+Finally, pre-ratings and transformed prices are multiplied and normalized, and we get provider ratings.
+
+Final ratings are numbers between 0 and 1 representing a share of traffic (or the probability to serve a request) of each provider at a given dimension. 
 When stored to the database and shown in dashboards, the ratings are typically multiplied by 1e9 for storage optimization. 
+
+This approach ensures that slower and more expensive providers get consistently lower ratings than the fastest providers.
+The latency and error rates are still the most important features.
+In case of equal discounts, ratings decrease exponentially, starting from highest and almost equal ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
 
 The ratings are practically never equal to 0. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
 
