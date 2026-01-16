@@ -68,7 +68,7 @@ type RouteCheckResult = {
   blockchain: string | undefined;
 };
 
-// Starts with '/ethereum-api', '/optimism-api', etc. 
+// Starts with '/ethereum-api', '/optimism-api', etc.
 function isDocsPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find((base) =>
     value.startsWith(base)
@@ -79,7 +79,7 @@ function isDocsPage(value: string): RouteCheckResult {
   };
 }
 
-// Equals to '/ethereum-api', '/optimism-api', etc. 
+// Equals to '/ethereum-api', '/optimism-api', etc.
 export function isDocsInfoPage(value: string): RouteCheckResult {
   const base = METHOD_DOCS_URL_BASES_MAP_KEYS.find(
     (base) => value === base || value === `${base}/`
@@ -128,3 +128,6 @@ export function shouldMakeInvisibleHeading(value: string) {
 
 export const DEFAULT_META_TITLE = "Docs: RPC & Chain Methods Documentation | dRPC";
 export const DEFAULT_META_DESCRIPTION = "Access RPC documentation, chain method references, and integration guides. Clear technical resources for developers building on dRPC.";
+
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+

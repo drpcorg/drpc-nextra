@@ -1,4 +1,8 @@
 import Head from "next/head";
+import ogImage from "../public/images/docs-og.webp";
+import { SITE_URL } from "../utils/text/seo";
+
+const OG_IMAGE_URL = SITE_URL + ogImage.src;
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -21,11 +25,12 @@ const jsonLd = {
 
 export function IndexPageJsonLd() {
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </Head>
+      <Head>
+        <meta property="og:image" content={OG_IMAGE_URL}/>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{__html: JSON.stringify(jsonLd)}}
+        />
+      </Head>
   );
 }
