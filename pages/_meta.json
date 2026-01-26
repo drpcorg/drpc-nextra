@@ -123,5 +123,11 @@
     "theme": {
       "breadcrumb": false
     }
+  },
+  "tron-api": {
+    "title": "Tron API",
+    "theme": {
+      "breadcrumb": false
+    }
   }
 }

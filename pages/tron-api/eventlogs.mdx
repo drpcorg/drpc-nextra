@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Tron events info | dRPC"
+/>
+
+## Event logs
+
+Extracts logs related to smart contract events like token transfers or ownership changes.
+
+[eth_getLogs](/tron-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
+[eth_newFilter](/tron-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track specific events.  \
+[eth_getFilterChanges](/tron-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter since its last check. \
+[eth_uninstallFilter](/tron-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
+[eth_getFilterLogs](/tron-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs from an active filter.
+
+These methods are essential for monitoring contract events on Tron.
+
+<Space h={16} />
+<GetStarted />

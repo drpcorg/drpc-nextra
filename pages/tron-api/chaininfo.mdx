@@ -1,0 +1,24 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Tron chain info | dRPC"
+/>
+
+## Chain info
+
+Gathers essential details about the Optimism network and its protocol settings.
+
+[eth_chainId](/tron-api/chaininfo/eth_chainId) : Retrieves the network's chain ID. \
+[eth_protocolVersion](/tron-api/chaininfo/eth_protocolVersion) : Returns the protocol version of the client. \
+[net_listening](/tron-api/chaininfo/net_listening) : Checks if the node is listening for connections. \
+[net_version](/tron-api/chaininfo/net_version) : Provides the current network version. \
+[net_peerCount](/tron-api/chaininfo/net_peerCount) : Returns the number of connected peers. \
+[eth_syncing](/tron-api/chaininfo/eth_syncing) : Indicates whether the node is syncing. \
+[eth_hashrate](/tron-api/chaininfo/eth_hashrate) : Provides the network's mining hashrate.
+
+These methods offer insights into the configuration and status of the Tron network.
+
+<Space h={16} />
+<GetStarted />
