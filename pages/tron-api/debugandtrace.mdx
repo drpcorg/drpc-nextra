@@ -1,0 +1,22 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="Tron debug and trace info | dRPC"
+/>
+
+## Debug and trace
+
+Available only on the paid tier. Contains advanced debugging and tracing tools.
+
+[trace_filter](/tron-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
+[trace_rawTransaction](/tron-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
+[trace_block](/tron-api/debugandtrace/trace_block) : Traces all transactions in a block. \
+[trace_replayBlockTransactions](/tron-api/debugandtrace/trace_replayBlockTransactions) : Replays transactions within a block for analysis. \
+[debug_traceBlockByHash](/tron-api/debugandtrace/debug_traceBlockByHash) : Traces a block's execution by hash.
+
+These methods assist in transaction and block-level debugging on Tron.
+
+<Space h={16} />
+<GetStarted />

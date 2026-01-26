@@ -18,7 +18,8 @@ const METHOD_DOCS_URL_BASES_MAP = {
   "/soneium-api": "Soneium",
   "/sonic-api": "Sonic",
   "/viction-api": "Viction",
-  "/superseed-api": "Superseed"
+  "/superseed-api": "Superseed",
+  "/tron-api": "Tron"
 };
 
 const METHOD_DOCS_URL_BASES_MAP_KEYS = Object.keys(METHOD_DOCS_URL_BASES_MAP);

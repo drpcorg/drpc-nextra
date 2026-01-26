@@ -1,0 +1,48 @@
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../components/Meta";
+
+# Ethereum and Tron: Difference
+
+Ethereum and Tron are both smart contract platforms, but they are built on very different design philosophies. While Ethereum prioritizes decentralization and a rich developer ecosystem, Tron focuses on high throughput, low fees, and consumer-facing applications.
+
+## Consensus and Network Design
+
+Ethereum operates using a Proof-of-Stake (PoS) consensus mechanism, where validators secure the network by staking ETH. This model emphasizes decentralization and security.
+
+Tron uses a Delegated Proof-of-Stake (DPoS) system with a limited number of Super Representatives responsible for block production. This allows for faster block times and higher throughput, but with a higher degree of centralization compared to Ethereum.
+
+## Blocks and Time
+
+Ethereum has relatively longer block times and probabilistic finality, which means transactions become more secure as more blocks are added.
+
+Tron produces blocks much faster and provides near-instant transaction confirmation, making it well-suited for high-frequency and consumer-oriented use cases.
+
+## Fees and Resource Model
+
+Ethereum transactions require gas fees paid in ETH, and fees fluctuate based on network demand.
+
+Tron uses a resource-based model with **Bandwidth** and **Energy**. Users can stake TRX to obtain these resources, allowing many transactions to be executed with little or no direct fee, which significantly reduces costs for frequent users.
+
+## Smart Contracts and Virtual Machines
+
+Ethereum smart contracts run on the Ethereum Virtual Machine (EVM), which is widely adopted and supported by a large tooling ecosystem.
+
+Tron uses the Tron Virtual Machine (TVM), which is largely compatible with the EVM. This makes it relatively easy to port Ethereum smart contracts to Tron, though some differences in system contracts and precompiles exist.
+
+## Tokens and Standards
+
+Ethereum introduced widely adopted token standards such as ERC-20, ERC-721, and ERC-1155, forming the foundation of DeFi and NFT ecosystems.
+
+Tron supports similar standards like TRC-20 and TRC-721, which mirror Ethereum’s interfaces but are deployed within the Tron network.
+
+## Transactions and Use Cases
+
+Ethereum supports a broad range of transaction types focused on smart contract execution, DeFi, DAOs, and NFTs.
+
+Tron is heavily used for high-volume transactions, particularly stablecoin transfers (such as USDT), gaming, and consumer applications where low fees and fast confirmations are critical.
+
+Understanding the differences between Ethereum and Tron helps developers choose the right platform based on decentralization requirements, cost sensitivity, and target use cases.
+
+<Space h={16} />
+<GetStarted />
