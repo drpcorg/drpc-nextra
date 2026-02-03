@@ -400,4 +400,5 @@ const CONSTRAINTS = [
     "the contract function modifies the blockchain state.",
   "In these cases, the from address must have enough gas as if" +
     "executing a write transaction, even though eth_call itself doesn't consume gas.",
+  "dRPC has a gas cap of 600 million (600M) for eth_call. If your call requires more gas than this limit, the request will fail.",
 ];
