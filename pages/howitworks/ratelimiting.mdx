@@ -17,12 +17,3 @@ For requests to free nodes we have following rules:
 3. If there is a high demand for free requests in a specific region, the limit may be reduced. The minimum limit is set at 50400 CUs per minute, which is equivalent to 40 eth_call requests.
 4. Some methods cost 0 CU (like eth_chainId), but when rate limiting the minimum cost of every call is 10 CU, thus free methods could't be abused
 
-## Gas Limits
-
-For `eth_call` method, dRPC has a gas cap of **600 million gas** (600M). This limit applies to all EVM-compatible chains and determines the maximum amount of gas that can be used for simulating a transaction call.
-
-If your `eth_call` request requires more gas than this limit, the call will fail. This is typically relevant for:
-- Complex smart contract simulations
-- Batch operations that process large amounts of data
-- Calls that iterate over large data structures
-
