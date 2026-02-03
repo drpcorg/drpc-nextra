@@ -1,5 +1,6 @@
 {
   "overview": "dRPC overview",
+  "rpc-infrastructure": "RPC Infrastructure",
   "ratelimiting": "Rate limiting",
   "archive-nodes": "Archive Nodes",
   "mev-protection": "MEV protection"

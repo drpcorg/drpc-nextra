@@ -1,0 +1,26 @@
+import { Meta } from "../../components/Meta";
+
+<Meta
+  title="dRPC Infrastructure for Ethereum and EVM Networks | RPC Capabilities"
+  description="Learn about dRPC's high-throughput RPC infrastructure for Ethereum and EVM-compatible networks, including gas limit specifications."
+/>
+
+# RPC Infrastructure
+
+dRPC operates as a dedicated RPC provider for Ethereum and EVM-compatible networks, offering reliable and scalable blockchain access for developers and applications.
+
+## Network Support
+
+Our infrastructure is optimized to support Ethereum and all EVM-compatible networks, enabling seamless integration with any Ethereum-based blockchain. This includes Layer 1 networks like Ethereum mainnet, as well as Layer 2 solutions and sidechains that maintain EVM compatibility.
+
+## High-Throughput Infrastructure
+
+The dRPC platform is built to handle very high throughput, ensuring that applications can scale without performance degradation. Our distributed network of independent providers and advanced load balancing mechanisms enable efficient request processing even under heavy load conditions.
+
+## Gas Limit Specifications
+
+For transaction execution and contract calls, dRPC enforces the following gas limit:
+
+**Maximum gas cap per call: 600 million gas**
+
+This gas cap applies to individual RPC calls such as `eth_call` and `eth_estimateGas`, providing ample headroom for complex smart contract interactions while maintaining network stability and preventing abuse.
