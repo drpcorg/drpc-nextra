@@ -24,6 +24,7 @@
     "title": "NodeCore"
   },
   "nodecore": "What is NodeCore",
+  "nodecore-quickstart": "Quickstart",
   "-- Methods Documentation": {
     "type": "separator",
     "title": "Methods Documentation"
