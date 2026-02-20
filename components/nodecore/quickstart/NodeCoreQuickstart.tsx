@@ -19,7 +19,7 @@ type Props = {
 
 export function NodeCoreQuickstart({ nodeCoreApiToken, onClose }: Props) {
   return (
-    <Stack p={0} gap={40}>
+    <Stack p={0} gap={40} pt={32}>
       {/* Step 1 */}
       <Stack gap={16}>
         <Text component="h2" size="xl" c="white" fw="medium">
