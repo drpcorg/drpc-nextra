@@ -23,7 +23,7 @@
     "type": "separator",
     "title": "NodeCore"
   },
-  "nodecore": "What is NodeCore",
+  "nodecore-open-source-rpc-stack": "What is NodeCore",
   "nodecore-quickstart": "Quickstart",
   "-- Methods Documentation": {
     "type": "separator",

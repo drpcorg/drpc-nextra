@@ -1,0 +1,127 @@
+import { Meta } from "../components/Meta";
+
+<Meta
+  title="NodeCore: Open-Source RPC Infrastructure Stack | dRPC Docs"
+  description="Deploy a self-hosted, open-source RPC stack with NodeCore. Route traffic across multiple providers, optimize latency and cost, and eliminate single points of failure. All under your control."
+/>
+
+## **1. What is NodeCore?**
+
+**NodeCore is an open-source, self-hosted RPC infrastructure stack that lets teams run and control their own blockchain connectivity layer.**
+
+At its core, NodeCore acts as a high-performance load balancer and routing engine, distributing traffic across multiple nodes and providers to optimize latency, reliability, and cost — without relying on managed SaaS RPC services.
+
+It is designed for teams that require infrastructure sovereignty, performance tuning, and vendor independence while maintaining production-grade resilience.
+
+## **Why teams deploy NodeCore**
+
+Organizations adopt NodeCore to:
+
+- Eliminate dependency on single RPC providers
+- Control routing logic and performance policies internally
+- Reduce infrastructure costs at scale
+- Run hybrid setups combining self-hosted and third-party nodes
+- Maintain uptime during upstream outages
+
+## **Design Goals**
+
+NodeCore is built around four core infrastructure principles:
+
+### **1. Cost Efficiency**
+
+Smart caching combined with price-aware routing minimizes redundant upstream calls and optimizes provider spend without compromising performance.
+
+### **2. Performance-Aware Routing**
+
+NodeCore continuously evaluates provider latency, error rates, and throughput to select the most suitable upstream for every request. Underperforming providers are automatically deprioritized.
+
+### **3. Resilient Error Handling**
+
+Automated retries, hedged parallel requests, and circuit-breaker logic protect applications from upstream instability and long-tail latency spikes.
+
+### **4. Operational Simplicity**
+
+NodeCore centralizes routing, usage analytics, and provider monitoring into a unified control layer. It simplifies multi-provider infrastructure management.
+
+## **Who is NodeCore for?**
+
+### **Best fit for:**
+
+- Web3 infrastructure and DevOps teams running their own nodes
+- dApps with backend-originated traffic from one or few regions
+- Enterprises requiring on-prem or VPC-contained RPC traffic
+- Teams combining multiple RPC vendors for redundancy and cost control
+
+### **Less ideal for:**
+
+- Applications with globally distributed, browser-originated traffic
+- Frontend-heavy dApps requiring edge routing worldwide
+- Teams seeking fully managed, no-ops RPC infrastructure
+
+In these cases, a managed global routing solution such as NodeCloud may be more appropriate.
+
+## **Key Features**
+
+### **1. Intelligent Cost-Aware Routing**
+
+Routes requests using real-time latency, error-rate, and pricing metrics to balance performance and cost.
+
+### **2. Multi-Chain / Multi-Protocol Support**
+
+Compatible with Ethereum-like chains, Solana, Cosmos, Bitcoin, TON, Polkadot, Near, Starknet, and more across JSON-RPC, WebSocket, gRPC, and REST.
+
+### **3. Aggressive, Correctness-Aware Caching**
+
+Supports memory, Redis, and Postgres caching layers to reduce redundant traffic and upstream load.
+
+### **4. Real-Time Metrics & Observability**
+
+Exports Prometheus metrics and OpenTelemetry traces out-of-the-box for deep performance monitoring.
+
+### **5. Streaming-First Response Handling**
+
+Streams large payloads by default to minimize memory footprint and improve throughput.
+
+### **6. Resilient Error Handling**
+
+Retries, hedging, and circuit-breaker protections ensure consistent uptime.
+
+### **7. NodeCloud Bridge (Optional)**
+
+Sync API keys, usage budgets, and analytics with NodeCloud for hybrid deployments.
+
+## **System Architecture**
+
+NodeCore sits between client applications and upstream RPC providers:
+
+**Client → NodeCore Load Balancer → Cache Layer → Providers → Metrics & Tracing**
+
+| **Component** | **Purpose** |
+| --- | --- |
+| Load Balancer | Accepts client RPC traffic and routes upstream |
+| Routing Engine | Applies latency, cost, and reliability policies |
+| Provider Adapters | Connects to JSON-RPC, WS, gRPC, REST endpoints |
+| Cache Layer | Stores frequent read queries |
+| Metrics & Tracing | Prometheus + OTEL observability |
+| NodeCloud Bridge | Hybrid key and billing sync |
+
+## **Reliability Design Principles**
+
+NodeCore is built around production resilience:
+
+- No single-provider dependency (N+1 routing)
+- Hedged reads to reduce long-tail latency
+- Circuit breakers eject failing nodes
+- Checksum-verified read caching
+- Automatic rate-limit discovery
+
+## **Deployment Scenarios**
+
+Common production setups include:
+
+- Routing across Infura + Alchemy + self-hosted nodes
+- Backend traffic balancing from a single region
+- Hybrid NodeCore + NodeCloud failover
+- Private RPC infrastructure for enterprise workloads
+
+---
