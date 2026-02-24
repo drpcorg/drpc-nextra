@@ -44,7 +44,7 @@ Let’s describe what each field means.
 
 <Image src={mlrating} alt="DRPC rating generation algorithm" sizes="55vw" />
 
-The rating uses a **provider performance prediction** and **provider price** as features to determine the probability of serving a request in a given dimension.
+The rating uses a **provider performance prediction**, **provider price**, and alignment with **incentives** as features to determine the probability of serving a request in a given dimension.
 
 The performance prediction algorithm predicts a benchmark that embraces latencies, number of errors, and derivative features, such as EMA (Exponential Moving Average). The last set of features lets the system "remember" latencies older than a second ago. 
 
@@ -58,7 +58,15 @@ The performance prediction algorithm predicts a benchmark that embraces latencie
 > 
 > For example, calculating EMA with an alpha{'='}0.06 will eventually produce a metric close to an average value in the last 30 seconds.
 
-The rating algorithm take the prediction, the prices and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
+Incentives are special conditions by meeting which providers can increase their ratings. Examples of incentives include:
+- Support of particular networks
+- Support of special methods in particular networks
+- Keeping local nodes in certain regions
+- Keeping low error rate
+
+The list of incentives is updated. We may introduce new incentives or end old ones. A full list of inventives is available for providers in their account.
+
+The rating algorithm takes the prediction, the prices, mathcing incentives, and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
 ## Performance prediction
 The prediction algorithm uses the performance data of a provider in the last second. 
@@ -81,7 +89,7 @@ For Linear Regression, we use [VowpalWabbit](https://vowpalwabbit.org) machine l
 
 ### Rating Calculation Algorithm
 
-Our input is a set of providers and their performance predictions (one for each provider), and prices offered by providers in a given dimension. 
+Our input is a set of providers and their performance predictions (one for each provider), prices offered by providers in a given dimension, and applicable incentives. 
 If a provider has **several dshackles**, we use a dschackle with the best predicted performance for rating calculation. After calculation, the rating is deaggregated and assigned to each dshackle by their performances. This means that adding more dshackle can't increase the rating unless their latency is lower compared to other dshackles.
 
 Since predictions are highly correlated with the latencies and error rates, low predictions usually cause higher ratings.
@@ -125,18 +133,22 @@ Each price transofrmed in the following way:
 
 ```python
 for price in prices:
-  price_transformed = 1 + (dimension_max_price - price) / dimension_max_price
+  price_transformed = (dimension_max_price - price) / dimension_max_price
 ```
 
-Transformed prices are then passed through a softmax function with a custom tempreature parameter controlling the sensivity to discounts. The output of this step is a set of numbers between 0 and 1.
+The output of this step is a set of numbers between 0 and 1 where each number corresponds to a certain provider.
 
-Finally, pre-ratings and transformed prices are multiplied and normalized, and we get provider ratings.
+Incentives match features are transofrmed in a number between 0 and 1 for each provider in a similar way. Usually, 1 means that this provider is the only one matching the incentive rule, and 0 means that the provider does not match the incentive conditions.
+
+Then, incentive and price features are summed up together with a vector of ones. The produces a vector of features where each feature is more or equal to 1.
+
+Finally, pre-ratings and output features are multiplied pointwise and normalized, and we get provider ratings.
 
 Final ratings are numbers between 0 and 1 representing a share of traffic (or the probability to serve a request) of each provider at a given dimension. 
 When stored to the database and shown in dashboards, the ratings are typically multiplied by 1e9 for storage optimization. 
 
 This approach ensures that slower and more expensive providers get consistently lower ratings than the fastest providers.
-The latency and error rates are still the most important features.
+The **latency** and **error rates** are still the most important providers.
 In case of equal discounts, ratings decrease exponentially, starting from highest and almost equal ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
 
 The ratings are practically never equal to 0. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
@@ -150,9 +162,9 @@ Notes on how the algorithm behaves:
 - Ratings of providers with latencies far from the best latency are low
 - Difference in latencies of {'<='} 10ms is now considered insignificant by the algorithm
 
-The rating can be improved or downgraded only by 3 factors: latency, errors and price. 
+The rating can be improved or downgraded only by 4 factors: latency, errors, price and matching incentive conditions. 
 However, as you might have noticed, the rating is dependant on ratings of all other providers in the dimension. 
-Thus, since any provider may change their performance and price, even if your parameters stay untouched, your rating may change because of other providers activity.
+Thus, since any provider may change their parameters, even if your parameters stay untouched, your rating may change because of actions of other providers.
 
 ### Sampling providers
 
