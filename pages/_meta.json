@@ -13,6 +13,7 @@
   "referral": "Referral",
   "faucets": "Faucets",
   "tor": "Tor Support",
+  "solana-yellowstone-geyser-grpc": "Solana Yellowstone Geyser gRPC",
   "drpc-account": {
     "title": "My Account",
     "type": "page",

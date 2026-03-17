@@ -1,0 +1,308 @@
+import { Meta } from "../components/Meta";
+
+<Meta
+  title="Solana Geyser gRPC Streaming — Setup Guide | dRPC"
+  description="Stream real-time Solana data with Yellowstone Geyser gRPC via dRPC. Low-latency accounts, transactions, blocks & slots — quickstart with TypeScript in 5 minutes."
+/>
+
+# Solana Yellowstone Geyser gRPC
+
+**Real-time, low-latency streaming for Solana data.**
+
+Yellowstone Geyser gRPC is a streaming interface that pushes blockchain updates directly to your application. Unlike standard JSON-RPC (which requires polling), Geyser gRPC connects directly to our validator infrastructure to deliver **Accounts, Transactions, Blocks, and Slots** with minimal latency.
+
+Use cases:
+
+- **Trading & MEV Bots:** Detect opportunities in milliseconds.
+- **Indexers:** Ingest high-throughput data without polling limits.
+- **Monitoring:** Track specific wallets or program events instantly.
+
+## Before You Start
+
+To use Yellowstone Geyser gRPC, you need an active add-on subscription. You can purchase it in the [Marketplace](https://drpc.org/login).
+
+After purchasing, your endpoint and credentials will be available in **API Keys**:
+
+1. Go to **API Keys** in the left sidebar
+2. Open any key — you'll see a **Solana Geyser gRPC** card
+3. Click the **ⓘ info icon** to open Connection Details
+4. Copy your **Endpoint URL** and **API Key** — you'll need these in the steps below
+
+> You can also download the `.proto` file directly from the Connection Details dialog.
+
+## Connection Details
+
+To start streaming, use your **dRPC API Key** and the gRPC endpoint.
+
+| Parameter             | Value                                                                                                                             |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoint**          | `<your-endpoint-from-dashboard>`                                                                                                  |
+| **Protocol**          | gRPC (HTTP/2 + TLS)                                                                                                               |
+| **Auth Header**       | `x-token`                                                                                                                         |
+| **Supported Methods** | `Subscribe`, `Ping`, `GetLatestBlockhash`, `GetSlot`, `GetBlockHeight`, `IsBlockhashValid`, `GetVersion`, `SubscribeReplayInfo`\* |
+
+> - `SubscribeReplayInfo` is an advanced method for inspecting replay availability. Most integrations only need `Subscribe`.
+
+> Note: This endpoint is exclusively for gRPC streaming. Do not send standard JSON-RPC methods (like getBalance) to this URL.
+
+## Quickstart (TypeScript)
+
+Geyser gRPC is an open standard — you can generate a client directly from the proto file without relying on third-party SDKs. The steps below will get you streaming in under 5 minutes.
+
+**Prerequisites:** Node.js 16+ and npm.
+
+### 1. Setup Dependencies
+
+Install the gRPC libraries and TypeScript tooling:
+
+```bash
+npm install @grpc/grpc-js @grpc/proto-loader bs58@4
+npm install -D typescript ts-node @types/node
+
+# Initialize TypeScript config (ensure "esModuleInterop": true is set)
+npx tsc --init
+```
+
+### 2. Download Proto Definitions
+
+You can download the `.proto` files directly from the Connection Details dialog in your dashboard, or get them from the official repository:
+
+```bash
+# Download from official Yellowstone repository (Dragon's Mouth standard)
+curl -O https://raw.githubusercontent.com/rpcpool/yellowstone-grpc/master/yellowstone-grpc-proto/proto/geyser.proto
+curl -O https://raw.githubusercontent.com/rpcpool/yellowstone-grpc/master/yellowstone-grpc-proto/proto/solana-storage.proto
+```
+
+> Both files must be in the same directory. `geyser.proto` imports `solana-storage.proto`.
+
+### 3. Run the Stream
+
+Create a file named `stream.ts`:
+
+```tsx
+import * as grpc from "@grpc/grpc-js";
+import * as protoLoader from "@grpc/proto-loader";
+import bs58 from "bs58";
+import path from "path";
+
+// Load the protobuf definition
+// includeDirs ensures geyser.proto can resolve its import of solana-storage.proto
+const packageDefinition = protoLoader.loadSync(
+  path.join(__dirname, "geyser.proto"),
+  {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+    includeDirs: [__dirname],
+  },
+);
+const protoDescriptor = grpc.loadPackageDefinition(packageDefinition) as any;
+const Geyser = protoDescriptor.geyser.Geyser;
+
+// Configuration
+const ENDPOINT = "<your-endpoint-from-dashboard>";
+const API_KEY = "YOUR_DRPC_API_KEY"; // Replace with your key
+
+// Reconnection settings
+const INITIAL_RETRY_MS = 100;
+const MAX_RETRY_MS = 5000;
+let retryMs = INITIAL_RETRY_MS;
+let currentStream: any = null;
+
+function buildRequest() {
+  return {
+    slots: {
+      slot_updates: {}, // Named filter for slot updates
+    },
+    accounts: {
+      token_tracker: {
+        owner: ["TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"], // Token Program
+        filters: [],
+        // ⚠️ The full Token Program produces very high throughput.
+        // For production, consider tracking specific accounts instead:
+        // account: ['<your-wallet-pubkey>'],
+      },
+    },
+    // transactions: { all: { vote: false } },
+    // blocks: { all: {} },
+    // commitment: 0,
+    // ↑ PROCESSED=0, CONFIRMED=1, FINALIZED=2
+    //   If omitted, defaults to FINALIZED (2).
+  };
+}
+
+function subscribe(client: any) {
+  const metadata = new grpc.Metadata();
+  metadata.add("x-token", API_KEY);
+
+  const stream = client.Subscribe(metadata);
+  currentStream = stream;
+
+  // Send subscription request
+  stream.write(buildRequest());
+  // Tip: You can call stream.write(newRequest) again at any time
+  // to update your filters without reconnecting.
+
+  // Handle incoming data
+  stream.on("data", (data: any) => {
+    retryMs = INITIAL_RETRY_MS; // Reset backoff on successful data
+
+    if (data.slot) {
+      console.log(`New Slot: ${data.slot.slot}`);
+    }
+    if (data.account) {
+      // pubkey arrives as Uint8Array — encode to base58 for readability
+      const pubkey = bs58.encode(data.account.account.pubkey);
+      console.log(`Account Update: ${pubkey}`);
+    }
+    if (data.pong) {
+      // Connection is healthy
+    }
+  });
+
+  stream.on("error", (err: any) => {
+    console.error("Stream Error:", err.message);
+    reconnect(client);
+  });
+
+  stream.on("end", () => {
+    console.log("Stream ended, reconnecting...");
+    reconnect(client);
+  });
+}
+
+function reconnect(client: any) {
+  console.log(`Reconnecting in ${retryMs}ms...`);
+  setTimeout(() => {
+    subscribe(client);
+    retryMs = Math.min(retryMs * 2, MAX_RETRY_MS); // Exponential backoff
+  }, retryMs);
+}
+
+function main() {
+  // Initialize Client with Keepalive settings
+  // Critical for maintaining long-lived connections
+  const client = new Geyser(ENDPOINT, grpc.credentials.createSsl(), {
+    "grpc.keepalive_time_ms": 15000, // Send ping every 15s
+    "grpc.keepalive_timeout_ms": 5000,
+    "grpc.keepalive_permit_without_calls": 1,
+  });
+
+  subscribe(client);
+
+  // Graceful shutdown — frees the stream so it doesn't count against your concurrent limit
+  process.on("SIGINT", () => {
+    console.log("Shutting down...");
+    if (currentStream) currentStream.cancel();
+    client.close();
+    process.exit(0);
+  });
+}
+
+main();
+```
+
+Run it:
+
+```bash
+npx ts-node stream.ts
+```
+
+## Limits & Quotas
+
+Limits are applied per account based on your purchased add-on tier. All API keys belonging to the same owner share these limits.
+
+### Pricing & Limits by Tier
+
+| Tier         | Price      | Concurrent Streams | Account Pubkeys per Stream | Traffic Included | Overage          |
+| ------------ | ---------- | ------------------ | -------------------------- | ---------------- | ---------------- |
+| **Premium**  | $399/month | 25                 | 50                         | 3 TB/month       | 10 CU per 0.1 MB |
+| **Advanced** | $599/month | 50                 | 100                        | 6 TB/month       | 10 CU per 0.1 MB |
+
+### Limit Details
+
+- **Concurrent Streams:** Maximum number of active `Subscribe` connections open simultaneously (shared across all your API keys).
+- **Account Pubkeys per Stream:** Maximum number of accounts you can track in a single subscription. This counts the **total across ALL account filters** in your request, not per filter.
+
+If you exceed these limits, the server will return a `ResourceExhausted` (gRPC code 8) error with a message indicating which limit was exceeded.
+
+## Subscription Types
+
+The `Subscribe` method supports multiple filter types that can be combined in a single request:
+
+| Filter         | Description                               | Example                                       |
+| -------------- | ----------------------------------------- | --------------------------------------------- |
+| `slots`        | Slot progression updates                  | `slots: { "all": {} }`                        |
+| `blocks`       | Full block data including transactions    | `blocks: { "all": {} }`                       |
+| `blocks_meta`  | Block metadata only (no transactions)     | `blocks_meta: { "all": {} }`                  |
+| `transactions` | Transaction updates with optional filters | `transactions: { "all": { vote: false } }`    |
+| `accounts`     | Account state changes                     | `accounts: { "tracker": { owner: ["..."] } }` |
+
+You can subscribe to multiple types simultaneously. Each filter key (e.g., `"all"`, `"tracker"`) is a label you define for identification in responses.
+
+> **Note:** `transactions` and `blocks` data arrives as serialized Solana transactions. Use `@solana/web3.js` to deserialize them for further processing.
+
+### Commitment Levels
+
+All subscriptions support three commitment levels via the `commitment` field (numeric enum):
+
+| Value | Name      | Description                                               |
+| ----- | --------- | --------------------------------------------------------- |
+| `0`   | PROCESSED | Fastest, but may be rolled back                           |
+| `1`   | CONFIRMED | Confirmed by supermajority, very unlikely to roll back    |
+| `2`   | FINALIZED | Finalized, cannot be rolled back **(default if omitted)** |
+
+## Best Practices
+
+### 1. Connection Stability (Ping/Pong)
+
+Long-lived connections can be dropped by intermediate load balancers if they appear idle.
+
+- **Our Server:** Sends a `Ping` every ~15 seconds.
+- **Your Client:** Should be configured to send pings (Keepalive) or reply to server pings to maintain the connection (as shown in the Quickstart).
+
+### 2. Handle Reconnections
+
+Network interruptions are normal. Your code should:
+
+- Listen for `error` and `close` events.
+- Reconnect with **exponential backoff** (start at 100 ms, double up to 5 s).
+- Resend the subscription request immediately after reconnecting.
+
+See the Quickstart code above for a working implementation of this pattern.
+
+### 3. Filter Aggressively
+
+Use server-side filters to save bandwidth. Instead of subscribing to all transactions, filter by:
+
+- **Account Include:** Only transactions involving specific wallets.
+- **Program ID:** Only transactions interacting with specific programs (e.g., Raydium, Pump.fun).
+
+Example — subscribe only to Raydium V4 transactions:
+
+```tsx
+transactions: {
+  raydium: {
+    vote: false,
+    account_include: ['675kPX9MHTjS2zt1qfr1NYHuzeLXfQM9H24wFSUt1Mp8'],
+    account_exclude: [],
+    account_required: [],
+  }
+}
+```
+
+### 4. Clean Shutdown
+
+Always cancel the stream before exiting (`stream.cancel()` + `client.close()`). Abandoned streams stay open on the server and count against your concurrent streams limit until they time out. The Quickstart code includes a `SIGINT` handler that does this automatically.
+
+## Troubleshooting
+
+| Error Code                | Meaning                    | Solution                                                                                                                  |
+| ------------------------- | -------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **4 (DeadlineExceeded)**  | Request timed out          | Check your keepalive settings. Ensure `grpc.keepalive_time_ms` is ≤ 15 s and pings are not being blocked by your network. |
+| **7 (PermissionDenied)**  | Access denied              | Key is deactivated, IP not in whitelist, or Solana Geyser add-on not enabled.                                             |
+| **8 (ResourceExhausted)** | Limit exceeded             | You hit concurrent streams, accounts per stream, or RPS limit. Check error message for details.                           |
+| **14 (Unavailable)**      | Connection failed          | Transient network issue or no healthy upstreams. Retry with backoff.                                                      |
+| **16 (Unauthenticated)**  | Invalid or missing API Key | Check your `x-token` header and ensure the key exists.                                                                    |
