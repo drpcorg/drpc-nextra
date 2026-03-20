@@ -7,6 +7,7 @@ import {
 import classes from "./NodeCoreQuickstart.module.css";
 import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { Pre } from "nextra/components";
+import { Anchor } from "@mantine/core";
 
 type Props = {
   nodeCoreApiToken?: string;
@@ -28,10 +29,17 @@ export function NodeCoreQuickstart({ nodeCoreApiToken, onClose }: Props) {
         <ul className={classes.bulletList}>
           <li>
             <Text size="md" c="white">
-              <b>Connected (with UI)</b> — Manage API keys & access policies in
-              the Dashboard. Coming soon: usage analytics, error logs, and cost
-              visibility & comparison.
-            </Text>
+  <b>Connected (with UI)</b> — Manage API keys & access policies in the{" "}
+  <Anchor
+    href="https://drpc.org/login?redirect=%2Fdashboard%3Fproduct%3Dnodecore"
+    target="_blank"
+    c="white"
+    underline="always"
+  >
+    Dashboard
+  </Anchor>
+  . Coming soon: usage analytics, error logs, and cost visibility & comparison.
+</Text>
           </li>
           <li>
             <Text size="md" c="white">
@@ -47,8 +55,15 @@ export function NodeCoreQuickstart({ nodeCoreApiToken, onClose }: Props) {
           Step 2 — Copy Integration Token (Connected only)
         </Text>
         <Text size="md" c="textPrimaryMuted">
-          This token connects NodeCore to Dashboard.
-        </Text>
+  This token connects NodeCore to{" "}
+  <Anchor
+    href="https://drpc.org/login?redirect=%2Fdashboard%3Fproduct%3Dnodecore"
+    target="_blank"
+  >
+    Dashboard
+  </Anchor>
+  .
+</Text>
         {nodeCoreApiToken ? (
           <CopyButton value={nodeCoreApiToken}>
             {({ copied }) => (
