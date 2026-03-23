@@ -64,9 +64,9 @@ Incentives are special conditions by meeting which providers can increase their 
 - Keeping local nodes in certain regions
 - Keeping low error rate
 
-The list of incentives is updated. We may introduce new incentives or end old ones. A full list of inventives is available for providers in their account.
+The list of incentives is updated. We may introduce new incentives or end old ones. We always inform providers about news related to incentives.
 
-The rating algorithm takes the prediction, the prices, mathcing incentives, and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
+The rating algorithm takes the prediction, the prices, incentives, and produce new ratings every 5 seconds. The ratings are calculated and stored on each dproxy independently, meaning the ratings could vary but not substantially.
 
 ## Performance prediction
 The prediction algorithm uses the performance data of a provider in the last second. 
@@ -76,6 +76,8 @@ Let's see what is inside the performance data.
 **Average latency**. The average latency in the last second for each provider in each dimension.
 
 **Error rate**. We have very little tolerance for errors, so if a provider returns 10-20 errors, it will be heavily weighted within the ML algorithm and the next prediction of the performance will be very low. It's worth noticing that we filter out errors caused by clients or dRPC. The error effect on a rating can last from seconds to hours, depending on the number and the severity of errors. 
+
+**Stability**. In addition to average latency and error rate, we consider metric's *stabilities*. Specifically, providers with similar latency and error rate but lower standard deviation would be slightly prioritized. Standard deviation is a function describing how far a metric deviates from its average. The lower the value, the more stable the metric.
 
 **EMAs**. As described above, it allow the rating algorithm to remember the history of the provider's performance.
 
@@ -138,9 +140,11 @@ for price in prices:
 
 The output of this step is a set of numbers between 0 and 1 where each number corresponds to a certain provider.
 
-Incentives match features are transofrmed in a number between 0 and 1 for each provider in a similar way. Usually, 1 means that this provider is the only one matching the incentive rule, and 0 means that the provider does not match the incentive conditions.
+Incentives features are transofrmed in a number between 0 and 1 for each provider in a similar way. 1 means that a provider is the only one matching the incentive rule, and 0 means that a provider does not match the incentive conditions. 
 
-Then, incentive and price features are summed up together with a vector of ones. The produces a vector of features where each feature is more or equal to 1.
+To transform standard deviations into a vector of real numbers between 0 and 1, we use a [softmax](https://en.wikipedia.org/wiki/Softmax_function) function with a very high temperature parameter.
+
+Then, secondary features are summed up together with a vector of ones. The produces a vector of features where each feature is more or equal to 1.
 
 Finally, pre-ratings and output features are multiplied pointwise and normalized, and we get provider ratings.
 
@@ -148,21 +152,21 @@ Final ratings are numbers between 0 and 1 representing a share of traffic (or th
 When stored to the database and shown in dashboards, the ratings are typically multiplied by 1e9 for storage optimization. 
 
 This approach ensures that slower and more expensive providers get consistently lower ratings than the fastest providers.
-The **latency** and **error rates** are still the most important providers.
-In case of equal discounts, ratings decrease exponentially, starting from highest and almost equal ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
+**Latency** and **error rate** are still the most important features.
+In case of equal discounts, incentives, and stability (we call it "secondary features"), ratings decrease exponentially, starting from highest and almost equal ratings for providers with latencies in 0-10ms proximity to the lowest latency, down to 1e-9 fraction of the highest pre-rating if the latency is 30s higher than the latency of the fastest provider.
 
 The ratings are practically never equal to 0. We don't want the winner takes all system so that we can test and update the performance data of each provider as well as provide the most robust and reliable service to our clients.
 
 Notes on how the algorithm behaves:
 
-- If discounts are all the same in a dimension (e.x. 0%), they do not affect the rating; the rating is based on latencies only
-- If latencies are all the same in a dimension, they do not affect the rating; the rating is based on discounts only
-- Discounts of worse-performing providers have lower effect then discounts of well-performing providers
-- Ratings of providers with latencies close to the best latency are high and close, ranged by the discounts
+- If discounts or other secondary parameters are all equal in a dimension (e.x. 0%), they do not affect the rating; the rating is based on latencies and error rates only
+- If latencies and error rates are all equal in a dimension, they do not affect the rating; the rating is based on secondary features only
+- Secondary features of worse-performing providers have lower effect then secondary features of well-performing providers
+- Ratings of providers with latencies close to the best latency are high and close, ranged by the secondary features
 - Ratings of providers with latencies far from the best latency are low
 - Difference in latencies of {'<='} 10ms is now considered insignificant by the algorithm
 
-The rating can be improved or downgraded only by 4 factors: latency, errors, price and matching incentive conditions. 
+The rating can be increased or decreased only by 4 factors: latency, errors (averages and stabilities), price and matching incentive conditions. 
 However, as you might have noticed, the rating is dependant on ratings of all other providers in the dimension. 
 Thus, since any provider may change their parameters, even if your parameters stay untouched, your rating may change because of actions of other providers.
 
