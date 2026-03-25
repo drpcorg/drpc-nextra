@@ -1,8 +1,35 @@
 import { Meta } from "../components/Meta";
+import ogImage from "public/images/og-geyser-grpc.png";
+import { SITE_URL } from "../utils/text/seo";
 
 <Meta
   title="Solana Geyser gRPC Streaming — Setup Guide | dRPC"
   description="Stream real-time Solana data with Yellowstone Geyser gRPC via dRPC. Low-latency accounts, transactions, blocks & slots — quickstart with TypeScript in 5 minutes."
+  keywords="Solana Geyser gRPC, Yellowstone gRPC, Solana streaming, Solana real-time data, gRPC Solana, dRPC Geyser, Solana MEV bot data, Solana indexer, Solana websocket alternative, Solana account subscribe"
+  ogDescription="Real-time Solana data streaming with Yellowstone Geyser gRPC. Accounts, transactions, blocks & slots with minimal latency."
+  ogImg={SITE_URL + ogImage.src}
+  pageUrl="/docs/solana-yellowstone-geyser-grpc"
+  type="article"
+  twitterDescription="Real-time Solana data streaming via dRPC. Quickstart with TypeScript in 5 minutes."
+  twitterCard="summary_large_image"
+  jsonLd={{
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: "Solana Geyser gRPC Streaming — Setup Guide",
+    description:
+      "How to set up real-time Solana data streaming with Yellowstone Geyser gRPC via dRPC",
+    author: { "@type": "Organization", name: "dRPC" },
+    publisher: {
+      "@type": "Organization",
+      name: "dRPC",
+      url: "https://drpc.org",
+    },
+    url: "https://drpc.org/docs/solana-yellowstone-geyser-grpc",
+    mainEntityOfPage: "https://drpc.org/docs/solana-yellowstone-geyser-grpc",
+    proficiencyLevel: "Beginner",
+    programmingLanguage: "TypeScript",
+    dependencies: "@grpc/grpc-js, @grpc/proto-loader",
+  }}
 />
 
 # Solana Yellowstone Geyser gRPC
