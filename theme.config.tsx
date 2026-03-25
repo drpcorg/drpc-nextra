@@ -39,13 +39,13 @@ const config: DocsThemeConfig = {
     const { asPath } = router;
     const extra = { canonical: `${DocsBaseURL}${asPath}` };
 
-    if (asPath === '/') {
+    if (asPath === "/") {
       return {
         titleTemplate: DEFAULT_META_TITLE,
         description: DEFAULT_META_DESCRIPTION,
-        keywords: 'rpc documentation',
+        keywords: "rpc documentation",
         ...extra,
-      }
+      };
     }
 
     const checkDocsInfoPage = isDocsInfoPage(asPath);
