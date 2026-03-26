@@ -46,7 +46,18 @@ Let’s describe what each field means.
 
 The rating uses a **provider performance prediction**, **provider price**, and alignment with **incentives** as features to determine the probability of serving a request in a given dimension.
 
-The performance prediction algorithm predicts a benchmark that embraces latencies, number of errors, and derivative features, such as EMA (Exponential Moving Average). The last set of features lets the system "remember" latencies older than a second ago. 
+The performance prediction algorithm predicts a benchmark that embraces latencies, number of errors, and derivative features, such as EMA (Exponential Moving Average). 
+The last set of features lets the system "remember" latencies older than a second ago. 
+
+Note that the algorithm applies penalties to a part of errors, and it excludes errors caused by users. 
+
+The decision if a penalty must be applied is done in a few steps:
+1. Errors are divided into *retriable* and *non-retriable*. An error is called retriable if at least 5% of requests with a particular error are successfully processed by another provider after a retry.
+2. We check if an error is one of the following internal types: 
+    1. RetryableReplyErrorQualityScore (dshackle is unavailable or unauthenticated)
+	  2. NonRetryableReplyErrorQualityScore (timeouts and gRPC cancellations)
+	  3. RetryableErrorQualityScore (node errors)
+    4. Any other retriable error
 
 > [EMA](https://en.wikipedia.org/wiki/Exponential_smoothing) is a term from signal processing. It can be represented as follows
 > 
@@ -75,7 +86,7 @@ Let's see what is inside the performance data.
 
 **Average latency**. The average latency in the last second for each provider in each dimension.
 
-**Error rate**. We have very little tolerance for errors, so if a provider returns 10-20 errors, it will be heavily weighted within the ML algorithm and the next prediction of the performance will be very low. It's worth noticing that we filter out errors caused by clients or dRPC. The error effect on a rating can last from seconds to hours, depending on the number and the severity of errors. 
+**Error rate**. We have very little tolerance for errors, so if a provider returns 10-20 errors, it will be heavily weighted within the ML algorithm and the next prediction of the performance will be very low. The error effect on rating can last from seconds to hours, depending on the number of errors. 
 
 **Stability**. In addition to average latency and error rate, we consider metric's *stabilities*. Specifically, providers with similar latency and error rate but lower standard deviation would be slightly prioritized. Standard deviation is a function describing how far a metric deviates from its average. The lower the value, the more stable the metric.
 
