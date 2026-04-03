@@ -26,9 +26,16 @@
   },
   "nodecore-open-source-rpc-stack": "What is NodeCore",
   "nodecore-quickstart": "Quickstart",
-  "-- Methods Documentation": {
+
+  "-- Data & Wallet API": {
     "type": "separator",
-    "title": "Methods Documentation"
+    "title": "Data & Wallet API"
+  },
+  "wallet-api": "Wallet API",
+
+  "-- Core RPC API": {
+    "type": "separator",
+    "title": "Core RPC API"
   },
   "ethereum-api": {
     "title": "Ethereum API",

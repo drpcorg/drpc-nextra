@@ -12,6 +12,7 @@ import { RequestResponseJSON } from "./params/RequestResponseJSON";
 import Head from "next/head";
 import { ReqResParam } from "./params/types";
 import { RequestParams } from "./params/RequestParams";
+import { PathParams } from "./params/PathParams";
 import { ResponseParams } from "./params/ResponseParams";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,14 +23,20 @@ export type GenericMethodProps = {
   network: string;
   cu: number;
   description: string;
+  url?: string;
+  url1?: string;
   useCases: string[];
   constraints: string[];
   responseJSON: string;
 
   // Complex types
   codeSnippets: CodeSnippetObject[];
+
+  pathParams?: ReqResParam[];
+  pathParamsType?: TParamType;
+
   requestParams: ReqResParam[];
-  requestParamsType: TParamType;
+  requestParamsType?: TParamType;
 
   responseParams: ReqResParam[];
   responseParamsType: TParamType;
@@ -55,10 +62,14 @@ export default function GenericMethod({
   network,
   cu,
   description,
+  url,
+  url1,
   useCases,
   constraints,
   codeSnippets,
   responseJSON,
+  pathParams,
+  pathParamsType,
   requestParams,
   requestParamsType,
   responseParams,
@@ -126,6 +137,16 @@ export default function GenericMethod({
               {description}
             </Text>
           </Group>
+          <Group justify="start">
+            <Text size="sm" color="gray">
+              {url}
+            </Text>
+          </Group>
+          <Group justify="start">
+            <Text size="sm" color="gray">
+              {url1}
+            </Text>
+          </Group>
         </Grid.Col>
 
         <Grid.Col span={12}>
@@ -167,6 +188,14 @@ export default function GenericMethod({
 
         <Grid.Col span={12}>
           <RequestResponseJSON json={responseJSON} />
+        </Grid.Col>
+
+        <Grid.Col span={12}>
+          <PathParams
+            pathParams={pathParams}
+            pathParamsType={pathParamsType}
+            isRESTApi={isRESTApi}
+          />
         </Grid.Col>
 
         <Grid.Col span={12}>

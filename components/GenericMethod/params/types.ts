@@ -14,3 +14,4 @@ export type ReqResParam = {
 };
 
 export type RequestParamProp = ReqResParam[] | null;
+export type PathParamProp = ReqResParam[] | null;
