@@ -20,8 +20,9 @@ export function WalletMethod_getnftcollections(props: GenericMethodPropsReplacin
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParams={QUERY_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -186,13 +187,14 @@ const PATH_PARAMS: PathParamProp = [
   },
 ];
 
-const REQUEST_PARAMS: RequestParamProp = [
+const QUERY_PARAMS: RequestParamProp = [
     {
     paramName: "chain_ids",
     type: "string",
     paramDescription: "IDs of chains that support NFTs. Default: all supported chains.",
   },
 ];
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {

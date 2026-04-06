@@ -21,7 +21,9 @@ export function WalletMethod_getsupportedchains(props: GenericMethodPropsReplaci
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParams={QUERY_PARAMS}
       requestParams={REQUEST_PARAMS}
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -151,7 +153,8 @@ const PATH_PARAMS: PathParamProp = [
   },
     ];
 
-const REQUEST_PARAMS: RequestParamProp = [
+
+const QUERY_PARAMS: RequestParamProp = [
   {
     paramName: "page_token",
     type: "string",
@@ -165,6 +168,7 @@ const REQUEST_PARAMS: RequestParamProp = [
       "[Required] Amount of items to be retrieved.",
   },
 ];
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {

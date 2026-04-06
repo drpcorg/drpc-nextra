@@ -21,6 +21,7 @@ export function WalletMethod_getyieldrecommendations(props: GenericMethodPropsRe
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
       requestParams={REQUEST_PARAMS}
+      queryParamsType="none"
       requestParamsType="array_of_objects"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}

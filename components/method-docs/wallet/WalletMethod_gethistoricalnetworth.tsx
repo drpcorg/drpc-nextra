@@ -20,8 +20,9 @@ export function WalletMethod_gethistoricalnetworth(props: GenericMethodPropsRepl
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParams={QUERY_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -164,9 +165,8 @@ const PATH_PARAMS: PathParamProp = [
     paramDescription: "[Required] Wallet address",
   },
 ];
-
-const REQUEST_PARAMS: RequestParamProp = [
-  {
+const QUERY_PARAMS: RequestParamProp = [
+    {
     paramName: "chain_id",
     type: "string",
     paramDescription: "Id of a chain in Wallet API API. Default: all chains",
@@ -177,6 +177,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramDescription: "Period of time",
   },
 ];
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {

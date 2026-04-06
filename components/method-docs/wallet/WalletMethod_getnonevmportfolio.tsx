@@ -19,8 +19,9 @@ export function WalletMethod_getnonevmportfolio(props: GenericMethodPropsReplaci
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParams={QUERY_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -298,9 +299,8 @@ const PATH_PARAMS: PathParamProp = [
     paramDescription: "[Required] Wallet address",
   },
 ];
-
-const REQUEST_PARAMS: RequestParamProp = [
-  {
+const QUERY_PARAMS: RequestParamProp = [
+    {
     paramName: "asset_type",
     type: "string",
     paramDescription: "Specify the type of assets to return.",
@@ -326,6 +326,7 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramDescription: "If True (default), includes tokens with price equal to 0 (e.g., airdrops, unverified tokens). Set to False to exclude such tokens, which helps reduce spam in portfolios.",
   },
 ];
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {

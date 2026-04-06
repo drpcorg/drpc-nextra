@@ -20,6 +20,7 @@ export function WalletMethod_getnftmetadatabyid(props: GenericMethodPropsReplaci
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParamsType="none"
       requestParams={REQUEST_PARAMS}
       requestParamsType="none"
       responseJSON={RESPONSE_JSON}

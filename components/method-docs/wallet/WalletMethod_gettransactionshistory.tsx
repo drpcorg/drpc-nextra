@@ -21,7 +21,8 @@ export function WalletMethod_gettransactionshistory(props: GenericMethodPropsRep
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      queryParams={QUERY_PARAMS}
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -315,7 +316,7 @@ const PATH_PARAMS: PathParamProp = [
   },
 ];
 
-const REQUEST_PARAMS: RequestParamProp = [
+const QUERY_PARAMS: RequestParamProp = [
   {
     paramName: "chain_ids",
     type: "array",
@@ -342,6 +343,8 @@ const REQUEST_PARAMS: RequestParamProp = [
     paramDescription: "Token to retrieve next page.",
   },
 ];
+
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
     {

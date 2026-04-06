@@ -20,8 +20,9 @@ export function WalletMethod_getpnlhistory(props: GenericMethodPropsReplacing) {
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParams={QUERY_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array"
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -216,7 +217,7 @@ const PATH_PARAMS: PathParamProp = [
   },
 ];
 
-const REQUEST_PARAMS: RequestParamProp = [
+const QUERY_PARAMS: RequestParamProp = [
     {
       "paramName": "category",
       "type": "string",
@@ -406,6 +407,8 @@ const REQUEST_PARAMS: RequestParamProp = [
       "paramDescription": "2 to 100. The maximum number of points to return. Default: 100. Max: 100."
     }
 ];
+
+const REQUEST_PARAMS: RequestParamProp = [];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
   {

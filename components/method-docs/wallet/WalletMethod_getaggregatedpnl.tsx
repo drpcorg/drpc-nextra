@@ -20,6 +20,7 @@ export function WalletMethod_getaggregatedpnl(props: GenericMethodPropsReplacing
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParamsType="none"
       requestParams={REQUEST_PARAMS}
       requestParamsType="array_of_objects"
       responseJSON={RESPONSE_JSON}

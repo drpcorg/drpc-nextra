@@ -20,7 +20,8 @@ export function WalletMethod_getevmportfolio(props: GenericMethodPropsReplacing)
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
       requestParams={REQUEST_PARAMS}
-      requestParamsType="array_of_objects"
+      queryParams={QUERY_PARAMS}
+      requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
@@ -298,8 +299,8 @@ const PATH_PARAMS: PathParamProp = [
     paramDescription: "[Required] Wallet address",
   },
 ];
-
-const REQUEST_PARAMS: RequestParamProp = [
+const REQUEST_PARAMS: RequestParamProp = [];
+const QUERY_PARAMS: RequestParamProp = [
   {
     paramName: "chain_id",
     type: "string",

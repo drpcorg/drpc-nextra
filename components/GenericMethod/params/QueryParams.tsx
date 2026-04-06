@@ -1,20 +1,20 @@
 import { Grid } from "@mantine/core";
-import classes from "./PathParams.module.css";
-import { PathParamsList } from "./PathParamsList";
+import classes from "./QueryParams.module.css";
+import { QueryParamsList } from "./QueryParamsList";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import { Text } from "../../Text";
 import { ReqResParam } from "./types";
 
 type Props = {
-  pathParamsType: TParamType;
-  pathParams: ReqResParam[] | null;
+  queryParamsType: TParamType;
+  queryParams: ReqResParam[] | null;
   isRESTApi?: boolean;
 };
 
-export function PathParams({
-  pathParams,
-  pathParamsType,
+export function QueryParams({
+  queryParams,
+  queryParamsType,
   isRESTApi,
 }: Props) {
   return (
@@ -27,7 +27,7 @@ export function PathParams({
           fontWeight="medium"
           component="h2"
         >
-          Path params
+          Query params
         </Text>
       </Grid.Col>
 
@@ -39,14 +39,14 @@ export function PathParams({
               Parameters
             </Text>
             <Text color="gray" size="xs" italic>
-              {getParamsType(pathParamsType)}
+              {getParamsType(queryParamsType)}
             </Text>
           </section>
 
-          {pathParams && pathParams.length > 0 ? (
-            <PathParamsList
-              pathParams={pathParams}
-              pathParamsType={pathParamsType}
+          {queryParams && queryParams.length > 0 ? (
+            <QueryParamsList
+              queryParams={queryParams}
+              queryParamsType={queryParamsType}
             />
           ) : null}
         </section>

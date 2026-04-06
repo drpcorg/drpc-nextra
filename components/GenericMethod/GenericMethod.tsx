@@ -13,6 +13,7 @@ import Head from "next/head";
 import { ReqResParam } from "./params/types";
 import { RequestParams } from "./params/RequestParams";
 import { PathParams } from "./params/PathParams";
+import { QueryParams } from "./params/QueryParams";
 import { ResponseParams } from "./params/ResponseParams";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -34,6 +35,9 @@ export type GenericMethodProps = {
 
   pathParams?: ReqResParam[];
   pathParamsType?: TParamType;
+
+  queryParams?: ReqResParam[];
+  queryParamsType?: TParamType;
 
   requestParams: ReqResParam[];
   requestParamsType?: TParamType;
@@ -70,6 +74,8 @@ export default function GenericMethod({
   responseJSON,
   pathParams,
   pathParamsType,
+  queryParams,
+  queryParamsType,
   requestParams,
   requestParamsType,
   responseParams,
@@ -190,13 +196,25 @@ export default function GenericMethod({
           <RequestResponseJSON json={responseJSON} />
         </Grid.Col>
 
-        <Grid.Col span={12}>
-          <PathParams
-            pathParams={pathParams}
-            pathParamsType={pathParamsType}
-            isRESTApi={isRESTApi}
-          />
-        </Grid.Col>
+        {isRESTApi && (
+  <Grid.Col span={12}>
+    <PathParams
+      pathParams={pathParams}
+      pathParamsType={pathParamsType}
+      isRESTApi={isRESTApi}
+    />
+  </Grid.Col>
+)}
+
+        {isRESTApi && (
+  <Grid.Col span={12}>
+    <QueryParams
+      queryParams={queryParams}
+      queryParamsType={queryParamsType}
+      isRESTApi={isRESTApi}
+    />
+  </Grid.Col>
+)}
 
         <Grid.Col span={12}>
           <RequestParams

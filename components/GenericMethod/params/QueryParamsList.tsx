@@ -1,31 +1,31 @@
 import { Group } from "@mantine/core";
 import { Fira_Mono } from "next/font/google";
 import { RequestParamProp } from "./types";
-import classes from "./PathParamsList.module.css";
+import classes from "./QueryParamsList.module.css";
 import { Text } from "../../Text";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import cx from "clsx";
 
 type Props = {
-  pathParams: RequestParamProp;
-  pathParamsType: TParamType;
+  queryParams: RequestParamProp;
+  queryParamsType: TParamType;
   isChild?: boolean;
 };
 
 const fira = Fira_Mono({ subsets: ["latin"], weight: ["400"] });
 
-export function PathParamsList({ pathParams, pathParamsType }: Props) {
+export function QueryParamsList({ queryParams, queryParamsType }: Props) {
   return (
     <section className={classes.root}>
       <div className={classes.line}>
         <Text color="gray" size="xs" fontWeight="medium" italic>
-          {getParamsType(pathParamsType)}
+          {getParamsType(queryParamsType)}
         </Text>
       </div>
 
       {/* Iterate through and render each param */}
-      {pathParams?.map((param) => (
+      {queryParams?.map((param) => (
         <div key={param.paramName} className={classes.line}>
           <Group gap={10} align="center">
             <Text color="white" size="sm" fontWeight="medium">
@@ -75,9 +75,9 @@ export function PathParamsList({ pathParams, pathParamsType }: Props) {
           {/* If param has children params, render them */}
           {param.childrenParams ? (
             <div className={cx(classes.line, classes.children)}>
-              <PathParamsList
-                pathParams={param.childrenParams}
-                pathParamsType={pathParamsType}
+              <QueryParamsList
+                queryParams={param.childrenParams}
+                queryParamsType={queryParamsType}
                 isChild
               />
             </div>

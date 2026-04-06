@@ -20,6 +20,7 @@ export function WalletMethod_getpnlformultiplewallets(props: GenericMethodPropsR
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
       pathParams={PATH_PARAMS}
+      queryParamsType="none"
       requestParams={REQUEST_PARAMS}
       requestParamsType="array_of_objects"
       responseJSON={RESPONSE_JSON}
