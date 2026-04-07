@@ -1,14 +1,11 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_gethistoricalnetworth(
-  props: GenericMethodPropsReplacing,
-) {
+export function WalletMethod_gethistoricalnetworth() {
   return (
     <WalletMethod
       method="Get Historical Net Worth"
@@ -30,7 +27,6 @@ export function WalletMethod_gethistoricalnetworth(
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object" 
-      {...props}
     />
   );
 }

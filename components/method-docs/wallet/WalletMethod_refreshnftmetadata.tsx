@@ -1,12 +1,11 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplacing) {
+export function WalletMethod_refreshnftmetadata() {
   return (
     <WalletMethod
       method="Refresh NFT Metadata"
@@ -23,7 +22,6 @@ export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="none"
-      {...props}
     />
   );
 }

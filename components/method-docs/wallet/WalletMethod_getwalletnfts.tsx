@@ -1,12 +1,11 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getwalletnfts() {
   return (
     <WalletMethod
       method="Get Wallet NFTs"
@@ -23,7 +22,6 @@ export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      {...props}
     />
   );
 }

@@ -1,14 +1,11 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getsupportedtokens(
-  props: GenericMethodPropsReplacing,
-) {
+export function WalletMethod_getsupportedtokens() {
   return (
     <WalletMethod
       method="Get Supported Tokens"
@@ -30,7 +27,6 @@ export function WalletMethod_getsupportedtokens(
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      {...props}
     />
   );
 }
