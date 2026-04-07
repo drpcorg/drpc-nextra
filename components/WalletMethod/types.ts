@@ -13,10 +13,6 @@ export type TParamType =
   | "array_of_numbers"
   | "none"
   | "map[string]string"
-  | "numeric"
-  | "networth_period"
-  | "nft_info"
-  | "nullable"
   | "uint64";
 
 export type CodeSnippetObject = {

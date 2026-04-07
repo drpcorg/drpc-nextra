@@ -1,6 +1,6 @@
 import { Grid } from "@mantine/core";
 import classes from "./RequestParams.module.css";
-import { RequestParamsList } from "./RequestParamsList";
+import { ParamsList } from "./ParamsList";
 import { TParamType } from "../types";
 import { getParamsType } from "../getParamsType";
 import { Text } from "../../Text";
@@ -72,9 +72,9 @@ export function RequestParams({
           </section>
 
           {requestParams && requestParams.length > 0 ? (
-            <RequestParamsList
-              requestParams={requestParams}
-              requestParamsType={requestParamsType}
+            <ParamsList
+              params={requestParams}
+              paramsType={requestParamsType}
             />
           ) : null}
         </section>

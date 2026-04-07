@@ -12,6 +12,8 @@ import { RequestResponseJSON } from "./params/RequestResponseJSON";
 import Head from "next/head";
 import { ReqResParam } from "./params/types";
 import { RequestParams } from "./params/RequestParams";
+import { PathParams } from "./params/PathParams";
+import { QueryParams } from "./params/QueryParams";
 import { ResponseParams } from "./params/ResponseParams";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,14 +24,22 @@ export type GenericMethodProps = {
   network: string;
   cu: number;
   description: string;
+  url?: string | string[];
   useCases: string[];
   constraints: string[];
   responseJSON: string;
 
   // Complex types
   codeSnippets: CodeSnippetObject[];
+
+  pathParams?: ReqResParam[];
+  pathParamsType?: TParamType;
+
+  queryParams?: ReqResParam[];
+  queryParamsType?: TParamType;
+
   requestParams: ReqResParam[];
-  requestParamsType: TParamType;
+  requestParamsType?: TParamType;
 
   responseParams: ReqResParam[];
   responseParamsType: TParamType;
@@ -55,10 +65,15 @@ export default function GenericMethod({
   network,
   cu,
   description,
+  url,
   useCases,
   constraints,
   codeSnippets,
   responseJSON,
+  pathParams,
+  pathParamsType,
+  queryParams,
+  queryParamsType,
   requestParams,
   requestParamsType,
   responseParams,
@@ -69,7 +84,7 @@ export default function GenericMethod({
   isRESTApi,
 }: GenericMethodProps) {
   const [snippet, setSnippet] = React.useState<CodeSnippetObject["language"]>(
-    codeSnippets?.[0]?.language || null
+    codeSnippets?.[0]?.language || null,
   );
 
   const snippetCode = React.useMemo(() => {
@@ -84,7 +99,7 @@ export default function GenericMethod({
     ) {
       return codeSnippetString.replaceAll(
         replaceCodeSnippetsURLFrom,
-        replaceCodeSnippetsURLTo
+        replaceCodeSnippetsURLTo,
       );
     }
     return codeSnippetString;
@@ -126,6 +141,13 @@ export default function GenericMethod({
               {description}
             </Text>
           </Group>
+          {(Array.isArray(url) ? url : [url]).map((item, idx) => (
+            <Group justify="start" key={idx}>
+              <Text size="sm" color="gray">
+                {item}
+              </Text>
+            </Group>
+          ))}
         </Grid.Col>
 
         <Grid.Col span={12}>
@@ -168,6 +190,18 @@ export default function GenericMethod({
         <Grid.Col span={12}>
           <RequestResponseJSON json={responseJSON} />
         </Grid.Col>
+
+        {isRESTApi && (
+          <Grid.Col span={12}>
+            <PathParams params={pathParams} paramsType={pathParamsType} />
+          </Grid.Col>
+        )}
+
+        {isRESTApi && (
+          <Grid.Col span={12}>
+            <QueryParams params={queryParams} paramsType={queryParamsType} />
+          </Grid.Col>
+        )}
 
         <Grid.Col span={12}>
           <RequestParams

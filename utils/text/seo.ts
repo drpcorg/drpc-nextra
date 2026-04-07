@@ -19,7 +19,8 @@ const METHOD_DOCS_URL_BASES_MAP = {
   "/sonic-api": "Sonic",
   "/viction-api": "Viction",
   "/superseed-api": "Superseed",
-  "/tron-api": "Tron"
+  "/tron-api": "Tron",
+  "/wallet-api": "Wallet API",
 };
 
 const METHOD_DOCS_URL_BASES_MAP_KEYS = Object.keys(METHOD_DOCS_URL_BASES_MAP);
@@ -61,7 +62,12 @@ const METHOD_DOCS_URL_CHAPTERS = [
   "ethereumfantomdifference",
   "ethereumbscdifference",
   "ethereumbartiodifference",
-  "ethereumsuperseeddifference"
+  "ethereumsuperseeddifference",
+  "chain",
+  "wallet",
+  "token",
+  "nft",
+  "protocols"
 ];
 
 type RouteCheckResult = {

@@ -1,0 +1,10 @@
+{
+  "getevmportfolio": "Get EVM Portfolio",
+  "getnonevmportfolio": "Get non-EVM Portfolio",
+  "gethistoricalnetworth": "Get Historical Net Worth",
+  "gettransactionshistory": "Get Transactions History",
+  "getpnlhistory": "Get PNL History",
+  "getaggregatedpnl": "Get Aggregated PNL",
+  "getpnlformultiplewallets": "Get PnL for Multiple Wallets",
+  "getyieldrecommendations": "Get Yield Recommendations"
+}
