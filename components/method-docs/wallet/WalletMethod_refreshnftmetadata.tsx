@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplacing) {
+export function WalletMethod_refreshnftmetadata() {
   return (
     <WalletMethod
       method="Refresh NFT Metadata"
-      network=""
       cu={1837}
       description={"Refreshes metadata for a specific NFT by contract address and token ID"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/contract-address/{contract}/nfts/{nft_id}/refresh"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="none"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -128,7 +122,7 @@ const RESPONSE_JSON = `{
   "status": "success",
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

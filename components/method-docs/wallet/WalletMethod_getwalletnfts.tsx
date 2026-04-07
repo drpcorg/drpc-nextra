@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getwalletnfts() {
   return (
     <WalletMethod
       method="Get Wallet NFTs"
-      network=""
       cu={3006}
       description={"Returns a list of NFTs owned by the specified wallet"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nfts"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -178,7 +172,7 @@ const RESPONSE_JSON = `{
   "next_page_token": "IjIi"
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

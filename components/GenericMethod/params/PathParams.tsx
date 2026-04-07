@@ -1,56 +1,7 @@
-import { Grid } from "@mantine/core";
-import classes from "./PathParams.module.css";
-import { PathParamsList } from "./PathParamsList";
-import { TParamType } from "../types";
-import { getParamsType } from "../getParamsType";
-import { Text } from "../../Text";
-import { ReqResParam } from "./types";
+import { Params, type Props as ParamsProps } from "./Params";
 
-type Props = {
-  pathParamsType: TParamType;
-  pathParams: ReqResParam[] | null;
-  isRESTApi?: boolean;
-};
+type Props = Omit<ParamsProps, "title">;
 
-export function PathParams({
-  pathParams,
-  pathParamsType,
-  isRESTApi,
-}: Props) {
-  return (
-    <Grid gutter={10}>
-      <Grid.Col span={12}>
-        <Text
-          uppercase
-          color={"grayLike"}
-          size="xs"
-          fontWeight="medium"
-          component="h2"
-        >
-          Path params
-        </Text>
-      </Grid.Col>
-
-      <Grid.Col span={12}>
-        <section className={classes.root}>
-
-          <section className={classes.params}>
-            <Text color="white" size="sm" fontWeight="medium">
-              Parameters
-            </Text>
-            <Text color="gray" size="xs" italic>
-              {getParamsType(pathParamsType)}
-            </Text>
-          </section>
-
-          {pathParams && pathParams.length > 0 ? (
-            <PathParamsList
-              pathParams={pathParams}
-              pathParamsType={pathParamsType}
-            />
-          ) : null}
-        </section>
-      </Grid.Col>
-    </Grid>
-  );
+export function PathParams(props: Props) {
+  return <Params {...props} title="Path params" />;
 }

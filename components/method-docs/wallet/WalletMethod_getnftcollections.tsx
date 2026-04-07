@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getnftcollections(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getnftcollections() {
   return (
     <WalletMethod
-      method="Get NFT Collections"
-      network=""
+      method="Get NFT Collections"  
       cu={1837}
       description={"Returns NFT collections owned by the specified wallet"}
-      url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nft-collections"}
-      isRESTApi={true}
+      url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nft-collections"}   
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getnftcollections(props: GenericMethodPropsReplacin
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -169,7 +163,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

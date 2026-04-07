@@ -1,17 +1,14 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getnonevmportfolio(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getnonevmportfolio() {
   return (
     <WalletMethod
       method="Get Non-EVM Portfolio"
-      network=""
       cu={3340}
       description={"Returns information about all assets in a wallet. It includes: native balance, tokens, DeFi"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/balances"}
@@ -25,9 +22,6 @@ export function WalletMethod_getnonevmportfolio(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
-      {...props}
     />
   );
 }
@@ -282,7 +276,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

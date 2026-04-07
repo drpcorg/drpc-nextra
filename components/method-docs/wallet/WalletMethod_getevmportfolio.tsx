@@ -1,17 +1,14 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getevmportfolio(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getevmportfolio() {
   return (
     <WalletMethod
       method="Get EVM Portfolio"
-      network=""
       cu={9185}
       description={"Returns comprehensive portfolio information for a wallet address, including native token balances, ERC-20 tokens, and DeFi positions across supported chains"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v2/wallets/{address}/balances"}
@@ -25,9 +22,6 @@ export function WalletMethod_getevmportfolio(props: GenericMethodPropsReplacing)
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
-      {...props}
     />
   );
 }
@@ -282,7 +276,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

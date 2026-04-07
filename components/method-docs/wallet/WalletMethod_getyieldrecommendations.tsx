@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getyieldrecommendations(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getyieldrecommendations() {
   return (
     <WalletMethod
       method="Get Yield Recommendations"
-      network=""
       cu={210420}
       description={"Get the missing yield for your tokens and DeFi positions. The endpoint provides historical rewards and compares them to potential earnings."}
       url={"POST https://lb.drpc.live/lambda/{key}/v1/wallets/{address}/recommendations"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getyieldrecommendations(props: GenericMethodPropsRe
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -183,7 +177,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "key",
     type: "string",

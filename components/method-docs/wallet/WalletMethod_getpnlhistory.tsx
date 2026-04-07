@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getpnlhistory(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getpnlhistory() {
   return (
     <WalletMethod
       method="Get PnL History"
-      network=""
       cu={334000}
       description={"The PnL (Profit and Loss) data is provided for a single token or DeFi position (asset locked in the protocol)."}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getpnlhistory(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -199,7 +193,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

@@ -1,22 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getsupportedchains(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getsupportedchains() {
   return (
     <WalletMethod
       method="Get Supported Chains"
-      network=""
       cu={367}
-      description={ "Returns a list of all chains supported in Data API"
-      }
-      url={"GET https://lb.drpc.live/lambda/{key}/v1/chains"
-    }
+      description={"Returns a list of all chains supported in Data API"}
+      url={"GET https://lb.drpc.live/lambda/{key}/v1/chains"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -27,11 +22,6 @@ export function WalletMethod_getsupportedchains(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
-      isRESTApi={true}
-      {...props}
     />
   );
 }
@@ -144,7 +134,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
     {
     paramName: "key",
     type: "string",

@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getsupportedpricesymbols(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getsupportedpricesymbols() {
   return (
     <WalletMethod
       method="Get Supported Price Symbols"
-      network=""
       cu={367}
       description={"Retrieve all supported token symbols for price queries."}
       url={"GET https://lb.drpc.live/lambda/{key}/v1/tokens/prices/supported"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getsupportedpricesymbols(props: GenericMethodPropsR
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -130,7 +124,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "key",
     type: "string",

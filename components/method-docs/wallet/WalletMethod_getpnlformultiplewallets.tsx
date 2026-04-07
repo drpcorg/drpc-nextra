@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getpnlformultiplewallets(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getpnlformultiplewallets() {
   return (
     <WalletMethod
       method="Get PnL for Multiple Wallets"
-      network=""
       cu={334000}
       description={"The Wallet PnL (Profit and Loss) data is provided for entire wallets, aggregating all positions and tokens within each specified wallet address"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/wallet-pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getpnlformultiplewallets(props: GenericMethodPropsR
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -211,7 +205,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

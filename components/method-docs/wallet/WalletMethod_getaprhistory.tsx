@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getaprhistory(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getaprhistory() {
   return (
     <WalletMethod
       method="Get APR History"
-      network=""
       cu={33400}
       description={"Proxy APR history for lending/borrowing from Data Access Layer."}
-      url={"POST https://lb.drpc.live/lambda/{key}/v1/protocols/apr/history"}
-      isRESTApi={true}
+      url={"POST https://lb.drpc.live/lambda/{key}/v1/protocols/apr/history"} 
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getaprhistory(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -150,7 +144,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "key",
     type: "string",

@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_gettransactionshistory(props: GenericMethodPropsReplacing) {
+export function WalletMethod_gettransactionshistory() {
   return (
     <WalletMethod
       method="Get Transactions History"
-      network=""
       cu={1837}
       description={"Returns a chronological list of blockchain transactions for the specified wallet address"}
-      url={"Per chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/transactions/{address}/history"}
-      url1={"Multichain: GET https://lb.drpc.live/lambda/{key}/v1/transactions/{address}/history"}
+      url={["Per chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/transactions/{address}/history", "Multichain: GET https://lb.drpc.live/lambda/{key}/v1/transactions/{address}/history"]}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,9 +22,6 @@ export function WalletMethod_gettransactionshistory(props: GenericMethodPropsRep
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
-      {...props}
     />
   );
 }
@@ -298,7 +291,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",

@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_searchhistoricalprices(props: GenericMethodPropsReplacing) {
+export function WalletMethod_searchhistoricalprices() {
   return (
     <WalletMethod
       method="Search Historical Prices"
-      network=""
       cu={367}
       description={"Search historical prices for supported tokens over a specified time range"}
       url={"POST https://lb.drpc.live/lambda/{key}/v1/tokens/prices/search"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_searchhistoricalprices(props: GenericMethodPropsRep
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -147,7 +141,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "key",
     type: "string",

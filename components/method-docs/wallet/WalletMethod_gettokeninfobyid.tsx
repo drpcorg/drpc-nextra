@@ -1,17 +1,14 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_gettokeninfobyid(props: GenericMethodPropsReplacing) {
+export function WalletMethod_gettokeninfobyid() {
   return (
     <WalletMethod
       method="Get Token Info By Id"
-      network=""
       cu={367}
       description={"Returns detailed information for a specific blockchain network"}
       url={"GET https://lb.drpc.live/lambda/{key}/v1/tokens/{token_id}"}
@@ -25,9 +22,6 @@ export function WalletMethod_gettokeninfobyid(props: GenericMethodPropsReplacing
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
-      {...props}
     />
   );
 }
@@ -150,7 +144,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "key",
     type: "string",

@@ -1,21 +1,22 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
   RequestParamProp,
-  PathParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_gethistoricalnetworth(props: GenericMethodPropsReplacing) {
+export function WalletMethod_gethistoricalnetworth() {
   return (
     <WalletMethod
       method="Get Historical Net Worth"
-      network=""
       cu={27555}
-      description={"Returns the historical balance of all tokens for a specified wallet address, showing token holdings at different points in time."}
-      url={"Per chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/tokens-net-worth"}
-      url1={"Multichain: GET https://lb.drpc.live/lambda/{key}/v1/wallets/{address}/tokens-net-worth"}
+      description={
+        "Returns the historical balance of all tokens for a specified wallet address, showing token holdings at different points in time."
+      }
+      url={[
+        "Per chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/tokens-net-worth",
+        "Multichain: GET https://lb.drpc.live/lambda/{key}/v1/wallets/{address}/tokens-net-worth",
+      ]}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,10 +26,7 @@ export function WalletMethod_gethistoricalnetworth(props: GenericMethodPropsRepl
       requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
-      {...props}
+      responseParamsType="object" 
     />
   );
 }
@@ -148,7 +146,7 @@ const RESPONSE_JSON = `{
   }
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",
@@ -166,7 +164,7 @@ const PATH_PARAMS: PathParamProp = [
   },
 ];
 const QUERY_PARAMS: RequestParamProp = [
-    {
+  {
     paramName: "chain_id",
     type: "string",
     paramDescription: "Id of a chain in Wallet API API. Default: all chains",

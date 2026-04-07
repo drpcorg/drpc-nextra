@@ -1,21 +1,17 @@
 import WalletMethod from "../../WalletMethod/WalletMethod";
-import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getaggregatedpnl(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getaggregatedpnl() {
   return (
     <WalletMethod
       method="Get Aggregated PNL"
-      network=""
       cu={334000}
       description={"Returns aggregated Profit & Loss data for multiple wallets or positions"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/aggregated-pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,8 +22,6 @@ export function WalletMethod_getaggregatedpnl(props: GenericMethodPropsReplacing
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      {...props}
     />
   );
 }
@@ -245,7 +239,7 @@ const RESPONSE_JSON = `{
   ]
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",
