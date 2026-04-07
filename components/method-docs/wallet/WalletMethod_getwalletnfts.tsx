@@ -10,11 +10,9 @@ export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
   return (
     <WalletMethod
       method="Get Wallet NFTs"
-      network=""
       cu={3006}
       description={"Returns a list of NFTs owned by the specified wallet"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nfts"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getwalletnfts(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

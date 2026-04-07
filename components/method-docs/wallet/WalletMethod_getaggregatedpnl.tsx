@@ -10,11 +10,9 @@ export function WalletMethod_getaggregatedpnl(props: GenericMethodPropsReplacing
   return (
     <WalletMethod
       method="Get Aggregated PNL"
-      network=""
       cu={334000}
       description={"Returns aggregated Profit & Loss data for multiple wallets or positions"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/aggregated-pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getaggregatedpnl(props: GenericMethodPropsReplacing
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

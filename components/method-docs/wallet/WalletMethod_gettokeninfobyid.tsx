@@ -10,7 +10,6 @@ export function WalletMethod_gettokeninfobyid(props: GenericMethodPropsReplacing
   return (
     <WalletMethod
       method="Get Token Info By Id"
-      network=""
       cu={367}
       description={"Returns detailed information for a specific blockchain network"}
       url={"GET https://lb.drpc.live/lambda/{key}/v1/tokens/{token_id}"}
@@ -24,8 +23,6 @@ export function WalletMethod_gettokeninfobyid(props: GenericMethodPropsReplacing
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
       {...props}
     />
   );

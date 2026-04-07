@@ -2,6 +2,18 @@ import GenericMethod, {
   GenericMethodProps,
 } from "../GenericMethod/GenericMethod";
 
-export default function WalletMethod(props: GenericMethodProps) {
-  return <GenericMethod {...props} />;
+type Props = Omit<
+  GenericMethodProps,
+  "network" | "isRESTApi" | "responseParamsDescription"
+>;
+
+export default function WalletMethod(props: Props) {
+  return (
+    <GenericMethod
+      isRESTApi={true}
+      network=""
+      responseParamsDescription=""
+      {...props}
+    />
+  );
 }

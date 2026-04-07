@@ -12,7 +12,6 @@ export function WalletMethod_gethistoricalnetworth(
   return (
     <WalletMethod
       method="Get Historical Net Worth"
-      network=""
       cu={27555}
       description={
         "Returns the historical balance of all tokens for a specified wallet address, showing token holdings at different points in time."
@@ -30,9 +29,7 @@ export function WalletMethod_gethistoricalnetworth(
       requestParamsType="none"
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
-      responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
+      responseParamsType="object" 
       {...props}
     />
   );

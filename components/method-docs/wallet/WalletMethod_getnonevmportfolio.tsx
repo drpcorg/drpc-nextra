@@ -10,7 +10,6 @@ export function WalletMethod_getnonevmportfolio(props: GenericMethodPropsReplaci
   return (
     <WalletMethod
       method="Get Non-EVM Portfolio"
-      network=""
       cu={3340}
       description={"Returns information about all assets in a wallet. It includes: native balance, tokens, DeFi"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/balances"}
@@ -24,8 +23,6 @@ export function WalletMethod_getnonevmportfolio(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
       {...props}
     />
   );

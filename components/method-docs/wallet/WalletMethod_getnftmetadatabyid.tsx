@@ -10,11 +10,9 @@ export function WalletMethod_getnftmetadatabyid(props: GenericMethodPropsReplaci
   return (
     <WalletMethod
       method="Get NFT Metadata by Id"
-      network=""
       cu={14796}
       description={"Fetches detailed information about a specific NFT by its unique identifier"}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/contract-address/{contract}/nfts/{nft_id}"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getnftmetadatabyid(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

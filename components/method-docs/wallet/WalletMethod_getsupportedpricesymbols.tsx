@@ -10,11 +10,9 @@ export function WalletMethod_getsupportedpricesymbols(props: GenericMethodPropsR
   return (
     <WalletMethod
       method="Get Supported Price Symbols"
-      network=""
       cu={367}
       description={"Retrieve all supported token symbols for price queries."}
       url={"GET https://lb.drpc.live/lambda/{key}/v1/tokens/prices/supported"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getsupportedpricesymbols(props: GenericMethodPropsR
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

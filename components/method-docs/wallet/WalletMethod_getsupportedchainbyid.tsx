@@ -10,7 +10,6 @@ export function WalletMethod_getsupportedchainbyid(props: GenericMethodPropsRepl
   return (
     <WalletMethod
       method="Get Supported Chain By Id"
-      network=""
       cu={367}
       description={"Returns detailed information for a specific blockchain network"}
       url={"GET https://lb.drpc.live/lambda/{key}/v1/chains/{chain_id}"}
@@ -24,8 +23,6 @@ export function WalletMethod_getsupportedchainbyid(props: GenericMethodPropsRepl
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
       {...props}
     />
   );

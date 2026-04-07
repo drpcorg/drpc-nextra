@@ -10,11 +10,9 @@ export function WalletMethod_getaprhistory(props: GenericMethodPropsReplacing) {
   return (
     <WalletMethod
       method="Get APR History"
-      network=""
       cu={33400}
       description={"Proxy APR history for lending/borrowing from Data Access Layer."}
-      url={"POST https://lb.drpc.live/lambda/{key}/v1/protocols/apr/history"}
-      isRESTApi={true}
+      url={"POST https://lb.drpc.live/lambda/{key}/v1/protocols/apr/history"} 
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getaprhistory(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

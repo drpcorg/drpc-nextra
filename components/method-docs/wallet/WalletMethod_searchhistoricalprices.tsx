@@ -10,11 +10,9 @@ export function WalletMethod_searchhistoricalprices(props: GenericMethodPropsRep
   return (
     <WalletMethod
       method="Search Historical Prices"
-      network=""
       cu={367}
       description={"Search historical prices for supported tokens over a specified time range"}
       url={"POST https://lb.drpc.live/lambda/{key}/v1/tokens/prices/search"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_searchhistoricalprices(props: GenericMethodPropsRep
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

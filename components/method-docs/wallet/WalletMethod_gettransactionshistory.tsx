@@ -10,7 +10,6 @@ export function WalletMethod_gettransactionshistory(props: GenericMethodPropsRep
   return (
     <WalletMethod
       method="Get Transactions History"
-      network=""
       cu={1837}
       description={"Returns a chronological list of blockchain transactions for the specified wallet address"}
       url={["Per chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/transactions/{address}/history", "Multichain: GET https://lb.drpc.live/lambda/{key}/v1/transactions/{address}/history"]}
@@ -24,8 +23,6 @@ export function WalletMethod_gettransactionshistory(props: GenericMethodPropsRep
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
       {...props}
     />
   );

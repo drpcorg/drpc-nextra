@@ -10,11 +10,9 @@ export function WalletMethod_getpnlformultiplewallets(props: GenericMethodPropsR
   return (
     <WalletMethod
       method="Get PnL for Multiple Wallets"
-      network=""
       cu={334000}
       description={"The Wallet PnL (Profit and Loss) data is provided for entire wallets, aggregating all positions and tokens within each specified wallet address"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/wallet-pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getpnlformultiplewallets(props: GenericMethodPropsR
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

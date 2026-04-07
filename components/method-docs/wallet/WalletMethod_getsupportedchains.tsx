@@ -10,12 +10,9 @@ export function WalletMethod_getsupportedchains(props: GenericMethodPropsReplaci
   return (
     <WalletMethod
       method="Get Supported Chains"
-      network=""
       cu={367}
-      description={ "Returns a list of all chains supported in Data API"
-      }
-      url={"GET https://lb.drpc.live/lambda/{key}/v1/chains"
-    }
+      description={"Returns a list of all chains supported in Data API"}
+      url={"GET https://lb.drpc.live/lambda/{key}/v1/chains"}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -26,10 +23,6 @@ export function WalletMethod_getsupportedchains(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
-      isRESTApi={true}
       {...props}
     />
   );

@@ -9,12 +9,10 @@ import { CodeSnippetObject } from "../../GenericMethod/types";
 export function WalletMethod_getnftcollections(props: GenericMethodPropsReplacing) {
   return (
     <WalletMethod
-      method="Get NFT Collections"
-      network=""
+      method="Get NFT Collections"  
       cu={1837}
       description={"Returns NFT collections owned by the specified wallet"}
-      url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nft-collections"}
-      isRESTApi={true}
+      url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/nft-collections"}   
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getnftcollections(props: GenericMethodPropsReplacin
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

@@ -10,11 +10,9 @@ export function WalletMethod_getpnlhistory(props: GenericMethodPropsReplacing) {
   return (
     <WalletMethod
       method="Get PnL History"
-      network=""
       cu={334000}
       description={"The PnL (Profit and Loss) data is provided for a single token or DeFi position (asset locked in the protocol)."}
       url={"GET https://lb.drpc.live/{chain}/{key}/lambda/v1/wallets/{address}/pnl-history"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_getpnlhistory(props: GenericMethodPropsReplacing) {
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
       {...props}
     />
   );

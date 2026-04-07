@@ -10,11 +10,9 @@ export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplaci
   return (
     <WalletMethod
       method="Refresh NFT Metadata"
-      network=""
       cu={1837}
       description={"Refreshes metadata for a specific NFT by contract address and token ID"}
       url={"POST https://lb.drpc.live/{chain}/{key}/lambda/v1/contract-address/{contract}/nfts/{nft_id}/refresh"}
-      isRESTApi={true}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,7 +23,6 @@ export function WalletMethod_refreshnftmetadata(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="none"
-      responseParamsDescription={""}
       {...props}
     />
   );

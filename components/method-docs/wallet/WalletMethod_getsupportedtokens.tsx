@@ -12,7 +12,6 @@ export function WalletMethod_getsupportedtokens(
   return (
     <WalletMethod
       method="Get Supported Tokens"
-      network=""
       cu={1102}
       description={
         "Returns a paginated list of all tokens supported by Lambda API across different blockchain networks."
@@ -31,8 +30,6 @@ export function WalletMethod_getsupportedtokens(
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={""}
-      isRESTApi={true}
       {...props}
     />
   );
