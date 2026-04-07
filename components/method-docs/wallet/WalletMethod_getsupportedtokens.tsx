@@ -2,19 +2,25 @@ import WalletMethod from "../../WalletMethod/WalletMethod";
 import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp
+  RequestParamProp,
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
-export function WalletMethod_getsupportedtokens(props: GenericMethodPropsReplacing) {
+export function WalletMethod_getsupportedtokens(
+  props: GenericMethodPropsReplacing,
+) {
   return (
     <WalletMethod
       method="Get Supported Tokens"
       network=""
       cu={1102}
-      description={ "Returns a paginated list of all tokens supported by Lambda API across different blockchain networks."}
-      url={"Per-chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens"}
-      url1={"Multichain: GET https://lb.drpc.live/lambda/{key}/v1/tokens"}
+      description={
+        "Returns a paginated list of all tokens supported by Lambda API across different blockchain networks."
+      }
+      url={[
+        "Per-chain: GET https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens",
+        "Multichain: GET https://lb.drpc.live/lambda/{key}/v1/tokens",
+      ]}
       useCases={USE_CASES}
       constraints={CONSTRAINTS}
       codeSnippets={CODE_SNIPPETS}
@@ -25,9 +31,7 @@ export function WalletMethod_getsupportedtokens(props: GenericMethodPropsReplaci
       responseJSON={RESPONSE_JSON}
       responseParams={RESPONSE_PARAMS}
       responseParamsType="object"
-      responseParamsDescription={
-        ""
-      }
+      responseParamsDescription={""}
       isRESTApi={true}
       {...props}
     />
@@ -35,16 +39,15 @@ export function WalletMethod_getsupportedtokens(props: GenericMethodPropsReplaci
 }
 
 const CODE_SNIPPETS: Array<CodeSnippetObject> = [
-
   {
-  language: "shell",
-  code: () => `curl --request GET \\
+    language: "shell",
+    code: () => `curl --request GET \\
   --url https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens \\
   --header 'accept: application/json'`,
-},
-{
-  language: "js",
-  code: () => `fetch("https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens", {
+  },
+  {
+    language: "js",
+    code: () => `fetch("https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens", {
   method: "GET",
   headers: {
     "accept": "application/json"
@@ -53,10 +56,10 @@ const CODE_SNIPPETS: Array<CodeSnippetObject> = [
   .then(res => res.json())
   .then(console.log)
   .catch(console.error);`,
-},
-{
-  language: "node",
-  code: () => `import fetch from "node-fetch";
+  },
+  {
+    language: "node",
+    code: () => `import fetch from "node-fetch";
 
 const res = await fetch("https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens", {
   method: "GET",
@@ -67,10 +70,10 @@ const res = await fetch("https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens", {
 
 const data = await res.json();
 console.log(data);`,
-},
-{
-  language: "go",
-  code: () => `package main
+  },
+  {
+    language: "go",
+    code: () => `package main
 
 import (
   "fmt"
@@ -92,7 +95,7 @@ func main() {
   body, _ := io.ReadAll(resp.Body)
   fmt.Println(string(body))
 }`,
-},
+  },
   {
     language: "rust",
     code: () => `use reqwest::header::ACCEPT;
@@ -113,9 +116,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }`,
   },
-{
-  language: "python",
-  code: () => `import requests
+  {
+    language: "python",
+    code: () => `import requests
 
 url = "https://lb.drpc.live/{chain}/{key}/lambda/v1/tokens"
 headers = {
@@ -124,7 +127,7 @@ headers = {
 
 response = requests.get(url, headers=headers)
 print(response.json())`,
-}
+  },
 ];
 
 const RESPONSE_JSON = `{
@@ -159,38 +162,33 @@ const RESPONSE_JSON = `{
 }`;
 
 const PATH_PARAMS: ReqResParam[] = [
-    {
+  {
     paramName: "key",
     type: "string",
-    paramDescription:
-      "[Required] Your dRPC API key",
+    paramDescription: "[Required] Your dRPC API key",
   },
   {
     paramName: "chain",
     type: "string",
-    paramDescription:
-      "Chain name (only for per-chain URL).",
+    paramDescription: "Chain name (only for per-chain URL).",
   },
-    ];
+];
 
 const QUERY_PARAMS: RequestParamProp = [
   {
     paramName: "page_token",
     type: "string",
-    paramDescription:
-      "Token to retrieve next page.",
+    paramDescription: "Token to retrieve next page.",
   },
   {
     paramName: "limit",
     type: "integer",
-    paramDescription:
-      "[Required] Amount of items to be retrieved.",
+    paramDescription: "[Required] Amount of items to be retrieved.",
   },
   {
     paramName: "chain_id",
     type: "string",
-    paramDescription:
-      "Id of a chain. default: all chains",
+    paramDescription: "Id of a chain. default: all chains",
   },
 ];
 
@@ -208,69 +206,69 @@ const RESPONSE_PARAMS: ReqResParam[] = [
     paramDescription: "[Required] Chain data",
     childrenParamsType: "object",
     childrenParams: [
-          {
-            paramName: "type",
-            type: "string",
-            paramDescription: "[Required] Item type",
-          },
-          {
-            paramName: "id",
-            type: "string",
-            paramDescription: "[Required] Chain ID in Wallet API",
-          },
-          {
-            paramName: "symbol",
-            type: "string",
-            paramDescription: "[Required] Symbol of the token",
-          },
-          {
-            paramName: "name",
-            type: "string",
-            paramDescription: "[Required] Token name",
-          },
-          {
-            paramName: "icon_url",
-            type: "string",
-            paramDescription: "URL to download icon of the token.",
-          },
+      {
+        paramName: "type",
+        type: "string",
+        paramDescription: "[Required] Item type",
+      },
+      {
+        paramName: "id",
+        type: "string",
+        paramDescription: "[Required] Chain ID in Wallet API",
+      },
+      {
+        paramName: "symbol",
+        type: "string",
+        paramDescription: "[Required] Symbol of the token",
+      },
+      {
+        paramName: "name",
+        type: "string",
+        paramDescription: "[Required] Token name",
+      },
+      {
+        paramName: "icon_url",
+        type: "string",
+        paramDescription: "URL to download icon of the token.",
+      },
       {
         paramName: "implementations",
         type: "array",
-        paramDescription: "[Required] List of chains where tokens are implemented.",
+        paramDescription:
+          "[Required] List of chains where tokens are implemented.",
         childrenParamsType: "object",
         childrenParams: [
           {
             paramName: "chain_id",
             type: "string",
-            paramDescription: "[Required] id of a chain in Lambda API"
+            paramDescription: "[Required] id of a chain in Lambda API",
           },
           {
             paramName: "chain_name",
             type: "string",
-            paramDescription: "[Required] name of a chain in Lambda API"
+            paramDescription: "[Required] name of a chain in Lambda API",
           },
           {
             paramName: "chain_id_numeric",
             type: "integer",
-            paramDescription: "Numeric id of the chain"
+            paramDescription: "Numeric id of the chain",
           },
           {
             paramName: "address",
             type: "string",
-            paramDescription: "[Required] Token contract address in related chain"
+            paramDescription:
+              "[Required] Token contract address in related chain",
           },
           {
             paramName: "decimals",
             type: "integer",
-            paramDescription: "[Required] Decimals"
-          }
+            paramDescription: "[Required] Decimals",
+          },
         ],
-
       },
-        ],
-},
-        ];
-
+    ],
+  },
+];
 
 const USE_CASES = [
   "Retrieve the list of all supported tokens",

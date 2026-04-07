@@ -24,8 +24,7 @@ export type GenericMethodProps = {
   network: string;
   cu: number;
   description: string;
-  url?: string;
-  url1?: string;
+  url?: string | string[];
   useCases: string[];
   constraints: string[];
   responseJSON: string;
@@ -67,7 +66,6 @@ export default function GenericMethod({
   cu,
   description,
   url,
-  url1,
   useCases,
   constraints,
   codeSnippets,
@@ -143,16 +141,13 @@ export default function GenericMethod({
               {description}
             </Text>
           </Group>
-          <Group justify="start">
-            <Text size="sm" color="gray">
-              {url}
-            </Text>
-          </Group>
-          <Group justify="start">
-            <Text size="sm" color="gray">
-              {url1}
-            </Text>
-          </Group>
+          {(Array.isArray(url) ? url : [url]).map((item, idx) => (
+            <Group justify="start" key={idx}>
+              <Text size="sm" color="gray">
+                {item}
+              </Text>
+            </Group>
+          ))}
         </Grid.Col>
 
         <Grid.Col span={12}>
@@ -198,19 +193,13 @@ export default function GenericMethod({
 
         {isRESTApi && (
           <Grid.Col span={12}>
-            <PathParams
-              params={pathParams}
-              paramsType={pathParamsType}
-            />
+            <PathParams params={pathParams} paramsType={pathParamsType} />
           </Grid.Col>
         )}
 
         {isRESTApi && (
           <Grid.Col span={12}>
-            <QueryParams
-              params={queryParams}
-              paramsType={queryParamsType}
-            />
+            <QueryParams params={queryParams} paramsType={queryParamsType} />
           </Grid.Col>
         )}
 
