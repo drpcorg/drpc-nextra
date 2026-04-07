@@ -2,8 +2,7 @@ import WalletMethod from "../../WalletMethod/WalletMethod";
 import { GenericMethodPropsReplacing } from "../../GenericMethod/GenericMethod";
 import {
   ReqResParam,
-  RequestParamProp,
-  PathParamProp
+  RequestParamProp
 } from "../../GenericMethod/params/types";
 import { CodeSnippetObject } from "../../GenericMethod/types";
 
@@ -178,7 +177,7 @@ const RESPONSE_JSON = `{
   "next_page_token": "IjIi"
 }`;
 
-const PATH_PARAMS: PathParamProp = [
+const PATH_PARAMS: ReqResParam[] = [
   {
     paramName: "chain",
     type: "string",
