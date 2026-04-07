@@ -86,7 +86,7 @@ export default function GenericMethod({
   isRESTApi,
 }: GenericMethodProps) {
   const [snippet, setSnippet] = React.useState<CodeSnippetObject["language"]>(
-    codeSnippets?.[0]?.language || null
+    codeSnippets?.[0]?.language || null,
   );
 
   const snippetCode = React.useMemo(() => {
@@ -101,7 +101,7 @@ export default function GenericMethod({
     ) {
       return codeSnippetString.replaceAll(
         replaceCodeSnippetsURLFrom,
-        replaceCodeSnippetsURLTo
+        replaceCodeSnippetsURLTo,
       );
     }
     return codeSnippetString;
@@ -197,24 +197,22 @@ export default function GenericMethod({
         </Grid.Col>
 
         {isRESTApi && (
-  <Grid.Col span={12}>
-    <PathParams
-      pathParams={pathParams}
-      pathParamsType={pathParamsType}
-      isRESTApi={isRESTApi}
-    />
-  </Grid.Col>
-)}
+          <Grid.Col span={12}>
+            <PathParams
+              params={pathParams}
+              paramsType={pathParamsType}
+            />
+          </Grid.Col>
+        )}
 
         {isRESTApi && (
-  <Grid.Col span={12}>
-    <QueryParams
-      queryParams={queryParams}
-      queryParamsType={queryParamsType}
-      isRESTApi={isRESTApi}
-    />
-  </Grid.Col>
-)}
+          <Grid.Col span={12}>
+            <QueryParams
+              params={queryParams}
+              paramsType={queryParamsType}
+            />
+          </Grid.Col>
+        )}
 
         <Grid.Col span={12}>
           <RequestParams
