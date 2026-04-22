@@ -71,7 +71,66 @@ Headers exapmple:
 
 ## NodeCore
 
-When using verification together with [NodeCore](https://drpc.org/docs/nodecore-open-source-rpc-stack), provider signatures are validated automatically. Full quorum signature verification in NodeCore is described [here](https://github.com/drpcorg/nodecore/blob/main/docs/nodecore/10-quorum.md).
+When using verification together with [NodeCore](https://drpc.org/docs/nodecore-open-source-rpc-stack), provider signatures are validated automatically on the NodeCore side before the response reaches your client. Full quorum signature verification in NodeCore is described [here](https://github.com/drpcorg/nodecore/blob/main/docs/nodecore/10-quorum.md).
+
+### Step-by-step guide
+
+Follow these steps to run verified requests through your own NodeCore instance:
+
+**1. Configure a dRPC upstream in NodeCore**
+
+Quorum is only supported against dRPC upstreams, so your `nodecore.yml` must include at least one dRPC upstream for the chain you want to query. A minimal config with a private dRPC endpoint looks like this:
+
+```yaml copy
+upstream-config:
+  upstreams:
+    - id: drpc-ethereum
+      chain: ethereum
+      connectors:
+        - type: json-rpc
+          url: https://lb.drpc.live/ethereum/${DRPC_KEY}
+```
+
+**2. Start NodeCore**
+
+Run NodeCore locally (or in your infrastructure) pointing at the config above:
+
+```bash copy
+docker run -d --name nodecore --restart always \
+  -p 9090:9090 -v $(pwd)/nodecore.yml:/nodecore.yml \
+    drpcorg/nodecore:latest
+```
+
+**3. Send the request with quorum parameters**
+
+Add `quorum` and `quorum_required` as query parameters when calling your NodeCore endpoint. NodeCore forwards them to the dRPC upstream and verifies the returned signatures automatically:
+
+```bash copy
+curl --location 'http://localhost:9090/queries/ethereum?quorum=3&quorum_required=2' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "id": 1,
+    "jsonrpc": "2.0",
+    "method": "eth_getBlockByNumber",
+    "params": ["latest", false]
+  }'
+```
+
+**4. Handle the response**
+
+* On success NodeCore returns the standard JSON-RPC payload only after at least `quorum_required` provider signatures have been verified against the embedded registry of known public keys.
+* On failure the client receives a JSON-RPC error with code `-32010` and a reason such as `missing_signatures`, `insufficient_signatures`, `invalid_signature`, `unknown_provider`, or `not_supported`.
+
+**5. (Optional) Monitor verification outcomes**
+
+NodeCore exposes per-request verification metrics via Prometheus at the `nodecore_quorum_verifications_total{chain, method, status, reason}` counter, which is useful for alerting when signature checks start failing.
+
+<Callout type="warning">
+  Quorum requests in NodeCore bypass the response cache and integrity layer,
+  are always buffered (streaming is disabled), and work over HTTP(S) only —
+  gRPC, WebSocket and sticky-send methods like `eth_sendRawTransaction` are
+  rejected with a `quorum not supported` error.
+</Callout>
 
 
 
