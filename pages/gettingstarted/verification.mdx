@@ -23,8 +23,8 @@ For verification dRPC will perform several steps:
 
 <Callout type="info">
   Total amount of responses that you want to receive from the providers is
-  called `quorum`. Amount of **equal responses** that you want to receive
-  from the providers to consider the response as valid is called `quorum_required`.
+  called `quorum`. Amount of **equal responses** that you want to receive from
+  the providers to consider the response as valid is called `quorum_required`.
 </Callout>
 
 <Image
@@ -41,15 +41,24 @@ Verification is supported for most JSON-RPC and REST requests. It is not availab
 
 To enable verification, it's needed to add the following query parameters to the URL:
 
-* `quorum=3` — the number of providers to query
-* `quorum_required=2` — the number of identical responses required to return a result
+- `quorum=3` — the number of providers to query
+- `quorum_required=2` — the number of identical responses required to return a result
 
-The service will query multiple providers and wait until it receives the required number of matching responses.
-In the response, headers will include signatures from the providers confirming that they have returned the exact same result.
+The service will query multiple providers and wait until it receives the required number of matching responses. Once enough matching responses are collected, dRPC attaches one response header per participating provider so that you can independently re-verify every signature on the client side.
 
-If the number of identical responses is lower than quorum_required, the request will fail with an error.
+Each signature header has the following shape:
+
+- **Header name**: `qr<index>-id-<request_id>`, where `<index>` is the zero-based position of the signature in the quorum (`qr0`, `qr1`, ...) and `<request_id>` is the JSON-RPC `id` of your request.
+- **Header value**: `<provider_id>(<upstream_id>)_nonce_<nonce>_sig_<signature>`, where:
+  - `<provider_id>` — identifier of the provider that signed the response (e.g. `drpc-core@EU-West#1`),
+  - `<upstream_id>` — identifier of the concrete upstream inside that provider which actually produced the response (e.g. `eth_vel-frank-n01`),
+  - `<nonce>` — unique nonce mixed into the signed payload to prevent replay,
+  - `<signature>` — ECDSA signature over the response body produced with the provider's private key. It can be verified against the provider's public key from the [registry of known providers](https://github.com/drpcorg/nodecore/blob/main/docs/nodecore/10-quorum.md).
+
+If the number of identical responses is lower than `quorum_required`, the request will fail with an error and no signed headers are returned.
 
 Request example:
+
 ```bash copy
 curl -v --location "https://lb.drpc.live/ethereum/$DKEY?quorum=3&quorum_required=2" \
 --header 'Content-Type: application/json' \
@@ -62,12 +71,15 @@ curl -v --location "https://lb.drpc.live/ethereum/$DKEY?quorum=3&quorum_required
 "jsonrpc": "2.0"
 }'
 ```
-Headers exapmple:
+
+Headers example (two signatures for a request with `id: 1`, one per matching provider):
 
 ```bash copy
 < qr0-id-1: drpc-core@EU-West#1(eth_vel-frank-n01)_nonce_14484681713855751539_sig_a9dda5602a968eeea64b079eebaff5cd32ce1094721601829727562937d7fb15d6f7b43bbce801c6c90c381a5f6bec2ca4205d61139e0965081e489bb8907360103d3abacd9965b6a6ca09bf543a80d2a76d3c6eb5962f5749edee267608d63da21982d6dfc12952b7307cf761b003aa8f5996ddd6b7850d383cb1369312e697319e7ef405a0a858ae25e0cf448215ee525e4371d860f958b0bbc429be10c79477024e295e0480c1b2fccab34ea34f2e8daa55464a8e7538ac84c0f8e0608d1e02bd5d127bbd6b6e58e7ec4121efdc32961c42c0771a073606d5e3479b780d918196310428abf0fc2c825fd60b38538b15c3a832fadd44d95f05e4f9cd35babf
 < qr1-id-1: drpc-warp@EU-West#0(all-eth)_nonce_1840315633162573200_sig_30e9580c7e219e8552d1dc5e9813648515d281fd23b1b7fe2c06a182bb5dbcaccbd1c1df04a40ecddeb041bd7f30026eb51bd7096cbad2188ed05009fa82fcaf230b7e2e415a9fc73de44447341ef0a1ac9cb810759364b8818b45cd41f9a679a316169f408f1e82cb2e16faad1eedf31bff3c0221dcdee2c0fd0c7885c7771434bae25b5403457b20c2cdcd1655a8d43b63ada056ee7033252c63224a68172d1043e39c0f314b88253bc97120a54c9de40c61f4ca748e76de55c0083c8ade6a5a1847176bfff816c63cf049531752e89a5b78a175599a855850097b8aeea4c1f9bf4a3133b2ab204cd950275bc15fe19f4982d348a72b5accc6ca79ed2de7cc
 ```
+
+In the example above, `drpc-core@EU-West#1(eth_vel-frank-n01)` and `drpc-warp@EU-West#0(all-eth)` follow the `provider_id(upstream_id)` format — `drpc-core@EU-West#1` and `drpc-warp@EU-West#0` are the provider identifiers, while `eth_vel-frank-n01` and `all-eth` are the upstreams inside those providers that actually produced the matching responses. Each header carries that provider's nonce and ECDSA signature over the final response body.
 
 ## NodeCore
 
@@ -118,19 +130,90 @@ curl --location 'http://localhost:9090/queries/ethereum?quorum=3&quorum_required
 
 **4. Handle the response**
 
-* On success NodeCore returns the standard JSON-RPC payload only after at least `quorum_required` provider signatures have been verified against the embedded registry of known public keys.
-* On failure the client receives a JSON-RPC error with code `-32010` and a reason such as `missing_signatures`, `insufficient_signatures`, `invalid_signature`, `unknown_provider`, or `not_supported`.
+- On success NodeCore returns the standard JSON-RPC payload only after at least `quorum_required` provider signatures have been verified against the embedded registry of known public keys.
+- On failure the client receives a JSON-RPC error with code `-32010` and a reason such as `missing_signatures`, `insufficient_signatures`, `invalid_signature`, `unknown_provider`, or `not_supported`.
 
 **5. (Optional) Monitor verification outcomes**
 
 NodeCore exposes per-request verification metrics via Prometheus at the `nodecore_quorum_verifications_total{chain, method, status, reason}` counter, which is useful for alerting when signature checks start failing.
 
 <Callout type="warning">
-  Quorum requests in NodeCore bypass the response cache and integrity layer,
-  are always buffered (streaming is disabled), and work over HTTP(S) only —
-  gRPC, WebSocket and sticky-send methods like `eth_sendRawTransaction` are
-  rejected with a `quorum not supported` error.
+  Quorum requests in NodeCore bypass the response cache and integrity layer, are
+  always buffered (streaming is disabled), and work over HTTP(S) only — gRPC,
+  WebSocket and sticky-send methods like `eth_sendRawTransaction` are rejected
+  with a `quorum not supported` error.
 </Callout>
 
+## Verifying signatures yourself
 
+If you want to reproduce the check that NodeCore performs — i.e. prove on the client side that each `QR*` header was really produced by the declared provider and covers exactly the response you got — follow the steps below. This is the same algorithm NodeCore runs internally.
 
+**1. Parse the header name**
+
+Match the header name against `QR<N>-id-<request_id>` (case-insensitive). Extract:
+
+- `<N>` — the 0-based index of the signature in the quorum,
+- `<request_id>` — must be equal to the JSON-RPC `id` of the request you sent. If it doesn't match, reject the header as a replay from another request.
+
+**2. Parse the header value**
+
+The value has the strict shape:
+
+```
+<provider_id>(<upstream_id>)_nonce_<nonce>_sig_<hex_signature>
+```
+
+Split it by the literal separators `_nonce_` and `_sig_`:
+
+- Everything before `_nonce_` is the **prefix**. It must end with `)` and contain `(...)`; the text before `(` is `provider_id`, the text inside the parentheses is `upstream_id`. Both are mandatory.
+- Between `_nonce_` and `_sig_` is a decimal unsigned 64-bit `nonce`.
+- Everything after `_sig_` is the signature as a hex string (an optional `0x` / `0X` prefix is allowed). Hex-decode it into raw bytes.
+
+Any other shape is malformed and must be rejected.
+
+**3. Look up the provider's public key**
+
+Use `provider_id` (verbatim, including the `@region#idx` suffix) as a key in the registry of known providers shipped with NodeCore at [`provider_keys.yaml`](https://github.com/drpcorg/nodecore/blob/main/internal/quorum/provider_keys.yaml). Each entry holds a base64-encoded X.509 `SubjectPublicKeyInfo` (the body of a PEM block). Base64-decode it and parse it as PKIX. You should get either an ECDSA P-256 or an RSA public key — the key type decides which verification primitive to use in step 6.
+
+If `provider_id` is absent from the registry, the signature cannot be trusted.
+
+**4. Get the exact signed payload (`result`)**
+
+The signature is computed over the **raw JSON-RPC `result` bytes** — not the entire JSON-RPC envelope, and not a re-serialised version of it. Use the exact bytes the upstream returned; any re-encoding (whitespace, key order, number formatting) will break verification.
+
+**5. Reconstruct the wrapped message**
+
+Build the ASCII string:
+
+```
+DSHACKLESIG/<nonce>/<upstream_id>/<hex(sha256(result))>
+```
+
+where:
+
+- `DSHACKLESIG` is a fixed literal prefix,
+- `/` is the literal separator,
+- `<nonce>` is the decimal nonce from step 2,
+- `<upstream_id>` is the identifier from inside the parentheses (not `provider_id`),
+- `<hex(sha256(result))>` is the lowercase hex encoding of the SHA-256 digest of the `result` bytes.
+
+Then compute `digest = sha256(wrapped_message)`. That digest is what the signature actually covers.
+
+**6. Verify the signature against the digest**
+
+Dispatch based on the public key type from step 3:
+
+- **ECDSA / P-256** — the signature is DER-encoded ASN.1 (`SHA256withECDSA`). Run `ECDSA.VerifyASN1(publicKey, digest, signature)`.
+- **RSA** — the signature is a PKCS#1 v1.5 fixed-size block (`SHA256withRSA`). Run `RSA.VerifyPKCS1v15(publicKey, SHA256, digest, signature)`.
+
+Only SHA-256 digests are supported.
+
+**7. Count valid signatures**
+
+Repeat steps 1–6 for every `QR*` header in the response. Accept the response only if the number of signatures that (a) reference a known provider, (b) match your request id, and (c) verify cryptographically is at least `quorum_required`. Anything less means the quorum guarantee has not been met.
+
+<Callout type="info">
+  A reference Go implementation of every step above lives in NodeCore at
+  [`internal/quorum/quorum.go`](https://github.com/drpcorg/nodecore/blob/main/internal/quorum/quorum.go)
+  — in particular `ExtractSignatures`, `WrapMessage` and `verifyDigest`.
+</Callout>
