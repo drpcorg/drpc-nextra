@@ -15,7 +15,7 @@ If so, you can use DRPC verification feature to achieve consensus between your p
 In this case we will send your request to several providers and wait for their responses.
 Then we will compare the responses and if they are equal, we will return the response to you.
 
-For verification DRPC will perform several steps:
+For verification dRPC will perform several steps:
 
 1. Send the request to the providers.
 2. Check the signature of the response by comparing it using the public key of the provider.
@@ -23,8 +23,8 @@ For verification DRPC will perform several steps:
 
 <Callout type="info">
   Total amount of responses that you want to receive from the providers is
-  called `quorum_from`. Amount of **equal responses** that you want to receive
-  from the providers to consider the response as valid is called `quorum_of`.
+  called `quorum`. Amount of **equal responses** that you want to receive
+  from the providers to consider the response as valid is called `quorum_required`.
 </Callout>
 
 <Image
@@ -33,82 +33,45 @@ For verification DRPC will perform several steps:
   sizes="55vw"
 />
 
-The example above shows that DRPC has received 3 responses from the providers, and 2 of them are equal (considering signature checking and result data checking).
+The example above shows that dRPC has received 3 responses from the providers, and 2 of them are equal (considering signature checking and result data checking).
 
-## JSON RPC protocol
+## How to use
 
-JSON RPC protocol is a protocol that allows you to make requests to a server and receive a response. It's a very popular protocol that is used by many different services.
+Verification is supported for most JSON-RPC and REST requests. It is not available for WebSocket and some methods (eth_chainId, eth_blockNumber, web3_clientVersion) that are processed on the proxy side
 
-In our case it's used to reach out for Ethereum and other blockchains, and ultimately is basis for many different services.
+To enable verification, it's needed to add the following query parameters to the URL:
 
-However JSON RPC protocol does not allow a verification of the response on client-side. That's also one of the reasons why we have created a special protocol that allows you to use DRPC verification feature with any JSON RPC provider.
+* `quorum=3` — the number of providers to query
+* `quorum_required=2` — the number of identical responses required to return a result
 
-## DRPC protocol
+The service will query multiple providers and wait until it receives the required number of matching responses.
+In the response, headers will include signatures from the providers confirming that they have returned the exact same result.
 
-DRPC protocol is similar to JSON RPC protocol. It's built on top of JSON RPC protocol and compatible with it via tools like `DRPC-SDK` and `DRPC-Sidecar`, which are described below.
+If the number of identical responses is lower than quorum_required, the request will fail with an error.
 
-## DRPC-SDK
+Request example:
+```bash copy
+curl -v --location "https://lb.drpc.live/ethereum/$DKEY?quorum=3&quorum_required=2" \
+--header 'Content-Type: application/json' \
+--data '{
+"method": "eth_getBlockReceipts",
+"params": [
+"0x12345e"
+,
+"id": 1,
+"jsonrpc": "2.0"
+}'
+```
+Headers exapmple:
 
-[DRPC-SDK](https://github.com/p2p-org/drpc-client) is a client library that allows you to use DRPC verification feature with any JSON RPC provider.
+```bash copy
+< qr0-id-1: drpc-core@EU-West#1(eth_vel-frank-n01)_nonce_14484681713855751539_sig_a9dda5602a968eeea64b079eebaff5cd32ce1094721601829727562937d7fb15d6f7b43bbce801c6c90c381a5f6bec2ca4205d61139e0965081e489bb8907360103d3abacd9965b6a6ca09bf543a80d2a76d3c6eb5962f5749edee267608d63da21982d6dfc12952b7307cf761b003aa8f5996ddd6b7850d383cb1369312e697319e7ef405a0a858ae25e0cf448215ee525e4371d860f958b0bbc429be10c79477024e295e0480c1b2fccab34ea34f2e8daa55464a8e7538ac84c0f8e0608d1e02bd5d127bbd6b6e58e7ec4121efdc32961c42c0771a073606d5e3479b780d918196310428abf0fc2c825fd60b38538b15c3a832fadd44d95f05e4f9cd35babf
+< qr1-id-1: drpc-warp@EU-West#0(all-eth)_nonce_1840315633162573200_sig_30e9580c7e219e8552d1dc5e9813648515d281fd23b1b7fe2c06a182bb5dbcaccbd1c1df04a40ecddeb041bd7f30026eb51bd7096cbad2188ed05009fa82fcaf230b7e2e415a9fc73de44447341ef0a1ac9cb810759364b8818b45cd41f9a679a316169f408f1e82cb2e16faad1eedf31bff3c0221dcdee2c0fd0c7885c7771434bae25b5403457b20c2cdcd1655a8d43b63ada056ee7033252c63224a68172d1043e39c0f314b88253bc97120a54c9de40c61f4ca748e76de55c0083c8ade6a5a1847176bfff816c63cf049531752e89a5b78a175599a855850097b8aeea4c1f9bf4a3133b2ab204cd950275bc15fe19f4982d348a72b5accc6ca79ed2de7cc
+```
 
-Configurable settings are described in [DRPC SDK documentation](https://p2p-org.github.io/drpc-client/modules.html#ProviderSettings)
+## NodeCore
 
-## DRPC-Sidecar
+When using verification together with [NodeCore](https://drpc.org/docs/nodecore-open-source-rpc-stack), provider signatures are validated automatically.
 
-Since standard JSON RPC protocol does not allow a verification of the response, we have created a special package that allows you to use DRPC verification feature with any JSON RPC provider ([DRPC-Sidecar](https://github.com/p2p-org/drpc-sidecar)).
 
-It accepts URL params and passes them to DRPC-SDK client. Then it returns the response from DRPC-SDK client.
 
-It's responsibility to provide compatibility with software that doesn't support DRPC natively, however want to use all the good stuff.
-
-## DRPC Dashboard - Custom Endpoint UI
-
-When creating Custom Endpoint in **DRPC Dashboard** you can set the `quorum_of` and `quorum_from` params.
-
-Below we will explore how can you set up verification when creating **Custom Endpoint** in **DRPC Dashboard**, which are the options for `Verification URL` used there and how can you configure **DRPC-SDK** client.
-
-<Callout type="warning">
-  We want `quorum_of` to be **more** that half of total responses (`quorum_from
-  / 2`).
-</Callout>
-
-<Image
-  src={dashboard}
-  alt="DRPC custom endpoint verification view"
-  sizes="55vw"
-/>
-
-`Verification URL` is the URL that you can use to verify the response from the provider. It's necessary for verification to work.
-
-There are several options:
-
-1. You can use the default one: `https://main.drpc.org/verification`
-2. You can integrate [DRPC-SDK](https://github.com/p2p-org/drpc-client) into your application (if that's an option) and use it to perform verification. In this case all the configuration will be done on the side of DRPC-SDK.
-3. Or you can deploy your own [DRPC-Sidecar](https://github.com/p2p-org/drpc-sidecar) and use it as a verification server.
-
-## Configuring DRPC-SDK client
-
-<Callout type="info">
-  If you only pass one param (`quorum_of` or `quorum_from`), the other one will
-  be automatically **set to the same value**. On the other hand, if you pass
-  **NO quorum_of and NO quorum_from**, the default value for both of them is
-  `1`.
-</Callout>
-
-<Image
-  src={quorumconfig}
-  alt="DRPC quorum config examples with provider_ids"
-  sizes="55vw"
-/>
-
-<Callout type="warning">
-  As said previously, `quorum_from`, the total amount of responses for the API
-  call should be `less or equal to` the total amount of providers passed to API
-  config. Otherwise, API calls will fail.
-</Callout>
-
-<Image
-  src={quorumconfigexample}
-  alt="DRPC quorum config examples"
-  sizes="55vw"
-/>
