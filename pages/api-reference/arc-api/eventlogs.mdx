@@ -1,0 +1,22 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Arc Event logs | dRPC"
+/>
+
+# Event logs
+
+The Event logs group provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes. Key methods include:
+
+[eth_getLogs](/arc-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
+[eth_newFilter](/arc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs. \
+[eth_getFilterChanges](/arc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
+[eth_uninstallFilter](/arc-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
+[eth_getFilterLogs](/arc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
+
+These methods provide developers with essential tools for event logs on the Arc network.
+
+<Space h={16} />
+<GetStarted />

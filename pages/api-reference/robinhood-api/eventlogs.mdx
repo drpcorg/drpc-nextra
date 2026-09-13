@@ -1,0 +1,23 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+
+<Meta
+  title="Robinhood Event logs | dRPC"
+/>
+
+# Event logs
+
+The Event logs group provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes. Key methods include:
+
+[eth_getLogs](/robinhood-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
+[eth_newFilter](/robinhood-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs. \
+[eth_getFilterChanges](/robinhood-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
+[eth_uninstallFilter](/robinhood-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
+[eth_getFilterLogs](/robinhood-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
+
+These methods provide developers with essential tools for event logs on the Robinhood network.
+
+<Space h={16} />
+<GetStarted />

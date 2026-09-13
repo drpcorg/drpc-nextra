@@ -1,0 +1,88 @@
+import { Tab, Tabs } from "nextra-theme-docs";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Getting Started with dRPC: Making the First Request"
+  description="Make your first dRPC request with ease. Learn about auth methods, cURL examples, and library usage."
+/>
+
+# First request to DRPC
+
+First, [get your endpoint](./createaccount.mdx).
+
+### Authentication
+
+Each endpoint on UI by default contains your authentication key as a URL parameter `dkey` and network as `network`.
+
+For example, `ethereum` network of DRPC will look like this:
+`https://lb.drpc.live/ethereum/YOUR-DRPC-KEY`.
+
+Another recommended way for authentication is to use special HTTP header `Drpc-Key`.
+
+The following are examples of how to make a requests:
+
+<Tabs items={['curl', 'curl + header', 'HTTP', 'HTTP + header']}>
+<Tab>
+```bash copy
+curl -X POST -H 'Content-Type: application/json' \
+-d '{"method": "eth_blockNumber","params": [],"id": "1","jsonrpc": "2.0"}' \
+'https://lb.drpc.live/ethereum/YOUR-DRPC-KEY'
+```
+</Tab>
+<Tab>
+```bash copy
+curl -X POST -H 'Content-Type: application/json' -H 'Drpc-Key: YOUR-DRPC-KEY' \
+-d '{"method": "eth_blockNumber","params": [],"id": "1","jsonrpc": "2.0"}' \
+'https://lb.drpc.org/ogrpc?network=ethereum'
+```
+</Tab>
+
+<Tab>
+```http copy
+POST https://lb.drpc.live/ethereum/YOUR-DRPC-KEY
+content-type: application/json
+
+{"method": "eth_blockNumber","params": [], "id": "1", "jsonrpc": "2.0"}
+
+````
+</Tab>
+<Tab>
+```http copy
+POST https://lb.drpc.org/ogrpc?network=ethereum
+content-type: application/json
+Drpc-Key: YOUR-DRPC-KEY
+
+{"method": "eth_blockNumber","params": [], "id": "1", "jsonrpc": "2.0"}
+
+````
+
+</Tab>
+
+</Tabs>
+
+DRPC key value is the part of your endpoint by default. Also, you can find it on the `Key -> Settings` page:
+![Example of the key value on Settings page](./key-settings.png)
+
+### Making requests from code
+
+DRPC conforms to standard JSON RPC protocol, that most of the blockchains use today.
+So, you can use any standard library for you preferred language to make request, for example:
+
+<Tabs items={['JavaScript']}>
+<Tab>
+
+```js copy
+let Web3 = require("web3");
+let provider = "https://lb.drpc.live/ethereum/YOUR-DRPC-KEY";
+let web3Provider = new Web3.providers.HttpProvider(provider);
+let web3 = new Web3(web3Provider);
+
+// Get the latest block number
+web3.eth.getBlockNumber().then((result) => {
+  console.log("Latest Ethereum Block is ", result);
+});
+```
+
+</Tab>
+</Tabs>
+

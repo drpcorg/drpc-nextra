@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { H1 } from "./components/mdx/H1";
 import { DocsThemeConfig } from "nextra-theme-docs";
 import { H2 } from "./components/mdx/H2";
+import { CustomNavbar } from "./components/CustomNavbar";
 import {
   DEFAULT_META_DESCRIPTION,
   DEFAULT_META_TITLE,
@@ -79,6 +80,10 @@ const config: DocsThemeConfig = {
   },
   themeSwitch: {
     component: () => null,
+  },
+  logoLink: "https://drpc.org",
+  navbar: {
+    component: CustomNavbar,
   },
 };
 

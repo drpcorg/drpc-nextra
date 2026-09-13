@@ -1,0 +1,21 @@
+import Image from "next/image";
+import freetier from "./free-tier.png";
+import paidtier from "./paid-tier.png";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Comparing dRPC Free vs Paid Request Tiers: Features and Costs"
+  description="Compare dRPC's free and paid plans. Understand request limits, features, and load balancing options."
+/>
+
+# Free vs paid requests
+
+DRPC has two tiers: a free tier and a paid tier. The free tier includes 210 million Compute Units (CU) per 30-day period and only over public nodes, which can be less reliable and slower. However, the load balancing over multiple public nodes still makes it better than connecting to a single public node.
+
+<Image src={freetier} alt="DRPC request free tier" sizes="55vw" />
+
+The paid tier allows users to connect to all providers and offers additional features, such as load balancing fallback and verification. These features are not available in the free tier.
+
+The paid tier is based on a pay-as-you-go strategy where users deposit money into their account and DRPC charges them per request. Each request have its own cost in compute units (CUs), you can see the exact values [here](./compute-units).
+
+<Image src={paidtier} alt="DRPC request paid tier" sizes="55vw" />

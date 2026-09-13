@@ -7,7 +7,9 @@
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:api-nav": "node scripts/generate-api-reference-nav.js",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" next build"
   },
   "repository": {
     "type": "git",
@@ -47,5 +49,6 @@
     "postcss-simple-vars": "^7.0.1",
     "typescript": "^5.0"
   },
+
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

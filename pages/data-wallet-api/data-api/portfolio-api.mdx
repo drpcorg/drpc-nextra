@@ -1,0 +1,28 @@
+import { Meta } from "../../../components/Meta";
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+<Meta
+  title="Portfolio API | Wallet Portfolio, Net Worth, Transactions & PnL Data"
+  description="Access wallet portfolio data, balances, transaction history, net worth, PnL analytics, and yield opportunities across EVM and non-EVM blockchains with the dRPC Portfolio API"
+/>
+
+# Portfolio API
+
+The dRPC Portfolio API provides unified access to wallet portfolio data across multiple blockchain networks. Retrieve token balances, portfolio value, transaction history, net worth, profit and loss (PnL), and yield opportunities for both EVM and non-EVM wallets through a single API.
+Whether you're building a crypto wallet, portfolio tracker, analytics dashboard, tax tool, or DeFi application, the Portfolio API helps you access and analyze wallet activity without maintaining your own indexing infrastructure.
+
+## Available methods
+
+[Get EVM Portfolio](/data-api/portfolio-api/getevmportfolio) : Returns the token portfolio and balances for an EVM-compatible wallet address. \
+[Get non-EVM Portfolio](/data-api/portfolio-api/getnonevmportfolio) : Returns the token portfolio and balances for a non-EVM wallet address. \
+[Get Historical Net Worth](/data-api/portfolio-api/gethistoricalnetworth) : Retrieves the historical net worth of a wallet over time. \
+[Get PNL History](/data-api/portfolio-api/getpnlhistory) : Returns the historical profit and loss (PNL) data for a wallet. \
+[Get Aggregated PNL](/data-api/portfolio-api/getaggregatedpnl) : Provides aggregated profit and loss data across a wallet's holdings. \
+[Get PnL for Multiple Wallets](/data-api/portfolio-api/getpnlformultiplewallets) : Retrieves profit and loss data for multiple wallet addresses at once. \
+[Get Yield Recommendations](/data-api/portfolio-api/getyieldrecommendations) : Returns yield opportunity recommendations based on a wallet's holdings.
+
+The Portfolio API combines wallet balances, transaction history, performance tracking, and portfolio analytics into a single interface, making it easier to build multichain Web3 applications with accurate and up-to-date wallet data.
+
+<Space h={16} />
+<GetStarted />

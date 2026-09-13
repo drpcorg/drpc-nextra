@@ -1,0 +1,17 @@
+{
+  "index": "Welcome",
+  "-- dRPC Cloud": { "type": "separator", "title": "NodeCloud" },
+  "howitworks": "How it works",
+  "gettingstarted": "Getting started",
+  "pricing": "Pricing",
+  "specs": "Implementation docs",
+  "web-api": "Web APIs",
+  "providers": "Providers",
+  "referral": "Referral",
+  "faucets": "Faucets",
+  "tor": "Tor Support",
+  "solana-yellowstone-geyser-grpc": "Solana Geyser gRPC",
+  "-- dRPC Core": { "type": "separator", "title": "NodeCore" },
+  "nodecore-open-source-rpc-stack": "What is NodeCore",
+  "nodecore-quickstart": "Quickstart"
+}
