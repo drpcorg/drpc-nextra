@@ -1,0 +1,18 @@
+import { GetStarted } from "../../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../../components/Meta";
+
+<Meta
+  title="Tron Node info | dRPC"
+/>
+
+# Tron Node info
+
+Returns information about the queried node itself and its peers.
+
+[getnodeinfo](/tron-api/tron-http-api/nodeinfo/getnodeinfo) : Returns version, configuration, and peer connection details for the queried node.  \
+[listnodes](/tron-api/tron-http-api/nodeinfo/listnodes) : Returns the list of peer nodes currently connected to the queried node.  \
+[getpendingsize](/tron-api/tron-http-api/nodeinfo/getpendingsize) : Returns the current number of transactions waiting in the node's pending pool.
+
+<Space h={16} />
+<GetStarted />

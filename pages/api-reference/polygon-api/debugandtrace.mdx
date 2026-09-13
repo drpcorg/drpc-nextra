@@ -1,0 +1,27 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Polygon debug and trace info | dRPC"
+/>
+
+## Debug API
+
+Available only on the paid tier. Provides advanced debugging and tracing tools to analyze and troubleshoot transactions and blocks on the Polygon network.
+
+Trace API methods were deprecated on Polygon Amoy Testnet on July 1, 2026, and on Mainnet on July 15, 2026, following Polygon's sunset of Erigon support.
+
+Please use `debug_trace*` methods as an alternative if possible.
+
+For more details, see the [Polygon announcement](https://forum.polygon.technology/t/sunsetting-erigon-support/21872).
+
+[debug_traceBlockByHash](/polygon-api/debugandtrace/debug_traceBlockByHash) : Traces block execution by hash. \
+[debug_traceBlockByNumber](/polygon-api/debugandtrace/debug_traceBlockByNumber) : Traces block execution by number. \
+[debug_traceTransaction](/polygon-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a transaction. \
+[debug_traceCall](/polygon-api/debugandtrace/debug_traceCall) : Traces a specific call without changing state.
+
+These methods provide detailed debugging and analysis capabilities on the Polygon network.
+
+<Space h={16} />
+<GetStarted />

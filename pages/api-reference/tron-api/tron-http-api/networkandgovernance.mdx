@@ -1,0 +1,23 @@
+import { GetStarted } from "../../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../../components/Meta";
+
+<Meta
+  title="Tron Network and governance | dRPC"
+/>
+
+# Tron Network and governance
+
+Manages network parameter proposals and returns chain-wide configuration data.
+
+[proposalapprove](/tron-api/tron-http-api/networkandgovernance/proposalapprove) : Creates a transaction for a witness to approve or withdraw approval of a network parameter proposal.  \
+[proposalcreate](/tron-api/tron-http-api/networkandgovernance/proposalcreate) : Creates a transaction to propose a change to a network configuration parameter.  \
+[proposaldelete](/tron-api/tron-http-api/networkandgovernance/proposaldelete) : Creates a transaction to cancel a previously submitted network parameter proposal. \
+[listproposals](/tron-api/tron-http-api/networkandgovernance/listproposals) : Returns the full list of network parameter proposals and their statuses.  \
+[getpaginatedproposallist](/tron-api/tron-http-api/networkandgovernance/getpaginatedproposallist) : Returns a paginated list of network parameter proposals using offset and limit parameters. \
+[getproposalbyid](/tron-api/tron-http-api/networkandgovernance/getproposalbyid) : Returns the details and vote status of a specific network parameter proposal.  \
+[getchainparameters](/tron-api/tron-http-api/networkandgovernance/getchainparameters) : Returns the current values of all configurable network parameters.  \
+[getnextmaintenancetime](/tron-api/tron-http-api/networkandgovernance/getnextmaintenancetime) : Returns the Unix timestamp of the next network maintenance (vote-counting) cycle.
+
+<Space h={16} />
+<GetStarted />

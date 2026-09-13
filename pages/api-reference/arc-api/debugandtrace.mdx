@@ -1,0 +1,33 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Arc Debug and trace | dRPC"
+/>
+
+# Debug and trace
+
+The Debug and trace group allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis. Key methods include:
+
+[trace_filter](/arc-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
+[trace_rawTransaction](/arc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
+[trace_block](/arc-api/debugandtrace/trace_block) : Traces execution of all transactions in a block. \
+[trace_replayBlockTransactions](/arc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for debugging. \
+[debug_traceBlockByHash](/arc-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/arc-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[trace_transaction](/arc-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/arc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[trace_replayTransaction](/arc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging. \
+[trace_callMany](/arc-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
+[trace_get](/arc-api/debugandtrace/trace_get) : Retrieves trace data by criteria. \
+[trace_call](/arc-api/debugandtrace/trace_call) : Executes a trace call. \
+[debug_traceCall](/arc-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
+[debug_storageRangeAt](/arc-api/debugandtrace/debug_storageRangeAt) : Returns the contract storage for a specified range. \
+[debug_traceBlock](/arc-api/debugandtrace/debug_traceBlock) : Traces the execution of all transactions in a supplied raw block. \
+[debug_traceCallMany](/arc-api/debugandtrace/debug_traceCallMany) : Executes and traces multiple call bundles in sequence.
+
+These methods provide developers with essential tools for debug and trace on the Arc network.
+
+<Space h={16} />
+<GetStarted />

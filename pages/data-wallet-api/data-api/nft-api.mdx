@@ -1,0 +1,25 @@
+import { Meta } from "../../../components/Meta";
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+
+<Meta
+  title="NFT API | NFT Holdings, Collections & Metadata"
+  description="Retrieve NFT holdings, collections, and metadata across supported blockchain networks with the dRPC NFT API for wallets and Web3 applications."
+/>
+
+
+# NFT API
+
+The dRPC NFT API provides unified access to NFT holdings, collections, and metadata across supported blockchain networks. Retrieve NFTs owned by wallet addresses, explore NFT collections, access token metadata, and refresh cached metadata through a single API.
+If you're building an NFT marketplace, crypto wallet, portfolio tracker, gallery, or analytics platform, the NFT API simplifies working with NFT assets without requiring custom indexing or blockchain data processing.
+
+## Available methods
+
+[Get Wallet NFTs (Non-EVM)](/data-api/nft-api/getwalletnfts) : Retrieves the NFTs held by a non-EVM wallet address. \
+[Get NFT Collections](/data-api/nft-api/getnftcollections) : Fetches the NFT collections associated with a wallet. \
+[Get NFT Metadata by ID](/data-api/nft-api/getnftmetadatabyid) : Returns metadata for a specific NFT by its ID. \
+[Refresh NFT Metadata](/data-api/nft-api/refreshnftmetadata) : Triggers a refresh of the stored metadata for a specific NFT.
+
+The NFT API provides a consistent way to access wallet NFT data, collection information, and metadata, making it easier to build multichain Web3 applications with comprehensive NFT support.
+<Space h={16} />
+<GetStarted />

@@ -1,4 +1,0 @@
-{
-  "eth_call": "eth_call",
-  "eth_sendRawTransaction": "eth_sendRawTransaction"
-}

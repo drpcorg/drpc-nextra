@@ -1,0 +1,24 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+
+<Meta
+  title="Robinhood Accounts info | dRPC"
+/>
+
+# Accounts info
+
+The Accounts info group returns data about an account's balance, contract code, or stored data on the blockchain. Key methods include:
+
+[eth_accounts](/robinhood-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
+[eth_getBalance](/robinhood-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
+[eth_getCode](/robinhood-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
+[eth_getProof](/robinhood-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
+[eth_getStorageAt](/robinhood-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage. \
+[eth_getStorageValues](/robinhood-api/accountinfo/eth_getStorageValues) : Returns multiple storage values for an account at specified storage slots.
+
+These methods provide developers with essential tools for accounts info on the Robinhood network.
+
+<Space h={16} />
+<GetStarted />

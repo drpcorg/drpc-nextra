@@ -1,0 +1,19 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Arc Arc namespace | dRPC"
+/>
+
+# Arc namespace
+
+The Arc namespace group arc's custom arc_* namespace, layered on top of the standard Reth JSON-RPC surface, for reading consensus finality proofs and node build information. Key methods include:
+
+[arc_getCertificate](/arc-api/arcnamespace/arc_getCertificate) : Returns the Malachite BFT consensus commit certificate for a given block height. \
+[arc_getVersion](/arc-api/arcnamespace/arc_getVersion) : Returns build and version information for the node's execution client.
+
+These methods provide developers with essential tools for arc namespace on the Arc network.
+
+<Space h={16} />
+<GetStarted />
