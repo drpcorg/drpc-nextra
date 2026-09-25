@@ -25,7 +25,20 @@ export function ApiReferenceSidebar() {
       <div className="api-ref-sidebar__selector">
         <button className="api-ref-sidebar__trigger" onClick={() => setSelectorOpen((v) => !v)}>
           <span>{currentNetwork?.title ?? "Select a network"}</span>
-          <span aria-hidden>{selectorOpen ? "▲" : "▼"}</span>
+          <svg
+            className={"api-ref-sidebar__trigger-chevron" + (selectorOpen ? " api-ref-sidebar__trigger-chevron--open" : "")}
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M9 5l7 7-7 7" />
+          </svg>
         </button>
 
         {selectorOpen ? (
