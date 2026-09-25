@@ -28,7 +28,7 @@ export function CustomNavbar({ flatDirectories, items }: CustomNavbarProps) {
   const { pathname } = useRouter();
 
   const leftTabs = items.filter(
-    (item: any) => item.name === "guides" || item.name === "api-reference" || item.name === "data-wallet-api"
+    (item: any) => item.name === "guides" || item.name === "api-reference" || item.name === "data-api"
   );
   const accountItem = items.find((item: any) => item.name === "drpc-account") as any;
 

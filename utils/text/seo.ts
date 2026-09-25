@@ -20,7 +20,7 @@ const METHOD_DOCS_URL_BASES_MAP = {
   "/api-reference/viction-api": "Viction",
   "/api-reference/superseed-api": "Superseed",
   "/api-reference/tron-api": "Tron",
-  "/data-wallet-api/data-api": "Data API",
+  "/data-api": "Data API",
   "/api-reference/robinhood-api": "Robinhood",
   "/api-reference/arc-api": "Arc",
 };
@@ -141,4 +141,3 @@ export const DEFAULT_META_TITLE = "Docs: RPC & Chain Methods Documentation | dRP
 export const DEFAULT_META_DESCRIPTION = "Access RPC documentation, chain method references, and integration guides. Clear technical resources for developers building on dRPC.";
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-

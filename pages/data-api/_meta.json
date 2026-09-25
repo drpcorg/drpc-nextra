@@ -1,0 +1,12 @@
+{
+  "-- Overview": { "type": "separator", "title": "Overview" },
+  "index": "Welcome",
+  "quickstart-data-api": "Quickstart",
+  "-- Data & Wallet API": { "type": "separator", "title": "Data & Wallet API" },
+  "blockchain-api": "Supported Chains",
+  "portfolio-api": "Wallet",
+  "token-api": "Token",
+  "nft-api": "NFT",
+  "protocols-api": "Protocols",
+  "transaction-api": "Transactions"
+}

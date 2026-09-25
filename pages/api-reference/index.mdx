@@ -1,13 +1,69 @@
 import { Meta } from "../../components/Meta";
 import { ApiReferenceWelcome } from "../../components/ApiReferenceWelcome";
+import { GetStarted } from "../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
 
 <Meta
   title="API Reference | dRPC"
   description="Browse dRPC's JSON-RPC and REST API reference across all supported networks."
 />
 
-# API Reference
+
+
+# dRPC API Documentation
+
+RPC access to 200+ blockchain networks, plus indexed Data & Wallet APIs for portfolio, token, NFT, and transaction data. Standard JSON-RPC and HTTP endpoints, per-chain method references, and code examples in JavaScript, Python, and other common languages.
+
+<Space h={16} />
+<GetStarted />
+
+## Send your first request
+
+Each dRPC endpoint includes your key as the `dkey` URL parameter and the target network as `network`. You can also send the key via the `Drpc-Key` header instead.
+
+```bash
+curl -X POST 'https://lb.drpc.live/ethereum/YOUR_API_KEY' \
+  -H 'Content-Type: application/json' \
+  --data '{"method":"eth_blockNumber","params":[],"id":1,"jsonrpc":"2.0"}'
+```
+
+## Products
+
+[NodeCloud](https://drpc.org/nodecloud-multichain-rpc-management)
+Multichain endpoint management: smart routing across 40+ underlying providers, key controls, observability dashboards, and team management.
+
+[Data & Wallet API](https://drpc.org/data-api)
+Indexed queries for wallet portfolios, token prices, NFTs, DeFi protocol data, and transaction history — without running your own indexer.
+
+[NodeCore](https://drpc.org/nodecore-open-source-rpc-infrastructure)
+Open-source RPC infrastructure stack for teams that want to self-host their own RPC cluster.
+
+[NodeHaus](https://drpc.org/nodehaus-rpc-infrastructure-for-chains)
+Managed RPC infrastructure for blockchain foundations, covering public nodes, faucets, and dashboards at the chain level.
+
+## API Reference
 
 Pick a network below to see its available methods, parameters, and request examples.
 
 <ApiReferenceWelcome />
+
+## How it works
+
+[Overview](/guides/howitworks/overview)
+How requests are routed across providers and how failover works.
+
+[Rate limiting](/guides/howitworks/ratelimiting)
+Per-key limits and how they scale with usage.
+
+[Archive nodes](/guides/howitworks/archive-nodes)
+Availability and limitations of historical state access.
+
+[MEV protection](/guides/howitworks/mev-protection)
+How transaction submission can avoid frontrunning and sandwich attacks.
+
+## Getting started
+
+- [Create a dRPC key](/guides/gettingstarted/createaccount)
+- [Make your first request](/guides/gettingstarted/firstrequest)
+- [Teams and roles](/guides/gettingstarted/teamsAndRoles)
+- [Authenticate requests with JWT](/guides/gettingstarted/jwt)

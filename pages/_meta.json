@@ -2,7 +2,7 @@
   "index": { "display": "hidden" },
   "guides": { "title": "Guides", "type": "page" },
   "api-reference": { "title": "API Reference", "type": "page" },
-  "data-wallet-api": { "title": "Data & Wallet API", "type": "page" },
+  "data-api": { "title": "Data & Wallet API", "type": "page" },
   "drpc-account": {
     "title": "My Account",
     "type": "page",

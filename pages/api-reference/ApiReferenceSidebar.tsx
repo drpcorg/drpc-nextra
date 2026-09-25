@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getAllNetworks, getNetworkBySlug, type NetworkNavItem, type SectionNavItem } from "../lib/apiReferenceNav";
+import { getAllNetworks, getNetworkBySlug, type NetworkNavItem, type SectionNavItem } from "../../lib/apiReferenceNav";
 
 export function ApiReferenceSidebar() {
   const { asPath } = useRouter();
@@ -65,7 +65,7 @@ export function ApiReferenceSidebar() {
         ) : null}
       </div>
 
-      {currentNetwork ? <MethodAccordion network={currentNetwork} /> : null}
+      {currentNetwork && !selectorOpen ? <MethodAccordion network={currentNetwork} /> : null}
     </div>
   );
 }
