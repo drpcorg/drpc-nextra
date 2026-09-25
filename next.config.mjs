@@ -335,6 +335,13 @@ addWalletApiRedirects();
 const nextConfig = withNextra({
   basePath: "/docs",
   output: "standalone",
+  experimental: {
+    // Reduces peak memory during `next build` by processing pages with a
+    // single worker instead of one per CPU core — trades build speed for
+    // memory headroom while the actual OOM cause is still being tracked down.
+    cpus: 1,
+    workerThreads: false,
+  },
   async redirects() {
     return PERMANENT_REDIRECTS.map((redirect) => ({
       source: redirect.from,

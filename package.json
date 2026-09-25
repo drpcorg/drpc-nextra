@@ -4,7 +4,7 @@
   "description": "Nextra docs template",
   "scripts": {
     "dev": "next dev",
-    "build": "NODE_OPTIONS=\"--max-old-space-size=8192\" next build",
+    "build": "NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "prepare": "husky install",

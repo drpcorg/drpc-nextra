@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const API_REF_DIR = path.join(__dirname, "..", "pages", "api-reference");
-const OUT_PATH = path.join(__dirname, "..", "lib", "api-reference-nav.generated.json");
+const OUT_PATH = path.join(__dirname, "..", "public", "api-reference-nav.generated.json");
 
 function readMeta(dir) {
   const metaPath = path.join(dir, "_meta.json");
@@ -24,19 +24,34 @@ function stripApiSuffix(title) {
   return title.replace(/\s+API$/i, "");
 }
 
-function isMdxFile(name) {
-  return name.endsWith(".mdx") || name.endsWith(".md");
+function isPageFile(name) {
+  return name.endsWith(".mdx") || name.endsWith(".md") || name.endsWith(".tsx");
 }
 
 function buildMethods(sectionDir, sectionRoute) {
   const meta = readMeta(sectionDir);
-  return fs
+  const files = fs
     .readdirSync(sectionDir, { withFileTypes: true })
-    .filter((e) => e.isFile() && isMdxFile(e.name) && e.name !== "index.mdx")
-    .map((e) => {
-      const name = e.name.replace(/\.mdx?$/, "");
-      return { name, title: titleFor(meta, name, name), route: `${sectionRoute}/${name}` };
-    });
+    .filter((e) => e.isFile() && isPageFile(e.name) && e.name !== "index.mdx" && e.name !== "index.tsx");
+
+  // During migration, a method's old .mdx and new .tsx can briefly coexist in
+  // the same folder (same base name) — prefer the .tsx (the migrated version)
+  // so it doesn't show up twice in the sidebar until the old file is deleted.
+  const byBaseName = new Map();
+  for (const e of files) {
+    const name = e.name.replace(/\.(mdx?|tsx)$/, "");
+    const isTsx = e.name.endsWith(".tsx");
+    const existing = byBaseName.get(name);
+    if (!existing || (isTsx && !existing.isTsx)) {
+      byBaseName.set(name, { name, isTsx });
+    }
+  }
+
+  return [...byBaseName.values()].map(({ name }) => ({
+    name,
+    title: titleFor(meta, name, name),
+    route: `${sectionRoute}/${name}`,
+  }));
 }
 
 function buildSections(networkDir, networkRoute) {
