@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { getAllNetworks, getNetworkBySlug, type NetworkNavItem, type SectionNavItem } from "../lib/apiReferenceNav";
+import { loadNetworks, type NetworkNavItem, type SectionNavItem } from "../lib/apiReferenceNav";
 
 export function ApiReferenceSidebar() {
-  const { asPath } = useRouter();
+  const router = useRouter();
+  const { asPath, basePath } = router;
   const networkSlug = asPath.replace(/^\/api-reference\/?/, "").split("/").filter(Boolean)[0];
-  const currentNetwork = networkSlug ? getNetworkBySlug(networkSlug) : null;
-  const allNetworks = getAllNetworks();
-  const [selectorOpen, setSelectorOpen] = useState(!currentNetwork);
+
+  const [allNetworks, setAllNetworks] = useState<NetworkNavItem[]>([]);
+  useEffect(() => {
+    let cancelled = false;
+    loadNetworks(basePath).then((networks) => {
+      if (!cancelled) setAllNetworks(networks);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [basePath]);
+
+  const currentNetwork = networkSlug ? allNetworks.find((n) => n.slug === networkSlug) ?? null : null;
+  const [selectorOpen, setSelectorOpen] = useState(false);
+  useEffect(() => {
+    if (allNetworks.length > 0 && !currentNetwork) setSelectorOpen(true);
+  }, [allNetworks, currentNetwork]);
   const [query, setQuery] = useState("");
 
   const closeSelector = () => {
@@ -65,7 +80,7 @@ export function ApiReferenceSidebar() {
         ) : null}
       </div>
 
-      {currentNetwork ? <MethodAccordion network={currentNetwork} /> : null}
+      {currentNetwork && !selectorOpen ? <MethodAccordion network={currentNetwork} /> : null}
     </div>
   );
 }
