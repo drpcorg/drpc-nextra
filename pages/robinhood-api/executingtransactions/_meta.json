@@ -1,6 +1,5 @@
 {
   "eth_call": "eth_call",
   "eth_sendRawTransaction": "eth_sendRawTransaction",
-  "eth_sendBundle": "eth_sendBundle",
   "eth_simulateV1": "eth_simulateV1"
 }
