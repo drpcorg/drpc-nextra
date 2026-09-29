@@ -1,0 +1,153 @@
+# dRPC gRPC Guide
+
+dRPC serves each supported chain's native gRPC API at grpc.drpc.live:443. Use the chain's own protobuf definitions unchanged and add two metadata values to every call: x-drpc-key and x-drpc-chain.
+
+## Endpoint and required metadata
+
+Connect over TLS to `grpc.drpc.live:443` and send both values below as gRPC metadata on every call. That is the only dRPC-specific part: requests and responses are the chain's own protobuf messages.
+
+| Metadata key | Value | Example |
+| --- | --- | --- |
+| `x-drpc-key` | Your dRPC API key | `Ak3...9xQ` |
+| `x-drpc-chain` | The chain's dRPC short name (see Supported chains) | `sui` |
+
+The chain goes in metadata rather than the URL because gRPC uses the request path for the method name, and service names like `cosmos.bank.v1beta1.Query` are shared by many chains. Metadata keys are case-insensitive.
+
+## Quick test with grpcurl
+
+[grpcurl](https://github.com/fullstorydev/grpcurl) works without proto files, because the endpoint supports gRPC server reflection. Pass the two metadata values with `-H`.
+
+```bash
+export DRPC_KEY=<your dRPC key>
+
+# List the services dRPC routes
+grpcurl -H "x-drpc-key: $DRPC_KEY" -H "x-drpc-chain: sui" \
+  grpc.drpc.live:443 list
+
+# Inspect one service
+grpcurl -H "x-drpc-key: $DRPC_KEY" -H "x-drpc-chain: sui" \
+  grpc.drpc.live:443 describe sui.rpc.v2.LedgerService
+
+# Call a method on Sui
+grpcurl -H "x-drpc-key: $DRPC_KEY" -H "x-drpc-chain: sui" -d '{}' \
+  grpc.drpc.live:443 sui.rpc.v2.LedgerService/GetServiceInfo
+
+# Same endpoint, a different chain: only x-drpc-chain changes
+grpcurl -H "x-drpc-key: $DRPC_KEY" -H "x-drpc-chain: celestia" -d '{}' \
+  grpc.drpc.live:443 cosmos.base.tendermint.v1beta1.Service/GetLatestBlock
+```
+
+`list` returns the services for every supported chain, not only the one in `x-drpc-chain`. Call the services your chain actually implements.
+
+## Go example
+
+Set the metadata once on the connection with `grpc.WithPerRPCCredentials`, and every call from every generated client carries it. The rest is the chain's standard Go client. The example below calls Sui.
+
+```go
+package main
+
+import (
+	"context"
+	"crypto/tls"
+	"fmt"
+	"log"
+	"os"
+	"time"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials"
+
+	suirpc "example.com/myapp/gen/sui/rpc/v2"
+)
+
+// drpcAuth attaches the two dRPC metadata values to every call on the connection.
+type drpcAuth struct {
+	key   string
+	chain string
+}
+
+func (a drpcAuth) GetRequestMetadata(context.Context, ...string) (map[string]string, error) {
+	return map[string]string{
+		"x-drpc-key":   a.key,
+		"x-drpc-chain": a.chain,
+	}, nil
+}
+
+func (drpcAuth) RequireTransportSecurity() bool { return true }
+
+func main() {
+	conn, err := grpc.NewClient("grpc.drpc.live:443",
+		grpc.WithTransportCredentials(credentials.NewTLS(&tls.Config{})),
+		grpc.WithPerRPCCredentials(drpcAuth{key: os.Getenv("DRPC_KEY"), chain: "sui"}),
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer conn.Close()
+
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
+
+	info, err := suirpc.NewLedgerServiceClient(conn).GetServiceInfo(ctx, &suirpc.GetServiceInfoRequest{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("chain:", info.GetChain(), "checkpoint:", info.GetCheckpointHeight())
+}
+```
+
+To use another chain, change `chain` and swap in that chain's client. Cosmos SDK chains, for example, can use the clients from the Cosmos SDK Go module. If you only need the metadata on some calls, add it per call with `metadata.AppendToOutgoingContext(ctx, "x-drpc-key", key, "x-drpc-chain", "sui")`.
+
+**Generating the Sui stubs.** Sui publishes its protos in [MystenLabs/sui-apis](https://github.com/MystenLabs/sui-apis) without Go package options, so set one when you generate. With [buf](https://buf.build), `protoc-gen-go` and `protoc-gen-go-grpc` installed:
+
+```yaml
+# buf.gen.yaml
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: go_package
+      path: sui/rpc/v2
+      value: example.com/myapp/gen/sui/rpc/v2;suirpc
+plugins:
+  - local: protoc-gen-go
+    out: gen
+    opt:
+      - paths=source_relative
+      - Mgoogle/protobuf/timestamp.proto=google.golang.org/protobuf/types/known/timestamppb
+  - local: protoc-gen-go-grpc
+    out: gen
+    opt:
+      - paths=source_relative
+      - Mgoogle/protobuf/timestamp.proto=google.golang.org/protobuf/types/known/timestamppb
+```
+
+```bash
+buf generate https://github.com/MystenLabs/sui-apis.git --path proto/sui/rpc/v2 --template buf.gen.yaml
+```
+
+## Supported chains
+
+The value of `x-drpc-chain` is the chain's dRPC short name. Protos come from each chain's own project.
+
+| Chain | `x-drpc-chain` | Protos | Sample method |
+| --- | --- | --- | --- |
+| Sui Mainnet | `sui` | [MystenLabs/sui-apis](https://github.com/MystenLabs/sui-apis) (`sui.rpc.v2`) | `sui.rpc.v2.LedgerService/GetServiceInfo` |
+| Sui Testnet | `sui-testnet` | [MystenLabs/sui-apis](https://github.com/MystenLabs/sui-apis) (`sui.rpc.v2`) | `sui.rpc.v2.LedgerService/GetServiceInfo` |
+| Celestia Mainnet | `celestia` | [cosmos/cosmos-sdk](https://github.com/cosmos/cosmos-sdk) query and tx services | `cosmos.base.tendermint.v1beta1.Service/GetLatestBlock` |
+| Celestia Mocha | `celestia-mocha` | [cosmos/cosmos-sdk](https://github.com/cosmos/cosmos-sdk) query and tx services | `cosmos.base.tendermint.v1beta1.Service/GetLatestBlock` |
+
+## Errors
+
+Errors use standard gRPC status codes:
+
+| Status | When |
+| --- | --- |
+| `UNAUTHENTICATED` | `x-drpc-key` is missing, invalid or deactivated |
+| `INVALID_ARGUMENT` | `x-drpc-chain` is missing or unknown, or the request is malformed |
+| `UNIMPLEMENTED` | The method is not supported for that chain, or it is server-streaming |
+| `PERMISSION_DENIED` | The key's settings block this chain, IP, origin or method |
+| `RESOURCE_EXHAUSTED` | Rate limit, balance or daily limit exceeded, or the message is too large |
+| `DEADLINE_EXCEEDED` | The request timed out |
+| `UNAVAILABLE` | No provider could serve the request right now; retry |
+| Any other code | Returned by the node itself and passed through unchanged, for example `NOT_FOUND` |
