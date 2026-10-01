@@ -8,8 +8,10 @@ Connect over TLS to `grpc.drpc.live:443` and send both values below as gRPC meta
 
 | Metadata key | Value | Example |
 | --- | --- | --- |
-| `x-drpc-key` | Your dRPC API key | `Ak3...9xQ` |
+| `x-drpc-key` (`x-token`) | Your dRPC API key | `Ak3...9xQ` |
 | `x-drpc-chain` | The chain's dRPC short name (see Supported chains) | `sui` |
+
+`x-token` is an alias for `x-drpc-key`, both carry your dRPC API key
 
 The chain goes in metadata rather than the URL because gRPC uses the request path for the method name, and service names like `cosmos.bank.v1beta1.Query` are shared by many chains. Metadata keys are case-insensitive.
 

@@ -7,20 +7,13 @@ import { Meta } from "../../components/Meta";
   title="Robinhood Debug and trace | dRPC"
 />
 
-# Debug and trace
+# Debug
 
-The Debug and trace group allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis. Key methods include:
+The Debug group allows to inspect block execution, and replay transactions or blocks for detailed analysis. Key methods include:
 
-[trace_filter](/robinhood-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
-[trace_block](/robinhood-api/debugandtrace/trace_block) : Traces execution of all transactions in a block. \
-[trace_replayBlockTransactions](/robinhood-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for debugging. \
 [debug_traceBlockByHash](/robinhood-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
 [debug_traceBlockByNumber](/robinhood-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
-[trace_transaction](/robinhood-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
 [debug_traceTransaction](/robinhood-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
-[trace_replayTransaction](/robinhood-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging. \
-[trace_get](/robinhood-api/debugandtrace/trace_get) : Retrieves trace data by criteria. \
-[trace_call](/robinhood-api/debugandtrace/trace_call) : Executes a trace call. \
 [debug_traceCall](/robinhood-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
 [debug_accountRange](/robinhood-api/debugandtrace/debug_accountRange) : Returns a list of accounts and their state at a given block, used for state inspection. \
 [debug_dumpBlock](/robinhood-api/debugandtrace/debug_dumpBlock) : Retrieves the full state of a block as a JSON dump for debugging. \
