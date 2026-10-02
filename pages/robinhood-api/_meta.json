@@ -1,7 +1,7 @@
 {
   "blocksinfo": "Blocks info",
   "transactionsinfo": "Transactions info",
-  "debugandtrace": "Debug and trace",
+  "debugandtrace": "Debug",
   "accountinfo": "Account info",
   "eventlogs": "Event logs",
   "chaininfo": "Chain info",
