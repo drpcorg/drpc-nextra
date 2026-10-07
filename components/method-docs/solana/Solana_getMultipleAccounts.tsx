@@ -237,43 +237,69 @@ const RESPONSE_JSON = `{
 
 const REQUEST_PARAMS: RequestParamProp = [
   {
-    paramName: "accountPublicKey",
-    type: "string",
-    paramDescription:
-      "The public key of the account to query.",
-  },
-  {
-    paramName: "encoding",
-    type: "string",
-    paramDescription: "Specifies the data encoding for the returned account information"
-  },
-  {
-    paramName: "dataSlice",
-    type: "object",
-    paramDescription: "Limits the returned account data based on the specified offset and length fields. Available only for \"base58\", \"base64\", or \"base64+zstd\" encodings."
-  },
-  {
-    paramName: "commitment",
-    type: "string",
-    paramDescription: "The level of commitment required for the query",
-    paramEnum: [
-      {
-        value: "finalized",
-        description:
-          "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
-      },
-      {
-        value: "confirmed",
-        description:
-          "The node will query the most recent block that has been voted on by supermajority of the cluster",
-      },
-      {
-        value: "processed",
-        description:
-          "The node will query its most recent block. Note that the block may not be complete",
-      },
-    ],
-  },
+  paramName: "accountPublicKeys",
+  type: "array",
+  paramDescription:
+    "An array of account public keys to query, as base-58 encoded strings. Maximum of 100 addresses per request.",
+},
+{
+  paramName: "encoding",
+  type: "string",
+  paramDescription: "Specifies the data encoding for the returned account information",
+  paramEnum: [
+    {
+      value: "base58",
+      description:
+        "Base-58 encoded binary data. Slow, intended for account data smaller than 129 bytes",
+    },
+    {
+      value: "base64",
+      description: "Base-64 encoded binary data",
+    },
+    {
+      value: "base64+zstd",
+      description:
+        "Base-64 encoded binary data, compressed with Zstandard",
+    },
+    {
+      value: "jsonParsed",
+      description:
+        "Account data parsed into a human-readable JSON format. If the node has no parser for the account's owner program, the response falls back to base64",
+    },
+  ],
+},
+{
+  paramName: "dataSlice",
+  type: "object",
+  paramDescription: "Limits the returned account data based on the specified offset and length fields. Available only for \"base58\", \"base64\", or \"base64+zstd\" encodings."
+},
+{
+  paramName: "minContextSlot",
+  type: "number",
+  paramDescription: "The minimum slot that the request can be evaluated at. If the node's current slot is lower, the request fails with an error"
+},
+{
+  paramName: "commitment",
+  type: "string",
+  paramDescription: "The level of commitment required for the query",
+  paramEnum: [
+    {
+      value: "finalized",
+      description:
+        "The node will query the most recent block confirmed by supermajority of the cluster as having reached maximum lockout, meaning the cluster has recognized this block as finalized",
+    },
+    {
+      value: "confirmed",
+      description:
+        "The node will query the most recent block that has been voted on by supermajority of the cluster",
+    },
+    {
+      value: "processed",
+      description:
+        "The node will query its most recent block. Note that the block may not be complete",
+    },
+  ],
+},
 ];
 
 const RESPONSE_PARAMS: ReqResParam[] = [
