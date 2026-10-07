@@ -20,10 +20,7 @@
     "href": "https://drpc.org/login",
     "newWindow": true
   },
-   "grpc-guide":  {
-    "title": "gRPC Guide",
-    "display": "hidden"
-  },
+   "grpc-guide": "gRPC Guide",
   "-- dRPC Core": {
     "type": "separator",
     "title": "NodeCore"
