@@ -1,15 +1,34 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { theme } from "../theme";
+import { ApiReferenceSidebar } from "../components/ApiReferenceSidebar";
+import { sectionPageMap } from "../lib/sectionPageMap";
 import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
 import "./global.css";
+import "../styles/api-reference.css";
+
+{/*
+  Must stay _app.mdx, not .tsx: only with _app.mdx does Nextra put the page map
+  (~300 KB of JSON for ~1700 pages) in _app once. With any other _app it inlines
+  the whole map into every page's bundle, which runs `next build` out of memory.
+*/}
 
 export default function App({ Component, pageProps }) {
+  const router = useRouter();
+  const isApiReference = router.pathname.startsWith("/api-reference");
+
+  useEffect(() => {
+    document.body.classList.toggle("api-reference-mode", isApiReference);
+  }, [isApiReference]);
+
   return (
     <MantineProvider theme={theme}>
       <Notifications />
-      <Component {...pageProps} />
+      {isApiReference ? <ApiReferenceSidebar /> : null}
+      <Component {...pageProps} __nextra_pageMap={sectionPageMap(router.route)} />
     </MantineProvider>
   );
 }

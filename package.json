@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "Nextra docs template",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/generate-api-reference-nav.js && next dev",
+    "build": "node scripts/generate-api-reference-nav.js && NODE_OPTIONS=\"--max-old-space-size=4096\" next build",
     "postbuild": "next-sitemap",
     "start": "next start",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "generate:api-nav": "node scripts/generate-api-reference-nav.js"
   },
   "repository": {
     "type": "git",

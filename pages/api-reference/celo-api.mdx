@@ -1,0 +1,238 @@
+# Celo API Overview
+
+Welcome to the Celo API Quickstart and Reference Guide. This guide provides everything you need to start building on Celo using dRPC’s JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Celo seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Celo API request.
+- A detailed list of **all Celo API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#CeloAPIMethods)
+
+## Celo API Quickstart
+
+To get started with building on Celo using dRPC's Celo RPC API, follow these steps:
+
+**1. Create a dRPC Account or Use Public Celo RPC endpoints**
+
+By signing up for a free dRPC account, you can access their Premium Celo RPC endpoints.
+
+**Public endpoints:**
+
+HTTPS
+
+```bash
+https://celo.drpc.org/
+```
+
+WSS:
+
+```bash
+wss://celo.drpc.org
+```
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Celo-drpc-quickstart
+cd Celo-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Celo RPC endpoints section. Copy the HTTPS endpoint URL for the Celo Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.live/celo/YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `‘https://lb.drpc.live/celo/YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Celo block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains. For more details, visit their [Celo documentation](https://docs.celo.org/integration).
+
+By following these steps, you can start building on Celo using dRPC's reliable and efficient RPC endpoints.
+
+<a id="CeloAPIMethods"></a>
+
+## Celo API Methods
+
+These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+
+## Accounts info
+
+Returns data about an account's balance, contract code, or stored data.
+
+[eth_accounts](/api-reference/celo-api/accountinfo/eth_accounts) \
+[eth_getBalance](/api-reference/celo-api/accountinfo/eth_getBalance) \
+[eth_getCode](/api-reference/celo-api/accountinfo/eth_getCode) \
+[eth_getProof](/api-reference/celo-api/accountinfo/eth_getProof) \
+[eth_getStorageAt](/api-reference/celo-api/accountinfo/eth_getStorageAt)
+
+## Blocks info
+
+Retrieves detailed information from a specified block, including transactions, receipts, and block data.
+
+[eth_blockNumber](/api-reference/celo-api/blocksinfo/eth_blockNumber) \
+[eth_getBlockByHash](/api-reference/celo-api/blocksinfo/eth_getBlockByHash) \
+[eth_getBlockByHash#full](/api-reference/celo-api/blocksinfo/eth_getBlockByHashfull) \
+[eth_getBlockByNumber](/api-reference/celo-api/blocksinfo/eth_getBlockByNumber) \
+[eth_getBlockByNumber#full](/api-reference/celo-api/blocksinfo/eth_getBlockByNumberfull) \
+[eth_newBlockFilter](/api-reference/celo-api/blocksinfo/eth_newBlockFilter) \
+[eth_getBlockReceipts](/api-reference/celo-api/blocksinfo/eth_getBlockReceipts) \
+[eth_getBlockTransactionCountByHash](/api-reference/celo-api/blocksinfo/eth_getBlockTransactionCountByHash) \
+[eth_getBlockTransactionCountByNumber](/api-reference/celo-api/blocksinfo/eth_getBlockTransactionCountByNumber)
+
+## Chain info
+
+Supplies details about the Celo network, its protocol version, and its configuration.
+
+[eth_chainId](/api-reference/celo-api/chaininfo/eth_chainId) \
+[eth_protocolVersion](/api-reference/celo-api/chaininfo/eth_protocolVersion) \
+[net_listening](/api-reference/celo-api/chaininfo/net_listening) \
+[net_version](/api-reference/celo-api/chaininfo/net_version) \
+[net_peerCount](/api-reference/celo-api/chaininfo/net_peerCount) \
+[eth_syncing](/api-reference/celo-api/chaininfo/eth_syncing) \
+[eth_hashrate](/api-reference/celo-api/chaininfo/eth_hashrate)
+
+## Debug and trace
+
+Available only on paid tier. Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis
+
+[trace_filter](/api-reference/celo-api/debugandtrace/trace_filter) \
+[trace_block](/api-reference/celo-api/debugandtrace/trace_block) \
+[trace_replayBlockTransactions](/api-reference/celo-api/debugandtrace/trace_replayBlockTransactions) \
+[trace_replayBlockTransactions#vmTrace](/api-reference/celo-api/debugandtrace/trace_replayBlockTransactionsvmTrace) \
+[debug_traceBlockByHash](/api-reference/celo-api/debugandtrace/debug_traceBlockByHash) \
+[debug_traceBlockByNumber](/api-reference/celo-api/debugandtrace/debug_traceBlockByNumber) \
+[trace_transaction](/api-reference/celo-api/debugandtrace/trace_transaction) \
+[debug_traceTransaction](/api-reference/celo-api/debugandtrace/debug_traceTransaction) \
+[trace_replayTransaction](/api-reference/celo-api/debugandtrace/trace_replayTransaction) \
+[trace_replayTransaction#vmTrace](/api-reference/celo-api/debugandtrace/trace_replayTransactionvmTrace) \
+[trace_callMany](/api-reference/celo-api/debugandtrace/trace_callMany) \
+[trace_get](/api-reference/celo-api/debugandtrace/trace_get) \
+[trace_call](/api-reference/celo-api/debugandtrace/trace_call) \
+[debug_traceCall](/api-reference/celo-api/debugandtrace/debug_traceCall)
+
+## Event logs
+
+Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
+
+[eth_getLogs](/api-reference/celo-api/eventlogs/eth_getLogs) \
+[eth_newFilter](/api-reference/celo-api/eventlogs/eth_newFilter) \
+[eth_getFilterChanges](/api-reference/celo-api/eventlogs/eth_getFilterChanges) \
+[eth_uninstallFilter](/api-reference/celo-api/eventlogs/eth_uninstallFilter) \
+[eth_getFilterLogs](/api-reference/celo-api/eventlogs/eth_getFilterLogs)
+
+## Executing transactions
+
+Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
+
+[eth_call](/api-reference/celo-api/executingtransactions/eth_call) \
+[eth_sendRawTransaction](/api-reference/celo-api/executingtransactions/eth_sendRawTransaction)
+
+## Gas estimation
+
+Estimates gas fees for transactions and provides historical and current gas price data.
+
+[eth_feeHistory](/api-reference/celo-api/gasestimation/eth_feeHistory) \
+[eth_estimateGas](/api-reference/celo-api/gasestimation/eth_estimateGas) \
+[eth_gasPrice](/api-reference/celo-api/gasestimation/eth_gasPrice) \
+[eth_createAccessList](/api-reference/celo-api/gasestimation/eth_createAccessList) \
+[eth_maxPriorityFeePerGas](/api-reference/celo-api/gasestimation/eth_maxPriorityFeePerGas)
+
+## Getting uncles
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+[eth_getUncleByBlockHashAndIndex](/api-reference/celo-api/gettinguncles/eth_getUncleByBlockHashAndIndex) \
+[eth_getUncleByBlockNumberAndIndex](/api-reference/celo-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) \
+[eth_getUncleCountByBlockHash](/api-reference/celo-api/gettinguncles/eth_getUncleCountByBlockHash) \
+[eth_getUncleCountByBlockNumber](/api-reference/celo-api/gettinguncles/eth_getUncleCountByBlockNumber)
+
+## Mining
+
+Provides details on the mining state of the Celo node
+
+[eth_coinbase](/api-reference/celo-api/mining/eth_coinbase) \
+[eth_mining](/api-reference/celo-api/mining/eth_mining)
+
+## Subscriptions
+
+Allows to subscribe to specific Celo events in real-time via WebSockets.
+
+[eth_subscribe](/api-reference/celo-api/subscriptions/eth_subscribe) \
+[eth_unsubscribe](/api-reference/celo-api/subscriptions/eth_unsubscribe)
+
+## Transactions info
+
+Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
+
+[eth_getTransactionByHash](/api-reference/celo-api/transactionsinfo/eth_getTransactionByHash) \
+[eth_getTransactionCount](/api-reference/celo-api/transactionsinfo/eth_getTransactionCount) \
+[eth_getTransactionReceipt](/api-reference/celo-api/transactionsinfo/eth_getTransactionReceipt) \
+[eth_newPendingTransactionFilter](/api-reference/celo-api/transactionsinfo/eth_newPendingTransactionFilter) \
+[eth_getTransactionByBlockHashAndIndex](/api-reference/celo-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) \
+[eth_getTransactionByBlockNumberAndIndex](/api-reference/celo-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) \
+[txpool_content](/api-reference/celo-api/transactionsinfo/txpool_content)
+
+## Web3
+
+Returns general network configuration data for Celo nodes.
+
+[web3_clientVersion](/api-reference/celo-api/web3/web3_clientVersion) \
+[web3_sha3](/api-reference/celo-api/web3/web3_sha3)

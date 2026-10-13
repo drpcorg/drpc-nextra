@@ -1,0 +1,265 @@
+# Robinhood API Overview
+
+Welcome to the Robinhood API Quickstart and Reference Guide. This guide provides everything you need to start building on Robinhood using dRPC's JSON-RPC API. Whether you're retrieving account balances, fetching block details, executing transactions, or estimating gas fees, this comprehensive guide will help you integrate Robinhood seamlessly into your applications.
+
+This page includes:
+
+- A **Quickstart Guide** to help you set up and make your first Robinhood API request.
+- A detailed list of **all Robinhood API methods**, categorized for easy reference.
+
+[Scroll to API Methods](#RobinhoodAPIMethods)
+
+## Robinhood API Quickstart
+
+To get started with building on Robinhood using dRPC's Robinhood RPC API, follow these steps:
+
+**1. Create a dRPC Account**
+
+By signing up for a free dRPC account, you can access Premium Robinhood RPC endpoints.
+
+**2. Set Up Your Development Environment**
+
+RPC can be requested in [various ways](https://drpc.org/docs/gettingstarted/firstrequest). In this example, we are going to use Node.js. Ensure you have [Node.js](https://nodejs.org/) and npm installed on your system. You can verify their installation by running:
+
+```bash
+node -v
+npm -v
+```
+
+If not installed, download and install them from the [official Node.js website](https://nodejs.org/).
+
+**3. Initialize Your Project**
+
+Create a new directory for your project and initialize it:
+
+```bash
+mkdir Robinhood-drpc-quickstart
+cd Robinhood-drpc-quickstart
+npm init --yes
+```
+
+**4. Install Axios**
+
+Axios is a popular HTTP client for making API requests. Install it using npm:
+
+```bash
+npm install axios
+```
+
+**5. Obtain dRPC Endpoint**
+
+Log in to your dRPC account and navigate to the Robinhood RPC endpoints section. Copy the HTTPS endpoint URL for the Robinhood Mainnet.
+
+**6. Write Your First Script**
+
+Create an `index.js` file in your project directory and add the following code:
+
+```jsx
+const axios = require('axios');
+
+const url = 'https://lb.drpc.live/robinhood/YOUR_DRPC_API_KEY';
+
+const payload = {
+  jsonrpc: '2.0',
+  id: 1,
+  method: 'eth_blockNumber',
+  params: []
+};
+
+axios.post(url, payload)
+  .then(response => {
+    console.log('The latest block number is', parseInt(response.data.result, 16));
+  })
+  .catch(error => {
+    console.error('Error fetching block number:', error);
+  });
+```
+
+Replace `'https://lb.drpc.live/robinhood/YOUR_DRPC_API_KEY'` with the actual endpoint URL you obtained from dRPC.
+
+**7. Run Your Script**
+
+Execute your script using Node.js:
+
+```bash
+node index.js
+```
+
+You should see the latest Robinhood block number printed in your console.
+
+**Additional Information**
+
+dRPC offers various features such as high performance nodes, access to multiple chains.
+
+By following these steps, you can start building on Robinhood using dRPC's reliable and efficient RPC endpoints.
+
+<a id="RobinhoodAPIMethods"></a>
+
+## Robinhood API Methods
+
+These endpoints allow to retrieve information about blocks, transactions, balances, logs, and more, facilitating efficient blockchain development and integration.
+
+
+## Accounts info
+
+
+Returns data about an account's balance, contract code, or stored data on the blockchain.
+
+
+[eth_accounts](/api-reference/robinhood-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
+[eth_getBalance](/api-reference/robinhood-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
+[eth_getCode](/api-reference/robinhood-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
+[eth_getProof](/api-reference/robinhood-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
+[eth_getStorageAt](/api-reference/robinhood-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage. \
+[eth_getStorageValues](/api-reference/robinhood-api/accountinfo/eth_getStorageValues) : Returns multiple storage values for an account at specified storage slots.
+
+
+## Blocks info
+
+
+Retrieves detailed information from a specified block, including transactions, receipts, and block data.
+
+
+[eth_blockNumber](/api-reference/robinhood-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
+[eth_getBlockByHash](/api-reference/robinhood-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByNumber](/api-reference/robinhood-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number. \
+[eth_newBlockFilter](/api-reference/robinhood-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockReceipts](/api-reference/robinhood-api/blocksinfo/eth_getBlockReceipts) : Retrieves receipts for a given block. \
+[eth_getBlockTransactionCountByHash](/api-reference/robinhood-api/blocksinfo/eth_getBlockTransactionCountByHash) : Gets the transaction count of a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/api-reference/robinhood-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Gets the transaction count of a block by its number.
+
+
+## Chain info
+
+
+Supplies details about the network, its protocol version, and its configuration.
+
+
+[eth_chainId](/api-reference/robinhood-api/chaininfo/eth_chainId) : Retrieves the chain ID of the network. \
+[eth_protocolVersion](/api-reference/robinhood-api/chaininfo/eth_protocolVersion) : Returns the protocol version used by the client. \
+[net_listening](/api-reference/robinhood-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
+[net_version](/api-reference/robinhood-api/chaininfo/net_version) : Returns the current network version. \
+[net_peerCount](/api-reference/robinhood-api/chaininfo/net_peerCount) : Retrieves the number of active peers. \
+[eth_syncing](/api-reference/robinhood-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node. \
+[eth_hashrate](/api-reference/robinhood-api/chaininfo/eth_hashrate) : Provides the current mining hashrate of the network.
+
+
+## Debug
+
+
+Allows to inspect block execution, and replay transactions or blocks for detailed analysis.
+
+
+[debug_traceBlockByHash](/api-reference/robinhood-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/api-reference/robinhood-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[debug_traceTransaction](/api-reference/robinhood-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[debug_traceCall](/api-reference/robinhood-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
+[debug_accountRange](/api-reference/robinhood-api/debugandtrace/debug_accountRange) : Returns a list of accounts and their state at a given block, used for state inspection. \
+[debug_dumpBlock](/api-reference/robinhood-api/debugandtrace/debug_dumpBlock) : Retrieves the full state of a block as a JSON dump for debugging. \
+[debug_getBadBlocks](/api-reference/robinhood-api/debugandtrace/debug_getBadBlocks) : Returns a list of the most recent "bad" (invalid) blocks the client has encountered. \
+[debug_getModifiedAccountsByHash](/api-reference/robinhood-api/debugandtrace/debug_getModifiedAccountsByHash) : Returns accounts modified between two block hashes. \
+[debug_getModifiedAccountsByNumber](/api-reference/robinhood-api/debugandtrace/debug_getModifiedAccountsByNumber) : Returns accounts modified between two block numbers. \
+[debug_getRawBlock](/api-reference/robinhood-api/debugandtrace/debug_getRawBlock) : Returns the RLP-encoded raw block data. \
+[debug_getRawHeader](/api-reference/robinhood-api/debugandtrace/debug_getRawHeader) : Returns the RLP-encoded raw block header. \
+[debug_getRawReceipts](/api-reference/robinhood-api/debugandtrace/debug_getRawReceipts) : Returns the RLP-encoded raw transaction receipts for a block. \
+[debug_getRawTransaction](/api-reference/robinhood-api/debugandtrace/debug_getRawTransaction) : Returns the RLP-encoded raw transaction data. \
+[debug_intermediateRoots](/api-reference/robinhood-api/debugandtrace/debug_intermediateRoots) : Returns the intermediate state roots produced while executing a block's transactions. \
+[debug_storageRangeAt](/api-reference/robinhood-api/debugandtrace/debug_storageRangeAt) : Returns a range of storage entries for an account at a given block and transaction index. \
+[debug_traceBlock](/api-reference/robinhood-api/debugandtrace/debug_traceBlock) : Traces all transactions in a given RLP-encoded block. \
+[debug_traceCallMany](/api-reference/robinhood-api/debugandtrace/debug_traceCallMany) : Executes and traces multiple call objects against a given block state.
+
+
+## Event logs
+
+
+Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
+
+
+[eth_getLogs](/api-reference/robinhood-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
+[eth_newFilter](/api-reference/robinhood-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs. \
+[eth_getFilterChanges](/api-reference/robinhood-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
+[eth_uninstallFilter](/api-reference/robinhood-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
+[eth_getFilterLogs](/api-reference/robinhood-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
+
+
+## Executing transactions
+
+
+Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
+
+
+[eth_call](/api-reference/robinhood-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without broadcasting it to the network. \
+[eth_sendRawTransaction](/api-reference/robinhood-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the blockchain for execution. \
+[eth_simulateV1](/api-reference/robinhood-api/executingtransactions/eth_simulateV1) : Simulates a sequence of calls or transactions against a specified block state without broadcasting.
+
+
+## Gas estimation
+
+
+Estimates gas fees for transactions and provides historical and current gas price data.
+
+
+[eth_feeHistory](/api-reference/robinhood-api/gasestimation/eth_feeHistory) : Retrieves historical gas fees over a specified range of blocks. \
+[eth_estimateGas](/api-reference/robinhood-api/gasestimation/eth_estimateGas) : Estimates the gas required for a transaction based on its parameters. \
+[eth_gasPrice](/api-reference/robinhood-api/gasestimation/eth_gasPrice) : Returns the current gas price. \
+[eth_createAccessList](/api-reference/robinhood-api/gasestimation/eth_createAccessList) : Generates an access list to reduce gas costs. \
+[eth_maxPriorityFeePerGas](/api-reference/robinhood-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee per gas unit. \
+[eth_blobBaseFee](/api-reference/robinhood-api/gasestimation/eth_blobBaseFee) : Returns the base fee per blob gas for the current or next block (EIP-4844).
+
+
+## Getting uncles
+
+
+Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
+
+
+[eth_getUncleByBlockHashAndIndex](/api-reference/robinhood-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Retrieves uncle block information by block hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/api-reference/robinhood-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Fetches uncle block details by block number and index. \
+[eth_getUncleCountByBlockHash](/api-reference/robinhood-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a block hash. \
+[eth_getUncleCountByBlockNumber](/api-reference/robinhood-api/gettinguncles/eth_getUncleCountByBlockNumber) : Returns the number of uncle blocks for a block number.
+
+
+## Mining
+
+
+Provides details on the mining state of the node.
+
+
+[eth_coinbase](/api-reference/robinhood-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards. \
+[eth_mining](/api-reference/robinhood-api/mining/eth_mining) : Indicates whether the node is actively mining blocks.
+
+
+## Subscriptions
+
+
+Allows to subscribe to specific events in real-time via WebSockets.
+
+
+[eth_subscribe](/api-reference/robinhood-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs. \
+[eth_unsubscribe](/api-reference/robinhood-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription.
+
+
+## Transactions info
+
+
+Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
+
+
+[eth_getTransactionByHash](/api-reference/robinhood-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
+[eth_getTransactionCount](/api-reference/robinhood-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/api-reference/robinhood-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
+[eth_newPendingTransactionFilter](/api-reference/robinhood-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Creates a filter for pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/api-reference/robinhood-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/api-reference/robinhood-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index. \
+[txpool_content](/api-reference/robinhood-api/transactionsinfo/txpool_content) : Provides details of the transaction pool content. \
+[eth_getRawTransactionByBlockHashAndIndex](/api-reference/robinhood-api/transactionsinfo/eth_getRawTransactionByBlockHashAndIndex) : Returns the raw (RLP-encoded) transaction at a given block hash and index. \
+[eth_getRawTransactionByHash](/api-reference/robinhood-api/transactionsinfo/eth_getRawTransactionByHash) : Returns the raw (RLP-encoded) transaction data for a given transaction hash.
+
+
+## Web3
+
+
+Returns general network configuration data for nodes.
+
+
+[web3_clientVersion](/api-reference/robinhood-api/web3/web3_clientVersion) : Returns the version of the node client in use.
