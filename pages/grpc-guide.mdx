@@ -135,10 +135,8 @@ The value of `x-drpc-chain` is the chain's dRPC short name. Protos come from eac
 | Chain | `x-drpc-chain` | Protos | Sample method |
 | --- | --- | --- | --- |
 | Sui Mainnet | `sui` | [MystenLabs/sui-apis](https://github.com/MystenLabs/sui-apis) (`sui.rpc.v2`) | `sui.rpc.v2.LedgerService/GetServiceInfo` |
-| Sui Testnet | `sui-testnet` | [MystenLabs/sui-apis](https://github.com/MystenLabs/sui-apis) (`sui.rpc.v2`) | `sui.rpc.v2.LedgerService/GetServiceInfo` |
 | Celestia Mainnet | `celestia` | [cosmos/cosmos-sdk](https://github.com/cosmos/cosmos-sdk) query and tx services | `cosmos.base.tendermint.v1beta1.Service/GetLatestBlock` |
-| Celestia Mocha | `celestia-mocha` | [cosmos/cosmos-sdk](https://github.com/cosmos/cosmos-sdk) query and tx services | `cosmos.base.tendermint.v1beta1.Service/GetLatestBlock` |
-
+| Tron Mainnet | `tron` | [tronprotocol/protocol](https://github.com/tronprotocol/protocol) (`protocol.Wallet`, `protocol.WalletSolidity`) | `protocol.Wallet/GetBlock`, `protocol.WalletSolidity/GetNowBlock2` |
 ## Errors
 
 Errors use standard gRPC status codes:
