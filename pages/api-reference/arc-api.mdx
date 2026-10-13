@@ -120,12 +120,12 @@ These endpoints allow to retrieve information about blocks, transactions, balanc
 Returns data about an account's balance, contract code, or stored data on the blockchain.
 
 
-[eth_accounts](/arc-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
-[eth_getBalance](/arc-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
-[eth_getCode](/arc-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
-[eth_getProof](/arc-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
-[eth_getStorageAt](/arc-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage. \
-[eth_getStorageValues](/arc-api/accountinfo/eth_getStorageValues) : Returns the values stored at multiple storage slots of an account.
+[eth_accounts](/api-reference/arc-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the connected client. \
+[eth_getBalance](/api-reference/arc-api/accountinfo/eth_getBalance) : Returns the balance of an account. \
+[eth_getCode](/api-reference/arc-api/accountinfo/eth_getCode) : Fetches the contract code stored at an address. \
+[eth_getProof](/api-reference/arc-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
+[eth_getStorageAt](/api-reference/arc-api/accountinfo/eth_getStorageAt) : Returns data stored at a specific slot in the account's storage. \
+[eth_getStorageValues](/api-reference/arc-api/accountinfo/eth_getStorageValues) : Returns the values stored at multiple storage slots of an account.
 
 
 ## Blocks info
@@ -134,13 +134,13 @@ Returns data about an account's balance, contract code, or stored data on the bl
 Retrieves detailed information from a specified block, including transactions, receipts, and block data.
 
 
-[eth_blockNumber](/arc-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
-[eth_getBlockByHash](/arc-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
-[eth_getBlockByNumber](/arc-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number. \
-[eth_newBlockFilter](/arc-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
-[eth_getBlockReceipts](/arc-api/blocksinfo/eth_getBlockReceipts) : Retrieves receipts for a given block. \
-[eth_getBlockTransactionCountByHash](/arc-api/blocksinfo/eth_getBlockTransactionCountByHash) : Gets the transaction count of a block by its hash. \
-[eth_getBlockTransactionCountByNumber](/arc-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Gets the transaction count of a block by its number.
+[eth_blockNumber](/api-reference/arc-api/blocksinfo/eth_blockNumber) : Retrieves the latest block number. \
+[eth_getBlockByHash](/api-reference/arc-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash. \
+[eth_getBlockByNumber](/api-reference/arc-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number. \
+[eth_newBlockFilter](/api-reference/arc-api/blocksinfo/eth_newBlockFilter) : Creates a filter for new blocks. \
+[eth_getBlockReceipts](/api-reference/arc-api/blocksinfo/eth_getBlockReceipts) : Retrieves receipts for a given block. \
+[eth_getBlockTransactionCountByHash](/api-reference/arc-api/blocksinfo/eth_getBlockTransactionCountByHash) : Gets the transaction count of a block by its hash. \
+[eth_getBlockTransactionCountByNumber](/api-reference/arc-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Gets the transaction count of a block by its number.
 
 
 ## Chain info
@@ -149,13 +149,13 @@ Retrieves detailed information from a specified block, including transactions, r
 Supplies details about the network, its protocol version, and its configuration.
 
 
-[eth_chainId](/arc-api/chaininfo/eth_chainId) : Retrieves the chain ID of the network. \
-[eth_protocolVersion](/arc-api/chaininfo/eth_protocolVersion) : Returns the protocol version used by the client. \
-[net_listening](/arc-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
-[net_version](/arc-api/chaininfo/net_version) : Returns the current network version. \
-[net_peerCount](/arc-api/chaininfo/net_peerCount) : Retrieves the number of active peers. \
-[eth_syncing](/arc-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node. \
-[eth_hashrate](/arc-api/chaininfo/eth_hashrate) : Provides the current mining hashrate of the network.
+[eth_chainId](/api-reference/arc-api/chaininfo/eth_chainId) : Retrieves the chain ID of the network. \
+[eth_protocolVersion](/api-reference/arc-api/chaininfo/eth_protocolVersion) : Returns the protocol version used by the client. \
+[net_listening](/api-reference/arc-api/chaininfo/net_listening) : Checks if the client is actively listening for network connections. \
+[net_version](/api-reference/arc-api/chaininfo/net_version) : Returns the current network version. \
+[net_peerCount](/api-reference/arc-api/chaininfo/net_peerCount) : Retrieves the number of active peers. \
+[eth_syncing](/api-reference/arc-api/chaininfo/eth_syncing) : Indicates the synchronization status of the node. \
+[eth_hashrate](/api-reference/arc-api/chaininfo/eth_hashrate) : Provides the current mining hashrate of the network.
 
 
 ## Debug and trace
@@ -164,22 +164,22 @@ Supplies details about the network, its protocol version, and its configuration.
 Allows to trace transactions, inspect block execution, and replay transactions or blocks for detailed analysis.
 
 
-[trace_filter](/arc-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
-[trace_rawTransaction](/arc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
-[trace_block](/arc-api/debugandtrace/trace_block) : Traces execution of all transactions in a block. \
-[trace_replayBlockTransactions](/arc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for debugging. \
-[debug_traceBlockByHash](/arc-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
-[debug_traceBlockByNumber](/arc-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
-[trace_transaction](/arc-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
-[debug_traceTransaction](/arc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
-[trace_replayTransaction](/arc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging. \
-[trace_callMany](/arc-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
-[trace_get](/arc-api/debugandtrace/trace_get) : Retrieves trace data by criteria. \
-[trace_call](/arc-api/debugandtrace/trace_call) : Executes a trace call. \
-[debug_traceCall](/arc-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
-[debug_storageRangeAt](/arc-api/debugandtrace/debug_storageRangeAt) : Returns the contract storage for a specified range. \
-[debug_traceBlock](/arc-api/debugandtrace/debug_traceBlock) : Traces the execution of all transactions in a supplied raw block. \
-[debug_traceCallMany](/arc-api/debugandtrace/debug_traceCallMany) : Executes and traces multiple call bundles in sequence.
+[trace_filter](/api-reference/arc-api/debugandtrace/trace_filter) : Filters trace data based on criteria. \
+[trace_rawTransaction](/api-reference/arc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
+[trace_block](/api-reference/arc-api/debugandtrace/trace_block) : Traces execution of all transactions in a block. \
+[trace_replayBlockTransactions](/api-reference/arc-api/debugandtrace/trace_replayBlockTransactions) : Replays block transactions for debugging. \
+[debug_traceBlockByHash](/api-reference/arc-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/api-reference/arc-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[trace_transaction](/api-reference/arc-api/debugandtrace/trace_transaction) : Traces a specific transaction. \
+[debug_traceTransaction](/api-reference/arc-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[trace_replayTransaction](/api-reference/arc-api/debugandtrace/trace_replayTransaction) : Replays a transaction for debugging. \
+[trace_callMany](/api-reference/arc-api/debugandtrace/trace_callMany) : Executes multiple trace calls. \
+[trace_get](/api-reference/arc-api/debugandtrace/trace_get) : Retrieves trace data by criteria. \
+[trace_call](/api-reference/arc-api/debugandtrace/trace_call) : Executes a trace call. \
+[debug_traceCall](/api-reference/arc-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
+[debug_storageRangeAt](/api-reference/arc-api/debugandtrace/debug_storageRangeAt) : Returns the contract storage for a specified range. \
+[debug_traceBlock](/api-reference/arc-api/debugandtrace/debug_traceBlock) : Traces the execution of all transactions in a supplied raw block. \
+[debug_traceCallMany](/api-reference/arc-api/debugandtrace/debug_traceCallMany) : Executes and traces multiple call bundles in sequence.
 
 
 ## Event logs
@@ -188,11 +188,11 @@ Allows to trace transactions, inspect block execution, and replay transactions o
 Provides logs of events emitted by smart contracts, useful for tracking token transfers and state changes.
 
 
-[eth_getLogs](/arc-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
-[eth_newFilter](/arc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs. \
-[eth_getFilterChanges](/arc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
-[eth_uninstallFilter](/arc-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
-[eth_getFilterLogs](/arc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
+[eth_getLogs](/api-reference/arc-api/eventlogs/eth_getLogs) : Retrieves logs based on filter criteria. \
+[eth_newFilter](/api-reference/arc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to monitor logs. \
+[eth_getFilterChanges](/api-reference/arc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter. \
+[eth_uninstallFilter](/api-reference/arc-api/eventlogs/eth_uninstallFilter) : Uninstalls a specific filter. \
+[eth_getFilterLogs](/api-reference/arc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs matching a specific filter.
 
 
 ## Executing transactions
@@ -201,10 +201,10 @@ Provides logs of events emitted by smart contracts, useful for tracking token tr
 Facilitates sending ETH, executing smart contracts, and performing on-chain operations.
 
 
-[eth_call](/arc-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without broadcasting it to the network. \
-[eth_sendRawTransaction](/arc-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the blockchain for execution. \
-[eth_simulateV1](/arc-api/executingtransactions/eth_simulateV1) : Simulates a sequence of calls or transactions without broadcasting them. \
-[eth_callBundle](/arc-api/executingtransactions/eth_callBundle) : Simulates a bundle of transactions against a specified block without submitting it to the network.
+[eth_call](/api-reference/arc-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without broadcasting it to the network. \
+[eth_sendRawTransaction](/api-reference/arc-api/executingtransactions/eth_sendRawTransaction) : Sends a raw, signed transaction to the blockchain for execution. \
+[eth_simulateV1](/api-reference/arc-api/executingtransactions/eth_simulateV1) : Simulates a sequence of calls or transactions without broadcasting them. \
+[eth_callBundle](/api-reference/arc-api/executingtransactions/eth_callBundle) : Simulates a bundle of transactions against a specified block without submitting it to the network.
 
 
 ## Gas estimation
@@ -213,12 +213,12 @@ Facilitates sending ETH, executing smart contracts, and performing on-chain oper
 Estimates gas fees for transactions and provides historical and current gas price data.
 
 
-[eth_feeHistory](/arc-api/gasestimation/eth_feeHistory) : Retrieves historical gas fees over a specified range of blocks. \
-[eth_estimateGas](/arc-api/gasestimation/eth_estimateGas) : Estimates the gas required for a transaction based on its parameters. \
-[eth_gasPrice](/arc-api/gasestimation/eth_gasPrice) : Returns the current gas price. \
-[eth_createAccessList](/arc-api/gasestimation/eth_createAccessList) : Generates an access list to reduce gas costs. \
-[eth_maxPriorityFeePerGas](/arc-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee per gas unit. \
-[eth_blobBaseFee](/arc-api/gasestimation/eth_blobBaseFee) : Returns the base fee per blob gas for the current block.
+[eth_feeHistory](/api-reference/arc-api/gasestimation/eth_feeHistory) : Retrieves historical gas fees over a specified range of blocks. \
+[eth_estimateGas](/api-reference/arc-api/gasestimation/eth_estimateGas) : Estimates the gas required for a transaction based on its parameters. \
+[eth_gasPrice](/api-reference/arc-api/gasestimation/eth_gasPrice) : Returns the current gas price. \
+[eth_createAccessList](/api-reference/arc-api/gasestimation/eth_createAccessList) : Generates an access list to reduce gas costs. \
+[eth_maxPriorityFeePerGas](/api-reference/arc-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee per gas unit. \
+[eth_blobBaseFee](/api-reference/arc-api/gasestimation/eth_blobBaseFee) : Returns the base fee per blob gas for the current block.
 
 
 ## Getting uncles
@@ -227,10 +227,10 @@ Estimates gas fees for transactions and provides historical and current gas pric
 Retrieves information about "uncle" blocks, which are valid but not included in the blockchain.
 
 
-[eth_getUncleByBlockHashAndIndex](/arc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Retrieves uncle block information by block hash and index. \
-[eth_getUncleByBlockNumberAndIndex](/arc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Fetches uncle block details by block number and index. \
-[eth_getUncleCountByBlockHash](/arc-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a block hash. \
-[eth_getUncleCountByBlockNumber](/arc-api/gettinguncles/eth_getUncleCountByBlockNumber) : Returns the number of uncle blocks for a block number.
+[eth_getUncleByBlockHashAndIndex](/api-reference/arc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Retrieves uncle block information by block hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/api-reference/arc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Fetches uncle block details by block number and index. \
+[eth_getUncleCountByBlockHash](/api-reference/arc-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the number of uncle blocks for a block hash. \
+[eth_getUncleCountByBlockNumber](/api-reference/arc-api/gettinguncles/eth_getUncleCountByBlockNumber) : Returns the number of uncle blocks for a block number.
 
 
 ## Mining
@@ -239,8 +239,8 @@ Retrieves information about "uncle" blocks, which are valid but not included in 
 Provides details on the mining state of the node.
 
 
-[eth_coinbase](/arc-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards. \
-[eth_mining](/arc-api/mining/eth_mining) : Indicates whether the node is actively mining blocks.
+[eth_coinbase](/api-reference/arc-api/mining/eth_coinbase) : Returns the address of the miner who is receiving mining rewards. \
+[eth_mining](/api-reference/arc-api/mining/eth_mining) : Indicates whether the node is actively mining blocks.
 
 
 ## Subscriptions
@@ -249,8 +249,8 @@ Provides details on the mining state of the node.
 Allows to subscribe to specific events in real-time via WebSockets.
 
 
-[eth_subscribe](/arc-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs. \
-[eth_unsubscribe](/arc-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription.
+[eth_subscribe](/api-reference/arc-api/subscriptions/eth_subscribe) : Subscribes to various blockchain events such as new blocks, pending transactions, or logs. \
+[eth_unsubscribe](/api-reference/arc-api/subscriptions/eth_unsubscribe) : Unsubscribes from an existing event subscription.
 
 
 ## Transactions info
@@ -259,12 +259,12 @@ Allows to subscribe to specific events in real-time via WebSockets.
 Retrieves data on individual transactions, such as status, receipt, and inclusion in a specific block.
 
 
-[eth_getTransactionByHash](/arc-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
-[eth_getTransactionCount](/arc-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
-[eth_getTransactionReceipt](/arc-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
-[eth_newPendingTransactionFilter](/arc-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Creates a filter for pending transactions. \
-[eth_getTransactionByBlockHashAndIndex](/arc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
-[eth_getTransactionByBlockNumberAndIndex](/arc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index.
+[eth_getTransactionByHash](/api-reference/arc-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
+[eth_getTransactionCount](/api-reference/arc-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/api-reference/arc-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
+[eth_newPendingTransactionFilter](/api-reference/arc-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Creates a filter for pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/api-reference/arc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/api-reference/arc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Retrieves a transaction by block number and index.
 
 
 ## Web3
@@ -273,7 +273,7 @@ Retrieves data on individual transactions, such as status, receipt, and inclusio
 Returns general network configuration data for nodes.
 
 
-[web3_clientVersion](/arc-api/web3/web3_clientVersion) : Returns the version of the node client in use.
+[web3_clientVersion](/api-reference/arc-api/web3/web3_clientVersion) : Returns the version of the node client in use.
 
 
 ## Arc namespace
@@ -282,5 +282,5 @@ Returns general network configuration data for nodes.
 Arc's custom arc_* namespace, layered on top of the standard Reth JSON-RPC surface, for reading consensus finality proofs and node build information.
 
 
-[arc_getCertificate](/arc-api/arcnamespace/arc_getCertificate) : Returns the Malachite BFT consensus commit certificate for a given block height. \
-[arc_getVersion](/arc-api/arcnamespace/arc_getVersion) : Returns build and version information for the node's execution client.
+[arc_getCertificate](/api-reference/arc-api/arcnamespace/arc_getCertificate) : Returns the Malachite BFT consensus commit certificate for a given block height. \
+[arc_getVersion](/api-reference/arc-api/arcnamespace/arc_getVersion) : Returns build and version information for the node's execution client.

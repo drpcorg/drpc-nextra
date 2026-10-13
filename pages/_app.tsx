@@ -4,6 +4,7 @@ import { createTheme, MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { theme } from "../theme";
 import { ApiReferenceSidebar } from "../components/ApiReferenceSidebar";
+import { sectionPageMap } from "../lib/sectionPageMap";
 import "@mantine/notifications/styles.css";
 import "@mantine/core/styles.css";
 import "./global.css";
@@ -21,7 +22,7 @@ export default function App({ Component, pageProps }) {
     <MantineProvider theme={theme}>
       <Notifications />
       {isApiReference ? <ApiReferenceSidebar /> : null}
-      <Component {...pageProps} />
+      <Component {...pageProps} __nextra_pageMap={sectionPageMap(router.route)} />
     </MantineProvider>
   );
 }

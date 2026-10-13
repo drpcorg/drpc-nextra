@@ -117,113 +117,113 @@ These endpoints allow to retrieve information about blocks, transactions, balanc
 
 Retrieves data about an account’s on-chain storage, balance, and contract code.
 
-[eth_accounts](/optimism-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the client. \
-[eth_getBalance](/optimism-api/accountinfo/eth_getBalance) : Fetches the balance of an account. \
-[eth_getCode](/optimism-api/accountinfo/eth_getCode) : Returns the smart contract code stored at an address. \
-[eth_getProof](/optimism-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
-[eth_getStorageAt](/optimism-api/accountinfo/eth_getStorageAt) : Retrieves data stored at a specific storage slot of an account.
+[eth_accounts](/api-reference/optimism-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the client. \
+[eth_getBalance](/api-reference/optimism-api/accountinfo/eth_getBalance) : Fetches the balance of an account. \
+[eth_getCode](/api-reference/optimism-api/accountinfo/eth_getCode) : Returns the smart contract code stored at an address. \
+[eth_getProof](/api-reference/optimism-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
+[eth_getStorageAt](/api-reference/optimism-api/accountinfo/eth_getStorageAt) : Retrieves data stored at a specific storage slot of an account.
 
 ## Blocks info
 
 Retrieves detailed information about a specific block using its number or hash
 
-[eth_blockNumber](/optimism-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number.  \
-[eth_getBlockByHash](/optimism-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash.  \
-[eth_getBlockByHash#full](/optimism-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash.  \
-[eth_getBlockByNumber](/optimism-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number.  \
-[eth_getBlockByNumber#full](/optimism-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
-[eth_newBlockFilter](/optimism-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Creates a filter for new blocks.  \
-[eth_getBlockReceipts](/optimism-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block.  \
-[eth_getBlockTransactionCountByHash](/optimism-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash.  \
-[eth_getBlockTransactionCountByNumber](/optimism-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Returns the number of transactions in a block by its number.
+[eth_blockNumber](/api-reference/optimism-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number.  \
+[eth_getBlockByHash](/api-reference/optimism-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash.  \
+[eth_getBlockByHash#full](/api-reference/optimism-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash.  \
+[eth_getBlockByNumber](/api-reference/optimism-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number.  \
+[eth_getBlockByNumber#full](/api-reference/optimism-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
+[eth_newBlockFilter](/api-reference/optimism-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Creates a filter for new blocks.  \
+[eth_getBlockReceipts](/api-reference/optimism-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block.  \
+[eth_getBlockTransactionCountByHash](/api-reference/optimism-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash.  \
+[eth_getBlockTransactionCountByNumber](/api-reference/optimism-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Returns the number of transactions in a block by its number.
 
 ## Chain info
 
 Gathers essential details about the Optimism network and its protocol settings.
 
-[eth_chainId](/optimism-api/chaininfo/eth_chainId) : Retrieves the network's chain ID. \
-[eth_protocolVersion](/optimism-api/chaininfo/eth_protocolVersion) : Returns the protocol version of the client. \
-[net_listening](/optimism-api/chaininfo/net_listening) : Checks if the node is listening for connections. \
-[net_version](/optimism-api/chaininfo/net_version) : Provides the current network version. \
-[net_peerCount](/optimism-api/chaininfo/net_peerCount) : Returns the number of connected peers. \
-[eth_syncing](/optimism-api/chaininfo/eth_syncing) : Indicates whether the node is syncing. \
-[eth_hashrate](/optimism-api/chaininfo/eth_hashrate) : Provides the network's mining hashrate.
+[eth_chainId](/api-reference/optimism-api/chaininfo/eth_chainId) : Retrieves the network's chain ID. \
+[eth_protocolVersion](/api-reference/optimism-api/chaininfo/eth_protocolVersion) : Returns the protocol version of the client. \
+[net_listening](/api-reference/optimism-api/chaininfo/net_listening) : Checks if the node is listening for connections. \
+[net_version](/api-reference/optimism-api/chaininfo/net_version) : Provides the current network version. \
+[net_peerCount](/api-reference/optimism-api/chaininfo/net_peerCount) : Returns the number of connected peers. \
+[eth_syncing](/api-reference/optimism-api/chaininfo/eth_syncing) : Indicates whether the node is syncing. \
+[eth_hashrate](/api-reference/optimism-api/chaininfo/eth_hashrate) : Provides the network's mining hashrate.
 
 ## Debug and trace
 
 Available only on paid tier. Contains advanced debugging and tracing tools.
 
-[trace_filter](/optimism-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
-[trace_rawTransaction](/optimism-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
-[trace_block](/optimism-api/debugandtrace/trace_block) : Traces all transactions in a block. \
-[trace_replayBlockTransactions](/optimism-api/debugandtrace/trace_replayBlockTransactions) : Replays transactions within a block for analysis. \
-[debug_traceBlockByHash](/optimism-api/debugandtrace/debug_traceBlockByHash) : Traces a block's execution by hash.
+[trace_filter](/api-reference/optimism-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
+[trace_rawTransaction](/api-reference/optimism-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
+[trace_block](/api-reference/optimism-api/debugandtrace/trace_block) : Traces all transactions in a block. \
+[trace_replayBlockTransactions](/api-reference/optimism-api/debugandtrace/trace_replayBlockTransactions) : Replays transactions within a block for analysis. \
+[debug_traceBlockByHash](/api-reference/optimism-api/debugandtrace/debug_traceBlockByHash) : Traces a block's execution by hash.
 
 ## Event logs
 
 Extracts logs related to smart contract events like token transfers or ownership changes.
 
-[eth_getLogs](/optimism-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
-[eth_newFilter](/optimism-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track specific events.  \
-[eth_getFilterChanges](/optimism-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter since its last check. \
-[eth_uninstallFilter](/optimism-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
-[eth_getFilterLogs](/optimism-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs from an active filter.
+[eth_getLogs](/api-reference/optimism-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
+[eth_newFilter](/api-reference/optimism-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track specific events.  \
+[eth_getFilterChanges](/api-reference/optimism-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter since its last check. \
+[eth_uninstallFilter](/api-reference/optimism-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
+[eth_getFilterLogs](/api-reference/optimism-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs from an active filter.
 
 ## Executing transactions
 
 Enables the sending of ETH, contract interaction, or writing data to the chain.
 
-[eth_call](/optimism-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state. \
-[eth_sendRawTransaction](/optimism-api/executingtransactions/eth_sendRawTransaction) : Broadcasts a raw, signed transaction to the blockchain for execution.
+[eth_call](/api-reference/optimism-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state. \
+[eth_sendRawTransaction](/api-reference/optimism-api/executingtransactions/eth_sendRawTransaction) : Broadcasts a raw, signed transaction to the blockchain for execution.
 
 ## Gas estimation
 
 Estimates gas prices and consumption for transactions.
 
-[eth_feeHistory](/optimism-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks. \
-[eth_estimateGas](/optimism-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction. \
-[eth_gasPrice](/optimism-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network. \
-[eth_createAccessList](/optimism-api/gasestimation/eth_createAccessList) : Generates an access list for transaction optimization. \
-[eth_maxPriorityFeePerGas](/optimism-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee for gas.
+[eth_feeHistory](/api-reference/optimism-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks. \
+[eth_estimateGas](/api-reference/optimism-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction. \
+[eth_gasPrice](/api-reference/optimism-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network. \
+[eth_createAccessList](/api-reference/optimism-api/gasestimation/eth_createAccessList) : Generates an access list for transaction optimization. \
+[eth_maxPriorityFeePerGas](/api-reference/optimism-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee for gas.
 
 ## Getting uncles
 
 Retrieves information about uncle blocks (blocks rejected by the network).
 
-[eth_getUncleByBlockHashAndIndex](/optimism-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Fetches details of an uncle block by its hash and index. \
-[eth_getUncleByBlockNumberAndIndex](/optimism-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Retrieves an uncle block by its block number and index. \
-[eth_getUncleCountByBlockHash](/optimism-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the count of uncles for a specific block hash. \
-[eth_getUncleCountByBlockNumber](/optimism-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncles for a block number.
+[eth_getUncleByBlockHashAndIndex](/api-reference/optimism-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Fetches details of an uncle block by its hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/api-reference/optimism-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Retrieves an uncle block by its block number and index. \
+[eth_getUncleCountByBlockHash](/api-reference/optimism-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the count of uncles for a specific block hash. \
+[eth_getUncleCountByBlockNumber](/api-reference/optimism-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncles for a block number.
 
 ## Mining
 
 Consists of methods that provide information related to the mining.
 
-[eth_coinbase](/optimism-api/mining/eth_coinbase) : Returns the address of the current coinbase (mining reward recipient). \
-[eth_mining](/optimism-api/mining/eth_mining) : Indicates whether the node is currently mining blocks.
+[eth_coinbase](/api-reference/optimism-api/mining/eth_coinbase) : Returns the address of the current coinbase (mining reward recipient). \
+[eth_mining](/api-reference/optimism-api/mining/eth_mining) : Indicates whether the node is currently mining blocks.
 
 ## Subscriptions
 
 Enables WebSocket connections for continuous monitoring of blockchain changes.
 
-[eth_subscribe](/optimism-api/subscriptions/eth_subscribe) : Subscribes to events such as new blocks, pending transactions, or logs. \
-[eth_unsubscribe](/optimism-api/subscriptions/eth_unsubscribe) : Unsubscribes from an active WebSocket subscription.
+[eth_subscribe](/api-reference/optimism-api/subscriptions/eth_subscribe) : Subscribes to events such as new blocks, pending transactions, or logs. \
+[eth_unsubscribe](/api-reference/optimism-api/subscriptions/eth_unsubscribe) : Unsubscribes from an active WebSocket subscription.
 
 ## Transactions info
 
 Accesses transaction details, such as their state, count, or receipts.
 
-[eth_getTransactionByHash](/optimism-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
-[eth_getTransactionCount](/optimism-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
-[eth_getTransactionReceipt](/optimism-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
-[eth_newPendingTransactionFilter](/optimism-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor pending transactions. \
-[eth_getTransactionByBlockHashAndIndex](/optimism-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
-[eth_getTransactionByBlockNumberAndIndex](/optimism-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Fetches a transaction by block number and index. \
-[txpool_content](/optimism-api/transactionsinfo/txpool_content) : Displays the contents of the transaction pool.
+[eth_getTransactionByHash](/api-reference/optimism-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
+[eth_getTransactionCount](/api-reference/optimism-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/api-reference/optimism-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
+[eth_newPendingTransactionFilter](/api-reference/optimism-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/api-reference/optimism-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/api-reference/optimism-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Fetches a transaction by block number and index. \
+[txpool_content](/api-reference/optimism-api/transactionsinfo/txpool_content) : Displays the contents of the transaction pool.
 
 ## Web3
 
 Provides utility functions to interact with the blockchain.
 
-[web3_clientVersion](/optimism-api/web3/web3_clientVersion) : Returns the version of the client used by the node. \
-[web3_sha3](/optimism-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided input data.
+[web3_clientVersion](/api-reference/optimism-api/web3/web3_clientVersion) : Returns the version of the client used by the node. \
+[web3_sha3](/api-reference/optimism-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided input data.

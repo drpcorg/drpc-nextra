@@ -111,108 +111,108 @@ These endpoints allow to retrieve information about blocks, transactions, balanc
 
 Retrieves data about an account’s on-chain storage, balance, and contract code.
 
-[eth_accounts](/tron-api/tron-json-rpc-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the client. \
-[eth_getBalance](/tron-api/tron-json-rpc-api/accountinfo/eth_getBalance) : Fetches the balance of an account. \
-[eth_getCode](/tron-api/tron-json-rpc-api/accountinfo/eth_getCode) : Returns the smart contract code stored at an address. \
-[eth_getProof](/tron-api/tron-json-rpc-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
-[eth_getStorageAt](/tron-api/tron-json-rpc-api/accountinfo/eth_getStorageAt) : Retrieves data stored at a specific storage slot of an account.
+[eth_accounts](/api-reference/tron-api/tron-json-rpc-api/accountinfo/eth_accounts) : Retrieves a list of accounts controlled by the client. \
+[eth_getBalance](/api-reference/tron-api/tron-json-rpc-api/accountinfo/eth_getBalance) : Fetches the balance of an account. \
+[eth_getCode](/api-reference/tron-api/tron-json-rpc-api/accountinfo/eth_getCode) : Returns the smart contract code stored at an address. \
+[eth_getProof](/api-reference/tron-api/tron-json-rpc-api/accountinfo/eth_getProof) : Provides a Merkle proof for an account's state. \
+[eth_getStorageAt](/api-reference/tron-api/tron-json-rpc-api/accountinfo/eth_getStorageAt) : Retrieves data stored at a specific storage slot of an account.
 
 ## Blocks info
 
 Retrieves detailed information about a specific block using its number or hash
 
-[eth_blockNumber](/tron-api/tron-json-rpc-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number.  \
-[eth_getBlockByHash](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash.  \
-[eth_getBlockByHash#full](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash.  \
-[eth_getBlockByNumber](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number.  \
-[eth_getBlockByNumber#full](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
-[eth_newBlockFilter](/tron-api/tron-json-rpc-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Creates a filter for new blocks.  \
-[eth_getBlockReceipts](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block.  \
-[eth_getBlockTransactionCountByHash](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash.  \
-[eth_getBlockTransactionCountByNumber](/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Returns the number of transactions in a block by its number.
+[eth_blockNumber](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_blockNumber) : Retrieves the most recent block number.  \
+[eth_getBlockByHash](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByHash) : Fetches block details by hash.  \
+[eth_getBlockByHash#full](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByHashfull) : Returns full block details by hash.  \
+[eth_getBlockByNumber](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByNumber) : Retrieves block data by number.  \
+[eth_getBlockByNumber#full](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockByNumberfull) : Fetches full block details by number. \
+[eth_newBlockFilter](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_newBlockFilter) : Available only on paid tier. Creates a filter for new blocks.  \
+[eth_getBlockReceipts](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockReceipts) : Fetches receipts for all transactions in a block.  \
+[eth_getBlockTransactionCountByHash](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockTransactionCountByHash) : Retrieves the number of transactions in a block by its hash.  \
+[eth_getBlockTransactionCountByNumber](/api-reference/tron-api/tron-json-rpc-api/blocksinfo/eth_getBlockTransactionCountByNumber) : Returns the number of transactions in a block by its number.
 
 ## Chain info
 
 Gathers essential details about the tron network and its protocol settings.
 
-[eth_chainId](/tron-api/tron-json-rpc-api/chaininfo/eth_chainId) : Retrieves the network's chain ID. \
-[eth_protocolVersion](/tron-api/tron-json-rpc-api/chaininfo/eth_protocolVersion) : Returns the protocol version of the client. \
-[net_listening](/tron-api/tron-json-rpc-api/chaininfo/net_listening) : Checks if the node is listening for connections. \
-[net_version](/tron-api/tron-json-rpc-api/chaininfo/net_version) : Provides the current network version. \
-[net_peerCount](/tron-api/tron-json-rpc-api/chaininfo/net_peerCount) : Returns the number of connected peers. \
-[eth_syncing](/tron-api/tron-json-rpc-api/chaininfo/eth_syncing) : Indicates whether the node is syncing. \
-[eth_hashrate](/tron-api/tron-json-rpc-api/chaininfo/eth_hashrate) : Provides the network's mining hashrate.
+[eth_chainId](/api-reference/tron-api/tron-json-rpc-api/chaininfo/eth_chainId) : Retrieves the network's chain ID. \
+[eth_protocolVersion](/api-reference/tron-api/tron-json-rpc-api/chaininfo/eth_protocolVersion) : Returns the protocol version of the client. \
+[net_listening](/api-reference/tron-api/tron-json-rpc-api/chaininfo/net_listening) : Checks if the node is listening for connections. \
+[net_version](/api-reference/tron-api/tron-json-rpc-api/chaininfo/net_version) : Provides the current network version. \
+[net_peerCount](/api-reference/tron-api/tron-json-rpc-api/chaininfo/net_peerCount) : Returns the number of connected peers. \
+[eth_syncing](/api-reference/tron-api/tron-json-rpc-api/chaininfo/eth_syncing) : Indicates whether the node is syncing. \
+[eth_hashrate](/api-reference/tron-api/tron-json-rpc-api/chaininfo/eth_hashrate) : Provides the network's mining hashrate.
 
 ## Debug and trace
 
 Available only on paid tier. Contains advanced debugging and tracing tools.
 
-[trace_filter](/tron-api/tron-json-rpc-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
-[trace_rawTransaction](/tron-api/tron-json-rpc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
-[trace_block](/tron-api/tron-json-rpc-api/debugandtrace/trace_block) : Traces all transactions in a block. \
-[trace_replayBlockTransactions](/tron-api/tron-json-rpc-api/debugandtrace/trace_replayBlockTransactions) : Replays transactions within a block for analysis. \
-[debug_traceBlockByHash](/tron-api/tron-json-rpc-api/debugandtrace/debug_traceBlockByHash) : Traces a block's execution by hash.
+[trace_filter](/api-reference/tron-api/tron-json-rpc-api/debugandtrace/trace_filter) : Filters trace data based on specific criteria. \
+[trace_rawTransaction](/api-reference/tron-api/tron-json-rpc-api/debugandtrace/trace_rawTransaction) : Replays a raw transaction for debugging. \
+[trace_block](/api-reference/tron-api/tron-json-rpc-api/debugandtrace/trace_block) : Traces all transactions in a block. \
+[trace_replayBlockTransactions](/api-reference/tron-api/tron-json-rpc-api/debugandtrace/trace_replayBlockTransactions) : Replays transactions within a block for analysis. \
+[debug_traceBlockByHash](/api-reference/tron-api/tron-json-rpc-api/debugandtrace/debug_traceBlockByHash) : Traces a block's execution by hash.
 
 ## Event logs
 
 Extracts logs related to smart contract events like token transfers or ownership changes.
 
-[eth_getLogs](/tron-api/tron-json-rpc-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
-[eth_newFilter](/tron-api/tron-json-rpc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track specific events.  \
-[eth_getFilterChanges](/tron-api/tron-json-rpc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter since its last check. \
-[eth_uninstallFilter](/tron-api/tron-json-rpc-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
-[eth_getFilterLogs](/tron-api/tron-json-rpc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs from an active filter.
+[eth_getLogs](/api-reference/tron-api/tron-json-rpc-api/eventlogs/eth_getLogs) : Retrieves logs from the blockchain based on specified filter criteria.  \
+[eth_newFilter](/api-reference/tron-api/tron-json-rpc-api/eventlogs/eth_newFilter) : Available only on paid tier. Creates a new filter to track specific events.  \
+[eth_getFilterChanges](/api-reference/tron-api/tron-json-rpc-api/eventlogs/eth_getFilterChanges) : Available only on paid tier. Retrieves changes for an active filter since its last check. \
+[eth_uninstallFilter](/api-reference/tron-api/tron-json-rpc-api/eventlogs/eth_uninstallFilter) : Removes an installed filter.  \
+[eth_getFilterLogs](/api-reference/tron-api/tron-json-rpc-api/eventlogs/eth_getFilterLogs) : Available only on paid tier. Fetches logs from an active filter.
 
 ## Executing transactions
 
 Enables the sending of ETH, contract interaction, or writing data to the chain.
 
-[eth_call](/tron-api/tron-json-rpc-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state. \
-[eth_sendRawTransaction](/tron-api/tron-json-rpc-api/executingtransactions/eth_sendRawTransaction) : Broadcasts a raw, signed transaction to the blockchain for execution.
+[eth_call](/api-reference/tron-api/tron-json-rpc-api/executingtransactions/eth_call) : Executes a read-only call to a smart contract without changing the blockchain state. \
+[eth_sendRawTransaction](/api-reference/tron-api/tron-json-rpc-api/executingtransactions/eth_sendRawTransaction) : Broadcasts a raw, signed transaction to the blockchain for execution.
 
 ## Gas estimation
 
 Estimates gas prices and consumption for transactions.
 
-[eth_feeHistory](/tron-api/tron-json-rpc-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks. \
-[eth_estimateGas](/tron-api/tron-json-rpc-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction. \
-[eth_gasPrice](/tron-api/tron-json-rpc-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network. \
-[eth_createAccessList](/tron-api/tron-json-rpc-api/gasestimation/eth_createAccessList) : Generates an access list for transaction optimization. \
-[eth_maxPriorityFeePerGas](/tron-api/tron-json-rpc-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee for gas.
+[eth_feeHistory](/api-reference/tron-api/tron-json-rpc-api/gasestimation/eth_feeHistory) : Retrieves historical gas prices over a range of blocks. \
+[eth_estimateGas](/api-reference/tron-api/tron-json-rpc-api/gasestimation/eth_estimateGas) : Estimates the gas required to execute a transaction. \
+[eth_gasPrice](/api-reference/tron-api/tron-json-rpc-api/gasestimation/eth_gasPrice) : Returns the current gas price on the network. \
+[eth_createAccessList](/api-reference/tron-api/tron-json-rpc-api/gasestimation/eth_createAccessList) : Generates an access list for transaction optimization. \
+[eth_maxPriorityFeePerGas](/api-reference/tron-api/tron-json-rpc-api/gasestimation/eth_maxPriorityFeePerGas) : Retrieves the maximum priority fee for gas.
 
 ## Getting uncles
 
 Retrieves information about uncle blocks (blocks rejected by the network).
 
-[eth_getUncleByBlockHashAndIndex](/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Fetches details of an uncle block by its hash and index. \
-[eth_getUncleByBlockNumberAndIndex](/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Retrieves an uncle block by its block number and index. \
-[eth_getUncleCountByBlockHash](/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the count of uncles for a specific block hash. \
-[eth_getUncleCountByBlockNumber](/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncles for a block number.
+[eth_getUncleByBlockHashAndIndex](/api-reference/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleByBlockHashAndIndex) : Fetches details of an uncle block by its hash and index. \
+[eth_getUncleByBlockNumberAndIndex](/api-reference/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleByBlockNumberAndIndex) : Retrieves an uncle block by its block number and index. \
+[eth_getUncleCountByBlockHash](/api-reference/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleCountByBlockHash) : Returns the count of uncles for a specific block hash. \
+[eth_getUncleCountByBlockNumber](/api-reference/tron-api/tron-json-rpc-api/gettinguncles/eth_getUncleCountByBlockNumber) : Retrieves the number of uncles for a block number.
 
 ## Mining
 
 Consists of methods that provide information related to the mining.
 
-[eth_coinbase](/tron-api/tron-json-rpc-api/mining/eth_coinbase) : Returns the address of the current coinbase (mining reward recipient). \
-[eth_mining](/tron-api/tron-json-rpc-api/mining/eth_mining) : Indicates whether the node is currently mining blocks.
+[eth_coinbase](/api-reference/tron-api/tron-json-rpc-api/mining/eth_coinbase) : Returns the address of the current coinbase (mining reward recipient). \
+[eth_mining](/api-reference/tron-api/tron-json-rpc-api/mining/eth_mining) : Indicates whether the node is currently mining blocks.
 
 ## Transactions info
 
 Accesses transaction details, such as their state, count, or receipts.
 
-[eth_getTransactionByHash](/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
-[eth_getTransactionCount](/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
-[eth_getTransactionReceipt](/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
-[eth_newPendingTransactionFilter](/tron-api/tron-json-rpc-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor pending transactions. \
-[eth_getTransactionByBlockHashAndIndex](/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
-[eth_getTransactionByBlockNumberAndIndex](/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Fetches a transaction by block number and index. \
+[eth_getTransactionByHash](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByHash) : Fetches transaction details using its hash. \
+[eth_getTransactionCount](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionCount) : Returns the number of transactions sent from an address. \
+[eth_getTransactionReceipt](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionReceipt) : Retrieves the receipt of a processed transaction. \
+[eth_newPendingTransactionFilter](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_newPendingTransactionFilter) : Available only on paid tier. Sets up a filter to monitor pending transactions. \
+[eth_getTransactionByBlockHashAndIndex](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByBlockHashAndIndex) : Retrieves a transaction by block hash and index. \
+[eth_getTransactionByBlockNumberAndIndex](/api-reference/tron-api/tron-json-rpc-api/transactionsinfo/eth_getTransactionByBlockNumberAndIndex) : Fetches a transaction by block number and index. \
 
 ## Web3
 
 Provides utility functions to interact with the blockchain.
 
-[web3_clientVersion](/tron-api/tron-json-rpc-api/web3/web3_clientVersion) : Returns the version of the client used by the node. \
-[web3_sha3](/tron-api/tron-json-rpc-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided input data.
+[web3_clientVersion](/api-reference/tron-api/tron-json-rpc-api/web3/web3_clientVersion) : Returns the version of the client used by the node. \
+[web3_sha3](/api-reference/tron-api/tron-json-rpc-api/web3/web3_sha3) : Computes the Keccak-256 (SHA3) hash of the provided input data.
 
 ## Tron HTTP API Methods
 
@@ -220,127 +220,127 @@ Provides utility functions to interact with the blockchain.
 
 Returns data about an account's balance, permissions, resources, and multi-signature status on the Tron blockchain.
 
-[getaccount](/tron-api/tron-json-rpc-api/accountinfo/getaccount) : Returns account details such as balance, permissions, and resources for a given address. \
-[getaccountnet](/tron-api/tron-json-rpc-api/accountinfo/getaccountnet) : Returns the bandwidth usage and limits for a given account. \
-[getaccountresource](/tron-api/tron-json-rpc-api/accountinfo/getaccountresource) : Returns the energy and bandwidth resource usage and limits for a given account. \
-[getaccountbalance](/tron-api/tron-json-rpc-api/accountinfo/getaccountbalance) : Returns the TRX balance of an account at a specific block height. \
-[createaccount](/tron-api/tron-json-rpc-api/accountinfo/createaccount) : Creates a new account on the Tron network, activated by an existing account. \
-[updateaccount](/tron-api/tron-json-rpc-api/accountinfo/updateaccount) : Updates the account name associated with a Tron address. \
-[accountpermissionupdate](/tron-api/tron-json-rpc-api/accountinfo/accountpermissionupdate) : Updates the owner, witness, and active permissions of a multi-signature account. \
-[validateaddress](/tron-api/tron-json-rpc-api/accountinfo/validateaddress) : Validates whether a given string is a properly formatted Tron address. \
-[getapprovedlist](/tron-api/tron-json-rpc-api/accountinfo/getapprovedlist) : Returns the list of approving addresses for a pending multi-signature transaction. \
-[getsignweight](/tron-api/tron-json-rpc-api/accountinfo/getsignweight) : Returns the current signature weight and threshold status of a multi-signature transaction.
+[getaccount](/api-reference/tron-api/tron-http-api/accountinfo/getaccount) : Returns account details such as balance, permissions, and resources for a given address. \
+[getaccountnet](/api-reference/tron-api/tron-http-api/accountinfo/getaccountnet) : Returns the bandwidth usage and limits for a given account. \
+[getaccountresource](/api-reference/tron-api/tron-http-api/accountinfo/getaccountresource) : Returns the energy and bandwidth resource usage and limits for a given account. \
+[getaccountbalance](/api-reference/tron-api/tron-http-api/accountinfo/getaccountbalance) : Returns the TRX balance of an account at a specific block height. \
+[createaccount](/api-reference/tron-api/tron-http-api/accountinfo/createaccount) : Creates a new account on the Tron network, activated by an existing account. \
+[updateaccount](/api-reference/tron-api/tron-http-api/accountinfo/updateaccount) : Updates the account name associated with a Tron address. \
+[accountpermissionupdate](/api-reference/tron-api/tron-http-api/accountinfo/accountpermissionupdate) : Updates the owner, witness, and active permissions of a multi-signature account. \
+[validateaddress](/api-reference/tron-api/tron-http-api/accountinfo/validateaddress) : Validates whether a given string is a properly formatted Tron address. \
+[getapprovedlist](/api-reference/tron-api/tron-http-api/accountinfo/getapprovedlist) : Returns the list of approving addresses for a pending multi-signature transaction. \
+[getsignweight](/api-reference/tron-api/tron-http-api/accountinfo/getsignweight) : Returns the current signature weight and threshold status of a multi-signature transaction.
 
 ## Blocks info
 
 Retrieves detailed information from a specified Tron block, including transactions and block header data.
 
-[getnowblock](/tron-api/tron-json-rpc-api/blocksinfo/getnowblock) : Returns the most recent confirmed block on the Tron blockchain. \
-[getblock](/tron-api/tron-json-rpc-api/blocksinfo/getblock) : Returns block details by block number, block hash, or the latest block if no parameter is given. \
-[getblockbyid](/tron-api/tron-json-rpc-api/blocksinfo/getblockbyid) : Returns block details for a specific block hash (block ID). \
-[getblockbylatestnum](/tron-api/tron-json-rpc-api/blocksinfo/getblockbylatestnum) : Returns a list of the most recent blocks up to a specified count. \
-[getblockbylimitnext](/tron-api/tron-json-rpc-api/blocksinfo/getblockbylimitnext) : Returns a range of blocks between a start and end block number. \
-[getblockbynum](/tron-api/tron-json-rpc-api/blocksinfo/getblockbynum) : Returns block details for a specific block number. \
-[getblockbalance](/tron-api/tron-json-rpc-api/blocksinfo/getblockbalance) : Returns the aggregated balance changes for all accounts within a specific block.
+[getnowblock](/api-reference/tron-api/tron-http-api/blocksinfo/getnowblock) : Returns the most recent confirmed block on the Tron blockchain. \
+[getblock](/api-reference/tron-api/tron-http-api/blocksinfo/getblock) : Returns block details by block number, block hash, or the latest block if no parameter is given. \
+[getblockbyid](/api-reference/tron-api/tron-http-api/blocksinfo/getblockbyid) : Returns block details for a specific block hash (block ID). \
+[getblockbylatestnum](/api-reference/tron-api/tron-http-api/blocksinfo/getblockbylatestnum) : Returns a list of the most recent blocks up to a specified count. \
+[getblockbylimitnext](/api-reference/tron-api/tron-http-api/blocksinfo/getblockbylimitnext) : Returns a range of blocks between a start and end block number. \
+[getblockbynum](/api-reference/tron-api/tron-http-api/blocksinfo/getblockbynum) : Returns block details for a specific block number. \
+[getblockbalance](/api-reference/tron-api/tron-http-api/blocksinfo/getblockbalance) : Returns the aggregated balance changes for all accounts within a specific block.
 
 ## Transactions info
 
 Retrieves data on individual transactions, and creates or broadcasts new ones.
 
-[gettransactionbyid](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactionbyid) : Returns transaction details for a given transaction hash (ID). \
-[gettransactioncountbyblocknum](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactioncountbyblocknum) : Returns the number of transactions included in a specific block. \
-[gettransactionfrompending](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactionfrompending) : Returns a pending transaction from the node's transaction pool by its hash. \
-[gettransactioninfobyblocknum](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactioninfobyblocknum) : Returns execution results and receipts for all transactions in a specific block. \
-[gettransactioninfobyid](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactioninfobyid) : Returns the execution result, receipt, and logs for a confirmed transaction by its hash. \
-[gettransactionlistfrompending](/tron-api/tron-json-rpc-api/transactionsinfo/gettransactionlistfrompending) : Returns the list of transaction hashes currently in the node's pending transaction pool. \
-[createtransaction](/tron-api/tron-json-rpc-api/transactionsinfo/createtransaction) : Creates an unsigned TRX transfer transaction between two addresses. \
-[broadcasttransaction](/tron-api/tron-json-rpc-api/transactionsinfo/broadcasttransaction) : Broadcasts a signed transaction to the Tron network. \
-[broadcasthex](/tron-api/tron-json-rpc-api/transactionsinfo/broadcasthex) : Broadcasts a signed transaction supplied as a raw hex string to the Tron network.
+[gettransactionbyid](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactionbyid) : Returns transaction details for a given transaction hash (ID). \
+[gettransactioncountbyblocknum](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactioncountbyblocknum) : Returns the number of transactions included in a specific block. \
+[gettransactionfrompending](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactionfrompending) : Returns a pending transaction from the node's transaction pool by its hash. \
+[gettransactioninfobyblocknum](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactioninfobyblocknum) : Returns execution results and receipts for all transactions in a specific block. \
+[gettransactioninfobyid](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactioninfobyid) : Returns the execution result, receipt, and logs for a confirmed transaction by its hash. \
+[gettransactionlistfrompending](/api-reference/tron-api/tron-http-api/transactionsinfo/gettransactionlistfrompending) : Returns the list of transaction hashes currently in the node's pending transaction pool. \
+[createtransaction](/api-reference/tron-api/tron-http-api/transactionsinfo/createtransaction) : Creates an unsigned TRX transfer transaction between two addresses. \
+[broadcasttransaction](/api-reference/tron-api/tron-http-api/transactionsinfo/broadcasttransaction) : Broadcasts a signed transaction to the Tron network. \
+[broadcasthex](/api-reference/tron-api/tron-http-api/transactionsinfo/broadcasthex) : Broadcasts a signed transaction supplied as a raw hex string to the Tron network.
 
 ## Smart contracts
 
 Deploys, calls, and inspects smart contracts on the Tron Virtual Machine (TVM).
 
-[deploycontract](/tron-api/tron-http-api/smartcontracts/deploycontract) : Creates an unsigned transaction to deploy a smart contract to the Tron network. \
-[triggersmartcontract](/tron-api/tron-http-api/smartcontracts/triggersmartcontract) : Creates an unsigned transaction that calls a function on a deployed smart contract. \
-[triggerconstantcontract](/tron-api/tron-http-api/smartcontracts/triggerconstantcontract) : Executes a read-only smart contract call without broadcasting a transaction or consuming energy. \
-[getcontract](/tron-api/tron-http-api/smartcontracts/getcontract) : Returns the bytecode and metadata of a deployed smart contract by address. \
-[getcontractinfo](/tron-api/tron-http-api/smartcontracts/getcontractinfo) : Returns extended contract information, including ABI and source metadata, by address. \
-[clearabi](/tron-api/tron-http-api/smartcontracts/clearabi) : Creates a transaction that clears the stored ABI of a smart contract. \
-[estimateenergy](/tron-api/tron-http-api/smartcontracts/estimateenergy) : Estimates the energy required to execute a smart contract call before sending it. \
-[updatesetting](/tron-api/tron-http-api/smartcontracts/updatesetting) : Updates the user resource percentage (consume_user_resource_percent) of a smart contract. \
-[updateenergylimit](/tron-api/tron-http-api/smartcontracts/updateenergylimit) : Updates the origin energy limit of a deployed smart contract.
+[deploycontract](/api-reference/tron-api/tron-http-api/smartcontracts/deploycontract) : Creates an unsigned transaction to deploy a smart contract to the Tron network. \
+[triggersmartcontract](/api-reference/tron-api/tron-http-api/smartcontracts/triggersmartcontract) : Creates an unsigned transaction that calls a function on a deployed smart contract. \
+[triggerconstantcontract](/api-reference/tron-api/tron-http-api/smartcontracts/triggerconstantcontract) : Executes a read-only smart contract call without broadcasting a transaction or consuming energy. \
+[getcontract](/api-reference/tron-api/tron-http-api/smartcontracts/getcontract) : Returns the bytecode and metadata of a deployed smart contract by address. \
+[getcontractinfo](/api-reference/tron-api/tron-http-api/smartcontracts/getcontractinfo) : Returns extended contract information, including ABI and source metadata, by address. \
+[clearabi](/api-reference/tron-api/tron-http-api/smartcontracts/clearabi) : Creates a transaction that clears the stored ABI of a smart contract. \
+[estimateenergy](/api-reference/tron-api/tron-http-api/smartcontracts/estimateenergy) : Estimates the energy required to execute a smart contract call before sending it. \
+[updatesetting](/api-reference/tron-api/tron-http-api/smartcontracts/updatesetting) : Updates the user resource percentage (consume_user_resource_percent) of a smart contract. \
+[updateenergylimit](/api-reference/tron-api/tron-http-api/smartcontracts/updateenergylimit) : Updates the origin energy limit of a deployed smart contract.
 
 ## Asset issue (TRC10)
 
 Issues, queries, and transfers native TRC10 tokens.
 
-[createassetissue](/tron-api/tron-http-api/assetissue/createassetissue) : Issues a new TRC10 token on the Tron network. \
-[getassetissuebyaccount](/tron-api/tron-http-api/assetissue/getassetissuebyaccount) : Returns the TRC10 token issued by a specific account. \
-[getassetissuebyid](/tron-api/tron-http-api/assetissue/getassetissuebyid) : Returns TRC10 token details by its numeric asset ID. \
-[getassetissuebyname](/tron-api/tron-http-api/assetissue/getassetissuebyname) : Returns TRC10 token details by its token name. \
-[getassetissuelist](/tron-api/tron-http-api/assetissue/getassetissuelist) : Returns the full list of TRC10 tokens issued on the network. \
-[getassetissuelistbyname](/tron-api/tron-http-api/assetissue/getassetissuelistbyname) : Returns all TRC10 tokens that share a given token name. \
-[getpaginatedassetissuelist](/tron-api/tron-http-api/assetissue/getpaginatedassetissuelist) : Returns a paginated list of TRC10 tokens using offset and limit parameters. \
-[participateassetissue](/tron-api/tron-http-api/assetissue/participateassetissue) : Creates a transaction to purchase a TRC10 token during its issuance period. \
-[transferasset](/tron-api/tron-http-api/assetissue/transferasset) : Creates a transaction to transfer a TRC10 token between two addresses. \
-[unfreezeasset](/tron-api/tron-http-api/assetissue/unfreezeasset) : Creates a transaction to unfreeze TRX that was frozen for TRC10 issuance bandwidth. \
-[updateasset](/tron-api/tron-http-api/assetissue/updateasset) : Updates the description, URL, and limits of an issued TRC10 token.
+[createassetissue](/api-reference/tron-api/tron-http-api/assetissue/createassetissue) : Issues a new TRC10 token on the Tron network. \
+[getassetissuebyaccount](/api-reference/tron-api/tron-http-api/assetissue/getassetissuebyaccount) : Returns the TRC10 token issued by a specific account. \
+[getassetissuebyid](/api-reference/tron-api/tron-http-api/assetissue/getassetissuebyid) : Returns TRC10 token details by its numeric asset ID. \
+[getassetissuebyname](/api-reference/tron-api/tron-http-api/assetissue/getassetissuebyname) : Returns TRC10 token details by its token name. \
+[getassetissuelist](/api-reference/tron-api/tron-http-api/assetissue/getassetissuelist) : Returns the full list of TRC10 tokens issued on the network. \
+[getassetissuelistbyname](/api-reference/tron-api/tron-http-api/assetissue/getassetissuelistbyname) : Returns all TRC10 tokens that share a given token name. \
+[getpaginatedassetissuelist](/api-reference/tron-api/tron-http-api/assetissue/getpaginatedassetissuelist) : Returns a paginated list of TRC10 tokens using offset and limit parameters. \
+[participateassetissue](/api-reference/tron-api/tron-http-api/assetissue/participateassetissue) : Creates a transaction to purchase a TRC10 token during its issuance period. \
+[transferasset](/api-reference/tron-api/tron-http-api/assetissue/transferasset) : Creates a transaction to transfer a TRC10 token between two addresses. \
+[unfreezeasset](/api-reference/tron-api/tron-http-api/assetissue/unfreezeasset) : Creates a transaction to unfreeze TRX that was frozen for TRC10 issuance bandwidth. \
+[updateasset](/api-reference/tron-api/tron-http-api/assetissue/updateasset) : Updates the description, URL, and limits of an issued TRC10 token.
 
 ## Resource management
 
 Manages bandwidth and energy through freezing, staking, and delegation (Stake 1.0 and Stake 2.0).
 
-[freezebalance](/tron-api/tron-http-api/resourcemanagement/freezebalance) : Creates a transaction to freeze TRX in exchange for bandwidth or energy (legacy model). \
-[freezebalancev2](/tron-api/tron-http-api/resourcemanagement/freezebalancev2) : Creates a transaction to freeze TRX for bandwidth or energy under the Stake 2.0 model. \
-[unfreezebalance](/tron-api/tron-http-api/resourcemanagement/unfreezebalance) : Creates a transaction to unfreeze previously frozen TRX under the legacy staking model. \
-[unfreezebalancev2](/tron-api/tron-http-api/resourcemanagement/unfreezebalancev2) : Creates a transaction to unstake TRX and start the unfreeze withdrawal period under Stake 2.0. \
-[cancelallunfreezev2](/tron-api/tron-http-api/resourcemanagement/cancelallunfreezev2) : Cancels all pending Stake 2.0 unfreeze operations for an account and re-stakes the TRX. \
-[delegateresource](/tron-api/tron-http-api/resourcemanagement/delegateresource) : Creates a transaction to delegate bandwidth or energy from one account to another. \
-[undelegateresource](/tron-api/tron-http-api/resourcemanagement/undelegateresource) : Creates a transaction to reclaim previously delegated bandwidth or energy. \
-[getdelegatedresource](/tron-api/tron-http-api/resourcemanagement/getdelegatedresource) : Returns the resource delegation details between two specific accounts. \
-[getdelegatedresourceaccountindex](/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindex) : Returns the list of accounts an address has delegated resources to or from (legacy index). \
-[getdelegatedresourceaccountindexv2](/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindexv2) : Returns the Stake 2.0 list of accounts an address has delegated resources to or from. \
-[getdelegatedresourcev2](/tron-api/tron-http-api/resourcemanagement/getdelegatedresourcev2) : Returns the Stake 2.0 resource delegation details between two specific accounts. \
-[getavailableunfreezecount](/tron-api/tron-http-api/resourcemanagement/getavailableunfreezecount) : Returns the number of remaining unfreeze operations available for an account under Stake 2.0. \
-[getcandelegatedmaxsize](/tron-api/tron-http-api/resourcemanagement/getcandelegatedmaxsize) : Returns the maximum amount of a resource an account can still delegate to others. \
-[getcanwithdrawunfreezeamount](/tron-api/tron-http-api/resourcemanagement/getcanwithdrawunfreezeamount) : Returns the amount of unfrozen TRX currently available for withdrawal from an account. \
-[withdrawexpireunfreeze](/tron-api/tron-http-api/resourcemanagement/withdrawexpireunfreeze) : Creates a transaction to withdraw TRX whose Stake 2.0 unfreeze waiting period has expired. \
-[getbandwidthprices](/tron-api/tron-http-api/resourcemanagement/getbandwidthprices) : Returns the historical and current price schedule for bandwidth on the network. \
-[getenergyprices](/tron-api/tron-http-api/resourcemanagement/getenergyprices) : Returns the historical and current price schedule for energy on the network. \
-[withdrawbalance](/tron-api/tron-http-api/resourcemanagement/withdrawbalance) : Creates a transaction to withdraw available block reward rewards for a witness account. \
-[getburntrx](/tron-api/tron-http-api/resourcemanagement/getburntrx) : Returns the total amount of TRX burned by the network from transaction fees.
+[freezebalance](/api-reference/tron-api/tron-http-api/resourcemanagement/freezebalance) : Creates a transaction to freeze TRX in exchange for bandwidth or energy (legacy model). \
+[freezebalancev2](/api-reference/tron-api/tron-http-api/resourcemanagement/freezebalancev2) : Creates a transaction to freeze TRX for bandwidth or energy under the Stake 2.0 model. \
+[unfreezebalance](/api-reference/tron-api/tron-http-api/resourcemanagement/unfreezebalance) : Creates a transaction to unfreeze previously frozen TRX under the legacy staking model. \
+[unfreezebalancev2](/api-reference/tron-api/tron-http-api/resourcemanagement/unfreezebalancev2) : Creates a transaction to unstake TRX and start the unfreeze withdrawal period under Stake 2.0. \
+[cancelallunfreezev2](/api-reference/tron-api/tron-http-api/resourcemanagement/cancelallunfreezev2) : Cancels all pending Stake 2.0 unfreeze operations for an account and re-stakes the TRX. \
+[delegateresource](/api-reference/tron-api/tron-http-api/resourcemanagement/delegateresource) : Creates a transaction to delegate bandwidth or energy from one account to another. \
+[undelegateresource](/api-reference/tron-api/tron-http-api/resourcemanagement/undelegateresource) : Creates a transaction to reclaim previously delegated bandwidth or energy. \
+[getdelegatedresource](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresource) : Returns the resource delegation details between two specific accounts. \
+[getdelegatedresourceaccountindex](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindex) : Returns the list of accounts an address has delegated resources to or from (legacy index). \
+[getdelegatedresourceaccountindexv2](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindexv2) : Returns the Stake 2.0 list of accounts an address has delegated resources to or from. \
+[getdelegatedresourcev2](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourcev2) : Returns the Stake 2.0 resource delegation details between two specific accounts. \
+[getavailableunfreezecount](/api-reference/tron-api/tron-http-api/resourcemanagement/getavailableunfreezecount) : Returns the number of remaining unfreeze operations available for an account under Stake 2.0. \
+[getcandelegatedmaxsize](/api-reference/tron-api/tron-http-api/resourcemanagement/getcandelegatedmaxsize) : Returns the maximum amount of a resource an account can still delegate to others. \
+[getcanwithdrawunfreezeamount](/api-reference/tron-api/tron-http-api/resourcemanagement/getcanwithdrawunfreezeamount) : Returns the amount of unfrozen TRX currently available for withdrawal from an account. \
+[withdrawexpireunfreeze](/api-reference/tron-api/tron-http-api/resourcemanagement/withdrawexpireunfreeze) : Creates a transaction to withdraw TRX whose Stake 2.0 unfreeze waiting period has expired. \
+[getbandwidthprices](/api-reference/tron-api/tron-http-api/resourcemanagement/getbandwidthprices) : Returns the historical and current price schedule for bandwidth on the network. \
+[getenergyprices](/api-reference/tron-api/tron-http-api/resourcemanagement/getenergyprices) : Returns the historical and current price schedule for energy on the network. \
+[withdrawbalance](/api-reference/tron-api/tron-http-api/resourcemanagement/withdrawbalance) : Creates a transaction to withdraw available block reward rewards for a witness account. \
+[getburntrx](/api-reference/tron-api/tron-http-api/resourcemanagement/getburntrx) : Returns the total amount of TRX burned by the network from transaction fees.
 
 ## Witnesses and voting
 
 Manages Super Representative (witness) registration, voting, and reward distribution.
 
-[createwitness](/tron-api/tron-http-api/witnessesandvoting/createwitness) : Creates a transaction to register an account as a Super Representative (witness) candidate. \
-[updatewitness](/tron-api/tron-http-api/witnessesandvoting/updatewitness) : Updates the URL associated with a registered witness account. \
-[votewitnessaccount](/tron-api/tron-http-api/witnessesandvoting/votewitnessaccount) : Creates a transaction to cast votes for one or more Super Representative candidates. \
-[listwitnesses](/tron-api/tron-http-api/witnessesandvoting/listwitnesses) : Returns the full list of Super Representatives and candidates with their vote counts. \
-[getpaginatednowwitnesslist](/tron-api/tron-http-api/witnessesandvoting/getpaginatednowwitnesslist) : Returns a paginated list of current Super Representatives using offset and limit parameters. \
-[getBrokerage](/tron-api/tron-http-api/witnessesandvoting/getBrokerage) : Returns the brokerage (commission) ratio a witness keeps from voting rewards. \
-[getReward](/tron-api/tron-http-api/witnessesandvoting/getReward) : Returns the unwithdrawn voting reward balance for an account. \
-[updateBrokerage](/tron-api/tron-http-api/witnessesandvoting/updateBrokerage) : Creates a transaction to update the brokerage ratio a witness keeps from voting rewards.
+[createwitness](/api-reference/tron-api/tron-http-api/witnessesandvoting/createwitness) : Creates a transaction to register an account as a Super Representative (witness) candidate. \
+[updatewitness](/api-reference/tron-api/tron-http-api/witnessesandvoting/updatewitness) : Updates the URL associated with a registered witness account. \
+[votewitnessaccount](/api-reference/tron-api/tron-http-api/witnessesandvoting/votewitnessaccount) : Creates a transaction to cast votes for one or more Super Representative candidates. \
+[listwitnesses](/api-reference/tron-api/tron-http-api/witnessesandvoting/listwitnesses) : Returns the full list of Super Representatives and candidates with their vote counts. \
+[getpaginatednowwitnesslist](/api-reference/tron-api/tron-http-api/witnessesandvoting/getpaginatednowwitnesslist) : Returns a paginated list of current Super Representatives using offset and limit parameters. \
+[getBrokerage](/api-reference/tron-api/tron-http-api/witnessesandvoting/getBrokerage) : Returns the brokerage (commission) ratio a witness keeps from voting rewards. \
+[getReward](/api-reference/tron-api/tron-http-api/witnessesandvoting/getReward) : Returns the unwithdrawn voting reward balance for an account. \
+[updateBrokerage](/api-reference/tron-api/tron-http-api/witnessesandvoting/updateBrokerage) : Creates a transaction to update the brokerage ratio a witness keeps from voting rewards.
 
 ## Network and governance
 
 Manages network parameter proposals and returns chain-wide configuration data.
 
-[proposalapprove](/tron-api/tron-http-api/networkandgovernance/proposalapprove) : Creates a transaction for a witness to approve or withdraw approval of a network parameter proposal. \
-[proposalcreate](/tron-api/tron-http-api/networkandgovernance/proposalcreate) : Creates a transaction to propose a change to a network configuration parameter. \
-[proposaldelete](/tron-api/tron-http-api/networkandgovernance/proposaldelete) : Creates a transaction to cancel a previously submitted network parameter proposal. \
-[listproposals](/tron-api/tron-http-api/networkandgovernance/listproposals) : Returns the full list of network parameter proposals and their statuses. \
-[getpaginatedproposallist](/tron-api/tron-http-api/networkandgovernance/getpaginatedproposallist) : Returns a paginated list of network parameter proposals using offset and limit parameters. \
-[getproposalbyid](/tron-api/tron-http-api/networkandgovernance/getproposalbyid) : Returns the details and vote status of a specific network parameter proposal. \
-[getchainparameters](/tron-api/tron-http-api/networkandgovernance/getchainparameters) : Returns the current values of all configurable network parameters. \
-[getnextmaintenancetime](/tron-api/tron-http-api/networkandgovernance/getnextmaintenancetime) : Returns the Unix timestamp of the next network maintenance (vote-counting) cycle.
+[proposalapprove](/api-reference/tron-api/tron-http-api/networkandgovernance/proposalapprove) : Creates a transaction for a witness to approve or withdraw approval of a network parameter proposal. \
+[proposalcreate](/api-reference/tron-api/tron-http-api/networkandgovernance/proposalcreate) : Creates a transaction to propose a change to a network configuration parameter. \
+[proposaldelete](/api-reference/tron-api/tron-http-api/networkandgovernance/proposaldelete) : Creates a transaction to cancel a previously submitted network parameter proposal. \
+[listproposals](/api-reference/tron-api/tron-http-api/networkandgovernance/listproposals) : Returns the full list of network parameter proposals and their statuses. \
+[getpaginatedproposallist](/api-reference/tron-api/tron-http-api/networkandgovernance/getpaginatedproposallist) : Returns a paginated list of network parameter proposals using offset and limit parameters. \
+[getproposalbyid](/api-reference/tron-api/tron-http-api/networkandgovernance/getproposalbyid) : Returns the details and vote status of a specific network parameter proposal. \
+[getchainparameters](/api-reference/tron-api/tron-http-api/networkandgovernance/getchainparameters) : Returns the current values of all configurable network parameters. \
+[getnextmaintenancetime](/api-reference/tron-api/tron-http-api/networkandgovernance/getnextmaintenancetime) : Returns the Unix timestamp of the next network maintenance (vote-counting) cycle.
 
 ## Node info
 
 Returns information about the queried node itself and its peers.
 
-[getnodeinfo](/tron-api/tron-http-api/nodeinfo/getnodeinfo) : Returns version, configuration, and peer connection details for the queried node. \
-[listnodes](/tron-api/tron-http-api/nodeinfo/listnodes) : Returns the list of peer nodes currently connected to the queried node. \
-[getpendingsize](/tron-api/tron-http-api/nodeinfo/getpendingsize) : Returns the current number of transactions waiting in the node's pending pool.
+[getnodeinfo](/api-reference/tron-api/tron-http-api/nodeinfo/getnodeinfo) : Returns version, configuration, and peer connection details for the queried node. \
+[listnodes](/api-reference/tron-api/tron-http-api/nodeinfo/listnodes) : Returns the list of peer nodes currently connected to the queried node. \
+[getpendingsize](/api-reference/tron-api/tron-http-api/nodeinfo/getpendingsize) : Returns the current number of transactions waiting in the node's pending pool.

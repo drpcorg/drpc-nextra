@@ -112,37 +112,36 @@ These methods provide essential data for interacting with the blockchain, coveri
 
 The Blocks Info group encompasses commands that provide detailed information about the blocks within the blockchain. These functions allow users to query specific blocks, understand the current state of the blockchain, and retrieve essential data such as block hashes and counts.
 
-[getblockhash](/bitcoin-api/blocksinfo/getblockhash): Retrieves the hash of a block by height. \
-[getblockcount](/bitcoin-api/blocksinfo/getblockcount): Provides the total number of blocks in the blockchain. \
-[getbestblockhash](/bitcoin-api/blocksinfo/getbestblockhash): Fetches the hash of the most recent block. \
-[getblock](/bitcoin-api/blocksinfo/getblock): Retrieves detailed data about a specific block.
+[getblockhash](/api-reference/bitcoin-api/blocksinfo/getblockhash): Retrieves the hash of a block by height. \
+[getblockcount](/api-reference/bitcoin-api/blocksinfo/getblockcount): Provides the total number of blocks in the blockchain. \
+[getbestblockhash](/api-reference/bitcoin-api/blocksinfo/getbestblockhash): Fetches the hash of the most recent block. \
+[getblock](/api-reference/bitcoin-api/blocksinfo/getblock): Retrieves detailed data about a specific block.
 
 ## Transactions Info
 
 These functions enable users to access raw transaction data, monitor transaction statuses, inspect specific transaction outputs, list unspent outputs, and track the total amount received by addresses.
 
-[getrawtransaction](/bitcoin-api/transactionsinfo/getrawtransaction) \
-[gettransaction](/bitcoin-api/transactionsinfo/gettransaction) \
-[gettxout](/bitcoin-api/transactionsinfo/gettxout) \
-[listunspent](/bitcoin-api/transactionsinfo/listunspent) \
-[getrecievedbyaddress](/bitcoin-api/transactionsinfo/getrecievedbyaddress)
+[getrawtransaction](/api-reference/bitcoin-api/transactionsinfo/getrawtransaction) \
+[gettransaction](/api-reference/bitcoin-api/transactionsinfo/gettransaction) \
+[gettxout](/api-reference/bitcoin-api/transactionsinfo/gettxout) \
+[listunspent](/api-reference/bitcoin-api/transactionsinfo/listunspent)
 
 ## Network info
 
 Functions allow users to monitor the number of active connections, assess the synchronization state of the blockchain, and retrieve detailed network parameters.
 
-[getconnectioncount](/bitcoin-api/networkinfo/getconnectioncount) : Returns the number of active connections to other nodes. \
-[getblockchaininfo](/bitcoin-api/networkinfo/getblockchaininfo): Provides an overview of the blockchain’s status, including network and difficulty information. \
-[getnetworkinfo](/bitcoin-api/networkinfo/getnetworkinfo) : Returns network-related information.
+[getconnectioncount](/api-reference/bitcoin-api/networkinfo/getconnectioncount) : Returns the number of active connections to other nodes. \
+[getblockchaininfo](/api-reference/bitcoin-api/networkinfo/getblockchaininfo): Provides an overview of the blockchain’s status, including network and difficulty information. \
+[getnetworkinfo](/api-reference/bitcoin-api/networkinfo/getnetworkinfo) : Returns network-related information.
 
 ## Fee info
 
 The Fee Info group includes commands related to estimating transaction fees.
 
-[estimatesmartfee](/bitcoin-api/feeinfo/estimatesmartfee): Estimates the transaction fee based on current network conditions.
+[estimatesmartfee](/api-reference/bitcoin-api/feeinfo/estimatesmartfee): Estimates the transaction fee based on current network conditions.
 
 ## Executing Transactions
 
 Contains commands that facilitate the broadcasting and execution of transactions on the blockchain network
 
-[sendrawtransaction](/bitcoin-api/executingtransactions/sendrawtransaction): Submits a raw transaction to the network for processing.
+[sendrawtransaction](/api-reference/bitcoin-api/executingtransactions/sendrawtransaction): Submits a raw transaction to the network for processing.

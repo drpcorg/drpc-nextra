@@ -1,6 +1,8 @@
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 import nextra from "nextra";
+import fs from "fs";
+import path from "path";
 
 const withNextra = nextra({
   theme: "nextra-theme-docs",
@@ -18,11 +20,11 @@ const PERMANENT_REDIRECTS = [
   },
   {
     from: "/arbitrum-api/debugandtrace/trace_call",
-    to: "/arbitrum-api/debugandtrace/debug_traceCall",
+    to: "/api-reference/arbitrum-api/debugandtrace/debug_traceCall",
   },
   {
     from: "/bartio-api/:slug*",
-    to: "/berachain-api/:slug*",
+    to: "/api-reference/berachain-api/:slug*",
   },
   {
     from: "/howitworks/faucets",
@@ -34,11 +36,15 @@ const PERMANENT_REDIRECTS = [
   },
   {
     from: "/optimism-api/ethereumoptimismdifference-zxcv",
-    to: "/optimism-api/ethereumoptimismdifference",
+    to: "/api-reference/optimism-api/ethereumoptimismdifference",
+  },
+  {
+    from: "/optimism-api/trace_Transaction",
+    to: "/api-reference/optimism-api/debugandtrace/trace_transaction",
   },
   {
     from: "/celo-api/debugandtrace/arbtrace_replayBlockTransactions",
-    to: "/celo-api/debugandtrace/trace_replayBlockTransactions",
+    to: "/api-reference/celo-api/debugandtrace/trace_replayBlockTransactions",
   },
   // Redirection group
   {
@@ -61,15 +67,23 @@ const PERMANENT_REDIRECTS = [
   },
   {
     from: "/wallet-api/portfolio/gettransactionshistory",
-    to: "/data-api/transactions-api/gettransactionshistory",
+    to: "/data-api/transaction-api/gettransactionshistory",
   },
   {
     from: "/overview-wallet-api",
-    to: "/overview-data-api",
+    to: "/data-api",
+  },
+  {
+    from: "/overview-data-api",
+    to: "/data-api",
+  },
+  {
+    from: "/quickstart-data-api",
+    to: "/data-api/quickstart-data-api",
   },
   {
     from: "/quickstart-wallet-api",
-    to: "/quickstart-data-api",
+    to: "/data-api/quickstart-data-api",
   },
 ];
 
@@ -118,24 +132,24 @@ const OPTIMISM_REDIRECTS_BY_SECTION = {
     "trace_get",
     "trace_replayBlockTransactionsvmTrace",
     "trace_replayTransactionvmTrace",
-    "trace_Transaction",
   ],
   web3: ["web3_clientVersion"],
   gasestimation: ["eth_maxPriorityFeePerGas", "eth_feeHistory"],
   blocksinfo: [
     "eth_getBlockByNumber",
     "eth_getBlockReceipts",
-    "eth_getFilterLogs",
-    "eth_getTransactionByBlockHashAndIndex",
-    "eth_getTransactionByBlockNumberAndIndex",
     "eth_newBlockFilter",
   ],
-  transactionsinfo: ["eth_getTransactionCount"],
+  transactionsinfo: [
+    "eth_getTransactionCount",
+    "eth_getTransactionByBlockHashAndIndex",
+    "eth_getTransactionByBlockNumberAndIndex",
+  ],
   gettinguncles: ["eth_getUncleCountByBlockHash"],
   mining: ["eth_mining"],
   chaininfo: ["eth_protocolVersion", "eth_syncing", "net_listening"],
   executingtransactions: ["eth_sendRawTransaction"],
-  eventlogs: ["eth_uninstallFilter"],
+  eventlogs: ["eth_uninstallFilter", "eth_getFilterLogs"],
 };
 
 const SOLANA_REDIRECTS_BY_SECTION = {
@@ -167,7 +181,7 @@ const SOLANA_REDIRECTS_BY_SECTION = {
     "getTransactionCount",
     "simulateTransaction",
   ],
-  tokenInfo: [
+  tokeninfo: [
     "getTokenSupply",
     "getTokenAccountBalance",
     "getTokenAccountsByDelegate",
@@ -292,9 +306,10 @@ function addRedirectsIntoSections(redirectsBySection, fromBasePath, toBasePath =
 function addRedirectsForRelocatedSections(
   redirectsBySection,
   basePath,
-  newSegment
+  newSegment,
+  toBasePath = basePath
 ) {
-  const relocatedBasePath = `${basePath}/${newSegment}`;
+  const relocatedBasePath = `${toBasePath}/${newSegment}`;
 
   for (const section in redirectsBySection) {
     for (const method of redirectsBySection[section]) {
@@ -318,16 +333,40 @@ function addWalletApiRedirects() {
   }
 }
 
-addRedirectsIntoSections(ETHEREUM_REDIRECTS_BY_SECTION, "/ethereum-api");
-addRedirectsIntoSections(OPTIMISM_REDIRECTS_BY_SECTION, "/optimism-api");
-addRedirectsIntoSections(SOLANA_REDIRECTS_BY_SECTION, "/solana-api");
+addRedirectsIntoSections(ETHEREUM_REDIRECTS_BY_SECTION, "/ethereum-api", "/api-reference/ethereum-api");
+addRedirectsIntoSections(OPTIMISM_REDIRECTS_BY_SECTION, "/optimism-api", "/api-reference/optimism-api");
+addRedirectsIntoSections(SOLANA_REDIRECTS_BY_SECTION, "/solana-api", "/api-reference/solana-api");
 addRedirectsForRelocatedSections(
   TRON_REDIRECTS_BY_SECTION,
   "/tron-api",
-  "tron-json-rpc-api"
+  "tron-json-rpc-api",
+  "/api-reference/tron-api"
 );
 
 addWalletApiRedirects();
+
+/**
+ * Network references used to live at the root (/ethereum-api/...) and moved
+ * under /api-reference. Every network in its _meta.json keeps its old URL
+ * working via a catch-all redirect. These go last so the method-specific
+ * redirects above win for the paths they cover.
+ */
+function addSectionMoveRedirects(sectionDir) {
+  const meta = JSON.parse(
+    fs.readFileSync(path.join(process.cwd(), "pages", sectionDir, "_meta.json"), "utf-8")
+  );
+  const entries = Object.entries(meta)
+    .filter(([name, value]) => name !== "index" && value?.type !== "separator")
+    .map(([name]) => name);
+  for (const name of entries) {
+    PERMANENT_REDIRECTS.push(
+      { from: `/${name}`, to: `/${sectionDir}/${name}` },
+      { from: `/${name}/:path*`, to: `/${sectionDir}/${name}/:path*` }
+    );
+  }
+}
+
+addSectionMoveRedirects("api-reference");
 
 /**
  * @type {import('next').NextConfig}
