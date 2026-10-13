@@ -48,8 +48,9 @@ const cache = new WeakMap<PageMapItem[], Map<string | null, PageMapItem[]>>();
 
 /** Nextra's full page map, trimmed to the section `route` belongs to. */
 export function sectionPageMap(route: string): PageMapItem[] | undefined {
+  // pages/_app.mdx makes Nextra store the page map once, on __nextra_internal__.
   const internal = (globalThis as any)[Symbol.for("__nextra_internal__")];
-  const full: PageMapItem[] | undefined = internal?.context?.[route]?.pageOpts?.pageMap;
+  const full: PageMapItem[] | undefined = internal?.pageMap ?? internal?.context?.[route]?.pageOpts?.pageMap;
   if (!full) return undefined;
 
   let bySection = cache.get(full);

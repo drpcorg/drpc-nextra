@@ -10,6 +10,12 @@ import "@mantine/core/styles.css";
 import "./global.css";
 import "../styles/api-reference.css";
 
+{/*
+  Must stay _app.mdx, not .tsx: only with _app.mdx does Nextra put the page map
+  (~300 KB of JSON for ~1700 pages) in _app once. With any other _app it inlines
+  the whole map into every page's bundle, which runs `next build` out of memory.
+*/}
+
 export default function App({ Component, pageProps }) {
   const router = useRouter();
   const isApiReference = router.pathname.startsWith("/api-reference");
