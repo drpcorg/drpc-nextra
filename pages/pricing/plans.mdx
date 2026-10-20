@@ -1,0 +1,87 @@
+import { Meta } from "../../components/Meta";
+
+<Meta />
+
+# Plans and billing
+
+dRPC charges for usage in Compute Units (CU). 1M CU costs $0.30 on every plan. Plans differ in how many CU each request uses, so the price per request is lower on Pro and Scale.
+
+## Plans
+
+|                                   | Free              | Pay as You Go      | Pro                      | Scale                  | Enterprise    |
+| --------------------------------- | ----------------- | ------------------ | ------------------------ | ---------------------- | ------------- |
+| Price                             | $0                | $6 per 1M requests | $49/mo                   | $199/mo                | Custom        |
+| Included CU                       | 210M CU per month | —                  | 163M CU per month        | 664M CU per month      | Custom        |
+| Multi-Chain requests              | ~10M              | Pay per request    | ~10.2M,<br />$4.8 per 1M | ~47M,<br />$4.2 per 1M | Custom        |
+| Solana requests                   | —                 | Pay per request    | ~12.5M,<br/>$3.9 per 1M  | ~51M,<br/>$3.9 per 1M  | Custom        |
+| Rate limit                        | Public limits     | 100 RPS            | 300 RPS                  | 600 RPS                | Custom        |
+| Nodes                             | Public nodes      | Premium nodes      | Premium nodes            | Premium nodes          | Premium nodes |
+| Archive, Debug & Trace, WebSocket | No                | Yes                | Yes                      | Yes                    | Yes           |
+| Solana gRPC                       | No                | Add-on             | $60/TB, included         | $60/TB, included       | Custom        |
+
+The included CU are one shared pool: you can spend them on Multi-Chain and Solana in any mix.
+Rate limits are set in CU per second. Heavier methods use more CU, so the request rate for them is lower.
+
+## How requests use CU
+
+|                     | Pay as You Go     | Pro                       | Scale                     |
+| ------------------- | ----------------- | ------------------------- | ------------------------- |
+| Multi-Chain request | 20 CU ($6 per 1M) | 16 CU ($4.8 per 1M)       | 14 CU ($4.2 per 1M)       |
+| Solana request      | 20 CU ($6 per 1M) | 13 CU ($3.9 per 1M)       | 13 CU ($3.9 per 1M)       |
+| Solana gRPC         | Add-on            | 200M CU per 1 TB ($60/TB) | 200M CU per 1 TB ($60/TB) |
+
+WebSocket subscriptions and notifications use the same CU as a regular request on your plan. Batch calls count each request inside the batch (5 batched = 5 requests). See Compute units for the full method list.
+
+## Billing cycle
+
+Plans are paid from your dRPC balance and renew on the 1st of each month.
+
+- **First month is prorated.** You pay and get CU only for the days left until the 1st. Example: Pro bought on October 19 costs ~$21 and includes ~69M CU for October 19–31.
+- **From the 1st, the full cycle.** On November 1 the plan renews for $49 with the full 163M CU, and the same on the 1st of every next month.
+- **Unused CU don't carry over.** The pool resets on the 1st.
+
+## When your plan's CU run out
+
+Your requests keep working. Usage beyond the pool is charged from your balance: 20 CU per Multi-Chain request ($6 per 1M) and 13 CU per Solana request ($3.9 per 1M).
+
+Example: on Pro you use the whole pool by October 25 and make 2M more Multi-Chain requests by the end of the month. 2M × $6 per 1M = $12 is charged from your balance.
+
+## Your dRPC balance
+
+- **What it pays for:** plan payments, Pay as You Go usage and usage beyond your plan.
+- **How to top up:** by card (from $49) or crypto (from $10). The balance doesn't expire.
+- **Alerts:** we email you when the balance drops below $100 and $50. You can change the thresholds in Billing → Balance Alerts.
+
+## If your balance runs out
+
+- If you still have CU left in your plan, requests continue as normal.
+- If the plan's CU are used up and the balance is empty, requests stop until you top up.
+- Paid accounts don't fall back to the Free plan.
+
+## If your renewal fails
+
+If there isn't enough balance on the 1st, your plan is suspended and you get a 3-day grace period. Top up within the grace period and the plan renews automatically. If you don't, the plan is cancelled and your account moves to Pay as You Go.
+
+## Cancel or change your plan
+
+- **Cancel** anytime in Billing. Your plan stays active until the end of the month and won't renew. Changed your mind? Resume it before the month ends at no extra cost.
+- **After a plan ends**, your account moves to Pay as You Go.
+- **To switch between Pro and Scale**, contact support.
+
+## Track your usage
+
+- **Plan pool and reset date:** Billing → Usage & Savings.
+- **Spending and payment history:** Billing → Overview.
+- **Usage by network and method:** Stats.
+
+## Accounts created before October 20, 2026
+
+Nothing changes unless you buy a plan: your current terms and rate limits stay the same. Plans are optional. Buying a plan moves your account to the new billing permanently. When the plan ends, your account moves to Pay as You Go with a 100 RPS limit, not back to your current terms.
+
+## Enterprise
+
+Custom volume pricing, unlimited RPS, committed SLAs, SSO, dedicated clusters and dedicated support. Enterprise terms are set by contract, contact sales to discuss them.
+
+## Questions about a charge?
+
+[Contact Support](https://support.drpc.org/)
