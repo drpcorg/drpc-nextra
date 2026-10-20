@@ -8,22 +8,19 @@ dRPC charges for usage in Compute Units (CU). 1M CU costs $0.30 on every plan. P
 
 ## Plans
 
-|                                   | Free              | Pay as You Go      | Pro               | Scale             | Enterprise    |
-| --------------------------------- | ----------------- | ------------------ | ----------------- | ----------------- | ------------- |
-| Price                             | $0                | $6 per 1M requests | $49/mo            | $199/mo           | Custom        |
-| Included CU                       | 210M CU per month | —                  | 163M CU per month | 664M CU per month | Custom        |
-| Multi-Chain requests              | ~10M              | Pay per request    | ~10.2M,           |
-| $4.8 per 1M                       | ~47M,             |
-| $4.2 per 1M                       | Custom            |
-| Solana requests                   | —                 | Pay per request    | ~12.5M,           |
-| $3.9 per 1M                       | ~51M,             |
-| $3.9 per 1M                       | Custom            |
-| Rate limit                        | Public limits     | 100 RPS            | 300 RPS           | 600 RPS           | Custom        |
-| Nodes                             | Public nodes      | Premium nodes      | Premium nodes     | Premium nodes     | Premium nodes |
-| Archive, Debug & Trace, WebSocket | No                | Yes                | Yes               | Yes               | Yes           |
-| Solana gRPC                       | No                | Add-on             | $60/TB, included  | $60/TB, included  | Custom        |
+|                                   | Free              | Pay as You Go      | Pro                      | Scale                  | Enterprise    |
+| --------------------------------- | ----------------- | ------------------ | ------------------------ | ---------------------- | ------------- |
+| Price                             | $0                | $6 per 1M requests | $49/mo                   | $199/mo                | Custom        |
+| Included CU                       | 210M CU per month | —                  | 163M CU per month        | 664M CU per month      | Custom        |
+| Multi-Chain requests              | ~10M              | Pay per request    | ~10.2M,<br />$4.8 per 1M | ~47M,<br />$4.2 per 1M | Custom        |
+| Solana requests                   | —                 | Pay per request    | ~12.5M,<br/>$3.9 per 1M  | ~51M,<br/>$3.9 per 1M  | Custom        |
+| Rate limit                        | Public limits     | 100 RPS            | 300 RPS                  | 600 RPS                | Custom        |
+| Nodes                             | Public nodes      | Premium nodes      | Premium nodes            | Premium nodes          | Premium nodes |
+| Archive, Debug & Trace, WebSocket | No                | Yes                | Yes                      | Yes                    | Yes           |
+| Solana gRPC                       | No                | Add-on             | $60/TB, included         | $60/TB, included       | Custom        |
 
 The included CU are one shared pool: you can spend them on Multi-Chain and Solana in any mix.
+Rate limits are set in CU per second. Heavier methods use more CU, so the request rate for them is lower.
 
 ## How requests use CU
 
@@ -68,7 +65,6 @@ If there isn't enough balance on the 1st, your plan is suspended and you get a 3
 ## Cancel or change your plan
 
 - **Cancel** anytime in Billing. Your plan stays active until the end of the month and won't renew. Changed your mind? Resume it before the month ends at no extra cost.
-- **Cancel during a failed renewal**, and the plan ends right away.
 - **After a plan ends**, your account moves to Pay as You Go.
 - **To switch between Pro and Scale**, contact support.
 
@@ -80,7 +76,7 @@ If there isn't enough balance on the 1st, your plan is suspended and you get a 3
 
 ## Accounts created before October 20, 2026
 
-Nothing changes for you: your current terms and rate limits stay the same. Plans are optional, you can switch to Pro or Scale anytime.
+Nothing changes unless you buy a plan: your current terms and rate limits stay the same. Plans are optional. Buying a plan moves your account to the new billing permanently. When the plan ends, your account moves to Pay as You Go with a 100 RPS limit, not back to your current terms.
 
 ## Enterprise
 
