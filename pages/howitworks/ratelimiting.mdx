@@ -7,8 +7,9 @@ import { Meta } from "../../components/Meta";
 
 # Rate limiting
 
-We have rate limiting for public nodes (which are always free of charge), and no rate limiting for the paid tier.
-Because we charge users on a per-request basis, you can make as many paid requests as you want as long as you have enough CUs in your deposit.
+We have rate limits for public nodes and for paid plans: 
+- Pay as You Go: 100 RPS for accounts created after October 19, 2026. Older accounts keep their current limits.
+- Pro: 300 RPS. Scale: 600 RPS. Enterprise: custom.
 
 For requests to free nodes, we usually have the following rules. Please note that some networks have custom rate limits applied on the free tier.
 

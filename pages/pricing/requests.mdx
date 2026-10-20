@@ -8,14 +8,12 @@ import { Meta } from "../../components/Meta";
   description="Compare dRPC's free and paid plans. Understand request limits, features, and load balancing options."
 />
 
-# Free vs paid requests
+# Plans
 
-DRPC has two tiers: a free tier and a paid tier. The free tier includes 210 million Compute Units (CU) per 30-day period and only over public nodes, which can be less reliable and slower. However, the load balancing over multiple public nodes still makes it better than connecting to a single public node.
+dRPC has five options: Free, Pay as You Go, Pro, Scale and Enterprise.
 
-<Image src={freetier} alt="DRPC request free tier" sizes="55vw" />
-
-The paid tier allows users to connect to all providers and offers additional features, such as load balancing fallback and verification. These features are not available in the free tier.
-
-The paid tier is based on a pay-as-you-go strategy where users deposit money into their account and DRPC charges them per request. Each request have its own cost in compute units (CUs), you can see the exact values [here](./compute-units).
-
-<Image src={paidtier} alt="DRPC request paid tier" sizes="55vw" />
+- **Free**: public nodes only, 210M CU per 30 days, rate limits apply.
+- **Pay as You Go**: \$6 per 1M requests (20 CU per request at \$0.30 per 1M CU), no commitment. New accounts are limited to 100 RPS.
+- **Pro (\$49/mo) and Scale (\$199/mo)**: a monthly CU pool (163M and 664M CU) at a lower price per request, 300 and 600 RPS. Usage beyond the pool is charged from your dRPC balance at Pay as You Go rates. Plans are paid from your balance: the first month is prorated, then billed on the 1st of each month. Unused CU don't carry over.
+- **Enterprise**: custom terms, contact sales.
+  Existing accounts keep their current terms. Full details: [drpc.org/pricing](https://drpc.org/pricing)
