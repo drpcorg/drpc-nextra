@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:24.22.1-alpine AS base
 
 ARG NEXT_PUBLIC_SITE_URL=https://drpc.org
 ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}

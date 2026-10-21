@@ -1,6 +1,6 @@
 {
   "name": "drpc-nextra",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
   "runArgs": ["--name", "drpc-nextra"],
   "appPort": [3000],
   "forwardPorts": [3000],
