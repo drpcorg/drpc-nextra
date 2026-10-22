@@ -1,4 +1,8 @@
+# >= 24.22.1: drops the compromised eMudhra intermediates from Node's bundled CA store
 FROM node:24.22.1-alpine AS base
+
+# The base image ships an older system CA bundle; upgrade it to distrust the same CAs
+RUN apk upgrade --no-cache ca-certificates-bundle
 
 ARG NEXT_PUBLIC_SITE_URL=https://drpc.org
 ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
