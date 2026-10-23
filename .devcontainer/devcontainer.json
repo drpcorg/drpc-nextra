@@ -1,11 +1,14 @@
 {
   "name": "drpc-nextra",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:20",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "24.22.1" }
+  },
   "runArgs": ["--name", "drpc-nextra"],
   "appPort": [3000],
   "forwardPorts": [3000],
   "portsAttributes": {
     "3000": { "label": "next dev (/docs)" }
   },
-  "postCreateCommand": "yarn install --frozen-lockfile"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y --only-upgrade ca-certificates && yarn install --frozen-lockfile"
 }
