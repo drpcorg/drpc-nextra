@@ -1,3 +1,38 @@
 .nextra-toc {
   display: none !important;
 }
+
+/* Match production: navbar and sidebar stay completely fixed in place while
+ * scrolling, instead of Nextra's default sticky behavior (which can detach
+ * from the top depending on ancestor layout, leaving a gap where content
+ * scrolls underneath it). Desktop only — mobile already uses its own fixed
+ * full-width overlay for the sidebar, untouched here. */
+@media (min-width: 768px) {
+  .nextra-sidebar-container {
+    position: fixed !important;
+    top: var(--nextra-navbar-height) !important;
+    height: calc(100vh - var(--nextra-navbar-height)) !important;
+  }
+
+  /* The sidebar no longer reserves space in the flex layout once fixed, so
+   * the content next to it needs an explicit offset matching the sidebar's
+   * own width (Nextra's default is 16rem at this breakpoint) or it would
+   * render underneath the now-fixed sidebar. */
+  .nextra-content {
+    margin-left: 16rem;
+  }
+}
+
+.custom-navbar {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(17, 17, 17, 0.98) !important;
+}
+
+/* The navbar no longer reserves space in normal flow once fixed, so
+ * everything below it needs a matching top offset. */
+body {
+  padding-top: var(--nextra-navbar-height);
+}

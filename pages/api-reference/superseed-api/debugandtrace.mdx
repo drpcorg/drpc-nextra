@@ -1,0 +1,32 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Superseed debug and trace info | dRPC"
+/>
+
+## Debug and trace
+
+Available only on the paid tier. These methods are useful for analyzing execution flows and debugging.
+
+[debug_traceBlockByHash](/api-reference/superseed-api/debugandtrace/debug_traceBlockByHash) : Traces the execution of all transactions in a block by its hash. \
+[debug_traceBlockByNumber](/api-reference/superseed-api/debugandtrace/debug_traceBlockByNumber) : Traces the execution of all transactions in a block by its number. \
+[debug_traceTransaction](/api-reference/superseed-api/debugandtrace/debug_traceTransaction) : Provides detailed trace information for a specific transaction. \
+[debug_traceCall](/api-reference/superseed-api/debugandtrace/debug_traceCall) : Traces a specific call without altering the blockchain state. \
+[trace_filter](/api-reference/superseed-api/debugandtrace/trace_filter): Filters blockchain traces based on custom parameters. \
+[trace_rawTransaction](/api-reference/superseed-api/debugandtrace/trace_rawTransaction): Replays a raw transaction for debugging purposes. \
+[trace_block](/api-reference/superseed-api/debugandtrace/trace_block): Tracks execution flow for an entire block. \
+[trace_replayBlockTransactions](/api-reference/superseed-api/debugandtrace/trace_replayBlockTransactions): Replays all transactions in a given block. \
+[trace_replayBlockTransactions#vmTrace](/api-reference/superseed-api/debugandtrace/trace_replayBlockTransactions#vmTrace): Returns a virtual machine execution trace during block replay. \
+[trace_transaction](/api-reference/superseed-api/debugandtrace/trace_transaction): Provides an execution trace of a single transaction. \
+[trace_replayTransaction](/api-reference/superseed-api/debugandtrace/trace_replayTransaction): Re-executes a transaction for debugging. \
+[trace_replayTransaction#vmTrace](/api-reference/superseed-api/debugandtrace/trace_replayTransactionvmTrace): Captures VM state changes during transaction replay. \
+[trace_callMany](/api-reference/superseed-api/debugandtrace/trace_callMany): Executes multiple trace calls in one request. \
+[trace_get](/api-reference/superseed-api/debugandtrace/trace_get): Retrieves previously recorded traces. \
+[trace_call](/api-reference/superseed-api/debugandtrace/trace_call): Simulates a trace call without making changes.
+
+These methods provide advanced debugging capabilities on the Superseed network.
+
+<Space h={16} />
+<GetStarted />

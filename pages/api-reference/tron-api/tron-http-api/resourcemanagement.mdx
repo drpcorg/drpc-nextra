@@ -1,0 +1,34 @@
+import { GetStarted } from "../../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../../components/Meta";
+
+<Meta
+  title="Tron Resource management | dRPC"
+/>
+
+# Tron Resource management
+
+Manages bandwidth and energy through freezing, staking, and delegation (Stake 1.0 and Stake 2.0).
+
+[freezebalance](/api-reference/tron-api/tron-http-api/resourcemanagement/freezebalance) : Creates a transaction to freeze TRX in exchange for bandwidth or energy (legacy model).  \
+[freezebalancev2](/api-reference/tron-api/tron-http-api/resourcemanagement/freezebalancev2) : Creates a transaction to freeze TRX for bandwidth or energy under the Stake 2.0 model. \
+[unfreezebalance](/api-reference/tron-api/tron-http-api/resourcemanagement/unfreezebalance) : Creates a transaction to unfreeze previously frozen TRX under the legacy staking model.  \
+[unfreezebalancev2](/api-reference/tron-api/tron-http-api/resourcemanagement/unfreezebalancev2) : Creates a transaction to unstake TRX and start the unfreeze withdrawal period under Stake 2.0.  \
+[cancelallunfreezev2](/api-reference/tron-api/tron-http-api/resourcemanagement/cancelallunfreezev2) : Cancels all pending Stake 2.0 unfreeze operations for an account and re-stakes the TRX.  \
+[delegateresource](/api-reference/tron-api/tron-http-api/resourcemanagement/delegateresource) : Creates a transaction to delegate bandwidth or energy from one account to another.  \
+[undelegateresource](/api-reference/tron-api/tron-http-api/resourcemanagement/undelegateresource) : Creates a transaction to reclaim previously delegated bandwidth or energy.  \
+[getdelegatedresource](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresource) : Returns the resource delegation details between two specific accounts.  \
+[getdelegatedresourceaccountindex](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindex) : Returns the list of accounts an address has delegated resources to or from (legacy index).  \
+[getdelegatedresourceaccountindexv2](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourceaccountindexv2) : Returns the Stake 2.0 list of accounts an address has delegated resources to or from.  \
+[getdelegatedresourcev2](/api-reference/tron-api/tron-http-api/resourcemanagement/getdelegatedresourcev2) : Returns the Stake 2.0 resource delegation details between two specific accounts.  \
+[getavailableunfreezecount](/api-reference/tron-api/tron-http-api/resourcemanagement/getavailableunfreezecount) : Returns the number of remaining unfreeze operations available for an account under Stake 2.0.  \
+[getcandelegatedmaxsize](/api-reference/tron-api/tron-http-api/resourcemanagement/getcandelegatedmaxsize) : Returns the maximum amount of a resource an account can still delegate to others.  \
+[getcanwithdrawunfreezeamount](/api-reference/tron-api/tron-http-api/resourcemanagement/getcanwithdrawunfreezeamount) : Returns the amount of unfrozen TRX currently available for withdrawal from an account.  \
+[withdrawexpireunfreeze](/api-reference/tron-api/tron-http-api/resourcemanagement/withdrawexpireunfreeze) : Creates a transaction to withdraw TRX whose Stake 2.0 unfreeze waiting period has expired.  \
+[getbandwidthprices](/api-reference/tron-api/tron-http-api/resourcemanagement/getbandwidthprices) : Returns the historical and current price schedule for bandwidth on the network.  \
+[getenergyprices](/api-reference/tron-api/tron-http-api/resourcemanagement/getenergyprices) : Returns the historical and current price schedule for energy on the network.  \
+[withdrawbalance](/api-reference/tron-api/tron-http-api/resourcemanagement/withdrawbalance) : Creates a transaction to withdraw available block reward rewards for a witness account.  \
+[getburntrx](/api-reference/tron-api/tron-http-api/resourcemanagement/getburntrx) : Returns the total amount of TRX burned by the network from transaction fees.
+
+<Space h={16} />
+<GetStarted />

@@ -3,12 +3,12 @@
 ## How to create a new page for Ethereum RPC Methods Documentation
 
 - 1. Go to [References](https://docs.alchemy.com/reference/ethereum-api-endpoints) and click on the method you want to document to go to the page (further mentioned as **Reference Page**).
-- 2. Copy the method name and create a new file in `pages/ethereum-api` with the name `methodName.mdx`.
+- 2. Copy the method name and create a new file in `pages/api-reference/ethereum-api/<section>` with the name `methodName.mdx`.
 - 3. Create a new component in `components/method-docs/ethereum` with the name `EthereumMethod_methodName.tsx`.
 - 4.  Let's use `EthereumMethod_getBlockByNumber.tsx` as reference file for the new file creation.
       Copy the content of `EthereumMethod_getBlockByNumber.tsx` into the new file and replace the method name with the new method name.
 - 5. Import the new `EthereumMethod_methodName.tsx` component in the `methodName.mdx` file and render it.
-- 6. Add `methodName` to the `_meta.json` in `pages/ethereum-api` folder.
+- 6. Add `methodName` to the `_meta.json` in `pages/api-reference/ethereum-api/<section>` folder.
 
 ## How to fill the content of code snippets in the new page
 

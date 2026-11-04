@@ -1,0 +1,35 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+
+<Meta
+  title="Robinhood Debug and trace | dRPC"
+/>
+
+# Debug
+
+The Debug group allows to inspect block execution, and replay transactions or blocks for detailed analysis. Key methods include:
+
+[debug_traceBlockByHash](/api-reference/robinhood-api/debugandtrace/debug_traceBlockByHash) : Traces a block by its hash. \
+[debug_traceBlockByNumber](/api-reference/robinhood-api/debugandtrace/debug_traceBlockByNumber) : Traces a block by its number. \
+[debug_traceTransaction](/api-reference/robinhood-api/debugandtrace/debug_traceTransaction) : Provides detailed trace data for a transaction. \
+[debug_traceCall](/api-reference/robinhood-api/debugandtrace/debug_traceCall) : Traces a specific call without state change. \
+[debug_accountRange](/api-reference/robinhood-api/debugandtrace/debug_accountRange) : Returns a list of accounts and their state at a given block, used for state inspection. \
+[debug_dumpBlock](/api-reference/robinhood-api/debugandtrace/debug_dumpBlock) : Retrieves the full state of a block as a JSON dump for debugging. \
+[debug_getBadBlocks](/api-reference/robinhood-api/debugandtrace/debug_getBadBlocks) : Returns a list of the most recent "bad" (invalid) blocks the client has encountered. \
+[debug_getModifiedAccountsByHash](/api-reference/robinhood-api/debugandtrace/debug_getModifiedAccountsByHash) : Returns accounts modified between two block hashes. \
+[debug_getModifiedAccountsByNumber](/api-reference/robinhood-api/debugandtrace/debug_getModifiedAccountsByNumber) : Returns accounts modified between two block numbers. \
+[debug_getRawBlock](/api-reference/robinhood-api/debugandtrace/debug_getRawBlock) : Returns the RLP-encoded raw block data. \
+[debug_getRawHeader](/api-reference/robinhood-api/debugandtrace/debug_getRawHeader) : Returns the RLP-encoded raw block header. \
+[debug_getRawReceipts](/api-reference/robinhood-api/debugandtrace/debug_getRawReceipts) : Returns the RLP-encoded raw transaction receipts for a block. \
+[debug_getRawTransaction](/api-reference/robinhood-api/debugandtrace/debug_getRawTransaction) : Returns the RLP-encoded raw transaction data. \
+[debug_intermediateRoots](/api-reference/robinhood-api/debugandtrace/debug_intermediateRoots) : Returns the intermediate state roots produced while executing a block's transactions. \
+[debug_storageRangeAt](/api-reference/robinhood-api/debugandtrace/debug_storageRangeAt) : Returns a range of storage entries for an account at a given block and transaction index. \
+[debug_traceBlock](/api-reference/robinhood-api/debugandtrace/debug_traceBlock) : Traces all transactions in a given RLP-encoded block. \
+[debug_traceCallMany](/api-reference/robinhood-api/debugandtrace/debug_traceCallMany) : Executes and traces multiple call objects against a given block state.
+
+These methods provide developers with essential tools for debug and trace on the Robinhood network.
+
+<Space h={16} />
+<GetStarted />

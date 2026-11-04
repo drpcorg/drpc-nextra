@@ -1,0 +1,21 @@
+import { GetStarted } from "../../../components/GenericMethod/getStarted/GetStarted";
+import { Space } from "@mantine/core";
+import { Meta } from "../../../components/Meta";
+
+<Meta
+  title="Bitcoin transactions info| dRPC"
+/>
+
+## Transactions info
+
+Enables access to transaction details, outputs, and unspent funds.
+
+[getrawtransaction](/api-reference/bitcoin-api/transactionsinfo/getrawtransaction): Retrieves the raw data of a transaction by ID. \
+[gettransaction](/api-reference/bitcoin-api/transactionsinfo/gettransaction): Provides detailed information about a specific transaction. \
+[gettxout](/api-reference/bitcoin-api/transactionsinfo/gettxout): Fetches details of an unspent transaction output. \
+[listunspent](/api-reference/bitcoin-api/transactionsinfo/listunspent): Lists unspent transaction outputs for addresses.
+
+These methods facilitate precise transaction data access and management.
+
+<Space h={16} />
+<GetStarted />
